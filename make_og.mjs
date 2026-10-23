@@ -19,7 +19,7 @@ await page.evaluate(() => {
   const meta = JSON.parse(document.querySelector('meta[name="description"]').content ? '{}' : '{}');
   const f = document.createElement('div'); f.className = 'og-foot';
   const up = document.getElementById('tb-updated').title.split('.')[0];
-  f.innerHTML = '<span><b>The AI Incident Index</b>: every major incident since 2023, scored and sourced</span><span>Updated ' + up + '</span>';
+  f.innerHTML = '<span><b>Warning Shots</b>: the AI Incident Index. Every major incident since 2023, scored and sourced</span><span>Updated ' + up + '</span>';
   document.body.append(f);
   window.dispatchEvent(new Event('resize'));
 });

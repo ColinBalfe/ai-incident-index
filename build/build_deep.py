@@ -276,3 +276,13 @@ print('impl', len(impl_all), C2(t['incident_id'] for t in impl_all))
 print('deepdives', [d['incident_id'] for d in dd_all])
 print('signals', len(sig), C2(s_['related_incident'] for s_ in sig))
 print(C2(s_['org_type'] for s_ in sig), C2(s_['channel'] for s_ in sig))
+
+
+# ---- quotes (verbatim, verified) -> data/quotes.json
+qp = f'{R}/quotes.json'
+if os.path.exists(qp):
+    qs = json.load(open(qp))
+    for q in qs:
+        assert q.get('quote') and q.get('speaker') and q.get('date') and q.get('url'), q.get('id')
+    json.dump(qs, open(f'{OUT}/quotes.json', 'w'), ensure_ascii=False, indent=0)
+    print('quotes', len(qs))

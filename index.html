@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The AI Incident Index</title>
+<title>Warning Shots — The AI Incident Index</title>
 <meta name="description" content="133 AI safety incidents since 2023, scored 0–100 and sourced. In 48% of this year's real-world cases the AI acted on its own. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 10:30 ET.">
 <link rel="canonical" href="https://colinbalfe.github.io/ai-incident-index/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="The AI Incident Index">
-<meta property="og:title" content="Severe AI incidents went from 3 to 12 in a year. The AI Incident Index">
+<meta property="og:site_name" content="Warning Shots">
+<meta property="og:title" content="Severe AI incidents went from 3 to 12 in a year — Warning Shots, the AI Incident Index">
 <meta property="og:description" content="133 AI safety incidents since 2023, scored 0–100 and sourced. In 48% of this year's real-world cases the AI acted on its own. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 10:30 ET.">
 <meta property="og:url" content="https://colinbalfe.github.io/ai-incident-index/">
-<meta property="og:image" content="https://colinbalfe.github.io/ai-incident-index/assets/og.png?v=202610231549">
+<meta property="og:image" content="https://colinbalfe.github.io/ai-incident-index/assets/og.png?v=202610231617">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Severe AI incidents went from 3 to 12 in a year. The AI Incident Index">
+<meta name="twitter:title" content="Severe AI incidents went from 3 to 12 in a year — Warning Shots, the AI Incident Index">
 <meta name="twitter:description" content="133 AI safety incidents since 2023, scored 0–100 and sourced. In 48% of this year's real-world cases the AI acted on its own. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 10:30 ET.">
-<meta name="twitter:image" content="https://colinbalfe.github.io/ai-incident-index/assets/og.png?v=202610231549">
+<meta name="twitter:image" content="https://colinbalfe.github.io/ai-incident-index/assets/og.png?v=202610231617">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F2F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1418" media="(prefers-color-scheme: dark)">
@@ -178,6 +178,46 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 @media (max-width: 480px) { .cbars { grid-template-columns: 1fr; } }
 .now-foot { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 16px; font-size: 14px; }
 .now-foot a.cta { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--alarm); padding-bottom: 1px; }
+
+/* ----- brief */
+.brief { margin-top: 18px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); padding: clamp(14px, 2.2vw, 22px); }
+.brief-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.brief-head h2 { font-size: 1rem; letter-spacing: 0; }
+.brief-head .stamp { font-size: 12.5px; color: var(--ink-3); margin-left: auto; }
+.brief-list { margin: 10px 0 0; padding-left: 1.4em; display: grid; gap: 6px; font-size: 15px; line-height: 1.45; }
+.brief-list li::marker { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.brief-list a { color: var(--ink-3); font-size: 12.5px; margin-left: 6px; }
+
+/* ----- quotes */
+.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 22px 32px; margin-top: 22px; }
+.qt { border-top: 2px solid var(--ink); padding-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.qt.lead { grid-column: 1 / -1; border-top-width: 3px; }
+.qt blockquote { margin: 0; font-size: 1.22rem; line-height: 1.35; letter-spacing: -0.015em; font-variation-settings: 'wdth' 94; text-wrap: pretty; }
+.qt.lead blockquote { font-size: clamp(1.5rem, 2.8vw, 2.1rem); line-height: 1.22; max-width: 30ch; }
+.qt blockquote::before { content: "“"; color: var(--alarm); margin-right: 1px; }
+.qt blockquote::after { content: "”"; color: var(--alarm); }
+.qt .who { font-size: 13.5px; line-height: 1.4; }
+.qt .who b { font-weight: 600; }
+.qt .who span { color: var(--ink-2); }
+.qt .meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 12px; color: var(--ink-3); margin-top: auto; }
+.qt .meta a { color: var(--ink-2); }
+.qt.ja blockquote { font-variation-settings: 'wdth' 100; }
+.qt .orig { font-size: 13px; color: var(--ink-2); font-style: normal; }
+.dd-quote { margin: 14px 0 0; padding: 12px 16px; border-left: 3px solid var(--alarm); background: color-mix(in oklab, var(--alarm) 5%, var(--panel)); border-radius: 0 var(--r) var(--r) 0; }
+.dd-quote blockquote { margin: 0; font-size: 1.1rem; line-height: 1.35; letter-spacing: -0.01em; }
+.dd-quote blockquote::before { content: "“"; } .dd-quote blockquote::after { content: "”"; }
+.dd-quote .who { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+.dd-quote .who b { color: var(--ink); }
+.more-btn { margin-top: 16px; background: none; border: 1px solid var(--line-2); border-radius: 999px; padding: 7px 14px; font-size: 13.5px; cursor: pointer; }
+.more-btn:hover { border-color: var(--ink); }
+
+/* ----- embed mode */
+body.embed .topbar, body.embed .drawer, body.embed .drawer-bg { display: none !important; }
+body.embed main > * { display: none !important; }
+body.embed main > .embed-host { display: block !important; padding: 12px 14px 0; }
+body.embed .embed-host > .panel { border: 0; padding: 0; }
+body.embed .embed-foot { font-size: 12px; color: var(--ink-2); padding: 10px 0 12px; display: flex; justify-content: space-between; gap: 10px; }
+body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration: none; }
 
 /* ----- pattern + hooks */
 .pattern-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
@@ -356,9 +396,9 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 <body>
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#top">The AI Incident Index<small>since 2023</small></a>
+    <a class="brand" href="#top">Warning Shots<small>The AI Incident Index</small></a>
     <nav class="tb-nav" aria-label="Sections">
-      <a href="#now">Now</a><a href="#pattern">Pattern</a><a href="#escalation">Escalation</a><a href="#next">Next 12 months</a><a href="#dives">Incidents</a><a href="#signals">Signals</a><a href="#all">All incidents</a><a href="#method">Method</a>
+      <a href="#now">Now</a><a href="#words">Quotes</a><a href="#pattern">Pattern</a><a href="#escalation">Escalation</a><a href="#next">Next 12 months</a><a href="#dives">Incidents</a><a href="#signals">Signals</a><a href="#all">All incidents</a><a href="#method">Method</a>
     </nav>
     <div class="tb-right">
       <span class="pulse" aria-hidden="true"></span><span id="tb-updated">Updated —</span>
@@ -392,7 +432,19 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
       </div>
       <div class="now-foot"><a class="cta" href="#d=php2shell" id="now-link">Full breakdown</a><span class="share" id="now-share"></span></div>
     </section>
+    <section class="brief tight" id="brief" aria-labelledby="brief-h">
+      <div class="brief-head"><h2 id="brief-h">Since the last refresh</h2><span class="stamp" id="brief-stamp"></span></div>
+      <ol class="brief-list" id="brief-list"></ol>
+      <div class="share" id="brief-share"></div>
+    </section>
   </div>
+
+  <section class="wrap" id="words">
+    <div class="sec-head"><h2>In their words</h2><span class="k">Verbatim, dated, linked</span></div>
+    <p class="lede">What the people in charge actually said, as they said it. No paraphrase here; each quote links to the page it was taken from.</p>
+    <div class="quotes" id="quotes"></div>
+    <div class="share" id="words-share"></div>
+  </section>
 
   <section class="wrap" id="pattern">
     <div class="pattern-grid">
@@ -573,10 +625,10 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
     <p>Harm is weighted more because it already happened. Signal is weighted heavily because it predicts what happens next. A lab finding can reach Serious on signal alone, but only real-world damage can make an incident Severe or Critical.</p>
     <p>This is a curated index of significant, well-sourced incidents, not a census; the AI Incident Database and the OECD monitor count far more. Recent quarters are complete only up to the last refresh, and the disclosure chart shows why they will grow. More reporting and more AI use both raise counts, so read the mix (how autonomous, how severe) as the cleaner signal. Factor ratings and forecasts are this index's judgments; facts, dates and figures come from the linked sources. Where a lawsuit is pending, the summary reports allegations, not findings.</p>
     <h3 style="margin-top:28px">Data</h3>
-    <p>Everything on this page is open: <a href="data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="data/victims.json">organizations affected</a>, <a href="data/signals.json">official statements</a>, <a href="data/forecasts.json">forecasts</a>. Cite as "The AI Incident Index" with a link. Corrections and additions: open an issue on <a href="https://github.com/ColinBalfe/ai-incident-index">GitHub</a>.</p>
+    <p>Everything on this page is open: <a href="data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="data/victims.json">organizations affected</a>, <a href="data/signals.json">official statements</a>, <a href="data/forecasts.json">forecasts</a>. Cite as "Warning Shots (The AI Incident Index)" with a link. Corrections and additions: open an issue on <a href="https://github.com/ColinBalfe/ai-incident-index">GitHub</a>.</p>
     <h3 style="margin-top:28px">What changed</h3>
     <div class="changelog" id="changelog"></div>
-    <p class="foot">The AI Incident Index is maintained by Colin Balfe with Claude. Research, scoring and forecasts are the index's own; every incident links to its primary source. Last refresh <span id="foot-updated">—</span>. <a href="https://github.com/ColinBalfe/ai-incident-index">Source</a>.</p>
+    <p class="foot">Warning Shots, the AI Incident Index, is maintained by Colin Balfe with Claude. The name is OpenAI’s own phrase for the Hugging Face breach: “a warning shot for the company and the world.” Research, scoring and forecasts are the index's own; every incident links to its primary source. Last refresh <span id="foot-updated">—</span>. <a href="https://github.com/ColinBalfe/ai-incident-index">Source</a>.</p>
   </section>
 </main>
 
@@ -589,7 +641,7 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 
 <script src="assets/vendor/d3.min.js"></script>
 <script src="assets/vendor/topojson-client.min.js"></script>
-<script>window.AII_BUILD = "202610231549"; window.AII_SITE = "https://colinbalfe.github.io/ai-incident-index/";</script>
-<script src="assets/app.js?v=202610231549"></script>
+<script>window.AII_BUILD = "202610231617"; window.AII_SITE = "https://colinbalfe.github.io/ai-incident-index/";</script>
+<script src="assets/app.js?v=202610231617"></script>
 </body>
 </html>

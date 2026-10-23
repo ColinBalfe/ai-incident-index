@@ -3,6 +3,8 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
+const OPTIONAL = ['quotes', 'brief'];
+const EMBED = new URLSearchParams(location.search).get('embed');
 const D = {};
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -50,6 +52,7 @@ const ICON = {
   text: '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>',
   img: '<svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg>',
   x: '<svg viewBox="0 0 24 24"><path d="M4 4l16 16"/><path d="M20 4 4 20"/></svg>',
+  embed: '<svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5"/><path d="m16 7 5 5-5 5"/><path d="m14 4-4 16"/></svg>',
 };
 function shareRow(node, o) {
   if (!node) return;
@@ -60,6 +63,7 @@ function shareRow(node, o) {
   if (o.text) node.append(mk('text', 'Copy text', () => copy(o.text + ' ' + link)));
   if (o.text) { const a = el('a'); a.innerHTML = ICON.x; a.append(txt(' Post on X')); a.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(o.text) + '&url=' + encodeURIComponent(link); a.target = '_blank'; a.rel = 'noopener noreferrer'; node.append(a); }
   if (o.svgBox) node.append(mk('img', 'Save image', () => svgToPng(o.svgBox, o.name || 'chart', o.title || '')));
+  if (o.embed) node.append(mk('embed', 'Embed', () => copy(`<iframe src="${SITE}?embed=${o.embed}" width="100%" height="${o.embedH || 560}" style="border:0;max-width:100%" loading="lazy" title="${(o.title || 'Warning Shots').replace(/"/g, '')}"></iframe>`)));
 }
 let fontB64 = null;
 async function fontData() {
@@ -82,7 +86,7 @@ async function svgToPng(box, name, title) {
   if (f) out.append('style').text(`@font-face{font-family:'Archivo';src:url(data:font/woff2;base64,${f}) format('woff2');font-weight:100 900;font-stretch:62% 125%;} text{font-family:'Archivo',system-ui,sans-serif}`);
   out.append('rect').attr('width', '100%').attr('height', '100%').attr('fill', cssVar('--paper'));
   if (title) out.append('text').attr('x', pad).attr('y', 34).attr('font-size', 18).attr('font-weight', 600).attr('fill', cssVar('--ink')).attr('font-family', 'Archivo, system-ui, sans-serif').text(title);
-  out.append('text').attr('x', pad).attr('y', H + head + 20).attr('font-size', 12).attr('fill', cssVar('--ink-2')).attr('font-family', 'Archivo, system-ui, sans-serif').text('The AI Incident Index, ' + SITE.replace(/^https?:\/\//, ''));
+  out.append('text').attr('x', pad).attr('y', H + head + 20).attr('font-size', 12).attr('fill', cssVar('--ink-2')).attr('font-family', 'Archivo, system-ui, sans-serif').text('Warning Shots, the AI Incident Index: ' + SITE.replace(/^https?:\/\//, ''));
   clone.setAttribute('x', pad); clone.setAttribute('y', head); clone.setAttribute('width', W); clone.setAttribute('height', H);
   out.node().append(clone);
   const xml = new XMLSerializer().serializeToString(out.node());
@@ -91,7 +95,7 @@ async function svgToPng(box, name, title) {
   img.onload = () => {
     const c = el('canvas'); c.width = (W + pad * 2) * scale; c.height = (H + head + foot) * scale;
     const ctx = c.getContext('2d'); ctx.scale(scale, scale); ctx.drawImage(img, 0, 0);
-    c.toBlob((blob) => { const a = el('a'); a.href = URL.createObjectURL(blob); a.download = 'ai-incident-index-' + name + '.png'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast('Image saved'); }, 'image/png');
+    c.toBlob((blob) => { const a = el('a'); a.href = URL.createObjectURL(blob); a.download = 'warning-shots-' + name + '.png'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast('Image saved'); }, 'image/png');
   };
   img.onerror = () => toast('Could not render image');
   img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(xml);
@@ -180,13 +184,14 @@ function drawHeadline() {
     stat(fmtN(h.n), [el('b', null, fmtN(h.n_wild)), txt(' real-world incidents and '), el('b', null, fmtN(h.n_lab)), txt(' lab or test findings, scored')]),
     stat(h.n_critical === 0 ? 'None' : String(h.n_critical), [txt(h.n_critical === 0 ? 'rated Critical yet. Odds of one within 12 months: ' : 'rated Critical. Odds of another within 12 months: '), el('b', null, crit ? crit.probability_label : '—')]),
   );
-  shareRow(document.getElementById('hero-share'), { anchor: 'top', text: `Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year, and in ${pct(h.agentic_recent)} of this year's real-world cases the AI acted on its own. The AI Incident Index:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)` });
+  shareRow(document.getElementById('hero-share'), { anchor: 'top', text: `Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year, and in ${pct(h.agentic_recent)} of this year's real-world cases the AI acted on its own. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
   const up = document.getElementById('tb-updated'); up.textContent = 'Updated ' + relTime(D.meta.as_of); up.title = D.meta.as_of_label + '. ' + D.meta.schedule;
   document.getElementById('foot-updated').textContent = D.meta.as_of_label + '. ' + D.meta.schedule + ' Next check ' + D.meta.next_check_label;
 }
 let heroAnimated = false;
 function drawTimeline(animate) {
   const box = document.getElementById('ch-timeline');
+  if (!box.clientWidth) return;
   const rows = C.scored.map((r) => ({ ...r, _d: new Date(r.date) }));
   const W = box.clientWidth, narrow = W < 560, H = narrow ? 320 : 400;
   const m = { t: 14, r: narrow ? 8 : 74, b: 28, l: 34 };
@@ -270,12 +275,13 @@ function drawNow() {
     const d = el('div', 'd'); d.append(txt(r.detail + ' ')); const a = el('a', null, r.source_label); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; d.append(a); c.append(d);
     return c;
   }));
-  shareRow(document.getElementById('now-share'), { anchor: 'now', text: `${live.name}. ${(D.meta.live_note || live.now_text)}`, svgBox: document.getElementById('map'), name: 'php2shell-map', title: 'PHP2Shell: organizations that took services offline or were attacked, by country' });
+  shareRow(document.getElementById('now-share'), { anchor: 'now', text: `${live.name}. ${(D.meta.live_note || live.now_text)}`, svgBox: document.getElementById('map'), name: 'php2shell-map', title: 'PHP2Shell: organizations that took services offline or were attacked, by country', embed: 'now', embedH: 760 });
   drawMap(live);
 }
 let world = null;
 async function drawMap(live) {
   const box = document.getElementById('map'), cap = document.getElementById('map-cap');
+  if (!box.clientWidth) return;
   if (!world) { try { world = await (await fetch('assets/vendor/countries-110m.json')).json(); } catch (e) { fail(box); return; } }
   const vs = D.victims.filter((v) => v.incident_id === live.incident_id && ['disrupted', 'attacked', 'confirmed', 'reported'].includes(v.status_group));
   const byC = new Map();
@@ -312,6 +318,7 @@ function drawHooks() {
 /* ---------- quarters */
 function drawQuarters() {
   const box = document.getElementById('ch-quarters');
+  if (!box.clientWidth) return;
   const rows = C.quarterly;
   const W = box.clientWidth, H = 260, m = { t: 12, r: 6, b: 34, l: 28 };
   const x = d3.scaleBand(rows.map((r) => r.quarter), [m.l, W - m.r]).paddingInner(0.25).paddingOuter(0.1);
@@ -331,12 +338,13 @@ function drawQuarters() {
   keepTip(box, svg.node());
   legend(document.getElementById('lg-autonomy2'), AUTONOMY.map((a) => ({ color: autoColor(a.k), label: a.name })));
   const last = rows[rows.length - 1];
-  shareRow(document.getElementById('share-quarters'), { anchor: 'card-quarters', text: `AI incidents per quarter since 2023, colored by how much the AI did on its own. The dark share is growing. From The AI Incident Index:`, svgBox: box, name: 'quarters', title: 'Incidents per quarter, by how much the AI acted on its own' });
+  shareRow(document.getElementById('share-quarters'), { anchor: 'card-quarters', text: `AI incidents per quarter since 2023, colored by how much the AI did on its own. The dark share is growing. From Warning Shots:`, svgBox: box, name: 'quarters', title: 'Incidents per quarter, by how much the AI acted on its own', embed: 'quarters', embedH: 420 });
 }
 
 /* ---------- disclosure gap */
 function drawDisclosure() {
   const box = document.getElementById('ch-disclosure'), call = document.getElementById('disc-callout');
+  if (!box.clientWidth) return;
   const rows = C.disclosure, A = C.discAgg;
   const W = box.clientWidth, narrow = W < 520, rowH = narrow ? 30 : 22;
   const H = rows.length * rowH + 40, m = { t: 8, r: narrow ? 52 : 58, b: 28, l: 10 };
@@ -369,12 +377,13 @@ function drawDisclosure() {
     txt('Of the '), el('b', null, String(A.n)), txt(' real-world incidents this year where the AI acted on its own, '), el('b', null, String(A.n_slow)), txt(' took more than two months to surface, a median of '), el('b', null, String(A.median_slow)), txt(' days, the longest '), el('b', null, String(A.max)), txt(". Every slow one happened inside a lab's own training or testing, where only the lab knew; the fast ones were caught by the victim. So the right edge of every chart here is a floor: on this pattern, most of what happened inside labs in the last three months is still unreported."),
     ...(A.monitor_lag != null ? [txt(" One test of whether that is changing: OpenAI's newest log entry was posted "), el('b', null, String(A.monitor_lag)), txt(' days after the incident, not a hundred.')] : []),
   );
-  shareRow(document.getElementById('share-disclosure'), { anchor: 'card-disclosure', text: `${A.n_slow} of this year's ${A.n} real-world AI incidents where the AI acted on its own took more than two months to become public (median ${A.median_slow} days). All of them happened inside a lab's own training or tests. The AI Incident Index:`, svgBox: box, name: 'disclosure-gap', title: 'How long the world waited to find out' });
+  shareRow(document.getElementById('share-disclosure'), { anchor: 'card-disclosure', text: `${A.n_slow} of this year's ${A.n} real-world AI incidents where the AI acted on its own took more than two months to become public (median ${A.median_slow} days). All of them happened inside a lab's own training or tests. Warning Shots:`, svgBox: box, name: 'disclosure-gap', title: 'How long the world waited to find out', embed: 'disclosure', embedH: 760 });
 }
 
 /* ---------- scatter + horizon */
 function drawScatter() {
   const box = document.getElementById('ch-scatter');
+  if (!box.clientWidth) return;
   const rows = C.scored;
   const W = box.clientWidth, H = Math.min(380, Math.max(300, W * 0.8)), m = { t: 10, r: 10, b: 36, l: 38 };
   const x = d3.scaleLinear([0, 100], [m.l, W - m.r]), y = d3.scaleLinear([0, 100], [H - m.b, m.t]);
@@ -396,10 +405,11 @@ function drawScatter() {
     .on('click', (ev) => { const [px, py] = d3.pointer(ev); const p = pts[del.find(px, py)]; if (p && Math.hypot(p.px - px, p.py - py) <= 36) openIncident(p.r.id); });
   keepTip(box, svg.node());
   legend(document.getElementById('lg-setting'), [{ color: 'var(--wild)', label: 'in the wild' }, { color: 'var(--lab)', label: 'in the lab or a test' }]);
-  shareRow(document.getElementById('share-scatter'), { anchor: 'card-scatter', text: 'Every major AI incident since 2023 plotted by damage done against what it signals about where AI is going. Real-world incidents are climbing toward the danger zone. The AI Incident Index:', svgBox: box, name: 'danger-zone', title: 'Harm against signal, every incident' });
+  shareRow(document.getElementById('share-scatter'), { anchor: 'card-scatter', text: 'Every major AI incident since 2023 plotted by damage done against what it signals about where AI is going. Real-world incidents are climbing toward the danger zone. Warning Shots:', svgBox: box, name: 'danger-zone', title: 'Harm against signal, every incident', embed: 'scatter', embedH: 520 });
 }
 function drawHorizon() {
   const box = document.getElementById('ch-horizon'), call = document.getElementById('horizon-callout');
+  if (!box.clientWidth) return;
   const rows = D.horizon.map((r) => ({ ...r, _d: new Date(r.date), minutes: +r.minutes })).sort((a, b) => a._d - b._d);
   const W = box.clientWidth, H = 300, m = { t: 14, r: 16, b: 28, l: 52 };
   const x = d3.scaleUtc([d3.min(rows, (r) => r._d), new Date('2026-12-31')], [m.l, W - m.r]);
@@ -421,12 +431,13 @@ function drawHorizon() {
   keepTip(box, svg.node());
   const dbl = rows.find((r) => r.doubling_months), first = rows[0];
   call.replaceChildren(txt('From '), el('b', null, first.duration_label), txt(' (' + first.model + ') to '), el('b', null, last.duration_label), txt(' (' + last.model + ')' + (dbl ? '. METR’s fitted trend doubles roughly every ' : '.')), ...(dbl ? [el('b', null, String(dbl.doubling_months)), txt(' months. Each doubling lets an agent run about twice as long between human checks, and lets a mistake travel twice as far before anyone notices. METR’s suite cannot yet measure models released after spring 2026.')] : []));
-  shareRow(document.getElementById('share-horizon'), { anchor: 'card-horizon', text: `How long AI can work unsupervised: from ${first.duration_label} (${first.model}) to ${last.duration_label} (${last.model}), per METR. The AI Incident Index:`, svgBox: box, name: 'time-horizon', title: 'How long AI can work unsupervised (METR 50% time horizon)' });
+  shareRow(document.getElementById('share-horizon'), { anchor: 'card-horizon', text: `How long AI can work unsupervised: from ${first.duration_label} (${first.model}) to ${last.duration_label} (${last.model}), per METR. Warning Shots:`, svgBox: box, name: 'time-horizon', title: 'How long AI can work unsupervised (METR 50% time horizon)', embed: 'horizon', embedH: 520 });
 }
 
 /* ---------- pipeline */
 function drawPipeline() {
   const box = document.getElementById('ch-pipeline'), call = document.getElementById('pipeline-callout');
+  if (!box.clientWidth) return;
   const rows = D.pipeline.map((p) => ({ ...p, _l: new Date(p.lab_date), _w: p.wild_date ? new Date(p.wild_date) : null })).sort((a, b) => a._l - b._l);
   const W = box.clientWidth, narrow = W < 620, labelW = narrow ? 0 : Math.min(230, W * 0.3), rowH = narrow ? 52 : 38;
   const H = rows.length * rowH + 34, m = { t: 6, r: 12, b: 28, l: 12 + labelW };
@@ -456,7 +467,7 @@ function drawPipeline() {
   legend(document.getElementById('lg-pipeline'), [{ color: 'var(--lab)', shape: 'ring', label: 'first seen in a lab or test' }, { color: 'var(--steel)', label: 'first seen in real use' }]);
   const L = C.lagAgg;
   call.replaceChildren(el('b', null, String(L.n_arrived)), txt(' behaviors first seen in testing have already shown up in real use, a median of '), el('b', null, String(L.median)), txt(' months later, and the gap is closing: behaviors first seen in tests in 2023–24 took about '), el('b', null, String(L.early)), txt(' months to reach real use; those first seen since 2025 took about '), el('b', null, String(L.recent)), txt(', because training and test environments now touch the live internet. '), el('b', null, String(L.n_open)), txt(' are still in the pipeline, including the ones researchers worry about most: resisting shutdown and copying itself out.'));
-  shareRow(document.getElementById('share-pipeline'), { anchor: 'card-pipeline', text: `${L.n_arrived} dangerous AI behaviors first seen in safety tests have now shown up in the real world, a median of ${L.median} months later. ${L.n_open} more are still in the pipeline. The AI Incident Index:`, svgBox: box, name: 'lab-to-wild', title: 'From the lab to the wild: when each behavior first appeared' });
+  shareRow(document.getElementById('share-pipeline'), { anchor: 'card-pipeline', text: `${L.n_arrived} dangerous AI behaviors first seen in safety tests have now shown up in the real world, a median of ${L.median} months later. ${L.n_open} more are still in the pipeline. Warning Shots:`, svgBox: box, name: 'lab-to-wild', title: 'From the lab to the wild: when each behavior first appeared', embed: 'pipeline', embedH: 640 });
 }
 
 /* ---------- next: watch, drivers, forecasts, calendar */
@@ -488,7 +499,7 @@ function drawForecast() {
     return g;
   }));
   const top = D.forecasts.slice().sort((a, b) => +b.probability - +a.probability)[0];
-  shareRow(document.getElementById('share-forecast'), { anchor: 'card-forecast', text: `Twenty dated forecasts for AI safety over the next year, each with its reasoning. Highest: ${top.probability_label} that ${top.event.charAt(0).toLowerCase() + top.event.slice(1)}. The AI Incident Index:` });
+  shareRow(document.getElementById('share-forecast'), { anchor: 'card-forecast', text: `Twenty dated forecasts for AI safety over the next year, each with its reasoning. Highest: ${top.probability_label} that ${top.event.charAt(0).toLowerCase() + top.event.slice(1)}. Warning Shots:` });
 }
 function drawCalendar() {
   document.getElementById('cal').replaceChildren(...D.catalysts.slice().sort((a, b) => a.date.localeCompare(b.date)).map((r) => { const row = el('div', 'cal-row'); const right = el('div'); right.append(el('div', 'cal-ev', r.event), el('div', 'cal-why', r.why)); row.append(el('div', 'cal-date', r.date_label), right); return row; }));
@@ -506,8 +517,9 @@ function drawDeepDive() {
   const rel = el('div', 'dd-rel');
   const relRows = String(d.related_ids || '').split(',').map((s) => s.trim()).map((id) => C.scored.find((r) => r.id === id)).filter(Boolean);
   if (relRows.length) { rel.append(el('span', 'lbl', relRows.length > 1 ? 'Scored on the index:' : 'Score on the index:')); relRows.forEach((r) => { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierColor(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', () => openIncident(r.id)); rel.append(b); }); }
-  document.getElementById('dd-head').replaceChildren(h, el('p', 'dd-meta', d.dates_label), el('p', 'dd-one', d.one_liner), rel);
-  shareRow(document.getElementById('dd-share'), { anchor: 'd=' + d.incident_id, text: d.name + '. ' + d.one_liner.split('. ')[0] + '. The AI Incident Index:' });
+  const dq = (D.quotes || []).filter((q) => q.incident_id === d.incident_id && q.quote && q.verified !== false).sort((a, b) => (b.weight || 0) - (a.weight || 0)).slice(0, 2).map((q) => { const w = el('div', 'dd-quote'); const who = el('div', 'who'); who.append(el('b', null, q.speaker), txt(q.title ? ', ' + q.title : ''), txt(', ' + fmtDate(new Date(q.date)) + ' ')); const a = el('a', null, 'source'); a.href = q.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; who.append(a); w.append(el('blockquote', null, q.quote), who); return w; });
+  document.getElementById('dd-head').replaceChildren(h, el('p', 'dd-meta', d.dates_label), el('p', 'dd-one', d.one_liner), ...dq, rel);
+  shareRow(document.getElementById('dd-share'), { anchor: 'd=' + d.incident_id, text: d.name + '. ' + d.one_liner.split('. ')[0] + '. Warning Shots:' });
   const vc = C.victimCounts[d.incident_id] || {};
   const stat = (v, l) => { const c = el('div', 'dd-stat'); c.append(el('div', 'v', String(v)), el('div', 'l', l)); return c; };
   const stats = [stat(vc.confirmed ?? 0, 'organizations confirmed compromised')];
@@ -593,7 +605,7 @@ function openIncident(id) {
   const meta = el('div', 'dmeta', [showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', '));
   const share = el('div', 'share');
   body.replaceChildren(big, h, meta, ...detailNodes(r, true), share);
-  shareRow(share, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). ${r.summary.split('. ')[0]}. The AI Incident Index:` });
+  shareRow(share, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). ${r.summary.split('. ')[0]}. Warning Shots:` });
   document.getElementById('drawer').classList.add('on'); document.getElementById('drawer').setAttribute('aria-hidden', 'false'); document.getElementById('drawer-bg').classList.add('on');
   history.replaceState(null, '', '#i=' + r.id);
   document.getElementById('drawer-close').focus();
@@ -617,13 +629,13 @@ function drawList() {
     const sw = el('div'); const sb = el('div', 'sevbar'); const si = el('i'); si.style.width = r.severity + '%'; si.style.background = tierColor(r.tier); sb.append(si); sw.append(el('div', 'sev', String(r.severity)), sb);
     const mid = el('div'); mid.append(el('div', 'rtitle', r.title), el('div', 'rmeta', ['#' + rank.get(r.id), showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', ')));
     const pill = el('span', 'pill'); const pd = el('i'); pd.style.background = tierColor(r.tier); pill.append(pd, txt(r.tier));
-    const det = el('div', 'rdetail'); det.append(...detailNodes(r, false)); const sh = el('div', 'share'); shareRow(sh, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). The AI Incident Index:` }); det.append(sh);
+    const det = el('div', 'rdetail'); det.append(...detailNodes(r, false)); const sh = el('div', 'share'); shareRow(sh, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). Warning Shots:` }); det.append(sh);
     row.append(sw, mid, pill, det);
     const toggle = () => { ls.open = ls.open === r.id ? null : r.id; row.classList.toggle('open'); };
     row.addEventListener('click', (e) => { if (e.target.closest('a, button')) return; toggle(); }); row.addEventListener('keydown', (e) => { if (e.key === 'Enter') toggle(); });
     return row;
   }));
-  shareRow(document.getElementById('share-list'), { anchor: 'all', text: `${all.length} AI incidents since 2023, each scored 0–100 and linked to its source. The AI Incident Index:` });
+  shareRow(document.getElementById('share-list'), { anchor: 'all', text: `${all.length} AI incidents since 2023, each scored 0–100 and linked to its source. Warning Shots:` });
 }
 document.getElementById('q').addEventListener('input', (e) => { ls.q = e.target.value; drawList(); });
 document.getElementById('seg-setting').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; ls.setting = b.dataset.v; document.querySelectorAll('#seg-setting button').forEach((x) => x.classList.toggle('on', x === b)); drawList(); });
@@ -635,7 +647,7 @@ document.getElementById('dl-csv').addEventListener('click', (e) => {
   const cols = ['id', 'date', 'date_precision', 'disclosed', 'title', 'actors', 'category_label', 'setting', 'summary', 'harm', 'H', 'R', 'A', 'N', 'I', 'harm_score', 'signal_score', 'severity', 'tier', 'source_url', 'source2_url', 'source3_url', 'confidence'];
   const esc = (v) => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
   const csv = [cols.join(',')].concat(C.scored.map((r) => cols.map((c) => esc(r[c])).join(','))).join('\n');
-  const a = el('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'ai-incident-index.csv'; a.click();
+  const a = el('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'warning-shots-incidents.csv'; a.click();
 });
 
 /* ---------- context + changelog */
@@ -644,11 +656,56 @@ function drawContext() {
   document.getElementById('changelog').replaceChildren(...(D.meta.changelog || []).map((c) => { const d = el('div'); d.append(el('b', null, fmtDay(new Date(c.date)) + ', ' + c.date.slice(0, 4)), el('span', null, c.text)); return d; }));
 }
 
+/* ---------- brief + quotes */
+function drawBrief() {
+  const sec = document.getElementById('brief'), b = D.brief;
+  if (!b || !b.items || !b.items.length) { sec.style.display = 'none'; return; }
+  sec.style.display = '';
+  document.getElementById('brief-stamp').textContent = b.label || '';
+  document.getElementById('brief-list').replaceChildren(...b.items.map((it) => { const li = el('li', null, it.text); if (it.url) { const a = el('a', null, it.source_label || 'source'); a.href = it.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.append(a); } return li; }));
+  shareRow(document.getElementById('brief-share'), { anchor: 'brief', text: b.items.map((it, i) => (i + 1) + '. ' + it.text).join('\n') + '\nWarning Shots:' });
+}
+let quotesOpen = false;
+function quoteCard(q, lead) {
+  const c = el('div', 'qt' + (lead ? ' lead' : '') + (q.lang === 'ja' ? ' ja' : ''));
+  const bq = el('blockquote', null, q.quote); c.append(bq);
+  if (q.original) c.append(el('div', 'orig', q.original));
+  const who = el('div', 'who'); who.append(el('b', null, q.speaker)); if (q.title) who.append(txt(', '), el('span', null, q.title)); c.append(who);
+  const meta = el('div', 'meta'); meta.append(el('span', null, fmtDate(new Date(q.date))), el('span', 'chip' + (q.channel === 'X post' ? ' x' : ''), q.channel + (q.via ? ', via ' + q.via : '')));
+  const dive = D.deepdives.find((d) => d.incident_id === q.incident_id); if (dive) { const a = el('a', null, dive.tab_label.replace(' (live)', '')); a.href = '#d=' + dive.incident_id; a.addEventListener('click', (e) => { e.preventDefault(); go('#d=' + dive.incident_id); }); meta.append(a); }
+  if (q.url) { const a = el('a', null, q.channel === 'X post' ? 'View post' : 'Source'); a.href = q.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; meta.append(a); }
+  const sh = el('div', 'share'); shareRow(sh, { anchor: 'q=' + q.id, text: `“${q.quote}” — ${q.speaker}${q.title ? ', ' + q.title : ''} (${fmtDate(new Date(q.date))}). Warning Shots:` });
+  c.append(meta, sh); c.id = 'q-' + q.id; return c;
+}
+function drawQuotes() {
+  const sec = document.getElementById('words'), box = document.getElementById('quotes');
+  const qs = (D.quotes || []).filter((q) => q.quote && q.verified !== false).slice().sort((a, b) => (b.weight || 0) - (a.weight || 0) || b.date.localeCompare(a.date));
+  if (!qs.length) { sec.style.display = 'none'; return; }
+  sec.style.display = '';
+  const n = quotesOpen ? qs.length : Math.min(7, qs.length);
+  box.replaceChildren(...qs.slice(0, n).map((q, i) => quoteCard(q, i === 0)));
+  if (qs.length > 7) { const b = el('button', 'more-btn', quotesOpen ? 'Show fewer' : 'Show all ' + qs.length + ' quotes'); b.type = 'button'; b.addEventListener('click', () => { quotesOpen = !quotesOpen; drawQuotes(); }); box.append(b); }
+  shareRow(document.getElementById('words-share'), { anchor: 'words', text: 'What the people in charge actually said about this year\'s AI incidents, verbatim and sourced. Warning Shots:' });
+}
+function embedMode() {
+  if (!EMBED) return;
+  document.body.classList.add('embed');
+  const targets = { timeline: ['ch-timeline', 'lg-autonomy', 'hero-share'], now: ['now'], quarters: ['card-quarters'], disclosure: ['card-disclosure'], scatter: ['card-scatter'], horizon: ['card-horizon'], pipeline: ['card-pipeline'], words: ['quotes'], brief: ['brief'] };
+  const ids = targets[EMBED] || targets.timeline;
+  const host = el('div', 'embed-host wrap');
+  if (EMBED === 'timeline') { const p = el('div', 'panel'); const t = el('div', 'panel-title'); t.append(txt('Severe AI incidents went from '), el('b', null, String(C.headline.severe_prior12)), txt(' to '), el('b', null, String(C.headline.severe_last12)), txt(' in a year')); p.append(t, el('div', 'panel-note', 'Every major AI incident since 2023, scored 0–100. The stronger a dot’s color, the more the AI did on its own.')); ids.forEach((id) => { const n = document.getElementById(id); if (n) p.append(n); }); host.append(p); }
+  else ids.forEach((id) => { const n = document.getElementById(id); if (n) host.append(n); });
+  const f = el('div', 'embed-foot'); const a = el('a', null, 'Warning Shots, the AI Incident Index'); a.href = SITE; a.target = '_blank'; a.rel = 'noopener'; f.append(a, el('span', null, 'Updated ' + D.meta.as_of_label)); host.append(f);
+  document.querySelector('main').append(host);
+  setTimeout(() => drawAll(false), 50);
+}
+
 /* ---------- routing */
 function go(hash) { location.hash = hash; route(); }
 function route() {
   const h = location.hash.slice(1);
   if (h.startsWith('i=')) { openIncident(decodeURIComponent(h.slice(2))); return; }
+  if (h.startsWith('q=')) { const n = document.getElementById('q-' + decodeURIComponent(h.slice(2))); if (n) { quotesOpen = true; drawQuotes(); document.getElementById('q-' + decodeURIComponent(h.slice(2)))?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
   if (h.startsWith('d=')) { const id = decodeURIComponent(h.slice(2)); if (D.deepdives.find((d) => d.incident_id === id)) { dd.id = id; dd.vfilter = 'all'; drawDeepDive(); document.getElementById('dives').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); } return; }
   const n = h && document.getElementById(h); if (n) n.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
 }
@@ -657,10 +714,11 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('cli
 
 /* ---------- draw everything */
 function drawAll(first) {
-  drawHeadline(); drawTimeline(first); drawNow(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawSignals(); drawList(); drawContext();
+  drawHeadline(); drawTimeline(first && !EMBED); drawNow(); drawBrief(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawSignals(); drawList(); drawContext();
 }
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) drawAll(false); }, 160); });
-Promise.all(FILES.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => { if (!r.ok) throw new Error(f); return r.json(); }).then((j) => { D[f] = j; })))
-  .then(() => { compute(); drawAll(true); route(); })
+Promise.all(FILES.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => { if (!r.ok) throw new Error(f); return r.json(); }).then((j) => { D[f] = j; }))
+  .concat(OPTIONAL.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => r.ok ? r.json() : null).then((j) => { D[f] = j; }).catch(() => { D[f] = null; }))))
+  .then(() => { compute(); if (EMBED) { embedMode(); } else { drawAll(true); route(); } })
   .catch((e) => { console.error(e); document.getElementById('headline').textContent = 'The data could not be loaded. Reload the page or try again shortly.'; });
 })();

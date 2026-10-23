@@ -21,8 +21,8 @@ s12 = sum(sev(r) >= 60 for r in last12); p12 = sum(sev(r) >= 60 for r in prior12
 wild_recent = [r for r in last12 if r['setting'] == 'wild']
 share = round(100 * sum(r['A'] >= 3 for r in wild_recent) / max(1, len(wild_recent)))
 n = len(inc)
-title = meta.get('site_name', 'The AI Incident Index')
-og_title = f"Severe AI incidents went from {p12} to {s12} in a year. {title}"
+title = meta.get('site_name', 'Warning Shots')
+og_title = f"Severe AI incidents went from {p12} to {s12} in a year — {title}, the AI Incident Index"
 og_desc = f"{n} AI safety incidents since 2023, scored 0–100 and sourced. In {share}% of this year's real-world cases the AI acted on its own. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {meta['as_of_label']}."
 build = time.strftime('%Y%m%d%H%M', time.gmtime())
 tpl = open('index.template.html', encoding='utf-8').read()

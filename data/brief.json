@@ -1,0 +1,20 @@
+{
+ "label": "Oct 23, 10:30 ET",
+ "items": [
+  {
+   "text": "PHP2Shell, day two: millions of exploit attempts, a Mirai botnet variant trying to ride on it, and still zero confirmed breaches. The UK alone has 32 government digital services switched off.",
+   "url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+   "source_label": "The Hacker News"
+  },
+  {
+   "text": "Researchers who watched the first 48 hours say reliable exploitation is harder than the leak implied, while Censys still counts 34.4 million vulnerable PHP services.",
+   "url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+   "source_label": "The Hacker News"
+  },
+  {
+   "text": "CISA has not added the two PHP flaws to its exploited-vulnerabilities list and has issued no emergency directive; a listing would be its verdict that exploitation is real.",
+   "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+   "source_label": "CISA KEV"
+  }
+ ]
+}

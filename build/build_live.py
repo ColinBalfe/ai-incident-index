@@ -35,6 +35,12 @@ WATCH = [
       why='The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.', source_url='https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms', source_label='Reuters via The Star'),
 ]
 
+BRIEF = dict(label='Oct 23, 10:30 ET', items=[
+ dict(text="PHP2Shell, day two: millions of exploit attempts, a Mirai botnet variant trying to ride on it, and still zero confirmed breaches. The UK alone has 32 government digital services switched off.", url=THN, source_label='The Hacker News'),
+ dict(text="Researchers who watched the first 48 hours say reliable exploitation is harder than the leak implied, while Censys still counts 34.4 million vulnerable PHP services.", url=THN, source_label='The Hacker News'),
+ dict(text="CISA has not added the two PHP flaws to its exploited-vulnerabilities list and has issued no emergency directive; a listing would be its verdict that exploitation is real.", url=KEV, source_label='CISA KEV'),
+])
+
 CHANGELOG = [
  dict(date='2026-10-23', text='PHP2Shell: overnight figures added (Mirai recruitment, 32 UK services down, 34.4M vulnerable services, still no confirmed breach). Second independent fact-check of the deep dives applied; 34 corrections.'),
  dict(date='2026-10-22', text='Added deep dives for six multi-victim incidents (146 organizations), 103 official statements, and PHP2Shell as incident 133.'),
@@ -54,4 +60,5 @@ if __name__ == '__main__':
     json.dump(LIVE, open(f'{OUT}/live.json', 'w'), ensure_ascii=False, indent=0)
     json.dump(WATCH, open(f'{OUT}/watch.json', 'w'), ensure_ascii=False, indent=0)
     json.dump(META, open(f'{OUT}/meta.json', 'w'), ensure_ascii=False, indent=1)
+    json.dump(BRIEF, open(f'{OUT}/brief.json', 'w'), ensure_ascii=False, indent=1)
     print('live', len(LIVE), 'watch', len(WATCH))
