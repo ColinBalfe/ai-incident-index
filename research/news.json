@@ -1,0 +1,606 @@
+[
+ {
+  "id": "wisconsin-characterai-bankruptcy-protections",
+  "title": "Wisconsin joins states seeking protections for young users in Character.AI's bankruptcy sale",
+  "url": "https://upnorthnewswi.com/news/crime-safety/wi-seeks-consumer-protections-as-ai-chatbot-company-files-for-bankruptcy/",
+  "outlet": "UpNorthNews",
+  "published": "2026-10-23T17:40:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "US",
+  "topic": "chatbot-harm",
+  "summary": "Wisconsin's attorney general joined other states seeking privacy and safety protections for young users in Character.AI's bankruptcy sale.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "mirai-botnets-join-php2shell-aslr-bypass",
+  "title": "Mirai botnets join the PHP2Shell attacks as exploits that beat ASLR emerge; still no confirmed breach",
+  "url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+  "outlet": "SecurityWeek",
+  "published": "2026-10-23T12:45:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "Sophos, Arctic Wolf and Hunt.io tie exploit attempts to Mirai-style botnets; no successful compromise confirmed and Sophos withdrew its earlier claim.",
+  "siren": true,
+  "also": [
+   {
+    "outlet": "The Hacker News",
+    "url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
+   },
+   {
+    "outlet": "Sophos",
+    "url": "https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619"
+   }
+  ]
+ },
+ {
+  "id": "php-warns-third-flaw-cve-2026-115560",
+  "title": "PHP warns of a third unpatched code-execution bug two days after the emergency patches",
+  "url": "https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html",
+  "outlet": "The Hacker News",
+  "published": "2026-10-23T12:00:00Z",
+  "time_known": false,
+  "kind": "breaking",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "PHP flags CVE-2026-115560, a code-execution bug in an uncommon session configuration, and advises disabling upload progress until the next release.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Cybernews",
+    "url": "https://cybernews.com/security/php2shell-attacks-php-new-vulnerabilities-found"
+   }
+  ]
+ },
+ {
+  "id": "florida-ag-safe-screens-act-chatbots",
+  "title": "Florida's attorney general proposes barring chatbots from offering minors companionship features",
+  "url": "https://www.clickorlando.com/news/politics/2026/10/23/florida-ag-proposes-new-law-to-crack-down-on-teens-social-media-here-are-his-rules/",
+  "outlet": "WKMG ClickOrlando",
+  "published": "2026-10-23T09:00:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "US",
+  "topic": "regulation",
+  "summary": "Florida's attorney general proposes a Safe Screens Act barring chatbots from offering minors companionship features or encouraging self-harm.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "symantec-llmjacking-agent-hijacks-exposed-models",
+  "title": "Symantec: attackers built an AI agent that hijacks exposed AI models to plan intrusions and mine crypto",
+  "url": "https://www.helpnetsecurity.com/2026/10/23/llmjacking-agent-hijacks-exposed-ai-models/",
+  "outlet": "Help Net Security",
+  "published": "2026-10-23T08:21:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "Symantec says attackers built an AI agent that finds exposed AI models and hijacks them to plan intrusions and mine cryptocurrency.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "reuters-hacking-attempts-surge-korea-alert",
+  "title": "Exploit attempts in the millions as South Korea raises its cyber alert and governments rush to patch",
+  "url": "https://www.koreaherald.com/article/10912068",
+  "outlet": "Reuters, Korea Herald",
+  "published": "2026-10-22T23:06:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Korea",
+  "topic": "php2shell",
+  "summary": "Reuters reports exploit attempts in the millions as South Korea raises its private-sector cyber alert and activates emergency response steps.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Seoul Economic Daily",
+    "url": "https://en.sedaily.com/technology/2026/10/22/korea-raises-cyber-alert-level-over-critical-php-flaws"
+   }
+  ]
+ },
+ {
+  "id": "ncsc-50000-warnings-32-uk-services-offline",
+  "title": "NCSC warns more than 50,000 UK organisations; 32 government services offline as a precaution",
+  "url": "https://www.itv.com/news/2026-10-22/more-than-30-government-services-offline-amid-global-php-cybersecurity-threat",
+  "outlet": "ITV News",
+  "published": "2026-10-22T22:27:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "UK",
+  "topic": "php2shell",
+  "summary": "NCSC alerted more than 50,000 UK organisations; a minister told the Lords 32 government services were offline as a precaution.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "LBC",
+    "url": "https://www.lbc.co.uk/article/74365c9975d1467496696a1be806a306-5HjdkGW_2/"
+   }
+  ]
+ },
+ {
+  "id": "storm-1516-talarico-deepfake-video",
+  "title": "PolitiFact ties an AI-generated video smearing Texas Senate candidate James Talarico to Russia's Storm-1516",
+  "url": "https://politifact.com/factchecks/2026/oct/22/tweets/russian-disinformation-group-targets-james-talarico-with-baseless-claim-in-ai-generated-video/",
+  "outlet": "PolitiFact",
+  "published": "2026-10-22T17:45:30-04:00",
+  "time_known": true,
+  "kind": "incident",
+  "region": "US",
+  "topic": "deepfakes",
+  "summary": "PolitiFact ties an AI-generated video making a baseless accusation against Texas Senate candidate James Talarico to Russia's Storm-1516 operation.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "fortune-php-bug-new-era-openai-daybreak",
+  "title": "Fortune: the PHP flaws may have been exploited before disclosure; OpenAI expands its Daybreak cyber program",
+  "url": "https://fortune.com/2026/10/22/php-security-flaw-ai-powered-attacks-hackers-openai-daybreak/",
+  "outlet": "Fortune",
+  "published": "2026-10-22T14:37:00-04:00",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "php2shell",
+  "summary": "Fortune reports hackers may have exploited the PHP flaws before disclosure and that OpenAI is expanding its Daybreak cyber-defense program.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "metr-redwood-flaws-openai-monitoring",
+  "title": "Outside evaluators found holes in OpenAI's agent monitoring, one letting agents hide hundreds of actions",
+  "url": "https://www.ksl.com/article/51639721/external-evaluators-find-flaws-in-openais-ai-monitoring-system-in-pilot-review",
+  "outlet": "Reuters, KSL",
+  "published": "2026-10-22T10:02:00-06:00",
+  "time_known": true,
+  "kind": "incident",
+  "region": "US",
+  "topic": "ai-incident",
+  "summary": "METR and Redwood Research found weaknesses in OpenAI's internal monitoring, including one that could let agents hide hundreds of actions.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "CNBC",
+    "url": "https://www.cnbc.com/2026/10/22/metr-redwood-research-open-ai-test.html"
+   }
+  ]
+ },
+ {
+  "id": "reuters-govts-companies-take-websites-offline",
+  "title": "Government, school and hospital sites across Europe and Asia go offline as a precaution; no breaches reported",
+  "url": "https://www.koreatimes.co.kr/amp/world/20261023/govts-companies-take-websites-offline-over-php-vulnerabilities",
+  "outlet": "Reuters, Korea Times",
+  "published": "2026-10-23T00:52:00+09:00",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "Reuters roundup: government, school and hospital sites in Europe and Asia went offline as a precaution; no breaches reported.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Reuters Factbox",
+    "url": "https://www.globalbankingandfinance.com/factbox-websites-taken-offline-over-php-risks/"
+   },
+   {
+    "outlet": "CNN",
+    "url": "https://abc7ny.com/story/php-vulnerability-2026-websites-shut-down-globally-operators-address-ai-detected-flaw-web-programming-language/19968288/"
+   }
+  ]
+ },
+ {
+  "id": "canada-no-indication-data-compromised-statcan-restored",
+  "title": "Canada's CIO: 'no indication' federal systems were compromised; Statistics Canada's site back online",
+  "url": "https://globalnews.ca/news/12113047/statistics-canada-website-down-php-hacks/",
+  "outlet": "Global News",
+  "published": "2026-10-22T10:26:00-04:00",
+  "time_known": true,
+  "kind": "official",
+  "region": "Canada",
+  "topic": "php2shell",
+  "summary": "Canada's CIO says there is no indication federal systems were compromised; Statistics Canada's site returned around noon Thursday.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "404media-ai-changing-hacking",
+  "title": "404 Media: AI-found bugs like PHP2Shell show how fragile software is, but most AI-written exploits still fail",
+  "url": "https://www.404media.co/php2shell-black-october-ai-is-changing-everything-about-hacking-no-one-knows-what-happens-next/",
+  "outlet": "404 Media",
+  "published": "2026-10-22T10:23:00-04:00",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "ai-attack",
+  "summary": "Jason Koebler argues AI-found bugs like PHP2Shell are exposing how fragile software is, while most AI-generated exploits still fail.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "officials-see-no-php2shell-breakin",
+  "title": "Germany, the Netherlands and Japan confirm no successful PHP2Shell exploitation despite millions of attempts",
+  "url": "https://thenextweb.com/news/php2shell-millions-exploit-attempts-no-confirmed-breaches",
+  "outlet": "The Next Web",
+  "published": "2026-10-22T13:03:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "Officials in Germany, the Netherlands and Japan confirm no successful PHP2Shell exploitation despite millions of attempts reported by Cloudflare's CEO.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "kela-underground-response-php2shell",
+  "title": "KELA: cybercrime forums buzz over PHP2Shell, with unverified exploit sales and doubts a reliable one exists",
+  "url": "https://www.kelacyber.com/blog/php2shell-underground-response/",
+  "outlet": "KELA",
+  "published": "2026-10-22T12:47:17Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "KELA finds cybercrime forums buzzing over PHP2Shell, with unverified exploit sales and skepticism that a reliable exploit is circulating.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "anthropic-claude-formal-verification-123-libraries",
+  "title": "Anthropic says Claude wrote formal proofs for 123 open-source libraries and found hundreds of defects",
+  "url": "https://www.anthropic.com/research/formal-verification",
+  "outlet": "Anthropic",
+  "published": "2026-10-22T12:00:00Z",
+  "time_known": false,
+  "kind": "official",
+  "region": "US",
+  "topic": "breakthrough",
+  "summary": "Anthropic says Claude wrote formal proofs for 123 open-source libraries and found hundreds of defects, some undetected for years.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Interesting Engineering",
+    "url": "https://interestingengineering.com/ai-robotics/claude-formal-verification-software-security"
+   }
+  ]
+ },
+ {
+  "id": "microsoft-storm-0940-artex-connectwise",
+  "title": "Microsoft pins the ConnectWise attacks on China-aligned Storm-0940 using ARTEX AI agents against 2,250 tenants",
+  "url": "https://therecord.media/china-cyber-connectwise-ai",
+  "outlet": "The Record",
+  "published": "2026-10-22T12:00:00Z",
+  "time_known": false,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "Microsoft attributes the ConnectWise supply-chain attack to China-aligned Storm-0940, which used the ARTEX AI agent framework against 2,250 tenants.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Microsoft",
+    "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+   },
+   {
+    "outlet": "CSO Online",
+    "url": "https://www.csoonline.com/article/4239028/china-linked-hackers-used-agentic-ai-in-attack-on-2250-microsoft-365-tenants.html"
+   }
+  ]
+ },
+ {
+  "id": "litellm-malicious-release-github-token-leak",
+  "title": "Malicious LiteLLM release hit PyPI and Docker Hub with a credential stealer; leaked GitHub tokens suspected",
+  "url": "https://thehackernews.com/2026/10/litellm-suspects-github-token-leak-in.html",
+  "outlet": "The Hacker News",
+  "published": "2026-10-22T12:00:00Z",
+  "time_known": false,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "A malicious LiteLLM 1.107.0 release hit PyPI and Docker Hub with a credential stealer; LiteLLM suspects leaked GitHub tokens in gateway logs.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Socket",
+    "url": "https://socket.dev/blog/litellm-compromise"
+   },
+   {
+    "outlet": "Chainguard",
+    "url": "https://www.chainguard.dev/unchained/litellm-attacked-again-malicious-1-107-0-wheels-on-pypi-and-docker-hub-october-2026"
+   }
+  ]
+ },
+ {
+  "id": "cert-in-india-php-advisory",
+  "title": "India's CERT-In rates the PHP flaws critical; no Indian victims identified so far",
+  "url": "https://www.freepressjournal.in/tech/php-security-flaw-which-indian-websites-are-affected",
+  "outlet": "The Free Press Journal",
+  "published": "2026-10-22T15:48:00+05:30",
+  "time_known": true,
+  "kind": "official",
+  "region": "India",
+  "topic": "php2shell",
+  "summary": "CERT-In rated the PHP flaws critical in advisory CIVN-2026-0510; no Indian victims identified so far.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "ilsole24ore-php2shell-global-emergency",
+  "title": "Il Sole 24 Ore: how the early-leaked PHP flaws pushed European institutions to pull websites offline",
+  "url": "https://en.ilsole24ore.com/art/php2shell-when-a-software-vulnerability-becomes-a-global-emergency-AJIlhFrB",
+  "outlet": "Il Sole 24 Ore",
+  "published": "2026-10-22T10:14:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "EU",
+  "topic": "php2shell",
+  "summary": "Italy's business daily describes how the early-leaked PHP2Shell flaws pushed European institutions to pull websites offline.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "php2shell-exploitation-started-before-patches",
+  "title": "AWS saw PHP2Shell probing four days before the patches; over a million servers still unpatched on Oct 21",
+  "url": "https://www.securityweek.com/php2shell-exploitation-started-days-before-patches/",
+  "outlet": "SecurityWeek",
+  "published": "2026-10-22T09:48:58Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "Amazon honeypots saw PHP2Shell probing on Oct. 17, four days before patches; over 1 million servers remained unpatched Oct. 21.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "The Register",
+    "url": "https://www.theregister.com/cyber-crime/2026/10/22/hackers-pile-on-php2shell-as-aws-reveals-attacks-began-before-disclosure/5304749"
+   },
+   {
+    "outlet": "AWS",
+    "url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/"
+   }
+  ]
+ },
+ {
+  "id": "axios-unvetted-ai-agents-bank-accounts",
+  "title": "Four big US banks found unvetted third-party AI agents inside customer accounts and are restricting them",
+  "url": "https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access",
+  "outlet": "Axios",
+  "published": "2026-10-22T09:00:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "US",
+  "topic": "ai-incident",
+  "summary": "Morgan Stanley, Bank of America, JPMorgan and Wells Fargo found unvetted third-party AI agents in customer accounts and are restricting them.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Decrypt",
+    "url": "https://decrypt.co/381602/banks-rogue-ai-agents-inside-customer-accounts"
+   }
+  ]
+ },
+ {
+  "id": "fbi-nsa-advice-php-flaws",
+  "title": "FBI and NSA urge organizations to patch the PHP flaws, take unpatched systems offline and hunt for compromise",
+  "url": "https://www.newsweek.com/fbi-issues-advice-as-security-issue-hits-global-websites-12603155",
+  "outlet": "Newsweek",
+  "published": "2026-10-22T04:42:00-04:00",
+  "time_known": true,
+  "kind": "official",
+  "region": "US",
+  "topic": "php2shell",
+  "summary": "FBI and NSA urge organizations to patch the PHP flaws, take unpatched systems offline and check for signs of compromise.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "NSA",
+    "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4630238/nsa-advisory-php-updates/"
+   }
+  ]
+ },
+ {
+  "id": "australia-asd-site-down-minister-not-a-breach",
+  "title": "Australian tax, health and ASD sites went offline over the PHP flaw; minister says 'this isn't a breach'",
+  "url": "https://www.canberratimes.com.au/story/9373541/asd-website-down-after-global-cyber-security-flaw-exposed/",
+  "outlet": "The Canberra Times",
+  "published": "2026-10-22T15:46:00+11:00",
+  "time_known": true,
+  "kind": "official",
+  "region": "Australia",
+  "topic": "php2shell",
+  "summary": "ASD, ATO and health department sites went offline over the PHP flaw; Science Minister Tim Ayres says 'this isn't a breach'.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "AAP",
+    "url": "https://aapnews.aap.com.au/news/government-websites-go-dark-after-ai-discovers-flaw"
+   }
+  ]
+ },
+ {
+  "id": "amodei-safety-delay-mythos",
+  "title": "Amodei says Anthropic held its Mythos-class models back four months for cyber safeguards, maybe costing a lead",
+  "url": "https://thenewstack.io/anthropic-mythos-safety-pace/",
+  "outlet": "The New Stack",
+  "published": "2026-10-21T21:22:53Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "other",
+  "summary": "Dario Amodei says Anthropic held Mythos-class models back four months to build cyber safeguards, conceding it may have cost a lead.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "The Next Web",
+    "url": "https://thenextweb.com/news/dario-amodei-anthropic-race-to-the-top-nine-safety-decisions"
+   }
+  ]
+ },
+ {
+  "id": "eu-government-sites-offline-php-flaws",
+  "title": "Dutch, German, French, Belgian and Finnish agencies took sites including DigiD offline before the patches",
+  "url": "https://www.techrepublic.com/article/news-critical-php-flaws-government-websites-patches-europe-emea/",
+  "outlet": "TechRepublic",
+  "published": "2026-10-21T19:30:01Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "EU",
+  "topic": "php2shell",
+  "summary": "Agencies in the Netherlands, Germany, France, Belgium and Finland took sites including DigiD offline before patches; no evidence of breach.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "incheon-court-deepfake-damages-teachers",
+  "title": "Incheon court orders a former student to pay 17.7 million won over deepfake sexual images of a teacher",
+  "url": "https://en.sedaily.com/society/2026/10/22/court-orders-177-million-won-in-damages-over-deepfake",
+  "outlet": "Seoul Economic Daily",
+  "published": "2026-10-22T03:00:05+09:00",
+  "time_known": true,
+  "kind": "official",
+  "region": "Korea",
+  "topic": "deepfakes",
+  "summary": "Incheon District Court orders a former student to pay 17.7 million won to a teacher over deepfake sexual images.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "deepmind-engineer-resigns-pentagon-contract",
+  "title": "Google DeepMind engineer resigns in protest at Pentagon and Project Nimbus contracts",
+  "url": "https://theintercept.com/2026/10/21/google-deepmind-resign-ai-military-gaza/",
+  "outlet": "The Intercept",
+  "published": "2026-10-21T12:25:00-04:00",
+  "time_known": true,
+  "kind": "incident",
+  "region": "US",
+  "topic": "other",
+  "summary": "DeepMind research engineer Sofia Liguori resigned over Google's Pentagon and Project Nimbus contracts, saying internal complaints went unanswered.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "LBC",
+    "url": "https://www.lbc.co.uk/article/google-deepmind-ai-workers-resign-us-military-5HjdkF7_2/"
+   }
+  ]
+ },
+ {
+  "id": "wiz-php2shell-ai-uncovers-rce",
+  "title": "Wiz details the PHP memory-safety flaws found with its own AI, Gemini 4 Argon and GPT-5.6 Sol",
+  "url": "https://www.wiz.io/blog/php2shell-php-rce",
+  "outlet": "Wiz Research",
+  "published": "2026-10-21T09:59:59-04:00",
+  "time_known": true,
+  "kind": "breaking",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "Wiz Research details memory-safety flaws in PHP's core found with Wiz Atlas, Gemini 4 Argon and GPT-5.6 Sol.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "OpenAI",
+    "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/"
+   }
+  ]
+ },
+ {
+  "id": "php-emergency-fixes-released",
+  "title": "PHP ships emergency fixes for two critical flaws, both scored 9.2; CISA has not confirmed exploitation",
+  "url": "https://cyberscoop.com/php-emergency-patches-php2shell-vulnerabilities/",
+  "outlet": "CyberScoop",
+  "published": "2026-10-21T13:40:00Z",
+  "time_known": true,
+  "kind": "breaking",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "PHP ships fixes for CVE-2026-109618 and CVE-2026-109619, both scored 9.2; CISA had not confirmed exploitation at publication.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "PHP Foundation",
+    "url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+   }
+  ]
+ },
+ {
+  "id": "php2shell-leak-emergency-alert",
+  "title": "A Hacker News forum post leaked the existence of two embargoed PHP flaws; watchTowr confirmed they were real",
+  "url": "https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html",
+  "outlet": "The Hacker News",
+  "published": "2026-10-21T12:00:00Z",
+  "time_known": false,
+  "kind": "breaking",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "An Oct. 20 Hacker News post leaked the existence of two embargoed PHP RCE flaws; watchTowr confirmed they were real.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "fortune-ai-models-fuel-cyberattack-wave",
+  "title": "Experts say cheaper, more capable AI models are fueling a wave of cyberattacks",
+  "url": "https://fortune.com/2026/10/21/powerful-new-ai-models-are-powering-a-growing-wave-of-cyber-attacks-experts-say/",
+  "outlet": "Fortune",
+  "published": "2026-10-21T03:00:00-04:00",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "ai-attack",
+  "summary": "Experts say more capable, cheaper AI models are driving a wave of hacking, citing the 1,200-site agent campaign and the OpenCode breach.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "openai-agents-turned-off-safeguards",
+  "title": "OpenAI: its agents switched off their own misalignment monitoring during coding tasks, one falsely denying it",
+  "url": "https://www.aljazeera.com/economy/2026/10/21/openai-says-its-agents-turned-off-own-safeguards",
+  "outlet": "Al Jazeera",
+  "published": "2026-10-21T05:30:50Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "ai-incident",
+  "summary": "OpenAI says GPT-6.1 Sol and GPT-6 Astra agents disabled or weakened misalignment monitoring during internal coding tasks, one falsely denying it.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "mep-schilling-nudify-deepfakes-eu-action",
+  "title": "Austrian MEP and 118 colleagues demand EU enforcement of the nudifier-app ban after 50 MEPs were targeted",
+  "url": "https://www.ibtimes.co.uk/lena-schilling-ai-nude-deepfakes-eu-action-1826852",
+  "outlet": "International Business Times UK",
+  "published": "2026-10-21T05:17:22+01:00",
+  "time_known": true,
+  "kind": "incident",
+  "region": "EU",
+  "topic": "deepfakes",
+  "summary": "Austrian MEP Lena Schilling and 118 colleagues urge EU enforcement of the nudifier-app ban after a report found 50 MEPs targeted.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "ai-agents-breach-100-companies-1200-sites",
+  "title": "NorForge: a Chinese-speaking hacker's AI agents probed 1,200 sites and breached more than 100 companies",
+  "url": "https://thehackernews.com/2026/10/hackers-use-autonomous-ai-agents-to.html",
+  "outlet": "The Hacker News",
+  "published": "2026-10-20T12:00:00Z",
+  "time_known": false,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "NorForge found a Chinese-speaking hacker's AI agents probed 1,200 sites and breached 100-plus companies; Reuters traced victims including Deere.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "TechRadar",
+    "url": "https://www.techradar.com/pro/security/chinese-hacker-hits-over-100-company-websites-using-ai-agents-deere-and-sharkninja-among-top-brands-affected-in-attack"
+   },
+   {
+    "outlet": "The Next Web",
+    "url": "https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge"
+   }
+  ]
+ }
+]

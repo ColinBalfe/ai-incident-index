@@ -9,6 +9,9 @@
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
+ "site_name": "Warning Shots",
+ "live_name": "PHP2Shell",
+ "repo_url": "https://github.com/ColinBalfe/ai-incident-index",
  "changelog": [
   {
    "date": "2026-10-23",

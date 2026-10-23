@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief'];
+const OPTIONAL = ['quotes', 'brief', 'news'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const D = {};
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -311,7 +311,7 @@ function drawNow() {
   document.getElementById('now-note').textContent = D.meta.live_note || live.now_text;
   document.getElementById('now-stamp').textContent = 'Checked ' + fmtET(D.meta.as_of) + (D.meta.next_check ? ', next check ' + fmtETsmart(D.meta.next_check) : '');
   document.getElementById('now-link').href = '#d=' + live.incident_id;
-  document.getElementById('now-link').textContent = 'Full breakdown: every organization, the timeline, what officials said';
+  document.getElementById('now-link').textContent = 'Full breakdown: every organization, the map, the timeline';
   const grid = document.getElementById('live-grid');
   const since = D.meta.live_since ? Date.parse(D.meta.live_since) : null;
   const clock = since ? (() => { const c = el('div', 'live clock'); const v = el('div', 'v'); const upd = () => { const ms = Date.now() - since; const h = Math.floor(ms / 3.6e6), mn = Math.floor((ms % 3.6e6) / 6e4), sc = Math.floor((ms % 6e4) / 1000); v.textContent = h + 'h ' + String(mn).padStart(2, '0') + 'm ' + String(sc).padStart(2, '0') + 's'; }; upd(); clearInterval(window._liveClock); window._liveClock = setInterval(upd, 1000); c.append(v, el('div', 'l', D.meta.live_since_label || 'since the fix shipped')); c.append(el('div', 'd', 'Counting from the coordinated release. The gap between a patch and a working exploit is now measured in hours.')); return c; })() : null;
@@ -322,18 +322,20 @@ function drawNow() {
     const d = el('div', 'd'); d.append(txt(r.detail + ' ')); const a = el('a', null, r.source_label); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; d.append(a); c.append(d);
     return c;
   }));
-  shareRow(document.getElementById('now-share'), { anchor: 'now', text: `${live.name}. ${(D.meta.live_note || live.now_text)}`, svgBox: document.getElementById('map'), name: 'php2shell-map', title: 'PHP2Shell: organizations that took services offline or were attacked, by country', embed: 'now', embedH: 760 });
-  drawMap(live);
+  shareRow(document.getElementById('now-share'), { anchor: 'now', text: `${live.name}. ${(D.meta.live_note || live.now_text)}`, embed: 'now', embedH: 640 });
 }
 let world = null;
 async function drawMap(live) {
-  const box = document.getElementById('map'), cap = document.getElementById('map-cap');
-  if (!box.clientWidth) return;
-  if (!world) { try { world = await (await fetch('assets/vendor/countries-110m.json')).json(); } catch (e) { fail(box); return; } }
+  const box = document.getElementById('map'), cap = document.getElementById('map-cap'), wrap = document.getElementById('map-wrap'), mid = document.getElementById('dd-mid');
   const vs = D.victims.filter((v) => v.incident_id === live.incident_id && ['disrupted', 'attacked', 'confirmed', 'reported'].includes(v.status_group));
   const byC = new Map();
   vs.forEach((v) => { const name = String(v.country || '').split(/[\/(]/)[0].trim(); const id = ISO[name]; if (!id) return; if (!byC.has(id)) byC.set(id, []); byC.get(id).push(v); });
-  const W = box.clientWidth, narrowMap = W < 420, H = Math.max(220, Math.round(W * 0.52));
+  const show = byC.size >= 2;
+  wrap.hidden = !show; mid.classList.toggle('has-map', show);
+  if (!show) { box.replaceChildren(); cap.replaceChildren(); document.getElementById('map-bars').replaceChildren(); return; }
+  if (!box.clientWidth) return;
+  if (!world) { try { world = await (await fetch('assets/vendor/countries-110m.json')).json(); } catch (e) { fail(box); return; } }
+  const W = box.clientWidth, narrowMap = W < 420, H = Math.max(200, Math.round(W * 0.5));
   const countries = topojson.feature(world, world.objects.countries).features.filter((f) => f.id !== '010');
   const proj = d3.geoNaturalEarth1().fitExtent([[0, 0], [W, H]], { type: 'FeatureCollection', features: countries });
   const pathG = d3.geoPath(proj);
@@ -361,6 +363,48 @@ function drawTicker() {
   run.replaceChildren(...items.map(mk), ...items.map(mk));
   run.classList.remove('go');
   requestAnimationFrame(() => { const w = run.scrollWidth / 2; run.style.animationDuration = Math.max(40, w / 55) + 's'; run.classList.add('go'); });
+}
+
+/* ---------- the wire */
+const TOPIC = { php2shell: 'PHP2Shell', 'ai-attack': 'AI-driven attacks', 'ai-incident': 'AI incidents', regulation: 'Governments & regulators', deepfakes: 'Deepfakes', 'chatbot-harm': 'Chatbot harm', breakthrough: 'Breakthroughs', other: 'Other' };
+const KIND = { breaking: 'Breaking', official: 'Official', analysis: 'Analysis' };
+const wire = { topic: 'all', open: false };
+const ageShort = (n) => { if (!n.published) return ''; const d = new Date(n.published); if (isNaN(d)) return ''; if (n.time_known === false) return ETd.format(d); const ms = Date.now() - d; const h = ms / 3.6e6; if (h < 1) return 'just now'; if (h < 24) return Math.floor(h) + 'h ago'; if (h < 72) return Math.floor(h / 24) + 'd ago'; return ETd.format(d); };
+const SIREN_SVG = '<svg class="siren-ic" viewBox="0 0 34 34" aria-hidden="true"><path class="dome" d="M8 25a9 9 0 0 1 18 0z"/><ellipse class="glass" cx="13.5" cy="19" rx="2.6" ry="3.6" transform="rotate(-30 13.5 19)"/><rect class="base" x="5" y="25" width="24" height="4" rx="1.5"/><path class="ray" d="M17 4.5v4.5"/><path class="ray" d="M8.5 7.5l3 3.3"/><path class="ray" d="M25.5 7.5l-3 3.3"/><path class="ray" d="M3.5 17h4"/><path class="ray" d="M26.5 17h4"/></svg>';
+function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url).slice().sort((a, b) => String(b.published || '').localeCompare(String(a.published || ''))); }
+function drawWire() {
+  const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');
+  document.getElementById('wire-stamp').textContent = 'Updated ' + fmtET(D.meta.as_of) + (D.meta.next_check ? ', next check ' + fmtETsmart(D.meta.next_check).replace('today ', '') : '');
+  if (!items.length) { sirenBox.hidden = true; chips.replaceChildren(); board.replaceChildren(el('p', 'count', 'No stories on the board yet. The next refresh fills it.')); cnt.textContent = ''; more.replaceChildren(); return; }
+  const siren = items.find((n) => n.siren) || items[0];
+  sirenBox.hidden = false;
+  const st = el('a', 'siren-t', siren.title); st.href = siren.url; st.target = '_blank'; st.rel = 'noopener noreferrer';
+  const sm = el('div', 'siren-m'); sm.append(el('b', null, siren.outlet || ''), el('span', 'ag', ageShort(siren)));
+  if ((siren.also || []).length) { const also = el('span', 'also'); also.append(txt('also ')); siren.also.forEach((a, i) => { const l = el('a', null, a.outlet); l.href = a.url; l.target = '_blank'; l.rel = 'noopener noreferrer'; if (i) also.append(txt(', ')); also.append(l); }); sm.append(also); }
+  const ic = el('span'); ic.innerHTML = SIREN_SVG;
+  sirenBox.replaceChildren(ic.firstChild, st, sm, ...(siren.summary ? [el('p', 'siren-s', siren.summary)] : []));
+  const rest = items.filter((n) => n !== siren);
+  const topics = d3.rollups(rest, (v) => v.length, (n) => n.topic || 'other').sort((a, b) => b[1] - a[1]);
+  if (!topics.find((t) => t[0] === wire.topic)) wire.topic = 'all';
+  const chip = (k, label, n) => { const b = el('button', k === wire.topic ? 'on' : ''); b.type = 'button'; b.append(txt(label), el('b', null, String(n))); b.addEventListener('click', () => { wire.topic = k; drawWire(); }); return b; };
+  chips.replaceChildren(chip('all', 'All', rest.length), ...topics.filter((t) => t[1] >= 1).map(([k, n]) => chip(k, TOPIC[k] || k, n)));
+  const rows = rest.filter((n) => wire.topic === 'all' || (n.topic || 'other') === wire.topic);
+  const limit = (wire.open || wire.topic !== 'all') ? rows.length : (window.innerWidth < 760 ? 12 : 40);
+  const fresh = (n) => n.published && (Date.parse(D.meta.as_of) - Date.parse(n.published)) < 8 * 3.6e6;
+  board.replaceChildren(...rows.slice(0, limit).map((n) => {
+    const it = el('div', 'wi');
+    const a = el('a', 'wi-t'); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; if (fresh(n)) a.append(el('i', 'nd')); a.append(txt(n.title));
+    const m = el('div', 'wi-m'); const hours = n.published ? (Date.now() - Date.parse(n.published)) / 3.6e6 : 99; const k = n.kind === 'breaking' && hours >= 24 ? null : KIND[n.kind]; if (k) m.append(el('span', 'kind ' + n.kind, k)); m.append(el('b', null, n.outlet || ''), el('span', 'ag', ageShort(n)));
+    if ((n.also || []).length) { const also = el('span', 'also'); also.append(txt('also ')); n.also.slice(0, 2).forEach((x, i) => { const l = el('a', null, x.outlet); l.href = x.url; l.target = '_blank'; l.rel = 'noopener noreferrer'; if (i) also.append(txt(', ')); also.append(l); }); m.append(also); }
+    it.append(a, m); if (n.summary) it.append(el('div', 'wi-s', n.summary)); it.title = n.summary || ''; return it;
+  }));
+  const span = d3.extent(items, (n) => n.published);
+  const hours = span[0] && span[1] ? Math.round((Date.parse(span[1]) - Date.parse(span[0])) / 3.6e6) : 0;
+  cnt.textContent = items.length + ' reports from the last ' + (hours >= 48 ? Math.round(hours / 24) + ' days' : hours + ' hours') + ', newest first. Every headline links to the outlet.';
+  more.replaceChildren();
+  if (rows.length > limit) { const b = el('button', 'more-btn', 'Show all ' + rows.length + ' stories'); b.type = 'button'; b.addEventListener('click', () => { wire.open = true; drawWire(); }); more.append(b); }
+  else if (wire.open && rows.length > 12) { const b = el('button', 'more-btn', 'Show fewer'); b.type = 'button'; b.addEventListener('click', () => { wire.open = false; drawWire(); document.getElementById('wire').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }); more.append(b); }
+  shareRow(document.getElementById('wire-share'), { anchor: 'wire', text: 'The Wire: the latest reports on AI incidents, AI-driven attacks and what governments and labs are saying, worldwide, refreshed through the day. Warning Shots:', embed: 'wire', embedH: 720 });
 }
 
 /* ---------- hooks */
@@ -553,12 +597,15 @@ function drawWatch() {
 function drawDrivers() {
   document.getElementById('drivers').replaceChildren(...D.drivers.map((d) => { const c = el('div', 'driver'); c.append(el('div', 'dn', d.stat), el('div', 'dl', d.stat_label), el('h4', null, d.title), el('p', null, d.body)); return c; }));
 }
+let fcOpen = false;
 function drawForecast() {
-  const box = document.getElementById('forecast-list');
+  const box = document.getElementById('forecast-list'), more = document.getElementById('forecast-more');
   const groups = d3.groups(D.forecasts, (r) => r.horizon).sort((a, b) => +a[1][0].horizon_months - +b[1][0].horizon_months);
+  const LIMIT = 20; let shown = 0;
   box.replaceChildren(...groups.map(([hz, items]) => {
     const g = el('div', 'fc-group'); g.append(el('div', 'fc-ghead', hz + ', by ' + fmtDate(new Date(items[0].resolve_by))));
     items.slice().sort((a, b) => +b.probability - +a.probability).forEach((r) => {
+      if (!fcOpen && shown >= LIMIT) return; shown++;
       const row = el('div', 'fc'); row.tabIndex = 0; row.id = 'fc-' + r.id;
       const bar = el('div', 'fc-bar'), track = el('div', 'fc-track'), fill = el('div', 'fc-fill'); const p = +r.probability; fill.style.width = (p * 100) + '%'; fill.style.background = p >= 0.5 ? 'var(--alarm)' : 'color-mix(in oklab, var(--alarm) 50%, var(--line-2))'; track.append(fill);
       bar.append(track, el('span', 'fc-pct', r.probability_label));
@@ -569,12 +616,20 @@ function drawForecast() {
       g.append(row);
     });
     return g;
-  }));
+  }).filter((g) => g.children.length > 1));
+  more.replaceChildren();
+  if (D.forecasts.length > LIMIT) { const b = el('button', 'more-btn', fcOpen ? 'Show fewer' : 'Show all ' + D.forecasts.length + ' forecasts'); b.type = 'button'; b.addEventListener('click', () => { fcOpen = !fcOpen; drawForecast(); }); more.append(b); }
   const top = D.forecasts.slice().sort((a, b) => +b.probability - +a.probability)[0];
   shareRow(document.getElementById('share-forecast'), { anchor: 'card-forecast', text: `Twenty dated forecasts for AI safety over the next year, each with its reasoning. Highest: ${top.probability_label} that ${top.event.charAt(0).toLowerCase() + top.event.slice(1)}. Warning Shots:` });
 }
+let calOpen = false;
 function drawCalendar() {
-  document.getElementById('cal').replaceChildren(...D.catalysts.slice().sort((a, b) => a.date.localeCompare(b.date)).map((r) => { const row = el('div', 'cal-row'); const right = el('div'); right.append(el('div', 'cal-ev', r.event), el('div', 'cal-why', r.why)); row.append(el('div', 'cal-date', r.date_label), right); return row; }));
+  const today = C.asOf, box = document.getElementById('cal');
+  const all = D.catalysts.filter((r) => r.date >= today).sort((a, b) => a.date.localeCompare(b.date));
+  const rows = calOpen ? all : all.slice(0, 8);
+  box.replaceChildren(...rows.map((r) => { const row = el('div', 'cal-row'); row.tabIndex = 0; const right = el('div'); const why = el('div', 'cal-why'); why.append(txt(r.why + ' ')); if (r.source_url) { const a = el('a', null, 'source'); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); why.append(a); } right.append(el('div', 'cal-ev', r.event), why); row.append(el('div', 'cal-date', r.date_label), right); const t = () => row.classList.toggle('open'); row.addEventListener('click', t); row.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } }); return row; }));
+  const more = document.getElementById('cal-more'); more.replaceChildren();
+  if (all.length > 8) { const b = el('button', 'more-btn', calOpen ? 'Show fewer' : 'Show all ' + all.length + ' dated tests'); b.type = 'button'; b.style.marginTop = '12px'; b.addEventListener('click', () => { calOpen = !calOpen; drawCalendar(); }); more.append(b); }
 }
 
 /* ---------- deep dives */
@@ -602,6 +657,7 @@ function drawDeepDive() {
   document.getElementById('dd-stats').replaceChildren(...stats);
   const blk = (lbl, field) => { const c = el('div', 'dd-block'); c.append(el('span', 'lbl', lbl), el('div', null, d[field])); return c; };
   document.getElementById('dd-how').replaceChildren(blk('How it happened', 'how'), blk("The AI's role", 'ai_role'), blk('Damage so far', 'damage'), blk('Why it matters', 'why'));
+  drawMap(d);
   drawVictims();
   const tl = D.timeline.filter((t) => t.incident_id === d.incident_id).sort((a, b) => a.date.localeCompare(b.date));
   drawTrack(d, tl);
@@ -679,20 +735,24 @@ function sigRow(x, compact) {
   if (x.url) { const a = el('a', null, x.channel === 'X post' ? 'View post' : 'Source'); a.href = x.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; meta.append(a); }
   body.append(meta); r.append(av, body); return r;
 }
-const sig = { group: 'all', inc: '' };
+const sig = { group: 'all', inc: '', open: false };
 function drawSignals() {
-  const box = document.getElementById('sig-list'), cnt = document.getElementById('sig-count'), all = D.signals;
+  const box = document.getElementById('sig-list'), cnt = document.getElementById('sig-count'), all = D.signals, more = document.getElementById('sig-more');
   const sel = document.getElementById('sel-sig-inc');
   if (sel.options.length === 0) { const incs = [...new Set(all.map((x) => x.related_incident).filter(Boolean))].sort(); sel.replaceChildren(new Option('All topics', ''), ...incs.map((i) => new Option(i, i))); }
   const rows = all.filter((x) => (sig.group === 'all' || SIG_GROUP(x.org_type) === sig.group) && (!sig.inc || x.related_incident === sig.inc)).sort((a, b) => b.date.localeCompare(a.date) || (a.significance === 'high' ? -1 : 1));
   cnt.textContent = rows.length === all.length ? `${all.length} statements, newest first` : `Showing ${rows.length} of ${all.length} statements`;
-  box.replaceChildren(...rows.map((x) => sigRow(x, false)));
+  const limit = sig.open ? rows.length : 6;
+  box.replaceChildren(...rows.slice(0, limit).map((x) => sigRow(x, false)));
+  more.replaceChildren();
+  if (rows.length > limit) { const b = el('button', 'more-btn', 'Show all ' + rows.length + ' statements'); b.type = 'button'; b.addEventListener('click', () => { sig.open = true; drawSignals(); }); more.append(b); }
+  else if (sig.open && rows.length > 6) { const b = el('button', 'more-btn', 'Show fewer'); b.type = 'button'; b.addEventListener('click', () => { sig.open = false; drawSignals(); document.getElementById('signals').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }); more.append(b); }
 }
 document.getElementById('seg-sig').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; sig.group = b.dataset.v; document.querySelectorAll('#seg-sig button').forEach((x) => x.classList.toggle('on', x === b)); drawSignals(); });
 document.getElementById('sel-sig-inc').addEventListener('change', (e) => { sig.inc = e.target.value; drawSignals(); });
 
 /* ---------- list + drawer */
-const ls = { q: '', setting: 'all', cat: '', year: '', sort: 'sev', open: null };
+const ls = { q: '', setting: 'all', cat: '', year: '', sort: 'sev', open: null, all: false };
 const FACT = [['H', 'Harm', 5], ['R', 'Reach', 5], ['A', 'Autonomy', 4], ['N', 'Novelty', 5], ['I', 'Permanence', 5]];
 function detailNodes(r, inDrawer) {
   const out = [];
@@ -734,8 +794,13 @@ function drawList() {
   const by = { sev: (a, b) => b.severity - a.severity || b.date.localeCompare(a.date), new: (a, b) => b.date.localeCompare(a.date), old: (a, b) => a.date.localeCompare(b.date), auto: (a, b) => +b.A - +a.A || b.severity - a.severity };
   rows.sort(by[ls.sort]);
   const rank = new Map(all.slice().sort(by.sev).map((r, i) => [r.id, i + 1]));
-  count.textContent = rows.length === all.length ? `All ${rows.length} incidents` : `Showing ${rows.length} of ${all.length} incidents`;
-  box.replaceChildren(...rows.map((r) => {
+  const filtered = rows.length !== all.length;
+  const limit = (ls.all || filtered) ? rows.length : 12;
+  count.textContent = !filtered ? (limit < rows.length ? `The ${limit} highest-scoring of ${all.length} incidents` : `All ${rows.length} incidents`) : `Showing ${rows.length} of ${all.length} incidents`;
+  const more = document.getElementById('list-more'); more.replaceChildren();
+  if (rows.length > limit) { const b = el('button', 'more-btn', 'Show all ' + rows.length + ' incidents'); b.type = 'button'; b.addEventListener('click', () => { ls.all = true; drawList(); }); more.append(b); }
+  else if (ls.all && !filtered) { const b = el('button', 'more-btn', 'Show fewer'); b.type = 'button'; b.addEventListener('click', () => { ls.all = false; drawList(); document.getElementById('all').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }); more.append(b); }
+  box.replaceChildren(...rows.slice(0, limit).map((r) => {
     const row = el('div', 'row' + (ls.open === r.id ? ' open' : '')); row.id = 'row-' + r.id; row.tabIndex = 0;
     const sw = el('div'); const sb = el('div', 'sevbar'); const si = el('i'); si.style.width = r.severity + '%'; si.style.background = tierColor(r.tier); sb.append(si); sw.append(el('div', 'sev', String(r.severity)), sb);
     const mid = el('div'); const rt_ = el('div', 'rtitle', r.title); if (isNew(r.disclosed || r.date)) rt_.append(el('span', 'new-tag', 'new')); mid.append(rt_, el('div', 'rmeta', ['#' + rank.get(r.id), showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', ')));
@@ -795,7 +860,7 @@ function drawQuotes() {
   const qs = (D.quotes || []).filter((q) => q.quote && q.verified !== false).slice().sort((a, b) => (b.weight || 0) - (a.weight || 0) || b.date.localeCompare(a.date));
   if (!qs.length) { sec.style.display = 'none'; return; }
   sec.style.display = '';
-  const n = quotesOpen ? qs.length : Math.min(7, qs.length);
+  const n = quotesOpen ? qs.length : Math.min(4, qs.length);
   const leads = qs.slice(0, 8);
   leadIdx = leadIdx % leads.length;
   const leadCard = quoteCard(leads[leadIdx], true);
@@ -806,26 +871,39 @@ function drawQuotes() {
   if (!reduced && leads.length > 1) { let hover = false; leadCard.addEventListener('pointerenter', () => { hover = true; }); leadCard.addEventListener('pointerleave', () => { hover = false; }); leadTimer = setInterval(() => { if (hover || document.hidden) return; const r = leadCard.getBoundingClientRect(); if (r.bottom < 0 || r.top > window.innerHeight) return; leadCard.classList.add('fading'); setTimeout(() => { leadIdx = (leadIdx + 1) % leads.length; drawQuotes(); }, 460); }, 9000); }
   let more = document.getElementById('quotes-more'); if (!more) { more = el('div'); more.id = 'quotes-more'; box.after(more); }
   more.replaceChildren();
-  if (qs.length > 7) { const b = el('button', 'more-btn', quotesOpen ? 'Show fewer' : 'Show all ' + qs.length + ' quotes'); b.type = 'button'; b.addEventListener('click', () => { quotesOpen = !quotesOpen; drawQuotes(); if (!quotesOpen) document.getElementById('words').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }); more.append(b); }
+  if (qs.length > 4) { const b = el('button', 'more-btn', quotesOpen ? 'Show fewer' : 'Show all ' + qs.length + ' quotes'); b.type = 'button'; b.addEventListener('click', () => { quotesOpen = !quotesOpen; drawQuotes(); if (!quotesOpen) document.getElementById('words').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }); more.append(b); }
   shareRow(document.getElementById('words-share'), { anchor: 'words', text: 'What the people in charge actually said about this year\'s AI incidents, verbatim and sourced. Warning Shots:' });
 }
 function embedMode() {
   if (!EMBED) return;
   document.body.classList.add('embed');
-  const targets = { timeline: ['ch-timeline', 'lg-autonomy', 'hero-share'], now: ['now'], quarters: ['card-quarters'], disclosure: ['card-disclosure'], scatter: ['card-scatter'], horizon: ['card-horizon'], pipeline: ['card-pipeline'], words: ['quotes'], brief: ['brief'] };
+  const targets = { timeline: ['ch-timeline', 'lg-autonomy', 'hero-share'], now: ['now'], wire: ['siren', 'wire-board'], quarters: ['card-quarters'], disclosure: ['card-disclosure'], scatter: ['card-scatter'], horizon: ['card-horizon'], pipeline: ['card-pipeline'], words: ['quotes'], brief: ['brief'] };
   const ids = targets[EMBED] || targets.timeline;
   const host = el('div', 'embed-host wrap');
   if (EMBED === 'timeline') { const p = el('div', 'panel'); const t = el('div', 'panel-title'); t.append(txt('AI has started breaking in on its own: severe incidents went from '), el('b', null, String(C.headline.severe_prior12)), txt(' to '), el('b', null, String(C.headline.severe_last12)), txt(' in a year')); p.append(t, el('div', 'panel-note', 'Every major AI incident since 2023, scored 0–100. The stronger a dot’s color, the more the AI did on its own.')); ids.forEach((id) => { const n = document.getElementById(id); if (n) p.append(n); }); host.append(p); }
-  else ids.forEach((id) => { const n = document.getElementById(id); if (n) host.append(n); });
+  else ids.forEach((id) => { const n = document.getElementById(id); if (n) { n.hidden = false; host.append(n); } });
   const f = el('div', 'embed-foot'); const a = el('a', null, 'Warning Shots, the AI Incident Index'); a.href = SITE; a.target = '_blank'; a.rel = 'noopener'; f.append(a, el('span', null, 'Updated ' + fmtET(D.meta.as_of))); host.append(f);
   document.querySelector('main').append(host);
   setTimeout(() => drawAll(false), 50);
 }
 
+/* ---------- chart tabs */
+const CHART_DRAW = { 'card-quarters': () => drawQuarters(), 'card-disclosure': () => drawDisclosure(), 'card-scatter': () => drawScatter(), 'card-horizon': () => drawHorizon(), 'card-pipeline': () => drawPipeline() };
+function showChart(id) {
+  if (!CHART_DRAW[id]) return;
+  document.querySelectorAll('#chart-panes > .pane').forEach((p) => { p.hidden = p.id !== id; });
+  document.querySelectorAll('#chart-tabs button').forEach((b) => { const on = b.dataset.pane === id; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); });
+  if (C.scored) CHART_DRAW[id]();
+}
+document.getElementById('chart-tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) showChart(b.dataset.pane); });
+const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', method: 'about', context: 'about', brief: 'wire' };
+
 /* ---------- routing */
 function go(hash) { location.hash = hash; route(); }
 function route() {
-  const h = location.hash.slice(1);
+  let h = location.hash.slice(1);
+  if (ALIAS[h]) h = ALIAS[h];
+  if (CHART_DRAW[h]) { showChart(h); document.getElementById('charts').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
   if (h.startsWith('i=')) { openIncident(decodeURIComponent(h.slice(2))); return; }
   if (h.startsWith('q=')) { const n = document.getElementById('q-' + decodeURIComponent(h.slice(2))); if (n) { quotesOpen = true; drawQuotes(); document.getElementById('q-' + decodeURIComponent(h.slice(2)))?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
   if (h.startsWith('d=')) { const id = decodeURIComponent(h.slice(2)); if (D.deepdives.find((d) => d.incident_id === id)) { dd.id = id; dd.vfilter = 'all'; drawDeepDive(); document.getElementById('dives').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); } return; }
@@ -836,7 +914,7 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('cli
 
 /* ---------- draw everything */
 function drawAll(first) {
-  drawHeadline(); drawTimeline(first && !EMBED); drawTicker(); drawNow(); drawBrief(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawSignals(); drawList(); drawContext();
+  drawHeadline(); drawTimeline(first && !EMBED); drawTicker(); drawWire(); drawNow(); drawBrief(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawSignals(); drawList(); drawContext();
 }
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) drawAll(false); }, 160); });
 async function checkForUpdate() {

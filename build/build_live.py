@@ -60,13 +60,60 @@ META = dict(
  next_check='2026-10-23T18:37:00-04:00', next_check_label='today, 18:37 ET',
  schedule='Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.',
  live_incident='php2shell', live_note=LIVE_NOTE, live_since='2026-10-21T14:00:00Z', live_since_label='hours since the PHP fix shipped (Oct 21, about 14:00 UTC)',
- site_url='https://warningshots.ai/',
+ site_url='https://warningshots.ai/', site_name='Warning Shots', live_name='PHP2Shell', repo_url='https://github.com/ColinBalfe/ai-incident-index',
  changelog=CHANGELOG,
 )
+
+# ---- the Wire: research/news.json -> data/news.json (links to other outlets' reporting; see REFRESH.md)
+NEWS_MAX_AGE_H = 84
+def build_news():
+    import datetime as dt
+    src = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'research', 'news.json')
+    if not os.path.exists(src):
+        return []
+    rows = json.load(open(src, encoding='utf-8'))
+    as_of = dt.datetime.fromisoformat(AS_OF)
+    out, seen = [], set()
+    for r in rows:
+        if not (r.get('title') and r.get('url') and r.get('published')):
+            continue
+        key = r['url'].split('#')[0].rstrip('/')
+        if key in seen:
+            continue
+        seen.add(key)
+        try:
+            pub = dt.datetime.fromisoformat(r['published'].replace('Z', '+00:00'))
+            if pub.tzinfo is None:
+                pub = pub.replace(tzinfo=dt.timezone.utc)
+        except ValueError:
+            continue
+        if pub > as_of + dt.timedelta(hours=1):
+            continue  # a future timestamp is a typo
+        if (as_of - pub).total_seconds() > NEWS_MAX_AGE_H * 3600:
+            continue
+        r = dict(r)
+        r['title'] = r['title'].strip()[:120]
+        r['summary'] = (r.get('summary') or '').strip()
+        r['kind'] = r.get('kind') if r.get('kind') in ('breaking', 'incident', 'official', 'analysis') else 'incident'
+        r['topic'] = r.get('topic') or 'other'
+        r['siren'] = bool(r.get('siren'))
+        r['also'] = [a for a in (r.get('also') or []) if a.get('url') and a.get('outlet')][:4]
+        out.append(r)
+    out.sort(key=lambda r: r['published'], reverse=True)
+    sirens = [r for r in out if r['siren']]
+    if len(sirens) != 1:
+        for r in out:
+            r['siren'] = False
+        pick = next((r for r in out if r['kind'] == 'breaking'), out[0] if out else None)
+        if pick:
+            pick['siren'] = True
+    return out
 
 if __name__ == '__main__':
     json.dump(LIVE, open(f'{OUT}/live.json', 'w'), ensure_ascii=False, indent=0)
     json.dump(WATCH, open(f'{OUT}/watch.json', 'w'), ensure_ascii=False, indent=0)
     json.dump(META, open(f'{OUT}/meta.json', 'w'), ensure_ascii=False, indent=1)
     json.dump(BRIEF, open(f'{OUT}/brief.json', 'w'), ensure_ascii=False, indent=1)
-    print('live', len(LIVE), 'watch', len(WATCH))
+    news = build_news()
+    json.dump(news, open(f'{OUT}/news.json', 'w'), ensure_ascii=False, indent=0)
+    print('live', len(LIVE), 'watch', len(WATCH), 'news', len(news), 'siren', next((r['title'] for r in news if r['siren']), None))

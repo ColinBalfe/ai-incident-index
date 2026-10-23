@@ -159,23 +159,79 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .callout { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); margin-top: 12px; max-width: 72ch; }
 .callout b { color: var(--ink); font-variant-numeric: tabular-nums; }
 
-/* ----- happening now */
-.now { margin-top: clamp(36px, 5vw, 60px); border: 1px solid color-mix(in oklab, var(--alarm) 45%, var(--line)); border-left: 4px solid var(--alarm); border-radius: var(--r); background: var(--panel); padding: clamp(16px, 2.6vw, 28px); }
+/* ----- the wire */
+.wire { padding-top: clamp(22px, 3.4vw, 36px); }
+.wire-head { display: flex; align-items: baseline; gap: 10px 16px; flex-wrap: wrap; }
+.wire-head h2 { display: inline-flex; align-items: center; gap: 10px; }
+.wire-head .k { font-size: 13px; color: var(--ink-2); }
+.wire-head .stamp { margin-left: auto; font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.siren[hidden] { display: none; }
+.siren { margin-top: 16px; padding: 18px 0 16px; border-top: 3px solid var(--alarm); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: start; }
+.siren-ic { width: 42px; height: 42px; margin-top: 0; overflow: visible; }
+.siren-ic .dome { fill: var(--alarm); }
+.siren-ic .base { fill: var(--ink); opacity: .85; }
+.siren-ic .glass { fill: #fff; opacity: .35; }
+.siren-ic .ray { stroke: var(--alarm); stroke-width: 2; stroke-linecap: round; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) { .siren-ic .dome { animation: sirenGlow 1.1s ease-in-out infinite; } .siren-ic .ray { animation: sirenRay 1.1s ease-in-out infinite; } }
+@keyframes sirenGlow { 0%, 100% { opacity: .55; } 50% { opacity: 1; filter: drop-shadow(0 0 5px var(--alarm)); } }
+@keyframes sirenRay { 0%, 100% { opacity: 0; } 50% { opacity: .9; } }
+.siren-t { font-size: clamp(1.25rem, 2.9vw, 2.05rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; text-transform: uppercase; font-variation-settings: 'wdth' 80; text-decoration: none; text-wrap: balance; display: block; }
+.siren-t:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.siren-m { grid-column: 2; font-size: 13px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+.siren-m b { color: var(--ink); font-weight: 600; }
+.siren-m a { color: var(--ink-2); }
+.siren-m .also, .wi-m .also { color: var(--ink-3); }
+.wi-m .also a { color: var(--ink-3); }
+.siren-s { grid-column: 2; margin: 2px 0 0; font-size: 15px; line-height: 1.45; max-width: 76ch; }
+@media (max-width: 560px) { .siren { grid-template-columns: 1fr; } .siren-ic { width: 26px; height: 26px; margin: 0; } .siren-m, .siren-s { grid-column: 1; } }
+.wire-grid { display: grid; grid-template-columns: 1fr; gap: 26px; margin-top: 18px; }
+@media (min-width: 980px) { .wire-grid { grid-template-columns: minmax(0, 1fr) 300px; gap: 36px; align-items: start; } }
+.wire-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.wire-chips button { border: 1px solid var(--line-2); background: transparent; border-radius: 999px; padding: 4px 11px; font-size: 12.5px; cursor: pointer; color: var(--ink-2); display: inline-flex; gap: 6px; align-items: baseline; }
+.wire-chips button b { font-weight: 500; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.wire-chips button.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.wire-chips button.on b { color: var(--paper); opacity: .7; }
+.wire-board { columns: 2 17rem; column-gap: 32px; border-top: 1px solid var(--line-2); }
+@media (min-width: 980px) { .wire-board { columns: 2 16rem; } }
+.wi { break-inside: avoid; padding: 9px 0 10px; border-bottom: 1px solid var(--line); display: block; }
+.wi-t { font-size: 15px; font-weight: 600; line-height: 1.3; letter-spacing: -0.005em; text-decoration: none; display: inline; }
+.wi-t:hover { text-decoration: underline; text-underline-offset: 3px; }
+.wi-t .nd { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--alarm); margin-right: 7px; vertical-align: 2px; }
+.wi-m { font-size: 12px; color: var(--ink-3); margin-top: 3px; display: flex; flex-wrap: wrap; gap: 3px 8px; align-items: center; line-height: 1.4; }
+.wi-m b { color: var(--ink-2); font-weight: 500; }
+.wi-m a { color: var(--ink-3); }
+.wi-m .ag { font-variant-numeric: tabular-nums; }
+.kind { font-size: 11px; font-weight: 600; border-radius: 3px; padding: 0 5px; border: 1px solid var(--line-2); color: var(--ink-2); line-height: 1.5; }
+.kind.breaking { color: var(--paper); background: var(--alarm); border-color: var(--alarm); }
+.kind.official { color: var(--indigo); border-color: color-mix(in oklab, var(--indigo) 50%, var(--line-2)); }
+.wi-s { font-size: 13px; color: var(--ink-2); line-height: 1.4; margin-top: 3px; display: none; }
+.wire-board.verbose .wi-s { display: block; }
+.wire-foot { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-top: 14px; }
+.wire-foot .more-btn { margin: 0; }
+
+/* ----- happening now (rail) */
+.now { border: 1px solid color-mix(in oklab, var(--alarm) 45%, var(--line)); border-left: 4px solid var(--alarm); border-radius: var(--r); background: var(--panel); padding: 16px 18px 18px; }
 .now-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); }
-.now-head h2 { font-size: 1rem; font-weight: 600; color: var(--alarm); letter-spacing: 0; }
-.now-head .stamp { margin-left: auto; font-variant-numeric: tabular-nums; }
-.now-title { font-size: clamp(1.35rem, 2.4vw, 1.9rem); margin-top: 10px; letter-spacing: -0.02em; text-wrap: balance; }
-.now-note { color: var(--ink-2); max-width: 70ch; margin: 8px 0 0; font-size: 1rem; }
-.now-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 18px; }
-@media (min-width: 880px) { .now-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: start; } }
-.live-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px 18px; }
+.now-head h2 { font-size: .95rem; font-weight: 600; color: var(--alarm); letter-spacing: 0; }
+.now-title { font-size: 1.35rem; margin-top: 8px; letter-spacing: -0.02em; text-wrap: balance; }
+.now-note { color: var(--ink-2); margin: 6px 0 0; font-size: 13.5px; line-height: 1.45; }
+.live-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; margin-top: 14px; }
+@media (max-width: 979px) { .live-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } }
 .live { border-top: 1px solid var(--line); padding-top: 8px; }
-.live .v { font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; font-variation-settings: 'wdth' 78; font-variant-numeric: tabular-nums; }
+.live.clock { grid-column: 1 / -1; }
+.live .v { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; line-height: 1; font-variation-settings: 'wdth' 78; font-variant-numeric: tabular-nums; }
 .live.alarm .v { color: var(--alarm); }
 .live.ok .v { color: var(--ok); }
 .live .l { font-size: 12.5px; color: var(--ink-2); margin-top: 5px; line-height: 1.35; }
-.live .d { font-size: 12px; color: var(--ink-3); margin-top: 4px; line-height: 1.35; }
+.live .d { font-size: 11.5px; color: var(--ink-3); margin-top: 4px; line-height: 1.35; }
 .live .d a { color: var(--ink-3); }
+.now .stamp { font-size: 12px; color: var(--ink-3); margin-top: 12px; font-variant-numeric: tabular-nums; }
+.now-foot { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 14px; font-size: 14px; }
+.now-foot a.cta { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--alarm); padding-bottom: 1px; }
+.live.clock .v { color: var(--alarm); }
+.dd-mid { display: grid; grid-template-columns: 1fr; gap: 20px 32px; margin-top: 22px; }
+@media (min-width: 900px) { .dd-mid.has-map { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; } }
+.dd-mid .dd-blocks { margin-top: 0; }
 .map { min-height: 200px; position: relative; }
 .map-cap { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 .cbars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px 18px; margin-top: 10px; font-size: 12.5px; }
@@ -185,10 +241,23 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .cbar .ct { height: 100%; background: var(--alarm); border-radius: 2px; }
 .cbar .cv { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 @media (max-width: 480px) { .cbars { grid-template-columns: 1fr; } }
-.now-foot { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 16px; font-size: 14px; }
-.now-foot a.cta { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--alarm); padding-bottom: 1px; }
 
-.live.clock .v { color: var(--alarm); }
+/* ----- chart tabs + folds */
+.chart-tabs { margin-top: 18px; }
+.panes { margin-top: 14px; }
+.pane[hidden] { display: none; }
+details.fold { border-top: 1px solid var(--line); padding: 12px 0; }
+details.fold:last-of-type { border-bottom: 1px solid var(--line); }
+details.fold summary { cursor: pointer; font-weight: 600; font-size: 1.02rem; list-style: none; display: flex; align-items: center; gap: 10px; }
+details.fold summary::-webkit-details-marker { display: none; }
+details.fold summary::before { content: "+"; width: 20px; height: 20px; border: 1px solid var(--line-2); border-radius: 50%; display: inline-grid; place-items: center; font-size: 14px; font-weight: 500; color: var(--ink-2); flex: none; }
+details.fold[open] summary::before { content: "–"; }
+details.fold summary .k { font-weight: 400; font-size: 13px; color: var(--ink-3); margin-left: auto; }
+details.fold > :not(summary) { margin-top: 10px; }
+.next-grid { margin-top: 22px; }
+.next-grid .watch-row { grid-template-columns: 1fr; gap: 3px; padding: 11px 0; }
+.next-grid .watch-row .st { justify-self: start; white-space: normal; line-height: 1.35; margin: 2px 0 2px; }
+.next-grid .watch-row .item { font-size: 14.5px; }
 .hero-count { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
 /* ----- ticker */
 .ticker { display: flex; align-items: center; border-top: 1px solid var(--line); background: var(--paper); font-size: 13.5px; overflow: hidden; height: 40px; }
@@ -221,17 +290,19 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .qt-dots button.on { background: var(--alarm); }
 .toast.wide { max-width: min(92vw, 520px); white-space: normal; text-align: center; border-radius: 12px; line-height: 1.4; }
 
-/* ----- brief */
-.brief { margin-top: 18px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); padding: clamp(14px, 2.2vw, 22px); }
+/* ----- brief (strip inside the wire) */
+.brief { margin-top: 16px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); padding: 14px 18px 12px; }
 .brief-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.brief-head h2 { font-size: 1rem; letter-spacing: 0; }
-.brief-head .stamp { font-size: 12.5px; color: var(--ink-3); margin-left: auto; }
-.brief-list { margin: 10px 0 0; padding-left: 1.4em; display: grid; gap: 6px; font-size: 15px; line-height: 1.45; }
-.brief-list li::marker { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.brief-head h2 { font-size: .95rem; letter-spacing: 0; }
+.brief-head .stamp { font-size: 12.5px; color: var(--ink-3); }
+.brief-head .share { margin: 0 0 0 auto; }
+.brief-list { margin: 8px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr; gap: 8px 28px; font-size: 14px; line-height: 1.45; counter-reset: brief; }
+@media (min-width: 760px) { .brief-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.brief-list li { border-left: 2px solid var(--alarm); padding-left: 12px; }
 .brief-list a { color: var(--ink-3); font-size: 12.5px; margin-left: 6px; }
 
 /* ----- quotes */
-.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 22px 32px; margin-top: 22px; }
+.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 22px 32px; margin-top: 22px; }
 .qt { border-top: 2px solid var(--ink); padding-top: 12px; display: flex; flex-direction: column; gap: 10px; }
 .qt.lead { grid-column: 1 / -1; border-top-width: 3px; }
 .qt blockquote { margin: 0; font-size: 1.22rem; line-height: 1.35; letter-spacing: -0.015em; font-variation-settings: 'wdth' 94; text-wrap: pretty; }
@@ -304,10 +375,11 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 .fc-more b { color: var(--ink); }
 @media (max-width: 560px) { .fc { grid-template-columns: 1fr; } }
 
-.cal { display: grid; gap: 0; }
-.cal-row { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
-.cal-date { font-weight: 600; font-variant-numeric: tabular-nums; }
-.cal-why { color: var(--ink-2); font-size: 13px; margin-top: 2px; }
+.cal { display: grid; gap: 0; border-top: 1px solid var(--line-2); }
+.cal-row { display: grid; grid-template-columns: 72px 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; line-height: 1.4; }
+.cal-date { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cal-why { color: var(--ink-2); font-size: 12.5px; margin-top: 1px; }
+.cal-row.open .cal-why { display: block; } .cal-why { display: none; } .cal-row { cursor: pointer; }
 
 /* ----- controls */
 .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0 6px; }
@@ -362,7 +434,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 .impl-item .src a { color: var(--ink-2); }
 
 /* ----- signals */
-.sig-list { display: grid; gap: 0; border-top: 1px solid var(--line-2); max-height: 760px; overflow: auto; }
+.sig-list { display: grid; gap: 0; border-top: 1px solid var(--line-2); }
 .sig { display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .sig .av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 600; font-size: 12px; letter-spacing: .02em; }
 .sig .who { font-size: 14px; }
@@ -376,7 +448,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 .chip.x { color: var(--alarm); border-color: color-mix(in oklab, var(--alarm) 45%, transparent); }
 
 /* ----- list */
-.list { border-top: 1px solid var(--line-2); max-height: 820px; overflow: auto; }
+.list { border-top: 1px solid var(--line-2); }
 .row { display: grid; grid-template-columns: 54px 1fr auto; gap: 4px 14px; padding: 10px 2px; border-bottom: 1px solid var(--line); cursor: pointer; align-items: start; }
 .row:hover { background: color-mix(in oklab, var(--panel) 60%, var(--paper)); }
 .row .sev { font-size: 1.35rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1; font-variation-settings: 'wdth' 78; font-variant-numeric: tabular-nums; }
@@ -440,7 +512,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
   <div class="wrap">
     <a class="brand" href="#top">Warning Shots<small>The AI Incident Index</small></a>
     <nav class="tb-nav" aria-label="Sections">
-      <a href="#now">Now</a><a href="#words">Quotes</a><a href="#pattern">Pattern</a><a href="#escalation">Escalation</a><a href="#next">Next 12 months</a><a href="#dives">Incidents</a><a href="#signals">Signals</a><a href="#all">All incidents</a><a href="#method">Method</a>
+      <a href="#wire">The Wire</a><a href="#words">Quotes</a><a href="#pattern">Pattern</a><a href="#charts">Charts</a><a href="#next">Next 12 months</a><a href="#dives">Incidents</a><a href="#signals">Signals</a><a href="#all">All incidents</a><a href="#about">About</a>
     </nav>
     <div class="tb-right">
       <span class="pulse" aria-hidden="true"></span><span id="tb-updated">Updated —</span>
@@ -463,27 +535,34 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
   <div class="ticker dark-scope" id="ticker" aria-label="Latest official statements"><div class="ticker-label"><span class="pulse" aria-hidden="true"></span>Latest</div><div class="ticker-track"><div class="ticker-run" id="ticker-run"></div></div></div>
   </div>
 
-  <div class="wrap">
-    <section class="now tight" id="now" aria-labelledby="now-h">
-      <div class="now-head"><span class="pulse" aria-hidden="true"></span><h2 id="now-h">Happening now</h2><span class="stamp" id="now-stamp"></span></div>
-      <h3 class="now-title" id="now-title"></h3>
-      <p class="now-note" id="now-note"></p>
-      <div class="now-grid">
-        <div class="live-grid" id="live-grid"></div>
-        <div>
-          <div class="chart map" id="map"></div>
-          <div class="map-cap" id="map-cap"></div>
-          <div class="cbars" id="map-bars"></div>
-        </div>
-      </div>
-      <div class="now-foot"><a class="cta" href="#d=php2shell" id="now-link">Full breakdown</a><span class="share" id="now-share"></span></div>
-    </section>
-    <section class="brief tight" id="brief" aria-labelledby="brief-h">
-      <div class="brief-head"><h2 id="brief-h">Since the last refresh</h2><span class="stamp" id="brief-stamp"></span></div>
+  <section class="wrap wire" id="wire" aria-labelledby="wire-h">
+    <div class="wire-head">
+      <h2 id="wire-h"><span class="pulse" aria-hidden="true"></span>The Wire</h2>
+      <span class="k" id="wire-count">Loading the latest reports</span>
+      <span class="stamp" id="wire-stamp"></span>
+    </div>
+    <div class="siren" id="siren" hidden></div>
+    <div class="brief" id="brief" aria-labelledby="brief-h">
+      <div class="brief-head"><h2 id="brief-h">Since the last refresh</h2><span class="stamp" id="brief-stamp"></span><div class="share" id="brief-share"></div></div>
       <ol class="brief-list" id="brief-list"></ol>
-      <div class="share" id="brief-share"></div>
-    </section>
-  </div>
+    </div>
+    <div class="wire-grid">
+      <div class="wire-main">
+        <div class="wire-chips" id="wire-chips" role="group" aria-label="Filter stories"></div>
+        <div class="wire-board" id="wire-board"></div>
+        <div class="wire-foot"><div id="wire-more"></div><div class="share" id="wire-share"></div></div>
+      </div>
+      <aside class="now" id="now" aria-labelledby="now-h">
+        <div class="now-head"><span class="pulse" aria-hidden="true"></span><h2 id="now-h">Happening now</h2></div>
+        <h3 class="now-title" id="now-title"></h3>
+        <p class="now-note" id="now-note"></p>
+        <div class="live-grid" id="live-grid"></div>
+        <div class="now-foot"><a class="cta" href="#d=php2shell" id="now-link">Full breakdown</a></div>
+        <div class="stamp" id="now-stamp"></div>
+        <div class="share" id="now-share"></div>
+      </aside>
+    </div>
+  </section>
 
   <section class="wrap" id="words">
     <div class="sec-head"><h2>In their words</h2><span class="k">Verbatim, dated, linked</span></div>
@@ -507,18 +586,25 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
     </div>
   </section>
 
-  <section class="wrap" id="escalation">
-    <div class="sec-head"><h2>The escalation, two more ways</h2></div>
-    <p class="lede">Counting incidents is noisy: more reporting and more AI use both raise the count. Two cleaner signals: how much of each incident the AI did on its own, and how long it took the world to find out.</p>
-    <div class="grid2" style="margin-top:22px">
-      <div class="panel" id="card-quarters">
+  <section class="wrap" id="charts">
+    <div class="sec-head"><h2>The escalation, five ways</h2><span class="k">Hover any mark. Click a dot to open the incident.</span></div>
+    <p class="lede">Counting incidents is noisy: more reporting and more AI use both raise the count. These five views are cleaner: how much of each incident the AI did on its own, how long the world waited to find out, damage against signal, how long AI can now work unsupervised, and how fast behaviors move from safety tests into real use.</p>
+    <div class="tabs chart-tabs" id="chart-tabs" role="tablist" aria-label="Charts">
+      <button type="button" data-pane="card-quarters" class="on" role="tab" aria-selected="true">By quarter</button>
+      <button type="button" data-pane="card-disclosure" role="tab" aria-selected="false">Disclosure gap</button>
+      <button type="button" data-pane="card-scatter" role="tab" aria-selected="false">Danger zone</button>
+      <button type="button" data-pane="card-horizon" role="tab" aria-selected="false">Time horizon</button>
+      <button type="button" data-pane="card-pipeline" role="tab" aria-selected="false">Lab → wild</button>
+    </div>
+    <div class="panes" id="chart-panes">
+      <div class="panel pane" id="card-quarters" role="tabpanel">
         <div class="panel-title">Incidents per quarter, by how much the AI acted on its own</div>
-        <div class="panel-note">The latest quarter is partial. The mix is the signal: the dark share is growing.</div>
+        <div class="panel-note">The latest quarter is partial. The mix is the signal: the dark share, where the AI ran multi-step operations on its own or worked against its operator, is growing.</div>
         <div class="legend" id="lg-autonomy2"></div>
         <div class="chart" id="ch-quarters" style="min-height:260px"></div>
         <div class="share" id="share-quarters"></div>
       </div>
-      <div class="panel" id="card-disclosure">
+      <div class="panel pane" id="card-disclosure" role="tabpanel" hidden>
         <div class="panel-title">How long the world waited to find out</div>
         <div class="panel-note">Real-world incidents this year where the AI acted on its own: when it happened, and when it became public.</div>
         <div class="legend" id="lg-disclosure"></div>
@@ -526,65 +612,55 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
         <div class="callout" id="disc-callout"></div>
         <div class="share" id="share-disclosure"></div>
       </div>
-    </div>
-  </section>
-
-  <section class="wrap" id="danger">
-    <div class="sec-head"><h2>The danger zone</h2></div>
-    <p class="lede">Two different questions: <b>how much damage did it do</b> (harm) and <b>what does it reveal about where AI is going</b> (signal: autonomy plus novelty). Lab findings sit low and right: no harm yet, loud signal. Real-world incidents have been climbing that right edge. The top-right corner is where a Critical incident would land.</p>
-    <div class="grid2" style="margin-top:22px">
-      <div class="panel" id="card-scatter">
-        <div class="panel-title">Harm against signal, and where the centre of gravity is heading</div>
-        <div class="panel-note">Each dot is one incident; the red path is the average real-world incident, year by year. Hover for details; click to open.</div>
+      <div class="panel pane" id="card-scatter" role="tabpanel" hidden>
+        <div class="panel-title">The danger zone: harm against signal, and where the centre of gravity is heading</div>
+        <div class="panel-note">Two different questions: <b>how much damage did it do</b> (harm) and <b>what does it reveal about where AI is going</b> (signal: autonomy plus novelty). Lab findings sit low and right: no harm yet, loud signal. Each dot is one incident; the red path is the average real-world incident, year by year. The top-right corner is where a Critical incident would land.</div>
         <div class="legend" id="lg-setting"></div>
         <div class="chart" id="ch-scatter" style="min-height:340px"></div>
         <div class="callout" id="scatter-callout"></div>
         <div class="share" id="share-scatter"></div>
       </div>
-      <div class="panel" id="card-horizon">
+      <div class="panel pane" id="card-horizon" role="tabpanel" hidden>
         <div class="panel-title">Why the dots keep moving right: how long AI can work unsupervised</div>
         <div class="panel-note">METR's 50% time horizon for the best model at each date, log scale. Longer horizons mean more room for things to go wrong between check-ins.</div>
         <div class="chart" id="ch-horizon" style="min-height:300px"></div>
         <div class="callout" id="horizon-callout"></div>
         <div class="share" id="share-horizon"></div>
       </div>
-    </div>
-  </section>
-
-  <section class="wrap" id="pipeline">
-    <div class="sec-head"><h2>From the lab to the wild</h2></div>
-    <p class="lede">The most useful pattern in the data: dangerous behaviors show up in safety tests first, then in the real world months later. Hollow dot: first seen in a test. Filled dot: first seen in real use. Open arrows are the behaviors still waiting to arrive.</p>
-    <div class="panel" id="card-pipeline" style="margin-top:22px">
-      <div class="panel-title">From test to reality</div>
-      <div class="panel-note">Rows still open carry this index's estimated odds of a first real-world case within 12 months.</div>
-      <div class="legend" id="lg-pipeline"></div>
-      <div class="chart" id="ch-pipeline" style="min-height:420px"></div>
-      <div class="callout" id="pipeline-callout"></div>
-      <div class="share" id="share-pipeline"></div>
+      <div class="panel pane" id="card-pipeline" role="tabpanel" hidden>
+        <div class="panel-title">From the lab to the wild: when each dangerous behavior first appeared</div>
+        <div class="panel-note">Dangerous behaviors show up in safety tests first, then in the real world months later. Hollow dot: first seen in a test. Filled dot: first seen in real use. Open arrows are the behaviors still waiting to arrive, with this index's estimated odds of a first real-world case within 12 months.</div>
+        <div class="legend" id="lg-pipeline"></div>
+        <div class="chart" id="ch-pipeline" style="min-height:420px"></div>
+        <div class="callout" id="pipeline-callout"></div>
+        <div class="share" id="share-pipeline"></div>
+      </div>
     </div>
   </section>
 
   <section class="wrap" id="next">
     <div class="sec-head"><h2>Where this goes next</h2></div>
-    <p class="lede">What to watch in the next two weeks, the five forces behind the trend, and dated probabilities for the next twelve months.</p>
-    <div class="panel" style="margin-top:22px">
-      <div class="panel-title">The next 14 days</div>
-      <div class="panel-note">Each of these would change the picture. Status as of the last refresh.</div>
-      <div class="watch" id="watch-list"></div>
+    <p class="lede">What to watch in the next two weeks, the dated tests after that, probabilities for the next twelve months, and the five forces behind the trend.</p>
+    <div class="grid2 next-grid">
+      <div class="panel" id="card-watch">
+        <div class="panel-title">The next 14 days</div>
+        <div class="panel-note">Each of these would change the picture. Status as of the last refresh.</div>
+        <div class="watch" id="watch-list"></div>
+        <div class="panel-title" style="margin-top:22px">Dated tests after that</div>
+        <div class="panel-note">Events in the next twelve months that will test the forecast or change it. Open a row for why.</div>
+        <div class="cal" id="cal"></div>
+        <div id="cal-more"></div>
+      </div>
+      <div class="panel" id="card-forecast">
+        <div class="panel-title">Forecast: the probability each happens by the date shown</div>
+        <div class="panel-note">Calibrated judgments from this index, based on the base rates in the charts and the dated catalysts. Open any line for the reasoning and the signposts that would move it.</div>
+        <div id="forecast-list"></div>
+        <div id="forecast-more"></div>
+        <div class="share" id="share-forecast"></div>
+      </div>
     </div>
     <h3 style="margin-top:36px">Five forces, all pointing the same way</h3>
     <div class="drivers" id="drivers"></div>
-    <div class="panel" id="card-forecast" style="margin-top:28px">
-      <div class="panel-title">Forecast: the probability each happens by the date shown</div>
-      <div class="panel-note">Calibrated judgments from this index, based on the base rates above and the dated catalysts below. Open any line for the reasoning and the signposts that would move it.</div>
-      <div id="forecast-list"></div>
-      <div class="share" id="share-forecast"></div>
-    </div>
-    <div class="panel" style="margin-top:20px">
-      <div class="panel-title">Catalyst calendar</div>
-      <div class="panel-note">Dated events in the next twelve months that will test the forecast or change it.</div>
-      <div class="cal" id="cal"></div>
-    </div>
   </section>
 
   <section class="wrap" id="dives">
@@ -595,7 +671,10 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
       <div class="dd-head" id="dd-head"></div>
       <div class="share" id="dd-share"></div>
       <div class="dd-stats" id="dd-stats"></div>
-      <div class="dd-blocks" id="dd-how"></div>
+      <div class="dd-mid" id="dd-mid">
+        <div class="dd-blocks" id="dd-how"></div>
+        <div id="map-wrap" hidden><div class="chart map" id="map"></div><div class="map-cap" id="map-cap"></div><div class="cbars" id="map-bars"></div></div>
+      </div>
       <div class="dd-h">Organizations affected</div>
       <div class="controls">
         <div class="seg" id="seg-vstatus" role="group" aria-label="Status">
@@ -625,6 +704,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
       </div>
       <p class="count" id="sig-count"></p>
       <div class="sig-list" id="sig-list"></div>
+      <div id="sig-more"></div>
     </div>
   </section>
 
@@ -648,34 +728,44 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
       </div>
       <p class="count" id="list-count"></p>
       <div class="list" id="list"></div>
+      <div id="list-more"></div>
       <div class="share" id="share-list"></div>
     </div>
   </section>
 
-  <section class="wrap" id="context">
-    <div class="sec-head"><h2>The wider count</h2></div>
-    <p class="lede">This index scores the incidents that matter most. Broader trackers count everything, and show the same direction.</p>
+  <section class="wrap method" id="about">
+    <div class="sec-head"><h2>About the data</h2><span class="k">Open, sourced, corrected in public</span></div>
+    <p class="lede">This index scores the incidents that matter most: real-world harms or near-misses caused or materially enabled by an AI system, and lab or evaluation findings of dangerous behavior. Broader trackers count everything, and show the same direction.</p>
     <div class="ctx" id="ctx"></div>
-  </section>
-
-  <section class="wrap method" id="method">
-    <div class="sec-head"><h2>How the scores work</h2></div>
-    <p>An incident is a real-world harm or near-miss caused or materially enabled by an AI system, or a lab or evaluation finding of a dangerous behavior or capability threshold. Each one is rated on five factors by this index, then scored by a fixed formula.</p>
-    <table>
-      <tr><td>Harm (H, 0–5)</td><td>Damage actually done: none, embarrassment, material loss, a death or $1M+, multiple deaths or $100M+ or infrastructure, mass casualty or $1B+.</td></tr>
-      <tr><td>Reach (R, 0–5)</td><td>Who was affected: a lab, one person or organization, dozens, thousands, millions, hundreds of millions.</td></tr>
-      <tr><td>Autonomy (A, 0–4)</td><td>Tool (a person misused it), relied on (people trusted bad output), acted (a bounded action), autonomous (multi-step operations on its own), against intent (worked against its own operator or developer).</td></tr>
-      <tr><td>Novelty (N, 1–5)</td><td>Repeat of a known pattern, escalation, first real-world case of a lab behavior, new dangerous capability, paradigm shift.</td></tr>
-      <tr><td>Irreversibility (I, 0–5)</td><td>Caught in a sandbox, easily undone, undone with effort, partly permanent, permanent, permanent and spreading.</td></tr>
-    </table>
-    <p><code>Harm score = 100 × (0.5·H/5 + 0.25·R/5 + 0.25·I/5)</code><br><code>Signal score = 100 × (0.6·A/4 + 0.4·N/5)</code><br><code>Severity = 0.55 × Harm + 0.45 × Signal</code>, then Minor under 20, Moderate 20–39, Serious 40–59, Severe 60–79, Critical 80 and up.</p>
-    <p>Harm is weighted more because it already happened. Signal is weighted heavily because it predicts what happens next. A lab finding can reach Serious on signal alone, but only real-world damage can make an incident Severe or Critical.</p>
-    <p>This is a curated index of significant, well-sourced incidents, not a census; the AI Incident Database and the OECD monitor count far more. Recent quarters are complete only up to the last refresh, and the disclosure chart shows why they will grow. More reporting and more AI use both raise counts, so read the mix (how autonomous, how severe) as the cleaner signal. Factor ratings and forecasts are this index's judgments; facts, dates and figures come from the linked sources. Where a lawsuit is pending, the summary reports allegations, not findings.</p>
-    <h3 style="margin-top:28px">Data</h3>
-    <p>Everything on this page is open: <a href="data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="data/victims.json">organizations affected</a>, <a href="data/signals.json">official statements</a>, <a href="data/forecasts.json">forecasts</a>. Cite as "Warning Shots (The AI Incident Index)" with a link. Corrections and additions: open an issue on <a href="{{REPO_URL}}">GitHub</a>.</p>
-    <h3 style="margin-top:28px">What changed</h3>
-    <div class="changelog" id="changelog"></div>
-    <p class="foot">Warning Shots, the AI Incident Index, is maintained by Colin Balfe with Claude. The name is OpenAI’s own phrase for the Hugging Face breach: “a warning shot for the company and the world.” Research, scoring and forecasts are the index's own; every incident links to its primary source. Last refresh <span id="foot-updated">—</span>. <a href="{{REPO_URL}}">Source</a>.</p>
+    <div style="margin-top:28px">
+      <details class="fold" id="fold-method">
+        <summary>How the scores work<span class="k">five factors, one formula</span></summary>
+        <p>Each incident is rated on five factors by this index, then scored by a fixed formula.</p>
+        <table>
+          <tr><td>Harm (H, 0–5)</td><td>Damage actually done: none, embarrassment, material loss, a death or $1M+, multiple deaths or $100M+ or infrastructure, mass casualty or $1B+.</td></tr>
+          <tr><td>Reach (R, 0–5)</td><td>Who was affected: a lab, one person or organization, dozens, thousands, millions, hundreds of millions.</td></tr>
+          <tr><td>Autonomy (A, 0–4)</td><td>Tool (a person misused it), relied on (people trusted bad output), acted (a bounded action), autonomous (multi-step operations on its own), against intent (worked against its own operator or developer).</td></tr>
+          <tr><td>Novelty (N, 1–5)</td><td>Repeat of a known pattern, escalation, first real-world case of a lab behavior, new dangerous capability, paradigm shift.</td></tr>
+          <tr><td>Irreversibility (I, 0–5)</td><td>Caught in a sandbox, easily undone, undone with effort, partly permanent, permanent, permanent and spreading.</td></tr>
+        </table>
+        <p><code>Harm score = 100 × (0.5·H/5 + 0.25·R/5 + 0.25·I/5)</code><br><code>Signal score = 100 × (0.6·A/4 + 0.4·N/5)</code><br><code>Severity = 0.55 × Harm + 0.45 × Signal</code>, then Minor under 20, Moderate 20–39, Serious 40–59, Severe 60–79, Critical 80 and up.</p>
+        <p>Harm is weighted more because it already happened. Signal is weighted heavily because it predicts what happens next. A lab finding can reach Serious on signal alone, but only real-world damage can make an incident Severe or Critical.</p>
+        <p>This is a curated index of significant, well-sourced incidents, not a census; the AI Incident Database and the OECD monitor count far more. Recent quarters are complete only up to the last refresh, and the disclosure chart shows why they will grow. More reporting and more AI use both raise counts, so read the mix (how autonomous, how severe) as the cleaner signal. Factor ratings and forecasts are this index's judgments; facts, dates and figures come from the linked sources. Where a lawsuit is pending, the summary reports allegations, not findings.</p>
+      </details>
+      <details class="fold" id="fold-wire">
+        <summary>How the Wire is built<span class="k">links, not copies</span></summary>
+        <p>The Wire is a board of links to other people's reporting: security press, wire services, newspapers, agencies and the labs themselves. Each headline is written by this index, links to the outlet, and is kept for about three days. Stories are checked against the original page before they are added; a claim that only one outlet makes is marked with that outlet. The siren is the one story the index judges most consequential at the last refresh. Nothing on the board is paywalled by this site, and nothing is copied from it.</p>
+      </details>
+      <details class="fold" id="fold-data">
+        <summary>Data, downloads and corrections<span class="k">everything is open</span></summary>
+        <p>Everything on this page is open: <a href="data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="data/victims.json">organizations affected</a>, <a href="data/signals.json">official statements</a>, <a href="data/quotes.json">quotes</a>, <a href="data/forecasts.json">forecasts</a>, <a href="data/news.json">the Wire</a>. Cite as "Warning Shots (The AI Incident Index)" with a link. Corrections and additions: open an issue on <a href="{{REPO_URL}}">GitHub</a>.</p>
+      </details>
+      <details class="fold" id="fold-changes">
+        <summary>What changed<span class="k">every refresh, logged</span></summary>
+        <div class="changelog" id="changelog"></div>
+      </details>
+    </div>
+    <p class="foot">Warning Shots, the AI Incident Index, is maintained by Colin Balfe with Claude. The name is OpenAI’s own phrase for the Hugging Face breach: “a warning shot for the company and the world.” Research, scoring and forecasts are the index's own; every incident links to its primary source. Last refresh <span id="foot-updated">—</span> <a href="{{REPO_URL}}">Source</a>.</p>
   </section>
 </main>
 

@@ -16,6 +16,7 @@ Read `data/meta.json` (`as_of`, `live_incident`, `changelog`) so you know the la
 2. **New AI safety incidents** since `as_of`: real-world harms or near-misses materially caused or enabled by AI, and lab or evaluation disclosures of dangerous behavior. Look at: OpenAI's misalignment reports page, Anthropic's news and research pages, Google DeepMind, Meta, the UK AI Security Institute blog, METR, Transluce, the AI Incident Database, major security press (The Hacker News, BleepingComputer, SecurityWeek, Reuters, Bloomberg, WSJ, FT, Al Jazeera).
 3. **Official statements** on AI incidents from security agencies (NSA, CISA, FBI, NCSC, ACSC, CCCS, CERT-EU, ENISA, KISA), governments and regulators (White House, Commerce, EU Commission, state AGs, Korean FSC/FSS, Japan NCO, Australia), and AI labs. Record X posts with the direct post URL when it can be found.
 4. **Updates to tracked incidents**: new victims named, new figures, denials, corrections, retractions.
+5. **The Wire** (`research/news.json`): the latest reporting, worldwide, on AI incidents, AI-driven cyberattacks, the live incident, and what governments, agencies and labs are saying or doing about AI safety and security. Aim for 25 to 45 stories from the last 72 hours. Sources: security press (The Hacker News, BleepingComputer, SecurityWeek, The Record, Krebs, CyberScoop, Dark Reading), wires and papers (Reuters, AP, Bloomberg, FT, WSJ, NYT, Guardian, BBC, Nikkei, Japan Times, Yonhap, Korea Herald, Le Monde, Handelsblatt, ABC Australia), tech press (The Verge, Ars Technica, Wired, TechCrunch, 404 Media, Platformer), official pages (CISA, NCSC, ACSC, FBI, EU Commission, state AGs, PHP Foundation, OpenAI, Anthropic, Google DeepMind, METR, UK AISI).
 
 Keep descriptions of hacking techniques high-level. Never invent a figure; if a number cannot be sourced, leave it out.
 
@@ -28,6 +29,17 @@ Keep descriptions of hacking techniques high-level. Never invent a figure; if a 
 - Live panel and 14-day watchlist: `build/build_live.py` (`LIVE`, `LIVE_NOTE`, `WATCH`, `META`). Update `AS_OF`, `AS_OF_LABEL`, `next_check` and add a dated `CHANGELOG` entry that says what changed and how many rows were added or corrected.
 - If the live incident has gone quiet (no new facts for 3 days), set `META.live_incident` to the most important active incident, or keep it and say so in `LIVE_NOTE`.
 - Corrections to existing rows: use the `FIX` dict in `build/build_data.py` or `build/fixes2.py`, never by editing generated files in `data/`.
+- The Wire: rewrite `research/news.json` each refresh (it is a rolling 72-hour board, not an archive). One object per story:
+
+  ```
+  {"id": "cybernews-php-third-flaw", "title": "PHP's nightmare is far from over: new unpatched flaw found",
+   "url": "https://...", "outlet": "Cybernews", "published": "2026-10-23T14:15:00Z", "time_known": true,
+   "kind": "breaking", "region": "Global", "topic": "php2shell",
+   "summary": "PHP Foundation tells developers to switch off session upload progress until the next release.",
+   "siren": true, "also": [{"outlet": "SecurityWeek", "url": "https://..."}]}
+  ```
+
+  Rules: the headline is written by this index (max 110 characters, factual, no clickbait, no copying the outlet's headline verbatim) and links straight to the outlet; `kind` is one of `breaking`, `incident`, `official`, `analysis`; `topic` is one of `php2shell`, `ai-attack`, `ai-incident`, `regulation`, `deepfakes`, `chatbot-harm`, `breakthrough`, `other`; `summary` is at most 22 words; `published` is the outlet's own timestamp in UTC (set `time_known: false` when only the date is known); exactly one story has `siren: true`, the one the index judges most consequential right now; `also` lists other outlets carrying the same story. Fetch every page before adding it; drop anything you cannot open. Keep paywalled sources only when a free source (`also`) exists. Do not add opinion columns. `build/build_live.py` dedupes, drops stories older than 84 hours and writes `data/news.json`; the page shows a "no stories" line rather than breaking if the file is empty.
 
 ## 3. Build and check
 
@@ -39,7 +51,7 @@ node make_og.mjs http://127.0.0.1:8765/index.html
 node shot.mjs    http://127.0.0.1:8765/index.html
 ```
 
-`shot.mjs` must print `errors none` three times. Look at `shots/site-desktop-top.png` and `shots/site-phone-top.png` before publishing. If anything fails, fix it; do not publish a broken page.
+`shot.mjs` must print `errors none` three times. The build prints the Wire's story count and the siren headline; check both. Look at `shots/site-desktop-top.png` and `shots/site-phone-top.png` before publishing. If anything fails, fix it; do not publish a broken page.
 
 ## 4. Fact-check what you added
 
