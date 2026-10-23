@@ -11,13 +11,13 @@
 <meta property="og:title" content="AI has started breaking in on its own — Warning Shots, the AI Incident Index">
 <meta property="og:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
 <meta property="og:url" content="https://warningshots.ai/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610231714">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610231807">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI has started breaking in on its own — Warning Shots, the AI Incident Index">
 <meta name="twitter:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610231714">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610231807">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F2F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1418" media="(prefers-color-scheme: dark)">
@@ -44,7 +44,7 @@
     --wild: var(--steel); --lab: #CBAE5A;
   }
 }
-:root[data-theme="dark"] {
+.dark-scope, :root[data-theme="dark"] {
   --paper: #0F1418; --panel: #161C22; --ink: #E9EEF3; --ink-2: #A3AEB9; --ink-3: #6F7A86;
   --line: #273039; --line-2: #3C4752;
   --alarm: #FF5B3E; --amber: #E2A43C; --indigo: #9B98F0; --steel: #86A2C4; --mist: #3B4A5A;
@@ -53,6 +53,12 @@
   --wild: var(--steel); --lab: #CBAE5A;
 }
 
+.dark-scope { color: var(--ink); }
+.hero-band { background: var(--paper); border-bottom: 1px solid var(--line); }
+.hero-band .hero { padding-bottom: clamp(28px, 4vw, 44px); }
+.hero-band .hl b { color: var(--alarm); }
+.hero-band .legend { color: var(--ink-2); }
+.hero-band .stats { border-top-color: var(--line-2); }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -66,7 +72,7 @@ b, strong { font-weight: 600; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* ----- top bar */
-.topbar { position: sticky; top: 0; z-index: 30; background: color-mix(in oklab, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.topbar { position: sticky; top: 0; z-index: 30; background: color-mix(in oklab, var(--paper) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .topbar .wrap { display: flex; align-items: center; gap: 18px; height: 52px; }
 .brand { font-weight: 600; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; }
 .brand small { font-weight: 400; color: var(--ink-2); margin-left: 8px; }
@@ -74,6 +80,7 @@ b, strong { font-weight: 600; }
 .tb-nav a { text-decoration: none; }
 .tb-nav a:hover { color: var(--ink); }
 @media (min-width: 960px) { .tb-nav { display: flex; } }
+@media (max-width: 520px) { .brand small { display: none; } .tb-right { font-size: 12px; gap: 8px; } }
 .tb-right { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--ink-2); white-space: nowrap; }
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--alarm); display: inline-block; position: relative; flex: none; }
 .pulse::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--alarm); opacity: 0; }
@@ -181,6 +188,8 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .now-foot { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 16px; font-size: 14px; }
 .now-foot a.cta { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--alarm); padding-bottom: 1px; }
 
+.live.clock .v { color: var(--alarm); }
+.hero-count { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
 /* ----- brief */
 .brief { margin-top: 18px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); padding: clamp(14px, 2.2vw, 22px); }
 .brief-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
@@ -396,7 +405,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 </style>
 </head>
 <body>
-<header class="topbar">
+<header class="topbar dark-scope">
   <div class="wrap">
     <a class="brand" href="#top">Warning Shots<small>The AI Incident Index</small></a>
     <nav class="tb-nav" aria-label="Sections">
@@ -410,15 +419,17 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 </header>
 
 <main id="top">
+  <div class="hero-band dark-scope">
   <section class="hero wrap">
     <h1 class="hl" id="headline"><span class="sk">AI has started breaking in on its own.</span></h1>
     <p class="sub" id="sub"><span class="sk">Severe AI incidents went from 3 to 12 in a year. In half of this year's real-world cases the AI itself did the acting.</span></p>
-    <p class="sub chart-note">Every major AI safety incident since 2023, scored 0–100 and sourced. Each dot is an incident; the stronger its color, the more the AI did on its own.</p>
+    <p class="sub chart-note">Every major AI safety incident since 2023, scored 0–100 and sourced. Each dot is an incident. Red: a real-world incident where the AI acted on its own.</p>
     <div class="chart hero-chart" id="ch-timeline"></div>
     <div class="legend" id="lg-autonomy"></div>
     <div class="share" id="hero-share"></div>
     <div class="stats" id="hero-stats"></div>
   </section>
+  </div>
 
   <div class="wrap">
     <section class="now tight" id="now" aria-labelledby="now-h">
@@ -491,10 +502,11 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
     <p class="lede">Two different questions: <b>how much damage did it do</b> (harm) and <b>what does it reveal about where AI is going</b> (signal: autonomy plus novelty). Lab findings sit low and right: no harm yet, loud signal. Real-world incidents have been climbing that right edge. The top-right corner is where a Critical incident would land.</p>
     <div class="grid2" style="margin-top:22px">
       <div class="panel" id="card-scatter">
-        <div class="panel-title">Harm against signal</div>
-        <div class="panel-note">Each dot is one incident. Hover for details; click to open it.</div>
+        <div class="panel-title">Harm against signal, and where the centre of gravity is heading</div>
+        <div class="panel-note">Each dot is one incident; the red path is the average real-world incident, year by year. Hover for details; click to open.</div>
         <div class="legend" id="lg-setting"></div>
         <div class="chart" id="ch-scatter" style="min-height:340px"></div>
+        <div class="callout" id="scatter-callout"></div>
         <div class="share" id="share-scatter"></div>
       </div>
       <div class="panel" id="card-horizon">
@@ -644,7 +656,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 
 <script src="assets/vendor/d3.min.js"></script>
 <script src="assets/vendor/topojson-client.min.js"></script>
-<script>window.AII_BUILD = "202610231714"; window.AII_SITE = "https://warningshots.ai/";</script>
-<script src="assets/app.js?v=202610231714"></script>
+<script>window.AII_BUILD = "202610231807"; window.AII_SITE = "https://warningshots.ai/";</script>
+<script src="assets/app.js?v=202610231807"></script>
 </body>
 </html>

@@ -6,6 +6,8 @@
  "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
  "live_incident": "php2shell",
  "live_note": "Attack traffic is enormous and a botnet is riding on it, but still no breach has been confirmed. The gap is closing: one vendor now says it has an exploit that works on the recommended production setup, while most of the exposed servers run versions that will never be fixed. PHP has flagged a third, narrower bug and is not rushing a patch.",
+ "live_since": "2026-10-21T14:00:00Z",
+ "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
  "changelog": [
   {

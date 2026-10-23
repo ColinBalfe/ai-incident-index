@@ -215,27 +215,41 @@ function drawTimeline(animate) {
   const pts = [];
   for (let tt = new Date('2023-06-30'); tt <= today; tt = d3.utcMonth.offset(tt, 1)) { const win = wild.filter((r) => r._d <= tt && r._d > d3.utcMonth.offset(tt, -6)); if (win.length >= 2) pts.push([tt, d3.mean(win, (r) => r.severity)]); }
   const path = svg.append('path').attr('d', d3.line().x((p) => x(p[0])).y((p) => y(p[1]))(pts)).attr('fill', 'none').attr('stroke', 'var(--ink)').attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round').attr('opacity', 0.5);
-  if (pts.length && !narrow) { const p0 = pts[0]; svg.append('text').attr('x', x(p0[0]) + 4).attr('y', y(p0[1]) - 10).attr('font-size', 11).attr('fill', 'var(--ink-2)').text('6-month average of real-world incidents'); }
-  const sorted = rows.slice().sort((a, b) => +a.A - +b.A);
+  if (pts.length && !narrow) { const p0 = pts[0]; svg.append('text').attr('x', x(p0[0]) + 4).attr('y', y(p0[1]) - 10).attr('font-size', 11).attr('fill', 'var(--ink-3)').text('6-month average, real-world'); }
+  const kind = (r) => r.setting !== 'wild' ? 'lab' : +r.A >= 3 ? 'auto' : 'wild';
+  const sorted = rows.slice().sort((a, b) => ({ lab: 0, wild: 1, auto: 2 })[kind(a)] - ({ lab: 0, wild: 1, auto: 2 })[kind(b)]);
   const R = narrow ? 4.5 : 5.5;
+  const rOf = (r) => kind(r) === 'auto' ? R + 1.5 : kind(r) === 'wild' ? R - 0.5 : R - 1;
   const dots = svg.append('g').selectAll('circle').data(sorted).join('circle')
-    .attr('cx', (r) => x(r._d)).attr('cy', (r) => y(r.severity)).attr('r', R)
-    .attr('fill', (r) => r.setting === 'wild' ? autoColor(+r.A) : 'var(--paper)')
-    .attr('stroke', (r) => r.setting === 'wild' ? 'var(--paper)' : autoColor(+r.A))
-    .attr('stroke-width', (r) => r.setting === 'wild' ? 1.5 : 2);
+    .attr('cx', (r) => x(r._d)).attr('cy', (r) => y(r.severity)).attr('r', rOf)
+    .attr('fill', (r) => kind(r) === 'auto' ? 'var(--alarm)' : kind(r) === 'wild' ? 'var(--steel)' : 'var(--paper)')
+    .attr('stroke', (r) => kind(r) === 'lab' ? 'var(--ink-3)' : 'var(--paper)')
+    .attr('stroke-width', (r) => kind(r) === 'lab' ? 1.6 : 1.5)
+    .attr('opacity', (r) => kind(r) === 'lab' ? 0.75 : kind(r) === 'wild' ? 0.85 : 1);
+  // per-year count of real-world incidents where the AI acted on its own
+  const years = d3.groups(rows, (r) => r.date.slice(0, 4)).sort((a, b) => a[0].localeCompare(b[0]));
+  const yc = svg.append('g');
+  years.forEach(([yr, rs]) => {
+    const n = rs.filter((r) => kind(r) === 'auto').length;
+    const x0 = x(new Date(yr + '-01-01')), x1 = Math.min(x(new Date((+yr + 1) + '-01-01')), x(today));
+    yc.append('text').attr('x', (x0 + x1) / 2).attr('y', H - m.b - 8).attr('text-anchor', 'middle').attr('font-size', narrow ? 12 : 13).attr('font-weight', 600).attr('fill', n ? 'var(--alarm)' : 'var(--ink-3)').text(n + (narrow ? '' : (n === 1 ? ' on its own' : ' on its own')));
+  });
+  const SHORT = { 'openai-hf-swarm': '700 agents breach Hugging Face', 'openai-medicare': 'Breaks into Australia’s Medicare portal', 'openai-dsewiki': 'Hijacks a wiki as a message board', 'php2shell': 'PHP2Shell: governments switch sites off', 'jadepuffer': 'Ransomware run end-to-end by AI', 'anthropic-three-orgs': 'Hacks three real companies in a test', 'gtg1002-claude-code-espionage': 'State espionage, mostly automated', 'replit-agent-deletes-saastr-db': 'Wipes a production database', 'korea-banks-artex': 'One hacker, one agent, seven banks', 'claude-false-tip': 'Files a fake murder tip with police' };
   const byYear = d3.groups(rows, (r) => r.date.slice(0, 4)).map(([, rs]) => rs.slice().sort((a, b) => b.severity - a.severity)[0]);
   const live = rows.find((r) => r.id === D.meta.live_incident);
-  const labels = narrow ? [byYear.slice().sort((a, b) => b.severity - a.severity)[0]] : byYear.concat(live && !byYear.includes(live) ? [live] : []);
+  const picks = narrow ? ['openai-hf-swarm', 'php2shell'] : ['openai-hf-swarm', 'php2shell', 'openai-medicare', 'openai-dsewiki', 'gtg1002-claude-code-espionage'];
+  const labels = narrow ? picks.map((id) => rows.find((r) => r.id === id)).filter(Boolean) : byYear.filter((r) => r.date < '2025').concat(picks.map((id) => rows.find((r) => r.id === id)).filter(Boolean));
   const lab = svg.append('g');
   const placed = [];
   labels.slice().sort((a, b) => a._d - b._d).forEach((r) => {
     const tx = x(r._d), ty = y(r.severity), anchor = tx > W * 0.6 ? 'end' : 'start';
-    const short = r.title.length > 44 ? r.title.slice(0, 42).trimEnd() + '…' : r.title;
+    const short = SHORT[r.id] || (r.title.length > 44 ? r.title.slice(0, 42).trimEnd() + '…' : r.title);
     const w = short.length * 6.3, x0 = anchor === 'end' ? tx - 10 - w : tx + 10, x1 = x0 + w;
-    let yy = ty - 9;
-    for (let k = 0; k < 6; k++) { const hit = placed.find((b) => x0 < b.x1 + 6 && x1 > b.x0 - 6 && Math.abs(yy - b.y) < 13); if (!hit) break; yy = hit.y - 14; }
+    let yy = ty - 10;
+    for (let k = 0; k < 8; k++) { const hit = placed.find((b) => x0 < b.x1 + 8 && x1 > b.x0 - 8 && Math.abs(yy - b.y) < 15); if (!hit) break; yy = hit.y - 16; }
     placed.push({ x0, x1, y: yy });
-    lab.append('text').attr('x', tx + (anchor === 'end' ? -10 : 10)).attr('y', yy).attr('text-anchor', anchor).attr('font-size', 11.5).attr('font-weight', 600).attr('fill', 'var(--ink)').text(short);
+    if (ty - yy > 16) lab.append('line').attr('x1', tx).attr('y1', ty - rOf(r) - 1).attr('x2', tx).attr('y2', yy + 3).attr('stroke', 'var(--ink-3)').attr('stroke-width', 1);
+    lab.append('text').attr('x', tx + (anchor === 'end' ? -10 : 10)).attr('y', yy).attr('text-anchor', anchor).attr('font-size', 11.5).attr('font-weight', 600).attr('fill', kind(r) === 'auto' ? 'var(--ink)' : 'var(--ink-2)').text(short);
   });
   const hi = svg.append('circle').attr('r', R + 4).attr('fill', 'none').attr('stroke', 'var(--ink)').attr('stroke-width', 1.5).attr('opacity', 0);
   const delaunay = d3.Delaunay.from(rows, (r) => x(r._d), (r) => y(r.severity));
@@ -250,12 +264,13 @@ function drawTimeline(animate) {
     const T = 2600, x0 = x.range()[0], x1 = x(today);
     const sweep = svg.append('line').attr('y1', m.t).attr('y2', H - m.b).attr('stroke', 'var(--alarm)').attr('stroke-width', 1.5).attr('x1', x0).attr('x2', x0).attr('opacity', 0.9);
     dots.attr('r', 0);
-    dots.transition().delay((r) => T * (Math.min(x(r._d), x1) - x0) / (x1 - x0)).duration(420).ease(d3.easeBackOut.overshoot(2.2)).attr('r', R);
+    dots.transition().delay((r) => T * (Math.min(x(r._d), x1) - x0) / (x1 - x0)).duration(420).ease(d3.easeBackOut.overshoot(2.2)).attr('r', rOf);
+    yc.attr('opacity', 0).transition().delay(T + 200).duration(500).attr('opacity', 1);
     const L = path.node().getTotalLength(); path.attr('stroke-dasharray', L + ' ' + L).attr('stroke-dashoffset', L).transition().delay(T * (x(pts[0][0]) - x0) / (x1 - x0)).duration(T * (x(pts[pts.length - 1][0]) - x(pts[0][0])) / (x1 - x0)).ease(d3.easeLinear).attr('stroke-dashoffset', 0);
     lab.attr('opacity', 0).transition().delay(T + 200).duration(500).attr('opacity', 1);
     sweep.transition().duration(T).ease(d3.easeLinear).attr('x1', x1).attr('x2', x1).transition().duration(600).attr('opacity', 0).remove();
   }
-  legend(document.getElementById('lg-autonomy'), [{ ramp: [0, 1, 2, 3, 4].map(autoColor), label: 'how much the AI did on its own: tool, relied on, acted, autonomous, against intent' }, { color: 'var(--steel)', label: 'real-world incident' }, { color: 'var(--steel)', shape: 'ring', label: 'lab or test finding' }, { color: 'var(--ink)', shape: 'bar', label: '6-month average' }]);
+  legend(document.getElementById('lg-autonomy'), [{ color: 'var(--alarm)', label: 'real-world incident where the AI acted on its own' }, { color: 'var(--steel)', label: 'other real-world incident' }, { color: 'var(--ink-3)', shape: 'ring', label: 'lab or test finding' }, { color: 'var(--ink)', shape: 'bar', label: '6-month average, real-world' }]);
 }
 
 /* ---------- happening now */
@@ -270,7 +285,9 @@ function drawNow() {
   document.getElementById('now-link').href = '#d=' + live.incident_id;
   document.getElementById('now-link').textContent = 'Full breakdown: every organization, the timeline, what officials said';
   const grid = document.getElementById('live-grid');
-  grid.replaceChildren(...D.live.map((r) => {
+  const since = D.meta.live_since ? Date.parse(D.meta.live_since) : null;
+  const clock = since ? (() => { const c = el('div', 'live clock'); const v = el('div', 'v'); const upd = () => { const h = Math.floor((Date.now() - since) / 3.6e6); v.textContent = h < 48 ? h + ' h' : (h / 24).toFixed(1) + ' d'; }; upd(); setInterval(upd, 60000); c.append(v, el('div', 'l', D.meta.live_since_label || 'since the fix shipped')); c.append(el('div', 'd', 'Counting from the coordinated release. The gap between a patch and a working exploit is now measured in hours.')); return c; })() : null;
+  grid.replaceChildren(...(clock ? [clock] : []), ...D.live.map((r) => {
     const good = (r.key === 'confirmed' && r.value === '0') || (r.key === 'kev' && /not/i.test(r.value));
     const c = el('div', 'live' + (good ? ' ok' : ''));
     c.append(el('div', 'v', r.value), el('div', 'l', r.label));
@@ -398,7 +415,18 @@ function drawScatter() {
   svg.append('text').attr('x', W - m.r).attr('y', H - 4).attr('text-anchor', 'end').attr('font-size', 11).attr('fill', 'var(--ink-2)').text('Signal (autonomy + novelty) →');
   svg.append('text').attr('x', m.l + 6).attr('y', m.t + 12).attr('font-size', 11).attr('fill', 'var(--ink-2)').text('↑ Harm (damage, reach, permanence)');
   const pts = rows.map((r, i) => ({ r, px: x(r.signal_score) + ((i * 37) % 7 - 3), py: y(r.harm_score) + ((i * 53) % 7 - 3) }));
-  svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx', (p) => p.px).attr('cy', (p) => p.py).attr('r', 5).attr('fill', (p) => p.r.setting === 'wild' ? 'var(--wild)' : 'var(--lab)').attr('stroke', 'var(--paper)').attr('stroke-width', 1.5).attr('opacity', 0.9);
+  svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx', (p) => p.px).attr('cy', (p) => p.py).attr('r', 5).attr('fill', (p) => p.r.setting === 'wild' ? 'var(--wild)' : 'var(--lab)').attr('stroke', 'var(--paper)').attr('stroke-width', 1.5).attr('opacity', 0.55);
+  // centre of gravity of real-world incidents, by year
+  const cg = d3.groups(rows.filter((r) => r.setting === 'wild'), (r) => r.date.slice(0, 4)).sort((a, b) => a[0].localeCompare(b[0])).map(([yr, rs]) => ({ yr, n: rs.length, x: x(d3.mean(rs, (r) => r.signal_score)), y: y(d3.mean(rs, (r) => r.harm_score)) }));
+  const cgG = svg.append('g');
+  cgG.append('path').attr('d', d3.line().x((c) => c.x).y((c) => c.y)(cg)).attr('fill', 'none').attr('stroke', 'var(--alarm)').attr('stroke-width', 2.5).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+  cg.forEach((c, i) => {
+    cgG.append('circle').attr('cx', c.x).attr('cy', c.y).attr('r', i === cg.length - 1 ? 7 : 5).attr('fill', 'var(--alarm)').attr('stroke', 'var(--paper)').attr('stroke-width', 2);
+    const t = cgG.append('text').attr('x', c.x + (i === cg.length - 1 ? 12 : 0)).attr('y', c.y + (i === cg.length - 1 ? 4 : (i % 2 ? 20 : -12))).attr('text-anchor', i === cg.length - 1 ? 'start' : 'middle').attr('font-size', 11.5).attr('font-weight', 600).attr('fill', 'var(--alarm)').attr('stroke', 'var(--panel)').attr('stroke-width', 3).attr('paint-order', 'stroke').text(c.yr + (i === cg.length - 1 ? ' so far' : ''));
+  });
+  if (cg.length > 1) { const a = cg[cg.length - 2], b = cg[cg.length - 1]; const ang = Math.atan2(b.y - a.y, b.x - a.x); const tx = b.x + 22 * Math.cos(ang), ty = b.y + 22 * Math.sin(ang); cgG.append('line').attr('x1', b.x + 8 * Math.cos(ang)).attr('y1', b.y + 8 * Math.sin(ang)).attr('x2', tx).attr('y2', ty).attr('stroke', 'var(--alarm)').attr('stroke-width', 2.5).attr('stroke-linecap', 'round').attr('stroke-dasharray', '3 3'); cgG.append('path').attr('d', `M${tx - 10 * Math.cos(ang - 0.5)},${ty - 10 * Math.sin(ang - 0.5)} L${tx},${ty} L${tx - 10 * Math.cos(ang + 0.5)},${ty - 10 * Math.sin(ang + 0.5)}`).attr('fill', 'none').attr('stroke', 'var(--alarm)').attr('stroke-width', 2.5).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'); }
+  const sc = document.getElementById('scatter-callout');
+  if (sc && cg.length > 1) { const f = cg[0], l = cg[cg.length - 1]; const sig = (c) => Math.round(x.invert(c.x)), hm = (c) => Math.round(y.invert(c.y)); sc.replaceChildren(txt('The centre of gravity of real-world incidents has moved from a signal score of '), el('b', null, String(sig(f))), txt(' in ' + f.yr + ' to '), el('b', null, String(sig(l))), txt(' this year, while harm has stayed near '), el('b', null, String(hm(l))), txt('. So far the AI is doing more on its own without doing much more damage. The danger zone is where that stops being true, and the arrow points at it.')); }
   const hi = svg.append('circle').attr('r', 9).attr('fill', 'none').attr('stroke', 'var(--ink)').attr('stroke-width', 1.5).attr('opacity', 0);
   const del = d3.Delaunay.from(pts, (p) => p.px, (p) => p.py), tip = makeTip(box);
   svg.append('rect').attr('x', m.l).attr('y', 0).attr('width', W - m.l - m.r).attr('height', H - m.b).attr('fill', 'transparent').style('cursor', 'pointer')
@@ -406,7 +434,7 @@ function drawScatter() {
     .on('pointerleave', () => { tip.hide(); hi.attr('opacity', 0); })
     .on('click', (ev) => { const [px, py] = d3.pointer(ev); const p = pts[del.find(px, py)]; if (p && Math.hypot(p.px - px, p.py - py) <= 36) openIncident(p.r.id); });
   keepTip(box, svg.node());
-  legend(document.getElementById('lg-setting'), [{ color: 'var(--wild)', label: 'in the wild' }, { color: 'var(--lab)', label: 'in the lab or a test' }]);
+  legend(document.getElementById('lg-setting'), [{ color: 'var(--wild)', label: 'in the wild' }, { color: 'var(--lab)', label: 'in the lab or a test' }, { color: 'var(--alarm)', shape: 'bar', label: 'centre of gravity of real-world incidents, by year' }]);
   shareRow(document.getElementById('share-scatter'), { anchor: 'card-scatter', text: 'Every major AI incident since 2023 plotted by damage done against what it signals about where AI is going. Real-world incidents are climbing toward the danger zone. Warning Shots:', svgBox: box, name: 'danger-zone', title: 'Harm against signal, every incident', embed: 'scatter', embedH: 520 });
 }
 function drawHorizon() {

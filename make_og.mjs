@@ -7,15 +7,16 @@ const ctx = await browser.newContext({ viewport: { width: 1200, height: 630 }, d
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: 'networkidle' });
 await page.addStyleTag({ content: `
-  .topbar, .sub.chart-note, #lg-autonomy, #hero-share, #hero-stats, main > :not(.hero), .drawer, .drawer-bg, .toast { display: none !important; }
-  html, body { background: #F2F4F6; overflow: hidden; }
+  .topbar, .sub.chart-note, #lg-autonomy, #hero-share, #hero-stats, main > :not(.hero-band), .drawer, .drawer-bg, .toast { display: none !important; }
+  html, body { background: #0F1418; overflow: hidden; }
   .hero { padding: 34px 48px 0 !important; max-width: none !important; }
+  .hero-band { border: 0 !important; }
   .hl { font-size: 50px !important; max-width: none !important; margin: 0 !important; }
-  .sub { font-size: 21px !important; max-width: none !important; margin: 8px 0 0 !important; color: #141A21 !important; }
-  .sub b { color: #D3321F !important; }
+  .sub { font-size: 21px !important; max-width: none !important; margin: 8px 0 0 !important; color: #E9EEF3 !important; }
+  .sub b { color: #FF5B3E !important; }
   .hero-chart { margin-top: 6px !important; min-height: 0 !important; }
-  .og-foot { position: fixed; left: 48px; right: 48px; bottom: 22px; display: flex; justify-content: space-between; font: 500 18px/1 'Archivo', system-ui, sans-serif; color: #55616E; letter-spacing: -0.01em; }
-  .og-foot b { color: #141A21; font-weight: 600; }
+  .og-foot { position: fixed; left: 48px; right: 48px; bottom: 22px; display: flex; justify-content: space-between; font: 500 18px/1 'Archivo', system-ui, sans-serif; color: #A3AEB9; letter-spacing: -0.01em; }
+  .og-foot b { color: #E9EEF3; font-weight: 600; }
 ` });
 await page.evaluate(() => {
   const meta = JSON.parse(document.querySelector('meta[name="description"]').content ? '{}' : '{}');

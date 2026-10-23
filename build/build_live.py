@@ -59,7 +59,7 @@ META = dict(
  as_of=AS_OF, as_of_label=AS_OF_LABEL,
  next_check='2026-10-23T18:37:00-04:00', next_check_label='today, 18:37 ET',
  schedule='Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.',
- live_incident='php2shell', live_note=LIVE_NOTE,
+ live_incident='php2shell', live_note=LIVE_NOTE, live_since='2026-10-21T14:00:00Z', live_since_label='hours since the PHP fix shipped (Oct 21, about 14:00 UTC)',
  site_url='https://warningshots.ai/',
  changelog=CHANGELOG,
 )
