@@ -133,6 +133,31 @@ function legend(node, items) {
 const fail = (node) => { if (node) node.replaceChildren(el('div', 'fail', 'Could not load this data')); };
 const axisClean = (g) => g.attr('font-size', null).attr('font-family', null);
 const sevScore = (r) => { const H = +r.H, R = +r.R, A = +r.A, N = +r.N, I = +r.I; const harm = 100 * (0.5 * H / 5 + 0.25 * R / 5 + 0.25 * I / 5); const signal = 100 * (0.6 * A / 4 + 0.4 * N / 5); const severity = Math.round(0.55 * harm + 0.45 * signal); const tier = severity >= 80 ? 'Critical' : severity >= 60 ? 'Severe' : severity >= 40 ? 'Serious' : severity >= 20 ? 'Moderate' : 'Minor'; return { harm_score: Math.round(harm), signal_score: Math.round(signal), severity, tier }; };
+const revealed = new Set();
+const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) { const fn = e.target._reveal; if (fn) { e.target._reveal = null; fn(); } io.unobserve(e.target); } }); }, { threshold: 0.25 }) : null;
+function onVisible(node, key, fn) {
+  if (reduced || revealed.has(key) || !io) { revealed.add(key); fn(true); return; }
+  node._reveal = () => { revealed.add(key); fn(false); }; io.observe(node);
+}
+function countUp(node, text, key) {
+  const m = /^([^\d]*)([\d,]*\.?\d+)(.*)$/.exec(text);
+  if (!m || reduced || revealed.has(key)) { node.textContent = text; revealed.add(key); return; }
+  const target = parseFloat(m[2].replace(/,/g, '')), dec = (m[2].split('.')[1] || '').length, hasComma = m[2].includes(',');
+  node.textContent = m[1] + (0).toFixed(dec) + m[3];
+  onVisible(node, key, (instant) => {
+    if (instant) { node.textContent = text; return; }
+    const t0 = performance.now(), dur = 900;
+    const step = (t) => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); const v = target * e; node.textContent = m[1] + (hasComma ? d3.format(',.' + dec + 'f')(v) : v.toFixed(dec)) + m[3]; if (k < 1) requestAnimationFrame(step); else node.textContent = text; };
+    requestAnimationFrame(step);
+  });
+}
+const NEW_WINDOW = 48 * 3.6e6;
+const isNew = (iso) => iso && D.meta && (Date.parse(D.meta.as_of) - Date.parse(iso)) < NEW_WINDOW && Date.parse(iso) <= Date.parse(D.meta.as_of) + 864e5;
+const ET = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+const ETt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit' });
+const ETd = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric' });
+const fmtET = (iso) => iso ? ET.format(new Date(iso)) + ' ET' : '';
+const fmtETsmart = (iso) => { if (!iso) return ''; const d = new Date(iso); return (ETd.format(d) === ETd.format(new Date()) ? 'today ' + ETt.format(d) : ET.format(d)) + ' ET'; };
 const relTime = (iso) => { const ms = Date.now() - Date.parse(iso); const h = Math.round(ms / 3.6e6); if (h < 1) return 'minutes ago'; if (h < 48) return h + (h === 1 ? ' hour ago' : ' hours ago'); return Math.round(h / 24) + ' days ago'; };
 
 /* ---------- calcs */
@@ -175,7 +200,7 @@ function drawHeadline() {
   const sub = document.getElementById('sub');
   sub.replaceChildren(txt('Severe AI incidents went from '), el('b', null, String(h.severe_prior12)), txt(' to '), el('b', null, String(h.severe_last12)), txt(' in a year. In '), el('b', null, Math.round(h.agentic_recent * 100) + '%'), txt(" of this year's real-world cases the AI itself did the acting: into a national health portal, government data sites, its own developers' servers and dozens of organizations, with nobody telling it to. Most of what happened inside the labs in the last three months is still undisclosed."));
   const stats = document.getElementById('hero-stats');
-  const stat = (v, l, cls, small) => { const s = el('div', 'stat' + (cls ? ' ' + cls : '')); const vv = el('div', 'v', v); if (small) vv.append(el('small', null, small)); const ll = el('div', 'l'); ll.append(...l); s.append(vv, ll); return s; };
+  const stat = (v, l, cls, small) => { const s = el('div', 'stat' + (cls ? ' ' + cls : '')); const vv = el('div', 'v'); const num = el('span'); countUp(num, v, 'stat:' + l.map((n) => n.textContent).join('').slice(0, 30)); vv.append(num); if (small) vv.append(el('small', null, small)); const ll = el('div', 'l'); ll.append(...l); s.append(vv, ll); return s; };
   const pct = (x) => Math.round(x * 100) + '%';
   const crit = D.forecasts.find((f) => f.id === 'first-critical');
   stats.replaceChildren(
@@ -187,8 +212,10 @@ function drawHeadline() {
     stat(h.n_critical === 0 ? 'None' : String(h.n_critical), [txt(h.n_critical === 0 ? 'rated Critical yet. Odds of one within 12 months: ' : 'rated Critical. Odds of another within 12 months: '), el('b', null, crit ? crit.probability_label : '—')]),
   );
   shareRow(document.getElementById('hero-share'), { anchor: 'top', text: `AI has started breaking in on its own. Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year; in ${pct(h.agentic_recent)} of this year's real-world cases the AI itself did the acting. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
-  const up = document.getElementById('tb-updated'); up.textContent = 'Updated ' + relTime(D.meta.as_of); up.title = D.meta.as_of_label + '. ' + D.meta.schedule;
-  document.getElementById('foot-updated').textContent = D.meta.as_of_label + '. ' + D.meta.schedule + ' Next check ' + D.meta.next_check_label;
+  const up = document.getElementById('tb-updated');
+  const tickUp = () => { const ms = Date.now() - Date.parse(D.meta.as_of); const mins = Math.max(0, Math.round(ms / 6e4)); const nx = D.meta.next_check ? Date.parse(D.meta.next_check) - Date.now() : null; const nxs = nx != null && nx > 0 ? ', next check in ' + (nx > 3.6e6 ? Math.floor(nx / 3.6e6) + 'h ' + Math.round((nx % 3.6e6) / 6e4) + 'm' : Math.max(1, Math.round(nx / 6e4)) + ' min') : (nx != null ? ', refresh due' : ''); up.textContent = (mins < 60 ? 'Updated ' + mins + ' min ago' : 'Updated ' + relTime(D.meta.as_of)) + (window.innerWidth > 1100 ? nxs : ''); up.title = 'Last refresh ' + fmtET(D.meta.as_of) + '. ' + D.meta.schedule; };
+  tickUp(); clearInterval(window._tickUp); window._tickUp = setInterval(tickUp, 30000);
+  document.getElementById('foot-updated').textContent = fmtET(D.meta.as_of) + '. ' + D.meta.schedule + ' Next check ' + fmtETsmart(D.meta.next_check) + '.';
 }
 let heroAnimated = false;
 function drawTimeline(animate) {
@@ -251,6 +278,7 @@ function drawTimeline(animate) {
     if (ty - yy > 16) lab.append('line').attr('x1', tx).attr('y1', ty - rOf(r) - 1).attr('x2', tx).attr('y2', yy + 3).attr('stroke', 'var(--ink-3)').attr('stroke-width', 1);
     lab.append('text').attr('x', tx + (anchor === 'end' ? -10 : 10)).attr('y', yy).attr('text-anchor', anchor).attr('font-size', 11.5).attr('font-weight', 600).attr('fill', kind(r) === 'auto' ? 'var(--ink)' : 'var(--ink-2)').text(short);
   });
+  rows.filter((r) => isNew(r.disclosed || r.date)).forEach((r) => { svg.append('circle').attr('class', 'halo').attr('cx', x(r._d)).attr('cy', y(r.severity)).attr('r', 6).attr('fill', 'none').attr('stroke', kind(r) === 'auto' ? 'var(--alarm)' : 'var(--steel)').attr('stroke-width', 2).attr('pointer-events', 'none'); });
   const hi = svg.append('circle').attr('r', R + 4).attr('fill', 'none').attr('stroke', 'var(--ink)').attr('stroke-width', 1.5).attr('opacity', 0);
   const delaunay = d3.Delaunay.from(rows, (r) => x(r._d), (r) => y(r.severity));
   const tip = makeTip(box);
@@ -281,16 +309,16 @@ function drawNow() {
   const live = D.deepdives.find((d) => d.incident_id === D.meta.live_incident) || D.deepdives[0];
   document.getElementById('now-title').textContent = live.name;
   document.getElementById('now-note').textContent = D.meta.live_note || live.now_text;
-  document.getElementById('now-stamp').textContent = 'Checked ' + D.meta.as_of_label;
+  document.getElementById('now-stamp').textContent = 'Checked ' + fmtET(D.meta.as_of) + (D.meta.next_check ? ', next check ' + fmtETsmart(D.meta.next_check) : '');
   document.getElementById('now-link').href = '#d=' + live.incident_id;
   document.getElementById('now-link').textContent = 'Full breakdown: every organization, the timeline, what officials said';
   const grid = document.getElementById('live-grid');
   const since = D.meta.live_since ? Date.parse(D.meta.live_since) : null;
-  const clock = since ? (() => { const c = el('div', 'live clock'); const v = el('div', 'v'); const upd = () => { const h = Math.floor((Date.now() - since) / 3.6e6); v.textContent = h < 48 ? h + ' h' : (h / 24).toFixed(1) + ' d'; }; upd(); setInterval(upd, 60000); c.append(v, el('div', 'l', D.meta.live_since_label || 'since the fix shipped')); c.append(el('div', 'd', 'Counting from the coordinated release. The gap between a patch and a working exploit is now measured in hours.')); return c; })() : null;
+  const clock = since ? (() => { const c = el('div', 'live clock'); const v = el('div', 'v'); const upd = () => { const ms = Date.now() - since; const h = Math.floor(ms / 3.6e6), mn = Math.floor((ms % 3.6e6) / 6e4), sc = Math.floor((ms % 6e4) / 1000); v.textContent = h + 'h ' + String(mn).padStart(2, '0') + 'm ' + String(sc).padStart(2, '0') + 's'; }; upd(); clearInterval(window._liveClock); window._liveClock = setInterval(upd, 1000); c.append(v, el('div', 'l', D.meta.live_since_label || 'since the fix shipped')); c.append(el('div', 'd', 'Counting from the coordinated release. The gap between a patch and a working exploit is now measured in hours.')); return c; })() : null;
   grid.replaceChildren(...(clock ? [clock] : []), ...D.live.map((r) => {
     const good = (r.key === 'confirmed' && r.value === '0') || (r.key === 'kev' && /not/i.test(r.value));
     const c = el('div', 'live' + (good ? ' ok' : ''));
-    c.append(el('div', 'v', r.value), el('div', 'l', r.label));
+    const v = el('div', 'v'); countUp(v, r.value, 'live:' + r.key); c.append(v, el('div', 'l', r.label));
     const d = el('div', 'd'); d.append(txt(r.detail + ' ')); const a = el('a', null, r.source_label); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; d.append(a); c.append(d);
     return c;
   }));
@@ -325,6 +353,16 @@ async function drawMap(live) {
   bars.replaceChildren(...list.map((c) => { const r = el('div', 'cbar'); const t = el('div', 'ct'); t.style.width = Math.max(4, 100 * c.n / max) + '%'; r.append(el('span', 'cn', c.name), (() => { const w = el('div', 'cw'); w.append(t); return w; })(), el('span', 'cv', String(c.n))); return r; }));
 }
 
+/* ---------- ticker */
+function drawTicker() {
+  const run = document.getElementById('ticker-run'); if (!run) return;
+  const items = D.signals.slice().sort((a, b) => b.date.localeCompare(a.date) || (a.significance === 'high' ? -1 : 1)).slice(0, 14);
+  const mk = (x) => { const a = el('a'); a.href = x.url || '#signals'; if (x.url) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } const sp = el('span'); sp.append(el('b', null, x.org + ':'), txt(x.gist.length > 120 ? x.gist.slice(0, 118).trimEnd() + '…' : x.gist), el('i', null, fmtDay(new Date(x.date)))); a.append(sp); return a; };
+  run.replaceChildren(...items.map(mk), ...items.map(mk));
+  run.classList.remove('go');
+  requestAnimationFrame(() => { const w = run.scrollWidth / 2; run.style.animationDuration = Math.max(40, w / 55) + 's'; run.classList.add('go'); });
+}
+
 /* ---------- hooks */
 function drawHooks() {
   const box = document.getElementById('hooks');
@@ -349,12 +387,13 @@ function drawQuarters() {
   const tip = makeTip(box);
   rows.forEach((r) => {
     let y0 = 0; const g = svg.append('g');
-    for (let a = 0; a <= 4; a++) { const v = r['a' + a]; if (!v) continue; const y1 = y0 + v; g.append('rect').attr('x', x(r.quarter)).attr('width', x.bandwidth()).attr('y', y(y1) + 1).attr('height', Math.max(0, y(y0) - y(y1) - 2)).attr('rx', 2).attr('fill', autoColor(a)).attr('opacity', r.partial ? 0.55 : 1); y0 = y1; }
+    for (let a = 0; a <= 4; a++) { const v = r['a' + a]; if (!v) continue; const y1 = y0 + v; g.append('rect').attr('class', 'bar').attr('data-y', y(y1) + 1).attr('data-h', Math.max(0, y(y0) - y(y1) - 2)).attr('x', x(r.quarter)).attr('width', x.bandwidth()).attr('y', y(y1) + 1).attr('height', Math.max(0, y(y0) - y(y1) - 2)).attr('rx', 2).attr('fill', autoColor(a)).attr('opacity', r.partial ? 0.55 : 1); y0 = y1; }
     g.append('rect').attr('x', x(r.quarter) - 2).attr('width', x.bandwidth() + 4).attr('y', m.t).attr('height', H - m.b - m.t).attr('fill', 'transparent')
       .on('pointermove', () => { const lines = [el('div', 't-sec', r.quarter + (r.partial ? ' (partial)' : '')), (() => { const d = el('div'); d.append(el('span', 't-val', r.n + ' incidents'), el('span', 't-sec', ', worst ' + r.max + '/100')); return d; })()]; for (let a = 4; a >= 0; a--) if (r['a' + a]) { const d = el('div'); const k = el('span'); k.style.cssText = `display:inline-block;width:10px;height:3px;margin-right:6px;vertical-align:middle;background:${autoColor(a)}`; d.append(k, el('b', null, String(r['a' + a])), txt(' ' + AUTONOMY[a].name.toLowerCase())); lines.push(d); } tip.show(lines, (x(r.quarter) + x.bandwidth() / 2) * box.clientWidth / W, y(r.n) * box.clientWidth / W); })
       .on('pointerleave', () => tip.hide());
   });
   keepTip(box, svg.node());
+  onVisible(box, 'quarters', (instant) => { if (instant) return; const bars = svg.selectAll('rect.bar'); bars.attr('y', H - m.b).attr('height', 0).transition().delay((d, i) => i * 18).duration(650).ease(d3.easeCubicOut).attr('y', function () { return +this.getAttribute('data-y'); }).attr('height', function () { return +this.getAttribute('data-h'); }); });
   legend(document.getElementById('lg-autonomy2'), AUTONOMY.map((a) => ({ color: autoColor(a.k), label: a.name })));
   const last = rows[rows.length - 1];
   shareRow(document.getElementById('share-quarters'), { anchor: 'card-quarters', text: `AI incidents per quarter since 2023, colored by how much the AI did on its own. The dark share is growing. From Warning Shots:`, svgBox: box, name: 'quarters', title: 'Incidents per quarter, by how much the AI acted on its own', embed: 'quarters', embedH: 420 });
@@ -383,14 +422,15 @@ function drawDisclosure() {
     labels[i].attr('y', cy).attr('dy', '0.35em');
     const xa = x(new Date(r.date)), xb = x(new Date(r.disclosed)), slow = r.lag > 60, col = slow ? 'var(--alarm)' : 'var(--steel)';
     const g = svg.append('g');
-    g.append('line').attr('x1', xa).attr('x2', xb).attr('y1', cy).attr('y2', cy).attr('stroke', col).attr('stroke-width', 2).attr('stroke-linecap', 'round');
+    g.append('line').attr('class', 'lag').attr('data-x2', xb).attr('x1', xa).attr('x2', xb).attr('y1', cy).attr('y2', cy).attr('stroke', col).attr('stroke-width', 2).attr('stroke-linecap', 'round');
     g.append('circle').attr('cx', xa).attr('cy', cy).attr('r', 4).attr('fill', 'var(--paper)').attr('stroke', col).attr('stroke-width', 2);
-    g.append('circle').attr('cx', xb).attr('cy', cy).attr('r', 4.5).attr('fill', col).attr('stroke', 'var(--paper)').attr('stroke-width', 1.5);
-    g.append('text').attr('x', xb + 9).attr('y', cy).attr('dy', '0.35em').attr('font-size', 11).attr('fill', slow ? 'var(--alarm)' : 'var(--ink-2)').attr('font-weight', slow ? 600 : 400).text(r.lag ? r.lag + ' d' : 'same day');
+    g.append('circle').attr('class', 'lagend').attr('data-x', xb).attr('cx', xb).attr('cy', cy).attr('r', 4.5).attr('fill', col).attr('stroke', 'var(--paper)').attr('stroke-width', 1.5);
+    g.append('text').attr('class', 'laglabel').attr('x', xb + 9).attr('y', cy).attr('dy', '0.35em').attr('font-size', 11).attr('fill', slow ? 'var(--alarm)' : 'var(--ink-2)').attr('font-weight', slow ? 600 : 400).text(r.lag ? r.lag + ' d' : 'same day');
     g.append('rect').attr('x', 0).attr('y', cy - rowH / 2).attr('width', W).attr('height', rowH).attr('fill', 'transparent').style('cursor', 'pointer')
       .on('pointermove', (ev) => { const [px] = d3.pointer(ev, svg.node()); tip.show([el('div', 't-title', r.title), el('div', 't-sec', 'Happened ' + showDate(r) + '; public ' + fmtDate(new Date(r.disclosed))), (() => { const d = el('div'); d.append(el('span', 't-val', r.lag + ' days'), el('span', 't-sec', r.lag > 60 ? ', found by the lab itself' : '')); return d; })(), el('div', 't-cta', 'Click to open')], px * box.clientWidth / W, cy * box.clientWidth / W); })
       .on('pointerleave', () => tip.hide()).on('click', () => openIncident(r.id));
   });
+  onVisible(box, 'disclosure', (instant) => { if (instant) return; svg.selectAll('line.lag').attr('x2', function () { return +this.getAttribute('x1'); }).transition().delay((d, i) => i * 40).duration(700).ease(d3.easeCubicOut).attr('x2', function () { return +this.getAttribute('data-x2'); }); svg.selectAll('circle.lagend').attr('cx', function () { return +this.parentNode.querySelector('line').getAttribute('x1'); }).transition().delay((d, i) => i * 40).duration(700).ease(d3.easeCubicOut).attr('cx', function () { return +this.getAttribute('data-x'); }); svg.selectAll('text.laglabel').attr('opacity', 0).transition().delay((d, i) => 500 + i * 40).duration(300).attr('opacity', 1); });
   legend(document.getElementById('lg-disclosure'), [{ color: 'var(--steel)', shape: 'ring', label: 'happened' }, { color: 'var(--steel)', label: 'became public' }, { color: 'var(--alarm)', shape: 'bar', label: 'more than two months' }]);
   call.replaceChildren(
     txt('Of the '), el('b', null, String(A.n)), txt(' real-world incidents this year where the AI acted on its own, '), el('b', null, String(A.n_slow)), txt(' took more than two months to surface, a median of '), el('b', null, String(A.median_slow)), txt(' days, the longest '), el('b', null, String(A.max)), txt(". Every slow one happened inside a lab's own training or testing, where only the lab knew; the fast ones were caught by the victim. So the right edge of every chart here is a floor: on this pattern, most of what happened inside labs in the last three months is still unreported."),
@@ -419,7 +459,8 @@ function drawScatter() {
   // centre of gravity of real-world incidents, by year
   const cg = d3.groups(rows.filter((r) => r.setting === 'wild'), (r) => r.date.slice(0, 4)).sort((a, b) => a[0].localeCompare(b[0])).map(([yr, rs]) => ({ yr, n: rs.length, x: x(d3.mean(rs, (r) => r.signal_score)), y: y(d3.mean(rs, (r) => r.harm_score)) }));
   const cgG = svg.append('g');
-  cgG.append('path').attr('d', d3.line().x((c) => c.x).y((c) => c.y)(cg)).attr('fill', 'none').attr('stroke', 'var(--alarm)').attr('stroke-width', 2.5).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+  const cgPath = cgG.append('path').attr('d', d3.line().x((c) => c.x).y((c) => c.y)(cg)).attr('fill', 'none').attr('stroke', 'var(--alarm)').attr('stroke-width', 2.5).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+  onVisible(box, 'scatter', (instant) => { if (instant) return; const L = cgPath.node().getTotalLength(); cgPath.attr('stroke-dasharray', L + ' ' + L).attr('stroke-dashoffset', L).transition().duration(1400).ease(d3.easeCubicInOut).attr('stroke-dashoffset', 0); cgG.selectAll('circle, text').attr('opacity', 0).transition().delay((d, i) => 300 + i * 220).duration(300).attr('opacity', 1); });
   cg.forEach((c, i) => {
     cgG.append('circle').attr('cx', c.x).attr('cy', c.y).attr('r', i === cg.length - 1 ? 7 : 5).attr('fill', 'var(--alarm)').attr('stroke', 'var(--paper)').attr('stroke-width', 2);
     const t = cgG.append('text').attr('x', c.x + (i === cg.length - 1 ? 12 : 0)).attr('y', c.y + (i === cg.length - 1 ? 4 : (i % 2 ? 20 : -12))).attr('text-anchor', i === cg.length - 1 ? 'start' : 'middle').attr('font-size', 11.5).attr('font-weight', 600).attr('fill', 'var(--alarm)').attr('stroke', 'var(--panel)').attr('stroke-width', 3).attr('paint-order', 'stroke').text(c.yr + (i === cg.length - 1 ? ' so far' : ''));
@@ -485,7 +526,7 @@ function drawPipeline() {
     if (narrow) g.append('text').attr('x', m.l).attr('y', cy - 14).attr('font-size', 12).attr('font-weight', 600).attr('fill', 'var(--ink)').text(p.behavior);
     else g.append('text').attr('x', 12).attr('y', cy).attr('dy', '0.35em').attr('font-size', 12).attr('font-weight', 600).attr('fill', 'var(--ink)').text(p.behavior.length > 32 ? p.behavior.slice(0, 30) + '…' : p.behavior);
     const x0 = x(p._l), x1 = p._w ? x(p._w) : x(today);
-    g.append('line').attr('x1', x0).attr('x2', x1).attr('y1', cy).attr('y2', cy).attr('stroke', p._w ? 'var(--steel)' : 'var(--line-2)').attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-dasharray', p._w ? null : '4 3');
+    g.append('line').attr('class', 'pl').attr('data-x2', x1).attr('x1', x0).attr('x2', x1).attr('y1', cy).attr('y2', cy).attr('stroke', p._w ? 'var(--steel)' : 'var(--line-2)').attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-dasharray', p._w ? null : '4 3');
     g.append('circle').attr('cx', x0).attr('cy', cy).attr('r', 5.5).attr('fill', 'var(--paper)').attr('stroke', 'var(--lab)').attr('stroke-width', 2.5);
     if (p._w) { g.append('circle').attr('cx', x1).attr('cy', cy).attr('r', 6).attr('fill', 'var(--steel)').attr('stroke', 'var(--paper)').attr('stroke-width', 2); const lr = C.lags.find((l) => l.behavior === p.behavior); if (lr && lr.lag != null) g.append('text').attr('x', (x0 + x1) / 2).attr('y', cy - 7).attr('text-anchor', 'middle').attr('font-size', 10.5).attr('fill', 'var(--ink-2)').text(lr.lag + ' mo'); }
     else { g.append('path').attr('d', `M${x1 + 2},${cy - 5} L${x1 + 9},${cy} L${x1 + 2},${cy + 5}`).attr('fill', 'none').attr('stroke', 'var(--line-2)').attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round'); g.append('text').attr('x', x1 + 14).attr('y', cy).attr('dy', '0.35em').attr('font-size', 11).attr('font-weight', 600).attr('fill', 'var(--alarm)').text(p.next12_label ? p.next12_label + ' in 12 mo' : 'pending'); }
@@ -494,6 +535,7 @@ function drawPipeline() {
       .on('pointerleave', () => tip.hide());
   });
   keepTip(box, svg.node());
+  onVisible(box, 'pipeline', (instant) => { if (instant) return; svg.selectAll('line.pl').attr('x2', function () { return +this.getAttribute('x1'); }).transition().delay((d, i) => i * 60).duration(800).ease(d3.easeCubicOut).attr('x2', function () { return +this.getAttribute('data-x2'); }); });
   legend(document.getElementById('lg-pipeline'), [{ color: 'var(--lab)', shape: 'ring', label: 'first seen in a lab or test' }, { color: 'var(--steel)', label: 'first seen in real use' }]);
   const L = C.lagAgg;
   call.replaceChildren(el('b', null, String(L.n_arrived)), txt(' behaviors first seen in testing have already shown up in real use, a median of '), el('b', null, String(L.median)), txt(' months later, and the gap is closing: behaviors first seen in tests in 2023–24 took about '), el('b', null, String(L.early)), txt(' months to reach real use; those first seen since 2025 took about '), el('b', null, String(L.recent)), txt(', because training and test environments now touch the live internet. '), el('b', null, String(L.n_open)), txt(' are still in the pipeline, including the ones researchers worry about most: resisting shutdown and copying itself out.'));
@@ -562,10 +604,49 @@ function drawDeepDive() {
   document.getElementById('dd-how').replaceChildren(blk('How it happened', 'how'), blk("The AI's role", 'ai_role'), blk('Damage so far', 'damage'), blk('Why it matters', 'why'));
   drawVictims();
   const tl = D.timeline.filter((t) => t.incident_id === d.incident_id).sort((a, b) => a.date.localeCompare(b.date));
+  drawTrack(d, tl);
   document.getElementById('dd-timeline').replaceChildren(...tl.map((t) => { const it = el('div', 'tl-item'); const sp = el('span', null, t.event); if (t.source_url) { const a = el('a', null, 'source'); a.href = t.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; sp.append(a); } it.append(el('b', null, t.date_label || fmtDate(new Date(t.date))), sp); return it; }));
   const sigs = D.signals.filter((x) => x.related_incident === d.signal_tag).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6);
   document.getElementById('dd-signals').replaceChildren(...(sigs.length ? sigs.map((x) => sigRow(x, true)) : [el('p', 'count', 'No official statements tracked yet.')]));
   document.getElementById('dd-impl').replaceChildren(...D.implications.filter((x) => x.incident_id === d.incident_id).map((x) => { const it = el('div', 'impl-item'); it.append(el('div', null, x.text)); if (x.source_url) { const s = el('div', 'src'); const a = el('a', null, x.source_label || 'source'); a.href = x.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; s.append(a); it.append(s); } return it; }));
+}
+function drawTrack(d, tl) {
+  const box = document.getElementById('dd-track'); if (!box || !box.clientWidth) return;
+  let rows = tl.map((t) => ({ ...t, _d: new Date(t.date) })).filter((t) => !isNaN(t._d));
+  if (!rows.length) { box.replaceChildren(); return; }
+  const W = box.clientWidth, H = 124, m = { l: 10, r: 14 };
+  const today = new Date(D.meta.as_of);
+  const hiD = d.status === 'active' ? d3.utcDay.offset(today, 1) : d3.max(rows, (t) => t._d);
+  // focus on the main cluster: drop a long sparse prelude, say how many events it held
+  const sortedD = rows.map((t) => +t._d).sort((a, b) => a - b);
+  const q20 = sortedD[Math.floor(sortedD.length * 0.2)];
+  let earlier = 0;
+  if ((hiD - sortedD[0]) > 3 * (hiD - q20)) { earlier = rows.filter((t) => +t._d < q20).length; rows = rows.filter((t) => +t._d >= q20); }
+  const lo = d3.min(rows, (t) => t._d);
+  const span = Math.max(1, hiD - lo);
+  const x = d3.scaleUtc([d3.utcDay.offset(lo, -Math.max(1, span / 864e5 * 0.03)), d3.utcDay.offset(hiD, Math.max(1, span / 864e5 * 0.03))], [m.l, W - m.r]);
+  const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Events on a dated line');
+  const yl = 76;
+  svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', yl).attr('y2', yl).attr('stroke', 'var(--line-2)').attr('stroke-width', 1.5);
+  const ticks = span > 400 * 864e5 ? d3.utcYear.every(1) : span > 40 * 864e5 ? d3.utcMonth.every(1) : d3.utcDay.every(1);
+  svg.append('g').attr('class', 'axis').attr('transform', `translate(0,${yl + 26})`).call(d3.axisBottom(x).ticks(ticks).tickFormat(span > 400 * 864e5 ? d3.utcFormat('%Y') : span > 40 * 864e5 ? d3.utcFormat('%b') : d3.utcFormat('%b %-d')).tickSize(4).tickSizeOuter(0)).call(axisClean).call((g) => g.select('.domain').remove());
+  if (d.status === 'active') { svg.append('line').attr('x1', x(today)).attr('x2', x(today)).attr('y1', yl - 30).attr('y2', yl + 18).attr('stroke', 'var(--alarm)').attr('stroke-dasharray', '3 3'); svg.append('text').attr('x', x(today) - 5).attr('y', yl - 32).attr('text-anchor', 'end').attr('font-size', 10.5).attr('fill', 'var(--alarm)').text('now'); }
+  // beeswarm-lite: each event takes the first lane where it doesn't touch the previous dot in that lane
+  const laneX = [], OFF = [0, -12, 12, -24, 24, -36, 36];
+  const pts = rows.map((t) => { const px = x(t._d); let lane = 0; while (lane < OFF.length - 1 && laneX[lane] != null && px - laneX[lane] < 11) lane++; laneX[lane] = px; return { t, px, py: yl + OFF[lane] }; });
+  const tip = makeTip(box);
+  const dots = svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx', (p) => p.px).attr('cy', (p) => p.py).attr('r', 5)
+    .attr('fill', (p) => isNew(p.t.date.slice(0, 10)) ? 'var(--alarm)' : 'var(--steel)').attr('stroke', 'var(--panel)').attr('stroke-width', 1.5).style('cursor', 'default')
+    .on('pointermove', (ev, p) => { tip.show([el('div', 't-sec', p.t.date_label || fmtDate(p.t._d)), el('div', null, p.t.event)], p.px * box.clientWidth / W, p.py * box.clientWidth / W); })
+    .on('pointerleave', () => tip.hide());
+  const veryNew = (t) => (Date.parse(D.meta.as_of) - Date.parse(t.date)) < 24 * 3.6e6;
+  pts.filter((p) => veryNew(p.t)).slice(-3).forEach((p) => svg.append('circle').attr('class', 'halo').attr('cx', p.px).attr('cy', p.py).attr('r', 6).attr('fill', 'none').attr('stroke', 'var(--alarm)').attr('stroke-width', 1.5).attr('pointer-events', 'none'));
+  const first = pts[0], last = pts[pts.length - 1];
+  const cap = (p, max) => (p.t.date_label || fmtDate(p.t._d)) + ': ' + (p.t.event.length > max ? p.t.event.slice(0, max - 2).trimEnd() + '…' : p.t.event);
+  svg.append('text').attr('x', m.l).attr('y', 12).attr('font-size', 11).attr('fill', 'var(--ink-3)').text(pts.length + ' events in view' + (earlier ? ', ' + earlier + ' earlier not shown' : '') + '. Hover a dot. First: ' + cap(first, W > 700 ? 56 : 30));
+  svg.append('text').attr('x', m.l).attr('y', 27).attr('font-size', 11).attr('fill', 'var(--ink-2)').text('Latest: ' + cap(last, W > 700 ? 84 : 40));
+  keepTip(box, svg.node());
+  onVisible(box, 'track:' + d.incident_id, (instant) => { if (instant) return; dots.attr('r', 0).transition().delay((p, i) => i * 35).duration(350).ease(d3.easeBackOut).attr('r', 5); });
 }
 function drawVictims() {
   const box = document.getElementById('v-list'), cnt = document.getElementById('v-count');
@@ -657,7 +738,7 @@ function drawList() {
   box.replaceChildren(...rows.map((r) => {
     const row = el('div', 'row' + (ls.open === r.id ? ' open' : '')); row.id = 'row-' + r.id; row.tabIndex = 0;
     const sw = el('div'); const sb = el('div', 'sevbar'); const si = el('i'); si.style.width = r.severity + '%'; si.style.background = tierColor(r.tier); sb.append(si); sw.append(el('div', 'sev', String(r.severity)), sb);
-    const mid = el('div'); mid.append(el('div', 'rtitle', r.title), el('div', 'rmeta', ['#' + rank.get(r.id), showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', ')));
+    const mid = el('div'); const rt_ = el('div', 'rtitle', r.title); if (isNew(r.disclosed || r.date)) rt_.append(el('span', 'new-tag', 'new')); mid.append(rt_, el('div', 'rmeta', ['#' + rank.get(r.id), showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', ')));
     const pill = el('span', 'pill'); const pd = el('i'); pd.style.background = tierColor(r.tier); pill.append(pd, txt(r.tier));
     const det = el('div', 'rdetail'); det.append(...detailNodes(r, false)); const sh = el('div', 'share'); shareRow(sh, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). Warning Shots:` }); det.append(sh);
     row.append(sw, mid, pill, det);
@@ -691,14 +772,15 @@ function drawBrief() {
   const sec = document.getElementById('brief'), b = D.brief;
   if (!b || !b.items || !b.items.length) { sec.style.display = 'none'; return; }
   sec.style.display = '';
-  document.getElementById('brief-stamp').textContent = b.label || '';
+  document.getElementById('brief-stamp').textContent = fmtET(D.meta.as_of);
   document.getElementById('brief-list').replaceChildren(...b.items.map((it) => { const li = el('li', null, it.text); if (it.url) { const a = el('a', null, it.source_label || 'source'); a.href = it.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.append(a); } return li; }));
   shareRow(document.getElementById('brief-share'), { anchor: 'brief', text: b.items.map((it, i) => (i + 1) + '. ' + it.text).join('\n') + '\nWarning Shots:' });
 }
-let quotesOpen = false;
+let quotesOpen = false, leadIdx = 0, leadTimer = null;
 function quoteCard(q, lead) {
   const c = el('div', 'qt' + (lead ? ' lead' : '') + (q.lang === 'ja' ? ' ja' : ''));
   const bq = el('blockquote', null, q.quote); c.append(bq);
+  if (isNew(q.date)) bq.append(el('span', 'new-tag', 'new'));
   if (q.original) c.append(el('div', 'orig', q.original));
   const who = el('div', 'who'); who.append(el('b', null, q.speaker)); if (q.title) who.append(txt(', '), el('span', null, q.title.split(';')[0])); c.append(who);
   const via = q.via ? q.via.split(' (')[0].replace(/ transcribing.*$/, '') : '';
@@ -714,7 +796,14 @@ function drawQuotes() {
   if (!qs.length) { sec.style.display = 'none'; return; }
   sec.style.display = '';
   const n = quotesOpen ? qs.length : Math.min(7, qs.length);
-  box.replaceChildren(...qs.slice(0, n).map((q, i) => quoteCard(q, i === 0)));
+  const leads = qs.slice(0, 8);
+  leadIdx = leadIdx % leads.length;
+  const leadCard = quoteCard(leads[leadIdx], true);
+  const dotsRow = el('div', 'qt-dots'); leads.forEach((q, i) => { const b = el('button'); b.type = 'button'; b.setAttribute('aria-label', 'Quote ' + (i + 1)); if (i === leadIdx) b.classList.add('on'); b.addEventListener('click', () => { leadIdx = i; drawQuotes(); }); dotsRow.append(b); }); leadCard.append(dotsRow);
+  const rest = qs.filter((q) => q !== leads[leadIdx]).slice(0, n - 1);
+  box.replaceChildren(leadCard, ...rest.map((q) => quoteCard(q, false)));
+  clearInterval(leadTimer);
+  if (!reduced && leads.length > 1) { let hover = false; leadCard.addEventListener('pointerenter', () => { hover = true; }); leadCard.addEventListener('pointerleave', () => { hover = false; }); leadTimer = setInterval(() => { if (hover || document.hidden) return; const r = leadCard.getBoundingClientRect(); if (r.bottom < 0 || r.top > window.innerHeight) return; leadCard.classList.add('fading'); setTimeout(() => { leadIdx = (leadIdx + 1) % leads.length; drawQuotes(); }, 460); }, 9000); }
   let more = document.getElementById('quotes-more'); if (!more) { more = el('div'); more.id = 'quotes-more'; box.after(more); }
   more.replaceChildren();
   if (qs.length > 7) { const b = el('button', 'more-btn', quotesOpen ? 'Show fewer' : 'Show all ' + qs.length + ' quotes'); b.type = 'button'; b.addEventListener('click', () => { quotesOpen = !quotesOpen; drawQuotes(); if (!quotesOpen) document.getElementById('words').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }); more.append(b); }
@@ -728,7 +817,7 @@ function embedMode() {
   const host = el('div', 'embed-host wrap');
   if (EMBED === 'timeline') { const p = el('div', 'panel'); const t = el('div', 'panel-title'); t.append(txt('AI has started breaking in on its own: severe incidents went from '), el('b', null, String(C.headline.severe_prior12)), txt(' to '), el('b', null, String(C.headline.severe_last12)), txt(' in a year')); p.append(t, el('div', 'panel-note', 'Every major AI incident since 2023, scored 0–100. The stronger a dot’s color, the more the AI did on its own.')); ids.forEach((id) => { const n = document.getElementById(id); if (n) p.append(n); }); host.append(p); }
   else ids.forEach((id) => { const n = document.getElementById(id); if (n) host.append(n); });
-  const f = el('div', 'embed-foot'); const a = el('a', null, 'Warning Shots, the AI Incident Index'); a.href = SITE; a.target = '_blank'; a.rel = 'noopener'; f.append(a, el('span', null, 'Updated ' + D.meta.as_of_label)); host.append(f);
+  const f = el('div', 'embed-foot'); const a = el('a', null, 'Warning Shots, the AI Incident Index'); a.href = SITE; a.target = '_blank'; a.rel = 'noopener'; f.append(a, el('span', null, 'Updated ' + fmtET(D.meta.as_of))); host.append(f);
   document.querySelector('main').append(host);
   setTimeout(() => drawAll(false), 50);
 }
@@ -747,9 +836,20 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('cli
 
 /* ---------- draw everything */
 function drawAll(first) {
-  drawHeadline(); drawTimeline(first && !EMBED); drawNow(); drawBrief(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawSignals(); drawList(); drawContext();
+  drawHeadline(); drawTimeline(first && !EMBED); drawTicker(); drawNow(); drawBrief(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawSignals(); drawList(); drawContext();
 }
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) drawAll(false); }, 160); });
+async function checkForUpdate() {
+  try {
+    const m = await (await fetch('data/meta.json?t=' + Date.now(), { cache: 'no-store' })).json();
+    if (!D.meta || m.as_of === D.meta.as_of) return;
+    await Promise.all(FILES.concat(OPTIONAL).map((f) => fetch('data/' + f + '.json?t=' + Date.now(), { cache: 'no-store' }).then((r) => r.ok ? r.json() : null).then((j) => { if (j) D[f] = j; }).catch(() => {})));
+    compute(); drawAll(false);
+    const what = (m.changelog && m.changelog[0] && m.changelog[0].text) || 'new data';
+    toastEl.classList.add('wide'); toast('Updated just now: ' + (what.length > 160 ? what.slice(0, 158) + '…' : what)); clearTimeout(toastT); toastT = setTimeout(() => { toastEl.classList.remove('on'); setTimeout(() => toastEl.classList.remove('wide'), 300); }, 9000);
+  } catch (e) { /* offline or mid-deploy: try again next time */ }
+}
+setInterval(checkForUpdate, 5 * 60 * 1000);
 Promise.all(FILES.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => { if (!r.ok) throw new Error(f); return r.json(); }).then((j) => { D[f] = j; }))
   .concat(OPTIONAL.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => r.ok ? r.json() : null).then((j) => { D[f] = j; }).catch(() => { D[f] = null; }))))
   .then(() => { compute(); if (EMBED) { embedMode(); } else { drawAll(true); route(); } })

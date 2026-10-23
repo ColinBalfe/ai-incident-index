@@ -13,6 +13,9 @@ def sev(r):
     return round(0.55 * harm + 0.45 * sig)
 
 as_of = dt.date.fromisoformat(meta['as_of'][:10])
+from zoneinfo import ZoneInfo
+_t = dt.datetime.fromisoformat(meta['as_of']).astimezone(ZoneInfo('America/New_York'))
+et = _t.strftime('%b %-d, %-I:%M %p ET')
 yr = dt.timedelta(days=365)
 def inwin(r, a, b): d = dt.date.fromisoformat(r['date']); return a < d <= b
 last12 = [r for r in inc if inwin(r, as_of - yr, as_of)]
@@ -23,7 +26,7 @@ share = round(100 * sum(r['A'] >= 3 for r in wild_recent) / max(1, len(wild_rece
 n = len(inc)
 title = meta.get('site_name', 'Warning Shots')
 og_title = f"AI has started breaking in on its own — {title}, the AI Incident Index"
-og_desc = f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of this year's real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {meta['as_of_label']}."
+og_desc = f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of this year's real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
 build = time.strftime('%Y%m%d%H%M', time.gmtime())
 tpl = open('index.template.html', encoding='utf-8').read()
 out = (tpl.replace('{{OG_TITLE}}', og_title.replace('"', '&quot;')).replace('{{OG_DESC}}', og_desc.replace('"', '&quot;'))

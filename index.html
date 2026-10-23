@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Warning Shots — The AI Incident Index</title>
-<meta name="description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
+<meta name="description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 1:10 PM ET.">
 <link rel="canonical" href="https://warningshots.ai/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Warning Shots">
 <meta property="og:title" content="AI has started breaking in on its own — Warning Shots, the AI Incident Index">
-<meta property="og:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
+<meta property="og:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 1:10 PM ET.">
 <meta property="og:url" content="https://warningshots.ai/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610231807">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610231818">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI has started breaking in on its own — Warning Shots, the AI Incident Index">
-<meta name="twitter:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610231807">
+<meta name="twitter:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 1:10 PM ET.">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610231818">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F2F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1418" media="(prefers-color-scheme: dark)">
@@ -190,6 +190,37 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 
 .live.clock .v { color: var(--alarm); }
 .hero-count { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+/* ----- ticker */
+.ticker { display: flex; align-items: center; border-top: 1px solid var(--line); background: var(--paper); font-size: 13.5px; overflow: hidden; height: 40px; }
+.ticker-label { display: flex; align-items: center; gap: 8px; padding: 0 14px 0 clamp(16px, 4vw, 40px); font-weight: 600; color: var(--alarm); white-space: nowrap; flex: none; border-right: 1px solid var(--line); height: 100%; }
+.ticker-track { flex: 1; overflow: hidden; height: 100%; position: relative; mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent); }
+.ticker-run { display: inline-flex; gap: 40px; align-items: center; white-space: nowrap; height: 100%; padding-left: 16px; will-change: transform; }
+.ticker-run span { color: var(--ink-2); }
+.ticker-run b { color: var(--ink); font-weight: 600; margin-right: 6px; }
+.ticker-run a { color: inherit; text-decoration: none; }
+.ticker-run a:hover b { text-decoration: underline; }
+.ticker-run i { color: var(--ink-3); font-style: normal; font-size: 12px; margin-left: 6px; }
+@media (prefers-reduced-motion: no-preference) { .ticker-run.go { animation: tick linear infinite; } .ticker:hover .ticker-run.go { animation-play-state: paused; } }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (max-width: 560px) { .ticker-label { padding-left: 16px; } }
+
+/* ----- reveal + new markers */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal .stat .v { transition: none; }
+  .track .pulse-dot { animation: halo 2.4s ease-out infinite; transform-origin: center; }
+  .halo { animation: halo 2.4s ease-out infinite; transform-origin: center; }
+}
+@keyframes halo { 0% { opacity: .9; r: 6; } 100% { opacity: 0; r: 18; } }
+.new-tag { display: inline-block; font-size: 10.5px; font-weight: 600; letter-spacing: .02em; color: var(--paper); background: var(--alarm); border-radius: 999px; padding: 1px 7px; vertical-align: middle; margin-left: 6px; }
+.track { min-height: 124px; margin: 6px 0 12px; }
+.qt.lead { position: relative; }
+.qt.lead blockquote, .qt.lead .who, .qt.lead .meta { transition: opacity .45s ease; }
+.qt.lead.fading blockquote, .qt.lead.fading .who, .qt.lead.fading .meta { opacity: 0; }
+.qt-dots { display: flex; gap: 6px; margin-top: 4px; }
+.qt-dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: var(--line-2); cursor: pointer; }
+.qt-dots button.on { background: var(--alarm); }
+.toast.wide { max-width: min(92vw, 520px); white-space: normal; text-align: center; border-radius: 12px; line-height: 1.4; }
+
 /* ----- brief */
 .brief { margin-top: 18px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); padding: clamp(14px, 2.2vw, 22px); }
 .brief-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
@@ -429,6 +460,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
     <div class="share" id="hero-share"></div>
     <div class="stats" id="hero-stats"></div>
   </section>
+  <div class="ticker dark-scope" id="ticker" aria-label="Latest official statements"><div class="ticker-label"><span class="pulse" aria-hidden="true"></span>Latest</div><div class="ticker-track"><div class="ticker-run" id="ticker-run"></div></div></div>
   </div>
 
   <div class="wrap">
@@ -573,7 +605,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
       <p class="count" id="v-count"></p>
       <div class="vwrap" id="v-list"></div>
       <div class="grid2" style="margin-top:24px">
-        <div><div class="dd-h" style="margin-top:0">Timeline</div><div class="tl scroll" id="dd-timeline"></div></div>
+        <div><div class="dd-h" style="margin-top:0">Timeline</div><div class="chart track" id="dd-track"></div><div class="tl scroll" id="dd-timeline"></div></div>
         <div><div class="dd-h" style="margin-top:0">What officials said</div><div id="dd-signals"></div></div>
       </div>
       <div class="dd-h">What it means next</div>
@@ -656,7 +688,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 
 <script src="assets/vendor/d3.min.js"></script>
 <script src="assets/vendor/topojson-client.min.js"></script>
-<script>window.AII_BUILD = "202610231807"; window.AII_SITE = "https://warningshots.ai/";</script>
-<script src="assets/app.js?v=202610231807"></script>
+<script>window.AII_BUILD = "202610231818"; window.AII_SITE = "https://warningshots.ai/";</script>
+<script src="assets/app.js?v=202610231818"></script>
 </body>
 </html>
