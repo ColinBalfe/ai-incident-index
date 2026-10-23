@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Warning Shots — The AI Incident Index</title>
-<meta name="description" content="134 AI safety incidents since 2023, scored 0–100 and sourced. In 48% of this year's real-world cases the AI acted on its own. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
+<meta name="description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
 <link rel="canonical" href="https://warningshots.ai/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Warning Shots">
-<meta property="og:title" content="Severe AI incidents went from 3 to 12 in a year — Warning Shots, the AI Incident Index">
-<meta property="og:description" content="134 AI safety incidents since 2023, scored 0–100 and sourced. In 48% of this year's real-world cases the AI acted on its own. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
+<meta property="og:title" content="AI has started breaking in on its own — Warning Shots, the AI Incident Index">
+<meta property="og:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
 <meta property="og:url" content="https://warningshots.ai/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610231702">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610231714">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Severe AI incidents went from 3 to 12 in a year — Warning Shots, the AI Incident Index">
-<meta name="twitter:description" content="134 AI safety incidents since 2023, scored 0–100 and sourced. In 48% of this year's real-world cases the AI acted on its own. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610231702">
+<meta name="twitter:title" content="AI has started breaking in on its own — Warning Shots, the AI Incident Index">
+<meta name="twitter:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of the incident unfolding now, 20 dated forecasts, and what officials have said. Updated Oct 23, 2026, 13:10 ET.">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610231714">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F2F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1418" media="(prefers-color-scheme: dark)">
@@ -100,7 +100,9 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .hl { font-size: clamp(1.9rem, 4.6vw, 3.4rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.04; font-variation-settings: 'wdth' 92; max-width: 22ch; text-wrap: balance; }
 .hl b { font-weight: 600; color: var(--alarm); font-variation-settings: 'wdth' 86; }
 .hl .sk { display: inline-block; width: 1.2em; height: .8em; background: var(--line); border-radius: 4px; vertical-align: -0.1em; }
-.sub { color: var(--ink-2); font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 62ch; margin: 14px 0 0; }
+.sub { color: var(--ink-2); font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 66ch; margin: 14px 0 0; }
+.sub b { color: var(--ink); }
+.sub.chart-note { font-size: 13.5px; color: var(--ink-3); margin-top: 22px; max-width: none; }
 .hero-chart { margin-top: 26px; min-height: 380px; position: relative; }
 @media (max-width: 560px) { .hero-chart { min-height: 320px; } }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink-2); margin-top: 10px; align-items: center; }
@@ -409,8 +411,9 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 
 <main id="top">
   <section class="hero wrap">
-    <h1 class="hl" id="headline"><span class="sk">Severe AI incidents went from 3 to 12 in a year.</span></h1>
-    <p class="sub" id="sub">Every major AI safety incident since 2023, scored 0–100, sourced, and projected forward. Each dot is an incident; the stronger its color, the more the AI did on its own.</p>
+    <h1 class="hl" id="headline"><span class="sk">AI has started breaking in on its own.</span></h1>
+    <p class="sub" id="sub"><span class="sk">Severe AI incidents went from 3 to 12 in a year. In half of this year's real-world cases the AI itself did the acting.</span></p>
+    <p class="sub chart-note">Every major AI safety incident since 2023, scored 0–100 and sourced. Each dot is an incident; the stronger its color, the more the AI did on its own.</p>
     <div class="chart hero-chart" id="ch-timeline"></div>
     <div class="legend" id="lg-autonomy"></div>
     <div class="share" id="hero-share"></div>
@@ -641,7 +644,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 
 <script src="assets/vendor/d3.min.js"></script>
 <script src="assets/vendor/topojson-client.min.js"></script>
-<script>window.AII_BUILD = "202610231702"; window.AII_SITE = "https://warningshots.ai/";</script>
-<script src="assets/app.js?v=202610231702"></script>
+<script>window.AII_BUILD = "202610231714"; window.AII_SITE = "https://warningshots.ai/";</script>
+<script src="assets/app.js?v=202610231714"></script>
 </body>
 </html>
