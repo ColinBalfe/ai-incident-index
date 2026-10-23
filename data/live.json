@@ -1,0 +1,50 @@
+[
+{
+"key": "confirmed",
+"value": "0",
+"label": "organizations confirmed breached",
+"detail": "Previdian, SOCRadar, Wordfence and Hunt.io all report no successful remote-code execution; Sophos retracted its one claim.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+"source_label": "The Hacker News, Oct 23"
+},
+{
+"key": "attempts",
+"value": "Millions",
+"label": "exploit attempts seen by Cloudflare",
+"detail": "Tens of thousands within 45 minutes of disclosure, millions by Oct 22.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+"source_label": "The Hacker News, Oct 23"
+},
+{
+"key": "botnet",
+"value": "Mirai",
+"label": "first malware riding on it",
+"detail": "Attackers are trying to enlist exploited servers into a Mirai variant called Potassium for DDoS floods. No infection count has been published.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+"source_label": "The Hacker News, Oct 23"
+},
+{
+"key": "uk",
+"value": "32",
+"label": "UK government digital services confirmed unavailable",
+"detail": "Plus four partially unavailable, mostly precautionary. The NCSC has issued about 50,000 warnings.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+"source_label": "The Hacker News, Oct 23"
+},
+{
+"key": "vulnerable",
+"value": "34.4M",
+"label": "PHP services Censys still assesses as vulnerable",
+"detail": "Across about 3.1 million hosts, as of Oct 23. Versions before 8.2 will never get an official fix.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+"source_label": "The Hacker News, Oct 23"
+},
+{
+"key": "kev",
+"value": "Not listed",
+"label": "on CISA's Known Exploited Vulnerabilities catalog",
+"detail": "No federal emergency directive either. A listing is CISA's formal verdict that exploitation is real.",
+"source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+"source_label": "CISA KEV catalog"
+}
+]

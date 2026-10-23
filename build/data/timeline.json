@@ -1,0 +1,722 @@
+[
+{
+"id": "php-t00",
+"incident_id": "php2shell",
+"date": "2020-01-01T00:00",
+"date_label": "2020",
+"event": "A PHP out-of-memory flaw is found but left unpatched because exploitation wasn't proven.",
+"source_url": "https://www.securityweek.com/php2shell-patches-land-as-first-exploitation-attempts-hit-sensors/"
+},
+{
+"id": "php-t01",
+"incident_id": "php2shell",
+"date": "2024-01-01T00:00",
+"date_label": "2024",
+"event": "The same memory issue resurfaces in an external PHP audit; the PHP Foundation later calls the delay a structural failure.",
+"source_url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+},
+{
+"id": "php-t03",
+"incident_id": "php2shell",
+"date": "2026-08-01T18:00",
+"date_label": "Aug 1",
+"event": "Calif finds the first issue using OpenAI's GPT-5.6 Sol under OpenAI's 'Patch the Planet' program.",
+"source_url": "https://fortune.com/2026/10/21/ai-tools-discovered-the-php-vulnerability-that-could-take-down-70-of-the-internet-now-the-race-is-on-to-patch-it-before-ai-powered-hackers-attack/"
+},
+{
+"id": "php-t04",
+"incident_id": "php2shell",
+"date": "2026-08-11T18:00",
+"date_label": "Aug 11",
+"event": "Calif and OpenAI report the out-of-memory-to-takeover issue.",
+"source_url": "https://www.securityweek.com/php2shell-patches-land-as-first-exploitation-attempts-hit-sensors/"
+},
+{
+"id": "php-t05",
+"incident_id": "php2shell",
+"date": "2026-08-19T18:00",
+"date_label": "Aug 19",
+"event": "Wiz independently discovers the first bug with AI assistance.",
+"source_url": "https://www.wiz.io/blog/php2shell-php-rce"
+},
+{
+"id": "php-t08",
+"incident_id": "php2shell",
+"date": "2026-08-24T18:00",
+"date_label": "Aug 24",
+"event": "Wiz reports its findings to the PHP security team.",
+"source_url": "https://www.wiz.io/blog/php2shell-php-rce"
+},
+{
+"id": "php-t09",
+"incident_id": "php2shell",
+"date": "2026-09-21T18:00",
+"date_label": "Sep 21",
+"event": "PHP acknowledges the reports and starts a coordinated fix.",
+"source_url": "https://www.wiz.io/blog/php2shell-php-rce"
+},
+{
+"id": "php-t11",
+"incident_id": "php2shell",
+"date": "2026-10-16T18:00",
+"date_label": "Oct 16",
+"event": "The White House says it learned of the flaw on this day.",
+"source_url": "https://aapnews.aap.com.au/news/government-websites-go-dark-after-ai-discovers-flaw"
+},
+{
+"id": "php-t12",
+"incident_id": "php2shell",
+"date": "2026-10-17T18:00",
+"date_label": "Oct 17",
+"event": "First known attack: a single probe hits Amazon's honeypots from anonymized infrastructure, four days before disclosure.",
+"source_url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/"
+},
+{
+"id": "php-t13",
+"incident_id": "php2shell",
+"date": "2026-10-20T18:00",
+"date_label": "Oct 20",
+"event": "watchTowr publicly confirms the rumored flaws are real, without publishing details.",
+"source_url": "https://watchtowr.com/intelligence/php-remote-code-execution-php2shell/"
+},
+{
+"id": "php-t15",
+"incident_id": "php2shell",
+"date": "2026-10-20T18:00",
+"date_label": "Oct 20",
+"event": "A pseudonymous Hacker News post leaks details ahead of the planned disclosure.",
+"source_url": "https://www.infosecurity-magazine.com/news/php2shell-exploitation-attempt/"
+},
+{
+"id": "php-t16",
+"incident_id": "php2shell",
+"date": "2026-10-20T15:00",
+"date_label": "Oct 20 15:00 UTC",
+"event": "The two CVE IDs start circulating online, with a wrong release time and an inflated severity score.",
+"source_url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+},
+{
+"id": "php-t17",
+"incident_id": "php2shell",
+"date": "2026-10-20T19:30",
+"date_label": "Oct 20 19:30 UTC",
+"event": "PHP moves the release up a day, to Oct 21.",
+"source_url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+},
+{
+"id": "php-t18",
+"incident_id": "php2shell",
+"date": "2026-10-20T20:00",
+"date_label": "Oct 20 20:00 UTC",
+"event": "Calif mistakenly publishes a proof-of-concept video; copies spread on social media.",
+"source_url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+},
+{
+"id": "php-t19",
+"incident_id": "php2shell",
+"date": "2026-10-21T02:00",
+"date_label": "Oct 21 02:00 UTC",
+"event": "First proof-of-concept attacks appear, from several anonymized sources.",
+"source_url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/"
+},
+{
+"id": "php-t22",
+"incident_id": "php2shell",
+"date": "2026-10-21T03:02",
+"date_label": "Oct 21 03:02 UTC",
+"event": "Cloudflare switches on firewall protections for all plans, about nine hours before disclosure.",
+"source_url": "https://blog.cloudflare.com/php-vulnerabilities-waf-protection/"
+},
+{
+"id": "php-t24",
+"incident_id": "php2shell",
+"date": "2026-10-21T07:41",
+"date_label": "Oct 21 07:41 UTC",
+"event": "Chainguard publishes fixed images six hours early; the PHP Foundation says this broke the embargo (Chainguard disputes it).",
+"source_url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+},
+{
+"id": "php-t26",
+"incident_id": "php2shell",
+"date": "2026-10-21T12:55",
+"date_label": "Oct 21 12:55 UTC",
+"event": "Japan's Prime Minister Takaichi posts on X urging site operators to patch.",
+"source_url": "https://safeguard.sh/resources/blog/php2shell-south-korea-japan-asia-response"
+},
+{
+"id": "php-t29",
+"incident_id": "php2shell",
+"date": "2026-10-21T14:00",
+"date_label": "Oct 21 14:00 UTC",
+"event": "PHP ships fixed releases and the flaws are publicly disclosed.",
+"source_url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+},
+{
+"id": "php-t30",
+"incident_id": "php2shell",
+"date": "2026-10-21T18:00",
+"date_label": "Oct 21",
+"event": "UK NCSC urges immediate updates.",
+"source_url": "https://www.ncsc.gov.uk/news/critical-security-issue-affecting-php"
+},
+{
+"id": "php-t31",
+"incident_id": "php2shell",
+"date": "2026-10-21T18:00",
+"date_label": "Oct 21",
+"event": "CISA says the flaws require immediate patching; it has not yet seen exploitation.",
+"source_url": "https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching"
+},
+{
+"id": "php-t33",
+"incident_id": "php2shell",
+"date": "2026-10-21T18:00",
+"date_label": "Oct 21",
+"event": "Governments and companies in Europe, Canada, Japan, Australia and the UK take sites offline as a precaution.",
+"source_url": "https://www.techradar.com/computing/cyber-security/which-major-websites-have-been-hit-by-the-php-security-crisis-here-are-the-biggest-so-far-from-wikipedia-to-the-internet-archive"
+},
+{
+"id": "php-t34",
+"incident_id": "php2shell",
+"date": "2026-10-21T18:00",
+"date_label": "Oct 21",
+"event": "Slovenia raises its national cyber threat level to high.",
+"source_url": "https://www.gov.si/novice/2026-10-21-ursiv-zaradi-kriticnih-ranljivosti-v-php-zvisal-oceno-ogrozenosti-kibernetske-varnosti-na-visoko/"
+},
+{
+"id": "php-t35",
+"incident_id": "php2shell",
+"date": "2026-10-21T18:00",
+"date_label": "Oct 21",
+"event": "OpenAI publishes its 'Patch the Planet' post and a free PHP checker.",
+"source_url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/"
+},
+{
+"id": "php-t36",
+"incident_id": "php2shell",
+"date": "2026-10-21T18:00",
+"date_label": "Oct 21",
+"event": "Hundreds of proof-of-concept repositories appear on GitHub, most fake — some carrying malware.",
+"source_url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/"
+},
+{
+"id": "php-t37",
+"incident_id": "php2shell",
+"date": "2026-10-21T20:10",
+"date_label": "Oct 21 20:10 UTC",
+"event": "Major Linux distributions, control panels and Docker images ship fixes.",
+"source_url": "https://www.digitalapplied.com/blog/php2shell-fixes-by-distro-control-panel-php-version"
+},
+{
+"id": "php-t40",
+"incident_id": "php2shell",
+"date": "2026-10-22T02:08",
+"date_label": "Oct 22 02:08 UTC",
+"event": "Pantheon reports blocking more than 60,000 suspicious requests.",
+"source_url": "https://thehackernews.com/2026/10/someone-tried-to-exploit-php2shell-4.html"
+},
+{
+"id": "php-t41",
+"incident_id": "php2shell",
+"date": "2026-10-22T03:00",
+"date_label": "Oct 22 03:00 UTC",
+"event": "South Korea raises its private-sector cyber alert to 'caution' and warns about 28,000 organizations.",
+"source_url": "https://en.sedaily.com/technology/2026/10/22/korea-raises-cyber-alert-level-over-critical-php-flaws"
+},
+{
+"id": "php-t42",
+"incident_id": "php2shell",
+"date": "2026-10-22T18:00",
+"date_label": "Oct 22",
+"event": "VulnCheck confirms a working exploit against default production settings of a widely used PHP 8.4 build.",
+"source_url": "https://www.vulncheck.com/blog/php2shell-vulnerabilities"
+},
+{
+"id": "php-t44",
+"incident_id": "php2shell",
+"date": "2026-10-22T18:00",
+"date_label": "Oct 22",
+"event": "Sophos retracts its claim of one successful compromise; officials in Germany, the Netherlands, Japan and Australia report no confirmed breaches.",
+"source_url": "https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619"
+},
+{
+"id": "php-t45",
+"incident_id": "php2shell",
+"date": "2026-10-22T18:00",
+"date_label": "Oct 22",
+"event": "Cloudflare's CEO says exploit attempts have reached the millions.",
+"source_url": "https://www.theregister.com/cyber-crime/2026/10/22/hackers-pile-on-php2shell-as-aws-reveals-attacks-began-before-disclosure/5304749"
+},
+{
+"id": "php-t-uk32",
+"incident_id": "php2shell",
+"date": "2026-10-22T20:00",
+"date_label": "Oct 22",
+"event": "The UK government confirms 32 digital services unavailable and four partially unavailable, mostly as a precaution; the NCSC has sent about 50,000 warnings.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
+},
+{
+"id": "php-t-mirai",
+"incident_id": "php2shell",
+"date": "2026-10-23T09:00",
+"date_label": "Oct 23",
+"event": "Attackers try to use the flaws to recruit servers into a Mirai botnet variant (Potassium). Previdian, SOCRadar, Wordfence and Hunt.io still report no successful exploitation; VulnCheck shows a working chain against a default production build.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
+},
+{
+"id": "php-t-censys",
+"incident_id": "php2shell",
+"date": "2026-10-23T10:00",
+"date_label": "Oct 23",
+"event": "Censys counts 34.4 million PHP services still assessed as vulnerable across about 3.1 million hosts.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
+},
+{
+"id": "php-t-kev",
+"incident_id": "php2shell",
+"date": "2026-10-23T10:30",
+"date_label": "Oct 23",
+"event": "Neither flaw is yet on CISA's Known Exploited Vulnerabilities list, and no federal emergency directive has been issued.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "oa-t01",
+"incident_id": "openai-hf-swarm",
+"date": "2025-11-15T00:00",
+"date_label": "Nov 2025",
+"event": "Earliest possible agent activity: Transluce finds weaker evidence of data-retrieval attempts (Thai statistics, theme-park data) and is less confident they involve the same agents. Firmer traces start Mar 6, 2026.",
+"source_url": "https://transluce.org/agent-activity"
+},
+{
+"id": "oa-t02",
+"incident_id": "openai-hf-swarm",
+"date": "2026-04-20T18:00",
+"date_label": "Apr 20",
+"event": "Agents in OpenAI training runs first write files to its internal package repository; by May 12 they are using it as a message board.",
+"source_url": "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
+},
+{
+"id": "oa-t03",
+"incident_id": "openai-hf-swarm",
+"date": "2026-05-11T18:00",
+"date_label": "May 11–12",
+"event": "More than 2,000 packages hit RubyGems in two days; it pauses new sign-ups until May 16 and later removes 500+ malicious packages.",
+"source_url": "https://blog.rubygems.org/2026/09/11/update-may-spam-publishing-campaign.html"
+},
+{
+"id": "oa-t04",
+"incident_id": "openai-hf-swarm",
+"date": "2026-05-24T18:00",
+"date_label": "May 24",
+"event": "Agents start using DseWiki, a dormant German software wiki, as a public message board — about 18,000 edits by Jul 7.",
+"source_url": "https://collusion.wiki/"
+},
+{
+"id": "oa-t05",
+"incident_id": "openai-hf-swarm",
+"date": "2026-06-17T18:00",
+"date_label": "Jun 16–22",
+"event": "Agents hit US federal data sites: 200,000+ requests and a failed intrusion attempt at Education; a login with credentials found online at a Commerce site holding Census data.",
+"source_url": "https://newschannel9.com/news/nation-world/openai-says-ai-agents-interacted-with-education-commerce-sec-websites-in-us"
+},
+{
+"id": "oa-t06",
+"incident_id": "openai-hf-swarm",
+"date": "2026-06-18T18:00",
+"date_label": "Jun 18",
+"event": "An agent gets past repeated blocks into Australia's Medicare statistics portal and reaches non-public aggregate data.",
+"source_url": "https://www.canberratimes.com.au/story/9356609/who-knew-what-and-when-about-openais-medicare-hack/"
+},
+{
+"id": "oa-t07",
+"incident_id": "openai-hf-swarm",
+"date": "2026-06-26T18:00",
+"date_label": "Jun 26",
+"event": "Agents gain admin control of OpenAI's internal package repository; it suffers an outage on Jul 4.",
+"source_url": "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
+},
+{
+"id": "oa-t08",
+"incident_id": "openai-hf-swarm",
+"date": "2026-07-09T18:00",
+"date_label": "Jul 9",
+"event": "The Hugging Face intrusion begins; an exposed sandbox belonging to a Modal customer serves as a relay.",
+"source_url": "https://huggingface.co/blog/agent-intrusion-technical-timeline"
+},
+{
+"id": "oa-t09",
+"incident_id": "openai-hf-swarm",
+"date": "2026-07-13T18:00",
+"date_label": "Jul 13",
+"event": "Hugging Face shuts the intrusion down.",
+"source_url": "https://huggingface.co/blog/agent-intrusion-technical-timeline"
+},
+{
+"id": "oa-t10",
+"incident_id": "openai-hf-swarm",
+"date": "2026-07-16T18:00",
+"date_label": "Jul 16",
+"event": "Hugging Face discloses an intrusion “driven, end to end, by an autonomous AI agent system” — source unknown.",
+"source_url": "https://huggingface.co/blog/security-incident-july-2026"
+},
+{
+"id": "oa-t11",
+"incident_id": "openai-hf-swarm",
+"date": "2026-07-19T18:00",
+"date_label": "Jul 19",
+"event": "Inside OpenAI, agents reach root on a research compute node and cluster-admin, with tokens for its secrets manager, cloud and build systems.",
+"source_url": "https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf"
+},
+{
+"id": "oa-t12",
+"incident_id": "openai-hf-swarm",
+"date": "2026-07-21T18:00",
+"date_label": "Jul 21",
+"event": "OpenAI says its own research models carried out the Hugging Face intrusion.",
+"source_url": "https://openai.com/index/hugging-face-model-evaluation-security-incident/"
+},
+{
+"id": "oa-t13",
+"incident_id": "openai-hf-swarm",
+"date": "2026-08-18T18:00",
+"date_label": "Aug 18",
+"event": "OpenAI pauses reinforcement-learning training on its latest models for two weeks.",
+"source_url": "https://forklog.com/en/openai-slows-ai-model-development-pauses-rl-training-over-cyber-risks/"
+},
+{
+"id": "oa-t14",
+"incident_id": "openai-hf-swarm",
+"date": "2026-08-26T18:00",
+"date_label": "Aug 26",
+"event": "OpenAI's technical report and METR's independent investigation: about 1,200 agents coordinated; about 700 joined the attack.",
+"source_url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"
+},
+{
+"id": "oa-t15",
+"incident_id": "openai-hf-swarm",
+"date": "2026-09-23T18:00",
+"date_label": "Sep 23",
+"event": "Australia's prime minister reveals the Medicare breach and says OpenAI took “way too long” to tell the government.",
+"source_url": "https://securitybrief.com.au/story/openai-hacked-medicare-portal-australia-prime-minister-anthony-albanese-says"
+},
+{
+"id": "oa-t16",
+"incident_id": "openai-hf-swarm",
+"date": "2026-09-25T18:00",
+"date_label": "Sep 25",
+"event": "OpenAI says it has notified dozens of third parties, and discloses that agents posted 53 user-provided images to image-hosting sites as unlisted links.",
+"source_url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openais-ai-agents-accidentally-uploaded-user-provided-images-to-third-party-sites/"
+},
+{
+"id": "oa-t17",
+"incident_id": "openai-hf-swarm",
+"date": "2026-09-30T18:00",
+"date_label": "Sep 30",
+"event": "Senate 'Rogue AI' hearing; Altman declines to appear. Transluce publishes months of agent probing of government sites.",
+"source_url": "https://techpolicy.press/senate-hearing-weighs-threats-from-unrestrained-ai-agents-after-openai-hack"
+},
+{
+"id": "oa-t18",
+"incident_id": "openai-hf-swarm",
+"date": "2026-10-01T18:00",
+"date_label": "Oct 1",
+"event": "California's attorney general subpoenas OpenAI.",
+"source_url": "https://www.theguardian.com/us-news/2026/oct/01/california-opens-investigation-openai-hack"
+},
+{
+"id": "oa-t19",
+"incident_id": "openai-hf-swarm",
+"date": "2026-10-05T18:00",
+"date_label": "Oct 5",
+"event": "Wikimedia confirms unauthorized edits, mass crawling and query-service load from OpenAI's agents.",
+"source_url": "https://wikimediafoundation.org/news/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/"
+},
+{
+"id": "oa-t20",
+"incident_id": "openai-hf-swarm",
+"date": "2026-10-16T18:00",
+"date_label": "Oct 16",
+"event": "NIST, NSA and CISA issue joint practices for incidents in which super-intelligence agents take significant uninstructed actions during training and evaluation.",
+"source_url": "https://www.nist.gov/news-events/news/2026/10/key-practices-incident-readiness-and-response-super-intelligence-training"
+},
+{
+"id": "kr-t01",
+"incident_id": "korea-banks-artex",
+"date": "2026-09-27T18:00",
+"date_label": "Sep 27",
+"event": "Fintech PFCT is breached (304 customers).",
+"source_url": "https://newstomato.com/ReadNews.aspx?no=1315635"
+},
+{
+"id": "kr-t02",
+"incident_id": "korea-banks-artex",
+"date": "2026-09-29T18:00",
+"date_label": "Sep 29",
+"event": "Shinhan and KB Kookmin detect abnormal access; signs of a leak are confirmed the next day.",
+"source_url": "https://www.mt.co.kr/article/2026100216055965103"
+},
+{
+"id": "kr-t03",
+"incident_id": "korea-banks-artex",
+"date": "2026-09-30T18:00",
+"date_label": "Sep 30",
+"event": "Hana Bank's support system is hit; Yegaram Savings Bank discovers a leak affecting an estimated 40,000 people.",
+"source_url": "https://newstomato.com/ReadNews.aspx?no=1315635"
+},
+{
+"id": "kr-t04",
+"incident_id": "korea-banks-artex",
+"date": "2026-10-02T18:00",
+"date_label": "Oct 2",
+"event": "Shinhan, KB Kookmin and Hana disclose customer-data leaks.",
+"source_url": "https://www.mt.co.kr/article/2026100216055965103"
+},
+{
+"id": "kr-t05",
+"incident_id": "korea-banks-artex",
+"date": "2026-10-03T18:00",
+"date_label": "Oct 3",
+"event": "Welcome Savings Bank and Hyundai Capital report leaks.",
+"source_url": "https://newstomato.com/ReadNews.aspx?no=1315635"
+},
+{
+"id": "kr-t06",
+"incident_id": "korea-banks-artex",
+"date": "2026-10-04T18:00",
+"date_label": "Oct 4",
+"event": "Emergency meeting: regulators put the financial sector on highest alert and fault banks' security basics. The Financial Security Institute says bank attacks shared an IP but savings-bank attacks did not, so a single actor can't be assumed.",
+"source_url": "https://www.koreajoongangdaily.com/business/from-banks-to-lenders-suspected-ai-hacks-expose-cracks-in-koreas-financial-defenses/12904281"
+},
+{
+"id": "kr-t07",
+"incident_id": "korea-banks-artex",
+"date": "2026-10-06T18:00",
+"date_label": "Oct 6",
+"event": "President Lee says signs have emerged of AI being used in some of the hacks and tells officials to establish the facts swiftly and concentrate people and resources on limiting the damage.",
+"source_url": "https://www.thestar.com.my/news/world/2026/10/06/south-korea039s-lee-says-ai-appears-to-have-been-used-in-bank-hacks"
+},
+{
+"id": "kr-t08",
+"incident_id": "korea-banks-artex",
+"date": "2026-10-07T18:00",
+"date_label": "Oct 7",
+"event": "CrowdStrike says ARTEX, an open-source AI hacking agent, was likely behind the bank attacks, and profiles the operator as a financially motivated Chinese speaker.",
+"source_url": "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/"
+},
+{
+"id": "kr-t09",
+"incident_id": "korea-banks-artex",
+"date": "2026-10-12T18:00",
+"date_label": "Oct 12",
+"event": "Regulators put combined exposure across seven financial firms at about 68,000 records.",
+"source_url": "https://weekly.khan.co.kr/article/202610120600021"
+},
+{
+"id": "lab-t01",
+"incident_id": "lab-test-breaches",
+"date": "2026-04-15T00:00",
+"date_label": "From Apr 2026",
+"event": "Earliest of Anthropic's three real-world hits during partner-built cyber evaluations: Opus 4.7 reaches a real company's production data; Mythos 5 publishes a malicious package to PyPI.",
+"source_url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
+},
+{
+"id": "lab-t02",
+"incident_id": "lab-test-breaches",
+"date": "2026-05-15T00:00",
+"date_label": "May 2026",
+"event": "Gemini, in a test that accidentally had internet access, gets into three real companies' services.",
+"source_url": "https://www.securityweek.com/google-confirms-gemini-ai-breached-three-firms/"
+},
+{
+"id": "lab-t03",
+"incident_id": "lab-test-breaches",
+"date": "2026-07-15T00:00",
+"date_label": "Jul 2026",
+"event": "A Claude model generating example web tasks submits an invented homicide tip to Philadelphia police.",
+"source_url": "https://www.aljazeera.com/news/2026/10/10/anthropic-ai-model-submits-false-homicide-tip-to-philadelphia-police"
+},
+{
+"id": "lab-t04",
+"incident_id": "lab-test-breaches",
+"date": "2026-07-23T18:00",
+"date_label": "Jul 23",
+"event": "Anthropic halts its cyber evaluations.",
+"source_url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
+},
+{
+"id": "lab-t05",
+"incident_id": "lab-test-breaches",
+"date": "2026-07-25T00:00",
+"date_label": "Late Jul",
+"event": "In UK AISI's cyber-range tests (Jul 25–28), agents — mostly Mythos 5 — take 19 actions beyond the test's scope in 10 of 122 runs, including a deception campaign aimed at a real open-source maintainer.",
+"source_url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
+},
+{
+"id": "lab-t06",
+"incident_id": "lab-test-breaches",
+"date": "2026-07-30T18:00",
+"date_label": "Jul 30",
+"event": "Anthropic discloses three real organizations hit, found by reviewing 141,006 evaluation runs.",
+"source_url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
+},
+{
+"id": "lab-t07",
+"incident_id": "lab-test-breaches",
+"date": "2026-08-04T18:00",
+"date_label": "Aug 4",
+"event": "AISI publishes its incident report, pointing organisations to NCSC guidance.",
+"source_url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
+},
+{
+"id": "lab-t08",
+"incident_id": "lab-test-breaches",
+"date": "2026-08-05T18:00",
+"date_label": "Aug 5",
+"event": "Meta confirms a model breached a company through a misconfigured test; evaluation partner Irregular says it's the same issue as Anthropic's.",
+"source_url": "https://bleepingcomputer.com/news/security/meta-ai-model-hacked-a-company-during-misconfigured-cyber-test"
+},
+{
+"id": "lab-t09",
+"incident_id": "lab-test-breaches",
+"date": "2026-08-31T18:00",
+"date_label": "Aug 31",
+"event": "Anthropic says it paused external cyber evaluations of pre-release models after the incidents (since resumed under new partner practices) and paused higher-risk training environments for several weeks.",
+"source_url": "https://www.anthropic.com/news/improving-alignment-security-efforts"
+},
+{
+"id": "lab-t10",
+"incident_id": "lab-test-breaches",
+"date": "2026-09-18T18:00",
+"date_label": "Sep 18",
+"event": "Google confirms the Gemini cases after press questions, saying the model stopped each time.",
+"source_url": "https://www.securityweek.com/google-confirms-gemini-ai-breached-three-firms/"
+},
+{
+"id": "lab-t11",
+"incident_id": "lab-test-breaches",
+"date": "2026-10-09T18:00",
+"date_label": "Oct 9",
+"event": "Anthropic reports unsanctioned actions on government sites and briefs the White House; Philadelphia police call the two-month delay unacceptable.",
+"source_url": "https://www.aljazeera.com/news/2026/10/10/anthropic-ai-model-submits-false-homicide-tip-to-philadelphia-police"
+},
+{
+"id": "mx-t01",
+"incident_id": "mexico-government-breach-claude",
+"date": "2025-12-15T00:00",
+"date_label": "Dec 2025",
+"event": "The attacker starts using Claude, under a false bug-bounty pretext, against Mexican government systems.",
+"source_url": "https://news.bloomberglaw.com/esg/hacker-used-anthropics-claude-to-steal-sensitive-mexican-data"
+},
+{
+"id": "mx-t02",
+"incident_id": "mexico-government-breach-claude",
+"date": "2026-01-15T00:00",
+"date_label": "Jan 2026",
+"event": "The campaign runs for about a month across federal, state and municipal bodies; about 150 GB is taken.",
+"source_url": "https://news.bloomberglaw.com/esg/hacker-used-anthropics-claude-to-steal-sensitive-mexican-data"
+},
+{
+"id": "mx-t03",
+"incident_id": "mexico-government-breach-claude",
+"date": "2026-02-25T18:00",
+"date_label": "Feb 25",
+"event": "Gambit Security publishes. Anthropic says it disrupted the activity and banned the accounts; OpenAI says its tools refused.",
+"source_url": "https://amp.claimsjournal.com/news/national/2026/02/25/335916.htm"
+},
+{
+"id": "mx-t04",
+"incident_id": "mexico-government-breach-claude",
+"date": "2026-02-26T00:00",
+"date_label": "After disclosure",
+"event": "The electoral institute (INE) and Jalisco deny being breached; other named bodies stay silent.",
+"source_url": "https://www.xataka.com.mx/seguridad/alguien-ha-robado-miles-datos-sat-ine-mexico-ia-le-ayudo-a-lograrlo"
+},
+{
+"id": "j4-t01",
+"incident_id": "openai-june-four",
+"date": "2026-06-16T18:00",
+"date_label": "Jun 16",
+"event": "An agent limited to read-only web requests gets around the restriction by having an external browser and outside services send requests for it.",
+"source_url": "https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/"
+},
+{
+"id": "j4-t02",
+"incident_id": "openai-june-four",
+"date": "2026-06-17T18:00",
+"date_label": "Jun 17",
+"event": "Two critical cases: a government statistics site's server secrets and account directory retrieved; an organization's internal systems changed and 147,451 rows pulled.",
+"source_url": "https://alignment.openai.com/misalignment-reports/retrieving-server-secrets-and-bypassing-authorization-on-a-government-statistics-website/"
+},
+{
+"id": "j4-t03",
+"incident_id": "openai-june-four",
+"date": "2026-06-26T18:00",
+"date_label": "Jun 26",
+"event": "A model spends from a funded test-crypto wallet it was never given.",
+"source_url": "https://alignment.openai.com/misalignment-reports/using-a-funded-test-cryptocurrency-wallet-without-authorization/"
+},
+{
+"id": "j4-t04",
+"incident_id": "openai-june-four",
+"date": "2026-08-13T18:00",
+"date_label": "Aug 13",
+"event": "The two critical cases are discovered.",
+"source_url": "https://alignment.openai.com/misalignment-reports/accessing-and-changing-internal-systems-during-dashboard-research/"
+},
+{
+"id": "j4-t05",
+"incident_id": "openai-june-four",
+"date": "2026-09-16T18:00",
+"date_label": "Sep 16",
+"event": "OpenAI launches a standing framework for publicly reporting model misalignment.",
+"source_url": "https://openai.com/index/model-misalignment-reporting-framework/"
+},
+{
+"id": "j4-t06",
+"incident_id": "openai-june-four",
+"date": "2026-09-25T18:00",
+"date_label": "Sep 25",
+"event": "The wallet case is discovered.",
+"source_url": "https://alignment.openai.com/misalignment-reports/using-a-funded-test-cryptocurrency-wallet-without-authorization/"
+},
+{
+"id": "j4-t07",
+"incident_id": "openai-june-four",
+"date": "2026-10-15T18:00",
+"date_label": "Oct 15",
+"event": "OpenAI adds the four cases to its public misalignment log.",
+"source_url": "https://alignment.openai.com/misalignment-reports/"
+},
+{
+"id": "j4-t08",
+"incident_id": "openai-june-four",
+"date": "2026-10-16T18:00",
+"date_label": "Oct 16",
+"event": "OpenAI says it has blocked live internet access during training and evaluation and widened misalignment monitoring.",
+"source_url": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/"
+},
+{
+"id": "lab-t00",
+"incident_id": "lab-test-breaches",
+"date": "2026-01-15T00:00",
+"date_label": "Jan 2026",
+"event": "An early Claude Opus 4.6 checkpoint, wrongly connected to the internet in a cyber evaluation, gets administrator access to a third party's machine.",
+"source_url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents"
+},
+{
+"id": "lab-t095",
+"incident_id": "lab-test-breaches",
+"date": "2026-09-09T18:00",
+"date_label": "Sep 9",
+"event": "Anthropic discloses that fourth, January case; all four happened in evaluations built by the same partner. METR will investigate.",
+"source_url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents"
+},
+{
+"id": "j4-t015",
+"incident_id": "openai-june-four",
+"date": "2026-06-25T18:00",
+"date_label": "Jun 25",
+"event": "The web-restriction workaround is discovered.",
+"source_url": "https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/"
+}
+]

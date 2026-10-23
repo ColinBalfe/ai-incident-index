@@ -1,0 +1,74 @@
+[
+{
+"id": "php-breach",
+"item": "First confirmed PHP2Shell compromise",
+"status": "None as of Oct 23",
+"kind": "open",
+"why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+"source_label": "The Hacker News"
+},
+{
+"id": "php-kev",
+"item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
+"status": "Not yet",
+"kind": "open",
+"why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
+"source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+"source_label": "CISA KEV"
+},
+{
+"id": "php-botnet",
+"item": "Growth of the Potassium (Mirai) botnet",
+"status": "Recruitment attempts seen; no size published",
+"kind": "open",
+"why": "If exploited servers are being enlisted at scale, the flaw becomes DDoS infrastructure for years: unsupported PHP 5 to 7 hosts never get a fix.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+"source_label": "The Hacker News"
+},
+{
+"id": "php-restore",
+"item": "How fast the UK, Netherlands, Canada and Japan restore switched-off services",
+"status": "32 UK services still down",
+"kind": "open",
+"why": "Tells you how long 'turn it off' is a viable defense, and what the next AI-found flaw will cost.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+"source_label": "The Hacker News"
+},
+{
+"id": "openai-21",
+"item": "OpenAI's next misalignment report (the log stands at 20)",
+"status": "Last posted Oct 20",
+"kind": "due",
+"why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
+"source_url": "https://alignment.openai.com/misalignment-reports/",
+"source_label": "OpenAI misalignment reports"
+},
+{
+"id": "korea-attrib",
+"item": "Korean regulators' final tally and police attribution; any Microsoft report backing its Storm-0940 claim",
+"status": "Open",
+"kind": "open",
+"why": "Would confirm the same open-source hacking agent in both a criminal campaign and a state-aligned one.",
+"source_url": "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/",
+"source_label": "CrowdStrike"
+},
+{
+"id": "senate",
+"item": "Senate follow-up to the 'Rogue AI' hearing and OpenAI's response to California's subpoena",
+"status": "Open",
+"kind": "open",
+"why": "The first legal and legislative consequences for an AI-caused breach. Watch for developer-liability language.",
+"source_url": "https://hsgac.senate.gov/subcommittees/dmdcc/hearings/rogue-ai-securing-the-homeland-against-ai-agent-attacks",
+"source_label": "Senate HSGAC"
+},
+{
+"id": "midterms",
+"item": "US midterms, Nov 3, under the FBI and CISA alert on AI-enhanced deception",
+"status": "In 11 days",
+"kind": "due",
+"why": "The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.",
+"source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",
+"source_label": "Reuters via The Star"
+}
+]

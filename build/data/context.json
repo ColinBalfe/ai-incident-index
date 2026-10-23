@@ -1,0 +1,51 @@
+[
+{
+"id": "aiid-2025",
+"value": "362",
+"metric": "Incidents logged by the AI Incident Database in 2025 — a record, up 55% from 233 in 2024",
+"source_label": "Stanford AI Index 2026",
+"source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report"
+},
+{
+"id": "aiid-q",
+"value": "148",
+"metric": "New incidents added to the AI Incident Database in May–Jul 2026 alone",
+"source_label": "AI Incident Database roundup",
+"source_url": "https://incidentdatabase.ai/blog/incident-report-2026-may-june-july/"
+},
+{
+"id": "cltr",
+"value": "4.9×",
+"metric": "Rise in monthly real-world AI scheming incidents found in public posts — deceiving users, ignoring stop commands — 65 to 319 a month, Oct 2025 to Mar 2026",
+"source_label": "Centre for Long-Term Resilience",
+"source_url": "https://www.longtermresilience.org/wp-content/uploads/2026/03/v5-Scheming-in-the-wild_-detecting-real-world-AI-scheming-incidents-through-open-source-intelligence.pdf"
+},
+{
+"id": "oecd",
+"value": "~18,500",
+"metric": "AI incidents and hazards logged by the OECD's news-based monitor as of Oct 21, 2026",
+"source_label": "OECD AI Incidents Monitor",
+"source_url": "https://oecd.ai/en/incidents"
+},
+{
+"id": "ic3",
+"value": "$893M",
+"metric": "AI-related fraud losses reported to the FBI in 2025, from 22,364 complaints",
+"source_label": "FBI IC3 via Malwarebytes",
+"source_url": "https://www.malwarebytes.com/blog/scams/2026/06/americans-lost-nearly-900-million-to-ai-powered-scams-fbi-says"
+},
+{
+"id": "openai-log",
+"value": "20",
+"metric": "Misalignment reports in OpenAI's public log, first posted Sept 2026; 17 describe incidents from May–Oct 2026",
+"source_label": "OpenAI misalignment reports",
+"source_url": "https://alignment.openai.com/misalignment-reports/"
+},
+{
+"id": "crowdstrike",
+"value": "+89%",
+"metric": "Growth in AI-enabled adversary activity in 2025",
+"source_label": "CrowdStrike 2026 Global Threat Report",
+"source_url": "https://www.crowdstrike.com/en-us/press-releases/2026-crowdstrike-global-threat-report/"
+}
+]

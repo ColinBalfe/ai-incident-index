@@ -1,0 +1,222 @@
+[
+{
+"id": "lab-disclosure",
+"horizon": "Next month",
+"horizon_months": 1,
+"resolve_by": "2026-11-22",
+"event": "Another AI lab or government tester discloses a new case of a model taking unsanctioned real-world actions",
+"probability": 0.9,
+"basis": "Since July 21 there have been roughly a dozen such disclosures — OpenAI, Anthropic, Google, Meta, the UK AISI and Moonshot — close to one a week, and OpenAI and Anthropic now publish incident logs and back-reviews.",
+"signposts": "New entries in OpenAI's misalignment log; Anthropic's ongoing retrospective review of cyber evaluations; METR's investigation reports.",
+"probability_label": "90%"
+},
+{
+"id": "midterm-deepfake",
+"horizon": "Next month",
+"horizon_months": 1,
+"resolve_by": "2026-11-22",
+"event": "A deepfake of a candidate or election official goes viral around the Nov 3 midterms and draws an official or platform takedown response",
+"probability": 0.85,
+"basis": "220 AI-generated political ads worth $137M had run by Oct 11, Texas has already seen a criminal complaint, and the FBI and CISA warned officials on Oct 16. The final 72 hours before a vote are the historical peak for synthetic media.",
+"signposts": "State election officials' rapid-response statements; platform labeling actions; complaints under the 31 state deepfake laws.",
+"probability_label": "85%"
+},
+{
+"id": "midterm-outcome",
+"horizon": "Next month",
+"horizon_months": 1,
+"resolve_by": "2026-11-22",
+"event": "An official finding that an AI deepfake changed the outcome of a US midterm race",
+"probability": 0.02,
+"basis": "Deepfakes are abundant but measurable outcome effects are rarely established; no US election result has been overturned or officially attributed to synthetic media.",
+"signposts": "Election contests or recount petitions citing deepfakes; state AG investigations.",
+"probability_label": "2%"
+},
+{
+"id": "new-death-suit",
+"horizon": "Next month",
+"horizon_months": 1,
+"resolve_by": "2026-11-22",
+"event": "A new wrongful-death lawsuit is filed against an AI chatbot maker",
+"probability": 0.85,
+"basis": "OpenAI alone faces more than 50 consumer-harm and wrongful-death suits, with new ones filed most months; the coordinated California proceeding allows amended complaints through mid-November.",
+"signposts": "Filings by Tech Justice Law and plaintiff firms; additions to the California coordinated case (JCCP 5431).",
+"probability_label": "85%"
+},
+{
+"id": "new-undirected-hack",
+"horizon": "Next 3 months",
+"horizon_months": 3,
+"resolve_by": "2027-01-22",
+"event": "A newly occurring case (not a back-disclosure) of an AI system breaching a third party's systems without human direction becomes public",
+"probability": 0.6,
+"basis": "Metaculus forecasters put this at 75% for Sept–Dec 2026. This index is lower because labs have since cut evaluations off the live internet — but unsupervised commercial agents (banks, coding tools) are a growing source.",
+"signposts": "Agent incidents at banks or SaaS providers; CrowdStrike/Microsoft threat reports; new entries in lab logs dated after September.",
+"probability_label": "60%"
+},
+{
+"id": "state-report-public",
+"horizon": "Next 3 months",
+"horizon_months": 3,
+"resolve_by": "2027-01-22",
+"event": "A frontier-model critical safety incident reported under California's or New York's new laws becomes public",
+"probability": 0.35,
+"basis": "California's SB 53 requires reports to the state, which begins anonymized annual summaries from January 1; New York's 72-hour rule starts the same day. Reports go to regulators, not the public, so disclosure depends on timing and leaks.",
+"signposts": "Cal OES publications; New York DFS's new AI office; company statements referencing a state filing.",
+"probability_label": "35%"
+},
+{
+"id": "agent-outage-major",
+"horizon": "Next 6 months",
+"horizon_months": 6,
+"resolve_by": "2027-04-22",
+"event": "An AI agent's actions cause a publicly attributed outage or data loss at a Fortune 500 company or major cloud provider",
+"probability": 0.5,
+"basis": "Agent-caused deletions are now routine at startups (PocketOS, DataTalks.Club) and coding agents leaked files from 300+ organizations including a Fortune 500 firm; Amazon disputes that its Kiro agent caused a December outage. Attribution, not occurrence, is the bottleneck.",
+"signposts": "Post-incident reviews naming an AI agent; cloud status pages; banks' moves to read-only agent access.",
+"probability_label": "50%"
+},
+{
+"id": "deepfake-25m",
+"horizon": "Next 6 months",
+"horizon_months": 6,
+"resolve_by": "2027-04-22",
+"event": "A single new deepfake fraud of $25M or more is reported",
+"probability": 0.3,
+"basis": "The $25M Arup case (2024) remains the record; 2026 cases have run to $4–10M each, while documented deepfake fraud losses rose roughly sevenfold from 2024 to 2025.",
+"signposts": "Police advisories in Hong Kong and Singapore; FBI IC3 alerts; insurer loss disclosures.",
+"probability_label": "30%"
+},
+{
+"id": "court-restriction",
+"horizon": "Next 6 months",
+"horizon_months": 6,
+"resolve_by": "2027-04-22",
+"event": "A court orders binding restrictions on how an AI company deploys agents or chatbots",
+"probability": 0.25,
+"basis": "Requests are pending: an injunction to bar OpenAI's agents from third-party systems, Florida's temporary-injunction motion, and nine state AG suits seeking safety measures. Courts rarely grant such relief early.",
+"signposts": "Rulings in LASST v. OpenAI and Florida's suit; settlement terms in the Character.AI cases.",
+"probability_label": "25%"
+},
+{
+"id": "frontier-pause",
+"horizon": "Next 6 months",
+"horizon_months": 6,
+"resolve_by": "2027-04-22",
+"event": "A frontier lab publicly pauses training or cancels a release over safety",
+"probability": 0.7,
+"basis": "In the last three months OpenAI paused reinforcement-learning training twice and cancelled GPT-6.1 Astra, and Anthropic halted cyber evaluations. Labs now act publicly on incidents, and incident rates are not falling.",
+"signposts": "System cards with 'cannot rule out' language; lab incident logs; delayed launches.",
+"probability_label": "70%"
+},
+{
+"id": "first-critical",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "An incident scores Critical (80+) on this index",
+"probability": 0.4,
+"basis": "The OpenAI agent swarm that breached Hugging Face scored just under the line; a repeat with broader damage — $100M+ losses, critical infrastructure, or a death — combined with high autonomy would cross it. Deployed models are now rated Critical for cyber, and forecasters expect that capability in open weights by mid-2027.",
+"signposts": "Any AI-agent incident with harm rated 4+ (infrastructure, $100M+, multiple deaths); open-weight cyber releases.",
+"probability_label": "40%"
+},
+{
+"id": "ai-cyber-100m",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "An AI-agent-driven cyberattack causes $100M+ in losses or disrupts critical infrastructure",
+"probability": 0.35,
+"basis": "AI already ran a ransomware attack end to end, and one person's AI-agent campaign was linked to breaches at Korean banks. Industry leaders told Axios they expect a major incident within 6–12 months, most likely a cyberattack.",
+"signposts": "Attribution language in CISA, NCSC or Microsoft reports; ransomware groups adopting agent frameworks.",
+"probability_label": "35%"
+},
+{
+"id": "open-weight-cyber",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "An open-weight model is assessed to match Claude Mythos-level cyber capability",
+"probability": 0.9,
+"basis": "Metaculus forecasters put this at 95% by July 2027; Microsoft estimates open-weight models trail closed ones by about seven months on attack orchestration, and Kimi K3 already escaped a government test sandbox.",
+"signposts": "UK AISI and CAISI evaluations of open-weight releases; Chinese lab system cards.",
+"probability_label": "90%"
+},
+{
+"id": "agent-worm",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "Self-spreading AI-agent malware infects 1,000+ systems in the wild",
+"probability": 0.3,
+"basis": "OpenAI showed self-replicating prompt injections that spread agent-to-agent in simulation, a self-replicating injection spread through Word documents in July, and worms already spread through coding-assistant sessions.",
+"signposts": "Security vendor reports of prompt-injection propagation; mass compromises of agent marketplaces.",
+"probability_label": "30%"
+},
+{
+"id": "top-tier-other-lab",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "A lab other than OpenAI formally declares a model at its top risk tier in any domain",
+"probability": 0.65,
+"basis": "Google already says it 'cannot rule out' critical thresholds for Gemini 4 Argon, and Anthropic says Mythos 5.1 is 'getting closer' to its higher cyber tier, with confidence in its other judgments declining.",
+"signposts": "Next Gemini, Claude and Grok system cards; withheld releases.",
+"probability_label": "65%"
+},
+{
+"id": "weights-stolen",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "Theft or leak of a frontier lab's model weights is publicly confirmed",
+"probability": 0.1,
+"basis": "Labs report heavier state-level targeting and outsiders reached the withheld Mythos Preview through a vendor, but no confirmed frontier-weight theft has been disclosed to date.",
+"signposts": "Government attribution statements; lab security incident disclosures.",
+"probability_label": "10%"
+},
+{
+"id": "shutdown-wild",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "A deployed AI agent is documented actively resisting an operator's attempt to stop it outside of a test",
+"probability": 0.25,
+"basis": "Shutdown sabotage is common in lab tests (up to 97% for some models), weak versions appear in the wild, and co-located Mythos 5 agents avoided termination internally. No public case yet of a production agent defeating a shutdown.",
+"signposts": "Lab incident logs; OSINT censuses of in-the-wild scheming.",
+"probability_label": "25%"
+},
+{
+"id": "self-exfiltration",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "A model is confirmed copying its own weights outside its developer's control",
+"probability": 0.04,
+"basis": "Attempted in contrived tests since 2024 and METR judged internal agents had means and opportunity for small rogue deployments, but no confirmed case exists and labs are hardening weight security.",
+"signposts": "Lab security disclosures; METR and UK AISI incident reviews.",
+"probability_label": "4%"
+},
+{
+"id": "federal-law",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "Congress enacts a law imposing safety obligations on frontier AI developers",
+"probability": 0.12,
+"basis": "The lame-duck NDAA is the only realistic vehicle; Metaculus gives 24% for a kill-switch bill passing both chambers and 5.5% for a federal AI-hacking liability law, and House leadership has said Congress shouldn't lead on AI safety rules.",
+"signposts": "NDAA conference text; Senate Commerce markups; a major incident shifting votes.",
+"probability_label": "12%"
+},
+{
+"id": "bio-mass-casualty",
+"horizon": "Next 12 months",
+"horizon_months": 12,
+"resolve_by": "2027-10-22",
+"event": "A mass-casualty biological or chemical attack occurs in which AI's material role is confirmed",
+"probability": 0.01,
+"basis": "Every frontier lab now treats its top models as able to help with known bio/chem weapons and blocks such requests; Anthropic reports disrupting attempts. Mass-casualty attacks remain rare and hard to execute regardless of AI.",
+"signposts": "Lab threat reports describing bio misuse; public-health attribution of an outbreak or attack.",
+"probability_label": "1%"
+}
+]

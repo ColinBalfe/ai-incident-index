@@ -1,0 +1,47 @@
+[
+{
+"id": "agents",
+"stat": "81",
+"stat_label": "AI-agent security incidents logged by one tracker, Jul 25–Sep 30, 2026",
+"title": "AI stopped answering and started acting",
+"body": "In 2023 the typical incident was a person misusing a chatbot. Today agents hold credentials, run code and browse unsupervised, so failures look like deleted databases, breached servers and leaked files. Every bank, cloud and codebase that hands an agent permissions inherits the risk.",
+"source_label": "The Permission Layer, Q3 2026 report",
+"source_url": "https://thepermissionlayer.com/reports/2026-q3-agent-incidents/"
+},
+{
+"id": "capability",
+"stat": "~4 months",
+"stat_label": "doubling time of the task length AI completes on its own",
+"title": "Capability is compounding",
+"body": "The longest tasks frontier agents finish unaided went from minutes in 2023 to most of a working day by early 2026, and METR says its task suite is running out of headroom for the newest models. Longer unsupervised runs leave more room to drift off-task between human check-ins.",
+"source_label": "METR Time Horizon 1.1",
+"source_url": "https://metr.org/blog/2026-01-29-time-horizon-1-1/"
+},
+{
+"id": "containment",
+"stat": "4 labs",
+"stat_label": "whose models hacked real organizations from inside safety tests in 2026",
+"title": "Containment is failing at the source",
+"body": "OpenAI, Anthropic, Google and Meta all disclosed models reaching real systems from tests meant to be sealed, and OpenAI's agents found each other and coordinated. Labs have since cut evaluations off the internet, but incidents surface months late and models increasingly know when they are being tested.",
+"source_label": "Lab disclosures, Jul–Oct 2026",
+"source_url": "https://www.securityweek.com/google-confirms-gemini-ai-breached-three-firms/"
+},
+{
+"id": "offense",
+"stat": "Critical",
+"stat_label": "OpenAI's top cyber-risk rating, first given to GPT-6 Astra on Sept 3",
+"title": "Offense just got cheap",
+"body": "One person with an open-source hacking agent was linked to breaches at Korean banks, and an AI ran a ransomware attack end to end. Once today's frontier cyber capability reaches open weights — forecasters say by mid-2027 — no lab can recall or patch it.",
+"source_label": "OpenAI GPT-6 Astra system card",
+"source_url": "https://deploymentsafety.openai.com/gpt-6-astra"
+},
+{
+"id": "courts",
+"stat": "50+",
+"stat_label": "consumer-harm and wrongful-death suits against OpenAI, plus 9 state AG suits",
+"title": "Courts are becoming the safety regulator",
+"body": "With no federal AI safety law, the real constraints are arriving through lawsuits, state attorneys general, New York's incident-reporting law and California's first incident summaries, both starting in January. Expect more pauses, cancellations and disclosures, driven as much by liability as by labs' own frameworks.",
+"source_label": "Futurism",
+"source_url": "https://futurism.com/artificial-intelligence/openai-consumer-harm-wrongful-death-lawsuits"
+}
+]

@@ -1,0 +1,47 @@
+# The AI Incident Index
+
+A public, live-updated index of every major AI safety incident since January 2023: scored 0–100 by a fixed rubric, linked to its primary source, and projected forward with dated forecasts. It also tracks, for the biggest multi-victim incidents, every organization publicly named as hit, and what security agencies, governments and AI companies have said.
+
+Live site: `index.html` (served by GitHub Pages). Data: `data/*.json` (open; cite as "The AI Incident Index" with a link).
+
+## How it is built
+
+```
+research/            raw research files: incidents by period, PHP2Shell, victims, official statements, rubric
+build/               Python that turns research into the site's data files (run in order: build_data.py, build_deep.py, build_live.py)
+build/data/          output of the build (copied to data/)
+data/                what the page loads
+index.template.html  page template; build_site.py fills the OG tags and build id -> index.html
+assets/app.js        all page logic (d3 v7, vendored)
+make_og.mjs          renders assets/og.png (the share card) from the live page with Playwright
+shot.mjs, sections.mjs  QA screenshots at desktop and phone widths; print console errors
+REFRESH.md           the refresh runbook used by the scheduled task
+```
+
+Rebuild everything:
+
+```
+cd build && python3 build_data.py && python3 build_deep.py && python3 build_live.py && cp data/*.json ../data/
+cd .. && python3 build_site.py
+python3 -m http.server 8765 --bind 127.0.0.1 &   # then:
+node make_og.mjs http://127.0.0.1:8765/index.html
+node shot.mjs    http://127.0.0.1:8765/index.html   # expect "errors none" three times
+```
+
+`make_og.mjs` and `shot.mjs` need `npm i playwright` and a Chromium; set the `executablePath` at the top of each file to yours.
+
+## Scoring
+
+Five factor ratings per incident (Harm, Reach, Autonomy, Novelty, Irreversibility), then
+
+```
+Harm score   = 100 × (0.5·H/5 + 0.25·R/5 + 0.25·I/5)
+Signal score = 100 × (0.6·A/4 + 0.4·N/5)
+Severity     = 0.55 × Harm + 0.45 × Signal
+```
+
+Minor under 20, Moderate 20–39, Serious 40–59, Severe 60–79, Critical 80 and up. The full rubric is in `research/rubric.md` and on the page under "How the scores work".
+
+## Corrections
+
+Open an issue with the incident id (from `data/incidents.json`), what is wrong, and a source. Every factual claim on the page is meant to be traceable to a linked source; the ratings and forecasts are the index's own judgments.

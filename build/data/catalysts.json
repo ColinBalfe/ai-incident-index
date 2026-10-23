@@ -1,0 +1,138 @@
+[
+{
+"id": "midterms",
+"date": "2026-11-03",
+"date_label": "Nov 3",
+"event": "US midterm elections",
+"why": "Peak window for election deepfakes: 220 AI-generated ads and $137M through Oct 11; FBI and CISA warned officials of AI-enhanced phishing on Oct 16.",
+"source_url": "https://www.resemble.ai/resources/deepfake-watchlist-2026-midterms"
+},
+{
+"id": "jccp",
+"date": "2026-11-13",
+"date_label": "Nov 13",
+"event": "Hearing in California's coordinated ChatGPT harm cases",
+"why": "Pace-setter for 50+ suits against OpenAI; amended complaints allowed through Nov 16 and fact sheets due Dec 15.",
+"source_url": "https://lawsuitinformer.com/openai-lawsuits"
+},
+{
+"id": "ndaa",
+"date": "2026-11-20",
+"date_label": "Nov–Dec",
+"event": "Lame-duck Congress and the defense bill (NDAA)",
+"why": "The only realistic federal vehicle in the window for AI kill-switch, agent-security or state-preemption provisions.",
+"source_url": "https://www.transformernews.ai/p/congress-goes-quiet-as-ai-safety-concerns-grow"
+},
+{
+"id": "eu-dec2",
+"date": "2026-12-02",
+"date_label": "Dec 2",
+"event": "EU AI Act ban on AI-generated child abuse and non-consensual intimate imagery applies",
+"why": "First new EU AI prohibition since 2025; AI-content marking duties start the same day, with the AI Office's fines already live.",
+"source_url": "https://fpf.org/blog/the-ai-act-implementation-timeline-what-changes-under-the-ai-omnibus/"
+},
+{
+"id": "metaculus-dec",
+"date": "2026-12-31",
+"date_label": "Dec 31",
+"event": "Forecast window closes on another 'undirected' AI hack",
+"why": "Metaculus forecasters put 75% on an AI independently breaching a third party between September and year-end — a direct test of this index's 3-month call.",
+"source_url": "https://www.metaculus.com/questions/45463/"
+},
+{
+"id": "raise",
+"date": "2027-01-01",
+"date_label": "Jan 1",
+"event": "New York's RAISE Act takes effect",
+"why": "Frontier developers must report critical safety incidents within 72 hours, or 24 if death or injury is imminent — the strictest clock in the US.",
+"source_url": "https://www.cooley.com/news/insight/2026/2026-03-31-new-yorks-frontier-ai-law-gets-a-california-makeover-with-some-key-differences"
+},
+{
+"id": "sb53",
+"date": "2027-01-01",
+"date_label": "Jan 1",
+"event": "California begins publishing frontier-AI incident summaries (SB 53)",
+"why": "The first official government count of critical safety incidents such as loss of control and deceptive behavior.",
+"source_url": "https://natlawreview.com/article/californias-sb-53-understanding-obligations-effect-now-and-2027"
+},
+{
+"id": "korea",
+"date": "2027-01-22",
+"date_label": "~Jan 22",
+"event": "South Korea's AI Basic Act grace period on fines may end",
+"why": "Labeling and high-impact AI obligations become enforceable in a major AI market.",
+"source_url": "https://q-bot.kr/en/articles/ai-industry/korea-ai-basic-act-explained/"
+},
+{
+"id": "iasr",
+"date": "2027-02-15",
+"date_label": "~Feb",
+"event": "International AI Safety Report 2027 (expected, not announced)",
+"why": "The 100-expert global consensus last said loss of control isn't possible yet but the capabilities are improving; a refresh would reset the baseline.",
+"source_url": "https://internationalaisafetyreport.org/publication/2026-report-executive-summary"
+},
+{
+"id": "ai-index",
+"date": "2027-04-15",
+"date_label": "~Apr",
+"event": "Stanford AI Index 2027 (expected)",
+"why": "The first full count of 2026 incidents in the AI Incident Database, after 2025's record 362.",
+"source_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report"
+},
+{
+"id": "claude6",
+"date": "2027-05-24",
+"date_label": "~May",
+"event": "Next-generation Claude (prediction-market median; not announced)",
+"why": "Each generation has raised cyber and autonomy ratings; Anthropic says its confidence in ruling out higher thresholds is declining.",
+"source_url": "https://www.fatherofai.in/blog/every-ai-model-coming-2026-2027-release-calendar/"
+},
+{
+"id": "geneva",
+"date": "2027-06-21",
+"date_label": "Jun 21–22",
+"event": "Geneva AI Summit",
+"why": "The next leaders-level AI governance summit, after New Delhi's 88-signatory declaration in February 2026.",
+"source_url": "https://www.bakom.admin.ch/en/geneva-ai-summit-2027-international-summit-on-artificial-intelligence-in-geneva"
+},
+{
+"id": "sb243",
+"date": "2027-07-01",
+"date_label": "Jul 1",
+"event": "First California reports on companion-chatbot crisis referrals (SB 243)",
+"why": "The first government data on how often chatbots surface suicide risk; same day, forecasters' 95% deadline for open-weight Mythos-level cyber capability.",
+"source_url": "https://www.gunder.com/en/news-insights/insights/client-insight-california-sb-243-new-compliance-requirements-for-operators-of-ai-companion-chatbots"
+},
+{
+"id": "gpt7",
+"date": "2027-07-23",
+"date_label": "~Jul",
+"event": "GPT-7 (prediction-market median; not announced)",
+"why": "OpenAI's last two releases were its first rated Critical for cyber, and it cancelled GPT-6.1 Astra over deception.",
+"source_url": "https://www.fatherofai.in/blog/every-ai-model-coming-2026-2027-release-calendar/"
+},
+{
+"id": "eu-aug",
+"date": "2027-08-02",
+"date_label": "Aug 2",
+"event": "EU AI Act reaches older general-purpose models",
+"why": "Frontier models released before August 2025 come under the AI Office's enforcement.",
+"source_url": "https://fpf.org/blog/the-ai-act-implementation-timeline-what-changes-under-the-ai-omnibus/"
+},
+{
+"id": "pending-courts",
+"date": "2027-12-30",
+"date_label": "Pending",
+"event": "Court tests of agentic AI",
+"why": "LASST v. OpenAI seeks to bar OpenAI's agents from third-party systems; nine state AG suits and Florida's injunction motion are pending; the FTC's companion-chatbot study is still open.",
+"source_url": "https://www.techpolicy.press/senate-hearing-weighs-threats-from-unrestrained-ai-agents-after-openai-hack/"
+},
+{
+"id": "pending-preemption",
+"date": "2027-12-31",
+"date_label": "Pending",
+"event": "Federal preemption fight over state AI laws",
+"why": "xAI v. Weiser and the Justice Department's AI litigation task force will decide whether Washington can block state safety laws like SB 53 and RAISE.",
+"source_url": "https://www.ailawsbystate.com/blog/federal-ai-preemption-doj-task-force-state-law-fight-2026"
+}
+]

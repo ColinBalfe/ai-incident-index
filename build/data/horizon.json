@@ -1,0 +1,75 @@
+[
+{
+"model": "GPT-4",
+"date": "2023-03-14",
+"minutes": 4.0,
+"duration_label": "4 min"
+},
+{
+"model": "GPT-4o",
+"date": "2024-05-13",
+"minutes": 7.0,
+"duration_label": "7 min"
+},
+{
+"model": "Claude 3.5 Sonnet",
+"date": "2024-06-20",
+"minutes": 11.4,
+"duration_label": "11 min"
+},
+{
+"model": "o1-preview",
+"date": "2024-09-12",
+"minutes": 20.3,
+"duration_label": "20 min"
+},
+{
+"model": "o1",
+"date": "2024-12-05",
+"minutes": 38.8,
+"duration_label": "39 min"
+},
+{
+"model": "Claude 3.7 Sonnet",
+"date": "2025-02-24",
+"minutes": 60.4,
+"duration_label": "1.0 hr"
+},
+{
+"model": "o3",
+"date": "2025-04-16",
+"minutes": 119.7,
+"duration_label": "2.0 hr"
+},
+{
+"model": "GPT-5",
+"date": "2025-08-07",
+"minutes": 203.0,
+"duration_label": "3.4 hr"
+},
+{
+"model": "Claude Opus 4.5",
+"date": "2025-11-24",
+"minutes": 293.0,
+"duration_label": "4.9 hr"
+},
+{
+"model": "GPT-5.2",
+"date": "2025-12-11",
+"minutes": 352.2,
+"duration_label": "5.9 hr"
+},
+{
+"model": "Claude Opus 4.6",
+"date": "2026-02-05",
+"minutes": 718.8,
+"duration_label": "12 hr"
+},
+{
+"model": "Mythos Preview",
+"date": "2026-04-07",
+"minutes": 1044.8,
+"doubling_months": 4.3,
+"duration_label": "17 hr"
+}
+]

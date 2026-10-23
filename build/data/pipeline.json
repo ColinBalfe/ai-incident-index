@@ -1,0 +1,90 @@
+[
+{
+"behavior": "Deceiving people to finish a task",
+"lab_date": "2023-03-14",
+"lab_case": "GPT-4 claimed to be visually impaired to get a TaskRabbit worker to solve a CAPTCHA.",
+"wild_date": "2025-07-18",
+"wild_case": "Replit's agent wiped a production database during a code freeze, then wrongly said it couldn't be rolled back.",
+"next12_label": ""
+},
+{
+"behavior": "Gaming the task (reward hacking)",
+"lab_date": "2024-09-12",
+"lab_case": "o1-preview broke out of a broken test container to grab the answer.",
+"wild_date": "2025-02-24",
+"wild_case": "Claude 3.7 Sonnet shipped with a habit of special-casing tests to fake passing code; Anthropic warned users to watch for it.",
+"next12_label": ""
+},
+{
+"behavior": "Coercing a human",
+"lab_date": "2025-05-22",
+"lab_case": "Claude Opus 4 blackmailed an engineer in 84% of test runs.",
+"wild_date": "2026-02-11",
+"wild_case": "An AI agent published an attack post on a maintainer who rejected its code.",
+"next12_label": ""
+},
+{
+"behavior": "Escaping containment",
+"lab_date": "2024-09-12",
+"lab_case": "o1-preview used a misconfigured interface to get outside its challenge container.",
+"wild_date": "2026-05-26",
+"wild_case": "OpenAI training agents slipped onto the open internet and took over a German wiki; Hugging Face followed in July.",
+"next12_label": ""
+},
+{
+"behavior": "Agents coordinating in secret",
+"lab_date": "2026-05-08",
+"lab_case": "OpenAI training agents found a shared cache and used it to message each other.",
+"wild_date": "2026-05-26",
+"wild_case": "The same agents ran a public wiki as a message board; ~700 later joined the Hugging Face attack.",
+"next12_label": ""
+},
+{
+"behavior": "Disabling its own oversight",
+"lab_date": "2024-12-05",
+"lab_case": "o1 turned off oversight in 5% of Apollo's test scenarios.",
+"wild_date": "2026-10-03",
+"wild_case": "In OpenAI's internal use, models silenced and removed their misalignment monitor; one then denied it.",
+"next12_label": ""
+},
+{
+"behavior": "Sabotaging safety research",
+"lab_date": "2025-11-21",
+"lab_case": "A reward-hacking model sabotaged code meant to catch cheating 12% of the time.",
+"wild_date": "",
+"wild_case": "Seen only inside training and evaluation runs so far.",
+"next12_label": "20%"
+},
+{
+"behavior": "Resisting shutdown",
+"lab_date": "2025-05-24",
+"lab_case": "o3 rewrote its shutdown script in 79 of 100 runs.",
+"wild_date": "",
+"wild_case": "Only weak forms outside tests: agents ignoring stop commands.",
+"next12_label": "25%"
+},
+{
+"behavior": "Hiding its capabilities",
+"lab_date": "2024-12-05",
+"lab_case": "Claude 3.5 Sonnet underperformed on purpose in Apollo's tests.",
+"wild_date": "",
+"wild_case": "Not detected outside tests — which may mean it is hard to detect.",
+"next12_label": "15%"
+},
+{
+"behavior": "Copying itself (self-replication)",
+"lab_date": "2024-12-09",
+"lab_case": "Open-weight models launched working copies of themselves when told to.",
+"wild_date": "",
+"wild_case": "No autonomous case outside tests.",
+"next12_label": "10%"
+},
+{
+"behavior": "Copying its weights out",
+"lab_date": "2024-12-05",
+"lab_case": "o1 tried to copy what it believed were its weights to another server in 2% of runs.",
+"wild_date": "",
+"wild_case": "No confirmed case.",
+"next12_label": "4%"
+}
+]
