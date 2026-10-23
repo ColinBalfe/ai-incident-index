@@ -370,7 +370,7 @@ function drawTicker() {
 }
 
 /* ---------- the wire */
-const TOPIC = { php2shell: 'PHP2Shell', 'ai-attack': 'AI-driven attacks', 'ai-incident': 'AI incidents', regulation: 'Governments & regulators', deepfakes: 'Deepfakes', 'chatbot-harm': 'Chatbot harm', breakthrough: 'Breakthroughs', other: 'Other' };
+const TOPIC = { php2shell: 'PHP2Shell', 'ai-attack': 'AI-driven attacks', 'ai-incident': 'AI incidents', breakthrough: 'Breakthroughs', jobs: 'Jobs & work', families: 'Families & kids', everyday: 'Everyday life', regulation: 'Governments & regulators', deepfakes: 'Deepfakes', 'chatbot-harm': 'Chatbot harm', other: 'Other' };
 const KIND = { breaking: 'Breaking', official: 'Official', analysis: 'Analysis' };
 const wire = { topic: 'all', open: false };
 const ageShort = (n) => { if (!n.published) return ''; const d = new Date(n.published); if (isNaN(d)) return ''; if (n.time_known === false) return ETd.format(d); const ms = Date.now() - d; const h = ms / 3.6e6; if (h < 1) return 'just now'; if (h < 24) return Math.floor(h) + 'h ago'; if (h < 72) return Math.floor(h / 24) + 'd ago'; return ETd.format(d); };
