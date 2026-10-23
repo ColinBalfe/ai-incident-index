@@ -70,10 +70,12 @@ Re-verify every new row against its source: names, dates, numbers, who said what
 ## 5. Publish
 
 ```
-git add -A && git commit -m "Refresh: <date> — <one line on what changed>" && git push
+git add -A && git commit -m "Refresh: <date> — <one line on what changed>"
+git pull --rebase origin main    # the editor may have pushed site changes while this run was working; never force-push
+git push
 ```
 
-GitHub Pages redeploys automatically within a couple of minutes. Confirm the live site shows the new `as_of` in the top bar.
+If the rebase reports a conflict, keep both sides' intent (your data rows and changelog entry, the site's code), run the build steps again from `python3 build_site.py` onward, `git add -A && git rebase --continue`, then push. GitHub Pages redeploys automatically within a couple of minutes. Confirm the live site shows the new `as_of` in the top bar.
 
 ## 6. Report
 
