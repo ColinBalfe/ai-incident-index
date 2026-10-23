@@ -7,6 +7,7 @@ const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const D = {};
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PRE = document.documentElement.dataset.prerendered === '1'; // first screen was baked into the HTML at build time; redraws of it should not animate
 
 /* ---------- theme */
 const root = document.documentElement;
@@ -37,6 +38,7 @@ const AUTONOMY = [
 ];
 const autoColor = (a) => ['var(--mist)', 'color-mix(in oklab, var(--mist) 50%, var(--steel))', 'var(--steel)', 'color-mix(in oklab, var(--steel) 45%, var(--indigo))', 'var(--indigo)'][a];
 const TIERS = [{ name: 'Minor', lo: 0, hi: 20 }, { name: 'Moderate', lo: 20, hi: 40 }, { name: 'Serious', lo: 40, hi: 60 }, { name: 'Severe', lo: 60, hi: 80 }, { name: 'Critical', lo: 80, hi: 100 }];
+const tierText = (t) => ({ Minor: 'var(--ink-2)', Moderate: 'var(--amber-text)', Serious: 'var(--amber-text)', Severe: 'var(--alarm)', Critical: 'color-mix(in oklab, var(--alarm) 70%, var(--ink))' }[t]);
 const tierColor = (t) => ({ Minor: 'var(--line-2)', Moderate: 'color-mix(in oklab, var(--amber) 45%, var(--line-2))', Serious: 'var(--amber)', Severe: 'var(--alarm)', Critical: 'color-mix(in oklab, var(--alarm) 70%, var(--ink))' }[t]);
 const toastEl = document.getElementById('toast');
 let toastT;
@@ -275,7 +277,7 @@ function drawHeadline() {
   );
   shareRow(document.getElementById('hero-share'), { anchor: 'record', text: `AI has started breaking in on its own. Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year; in ${pct(h.agentic_recent)} of this year's real-world cases the AI itself did the acting. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
   const up = document.getElementById('tb-updated');
-  const tickUp = () => { const ms = Date.now() - Date.parse(D.meta.as_of); const mins = Math.max(0, Math.round(ms / 6e4)); const nx = D.meta.next_check ? Date.parse(D.meta.next_check) - Date.now() : null; const nxm = nx != null ? Math.round(nx / 6e4) : null; const nxs = nxm != null && nxm > 0 ? ', next check in ' + (nxm >= 60 ? Math.floor(nxm / 60) + 'h ' + (nxm % 60) + 'm' : nxm + ' min') : (nx != null ? ', refresh due' : ''); const short = (mins < 60 ? 'Updated ' + mins + ' min ago' : 'Updated ' + relTime(D.meta.as_of)); up.textContent = short + nxs; up.title = 'Last refresh ' + fmtET(D.meta.as_of) + '. ' + D.meta.schedule; const nu = document.getElementById('nav-updated'); if (nu) nu.textContent = short; };
+  const tickUp = () => { const ms = Date.now() - Date.parse(D.meta.as_of); const mins = Math.max(0, Math.round(ms / 6e4)); const nx = D.meta.next_check ? Date.parse(D.meta.next_check) - Date.now() : null; const nxm = nx != null ? Math.round(nx / 6e4) : null; const nxs = nxm != null && nxm > 0 ? ', next check in ' + (nxm >= 60 ? Math.floor(nxm / 60) + 'h ' + (nxm % 60) + 'm' : nxm + ' min') : (nx != null ? (nxm <= -120 ? ', refresh overdue' : ', refresh due') : ''); const short = (mins < 60 ? 'Updated ' + mins + ' min ago' : 'Updated ' + relTime(D.meta.as_of)); up.textContent = short + nxs; up.title = 'Last refresh ' + fmtET(D.meta.as_of) + '. ' + D.meta.schedule; const nu = document.getElementById('nav-updated'); if (nu) nu.textContent = short; };
   tickUp(); clearInterval(window._tickUp); window._tickUp = setInterval(tickUp, 30000);
   document.getElementById('foot-updated').textContent = fmtET(D.meta.as_of) + '. ' + D.meta.schedule + ' Next check ' + fmtETsmart(D.meta.next_check) + '.';
 }
@@ -384,7 +386,7 @@ function drawNow() {
   grid.replaceChildren(...(clock ? [clock] : []), ...D.live.map((r) => {
     const good = (r.key === 'confirmed' && r.value === '0') || (r.key === 'kev' && /not/i.test(r.value));
     const c = el('div', 'live' + (good ? ' ok' : ''));
-    const v = el('div', 'v'); countUp(v, r.value, 'live:' + r.key); c.append(v, el('div', 'l', r.label));
+    const v = el('div', 'v'); if (PRE) v.textContent = r.value; else countUp(v, r.value, 'live:' + r.key); c.append(v, el('div', 'l', r.label));
     const d = el('div', 'd'); d.append(txt(r.detail + ' ')); const a = el('a', null, r.source_label); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; d.append(a); c.append(d);
     return c;
   }));
@@ -710,7 +712,7 @@ function drawDeepDive() {
   const h = el('h3'); h.append(txt(d.name), el('span', 'status' + (d.status === 'active' ? ' active' : ''), d.status_label));
   const rel = el('div', 'dd-rel');
   const relRows = String(d.related_ids || '').split(',').map((s) => s.trim()).map((id) => C.scored.find((r) => r.id === id)).filter(Boolean);
-  if (relRows.length) { rel.append(el('span', 'lbl', relRows.length > 1 ? 'Scored on the index:' : 'Score on the index:')); relRows.forEach((r) => { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierColor(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', () => openIncident(r.id)); rel.append(b); }); }
+  if (relRows.length) { rel.append(el('span', 'lbl', relRows.length > 1 ? 'Scored on the index:' : 'Score on the index:')); relRows.forEach((r) => { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierText(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', () => openIncident(r.id)); rel.append(b); }); }
   const dq = (D.quotes || []).filter((q) => q.incident_id === d.incident_id && q.quote && q.verified !== false).sort((a, b) => (b.weight || 0) - (a.weight || 0)).slice(0, 2).map((q) => { const w = el('div', 'dd-quote'); const who = el('div', 'who'); who.append(el('b', null, q.speaker), txt(q.title ? ', ' + q.title : ''), txt(', ' + fmtDate(new Date(q.date)) + ' ')); const a = el('a', null, 'source'); a.href = q.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; who.append(a); w.append(el('blockquote', null, q.quote), who); return w; });
   const fx = fixRows().find((f) => f.incident_id === d.incident_id); const chainRow = el('div', 'dd-chain');
   if (fx) { const cur = fixCur(fx); chainRow.append(el('span', 'lbl', 'Did they fix it?'), chainNode(fx), el('span', 'stt ' + cur.status, FIXST[cur.status] || cur.status), el('span', null, fx.one_liner || '')); const a = el('a', null, 'Details'); a.href = '#fixes'; a.addEventListener('click', (e) => { e.preventDefault(); fixOpen.id = fx.incident_id; drawFixes(); document.getElementById('fix-' + fx.incident_id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); }); chainRow.append(a); }
@@ -801,7 +803,7 @@ document.getElementById('seg-vstatus').addEventListener('click', (e) => { const 
 
 /* ---------- signals */
 const SIG_GROUP = (t) => t === 'security agency' ? 'agency' : (t === 'government' || t === 'legislature' || t === 'regulator/AG') ? 'gov' : 'company';
-const sigColor = (g) => g === 'agency' ? 'var(--steel)' : g === 'gov' ? 'var(--indigo)' : 'var(--lab)';
+const sigColor = (g) => g === 'agency' ? 'var(--av-agency)' : g === 'gov' ? 'var(--av-gov)' : 'var(--av-lab)';
 const initials = (org) => { const o = org.replace(/\(.*?\)/g, '').trim(); if (o.length <= 4) return o.toUpperCase(); const ws = o.split(/[\s/–-]+/).filter((x) => /^[A-Za-z]/.test(x)); return (ws.length > 1 ? ws.slice(0, 3).map((x) => x[0]).join('') : o.slice(0, 2)).toUpperCase(); };
 function sigRow(x, compact) {
   const g = SIG_GROUP(x.org_type), r = el('div', 'sig');
@@ -856,11 +858,11 @@ function openIncident(id) {
   const share = el('div', 'share');
   body.replaceChildren(big, h, meta, ...detailNodes(r, true), share);
   shareRow(share, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). ${r.summary.split('. ')[0]}. Warning Shots:`, card: cardForIncident(r) });
-  document.getElementById('drawer').classList.add('on'); document.getElementById('drawer').setAttribute('aria-hidden', 'false'); document.getElementById('drawer-bg').classList.add('on');
+  document.getElementById('drawer').classList.add('on'); document.getElementById('drawer').setAttribute('aria-hidden', 'false'); document.getElementById('drawer').inert = false; document.getElementById('drawer-bg').classList.add('on');
   history.replaceState(null, '', '#i=' + r.id);
   document.getElementById('drawer-close').focus();
 }
-function closeDrawer() { document.getElementById('drawer').classList.remove('on'); document.getElementById('drawer').setAttribute('aria-hidden', 'true'); document.getElementById('drawer-bg').classList.remove('on'); if (location.hash.startsWith('#i=')) history.replaceState(null, '', location.pathname + location.search); }
+function closeDrawer() { document.getElementById('drawer').classList.remove('on'); document.getElementById('drawer').setAttribute('aria-hidden', 'true'); document.getElementById('drawer').inert = true; document.getElementById('drawer-bg').classList.remove('on'); if (location.hash.startsWith('#i=')) history.replaceState(null, '', location.pathname + location.search); }
 document.getElementById('drawer-close').addEventListener('click', closeDrawer);
 document.getElementById('drawer-bg').addEventListener('click', closeDrawer);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
@@ -1054,7 +1056,7 @@ function drawCapGrid() {
     STAGES.forEach(([k, l]) => { const st = (c.stages || {})[k] || {}; const r = el('div', 'st'); const b = el('b', null, l + ': ' + (st.status || 'unknown')); const sp = el('span', null, st.note || ''); if (st.source_url) { const a = el('a', null, 'source'); a.href = st.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); sp.append(a); } r.append(b, sp); det.append(r); });
     if (c.everyday) { const e2 = el('div', 'ev'); e2.append(el('b', null, 'For real lives, jobs and families: '), txt(c.everyday)); det.append(e2); }
     const relRows = (c.related_incident_ids || []).map((id) => C.scored.find((r) => r.id === id)).filter(Boolean);
-    if (relRows.length) { const rel = el('div', 'rel'); rel.append(el('span', 'lbl', 'Incidents it made possible:')); relRows.forEach((r) => { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierColor(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', (e) => { e.stopPropagation(); openIncident(r.id); }); rel.append(b); }); det.append(rel); }
+    if (relRows.length) { const rel = el('div', 'rel'); rel.append(el('span', 'lbl', 'Incidents it made possible:')); relRows.forEach((r) => { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierText(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', (e) => { e.stopPropagation(); openIncident(r.id); }); rel.append(b); }); det.append(rel); }
     const shc = el('div', 'share'); shareRow(shc, { anchor: 'm=' + c.id, text: c.title + '. ' + (c.what || '') + ' Warning Shots:', card: cardForCap(c) }); det.append(shc);
     const src = el('div', 'ev'); src.append(el('b', null, 'Sources: ')); [[c.source_url, 'primary'], [c.source2_url, 'second']].forEach(([u, t], i) => { if (!u) return; if (i) src.append(txt(', ')); const a = el('a', null, t); a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); src.append(a); }); if (c.confidence && c.confidence !== 'high') src.append(txt('. Confidence: ' + c.confidence)); det.append(src);
     row.append(left, ...STAGES.map(([k], i) => cellNode(c, k, i)), det);
@@ -1102,7 +1104,7 @@ function drawFixes() {
     f.chain.forEach((st) => { const r = el('div', 'st'); const b = el('b'); b.append(txt(st.stage === 'current' ? 'Current status' : st.stage === 'claimed_fix' ? 'Claimed fix' : st.stage === 'retest' ? 'Independent check' : st.stage.charAt(0).toUpperCase() + st.stage.slice(1))); if (st.date) b.append(el('small', null, fmtDate(new Date(st.date)))); const sp = el('span', null, (st.stage === 'current' ? '' : (st.status === 'none' ? '' : '')) + (st.note || '')); if (st.source_url) { const a = el('a', null, 'source'); a.href = st.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); sp.append(a); } r.append(b, sp); det.append(r); });
     if (f.what_would_change_it) { const w = el('div', 'wd'); w.append(el('b', null, 'What would change it: '), txt(f.what_would_change_it)); det.append(w); }
     const r0 = C.scored.find((r) => r.id === f.incident_id); const dive = D.deepdives.find((d) => d.incident_id === f.incident_id);
-    const links = el('div', 'wd'); if (r0) { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r0.severity)); sc.style.color = tierColor(r0.tier); b.append(sc, el('span', null, 'Open the incident')); b.addEventListener('click', (e) => { e.stopPropagation(); openIncident(r0.id); }); links.append(b); } if (dive) { const a = el('a', null, 'Full breakdown'); a.href = '#d=' + dive.incident_id; a.style.marginLeft = '10px'; a.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); go('#d=' + dive.incident_id); }); links.append(a); } if (links.children.length) det.append(links);
+    const links = el('div', 'wd'); if (r0) { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r0.severity)); sc.style.color = tierText(r0.tier); b.append(sc, el('span', null, 'Open the incident')); b.addEventListener('click', (e) => { e.stopPropagation(); openIncident(r0.id); }); links.append(b); } if (dive) { const a = el('a', null, 'Full breakdown'); a.href = '#d=' + dive.incident_id; a.style.marginLeft = '10px'; a.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); go('#d=' + dive.incident_id); }); links.append(a); } if (links.children.length) det.append(links);
     const sh2 = el('div', 'share'); shareRow(sh2, { anchor: 'c=' + f.incident_id, text: f.name + ': ' + (f.one_liner || '') + ' Warning Shots:', card: cardForCase(f) }); det.append(sh2);
     row.append(name, chainNode(f), line, det);
     const toggle = () => { fixOpen.id = fixOpen.id === f.incident_id ? null : f.incident_id; row.classList.toggle('open'); };
@@ -1130,7 +1132,7 @@ function drawRibbon() {
     { n: fxUpd, l: (fxUpd === 1 ? 'follow-up moved, 7d' : 'follow-ups moved, 7d'), href: '#fixes', hot: fxUpd > 0, t: `Cases with a dated change in their report → response → fix → check chain in the 7 days before ${stamp}. Source: data/fixes.json.` },
     { n: wire, l: (wire === 1 ? 'report on the Wire, 24h' : 'reports on the Wire, 24h'), href: '#wire', hot: false, t: `Stories on the Wire published in the 24 hours up to about three hours after ${stamp}. Links to the outlets; nothing is copied. Source: data/news.json.` },
   ];
-  box.replaceChildren(...items.map((it) => { const a = el('a', 'rb' + (it.hot ? ' hot' : '')); a.href = it.href; a.title = it.t; a.setAttribute('aria-label', it.n + ' ' + it.l + '. ' + it.t); a.append(el('b', null, String(it.n)), el('span', null, it.l)); a.addEventListener('click', (e) => { e.preventDefault(); if (it.href === '#all') { ls.sort = 'new'; document.getElementById('sel-sort').value = 'new'; drawList(); } go(it.href); }); return a; }));
+  box.replaceChildren(...items.map((it) => { const a = el('a', 'rb' + (it.hot ? ' hot' : '')); a.href = it.href; a.title = it.t; a.append(el('b', null, String(it.n)), el('span', null, it.l)); a.addEventListener('click', (e) => { e.preventDefault(); if (it.href === '#all') { ls.sort = 'new'; document.getElementById('sel-sort').value = 'new'; drawList(); } go(it.href); }); return a; }));
   const u = el('span', 'rb-upd'); u.append(el('i'), txt('Updated ' + stamp + (D.meta.next_check ? ', next ' + fmtETsmart(D.meta.next_check).replace('today ', '') : ''))); u.title = D.meta.schedule || ''; box.append(u);
   const ed = document.getElementById('edition'); if (ed) ed.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(D.meta.as_of)) + ' edition';
 }
@@ -1156,7 +1158,7 @@ function drawTNS() {
   document.getElementById('tns-note').textContent = t.note || '';
   const capOf = (id) => capRows().find((c) => c.id === id), incOf = (id) => C.scored.find((r) => r.id === id);
   const col = (k, label, cls) => { const d = el('div', 'tns-col ' + cls); d.append(el('div', 'k', label)); const it = t[k]; if (it.date) d.append(el('div', 'd', it.date)); d.append(el('div', 't', it.title)); const s2 = el('div', 's', it.text); (it.capabilities || []).forEach((id) => { const c = capOf(id); if (!c) return; const a = el('a', null, 'source'); a.href = c.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; s2.append(a); }); d.append(s2);
-    if (it.incidents && it.incidents.length) { const ul = el('ul'); it.incidents.forEach((id) => { const r = incOf(id); if (!r) return; const li = el('li'); const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierColor(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', () => openIncident(r.id)); li.append(b); ul.append(li); }); d.append(ul); }
+    if (it.incidents && it.incidents.length) { const ul = el('ul'); it.incidents.forEach((id) => { const r = incOf(id); if (!r) return; const li = el('li'); const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierText(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', () => openIncident(r.id)); li.append(b); ul.append(li); }); d.append(ul); }
     return d; };
   const foot = el('div', 'tns-foot'); [['could_change', 'What this could change for you'], ['do_now', 'What you can do now']].forEach(([k, l]) => { if (!t[k]) return; const d = el('div'); d.append(el('b', null, l), txt(t[k])); foot.append(d); });
   box.replaceChildren(col('then', 'Then', 'c-then'), col('now', 'Now', 'c-now'), col('still', 'Still', 'c-still'), foot);
@@ -1242,43 +1244,99 @@ function showChart(id) {
   if (C.scored) CHART_DRAW[id]();
 }
 document.getElementById('chart-tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) showChart(b.dataset.pane); });
-const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', method: 'about', context: 'about', brief: 'wire', now: 'wire' };
+const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', method: 'about', context: 'about' };
 
 /* ---------- routing */
 function go(hash) { location.hash = hash; route(); }
+function sectionOf(node) { const hit = LAZY.find(([sid]) => { const s = document.getElementById(sid); return s && s.contains(node); }); return hit ? hit[0] : null; }
 function route() {
   let h = location.hash.slice(1);
   if (ALIAS[h]) h = ALIAS[h];
-  if (CHART_DRAW[h]) { showChart(h); document.getElementById('charts').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
+  if (!C.scored) { const n0 = h && !h.includes('=') && document.getElementById(h); if (n0) n0.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
+  if (CHART_DRAW[h]) { drawThrough('charts'); showChart(h); document.getElementById('charts').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
   if (h.startsWith('i=')) { openIncident(decodeURIComponent(h.slice(2))); return; }
-  if (h.startsWith('c=')) { const id = decodeURIComponent(h.slice(2)); if (fixRows().find((f) => f.incident_id === id)) { fixOpen.id = id; drawFixes(); document.getElementById('fix-' + id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
-  if (h.startsWith('m=')) { const id = decodeURIComponent(h.slice(2)); if (capRows().find((c) => c.id === id)) { cap.openId = id; cap.open = true; cap.domain = 'all'; drawCapGrid(); document.getElementById('cap-' + id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
-  if (h.startsWith('q=')) { const n = document.getElementById('q-' + decodeURIComponent(h.slice(2))); if (n) { quotesOpen = true; drawQuotes(); document.getElementById('q-' + decodeURIComponent(h.slice(2)))?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
-  if (h.startsWith('d=')) { const id = decodeURIComponent(h.slice(2)); if (D.deepdives.find((d) => d.incident_id === id)) { dd.id = id; dd.vfilter = 'all'; drawDeepDive(); document.getElementById('dives').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); } return; }
+  if (h.startsWith('c=')) { const id = decodeURIComponent(h.slice(2)); if (fixRows().find((f) => f.incident_id === id)) { fixOpen.id = id; drawThrough('fixes'); drawFixes(); document.getElementById('fix-' + id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
+  if (h.startsWith('m=')) { const id = decodeURIComponent(h.slice(2)); if (capRows().find((c) => c.id === id)) { cap.openId = id; cap.open = true; cap.domain = 'all'; drawThrough('capabilities'); drawCapGrid(); document.getElementById('cap-' + id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
+  if (h.startsWith('q=')) { drawThrough('words'); const n = document.getElementById('q-' + decodeURIComponent(h.slice(2))); if (n) { quotesOpen = true; drawQuotes(); document.getElementById('q-' + decodeURIComponent(h.slice(2)))?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
+  if (h.startsWith('d=')) { const id = decodeURIComponent(h.slice(2)); if (D.deepdives.find((d) => d.incident_id === id)) { dd.id = id; dd.vfilter = 'all'; drawThrough('dives'); drawDeepDive(); document.getElementById('dives').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); } return; }
   if (h === 'top') { window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); return; }
-  const n = h && document.getElementById(h); if (n) n.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  const n = h && document.getElementById(h); if (n) { const sid = sectionOf(n); if (sid) drawThrough(sid); n.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }
 }
 window.addEventListener('hashchange', route);
 document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => { const h = a.getAttribute('href'); if (h.length < 2) return; e.preventDefault(); history.replaceState(null, '', h); route(); }));
 
-/* ---------- draw everything */
-function drawAll(first) {
-  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTimeline(first && !EMBED); drawTicker(); drawWire(); drawNow(); drawBrief(); drawWhy(); drawEdges(); drawTNS(); drawCapGrid(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawFixes(); drawSignals(); drawList(); drawContext();
+/* ---------- draw everything
+   The first screen (masthead, ribbon, ticker, the Wire, the brief) is drawn as soon as the data arrives. Everything below is drawn
+   when it comes within a screen of the viewport, and pre-drawn in idle time after that, so a phone is not asked to lay out
+   thirty sections of charts before it can show the headline. */
+const LAZY = [
+  ['why', [() => drawWhy()]],
+  ['record', [(first) => drawTimeline(first && !EMBED)]],
+  ['capabilities', [() => drawEdges(), () => drawTNS(), () => drawCapGrid()]],
+  ['words', [() => drawQuotes()]],
+  ['pattern', [() => drawHooks()]],
+  ['charts', [() => { const on = document.querySelector('#chart-tabs button.on'); showChart(on ? on.dataset.pane : 'card-quarters'); }]],
+  ['next', [() => drawWatch(), () => drawDrivers(), () => drawForecast(), () => drawCalendar()]],
+  ['dives', [() => drawDeepDive()]],
+  ['fixes', [() => drawFixes()]],
+  ['signals', [() => drawSignals()]],
+  ['all', [() => drawList()]],
+  ['about', [() => drawContext()]],
+];
+const drawn = new Set();
+// A section that comes within a screen of the viewport is drawn together with everything still undrawn above it, so nothing above the reader ever changes height under them (Safari has no scroll anchoring).
+const lazyIO = ('IntersectionObserver' in window) ? new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) drawThrough(e.target.id); }); }, { rootMargin: '900px 0px' }) : null;
+function drawSection(id) {
+  const spec = LAZY.find((s) => s[0] === id); if (!spec || !C.scored) return;
+  const first = !drawn.has(id); drawn.add(id);
+  const sec = document.getElementById(id); if (sec) { sec.classList.remove('pending'); if (lazyIO) lazyIO.unobserve(sec); }
+  spec[1].forEach((fn) => { try { fn(first); } catch (err) { console.error(id, err); } });
 }
+function drawThrough(id) { for (const [sid] of LAZY) { if (!drawn.has(sid)) drawSection(sid); if (sid === id) break; } }
+function drawEverything() { LAZY.forEach(([sid]) => drawSection(sid)); }
+let idleT = null;
+function preDraw() {
+  const next = LAZY.find(([sid]) => !drawn.has(sid)); if (!next) return;
+  const run = () => { drawSection(next[0]); preDraw(); };
+  if (document.hidden) { idleT = setTimeout(preDraw, 2000); return; }
+  if ('requestIdleCallback' in window) idleT = requestIdleCallback(run, { timeout: 2500 }); else idleT = setTimeout(run, 200);
+}
+function drawAll(first) {
+  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawWire(); drawNow(); drawBrief();
+  if (EMBED || !lazyIO) { drawEverything(); return; }
+  if (first) {
+    LAZY.forEach(([sid]) => { const sec = document.getElementById(sid); if (sec) { sec.classList.add('pending'); lazyIO.observe(sec); } });
+    setTimeout(preDraw, 4000); // pre-draw the rest in idle time once the first screen has settled; scrolling draws sooner
+  } else { drawn.forEach((sid) => drawSection(sid)); }
+}
+window.WS.drawAll = () => { if (!C.scored) return false; drawEverything(); return true; };
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) drawAll(false); }, 160); });
+const DATA_ALL = FILES.concat(OPTIONAL);
+async function loadBundle(url, opts) {
+  const r = await fetch(url, opts); if (!r.ok) throw new Error('bundle ' + r.status);
+  const b = await r.json(); if (!FILES.every((f) => b[f])) throw new Error('bundle incomplete');
+  DATA_ALL.forEach((f) => { D[f] = b[f] || null; });
+}
+async function loadFiles(suffix, opts) {
+  await Promise.all(FILES.map((f) => fetch('data/' + f + '.json' + suffix, opts).then((r) => { if (!r.ok) throw new Error(f); return r.json(); }).then((j) => { D[f] = j; }))
+    .concat(OPTIONAL.map((f) => fetch('data/' + f + '.json' + suffix, opts).then((r) => r.ok ? r.json() : null).then((j) => { D[f] = j; }).catch(() => { D[f] = null; }))));
+}
 async function checkForUpdate() {
   try {
     const m = await (await fetch('data/meta.json?t=' + Date.now(), { cache: 'no-store' })).json();
     if (!D.meta || m.as_of === D.meta.as_of) return;
-    await Promise.all(FILES.concat(OPTIONAL).map((f) => fetch('data/' + f + '.json?t=' + Date.now(), { cache: 'no-store' }).then((r) => r.ok ? r.json() : null).then((j) => { if (j) D[f] = j; }).catch(() => {})));
+    try { await loadBundle('data/bundle.json?t=' + Date.now(), { cache: 'no-store' }); } catch (e) { await loadFiles('?t=' + Date.now(), { cache: 'no-store' }); }
     compute(); drawAll(false);
     const what = (m.changelog && m.changelog[0] && m.changelog[0].text) || 'new data';
     toastEl.classList.add('wide'); toast('Updated just now: ' + (what.length > 160 ? what.slice(0, 158) + '…' : what)); clearTimeout(toastT); toastT = setTimeout(() => { toastEl.classList.remove('on'); setTimeout(() => toastEl.classList.remove('wide'), 300); }, 9000);
   } catch (e) { /* offline or mid-deploy: try again next time */ }
 }
 setInterval(checkForUpdate, 5 * 60 * 1000);
-Promise.all(FILES.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => { if (!r.ok) throw new Error(f); return r.json(); }).then((j) => { D[f] = j; }))
-  .concat(OPTIONAL.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => r.ok ? r.json() : null).then((j) => { D[f] = j; }).catch(() => { D[f] = null; }))))
-  .then(() => { compute(); window.__ready = true; if (EMBED) { embedMode(); } else { drawAll(true); route(); } })
-  .catch((e) => { console.error(e); document.getElementById('headline').textContent = 'The data could not be loaded. Reload the page or try again shortly.'; });
+(async () => {
+  try {
+    try { await loadBundle('data/bundle.json?v=' + (window.AII_BUILD || '')); } catch (e) { await loadFiles('?v=' + (window.AII_BUILD || '')); }
+    compute(); window.__ready = true;
+    if (EMBED) { embedMode(); } else { drawAll(true); route(); }
+  } catch (e) { console.error(e); document.getElementById('headline').textContent = 'The data could not be loaded. Reload the page or try again shortly.'; }
+})();
 })();

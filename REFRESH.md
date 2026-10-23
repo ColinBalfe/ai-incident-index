@@ -51,8 +51,9 @@ Keep descriptions of hacking techniques high-level. Never invent a figure; if a 
 
 ```
 cd build && python3 build_data.py && python3 build_deep.py && python3 build_live.py && cp data/*.json ../data/ && cd ..
-python3 build_site.py
+python3 build_site.py                                   # index.html, data/bundle.json (one request for all data), feed.xml, JSON-LD
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
+node prerender.mjs  http://127.0.0.1:8765/index.html   # bakes the first screen (ribbon, ticker, siren, brief, Wire, live rail) into index.html so the headline is in the first paint
 node make_og.mjs    http://127.0.0.1:8765/index.html
 node make_cards.mjs http://127.0.0.1:8765/index.html   # share cards for every dispatch; re-renders only changed records
 python3 build_pages.py                                  # i/<id>/, c/<id>/, m/<id>/ pages with their own cards, sitemap.xml
@@ -60,7 +61,7 @@ cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # t
 node shot.mjs       http://127.0.0.1:8765/index.html
 ```
 
-`shot.mjs` must print `errors none` three times. The build prints the Wire's story count and the siren headline; check both. Look at `shots/site-desktop-top.png` and `shots/site-phone-top.png` before publishing. If anything fails, fix it; do not publish a broken page.
+`prerender.mjs` must print `prerendered 21 blocks` (it exits non-zero if the page threw or a block was missing; never publish without it, or the first paint is empty). `shot.mjs` must print `errors none` three times. The build prints the Wire's story count and the siren headline; check both. Look at `shots/site-desktop-top.png` and `shots/site-phone-top.png` before publishing. If anything fails, fix it; do not publish a broken page.
 
 ## 4. Fact-check what you added
 

@@ -10,6 +10,7 @@ for (const [name, vp, dark] of [['desktop', { width: 1280, height: 900 }, false]
   page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') errs.push(m.type() + ': ' + m.text()); });
   page.on('pageerror', (e) => errs.push('pageerror: ' + e.message));
   await page.goto(url, { waitUntil: 'networkidle' });
+  await page.waitForFunction(() => window.WS && window.WS.drawAll && window.WS.drawAll(), null, { timeout: 15000 }); // sections below the first screen draw lazily; draw them all for the full-page shot
   await page.waitForTimeout(800);
   await page.screenshot({ path: `${out}-${name}-top.png`, fullPage: false });
   await page.screenshot({ path: `${out}-${name}-full.png`, fullPage: true });

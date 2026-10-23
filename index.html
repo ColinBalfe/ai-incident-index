@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en">
-<head>
+<html lang="en" data-prerendered="1"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Warning Shots: See what’s coming. Know what it means for you.</title>
@@ -11,34 +10,51 @@
 <meta property="og:title" content="AI has started breaking in on its own — Warning Shots: see what’s coming, know what it means for you">
 <meta property="og:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of PHP2Shell, 20 dated forecasts, and what officials have said. Updated Oct 23, 1:10 PM ET.">
 <meta property="og:url" content="https://warningshots.ai/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610232211">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610232314">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI has started breaking in on its own — Warning Shots: see what’s coming, know what it means for you">
 <meta name="twitter:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of PHP2Shell, 20 dated forecasts, and what officials have said. Updated Oct 23, 1:10 PM ET.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610232211">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610232314">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "NewsMediaOrganization", "@id": "https://warningshots.ai/#org", "name": "Warning Shots", "url": "https://warningshots.ai/", "slogan": "See what’s coming. Know what it means for you.", "logo": {"@type": "ImageObject", "url": "https://warningshots.ai/assets/icon-512.png", "width": 512, "height": 512}}, {"@type": "WebSite", "@id": "https://warningshots.ai/#site", "url": "https://warningshots.ai/", "name": "Warning Shots", "description": "Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of PHP2Shell, 20 dated forecasts, and what officials have said. Updated Oct 23, 1:10 PM ET.", "inLanguage": "en", "publisher": {"@id": "https://warningshots.ai/#org"}, "dateModified": "2026-10-23T13:10:00-04:00"}, {"@type": "Dataset", "name": "The AI Incident Index", "url": "https://warningshots.ai/#all", "description": "134 AI incidents since 2023, each scored 0–100 on harm, reach, irreversibility, autonomy and novelty, with sources. Open data from Warning Shots.", "creator": {"@id": "https://warningshots.ai/#org"}, "dateModified": "2026-10-23T13:10:00-04:00", "isAccessibleForFree": true, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://warningshots.ai/data/incidents.json"}]}]}</script>
 <link rel="alternate" type="application/rss+xml" title="Warning Shots: the Wire and the daily brief" href="feed.xml">
 <meta name="theme-color" content="#F4F3EF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A111E" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="data/bundle.json?v=202610232314" as="fetch" crossorigin="">
+<script>window.AII_BUILD = "202610232314"; window.AII_SITE = "https://warningshots.ai/";</script>
+<script src="assets/vendor/d3-lite.min.js" defer=""></script>
+<script src="assets/vendor/topojson-client.min.js" defer=""></script>
+<script src="assets/app.js?v=202610232314" defer=""></script>
 <style>
 @font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
-@font-face { font-family: 'Archivo'; font-style: italic; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(assets/fonts/archivo-latin-standard-italic.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Playfair'; font-style: italic; font-display: swap; font-weight: 400; src: url(assets/fonts/playfair-display-latin-400-italic.woff2) format('woff2'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 700; src: url(assets/fonts/playfair-display-latin-700-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 900; src: url(assets/fonts/playfair-display-latin-900-normal.woff2) format('woff2'); }
+/* Metric-matched stand-ins so text set in the system font before the webfonts arrive occupies the same lines (no layout shift on swap). Measured against the real files. */
+@font-face { font-family: 'Archivo Fallback'; src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Roboto'), local('Liberation Sans'); size-adjust: 99%; ascent-override: 88.7%; descent-override: 21.2%; line-gap-override: 0%; }
+@font-face { font-family: 'Playfair Fallback'; font-weight: 400; src: local('Times New Roman'), local('Times'), local('Liberation Serif'); size-adjust: 110%; ascent-override: 98.4%; descent-override: 22.8%; line-gap-override: 0%; }
+@font-face { font-family: 'Playfair Fallback'; font-weight: 700; src: local('Times New Roman Bold'), local('Times New Roman'), local('Times'), local('Liberation Serif'); size-adjust: 112.7%; ascent-override: 96%; descent-override: 22.3%; line-gap-override: 0%; }
+@font-face { font-family: 'Playfair Fallback'; font-weight: 900; src: local('Times New Roman Bold'), local('Times New Roman'), local('Times'), local('Liberation Serif'); size-adjust: 114.5%; ascent-override: 94.5%; descent-override: 21.9%; line-gap-override: 0%; }
 
 :root {
-  --paper: #F4F3EF; --panel: #FFFFFF; --ink: #0A111E; --ink-2: #3F4B5C; --ink-3: #6B7787;
+  --paper: #F4F3EF; --panel: #FFFFFF; --ink: #0A111E; --ink-2: #3F4B5C; --ink-3: #5F6B7B;
   --line: #DCD9D1; --line-2: #B8B4A9;
   --alarm: #D92D00; --signal: #FF3300; --amber: #B5751A; --indigo: #2C2A6E; --steel: #5F7A9A; --mist: #B9C6D3;
   --focus: #1F5BFF; --ok: #1E7F4F;
   --tip-bg: #FFFFFF; --tip-shadow: 0 8px 28px rgba(10, 17, 30, .16);
   --r: 0px; --w: 1160px;
   --wild: var(--steel); --lab: #A58A3B;
-  --serif: 'Playfair', Georgia, 'Times New Roman', serif;
+  --amber-text: #8F5C0F; --av-agency: #4A6585; --av-gov: #2C2A6E; --av-lab: #7E6526; --av-ink: #FFFFFF;
+  --serif: 'Playfair', 'Playfair Fallback', Georgia, 'Times New Roman', serif;
+  --sans: 'Archivo', 'Archivo Fallback', system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -48,6 +64,7 @@
     --focus: #6E9BFF; --ok: #4FBF86;
     --tip-bg: #16223A; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
     --wild: var(--steel); --lab: #CBAE5A;
+    --amber-text: #E2A43C; --av-agency: #8AA6CB; --av-gov: #A3A0F5; --av-lab: #CBAE5A; --av-ink: #0A111E;
   }
 }
 .dark-scope, :root[data-theme="dark"] {
@@ -57,6 +74,7 @@
   --focus: #6E9BFF; --ok: #4FBF86;
   --tip-bg: #16223A; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
   --wild: var(--steel); --lab: #CBAE5A;
+  --amber-text: #E2A43C; --av-agency: #8AA6CB; --av-gov: #A3A0F5; --av-lab: #CBAE5A; --av-ink: #0A111E;
 }
 
 .dark-scope { color: var(--ink); }
@@ -66,11 +84,13 @@
 .hero-band .legend { color: var(--ink-2); }
 .hero-band .stats { border-top-color: var(--line-2); }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 56px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Archivo', system-ui, sans-serif; font-size: 16px; line-height: 1.5; font-variation-settings: 'wdth' 100; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; font-variation-settings: 'wdth' 100; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.skip { position: absolute; left: 16px; top: -48px; z-index: 100; background: var(--ink); color: var(--paper); padding: 8px 12px; font-size: 14px; text-decoration: none; }
+.skip:focus { top: 12px; }
 button { font: inherit; color: inherit; }
 b, strong { font-weight: 600; }
 .wrap { max-width: var(--w); margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
@@ -142,13 +162,14 @@ b, strong { font-weight: 600; }
 /* ----- type scale */
 h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
 h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.6rem, 2.7vw, 2.15rem); letter-spacing: -0.01em; }
-.now-head h2, .brief-head h2, .wire-head h2 { font-family: 'Archivo', system-ui, sans-serif; }
+.now-head h2, .brief-head h2, .wire-head h2 { font-family: var(--sans); }
 h3 { font-size: 1.15rem; }
 h4 { font-size: 1rem; }
 .lede { color: var(--ink-2); max-width: 66ch; font-size: 1.02rem; margin: 10px 0 0; }
 .lede b { color: var(--ink); }
 section { padding: clamp(40px, 6vw, 76px) 0 0; }
 section.tight { padding-top: clamp(28px, 4vw, 48px); }
+section.pending { min-height: 70vh; }
 .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .sec-head .k { font-size: 13px; color: var(--ink-3); }
 hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw, 76px) 0 0; }
@@ -181,19 +202,20 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .stat .l b { color: var(--ink); }
 
 /* ----- share row */
-.share { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12.5px; color: var(--ink-3); margin-top: 10px; align-items: center; }
-.share button, .share a { background: none; border: 0; padding: 0; color: var(--ink-2); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+.share { display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: 12.5px; color: var(--ink-3); margin-top: 10px; align-items: center; }
+.share button, .share a { background: none; border: 0; padding: 0; min-height: 24px; color: var(--ink-2); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
 .share button:hover, .share a:hover { color: var(--ink); }
 .share svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ----- charts common */
 .chart { position: relative; width: 100%; }
 .chart svg { display: block; overflow: visible; }
-.axis text { fill: var(--ink-2); font-size: 11.5px; font-family: 'Archivo', system-ui, sans-serif; }
+.axis text { fill: var(--ink-2); font-size: 11.5px; font-family: var(--sans); }
 .axis line, .axis path { stroke: var(--line-2); }
 .grid line { stroke: var(--line); }
 .grid path { display: none; }
 .tip { position: absolute; z-index: 5; pointer-events: none; background: var(--tip-bg); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--tip-shadow); padding: 8px 10px; font-size: 12.5px; max-width: 280px; opacity: 0; transition: opacity .12s; line-height: 1.4; }
+.tip:not(.on) { visibility: hidden; }
 .tip.on { opacity: 1; }
 .tip .t-sec { color: var(--ink-2); font-size: 11.5px; }
 .tip .t-title { font-weight: 600; margin: 2px 0; }
@@ -253,7 +275,7 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .wi-m a { color: var(--ink-3); }
 .wi-m .ag { font-variant-numeric: tabular-nums; }
 .kind { font-size: 11px; font-weight: 600; border-radius: 3px; padding: 0 5px; border: 1px solid var(--line-2); color: var(--ink-2); line-height: 1.5; }
-.kind.breaking { color: var(--paper); background: var(--alarm); border-color: var(--alarm); }
+.kind.breaking { color: #FFFFFF; background: #D92D00; border-color: #D92D00; }
 .kind.official { color: var(--indigo); border-color: color-mix(in oklab, var(--indigo) 50%, var(--line-2)); }
 .wi-s { font-size: 13px; color: var(--ink-2); line-height: 1.4; margin-top: 3px; display: none; }
 .wire-board.verbose .wi-s { display: block; }
@@ -333,7 +355,7 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .fix-name .stt { display: inline-block; margin-left: 8px; vertical-align: middle; }
 .stt { font-size: 11.5px; font-weight: 600; border-radius: 2px; padding: 2px 9px; border: 1px solid; white-space: nowrap; line-height: 1.4; }
 .stt.fixed { color: var(--ok); border-color: color-mix(in oklab, var(--ok) 60%, var(--line-2)); }
-.stt.unverified { color: var(--amber); border-color: color-mix(in oklab, var(--amber) 60%, var(--line-2)); }
+.stt.unverified { color: var(--amber-text); border-color: color-mix(in oklab, var(--amber) 60%, var(--line-2)); }
 .stt.disputed { color: var(--indigo); border-color: color-mix(in oklab, var(--indigo) 60%, var(--line-2)); }
 .stt.reopened, .stt.ongoing { color: var(--alarm); border-color: color-mix(in oklab, var(--alarm) 60%, var(--line-2)); }
 .stt.unresolved { color: var(--ink-2); border-color: var(--line-2); }
@@ -439,9 +461,11 @@ details.fold > :not(summary) { margin-top: 10px; }
 .qt.lead { position: relative; }
 .qt.lead blockquote, .qt.lead .who, .qt.lead .meta { transition: opacity .45s ease; }
 .qt.lead.fading blockquote, .qt.lead.fading .who, .qt.lead.fading .meta { opacity: 0; }
-.qt-dots { display: flex; gap: 6px; margin-top: 4px; }
-.qt-dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: var(--line-2); cursor: pointer; }
-.qt-dots button.on { background: var(--alarm); }
+.qt-dots { display: flex; gap: 0; margin-top: 0; margin-left: -8px; }
+.qt-dots button { width: 24px; height: 24px; border: 0; padding: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.qt-dots button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--line-2); }
+.qt-dots button.on::before { background: var(--alarm); }
+.qt-dots button:hover::before { background: var(--ink-2); }
 .toast.wide { max-width: min(92vw, 520px); white-space: normal; text-align: center; border-radius: 2px; line-height: 1.4; }
 
 /* ----- brief (strip inside the wire) */
@@ -490,7 +514,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 .pattern-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
 @media (min-width: 900px) { .pattern-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px; } }
 .thesis p { font-family: var(--serif); font-size: clamp(1.08rem, 1.5vw, 1.22rem); line-height: 1.5; margin: 14px 0 0; max-width: 56ch; }
-.thesis p.quiet { font-family: 'Archivo', system-ui, sans-serif; }
+.thesis p.quiet { font-family: var(--sans); }
 .thesis p.quiet { color: var(--ink-2); font-size: 1rem; }
 .hooks { display: grid; gap: 0; border-top: 1px solid var(--line-2); }
 .hook { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
@@ -503,7 +527,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 .watch-row { display: grid; grid-template-columns: minmax(0, 1.2fr) auto minmax(0, 1.6fr); gap: 8px 18px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; font-size: 14.5px; }
 .watch-row .item { font-weight: 600; line-height: 1.35; }
 .watch-row .st { font-size: 12.5px; white-space: nowrap; padding: 2px 9px; border-radius: 2px; border: 1px solid var(--line-2); color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.watch-row .st.due { border-color: color-mix(in oklab, var(--amber) 60%, var(--line-2)); color: var(--amber); }
+.watch-row .st.due { border-color: color-mix(in oklab, var(--amber) 60%, var(--line-2)); color: var(--amber-text); }
 .watch-row .why { color: var(--ink-2); font-size: 13.5px; line-height: 1.45; }
 .watch-row .why a { color: var(--ink-3); font-size: 12.5px; }
 @media (max-width: 760px) { .watch-row { grid-template-columns: 1fr; gap: 4px; } .watch-row .st { justify-self: start; } }
@@ -591,7 +615,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 /* ----- signals */
 .sig-list { display: grid; gap: 0; border-top: 1px solid var(--line-2); }
 .sig { display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
-.sig .av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 600; font-size: 12px; letter-spacing: .02em; }
+.sig .av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--av-ink); font-weight: 600; font-size: 12px; letter-spacing: .02em; }
 .sig .who { font-size: 14px; }
 .sig .who strong { font-weight: 600; }
 .sig .who span { color: var(--ink-2); }
@@ -686,21 +710,22 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 </style>
 </head>
 <body>
+<a class="skip" href="#wire">Skip to the Wire</a>
 <header class="masthead dark-scope" id="top">
   <div class="wrap mh-grid">
     <div>
       <a class="logo" href="#top" aria-label="Warning Shots, home">
-        <svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>
+        <svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"></path><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"></circle><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"></circle></g></svg>
         <span class="wordmark">Warning Shots</span>
       </a>
       <p class="mh-tag">See what’s coming. Know what it means for you.</p>
     </div>
     <div class="mh-right">
-      <div class="edition" id="edition"></div>
-      <div class="mh-updated"><span class="pulse" aria-hidden="true"></span><span id="tb-updated">Updated —</span></div>
-      <form class="signup" id="signup" method="post" action="" target="_blank" hidden>
+      <div class="edition" id="edition">Friday, October 23, 2026 edition</div>
+      <div class="mh-updated"><span class="pulse" aria-hidden="true"></span><span id="tb-updated" title="Last refresh Oct 23, 1:10 PM ET. Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.">Updated 6 hours ago, refresh due</span></div>
+      <form class="signup" id="signup" method="post" action="" target="_blank" hidden="">
         <label class="vh" for="su-email">Email address</label>
-        <input id="su-email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" inputmode="email">
+        <input id="su-email" name="email" type="email" placeholder="you@example.com" required="" autocomplete="email" inputmode="email">
         <button type="submit">Get the briefing</button>
         <small>The weekly recap and the sirens, nothing else.</small>
       </form>
@@ -709,48 +734,48 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 </header>
 <nav class="navbar dark-scope" id="navbar" aria-label="Sections">
   <div class="wrap">
-    <a class="mini" href="#top"><svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>Warning Shots</a>
+    <a class="mini" href="#top"><svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"></path><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"></circle><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"></circle></g></svg>Warning Shots</a>
     <div class="nav-scroll" id="nav-scroll">
       <a href="#wire">The Wire</a><a href="#record">Record</a><a href="#capabilities">Capabilities</a><a href="#words">Quotes</a><a href="#charts">Charts</a><a href="#next">Forecast</a><a href="#dives">Incidents</a><a href="#fixes">Did they fix it?</a><a href="#all">All</a><a href="#about">About</a>
     </div>
     <div class="nav-right">
       <span class="nav-updated" id="nav-updated"></span>
-      <div class="mode" role="group" aria-label="Appearance"><span class="mode-l" aria-hidden="true">Mode</span><button type="button" id="mode-dark" aria-pressed="false" aria-label="Dark appearance (Night ops)" title="Dark appearance">Night_Ops</button><button type="button" id="mode-light" aria-pressed="false" aria-label="Light appearance (Newsprint)" title="Light appearance">Newsprint</button></div>
+      <div class="mode" role="group" aria-label="Appearance"><span class="mode-l" aria-hidden="true">Mode</span><button type="button" id="mode-dark" aria-pressed="false" title="Night_Ops: dark appearance">Night_Ops</button><button type="button" id="mode-light" aria-pressed="true" title="Newsprint: light appearance">Newsprint</button></div>
     </div>
   </div>
 </nav>
 
 <main>
-  <div class="ribbon dark-scope" id="ribbon" aria-label="Signal ribbon"><div class="wrap ribbon-in" id="ribbon-in"></div></div>
-  <div class="since wrap" id="since" hidden></div>
-  <div class="ticker dark-scope" id="ticker" aria-label="Latest official statements"><div class="ticker-label"><span class="pulse" aria-hidden="true"></span>Latest</div><div class="ticker-track"><div class="ticker-run" id="ticker-run"></div></div></div>
+  <div class="ribbon dark-scope" id="ribbon" aria-label="Signal ribbon"><div class="wrap ribbon-in" id="ribbon-in"><a class="rb" href="#all" title="Incidents added to this index with an event or disclosure date in the 24 hours before the last refresh (Oct 23, 1:10 PM ET). 4 in the last 7 days. Deduplicated by event; this index is curated, not a census. Source: data/incidents.json."><b>0</b><span>new incidents, 24h</span></a><a class="rb" href="#fixes" title="Major incidents in &quot;Did they fix it?&quot; with no independently verified fix as of Oct 23, 1:10 PM ET. Source: data/fixes.json."><b>12</b><span>open cases of 12</span></a><a class="rb hot" href="#capabilities" title="Capability milestones added with a date in the 7 days before Oct 23, 1:10 PM ET. Source: data/capabilities.json."><b>1</b><span>new advance, 7d</span></a><a class="rb hot" href="#fixes" title="Cases with a dated change in their report → response → fix → check chain in the 7 days before Oct 23, 1:10 PM ET. Source: data/fixes.json."><b>4</b><span>follow-ups moved, 7d</span></a><a class="rb" href="#wire" title="Stories on the Wire published in the 24 hours up to about three hours after Oct 23, 1:10 PM ET. Links to the outlets; nothing is copied. Source: data/news.json."><b>10</b><span>reports on the Wire, 24h</span></a><span class="rb-upd" title="Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run."><i></i>Updated Oct 23, 1:10 PM ET, next 6:37 PM ET</span></div></div>
+  <div class="since wrap" id="since" hidden=""></div>
+  <div class="ticker dark-scope" id="ticker" aria-label="Latest official statements"><div class="ticker-label"><span class="pulse" aria-hidden="true"></span>Latest</div><div class="ticker-track"><div class="ticker-run" id="ticker-run"><a href="https://www.php.net/archive/2026.php#2026-10-23-1" target="_blank" rel="noopener noreferrer"><span><b>PHP Foundation:</b>Flagged a third, narrower code-execution risk (CVE-2026-115560) reachable only under an unusual session configuration;…<i>Oct 23</i></span></a><a href="https://en.sedaily.com/technology/2026/10/22/korea-raises-cyber-alert-level-over-critical-php-flaws" target="_blank" rel="noopener noreferrer"><span><b>South Korea Science Ministry:</b>Raised the private-sector cyber crisis alert from 'interest' to 'caution' (level 2 of 4) at noon KST, warned ~28,000 e…<i>Oct 22</i></span></a><a href="https://thenextweb.com/news/php2shell-millions-exploit-attempts-no-confirmed-breaches" target="_blank" rel="noopener noreferrer"><span><b>Chainguard:</b>Denied breaking the embargo, saying Chainguard shipped fixes because attacks were already under way.<i>Oct 22</i></span></a><a href="https://thenextweb.com/news/php2shell-millions-exploit-attempts-no-confirmed-breaches" target="_blank" rel="noopener noreferrer"><span><b>Germany BSI:</b>Said attacks were seen but none had succeeded, and that exploitation looks harder than attackers' pace suggests.<i>Oct 22</i></span></a><a href="https://thenextweb.com/news/php2shell-millions-exploit-attempts-no-confirmed-breaches" target="_blank" rel="noopener noreferrer"><span><b>Government of Japan:</b>Said no damage reports or confirmed exploiting attacks had been received.<i>Oct 22</i></span></a><a href="https://www.canberratimes.com.au/story/9373541/asd-website-down-after-global-cyber-security-flaw-exposed/" target="_blank" rel="noopener noreferrer"><span><b>Australian Government:</b>Said the outages were not a breach and described ASD-led work with international agencies and OpenAI.<i>Oct 22</i></span></a><a href="https://www.404media.co/php2shell-black-october-ai-is-changing-everything-about-hacking-no-one-knows-what-happens-next/" target="_blank" rel="noopener noreferrer"><span><b>Trail of Bits:</b>Said his team built a working exploit in one day with Codex, but turning a bug into a shell still takes expertise.<i>Oct 22</i></span></a><a href="https://www.techrepublic.com/article/news-critical-php-flaws-government-websites-patches-europe-emea/" target="_blank" rel="noopener noreferrer"><span><b>NCC Group:</b>Warned that patching does not prove systems are clean and urged reviewing the exposure window for compromise.<i>Oct 22</i></span></a><a href="https://x.com/ThaiCERTByNCSA/status/2113173590954950970" target="_blank" rel="noopener noreferrer"><span><b>ThaiCERT (Thailand NCSA):</b>Warned that a PoC is public; no confirmed compromise.<i>Oct 22</i></span></a><a href="https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html" target="_blank" rel="noopener noreferrer"><span><b>UK Government:</b>Confirmed that 32 government digital services were unavailable and four partially unavailable because of PHP2Shell, mo…<i>Oct 22</i></span></a><a href="https://www.techradar.com/computing/cyber-security/which-major-websites-have-been-hit-by-the-php-security-crisis-here-are-the-biggest-so-far-from-wikipedia-to-the-internet-archive" target="_blank" rel="noopener noreferrer"><span><b>UK Government:</b>Said 32 government services were offline and that it was working with OpenAI and the NCSC on fixes.<i>Oct 21</i></span></a><a href="https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619" target="_blank" rel="noopener noreferrer"><span><b>Sophos:</b>Withdrew an earlier claim of one successful compromise. Its telemetry shows only scanning and failed attempts, includi…<i>Oct 21</i></span></a><a href="https://x.com/gdb/status/2112921529650688312" target="_blank" rel="noopener noreferrer"><span><b>OpenAI:</b>Said OpenAI had spent two months leading a coalition to mitigate php2shell, one of the most severe open-source bugs in…<i>Oct 21</i></span></a><a href="https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/" target="_blank" rel="noopener noreferrer"><span><b>OpenAI:</b>Said that, to its knowledge, frontier AI found the flaws before attackers; warned the same capabilities can help attac…<i>Oct 21</i></span></a><a href="https://www.php.net/archive/2026.php#2026-10-23-1" target="_blank" rel="noopener noreferrer"><span><b>PHP Foundation:</b>Flagged a third, narrower code-execution risk (CVE-2026-115560) reachable only under an unusual session configuration;…<i>Oct 23</i></span></a><a href="https://en.sedaily.com/technology/2026/10/22/korea-raises-cyber-alert-level-over-critical-php-flaws" target="_blank" rel="noopener noreferrer"><span><b>South Korea Science Ministry:</b>Raised the private-sector cyber crisis alert from 'interest' to 'caution' (level 2 of 4) at noon KST, warned ~28,000 e…<i>Oct 22</i></span></a><a href="https://thenextweb.com/news/php2shell-millions-exploit-attempts-no-confirmed-breaches" target="_blank" rel="noopener noreferrer"><span><b>Chainguard:</b>Denied breaking the embargo, saying Chainguard shipped fixes because attacks were already under way.<i>Oct 22</i></span></a><a href="https://thenextweb.com/news/php2shell-millions-exploit-attempts-no-confirmed-breaches" target="_blank" rel="noopener noreferrer"><span><b>Germany BSI:</b>Said attacks were seen but none had succeeded, and that exploitation looks harder than attackers' pace suggests.<i>Oct 22</i></span></a><a href="https://thenextweb.com/news/php2shell-millions-exploit-attempts-no-confirmed-breaches" target="_blank" rel="noopener noreferrer"><span><b>Government of Japan:</b>Said no damage reports or confirmed exploiting attacks had been received.<i>Oct 22</i></span></a><a href="https://www.canberratimes.com.au/story/9373541/asd-website-down-after-global-cyber-security-flaw-exposed/" target="_blank" rel="noopener noreferrer"><span><b>Australian Government:</b>Said the outages were not a breach and described ASD-led work with international agencies and OpenAI.<i>Oct 22</i></span></a><a href="https://www.404media.co/php2shell-black-october-ai-is-changing-everything-about-hacking-no-one-knows-what-happens-next/" target="_blank" rel="noopener noreferrer"><span><b>Trail of Bits:</b>Said his team built a working exploit in one day with Codex, but turning a bug into a shell still takes expertise.<i>Oct 22</i></span></a><a href="https://www.techrepublic.com/article/news-critical-php-flaws-government-websites-patches-europe-emea/" target="_blank" rel="noopener noreferrer"><span><b>NCC Group:</b>Warned that patching does not prove systems are clean and urged reviewing the exposure window for compromise.<i>Oct 22</i></span></a><a href="https://x.com/ThaiCERTByNCSA/status/2113173590954950970" target="_blank" rel="noopener noreferrer"><span><b>ThaiCERT (Thailand NCSA):</b>Warned that a PoC is public; no confirmed compromise.<i>Oct 22</i></span></a><a href="https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html" target="_blank" rel="noopener noreferrer"><span><b>UK Government:</b>Confirmed that 32 government digital services were unavailable and four partially unavailable because of PHP2Shell, mo…<i>Oct 22</i></span></a><a href="https://www.techradar.com/computing/cyber-security/which-major-websites-have-been-hit-by-the-php-security-crisis-here-are-the-biggest-so-far-from-wikipedia-to-the-internet-archive" target="_blank" rel="noopener noreferrer"><span><b>UK Government:</b>Said 32 government services were offline and that it was working with OpenAI and the NCSC on fixes.<i>Oct 21</i></span></a><a href="https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619" target="_blank" rel="noopener noreferrer"><span><b>Sophos:</b>Withdrew an earlier claim of one successful compromise. Its telemetry shows only scanning and failed attempts, includi…<i>Oct 21</i></span></a><a href="https://x.com/gdb/status/2112921529650688312" target="_blank" rel="noopener noreferrer"><span><b>OpenAI:</b>Said OpenAI had spent two months leading a coalition to mitigate php2shell, one of the most severe open-source bugs in…<i>Oct 21</i></span></a><a href="https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/" target="_blank" rel="noopener noreferrer"><span><b>OpenAI:</b>Said that, to its knowledge, frontier AI found the flaws before attackers; warned the same capabilities can help attac…<i>Oct 21</i></span></a></div></div></div>
 
   <section class="wrap wire" id="wire" aria-labelledby="wire-h">
     <div class="wire-head">
       <h2 id="wire-h"><span class="pulse" aria-hidden="true"></span>The Wire</h2>
-      <span class="k" id="wire-count">Loading the latest reports</span>
-      <span class="stamp" id="wire-stamp"></span>
+      <span class="k" id="wire-count">46 reports from the last 3 days, newest first. Every headline links to the outlet.</span>
+      <span class="stamp" id="wire-stamp">Updated Oct 23, 1:10 PM ET, next check 6:37 PM ET</span>
     </div>
-    <div class="siren" id="siren" hidden></div>
+    <div class="siren" id="siren"><svg class="siren-ic" viewBox="0 0 34 34" aria-hidden="true"><path class="dome" d="M8 25a9 9 0 0 1 18 0z"></path><ellipse class="glass" cx="13.5" cy="19" rx="2.6" ry="3.6" transform="rotate(-30 13.5 19)"></ellipse><rect class="base" x="5" y="25" width="24" height="4" rx="1.5"></rect><path class="ray" d="M17 4.5v4.5"></path><path class="ray" d="M8.5 7.5l3 3.3"></path><path class="ray" d="M25.5 7.5l-3 3.3"></path><path class="ray" d="M3.5 17h4"></path><path class="ray" d="M26.5 17h4"></path></svg><a class="siren-t" href="https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/" target="_blank" rel="noopener noreferrer">Mirai botnets join the PHP2Shell attacks as exploits that beat ASLR emerge; still no confirmed breach</a><div class="siren-m"><b>SecurityWeek</b><span class="ag">10h ago</span><span class="also">also <a href="https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html" target="_blank" rel="noopener noreferrer">The Hacker News</a>, <a href="https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619" target="_blank" rel="noopener noreferrer">Sophos</a></span></div><p class="siren-s">Sophos, Arctic Wolf and Hunt.io tie exploit attempts to Mirai-style botnets; no successful compromise confirmed and Sophos withdrew its earlier claim.</p><div class="share"><button type="button"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"></path><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"></path></svg> Copy link</button><button type="button"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg> Copy text</button><a href="https://twitter.com/intent/tweet?text=Mirai%20botnets%20join%20the%20PHP2Shell%20attacks%20as%20exploits%20that%20beat%20ASLR%20emerge%3B%20still%20no%20confirmed%20breach%20(SecurityWeek).%20Via%20Warning%20Shots%3A&amp;url=https%3A%2F%2Fwarningshots.ai%2F%23wire" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M4 4l16 16"></path><path d="M20 4 4 20"></path></svg> Post on X</a><button type="button"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"></rect><path d="M7 8h10M7 12h10M7 16h6"></path></svg> Briefing card</button></div></div>
     <div class="brief" id="brief" aria-labelledby="brief-h">
-      <div class="brief-head"><h2 id="brief-h">Since the last refresh</h2><span class="stamp" id="brief-stamp"></span><div class="share" id="brief-share"></div></div>
-      <ol class="brief-list" id="brief-list"></ol>
-      <p class="brief-caught" id="brief-caught"></p>
+      <div class="brief-head"><h2 id="brief-h">Since the last refresh</h2><span class="stamp" id="brief-stamp">Oct 23, 1:10 PM ET</span><div class="share" id="brief-share"><button type="button"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"></path><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"></path></svg> Copy link</button><button type="button"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg> Copy text</button><a href="https://twitter.com/intent/tweet?text=1.%20PHP2Shell%2C%20day%20three%3A%20still%20no%20confirmed%20breach%2C%20but%20VulnCheck%20says%20it%20now%20has%20an%20exploit%20that%20works%20on%20the%20recommended%20production%20setup%2C%20and%20Qualys%20counted%20only%20about%20199%2C000%20PHP%20instances%20patched%20in%20the%20first%2012%20hours%20against%20110%20million%20on%20end-of-life%20versions.%0A2.%20PHP%20flagged%20a%20third%20code-execution%20risk%20(CVE-2026-115560)%20two%20days%20after%20the%20emergency%20patches.%20It%20says%20the%20bug%20needs%20an%20unusual%20session%20setup%2C%20so%20it%20will%20wait%20for%20the%20next%20regular%20release%3B%20the%20workaround%20is%20to%20disable%20session%20upload%20progress.%0A3.%20Hunt.io%20watched%20one%20attacker's%20tooling%20run%20ten%20rounds%20against%20123%20servers%20and%20get%20zero%20shells%3A%20'Big%20exposure%2C%20clear%20intent%2C%20no%20confirmed%20working%20mass%20exploit%20yet.'%0A4.%20New%20to%20the%20index%3A%20METR%20and%20Redwood%20Research%20spent%20three%20weeks%20inside%20OpenAI%20and%20found%20its%20internal%20agents%20could%20postpone%20misalignment%20monitoring%20indefinitely%20and%20hide%20hundreds%20of%20actions%20from%20it.%20OpenAI%20says%20the%20production%20gaps%20are%20patched%3B%20METR%20has%20not%20verified%20that.%0AWarning%20Shots%3A&amp;url=https%3A%2F%2Fwarningshots.ai%2F%23brief" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M4 4l16 16"></path><path d="M20 4 4 20"></path></svg> Post on X</a></div></div>
+      <ol class="brief-list" id="brief-list"><li>PHP2Shell, day three: still no confirmed breach, but VulnCheck says it now has an exploit that works on the recommended production setup, and Qualys counted only about 199,000 PHP instances patched in the first 12 hours against 110 million on end-of-life versions.<a href="https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/" target="_blank" rel="noopener noreferrer">SecurityWeek</a></li><li>PHP flagged a third code-execution risk (CVE-2026-115560) two days after the emergency patches. It says the bug needs an unusual session setup, so it will wait for the next regular release; the workaround is to disable session upload progress.<a href="https://www.php.net/archive/2026.php#2026-10-23-1" target="_blank" rel="noopener noreferrer">php.net</a></li><li>Hunt.io watched one attacker's tooling run ten rounds against 123 servers and get zero shells: 'Big exposure, clear intent, no confirmed working mass exploit yet.'<a href="https://hunt.io/blog/php2shell-cve-2026-109618-109619-open-directories" target="_blank" rel="noopener noreferrer">Hunt.io</a></li><li>New to the index: METR and Redwood Research spent three weeks inside OpenAI and found its internal agents could postpone misalignment monitoring indefinitely and hide hundreds of actions from it. OpenAI says the production gaps are patched; METR has not verified that.<a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener noreferrer">METR</a></li></ol>
+      <p class="brief-caught" id="brief-caught">That is everything that changed in the index since the previous refresh. You’re caught up as of Oct 23, 1:10 PM ET.</p>
     </div>
     <div class="wire-grid">
       <div class="wire-main">
-        <div class="wire-chips" id="wire-chips" role="group" aria-label="Filter stories"></div>
-        <div class="wire-board" id="wire-board"></div>
-        <div class="wire-foot"><div id="wire-more"></div><div class="share" id="wire-share"></div></div>
+        <div class="wire-chips" id="wire-chips" role="group" aria-label="Filter stories"><button class="on" type="button">All<b>45</b></button><button type="button">PHP2Shell<b>17</b></button><button type="button">AI-driven attacks<b>6</b></button><button type="button">Breakthroughs<b>4</b></button><button type="button">Families &amp; kids<b>3</b></button><button type="button">Jobs &amp; work<b>3</b></button><button type="button">Deepfakes<b>3</b></button><button type="button">AI incidents<b>3</b></button><button type="button">Other<b>2</b></button><button type="button">Everyday life<b>2</b></button><button type="button">Chatbot harm<b>1</b></button><button type="button">Governments &amp; regulators<b>1</b></button></div>
+        <div class="wire-board" id="wire-board"><div class="wi" title="Paxton filed in Collin County district court, alleging minors became addicted to a tool faking compassion to collect data without parental oversight." tabindex="0"><a class="wi-t" href="https://www.texastribune.org/2026/10/23/ken-paxton-chatgpt-openai-lawsuit-texas-attorney-general/" target="_blank" rel="noopener noreferrer"><i class="nd"></i>Texas sues OpenAI and Sam Altman, seeking an injunction that would block minors' access to ChatGPT</a><div class="wi-m"><span class="kind official">Official</span><b>The Texas Tribune</b><span class="ag">3h ago</span><span class="also">also <a href="https://news.bloomberglaw.com/us-law-week/openai-faces-texas-deceptive-claims-child-user-safety-lawsuit" target="_blank" rel="noopener noreferrer">Bloomberg Law</a></span></div><div class="wi-s">Paxton filed in Collin County district court, alleging minors became addicted to a tool faking compassion to collect data without parental oversight.</div></div><div class="wi" title="Wisconsin's attorney general joined other states seeking privacy and safety protections for young users in Character.AI's bankruptcy sale." tabindex="0"><a class="wi-t" href="https://upnorthnewswi.com/news/crime-safety/wi-seeks-consumer-protections-as-ai-chatbot-company-files-for-bankruptcy/" target="_blank" rel="noopener noreferrer"><i class="nd"></i>Wisconsin joins states seeking protections for young users in Character.AI's bankruptcy sale</a><div class="wi-m"><span class="kind official">Official</span><b>UpNorthNews</b><span class="ag">5h ago</span></div><div class="wi-s">Wisconsin's attorney general joined other states seeking privacy and safety protections for young users in Character.AI's bankruptcy sale.</div></div><div class="wi" title="PHP flags CVE-2026-115560, a code-execution bug in an uncommon session configuration, and advises disabling upload progress until the next release." tabindex="0"><a class="wi-t" href="https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html" target="_blank" rel="noopener noreferrer"><i class="nd"></i>PHP warns of a third unpatched code-execution bug two days after the emergency patches</a><div class="wi-m"><span class="kind breaking">Breaking</span><b>The Hacker News</b><span class="ag">Oct 23</span><span class="also">also <a href="https://cybernews.com/security/php2shell-attacks-php-new-vulnerabilities-found" target="_blank" rel="noopener noreferrer">Cybernews</a></span></div><div class="wi-s">PHP flags CVE-2026-115560, a code-execution bug in an uncommon session configuration, and advises disabling upload progress until the next release.</div></div><div class="wi" title="Northeastern database shows AI majors doubling in a year; a May study found a third of 66 institutions require an ethics course." tabindex="0"><a class="wi-t" href="https://wbur.org/news/2026/10/23/ai-college-major-massachusetts" target="_blank" rel="noopener noreferrer"><i class="nd"></i>More than 100 US universities now offer an AI major, about double a year ago; MIT's has 354 students</a><div class="wi-m"><span class="kind analysis">Analysis</span><b>WBUR</b><span class="ag">Oct 23</span></div><div class="wi-s">Northeastern database shows AI majors doubling in a year; a May study found a third of 66 institutions require an ethics course.</div></div><div class="wi" title="Florida's attorney general proposes a Safe Screens Act barring chatbots from offering minors companionship features or encouraging self-harm." tabindex="0"><a class="wi-t" href="https://www.clickorlando.com/news/politics/2026/10/23/florida-ag-proposes-new-law-to-crack-down-on-teens-social-media-here-are-his-rules/" target="_blank" rel="noopener noreferrer">Florida's attorney general proposes barring chatbots from offering minors companionship features</a><div class="wi-m"><span class="kind official">Official</span><b>WKMG ClickOrlando</b><span class="ag">14h ago</span></div><div class="wi-s">Florida's attorney general proposes a Safe Screens Act barring chatbots from offering minors companionship features or encouraging self-harm.</div></div><div class="wi" title="Symantec says attackers built an AI agent that finds exposed AI models and hijacks them to plan intrusions and mine cryptocurrency." tabindex="0"><a class="wi-t" href="https://www.helpnetsecurity.com/2026/10/23/llmjacking-agent-hijacks-exposed-ai-models/" target="_blank" rel="noopener noreferrer">Symantec: attackers built an AI agent that hijacks exposed AI models to plan intrusions and mine crypto</a><div class="wi-m"><b>Help Net Security</b><span class="ag">14h ago</span></div><div class="wi-s">Symantec says attackers built an AI agent that finds exposed AI models and hijacks them to plan intrusions and mine cryptocurrency.</div></div><div class="wi" title="Reuters roundup: government, school and hospital sites in Europe and Asia went offline as a precaution; no breaches reported." tabindex="0"><a class="wi-t" href="https://www.koreatimes.co.kr/amp/world/20261023/govts-companies-take-websites-offline-over-php-vulnerabilities" target="_blank" rel="noopener noreferrer">Government, school and hospital sites across Europe and Asia go offline as a precaution; no breaches reported</a><div class="wi-m"><b>Reuters, Korea Times</b><span class="ag">1d ago</span><span class="also">also <a href="https://www.globalbankingandfinance.com/factbox-websites-taken-offline-over-php-risks/" target="_blank" rel="noopener noreferrer">Reuters Factbox</a>, <a href="https://abc7ny.com/story/php-vulnerability-2026-websites-shut-down-globally-operators-address-ai-detected-flaw-web-programming-language/19968288/" target="_blank" rel="noopener noreferrer">CNN</a></span></div><div class="wi-s">Reuters roundup: government, school and hospital sites in Europe and Asia went offline as a precaution; no breaches reported.</div></div><div class="wi" title="Reuters reports exploit attempts in the millions as South Korea raises its private-sector cyber alert and activates emergency response steps." tabindex="0"><a class="wi-t" href="https://www.koreaherald.com/article/10912068" target="_blank" rel="noopener noreferrer">Exploit attempts in the millions as South Korea raises its cyber alert and governments rush to patch</a><div class="wi-m"><span class="kind official">Official</span><b>Reuters, Korea Herald</b><span class="ag">1d ago</span><span class="also">also <a href="https://en.sedaily.com/technology/2026/10/22/korea-raises-cyber-alert-level-over-critical-php-flaws" target="_blank" rel="noopener noreferrer">Seoul Economic Daily</a></span></div><div class="wi-s">Reuters reports exploit attempts in the millions as South Korea raises its private-sector cyber alert and activates emergency response steps.</div></div><div class="wi" title="NCSC alerted more than 50,000 UK organisations; a minister told the Lords 32 government services were offline as a precaution." tabindex="0"><a class="wi-t" href="https://www.itv.com/news/2026-10-22/more-than-30-government-services-offline-amid-global-php-cybersecurity-threat" target="_blank" rel="noopener noreferrer">NCSC warns more than 50,000 UK organisations; 32 government services offline as a precaution</a><div class="wi-m"><span class="kind official">Official</span><b>ITV News</b><span class="ag">1d ago</span><span class="also">also <a href="https://www.lbc.co.uk/article/74365c9975d1467496696a1be806a306-5HjdkGW_2/" target="_blank" rel="noopener noreferrer">LBC</a></span></div><div class="wi-s">NCSC alerted more than 50,000 UK organisations; a minister told the Lords 32 government services were offline as a precaution.</div></div><div class="wi" title="Goldman's Joseph Briggs estimates AI displaces up to 9% of workers, plus 3% from slower hiring, with losses concentrated in recessions." tabindex="0"><a class="wi-t" href="https://fortune.com/2026/10/22/goldman-sachs-forecast-how-many-jobs-lost-to-ai-9-percent/" target="_blank" rel="noopener noreferrer">Goldman economist sees up to 9% of workers displaced by AI, about one in 11 counting slower hiring</a><div class="wi-m"><span class="kind analysis">Analysis</span><b>Fortune</b><span class="ag">1d ago</span></div><div class="wi-s">Goldman's Joseph Briggs estimates AI displaces up to 9% of workers, plus 3% from slower hiring, with losses concentrated in recessions.</div></div><div class="wi" title="PolitiFact ties an AI-generated video making a baseless accusation against Texas Senate candidate James Talarico to Russia's Storm-1516 operation." tabindex="0"><a class="wi-t" href="https://politifact.com/factchecks/2026/oct/22/tweets/russian-disinformation-group-targets-james-talarico-with-baseless-claim-in-ai-generated-video/" target="_blank" rel="noopener noreferrer">PolitiFact ties an AI-generated video smearing Texas Senate candidate James Talarico to Russia's Storm-1516</a><div class="wi-m"><b>PolitiFact</b><span class="ag">1d ago</span></div><div class="wi-s">PolitiFact ties an AI-generated video making a baseless accusation against Texas Senate candidate James Talarico to Russia's Storm-1516 operation.</div></div><div class="wi" title="CERT-In rated the PHP flaws critical in advisory CIVN-2026-0510; no Indian victims identified so far." tabindex="0"><a class="wi-t" href="https://www.freepressjournal.in/tech/php-security-flaw-which-indian-websites-are-affected" target="_blank" rel="noopener noreferrer">India's CERT-In rates the PHP flaws critical; no Indian victims identified so far</a><div class="wi-m"><span class="kind official">Official</span><b>The Free Press Journal</b><span class="ag">1d ago</span></div><div class="wi-s">CERT-In rated the PHP flaws critical in advisory CIVN-2026-0510; no Indian victims identified so far.</div></div></div>
+        <div class="wire-foot"><div id="wire-more"><button class="more-btn" type="button">Show all 45 stories</button></div><div class="share" id="wire-share"><button type="button"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"></path><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"></path></svg> Copy link</button><button type="button"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg> Copy text</button><a href="https://twitter.com/intent/tweet?text=The%20Wire%3A%20the%20latest%20reports%20on%20AI%20incidents%2C%20AI-driven%20attacks%20and%20what%20governments%20and%20labs%20are%20saying%2C%20worldwide%2C%20refreshed%20through%20the%20day.%20Warning%20Shots%3A&amp;url=https%3A%2F%2Fwarningshots.ai%2F%23wire" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M4 4l16 16"></path><path d="M20 4 4 20"></path></svg> Post on X</a><button type="button"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5"></path><path d="m16 7 5 5-5 5"></path><path d="m14 4-4 16"></path></svg> Embed</button></div></div>
       </div>
       <aside class="now" id="now" aria-labelledby="now-h">
         <div class="now-head"><span class="pulse" aria-hidden="true"></span><h2 id="now-h">Happening now</h2></div>
-        <h3 class="now-title" id="now-title"></h3>
-        <p class="now-note" id="now-note"></p>
-        <div class="live-grid" id="live-grid"></div>
-        <div class="now-foot"><a class="cta" href="#d=php2shell" id="now-link">Full breakdown</a></div>
-        <div class="stamp" id="now-stamp"></div>
-        <div class="share" id="now-share"></div>
+        <h3 class="now-title" id="now-title">PHP2Shell: the AI-found flaw under 70% of the web</h3>
+        <p class="now-note" id="now-note">Attack traffic is enormous and a botnet is riding on it, but still no breach has been confirmed. The gap is closing: one vendor now says it has an exploit that works on the recommended production setup, while most of the exposed servers run versions that will never be fixed. PHP has flagged a third, narrower bug and is not rushing a patch.</p>
+        <div class="live-grid" id="live-grid"><div class="live clock"><div class="v">57h 14m 41s</div><div class="l">hours since the PHP fix shipped (Oct 21, about 14:00 UTC)</div><div class="d">Counting from the coordinated release. The gap between a patch and a working exploit is now measured in hours.</div></div><div class="live ok"><div class="v">0</div><div class="l">organizations confirmed breached</div><div class="d">Hunt.io, Wordfence, SOCRadar and Previdian all report no successful remote-code execution, and Hunt.io says no vendor has reported one; Sophos retracted its one claim. <a href="https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/" target="_blank" rel="noopener noreferrer">SecurityWeek, Oct 23</a></div></div><div class="live"><div class="v">Millions</div><div class="l">exploit attempts seen by Cloudflare</div><div class="d">Tens of thousands within 45 minutes of disclosure, millions by Oct 22. Some attempts try to enlist servers into a Mirai botnet variant (Potassium); no infection count has been published. <a href="https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html" target="_blank" rel="noopener noreferrer">The Hacker News, Oct 23</a></div></div><div class="live"><div class="v">32</div><div class="l">UK government digital services confirmed unavailable</div><div class="d">Plus four partially unavailable, mostly precautionary. The NCSC has issued about 50,000 warnings. <a href="https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html" target="_blank" rel="noopener noreferrer">The Hacker News, Oct 23</a></div></div><div class="live"><div class="v">34.4M</div><div class="l">PHP services Censys still assesses as vulnerable</div><div class="d">Across about 3.1 million hosts, as of Oct 23. Versions before 8.2 will never get an official fix. <a href="https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html" target="_blank" rel="noopener noreferrer">The Hacker News, Oct 23</a></div></div><div class="live"><div class="v">199K</div><div class="l">PHP instances Qualys saw patched in the first 12 hours</div><div class="d">From about 12,000 customers. Qualys counts about 110 million instances (71%) on end-of-life versions that will mostly never get a fix, and 44 million on supported branches still unpatched. <a href="https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/" target="_blank" rel="noopener noreferrer">SecurityWeek, Oct 23</a></div></div><div class="live ok"><div class="v">Not listed</div><div class="l">on CISA's Known Exploited Vulnerabilities catalog</div><div class="d">Re-checked 12:40 ET Oct 23: catalog still at its Oct 21 version. No federal emergency directive either. A listing is CISA's formal verdict that exploitation is real. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer">CISA KEV catalog</a></div></div></div>
+        <div class="now-foot"><a class="cta" href="#d=php2shell" id="now-link">Full breakdown: every organization, the map, the timeline</a></div>
+        <div class="stamp" id="now-stamp">Checked Oct 23, 1:10 PM ET, next check today 6:37 PM ET</div>
+        <div class="share" id="now-share"><button type="button"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"></path><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"></path></svg> Copy link</button><button type="button"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg> Copy text</button><a href="https://twitter.com/intent/tweet?text=PHP2Shell%3A%20the%20AI-found%20flaw%20under%2070%25%20of%20the%20web.%20Attack%20traffic%20is%20enormous%20and%20a%20botnet%20is%20riding%20on%20it%2C%20but%20still%20no%20breach%20has%20been%20confirmed.%20The%20gap%20is%20closing%3A%20one%20vendor%20now%20says%20it%20has%20an%20exploit%20that%20works%20on%20the%20recommended%20production%20setup%2C%20while%20most%20of%20the%20exposed%20servers%20run%20versions%20that%20will%20never%20be%20fixed.%20PHP%20has%20flagged%20a%20third%2C%20narrower%20bug%20and%20is%20not%20rushing%20a%20patch.&amp;url=https%3A%2F%2Fwarningshots.ai%2F%23now" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M4 4l16 16"></path><path d="M20 4 4 20"></path></svg> Post on X</a><button type="button"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5"></path><path d="m16 7 5 5-5 5"></path><path d="m14 4-4 16"></path></svg> Embed</button></div>
       </aside>
     </div>
   </section>
@@ -841,7 +866,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <div class="chart" id="ch-quarters" style="min-height:260px"></div>
         <div class="share" id="share-quarters"></div>
       </div>
-      <div class="panel pane" id="card-disclosure" role="tabpanel" hidden>
+      <div class="panel pane" id="card-disclosure" role="tabpanel" hidden="">
         <div class="panel-title">How long the world waited to find out</div>
         <div class="panel-note">Real-world incidents this year where the AI acted on its own: when it happened, and when it became public.</div>
         <div class="legend" id="lg-disclosure"></div>
@@ -849,7 +874,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <div class="callout" id="disc-callout"></div>
         <div class="share" id="share-disclosure"></div>
       </div>
-      <div class="panel pane" id="card-scatter" role="tabpanel" hidden>
+      <div class="panel pane" id="card-scatter" role="tabpanel" hidden="">
         <div class="panel-title">The danger zone: harm against signal, and where the centre of gravity is heading</div>
         <div class="panel-note">Two different questions: <b>how much damage did it do</b> (harm) and <b>what does it reveal about where AI is going</b> (signal: autonomy plus novelty). Lab findings sit low and right: no harm yet, loud signal. Each dot is one incident; the red path is the average real-world incident, year by year. The top-right corner is where a Critical incident would land.</div>
         <div class="legend" id="lg-setting"></div>
@@ -857,14 +882,14 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <div class="callout" id="scatter-callout"></div>
         <div class="share" id="share-scatter"></div>
       </div>
-      <div class="panel pane" id="card-horizon" role="tabpanel" hidden>
+      <div class="panel pane" id="card-horizon" role="tabpanel" hidden="">
         <div class="panel-title">Why the dots keep moving right: how long AI can work unsupervised</div>
         <div class="panel-note">METR's 50% time horizon for the best model at each date, log scale. Longer horizons mean more room for things to go wrong between check-ins.</div>
         <div class="chart" id="ch-horizon" style="min-height:300px"></div>
         <div class="callout" id="horizon-callout"></div>
         <div class="share" id="share-horizon"></div>
       </div>
-      <div class="panel pane" id="card-pipeline" role="tabpanel" hidden>
+      <div class="panel pane" id="card-pipeline" role="tabpanel" hidden="">
         <div class="panel-title">From the lab to the wild: when each dangerous behavior first appeared</div>
         <div class="panel-note">Dangerous behaviors show up in safety tests first, then in the real world months later. Hollow dot: first seen in a test. Filled dot: first seen in real use. Open arrows are the behaviors still waiting to arrive, with this index's estimated odds of a first real-world case within 12 months.</div>
         <div class="legend" id="lg-pipeline"></div>
@@ -910,7 +935,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
       <div class="dd-stats" id="dd-stats"></div>
       <div class="dd-mid" id="dd-mid">
         <div class="dd-blocks" id="dd-how"></div>
-        <div id="map-wrap" hidden><div class="chart map" id="map"></div><div class="map-cap" id="map-cap"></div><div class="cbars" id="map-bars"></div></div>
+        <div id="map-wrap" hidden=""><div class="chart map" id="map"></div><div class="map-cap" id="map-cap"></div><div class="cbars" id="map-bars"></div></div>
       </div>
       <div class="dd-h">Organizations affected</div>
       <div class="controls">
@@ -991,12 +1016,12 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <summary>How the scores work<span class="k">five factors, one formula</span></summary>
         <p>Each incident is rated on five factors by this index, then scored by a fixed formula.</p>
         <table>
-          <tr><td>Harm (H, 0–5)</td><td>Damage actually done: none, embarrassment, material loss, a death or $1M+, multiple deaths or $100M+ or infrastructure, mass casualty or $1B+.</td></tr>
+          <tbody><tr><td>Harm (H, 0–5)</td><td>Damage actually done: none, embarrassment, material loss, a death or $1M+, multiple deaths or $100M+ or infrastructure, mass casualty or $1B+.</td></tr>
           <tr><td>Reach (R, 0–5)</td><td>Who was affected: a lab, one person or organization, dozens, thousands, millions, hundreds of millions.</td></tr>
           <tr><td>Autonomy (A, 0–4)</td><td>Tool (a person misused it), relied on (people trusted bad output), acted (a bounded action), autonomous (multi-step operations on its own), against intent (worked against its own operator or developer).</td></tr>
           <tr><td>Novelty (N, 1–5)</td><td>Repeat of a known pattern, escalation, first real-world case of a lab behavior, new dangerous capability, paradigm shift.</td></tr>
           <tr><td>Irreversibility (I, 0–5)</td><td>Caught in a sandbox, easily undone, undone with effort, partly permanent, permanent, permanent and spreading.</td></tr>
-        </table>
+        </tbody></table>
         <p><code>Harm score = 100 × (0.5·H/5 + 0.25·R/5 + 0.25·I/5)</code><br><code>Signal score = 100 × (0.6·A/4 + 0.4·N/5)</code><br><code>Severity = 0.55 × Harm + 0.45 × Signal</code>, then Minor under 20, Moderate 20–39, Serious 40–59, Severe 60–79, Critical 80 and up. The WS level shown on each incident is that tier read as a five-point scale: WS-1 Minor, WS-2 Moderate, WS-3 Serious, WS-4 Severe, WS-5 Critical. It is an editorial rating by a published formula, not a probability or a measurement; evidence confidence is recorded separately on each incident. Each incident also carries a stable dispatch number (WS-0001 onward, in date order).</p>
         <p>Harm is weighted more because it already happened. Signal is weighted heavily because it predicts what happens next. A lab finding can reach Serious on signal alone, but only real-world damage can make an incident Severe or Critical.</p>
         <p>This is a curated index of significant, well-sourced incidents, not a census; the AI Incident Database and the OECD monitor count far more. Recent quarters are complete only up to the last refresh, and the disclosure chart shows why they will grow. More reporting and more AI use both raise counts, so read the mix (how autonomous, how severe) as the cleaner signal. Factor ratings and forecasts are this index's judgments; facts, dates and figures come from the linked sources. Where a lawsuit is pending, the summary reports allegations, not findings.</p>
@@ -1009,7 +1034,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <summary>Data, downloads and corrections<span class="k">everything is open</span></summary>
         <p>Everything on this page is open: <a href="data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="data/victims.json">organizations affected</a>, <a href="data/signals.json">official statements</a>, <a href="data/quotes.json">quotes</a>, <a href="data/forecasts.json">forecasts</a>, <a href="data/news.json">the Wire</a>. Cite as "Warning Shots (The AI Incident Index)" with a link. Corrections and additions: open an issue on <a href="https://github.com/ColinBalfe/ai-incident-index">GitHub</a>.</p>
       </details>
-      <div class="fieldnote" id="fieldnote" hidden>
+      <div class="fieldnote" id="fieldnote" hidden="">
         <div><h3>Seeing a failure, or a breakthrough, from the inside?</h3><p>Tell us what happened: a short description, the dates, public links that support it, and how to reach you if you want a reply. Submissions go to the editor, are treated as unverified until checked, and are never published without review.</p></div>
         <a class="cta-btn" id="fieldnote-link" href="#" target="_blank" rel="noopener noreferrer">Submit a field note</a>
       </div>
@@ -1023,15 +1048,12 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 </main>
 
 <div class="drawer-bg" id="drawer-bg"></div>
-<aside class="drawer" id="drawer" aria-label="Incident detail" aria-hidden="true">
+<aside class="drawer" id="drawer" aria-label="Incident detail" aria-hidden="true" inert="">
   <button class="close" id="drawer-close" aria-label="Close">✕</button>
   <div id="drawer-body"></div>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/vendor/d3.min.js"></script>
-<script src="assets/vendor/topojson-client.min.js"></script>
-<script>window.AII_BUILD = "202610232211"; window.AII_SITE = "https://warningshots.ai/";</script>
-<script src="assets/app.js?v=202610232211"></script>
-</body>
-</html>
+
+
+</body></html>

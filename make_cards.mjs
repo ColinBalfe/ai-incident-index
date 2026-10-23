@@ -15,7 +15,7 @@ const meta = data('meta');
 const records = { i: Object.fromEntries(data('incidents').map((r) => [r.id, r])), c: Object.fromEntries(data('fixes').map((f) => [f.incident_id, f])), m: Object.fromEntries(data('capabilities').map((c) => [c.id, c])), n: Object.fromEntries(data('news').filter((n) => n.siren).map((n) => [n.id, n])) };
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
 const page = await (await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce' })).newPage();
-await page.goto(url, { waitUntil: 'networkidle' }); await page.waitForTimeout(800);
+await page.goto(url, { waitUntil: 'networkidle' }); await page.waitForFunction(() => window.__ready, null, { timeout: 15000 }); await page.waitForTimeout(300);
 const ids = await page.evaluate(() => window.WS.ids());
 let made = 0, kept = 0;
 for (const kind of ['i', 'c', 'm', 'n']) {

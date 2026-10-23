@@ -1,0 +1,13 @@
+{
+  "name": "Warning Shots",
+  "short_name": "Warning Shots",
+  "description": "See what’s coming. Know what it means for you. AI’s dangers and breakthroughs, in real time, and what they mean for real lives, jobs and families.",
+  "start_url": "/?source=pwa",
+  "display": "minimal-ui",
+  "background_color": "#0A111E",
+  "theme_color": "#0A111E",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

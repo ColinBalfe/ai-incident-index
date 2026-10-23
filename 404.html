@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not here — Warning Shots</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0A111E">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #0A111E; color: #F4F3EF; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
+  .box { max-width: 560px; }
+  .logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .logo svg { width: 44px; height: 44px; }
+  .logo span { font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: 15px; }
+  h1 { font-size: 1.9rem; line-height: 1.15; margin: 28px 0 10px; letter-spacing: -0.01em; }
+  p { color: #A8B3C2; margin: 0 0 12px; }
+  a.cta { display: inline-block; margin-top: 10px; padding: 10px 16px; border: 1px solid #F4F3EF; color: #F4F3EF; text-decoration: none; font-weight: 600; font-size: 14px; }
+  a.cta:hover { background: #F4F3EF; color: #0A111E; }
+  code { color: #F4F3EF; }
+</style>
+<script>
+  // A shared link to a dispatch page that no longer exists (records are occasionally merged or renamed) still lands on the index.
+  (function () {
+    var m = /^\/(i|c|m)\/([^\/]+)\/?$/.exec(location.pathname);
+    if (m) { location.replace('/#' + m[1] + '=' + m[2]); }
+  })();
+</script>
+</head>
+<body>
+<div class="box">
+  <a class="logo" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="#F4F3EF" d="M72 12.5H12.5V87.5H87.5V28" stroke="#F4F3EF" stroke-width="5" fill="none" opacity=".6"/><text x="22" y="69" font-family="Georgia, 'Times New Roman', serif" font-weight="900" font-size="52" fill="#F4F3EF">W</text><circle cx="78" cy="48" r="5" fill="#FF3300"/><circle cx="78" cy="64" r="5" fill="#F4F3EF"/></svg><span>Warning Shots</span></a>
+  <h1>That page isn’t here.</h1>
+  <p>The link may be old, or the dispatch it pointed to was merged into another record. Everything on the index is one page away.</p>
+  <p><a class="cta" href="/">Open Warning Shots</a></p>
+  <p style="margin-top:20px;font-size:13px">Looking for something specific? The Wire, the incident record and the search box are all on the <a href="/#all" style="color:#F4F3EF">front page</a>. See what’s coming. Know what it means for you.</p>
+</div>
+</body>
+</html>

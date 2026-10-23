@@ -6,6 +6,7 @@ const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromi
 const ctx = await browser.newContext({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 2, colorScheme: 'light', reducedMotion: 'reduce' });
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: 'networkidle' });
+await page.waitForFunction(() => window.WS && window.WS.drawAll && window.WS.drawAll(), null, { timeout: 15000 }); await page.waitForTimeout(300);
 await page.addStyleTag({ content: `
   .masthead, .navbar, .sub.chart-note, #lg-autonomy, #hero-share, #hero-stats, main > :not(.hero-band), .drawer, .drawer-bg, .toast { display: none !important; }
   .hero-band { margin-top: 0 !important; }

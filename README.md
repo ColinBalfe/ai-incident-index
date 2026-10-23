@@ -13,8 +13,11 @@ research/            raw research files: incidents by period, PHP2Shell, victims
 build/               Python that turns research into the site's data files (run in order: build_data.py, build_deep.py, build_live.py)
 build/data/          output of the build (copied to data/)
 data/                what the page loads
-index.template.html  page template; build_site.py fills the OG tags and build id -> index.html
-assets/app.js        all page logic (d3 v7, vendored)
+index.template.html  page template; build_site.py fills the OG tags, JSON-LD and build id -> index.html, and writes data/bundle.json (all data in one request)
+prerender.mjs        bakes the first screen (ribbon, ticker, siren, brief, Wire board, live rail) into index.html so it is in the first paint; the script redraws it on load
+404.html             branded not-found page; sends old /i/, /c/, /m/ links back to the matching deep link
+manifest.webmanifest, assets/icon-*.png  home-screen icon and name
+assets/app.js        all page logic (d3 v7, vendored as assets/vendor/d3-lite.min.js, only the modules the page uses; regenerate from assets/vendor/d3-lite.entry.js with esbuild)
 make_og.mjs          renders assets/og.png (the share card) from the live page with Playwright
 make_cards.mjs       renders a 1200x630 share card per dispatch into cards/ (incremental, manifest-based)
 build_pages.py       writes i/<id>/, c/<id>/ and m/<id>/ pages (own title, description and card; redirect to the deep link) plus sitemap.xml and robots.txt
@@ -29,11 +32,12 @@ Rebuild everything:
 cd build && python3 build_data.py && python3 build_deep.py && python3 build_live.py && cp data/*.json ../data/
 cd .. && python3 build_site.py
 python3 -m http.server 8765 --bind 127.0.0.1 &   # then:
+node prerender.mjs http://127.0.0.1:8765/index.html   # expect "prerendered 21 blocks"
 node make_og.mjs http://127.0.0.1:8765/index.html
 node shot.mjs    http://127.0.0.1:8765/index.html   # expect "errors none" three times
 ```
 
-`make_og.mjs` and `shot.mjs` need `npm i playwright` and a Chromium; set the `executablePath` at the top of each file to yours.
+`prerender.mjs`, `make_og.mjs`, `make_cards.mjs` and `shot.mjs` need `npm i playwright` and a Chromium; set the `executablePath` at the top of each file to yours.
 
 ## Scoring
 
