@@ -3,23 +3,15 @@
 "key": "confirmed",
 "value": "0",
 "label": "organizations confirmed breached",
-"detail": "Previdian, SOCRadar, Wordfence and Hunt.io all report no successful remote-code execution; Sophos retracted its one claim.",
-"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-"source_label": "The Hacker News, Oct 23"
+"detail": "Hunt.io, Wordfence, SOCRadar and Previdian all report no successful remote-code execution, and Hunt.io says no vendor has reported one; Sophos retracted its one claim.",
+"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+"source_label": "SecurityWeek, Oct 23"
 },
 {
 "key": "attempts",
 "value": "Millions",
 "label": "exploit attempts seen by Cloudflare",
-"detail": "Tens of thousands within 45 minutes of disclosure, millions by Oct 22.",
-"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-"source_label": "The Hacker News, Oct 23"
-},
-{
-"key": "botnet",
-"value": "Mirai",
-"label": "first malware riding on it",
-"detail": "Attackers are trying to enlist exploited servers into a Mirai variant called Potassium for DDoS floods. No infection count has been published.",
+"detail": "Tens of thousands within 45 minutes of disclosure, millions by Oct 22. Some attempts try to enlist servers into a Mirai botnet variant (Potassium); no infection count has been published.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
 "source_label": "The Hacker News, Oct 23"
 },
@@ -40,10 +32,18 @@
 "source_label": "The Hacker News, Oct 23"
 },
 {
+"key": "patched",
+"value": "199K",
+"label": "PHP instances Qualys saw patched in the first 12 hours",
+"detail": "From about 12,000 customers. Qualys counts about 110 million instances (71%) on end-of-life versions that will mostly never get a fix, and 44 million on supported branches still unpatched.",
+"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+"source_label": "SecurityWeek, Oct 23"
+},
+{
 "key": "kev",
 "value": "Not listed",
 "label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "No federal emergency directive either. A listing is CISA's formal verdict that exploitation is real.",
+"detail": "Re-checked 12:40 ET Oct 23: catalog still at its Oct 21 version. No federal emergency directive either. A listing is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
 "source_label": "CISA KEV catalog"
 }

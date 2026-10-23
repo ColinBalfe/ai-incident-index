@@ -1,13 +1,17 @@
 {
- "as_of": "2026-10-23T10:30:00-04:00",
- "as_of_label": "Oct 23, 2026, 10:30 ET",
- "next_check": "2026-10-23T12:37:00-04:00",
- "next_check_label": "today, 12:37 ET",
+ "as_of": "2026-10-23T13:10:00-04:00",
+ "as_of_label": "Oct 23, 2026, 13:10 ET",
+ "next_check": "2026-10-23T18:37:00-04:00",
+ "next_check_label": "today, 18:37 ET",
  "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Attack traffic is enormous and the first botnet is riding on it, but no breach has been confirmed, and researchers now say reliable exploitation is harder than the leak implied. The damage so far is self-inflicted: switched-off services.",
+ "live_note": "Attack traffic is enormous and a botnet is riding on it, but still no breach has been confirmed. The gap is closing: one vendor now says it has an exploit that works on the recommended production setup, while most of the exposed servers run versions that will never be fixed. PHP has flagged a third, narrower bug and is not rushing a patch.",
  "site_url": "https://warningshots.ai/",
  "changelog": [
+  {
+   "date": "2026-10-23",
+   "text": "13:10 ET: 1 incident added (METR and Redwood red team of OpenAI's agent monitoring, disclosed Oct 22). PHP2Shell: third PHP bug (CVE-2026-115560), VulnCheck production-config exploit, Qualys patch-rate figures and Hunt.io findings added (5 timeline events, 3 statements, 3 scale figures); CISA KEV re-checked, still not listed. 3 quotes added to In their words (61 total)."
+  },
   {
    "date": "2026-10-23",
    "text": "Launched at warningshots.ai. Added \"In their words\": 58 verbatim, source-verified quotes from the people in charge, with pull quotes in each incident. Added the daily brief, embeddable charts and share tools."

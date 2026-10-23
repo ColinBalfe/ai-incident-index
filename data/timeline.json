@@ -280,6 +280,30 @@
 "source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
 },
 {
+"id": "php-t-qualys",
+"incident_id": "php2shell",
+"date": "2026-10-23T11:00",
+"date_label": "Oct 23",
+"event": "Qualys, from about 12,000 customers, counts only about 199,000 PHP instances patched within 12 hours of disclosure; about 110 million (71%) run end-of-life versions that will mostly never get a fix.",
+"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/"
+},
+{
+"id": "php-t-vulncheck-prod",
+"incident_id": "php2shell",
+"date": "2026-10-23T11:30",
+"date_label": "Oct 23",
+"event": "VulnCheck says it has an exploit that works against the recommended production configuration on x86-64, kept to its paying customers, and knows of no other public or commercial exploit that does so across PHP versions. Hunt.io, Wordfence and SOCRadar still report no confirmed compromise.",
+"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/"
+},
+{
+"id": "php-t-cve115560",
+"incident_id": "php2shell",
+"date": "2026-10-23T12:00",
+"date_label": "Oct 23",
+"event": "PHP flags a third, narrower code-execution risk (CVE-2026-115560) that needs an unusual session configuration. It recommends disabling session upload progress and will fix it in the next regular release; no exploitation reported.",
+"source_url": "https://www.php.net/archive/2026.php#2026-10-23-1"
+},
+{
 "id": "oa-t01",
 "incident_id": "openai-hf-swarm",
 "date": "2025-11-15T00:00",

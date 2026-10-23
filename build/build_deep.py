@@ -261,6 +261,9 @@ SIG_FIX = {
 sig.append(dict(id='uk-gov-32-services', date='2026-10-22', org='UK Government', org_type='government', speaker='', channel='statement',
     gist='Confirmed that 32 government digital services were unavailable and four partially unavailable because of PHP2Shell, mostly precautionary shutdowns; the NCSC has issued about 50,000 warnings to organisations.', quote='',
     related_incident='PHP2Shell', significance='medium', url='https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html'))
+sig.append(dict(id='php-cve115560-advisory', date='2026-10-23', org='PHP Foundation', org_type='tech company', speaker='', channel='advisory',
+    gist="Flagged a third, narrower code-execution risk (CVE-2026-115560) reachable only under an unusual session configuration; recommended disabling session upload progress until the next regular bugfix release, when a full advisory will follow. No exploitation reported.", quote='we are handling it in the regular release cycle',
+    related_incident='PHP2Shell', significance='medium', url='https://www.php.net/archive/2026.php#2026-10-23-1'))
 for s_ in sig: s_.update(SIG_FIX.get(s_['id'], {})); s_.update(SIGFIX2.get(s_['id'], {}))
 for s_ in sig:
     if s_['id'] in SIG_SUB:

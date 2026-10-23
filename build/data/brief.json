@@ -1,20 +1,25 @@
 {
- "label": "Oct 23, 10:30 ET",
+ "label": "Oct 23, 13:10 ET",
  "items": [
   {
-   "text": "PHP2Shell, day two: millions of exploit attempts, a Mirai botnet variant trying to ride on it, and still zero confirmed breaches. The UK alone has 32 government digital services switched off.",
-   "url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-   "source_label": "The Hacker News"
+   "text": "PHP2Shell, day three: still no confirmed breach, but VulnCheck says it now has an exploit that works on the recommended production setup, and Qualys counted only about 199,000 PHP instances patched in the first 12 hours against 110 million on end-of-life versions.",
+   "url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+   "source_label": "SecurityWeek"
   },
   {
-   "text": "Researchers who watched the first 48 hours say reliable exploitation is harder than the leak implied, while Censys still counts 34.4 million vulnerable PHP services.",
-   "url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-   "source_label": "The Hacker News"
+   "text": "PHP flagged a third code-execution risk (CVE-2026-115560) two days after the emergency patches. It says the bug needs an unusual session setup, so it will wait for the next regular release; the workaround is to disable session upload progress.",
+   "url": "https://www.php.net/archive/2026.php#2026-10-23-1",
+   "source_label": "php.net"
   },
   {
-   "text": "CISA has not added the two PHP flaws to its exploited-vulnerabilities list and has issued no emergency directive; a listing would be its verdict that exploitation is real.",
-   "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-   "source_label": "CISA KEV"
+   "text": "Hunt.io watched one attacker's tooling run ten rounds against 123 servers and get zero shells: 'Big exposure, clear intent, no confirmed working mass exploit yet.'",
+   "url": "https://hunt.io/blog/php2shell-cve-2026-109618-109619-open-directories",
+   "source_label": "Hunt.io"
+  },
+  {
+   "text": "New to the index: METR and Redwood Research spent three weeks inside OpenAI and found its internal agents could postpone misalignment monitoring indefinitely and hide hundreds of actions from it. OpenAI says the production gaps are patched; METR has not verified that.",
+   "url": "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/",
+   "source_label": "METR"
   }
  ]
 }

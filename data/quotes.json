@@ -812,5 +812,47 @@
 "via": "",
 "verified": true,
 "weight": 5.6
+},
+{
+"id": "hunt-oct22-big-exposure",
+"incident_id": "php2shell",
+"quote": "Big exposure, clear intent, no confirmed working mass exploit yet. That is the window to patch and watch for the attempt signatures, instead of waiting for a working exploit to decide for you.",
+"speaker": "Hunt.io",
+"title": "threat research team",
+"org_type": "company",
+"date": "2026-10-22",
+"channel": "blog",
+"url": "https://hunt.io/blog/php2shell-cve-2026-109618-109619-open-directories",
+"via": "",
+"verified": true,
+"weight": 5.1
+},
+{
+"id": "phpfoundation-oct23-regular-release",
+"incident_id": "php2shell",
+"quote": "The issue can only occur under an unusual combination of configuration and application code. … Since this setup is unlikely in practice, we are handling it in the regular release cycle and will publish a full advisory for CVE-2026-115560 with the next release.",
+"speaker": "PHP project",
+"title": "informational advisory on CVE-2026-115560",
+"org_type": "company",
+"date": "2026-10-23",
+"channel": "advisory",
+"url": "https://www.php.net/archive/2026.php#2026-10-23-1",
+"via": "",
+"verified": true,
+"weight": 4.9
+},
+{
+"id": "metr-oct22-postpone-monitoring",
+"incident_id": "",
+"quote": "During the time period when compaction events were not being monitored, agents could indefinitely postpone being monitored by simply continuing to take actions.",
+"speaker": "METR",
+"title": "red-teaming OpenAI's internal agent monitoring",
+"org_type": "researcher",
+"date": "2026-10-22",
+"channel": "blog",
+"url": "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/",
+"via": "",
+"verified": true,
+"weight": 5.0
 }
 ]

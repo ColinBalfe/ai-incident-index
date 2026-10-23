@@ -2,16 +2,16 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None as of Oct 23",
+"status": "None as of Oct 23, 13:10 ET; VulnCheck reports a production-config exploit",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
-"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-"source_label": "The Hacker News"
+"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+"source_label": "SecurityWeek"
 },
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet",
+"status": "Not yet (checked 12:40 ET Oct 23)",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -29,11 +29,20 @@
 {
 "id": "php-restore",
 "item": "How fast the UK, Netherlands, Canada and Japan restore switched-off services",
-"status": "32 UK services still down",
+"status": "32 UK services down as of Oct 22; no restoration update found Oct 23",
 "kind": "open",
 "why": "Tells you how long 'turn it off' is a viable defense, and what the next AI-found flaw will cost.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
 "source_label": "The Hacker News"
+},
+{
+"id": "php-115560",
+"item": "Whether the third PHP bug (CVE-2026-115560) turns out to be wider than PHP says",
+"status": "Informational advisory only; no exploitation reported",
+"kind": "open",
+"why": "PHP says it needs an unusual session configuration and is leaving the fix to the next regular release. If researchers find common apps that match, the no-rush call gets tested.",
+"source_url": "https://www.php.net/archive/2026.php#2026-10-23-1",
+"source_label": "php.net"
 },
 {
 "id": "openai-21",

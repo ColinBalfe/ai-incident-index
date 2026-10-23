@@ -1350,5 +1350,18 @@
 "related_incident": "PHP2Shell",
 "significance": "medium",
 "url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
+},
+{
+"id": "php-cve115560-advisory",
+"date": "2026-10-23",
+"org": "PHP Foundation",
+"org_type": "tech company",
+"speaker": "",
+"channel": "advisory",
+"gist": "Flagged a third, narrower code-execution risk (CVE-2026-115560) reachable only under an unusual session configuration; recommended disabling session upload progress until the next regular bugfix release, when a full advisory will follow. No exploitation reported.",
+"quote": "we are handling it in the regular release cycle",
+"related_incident": "PHP2Shell",
+"significance": "medium",
+"url": "https://www.php.net/archive/2026.php#2026-10-23-1"
 }
 ]

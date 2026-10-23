@@ -9,4 +9,5 @@ WEIGHTS = {
  'lee-eogweon-oct4-highest-alert': 6.2, 'openai-oct15-ordinary-research-task': 6.1, 'gambit-simpson-feb25-ready-to-execute': 6.0,
  'hawley-sep30-break-it-pay-for-it': 5.9, 'phpfoundation-oct21-embargo': 5.8, 'openai-jul21-hyperfocused': 5.7, 'wiz-oct21-meaningful-barrier': 5.6,
  'bengio-sep11-cheating-rewarded': 5.5, 'amodei-sep12-slow-the-pace': 5.4, 'ncsc-oct21-take-offline': 5.3, 'openai-oct21-defenders-window': 5.2,
+ 'hunt-oct22-big-exposure': 5.1, 'metr-oct22-postpone-monitoring': 5.0, 'phpfoundation-oct23-regular-release': 4.9,
 }
