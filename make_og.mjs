@@ -7,11 +7,13 @@ const ctx = await browser.newContext({ viewport: { width: 1200, height: 630 }, d
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: 'networkidle' });
 await page.addStyleTag({ content: `
-  .topbar, .sub, #lg-autonomy, #hero-share, #hero-stats, main > :not(.hero), .drawer, .drawer-bg, .toast { display: none !important; }
+  .topbar, .sub.chart-note, #lg-autonomy, #hero-share, #hero-stats, main > :not(.hero), .drawer, .drawer-bg, .toast { display: none !important; }
   html, body { background: #F2F4F6; overflow: hidden; }
   .hero { padding: 34px 48px 0 !important; max-width: none !important; }
-  .hl { font-size: 46px !important; max-width: none !important; margin: 0 !important; }
-  .hero-chart { margin-top: 12px !important; min-height: 0 !important; }
+  .hl { font-size: 50px !important; max-width: none !important; margin: 0 !important; }
+  .sub { font-size: 21px !important; max-width: none !important; margin: 8px 0 0 !important; color: #141A21 !important; }
+  .sub b { color: #D3321F !important; }
+  .hero-chart { margin-top: 6px !important; min-height: 0 !important; }
   .og-foot { position: fixed; left: 48px; right: 48px; bottom: 22px; display: flex; justify-content: space-between; font: 500 18px/1 'Archivo', system-ui, sans-serif; color: #55616E; letter-spacing: -0.01em; }
   .og-foot b { color: #141A21; font-weight: 600; }
 ` });
@@ -24,5 +26,11 @@ await page.evaluate(() => {
   window.dispatchEvent(new Event('resize'));
 });
 await page.waitForTimeout(700);
+await page.evaluate(() => {
+  const sub = document.getElementById('sub'); const keep = [];
+  for (const node of [...sub.childNodes]) { keep.push(node); if (node.nodeType === 3 && node.textContent.includes('did the acting')) { node.textContent = node.textContent.split('did the acting')[0] + 'did the acting.'; break; } }
+  sub.replaceChildren(...keep);
+});
+await page.waitForTimeout(100);
 await page.screenshot({ path: out, clip: { x: 0, y: 0, width: 1200, height: 630 } });
 await browser.close(); console.log('og written', out);

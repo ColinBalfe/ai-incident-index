@@ -171,7 +171,9 @@ function compute() {
 function drawHeadline() {
   const h = C.headline;
   const H = document.getElementById('headline');
-  H.replaceChildren(txt('Severe AI incidents went from '), el('b', 'num', String(h.severe_prior12)), txt(' to '), el('b', 'num', String(h.severe_last12)), txt(' in a year.'));
+  H.replaceChildren(txt('AI has started breaking in '), el('b', null, 'on its own.'));
+  const sub = document.getElementById('sub');
+  sub.replaceChildren(txt('Severe AI incidents went from '), el('b', null, String(h.severe_prior12)), txt(' to '), el('b', null, String(h.severe_last12)), txt(' in a year. In '), el('b', null, Math.round(h.agentic_recent * 100) + '%'), txt(" of this year's real-world cases the AI itself did the acting: into a national health portal, government data sites, its own developers' servers and dozens of organizations, with nobody telling it to. Most of what happened inside the labs in the last three months is still undisclosed."));
   const stats = document.getElementById('hero-stats');
   const stat = (v, l, cls, small) => { const s = el('div', 'stat' + (cls ? ' ' + cls : '')); const vv = el('div', 'v', v); if (small) vv.append(el('small', null, small)); const ll = el('div', 'l'); ll.append(...l); s.append(vv, ll); return s; };
   const pct = (x) => Math.round(x * 100) + '%';
@@ -184,7 +186,7 @@ function drawHeadline() {
     stat(fmtN(h.n), [el('b', null, fmtN(h.n_wild)), txt(' real-world incidents and '), el('b', null, fmtN(h.n_lab)), txt(' lab or test findings, scored')]),
     stat(h.n_critical === 0 ? 'None' : String(h.n_critical), [txt(h.n_critical === 0 ? 'rated Critical yet. Odds of one within 12 months: ' : 'rated Critical. Odds of another within 12 months: '), el('b', null, crit ? crit.probability_label : '—')]),
   );
-  shareRow(document.getElementById('hero-share'), { anchor: 'top', text: `Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year, and in ${pct(h.agentic_recent)} of this year's real-world cases the AI acted on its own. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
+  shareRow(document.getElementById('hero-share'), { anchor: 'top', text: `AI has started breaking in on its own. Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year; in ${pct(h.agentic_recent)} of this year's real-world cases the AI itself did the acting. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
   const up = document.getElementById('tb-updated'); up.textContent = 'Updated ' + relTime(D.meta.as_of); up.title = D.meta.as_of_label + '. ' + D.meta.schedule;
   document.getElementById('foot-updated').textContent = D.meta.as_of_label + '. ' + D.meta.schedule + ' Next check ' + D.meta.next_check_label;
 }
@@ -696,7 +698,7 @@ function embedMode() {
   const targets = { timeline: ['ch-timeline', 'lg-autonomy', 'hero-share'], now: ['now'], quarters: ['card-quarters'], disclosure: ['card-disclosure'], scatter: ['card-scatter'], horizon: ['card-horizon'], pipeline: ['card-pipeline'], words: ['quotes'], brief: ['brief'] };
   const ids = targets[EMBED] || targets.timeline;
   const host = el('div', 'embed-host wrap');
-  if (EMBED === 'timeline') { const p = el('div', 'panel'); const t = el('div', 'panel-title'); t.append(txt('Severe AI incidents went from '), el('b', null, String(C.headline.severe_prior12)), txt(' to '), el('b', null, String(C.headline.severe_last12)), txt(' in a year')); p.append(t, el('div', 'panel-note', 'Every major AI incident since 2023, scored 0–100. The stronger a dot’s color, the more the AI did on its own.')); ids.forEach((id) => { const n = document.getElementById(id); if (n) p.append(n); }); host.append(p); }
+  if (EMBED === 'timeline') { const p = el('div', 'panel'); const t = el('div', 'panel-title'); t.append(txt('AI has started breaking in on its own: severe incidents went from '), el('b', null, String(C.headline.severe_prior12)), txt(' to '), el('b', null, String(C.headline.severe_last12)), txt(' in a year')); p.append(t, el('div', 'panel-note', 'Every major AI incident since 2023, scored 0–100. The stronger a dot’s color, the more the AI did on its own.')); ids.forEach((id) => { const n = document.getElementById(id); if (n) p.append(n); }); host.append(p); }
   else ids.forEach((id) => { const n = document.getElementById(id); if (n) host.append(n); });
   const f = el('div', 'embed-foot'); const a = el('a', null, 'Warning Shots, the AI Incident Index'); a.href = SITE; a.target = '_blank'; a.rel = 'noopener'; f.append(a, el('span', null, 'Updated ' + D.meta.as_of_label)); host.append(f);
   document.querySelector('main').append(host);

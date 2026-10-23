@@ -100,7 +100,9 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .hl { font-size: clamp(1.9rem, 4.6vw, 3.4rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.04; font-variation-settings: 'wdth' 92; max-width: 22ch; text-wrap: balance; }
 .hl b { font-weight: 600; color: var(--alarm); font-variation-settings: 'wdth' 86; }
 .hl .sk { display: inline-block; width: 1.2em; height: .8em; background: var(--line); border-radius: 4px; vertical-align: -0.1em; }
-.sub { color: var(--ink-2); font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 62ch; margin: 14px 0 0; }
+.sub { color: var(--ink-2); font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 66ch; margin: 14px 0 0; }
+.sub b { color: var(--ink); }
+.sub.chart-note { font-size: 13.5px; color: var(--ink-3); margin-top: 22px; max-width: none; }
 .hero-chart { margin-top: 26px; min-height: 380px; position: relative; }
 @media (max-width: 560px) { .hero-chart { min-height: 320px; } }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink-2); margin-top: 10px; align-items: center; }
@@ -409,8 +411,9 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 
 <main id="top">
   <section class="hero wrap">
-    <h1 class="hl" id="headline"><span class="sk">Severe AI incidents went from 3 to 12 in a year.</span></h1>
-    <p class="sub" id="sub">Every major AI safety incident since 2023, scored 0–100, sourced, and projected forward. Each dot is an incident; the stronger its color, the more the AI did on its own.</p>
+    <h1 class="hl" id="headline"><span class="sk">AI has started breaking in on its own.</span></h1>
+    <p class="sub" id="sub"><span class="sk">Severe AI incidents went from 3 to 12 in a year. In half of this year's real-world cases the AI itself did the acting.</span></p>
+    <p class="sub chart-note">Every major AI safety incident since 2023, scored 0–100 and sourced. Each dot is an incident; the stronger its color, the more the AI did on its own.</p>
     <div class="chart hero-chart" id="ch-timeline"></div>
     <div class="legend" id="lg-autonomy"></div>
     <div class="share" id="hero-share"></div>
