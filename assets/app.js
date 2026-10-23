@@ -65,7 +65,61 @@ function shareRow(node, o) {
   if (o.text) { const a = el('a'); a.innerHTML = ICON.x; a.append(txt(' Post on X')); a.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(o.text) + '&url=' + encodeURIComponent(link); a.target = '_blank'; a.rel = 'noopener noreferrer'; node.append(a); }
   if (o.svgBox) node.append(mk('img', 'Save image', () => svgToPng(o.svgBox, o.name || 'chart', o.title || '')));
   if (o.embed) node.append(mk('embed', 'Embed', () => copy(`<iframe src="${SITE}?embed=${o.embed}" width="100%" height="${o.embedH || 560}" style="border:0;max-width:100%" loading="lazy" title="${(o.title || 'Warning Shots').replace(/"/g, '')}"></iframe>`)));
+  if (o.card) node.append(mk('card', 'Briefing card', () => briefingCard(o.card)));
 }
+ICON.card = '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>';
+
+/* ---------- briefing cards: 1080 x 1080, generated from the same structured content as the page */
+function wrapText(ctx, text, maxW, maxLines) {
+  const words = String(text || '').split(/\s+/).filter(Boolean), lines = []; let line = '';
+  for (const w of words) { const t = line ? line + ' ' + w : w; if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t; if (lines.length === maxLines) break; }
+  if (lines.length < maxLines && line) lines.push(line);
+  if (lines.length === maxLines && words.join(' ') !== lines.join(' ')) { let last = lines[maxLines - 1]; while (ctx.measureText(last + '…').width > maxW && last.length) last = last.slice(0, -1).trimEnd(); lines[maxLines - 1] = last + '…'; }
+  return lines;
+}
+async function briefingCard(c) {
+  toast('Rendering card');
+  try { await Promise.all([document.fonts.load('900 66px Playfair'), document.fonts.load('400 34px Archivo'), document.fonts.load('800 28px Archivo'), document.fonts.load('600 26px Archivo')]); } catch (e) {}
+  const S = 1080, cv = el('canvas'); cv.width = S; cv.height = S; const x = cv.getContext('2d');
+  const NAVY = '#0A111E', BONE = '#F4F3EF', RED = '#FF3300', MUTE = '#A8B3C2', SLATE = '#2A364B';
+  x.fillStyle = NAVY; x.fillRect(0, 0, S, S);
+  // mark + wordmark
+  x.fillStyle = BONE; x.font = '900 92px Playfair'; x.textBaseline = 'alphabetic'; x.fillText('W', 72, 150);
+  const wW = x.measureText('W').width; x.fillStyle = RED; x.beginPath(); x.arc(72 + wW + 22, 108, 11, 0, Math.PI * 2); x.fill(); x.fillStyle = BONE; x.beginPath(); x.arc(72 + wW + 22, 142, 11, 0, Math.PI * 2); x.fill();
+  x.font = '800 30px Archivo'; x.fillStyle = BONE; const wm = 'WARNING SHOTS'; let wx = 72 + wW + 58; for (const ch of wm) { x.fillText(ch, wx, 136); wx += x.measureText(ch).width + 3; }
+  // kicker, top right
+  x.font = '600 24px Archivo'; x.fillStyle = MUTE; x.textAlign = 'right'; x.fillText(c.kicker || '', S - 72, 136); x.textAlign = 'left';
+  x.fillStyle = SLATE; x.fillRect(72, 184, S - 144, 2);
+  // headline
+  let size = 64, lines; for (;;) { x.font = `900 ${size}px Playfair`; lines = wrapText(x, c.headline, S - 144, 5); if (lines.length <= 4 || size <= 46) break; size -= 4; }
+  x.fillStyle = BONE; let y = 184 + 40 + size; lines.forEach((l) => { x.fillText(l, 72, y); y += size * 1.12; });
+  // finding
+  y += 14; x.font = '400 32px Archivo'; x.fillStyle = MUTE; wrapText(x, c.finding, S - 144, 5).forEach((l) => { x.fillText(l, 72, y); y += 44; });
+  // impact + evidence block
+  let by = Math.max(y + 24, 760);
+  if (c.impact) { x.strokeStyle = RED; x.lineWidth = 3; x.font = '700 26px Archivo'; const tw = x.measureText(c.impact).width + 36; x.strokeRect(72, by, tw, 50); x.fillStyle = RED; x.fillText(c.impact, 90, by + 35); x.fillStyle = MUTE; x.font = '400 24px Archivo'; wrapText(x, c.evidence || '', S - 144 - tw - 24, 2).forEach((l, i) => x.fillText(l, 72 + tw + 24, by + 24 + i * 30)); by += 50; }
+  else if (c.evidence) { x.fillStyle = MUTE; x.font = '400 24px Archivo'; wrapText(x, c.evidence, S - 144, 2).forEach((l, i) => x.fillText(l, 72, by + 24 + i * 30)); by += 60; }
+  // footer
+  x.fillStyle = SLATE; x.fillRect(72, S - 150, S - 144, 2);
+  x.font = '600 26px Archivo'; x.fillStyle = BONE; x.fillText('warningshots.ai', 72, S - 96);
+  x.font = '400 24px Archivo'; x.fillStyle = MUTE; x.fillText('See what’s coming. Know what it means for you.', 72, S - 60);
+  x.textAlign = 'right'; x.fillText(c.stamp || ('As of ' + fmtET(D.meta.as_of)), S - 72, S - 60); x.textAlign = 'left';
+  cv.toBlob((blob) => { if (!blob) { toast('Could not render card'); return; } showCard(blob, c.name || 'briefing-card'); }, 'image/png');
+}
+function showCard(blob, name) {
+  let m = document.getElementById('card-modal');
+  if (!m) { m = el('div', 'card-modal'); m.id = 'card-modal'; m.innerHTML = '<div class="card-box"><img alt="Briefing card preview"><div class="card-actions"></div></div>'; m.addEventListener('click', (e) => { if (e.target === m) m.remove(); }); document.body.append(m); }
+  const img = m.querySelector('img'), url = URL.createObjectURL(blob); img.src = url;
+  const acts = m.querySelector('.card-actions'); acts.replaceChildren();
+  const mk = (label, fn) => { const b = el('button', 'more-btn', label); b.type = 'button'; b.addEventListener('click', fn); return b; };
+  acts.append(mk('Download PNG', () => { const a = el('a'); a.href = url; a.download = 'warning-shots-' + name + '.png'; a.click(); toast('Saved'); }));
+  if (navigator.clipboard && window.ClipboardItem) acts.append(mk('Copy image', async () => { try { await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]); toast('Image copied'); } catch (e) { toast('Copy not supported here'); } }));
+  if (navigator.share && navigator.canShare && navigator.canShare({ files: [new File([blob], name + '.png', { type: 'image/png' })] })) acts.append(mk('Share…', async () => { try { await navigator.share({ files: [new File([blob], 'warning-shots-' + name + '.png', { type: 'image/png' })], title: 'Warning Shots' }); } catch (e) {} }));
+  acts.append(mk('Close', () => m.remove()));
+  m.querySelector('.more-btn').focus();
+}
+const cardForIncident = (r) => ({ name: r.ws.toLowerCase(), kicker: r.ws + '  ·  ' + showDate(r), headline: r.title, finding: (r.summary || '').split('. ').slice(0, 2).join('. ').replace(/\.?$/, '.'), impact: r.level + ' ' + r.tier.toUpperCase() + '  ·  ' + r.severity + '/100', evidence: 'Evidence: ' + (r.source_label ? r.source_label : 'primary source linked') + (r.confidence ? '; confidence ' + r.confidence : '') + '. Rated by a published formula; ' + (r.setting === 'wild' ? 'real-world incident.' : 'lab or test finding.') });
+const cardForNews = (n) => ({ name: 'wire-' + (n.id || 'story'), kicker: 'THE WIRE  ·  ' + fmtDate(new Date(n.published)), headline: n.title, finding: n.summary || '', evidence: 'Reported by ' + [n.outlet].concat((n.also || []).map((a) => a.outlet)).reduce((acc, o, i, arr) => acc + (i === 0 ? '' : i === arr.length - 1 ? ' and ' : ', ') + o, '') + '. Headline by Warning Shots; the story is the outlet’s.', stamp: 'Board as of ' + fmtET(D.meta.as_of) });
 let fontB64 = null;
 async function fontData() {
   if (fontB64 !== null) return fontB64;
@@ -388,7 +442,8 @@ function drawWire() {
   const sm = el('div', 'siren-m'); sm.append(el('b', null, siren.outlet || ''), el('span', 'ag', ageShort(siren)));
   if ((siren.also || []).length) { const also = el('span', 'also'); also.append(txt('also ')); siren.also.forEach((a, i) => { const l = el('a', null, a.outlet); l.href = a.url; l.target = '_blank'; l.rel = 'noopener noreferrer'; if (i) also.append(txt(', ')); also.append(l); }); sm.append(also); }
   const ic = el('span'); ic.innerHTML = SIREN_SVG;
-  sirenBox.replaceChildren(ic.firstChild, st, sm, ...(siren.summary ? [el('p', 'siren-s', siren.summary)] : []));
+  const ss = el('div', 'share'); shareRow(ss, { anchor: 'wire', text: siren.title + ' (' + siren.outlet + '). Via Warning Shots:', card: cardForNews(siren) });
+  sirenBox.replaceChildren(ic.firstChild, st, sm, ...(siren.summary ? [el('p', 'siren-s', siren.summary)] : []), ss);
   const rest = items.filter((n) => n !== siren);
   const topics = d3.rollups(rest, (v) => v.length, (n) => n.topic || 'other').sort((a, b) => b[1] - a[1]);
   if (!topics.find((t) => t[0] === wire.topic)) wire.topic = 'all';
@@ -402,7 +457,7 @@ function drawWire() {
     const a = el('a', 'wi-t'); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; if (fresh(n)) a.append(el('i', 'nd')); a.append(txt(n.title));
     const m = el('div', 'wi-m'); const hours = n.published ? (Date.now() - Date.parse(n.published)) / 3.6e6 : 99; const k = n.kind === 'breaking' && hours >= 24 ? null : KIND[n.kind]; if (k) m.append(el('span', 'kind ' + n.kind, k)); m.append(el('b', null, n.outlet || ''), el('span', 'ag', ageShort(n)));
     if ((n.also || []).length) { const also = el('span', 'also'); also.append(txt('also ')); n.also.slice(0, 2).forEach((x, i) => { const l = el('a', null, x.outlet); l.href = x.url; l.target = '_blank'; l.rel = 'noopener noreferrer'; if (i) also.append(txt(', ')); also.append(l); }); m.append(also); }
-    it.append(a, m); if (n.summary) it.append(el('div', 'wi-s', n.summary)); it.title = n.summary || ''; return it;
+    it.append(a, m); if (n.summary) it.append(el('div', 'wi-s', n.summary)); it.title = n.summary || ''; it.tabIndex = 0; it.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target === it) a.click(); }); return it;
   }));
   const span = d3.extent(items, (n) => n.published);
   const hours = span[0] && span[1] ? Math.round((Date.parse(span[1]) - Date.parse(span[0])) / 3.6e6) : 0;
@@ -654,7 +709,8 @@ function drawDeepDive() {
   const fx = fixRows().find((f) => f.incident_id === d.incident_id); const chainRow = el('div', 'dd-chain');
   if (fx) { const cur = fixCur(fx); chainRow.append(el('span', 'lbl', 'Did they fix it?'), chainNode(fx), el('span', 'stt ' + cur.status, FIXST[cur.status] || cur.status), el('span', null, fx.one_liner || '')); const a = el('a', null, 'Details'); a.href = '#fixes'; a.addEventListener('click', (e) => { e.preventDefault(); fixOpen.id = fx.incident_id; drawFixes(); document.getElementById('fix-' + fx.incident_id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); }); chainRow.append(a); }
   document.getElementById('dd-head').replaceChildren(h, el('p', 'dd-meta', d.dates_label), el('p', 'dd-one', d.one_liner), ...dq, rel, ...(fx ? [chainRow] : []));
-  shareRow(document.getElementById('dd-share'), { anchor: 'd=' + d.incident_id, text: d.name + '. ' + d.one_liner.split('. ')[0] + '. Warning Shots:' });
+  const r0 = C.scored.find((r) => r.id === d.incident_id);
+  shareRow(document.getElementById('dd-share'), { anchor: 'd=' + d.incident_id, text: d.name + '. ' + d.one_liner.split('. ')[0] + '. Warning Shots:', card: r0 ? { ...cardForIncident(r0), headline: d.name, finding: d.one_liner } : null });
   const vc = C.victimCounts[d.incident_id] || {};
   const stat = (v, l) => { const c = el('div', 'dd-stat'); c.append(el('div', 'v', String(v)), el('div', 'l', l)); return c; };
   const stats = [stat(vc.confirmed ?? 0, 'organizations confirmed compromised')];
@@ -793,7 +849,7 @@ function openIncident(id) {
   const meta = el('div', 'dmeta', [r.ws, showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', '));
   const share = el('div', 'share');
   body.replaceChildren(big, h, meta, ...detailNodes(r, true), share);
-  shareRow(share, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). ${r.summary.split('. ')[0]}. Warning Shots:` });
+  shareRow(share, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). ${r.summary.split('. ')[0]}. Warning Shots:`, card: cardForIncident(r) });
   document.getElementById('drawer').classList.add('on'); document.getElementById('drawer').setAttribute('aria-hidden', 'false'); document.getElementById('drawer-bg').classList.add('on');
   history.replaceState(null, '', '#i=' + r.id);
   document.getElementById('drawer-close').focus();
@@ -822,7 +878,7 @@ function drawList() {
     const sw = el('div'); const sb = el('div', 'sevbar'); const si = el('i'); si.style.width = r.severity + '%'; si.style.background = tierColor(r.tier); sb.append(si); sw.append(el('div', 'sev', String(r.severity)), sb);
     const mid = el('div'); const rt_ = el('div', 'rtitle', r.title); if (isNew(r.disclosed || r.date)) rt_.append(el('span', 'new-tag', 'new')); mid.append(rt_, el('div', 'rmeta', [r.ws, showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab', 'ranked #' + rank.get(r.id)].filter(Boolean).join(', ')));
     const pill = el('span', 'pill'); const pd = el('i'); pd.style.background = tierColor(r.tier); pill.append(pd, txt(r.level + ' ' + r.tier));
-    const det = el('div', 'rdetail'); det.append(...detailNodes(r, false)); const sh = el('div', 'share'); shareRow(sh, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). Warning Shots:` }); det.append(sh);
+    const det = el('div', 'rdetail'); det.append(...detailNodes(r, false)); const sh = el('div', 'share'); shareRow(sh, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). Warning Shots:`, card: cardForIncident(r) }); det.append(sh);
     row.append(sw, mid, pill, det);
     const toggle = () => { ls.open = ls.open === r.id ? null : r.id; row.classList.toggle('open'); };
     row.addEventListener('click', (e) => { if (e.target.closest('a, button')) return; toggle(); }); row.addEventListener('keydown', (e) => { if (e.key === 'Enter') toggle(); });
@@ -856,6 +912,7 @@ function drawBrief() {
   sec.style.display = '';
   document.getElementById('brief-stamp').textContent = fmtET(D.meta.as_of);
   document.getElementById('brief-list').replaceChildren(...b.items.map((it) => { const li = el('li', null, it.text); if (it.url) { const a = el('a', null, it.source_label || 'source'); a.href = it.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.append(a); } return li; }));
+  const cu = document.getElementById('brief-caught'); if (cu) cu.textContent = 'That is everything that changed in the index since the previous refresh. You’re caught up as of ' + fmtET(D.meta.as_of) + '.';
   shareRow(document.getElementById('brief-share'), { anchor: 'brief', text: b.items.map((it, i) => (i + 1) + '. ' + it.text).join('\n') + '\nWarning Shots:' });
 }
 let quotesOpen = false, leadIdx = 0, leadTimer = null;
@@ -1099,6 +1156,52 @@ function drawTNS() {
 }
 function drawFieldnote() { const f = document.getElementById('fieldnote'); if (!f) return; const u = (D.meta.fieldnote_url || '').trim(); f.hidden = !u; if (u) document.getElementById('fieldnote-link').href = u; }
 
+/* ---------- since your last visit (saved in this browser only) */
+function drawSinceVisit() {
+  const bar = document.getElementById('since'); if (!bar) return;
+  let prev = null; try { prev = localStorage.getItem('ws-last-asof'); } catch (e) {}
+  const cur = D.meta.as_of;
+  try { localStorage.setItem('ws-last-asof', cur); } catch (e) {}
+  if (!prev || prev === cur || Date.parse(prev) > Date.parse(cur)) { bar.hidden = true; return; }
+  const t0 = Date.parse(prev), t1 = Date.parse(cur), between = (iso) => iso && Date.parse(iso) > t0 && Date.parse(iso) <= t1 + 3 * 3.6e6;
+  const inc = C.scored.filter((r) => between(r.disclosed || r.date)).length, news = newsItems().filter((n) => between(n.published)).length, caps = capRows().filter((c) => between(c.date)).length;
+  const moved = fixRows().filter((f) => f.chain.some((c) => between(c.date)));
+  const parts = [];
+  if (inc) parts.push(inc + (inc === 1 ? ' new incident' : ' new incidents'));
+  if (caps) parts.push(caps + (caps === 1 ? ' new advance' : ' new advances'));
+  if (moved.length) parts.push(moved.length + (moved.length === 1 ? ' case moved (' : ' cases moved (') + moved.slice(0, 3).map((f) => f.name.split(':')[0]).join(', ') + ')');
+  if (news) parts.push(news + (news === 1 ? ' report on the Wire' : ' reports on the Wire'));
+  bar.hidden = false; bar.replaceChildren();
+  const txtNode = el('span'); txtNode.append(el('b', null, 'Since your last visit (' + fmtET(prev) + '): '), txt(parts.length ? parts.join(', ') + '.' : 'nothing material changed. You’re caught up.'));
+  const note = el('span', 'since-note', 'Saved in this browser only.'); const reset = el('button', null, 'Reset'); reset.type = 'button'; reset.addEventListener('click', () => { try { localStorage.removeItem('ws-last-asof'); } catch (e) {} bar.hidden = true; toast('Reset'); });
+  bar.append(txtNode, note, reset);
+}
+
+/* ---------- keyboard shortcuts: J/K move through dispatches, Enter opens, S briefing card, ? help, Esc closes */
+const KEYS_OFF = () => { try { return localStorage.getItem('ws-keys') === 'off'; } catch (e) { return false; } };
+function navItems() { return [...document.querySelectorAll('.wi, .row, .fix, .cap, .why')].filter((n) => n.offsetParent !== null); }
+let navIdx = -1;
+function focusNav(d) { const items = navItems(); if (!items.length) return; const cur = items.indexOf(document.activeElement); navIdx = cur >= 0 ? cur + d : (d > 0 ? 0 : items.length - 1); navIdx = Math.max(0, Math.min(items.length - 1, navIdx)); const n = items[navIdx]; if (!n.hasAttribute('tabindex')) n.tabIndex = 0; n.focus({ preventScroll: true }); n.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); }
+function showHelp() {
+  let m = document.getElementById('help-modal'); if (m) { m.remove(); return; }
+  m = el('div', 'card-modal'); m.id = 'help-modal'; const box = el('div', 'card-box help-box');
+  const off = KEYS_OFF();
+  box.innerHTML = '<h3>Keyboard</h3><table class="keys"><tr><td><kbd>J</kbd> / <kbd>K</kbd></td><td>Next / previous dispatch (Wire stories, incidents, cases, milestones)</td></tr><tr><td><kbd>Enter</kbd></td><td>Open the focused dispatch</td></tr><tr><td><kbd>S</kbd></td><td>Briefing card for the focused incident</td></tr><tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></td><td>Jump to the Wire, the record, the Wire’s live panel</td></tr><tr><td><kbd>Esc</kbd></td><td>Close</td></tr><tr><td><kbd>?</kbd></td><td>This help</td></tr></table><p class="count">Single-key shortcuts are ignored while you type. Every action also has a visible control.</p>';
+  const acts = el('div', 'card-actions'); const tgl = el('button', 'more-btn', off ? 'Turn shortcuts on' : 'Turn shortcuts off'); tgl.type = 'button'; tgl.addEventListener('click', () => { try { localStorage.setItem('ws-keys', off ? 'on' : 'off'); } catch (e) {} m.remove(); toast(off ? 'Shortcuts on' : 'Shortcuts off'); });
+  const close = el('button', 'more-btn', 'Close'); close.type = 'button'; close.addEventListener('click', () => m.remove()); acts.append(tgl, close); box.append(acts); m.append(box); m.addEventListener('click', (e) => { if (e.target === m) m.remove(); }); document.body.append(m); close.focus();
+}
+document.addEventListener('keydown', (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+  if (e.key === '?') { e.preventDefault(); showHelp(); return; }
+  if (KEYS_OFF()) return;
+  if (e.key === 'Escape') { document.getElementById('card-modal')?.remove(); document.getElementById('help-modal')?.remove(); return; }
+  if (e.key === 'j' || e.key === 'J') { e.preventDefault(); focusNav(1); }
+  else if (e.key === 'k' || e.key === 'K') { e.preventDefault(); focusNav(-1); }
+  else if (e.key === 's' || e.key === 'S') { const n = document.activeElement; const id = n && n.id && n.id.startsWith('row-') ? n.id.slice(4) : null; const r = id && C.scored ? C.scored.find((x) => x.id === id) : null; if (r) { e.preventDefault(); briefingCard(cardForIncident(r)); } }
+  else if (e.key === '1') go('#wire'); else if (e.key === '2') go('#record'); else if (e.key === '3') go('#now');
+});
+
 /* ---------- masthead: signup + sticky nav */
 function drawSignup() {
   const f = document.getElementById('signup'); if (!f) return;
@@ -1150,7 +1253,7 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('cli
 
 /* ---------- draw everything */
 function drawAll(first) {
-  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawTimeline(first && !EMBED); drawTicker(); drawWire(); drawNow(); drawBrief(); drawWhy(); drawEdges(); drawTNS(); drawCapGrid(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawFixes(); drawSignals(); drawList(); drawContext();
+  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTimeline(first && !EMBED); drawTicker(); drawWire(); drawNow(); drawBrief(); drawWhy(); drawEdges(); drawTNS(); drawCapGrid(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawFixes(); drawSignals(); drawList(); drawContext();
 }
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) drawAll(false); }, 160); });
 async function checkForUpdate() {
