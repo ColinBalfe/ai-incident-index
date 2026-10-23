@@ -20,7 +20,7 @@
 <meta name="twitter:image" content="{{SITE_URL}}assets/og.png?v={{BUILD}}">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F2F4F6" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F1418" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)">
 <style>
 @font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Archivo'; font-style: italic; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(assets/fonts/archivo-latin-standard-italic.woff2) format('woff2-variations'); }
@@ -36,20 +36,20 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #0F1418; --panel: #161C22; --ink: #E9EEF3; --ink-2: #A3AEB9; --ink-3: #6F7A86;
-    --line: #273039; --line-2: #3C4752;
-    --alarm: #FF5B3E; --amber: #E2A43C; --indigo: #9B98F0; --steel: #86A2C4; --mist: #3B4A5A;
+    --paper: #0F1B2D; --panel: #15233A; --ink: #EEF2F7; --ink-2: #A9B6C8; --ink-3: #74839B;
+    --line: #243550; --line-2: #35496A;
+    --alarm: #FF5B3E; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B;
     --focus: #6E9BFF; --ok: #4FBF86;
-    --tip-bg: #1C242C; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
+    --tip-bg: #1A2A44; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
     --wild: var(--steel); --lab: #CBAE5A;
   }
 }
 .dark-scope, :root[data-theme="dark"] {
-  --paper: #0F1418; --panel: #161C22; --ink: #E9EEF3; --ink-2: #A3AEB9; --ink-3: #6F7A86;
-  --line: #273039; --line-2: #3C4752;
-  --alarm: #FF5B3E; --amber: #E2A43C; --indigo: #9B98F0; --steel: #86A2C4; --mist: #3B4A5A;
+  --paper: #0F1B2D; --panel: #15233A; --ink: #EEF2F7; --ink-2: #A9B6C8; --ink-3: #74839B;
+  --line: #243550; --line-2: #35496A;
+  --alarm: #FF5B3E; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B;
   --focus: #6E9BFF; --ok: #4FBF86;
-  --tip-bg: #1C242C; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
+  --tip-bg: #1A2A44; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
   --wild: var(--steel); --lab: #CBAE5A;
 }
 
@@ -72,19 +72,17 @@ b, strong { font-weight: 600; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* ----- masthead */
-.masthead { background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line); }
-.mh-grid { display: grid; grid-template-columns: 1fr; gap: 14px 32px; padding-top: clamp(18px, 3vw, 30px); padding-bottom: clamp(16px, 2.6vw, 26px); align-items: end; }
-@media (min-width: 900px) { .mh-grid { grid-template-columns: minmax(0, 1fr) auto; } }
-.logo { display: inline-flex; align-items: center; gap: clamp(10px, 1.6vw, 18px); text-decoration: none; color: inherit; }
-.logo .mark { width: clamp(44px, 6.4vw, 84px); height: auto; flex: none; }
-.logo .mark .dot { fill: var(--alarm); }
-.logo .mark .trail { fill: url(#trail); }
-.wordmark { font-size: clamp(2.4rem, 7.4vw, 5.6rem); font-weight: 800; line-height: .86; letter-spacing: -0.035em; text-transform: uppercase; font-variation-settings: 'wdth' 68; white-space: nowrap; }
-.mh-tag { margin: 12px 0 0; color: var(--ink-2); font-size: clamp(.95rem, 1.25vw, 1.08rem); max-width: 54ch; line-height: 1.4; text-wrap: pretty; }
-.mh-right { display: grid; gap: 10px; justify-items: start; }
-@media (min-width: 900px) { .mh-right { justify-items: end; text-align: right; } }
+.masthead { background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line); position: relative; }
+.mh-grid { display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 10px; padding-top: clamp(22px, 3.4vw, 40px); padding-bottom: clamp(18px, 2.8vw, 30px); }
+.logo { display: inline-flex; flex-direction: column; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+.logo .mark { width: clamp(84px, 12vw, 140px); height: auto; display: block; }
+.wordmark { font-size: clamp(.78rem, 1.1vw, .92rem); font-weight: 600; letter-spacing: .22em; text-transform: uppercase; font-variation-settings: 'wdth' 100; color: var(--ink-2); white-space: nowrap; padding-left: .22em; }
+.logo:hover .wordmark { color: var(--ink); }
+.mh-tag { margin: 2px 0 0; color: var(--ink-2); font-size: clamp(.95rem, 1.2vw, 1.05rem); max-width: 52ch; line-height: 1.4; text-wrap: balance; }
+.mh-right { display: grid; gap: 10px; justify-items: center; margin-top: 6px; }
+@media (min-width: 1000px) { .mh-right { position: absolute; right: clamp(16px, 4vw, 40px); top: clamp(22px, 3.4vw, 40px); justify-items: end; text-align: right; margin: 0; } }
 .mh-updated { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.signup { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 8px; width: min(100%, 420px); }
+.signup { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 8px; width: min(100%, 380px); }
 .signup[hidden] { display: none; }
 .signup input { font: inherit; font-size: 14px; padding: 9px 12px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--panel); color: var(--ink); min-width: 0; }
 .signup input::placeholder { color: var(--ink-3); }
@@ -96,8 +94,8 @@ b, strong { font-weight: 600; }
 /* ----- sticky nav */
 .navbar { position: sticky; top: 0; z-index: 30; background: color-mix(in oklab, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); color: var(--ink); }
 .navbar .wrap { display: flex; align-items: center; gap: 14px; height: 46px; }
-.navbar .mini { display: none; align-items: center; gap: 8px; font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; font-variation-settings: 'wdth' 72; white-space: nowrap; text-decoration: none; font-size: 15px; }
-.navbar .mini i { width: 8px; height: 8px; border-radius: 50%; background: var(--alarm); display: inline-block; }
+.navbar .mini { display: none; align-items: center; gap: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; text-decoration: none; font-size: 12px; color: var(--ink); }
+.navbar .mini .mark { width: 22px; height: 22px; }
 .navbar.scrolled .mini { display: inline-flex; }
 .nav-scroll { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; flex: 1; min-width: 0; mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
 .nav-scroll::-webkit-scrollbar { display: none; }
@@ -537,7 +535,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
   <div class="wrap mh-grid">
     <div>
       <a class="logo" href="#top" aria-label="Warning Shots, home">
-        <svg class="mark" viewBox="0 0 72 36" aria-hidden="true"><defs><linearGradient id="trail" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#FF5B3E" stop-opacity="0"/><stop offset="1" stop-color="#FF5B3E" stop-opacity=".9"/></linearGradient></defs><path class="trail" d="M0 18 C 18 11, 36 10, 54 14 L 54 22 C 36 26, 18 25, 0 18 Z"/><circle class="dot" cx="58" cy="18" r="11"/></svg>
+        <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M66 12.5H12.5V87.5H87.5V34" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="5" stroke-linecap="square"/><path d="M28.01 70.00 L21.00 30.00 L30.37 30.00 L32.64 49.15 Q32.89 50.92 33.03 52.35 Q33.17 53.78 33.28 54.87 Q33.39 55.96 33.44 56.72 L33.87 56.72 Q33.92 56.16 34.03 55.19 Q34.15 54.22 34.30 53.08 Q34.45 51.94 34.60 50.89 Q34.75 49.84 34.83 49.15 L37.77 30.00 L47.61 30.00 L50.16 49.15 Q50.30 50.13 50.45 51.44 Q50.59 52.74 50.75 54.11 Q50.90 55.48 51.01 56.72 L51.43 56.72 Q51.45 56.21 51.55 55.27 Q51.66 54.32 51.78 53.22 Q51.90 52.12 52.05 51.04 Q52.19 49.97 52.30 49.15 L54.96 30.00 L63.66 30.00 L56.45 70.00 L46.31 70.00 L43.43 50.65 Q43.22 49.06 43.03 47.59 Q42.85 46.12 42.73 44.95 Q42.62 43.78 42.57 43.10 L42.16 43.10 Q42.09 43.86 41.89 45.28 Q41.70 46.71 41.49 48.18 Q41.28 49.65 41.12 50.67 L38.15 70.00 Z" fill="currentColor"/><circle cx="74.76" cy="51.5" r="4.6" fill="var(--alarm)"/><circle cx="74.76" cy="65.4" r="4.6" fill="currentColor"/></svg>
         <span class="wordmark">Warning Shots</span>
       </a>
       <p class="mh-tag">The record of AI going wrong, scored and sourced, and the latest reports from around the world.</p>
@@ -555,7 +553,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 </header>
 <nav class="navbar dark-scope" id="navbar" aria-label="Sections">
   <div class="wrap">
-    <a class="mini" href="#top"><i aria-hidden="true"></i>Warning Shots</a>
+    <a class="mini" href="#top"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M66 12.5H12.5V87.5H87.5V34" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="5" stroke-linecap="square"/><path d="M28.01 70.00 L21.00 30.00 L30.37 30.00 L32.64 49.15 Q32.89 50.92 33.03 52.35 Q33.17 53.78 33.28 54.87 Q33.39 55.96 33.44 56.72 L33.87 56.72 Q33.92 56.16 34.03 55.19 Q34.15 54.22 34.30 53.08 Q34.45 51.94 34.60 50.89 Q34.75 49.84 34.83 49.15 L37.77 30.00 L47.61 30.00 L50.16 49.15 Q50.30 50.13 50.45 51.44 Q50.59 52.74 50.75 54.11 Q50.90 55.48 51.01 56.72 L51.43 56.72 Q51.45 56.21 51.55 55.27 Q51.66 54.32 51.78 53.22 Q51.90 52.12 52.05 51.04 Q52.19 49.97 52.30 49.15 L54.96 30.00 L63.66 30.00 L56.45 70.00 L46.31 70.00 L43.43 50.65 Q43.22 49.06 43.03 47.59 Q42.85 46.12 42.73 44.95 Q42.62 43.78 42.57 43.10 L42.16 43.10 Q42.09 43.86 41.89 45.28 Q41.70 46.71 41.49 48.18 Q41.28 49.65 41.12 50.67 L38.15 70.00 Z" fill="currentColor"/><circle cx="74.76" cy="51.5" r="4.6" fill="var(--alarm)"/><circle cx="74.76" cy="65.4" r="4.6" fill="currentColor"/></svg>Warning Shots</a>
     <div class="nav-scroll" id="nav-scroll">
       <a href="#wire">The Wire</a><a href="#record">The record</a><a href="#words">Quotes</a><a href="#pattern">Pattern</a><a href="#charts">Charts</a><a href="#next">Next 12 months</a><a href="#dives">Incidents</a><a href="#signals">Signals</a><a href="#all">All incidents</a><a href="#about">About</a>
     </div>
