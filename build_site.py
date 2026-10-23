@@ -25,7 +25,7 @@ wild_recent = [r for r in last12 if r['setting'] == 'wild']
 share = round(100 * sum(r['A'] >= 3 for r in wild_recent) / max(1, len(wild_recent)))
 n = len(inc)
 title = meta.get('site_name', 'Warning Shots')
-og_title = f"AI has started breaking in on its own — {title}, the AI Incident Index"
+og_title = f"AI has started breaking in on its own — {title}: see what’s coming, know what it means for you"
 og_desc = f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of this year's real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
 build = time.strftime('%Y%m%d%H%M', time.gmtime())
 tpl = open('index.template.html', encoding='utf-8').read()
