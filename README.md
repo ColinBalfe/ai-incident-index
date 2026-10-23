@@ -1,13 +1,13 @@
 # The AI Incident Index
 
-A public, live-updated index of every major AI safety incident since January 2023: scored 0–100 by a fixed rubric, linked to its primary source, and projected forward with dated forecasts. It also tracks, for the biggest multi-victim incidents, every organization publicly named as hit, and what security agencies, governments and AI companies have said. The Wire, at the top of the page, is a rolling board of links to the latest reporting worldwide on AI's dangers and breakthroughs and what they mean for real lives, jobs and families.
+A public, live-updated index of every major AI safety incident since January 2023: scored 0–100 by a fixed rubric, linked to its primary source, and projected forward with dated forecasts. It also tracks, for the biggest multi-victim incidents, every organization publicly named as hit, and what security agencies, governments and AI companies have said. The Wire, at the top of the page, is a rolling board of links to the latest reporting worldwide on AI's dangers and breakthroughs and what they mean for real lives, jobs and families. "What AI can now do" is a capability index graded from demonstration to real consequences, drawn against the incident line. "Did they fix it?" tracks each major incident from report to response to claimed fix to independent check.
 
 Live site: `index.html` (served by GitHub Pages). Data: `data/*.json` (open; cite as "The AI Incident Index" with a link).
 
 ## How it is built
 
 ```
-research/            raw research files: incidents by period, PHP2Shell, victims, official statements, quotes, the Wire (news.json), rubric
+research/            raw research files: incidents by period, PHP2Shell, victims, official statements, quotes, the Wire (news.json), capability milestones (capabilities.json), case statuses (case_status.json), rubric
 build/               Python that turns research into the site's data files (run in order: build_data.py, build_deep.py, build_live.py)
 build/data/          output of the build (copied to data/)
 data/                what the page loads

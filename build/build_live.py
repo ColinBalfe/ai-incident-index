@@ -113,7 +113,45 @@ def build_news():
             pick['siren'] = True
     return out
 
+def load_research(name):
+    src = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'research', name)
+    if not os.path.exists(src):
+        return []
+    try:
+        rows = json.load(open(src, encoding='utf-8'))
+    except ValueError as e:
+        print('WARNING: could not parse', name, e); return []
+    return rows if isinstance(rows, list) else []
+
+def build_capabilities():
+    rows = load_research('capabilities.json'); out = []
+    for r in rows:
+        if not (r.get('id') and r.get('title') and r.get('date')) or r['date'] > AS_OF[:10]:
+            continue
+        r = dict(r); r['stages'] = r.get('stages') or {}
+        for k in ('demonstrated', 'reproduced', 'accessible', 'reliable', 'consequences'):
+            st = dict(r['stages'].get(k) or {}); st['status'] = st.get('status') if st.get('status') in ('yes', 'partial', 'no', 'unknown') else 'unknown'; r['stages'][k] = st
+        r['related_incident_ids'] = [i for i in (r.get('related_incident_ids') or []) if i]
+        out.append(r)
+    out.sort(key=lambda r: r['date'], reverse=True)
+    return out
+
+def build_fixes():
+    rows = load_research('case_status.json'); out = []
+    for r in rows:
+        if not (r.get('incident_id') and r.get('chain')):
+            continue
+        cur = next((c for c in r['chain'] if c.get('stage') == 'current'), None)
+        if not cur or cur.get('status') not in ('fixed', 'unverified', 'disputed', 'reopened', 'unresolved', 'ongoing'):
+            print('WARNING: fixes: bad current status for', r['incident_id']); continue
+        out.append(r)
+    return out
+
 if __name__ == '__main__':
+    caps = build_capabilities(); fixes = build_fixes()
+    json.dump(caps, open(f'{OUT}/capabilities.json', 'w'), ensure_ascii=False, indent=0)
+    json.dump(fixes, open(f'{OUT}/fixes.json', 'w'), ensure_ascii=False, indent=0)
+    print('capabilities', len(caps), 'fixes', len(fixes))
     json.dump(LIVE, open(f'{OUT}/live.json', 'w'), ensure_ascii=False, indent=0)
     json.dump(WATCH, open(f'{OUT}/watch.json', 'w'), ensure_ascii=False, indent=0)
     json.dump(META, open(f'{OUT}/meta.json', 'w'), ensure_ascii=False, indent=1)

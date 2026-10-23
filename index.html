@@ -11,13 +11,13 @@
 <meta property="og:title" content="AI has started breaking in on its own — Warning Shots, the AI Incident Index">
 <meta property="og:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of PHP2Shell, 20 dated forecasts, and what officials have said. Updated Oct 23, 1:10 PM ET.">
 <meta property="og:url" content="https://warningshots.ai/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610231952">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610232039">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI has started breaking in on its own — Warning Shots, the AI Incident Index">
 <meta name="twitter:description" content="Severe AI incidents went from 3 to 12 in a year. In 48% of this year's real-world cases the AI itself did the acting. 134 incidents since 2023, scored 0–100 and sourced. Live tracking of PHP2Shell, 20 dated forecasts, and what officials have said. Updated Oct 23, 1:10 PM ET.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610231952">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610232039">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F2F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)">
@@ -95,7 +95,8 @@ b, strong { font-weight: 600; }
 .navbar { position: sticky; top: 0; z-index: 30; background: color-mix(in oklab, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); color: var(--ink); }
 .navbar .wrap { display: flex; align-items: center; gap: 14px; height: 46px; }
 .navbar .mini { display: none; align-items: center; gap: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; text-decoration: none; font-size: 12px; color: var(--ink); }
-.navbar .mini .mark { width: 22px; height: 22px; }
+.navbar .mini .mark { width: 26px; height: 26px; }
+@media (max-width: 1359px) { .navbar .mini { font-size: 0; gap: 0; } }
 .navbar.scrolled .mini { display: inline-flex; }
 .nav-scroll { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; flex: 1; min-width: 0; mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
 .nav-scroll::-webkit-scrollbar { display: none; }
@@ -264,6 +265,75 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .cbar .ct { height: 100%; background: var(--alarm); border-radius: 2px; }
 .cbar .cv { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 @media (max-width: 480px) { .cbars { grid-template-columns: 1fr; } }
+
+
+/* ----- capabilities grid */
+.capgrid { border-top: 1px solid var(--line-2); margin-top: 6px; }
+.cap-head { display: grid; grid-template-columns: minmax(0, 1fr) repeat(5, 34px); gap: 6px 8px; padding: 8px 0 6px; font-size: 11px; color: var(--ink-3); align-items: end; border-bottom: 1px solid var(--line); }
+.cap-head span { writing-mode: vertical-rl; transform: rotate(180deg); justify-self: center; line-height: 1; height: 92px; white-space: nowrap; }
+.cap-head span:first-child { writing-mode: horizontal-tb; transform: none; justify-self: start; align-self: end; font-size: 12px; height: auto; }
+.cap { display: grid; grid-template-columns: minmax(0, 1fr) repeat(5, 34px); gap: 4px 8px; padding: 9px 0; border-bottom: 1px solid var(--line); align-items: center; cursor: pointer; }
+.cap:hover .cap-t { color: var(--ink); }
+.cap-t { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.cap-m { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.cap-m b { color: var(--ink-2); font-weight: 500; }
+.cell { width: 18px; height: 18px; border-radius: 4px; margin: 0 auto; box-sizing: border-box; border: 2px solid var(--steel); background: transparent; position: relative; }
+.cell.yes { background: var(--steel); }
+.cell.partial { background: linear-gradient(90deg, var(--steel) 50%, transparent 50%); }
+.cell.no { border-color: var(--line-2); }
+.cell.unknown { border-style: dotted; border-color: var(--line-2); }
+.cell.c5.yes { background: var(--alarm); border-color: var(--alarm); }
+.cell.c5.partial { background: linear-gradient(90deg, var(--alarm) 50%, transparent 50%); border-color: var(--alarm); }
+.cap-detail { grid-column: 1 / -1; display: none; font-size: 13.5px; line-height: 1.5; padding: 6px 0 4px; }
+.cap.open .cap-detail { display: block; }
+.cap-detail .st { display: grid; grid-template-columns: 9rem 1fr; gap: 4px 12px; padding: 5px 0; border-top: 1px solid var(--line); }
+.cap-detail .st b { font-weight: 600; font-size: 12.5px; }
+.cap-detail .st span { color: var(--ink-2); }
+.cap-detail .st a { color: var(--ink-3); font-size: 12px; margin-left: 6px; }
+.cap-detail .ev { margin: 6px 0 8px; }
+.cap-detail .ev b { color: var(--ink); }
+.cap-detail .rel { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 8px; }
+@media (max-width: 640px) { .cap-head, .cap { grid-template-columns: minmax(0, 1fr) repeat(5, 24px); gap: 4px 5px; } .cell { width: 15px; height: 15px; } .cap-head span { font-size: 10px; height: 84px; } .cap-detail .st { grid-template-columns: 1fr; } }
+
+/* ----- did they fix it */
+.fix-summary { font-size: 14.5px; color: var(--ink-2); margin: 0 0 10px; line-height: 1.5; }
+.fix-summary b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.fix-legend { font-size: 12px; color: var(--ink-3); margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+.fix-legend .chain { transform: scale(.85); transform-origin: left center; }
+.fixes { border-top: 1px solid var(--line-2); }
+.fix { display: grid; grid-template-columns: minmax(0, 1.1fr) auto minmax(0, 1.4fr); gap: 6px 18px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: center; cursor: pointer; }
+.fix-name { font-weight: 600; font-size: 14.5px; line-height: 1.3; }
+.fix-name .stt { display: inline-block; margin-left: 8px; vertical-align: middle; }
+.stt { font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 2px 9px; border: 1px solid; white-space: nowrap; line-height: 1.4; }
+.stt.fixed { color: var(--ok); border-color: color-mix(in oklab, var(--ok) 60%, var(--line-2)); }
+.stt.unverified { color: var(--amber); border-color: color-mix(in oklab, var(--amber) 60%, var(--line-2)); }
+.stt.disputed { color: var(--indigo); border-color: color-mix(in oklab, var(--indigo) 60%, var(--line-2)); }
+.stt.reopened, .stt.ongoing { color: var(--alarm); border-color: color-mix(in oklab, var(--alarm) 60%, var(--line-2)); }
+.stt.unresolved { color: var(--ink-2); border-color: var(--line-2); }
+.chain { display: flex; align-items: center; gap: 0; }
+.chain i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--steel); box-sizing: border-box; display: inline-block; flex: none; }
+.chain i.done { background: var(--steel); }
+.chain i.partial { background: linear-gradient(90deg, var(--steel) 50%, transparent 50%); }
+.chain i.none { border-color: var(--line-2); }
+.chain i.cur { border-color: var(--alarm); background: var(--alarm); }
+.chain i.cur.fixed { border-color: var(--ok); background: var(--ok); }
+.chain i.cur.unverified { border-color: var(--amber); background: var(--amber); }
+.chain i.cur.disputed { border-color: var(--indigo); background: var(--indigo); }
+.chain i.cur.unresolved { border-color: var(--ink-3); background: var(--ink-3); }
+.chain s { width: 18px; height: 2px; background: var(--line-2); display: inline-block; text-decoration: none; flex: none; }
+.chain s.on { background: var(--steel); }
+.fix-line { font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.fix-detail { grid-column: 1 / -1; display: none; font-size: 13.5px; line-height: 1.5; padding: 4px 0 6px; }
+.fix.open .fix-detail { display: block; }
+.fix-detail .st { display: grid; grid-template-columns: 9rem 1fr; gap: 4px 12px; padding: 6px 0; border-top: 1px solid var(--line); }
+.fix-detail .st b { font-weight: 600; font-size: 12.5px; }
+.fix-detail .st b small { display: block; font-weight: 400; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.fix-detail .st a { color: var(--ink-3); font-size: 12px; margin-left: 6px; }
+.fix-detail .wd { margin-top: 8px; color: var(--ink-2); }
+.fix-detail .wd b { color: var(--ink); }
+@media (max-width: 760px) { .fix { grid-template-columns: 1fr; gap: 6px; } .fix-detail .st { grid-template-columns: 1fr; } }
+.dd-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 12px 0 0; font-size: 13px; color: var(--ink-2); }
+.dd-chain .lbl { font-size: 12.5px; color: var(--ink-3); }
 
 /* ----- chart tabs + folds */
 .chart-tabs { margin-top: 18px; }
@@ -553,9 +623,9 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 </header>
 <nav class="navbar dark-scope" id="navbar" aria-label="Sections">
   <div class="wrap">
-    <a class="mini" href="#top"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M72 12.5H12.5V87.5H87.5V28" fill="none" stroke="currentColor" stroke-opacity=".6" stroke-width="5" stroke-linecap="square"/><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></svg>Warning Shots</a>
+    <a class="mini" href="#top"><svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>Warning Shots</a>
     <div class="nav-scroll" id="nav-scroll">
-      <a href="#wire">The Wire</a><a href="#record">The record</a><a href="#words">Quotes</a><a href="#pattern">Pattern</a><a href="#charts">Charts</a><a href="#next">Next 12 months</a><a href="#dives">Incidents</a><a href="#signals">Signals</a><a href="#all">All incidents</a><a href="#about">About</a>
+      <a href="#wire">The Wire</a><a href="#record">Record</a><a href="#capabilities">Capabilities</a><a href="#words">Quotes</a><a href="#charts">Charts</a><a href="#next">Forecast</a><a href="#dives">Incidents</a><a href="#fixes">Did they fix it?</a><a href="#all">All</a><a href="#about">About</a>
     </div>
     <div class="nav-right">
       <span class="nav-updated" id="nav-updated"></span>
@@ -607,6 +677,27 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
     <div class="stats" id="hero-stats"></div>
   </section>
   </div>
+
+  <section class="wrap" id="capabilities">
+    <div class="sec-head"><h2>What AI can now do</h2><span class="k" id="cap-k"></span></div>
+    <p class="lede">The breakthroughs and the incidents come from the same capabilities. Each row is a dated result that moved what AI can do; the five columns are how far it has travelled from a demonstration to real life. <b>Empty cells are the point:</b> a demonstration is not a deployment, and the gap between them is where both the hype and the risk live.</p>
+    <div class="panel" id="card-edges" style="margin-top:22px">
+      <div class="panel-title">Both edges: what AI could do, and what it did</div>
+      <div class="panel-note">Top line: capability milestones. Bottom line: the incidents on this index. Threads connect a capability to the incidents it made possible. Hover either line; click to open.</div>
+      <div class="legend" id="lg-edges"></div>
+      <div class="chart" id="ch-edges" style="min-height:300px"></div>
+      <div class="callout" id="edges-callout"></div>
+      <div class="share" id="share-edges"></div>
+    </div>
+    <div class="panel" id="card-capgrid" style="margin-top:20px">
+      <div class="panel-title">From a demonstration to daily life</div>
+      <div class="panel-note">Filled: yes. Half: partial. Hollow: not yet. Dotted: unknown, which means nobody has published evidence either way. Open a row for the evidence behind each cell.</div>
+      <div class="wire-chips" id="cap-chips" role="group" aria-label="Filter by domain"></div>
+      <div class="capgrid" id="capgrid"></div>
+      <div id="cap-more"></div>
+      <div class="share" id="share-capgrid"></div>
+    </div>
+  </section>
 
   <section class="wrap" id="words">
     <div class="sec-head"><h2>In their words</h2><span class="k">Verbatim, dated, linked</span></div>
@@ -736,6 +827,18 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
     </div>
   </section>
 
+
+  <section class="wrap" id="fixes">
+    <div class="sec-head"><h2>Did they fix it?</h2><span class="k" id="fix-k"></span></div>
+    <p class="lede">What happened after the headline. For each major incident: the report, the responsible party's response, the fix they claimed, whether anyone independent checked, and where it stands today. <b>A company saying it fixed something and evidence that the fix worked are different columns.</b></p>
+    <div class="panel" id="card-fixes" style="margin-top:22px">
+      <div class="fix-summary" id="fix-summary"></div>
+      <div class="fix-legend" id="fix-legend"></div>
+      <div class="fixes" id="fix-list"></div>
+      <div class="share" id="share-fixes"></div>
+    </div>
+  </section>
+
   <section class="wrap" id="signals">
     <div class="sec-head"><h2>Official signals</h2></div>
     <p class="lede">What security agencies, governments and AI companies have said in public about these incidents: the warnings, admissions and promises worth holding them to. Each is paraphrased and linked to the original post, advisory or statement.</p>
@@ -822,7 +925,7 @@ body.embed .embed-foot a { color: var(--ink); font-weight: 600; text-decoration:
 
 <script src="assets/vendor/d3.min.js"></script>
 <script src="assets/vendor/topojson-client.min.js"></script>
-<script>window.AII_BUILD = "202610231952"; window.AII_SITE = "https://warningshots.ai/";</script>
-<script src="assets/app.js?v=202610231952"></script>
+<script>window.AII_BUILD = "202610232039"; window.AII_SITE = "https://warningshots.ai/";</script>
+<script src="assets/app.js?v=202610232039"></script>
 </body>
 </html>
