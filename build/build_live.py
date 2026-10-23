@@ -91,7 +91,7 @@ def build_news():
                 pub = pub.replace(tzinfo=dt.timezone.utc)
         except ValueError:
             continue
-        if pub > as_of + dt.timedelta(hours=1):
+        if pub > dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=1):
             continue  # a future timestamp is a typo
         if (as_of - pub).total_seconds() > NEWS_MAX_AGE_H * 3600:
             continue
