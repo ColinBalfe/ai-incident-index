@@ -1,5 +1,24 @@
 [
 {
+"id": "openai-trains-frontier-models-offline",
+"title": "OpenAI says frontier training resumed Oct 1 with no live internet; agents get a cached 'offline world' instead",
+"url": "https://www.engadget.com/2296019/openai-says-its-cutting-off-internet-access-for-frontier-model-training/",
+"outlet": "Engadget",
+"published": "2026-10-23T22:37:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Follows the July Hugging Face breach and a September escape to an outside chatbot; training stays offline until safeguards justify more.",
+"siren": false,
+"also": [
+{
+"outlet": "Bloomberg",
+"url": "https://www.bloomberg.com/news/articles/2026-10-23/openai-to-train-ai-models-without-internet-after-cyber-incidents"
+}
+]
+},
+{
 "id": "texastribune-families-paxton-sues-openai",
 "title": "Texas sues OpenAI and Sam Altman, seeking an injunction that would block minors' access to ChatGPT",
 "url": "https://www.texastribune.org/2026/10/23/ken-paxton-chatgpt-openai-lawsuit-texas-attorney-general/",
@@ -19,6 +38,25 @@
 ]
 },
 {
+"id": "socradar-ransomware-affiliates-ai-agents",
+"title": "Leaked logs: ransomware affiliates ran intrusions through an AI agent at 62 targets; four now on leak sites",
+"url": "https://thehackernews.com/2026/10/exposed-infrastructure-reveals-how.html",
+"outlet": "The Hacker News",
+"published": "2026-10-23T17:50:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-attack",
+"summary": "SOCRadar found 8,257 agent messages in 133 sessions on exposed INC and Gentlemen servers; a human approved each step, reworded refusals.",
+"siren": false,
+"also": [
+{
+"outlet": "SOCRadar",
+"url": "https://socradar.io/blog/inc-gentlemen-ransomware-ai-infrastructure/"
+}
+]
+},
+{
 "id": "wisconsin-characterai-bankruptcy-protections",
 "title": "Wisconsin joins states seeking protections for young users in Character.AI's bankruptcy sale",
 "url": "https://upnorthnewswi.com/news/crime-safety/wi-seeks-consumer-protections-as-ai-chatbot-company-files-for-bankruptcy/",
@@ -33,6 +71,44 @@
 "also": []
 },
 {
+"id": "fifth-circuit-removes-judge-ai-order",
+"title": "Appeals court vacates a judge's AI-drafted order that invented plaintiffs and takes the case away from him",
+"url": "https://www.foxnews.com/live-news/ai-hallucination-appeals-court-mississippi-dei-law",
+"outlet": "Fox News",
+"published": "2026-10-23T15:03:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "The Fifth Circuit called the 2025 ruling a 'botch job' built on facts nowhere in the record; a clerk had used AI.",
+"siren": false,
+"also": [
+{
+"outlet": "The Mississippi Independent",
+"url": "https://msindy.org/p/federal-appeals-court-takes-state"
+}
+]
+},
+{
+"id": "amex-cuts-five-percent-ai",
+"title": "American Express to cut about 5% of its 77,000 staff; CFO: the aim is to 'automate and take advantage of AI'",
+"url": "https://www.ibtimes.com/american-express-becomes-latest-company-announce-massive-layoffs-over-ai-boom-3808922",
+"outlet": "International Business Times",
+"published": "2026-10-23T14:13:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "jobs",
+"summary": "Announced with results a day after Barclays' 5% cut; CEO Squeri cited agility, CFO Le Caillec tied it to AI on CNBC.",
+"siren": false,
+"also": [
+{
+"outlet": "CNBC",
+"url": "https://www.cnbc.com/2026/10/23/american-express-job-cuts.html"
+}
+]
+},
+{
 "id": "mirai-botnets-join-php2shell-aslr-bypass",
 "title": "Mirai botnets join the PHP2Shell attacks as exploits that beat ASLR emerge; still no confirmed breach",
 "url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
@@ -43,7 +119,7 @@
 "region": "Global",
 "topic": "php2shell",
 "summary": "Sophos, Arctic Wolf and Hunt.io tie exploit attempts to Mirai-style botnets; no successful compromise confirmed and Sophos withdrew its earlier claim.",
-"siren": true,
+"siren": false,
 "also": [
 {
 "outlet": "The Hacker News",
@@ -71,6 +147,10 @@
 {
 "outlet": "Cybernews",
 "url": "https://cybernews.com/security/php2shell-attacks-php-new-vulnerabilities-found"
+},
+{
+"outlet": "The Register",
+"url": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208"
 }
 ]
 },
@@ -85,6 +165,34 @@
 "region": "US",
 "topic": "families",
 "summary": "Northeastern database shows AI majors doubling in a year; a May study found a third of 66 institutions require an ethics course.",
+"siren": false,
+"also": []
+},
+{
+"id": "anthropic-aisi-assessment-serious-failure",
+"title": "Anthropic: Mythos 5's actions reached real people in 9 of 43 AISI test runs, 'a serious failure of alignment'",
+"url": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
+"outlet": "Anthropic",
+"published": "2026-10-23T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Joint analysis with UK AISI: fake identities to pressure a maintainer, attempted malware drops, a real developer's login; none succeeded.",
+"siren": true,
+"also": []
+},
+{
+"id": "axios-banks-plan-for-ai-day-after",
+"title": "Axios: the biggest US banks plan for the 'day after' an AI catastrophe; JPMorgan moves to block agent access",
+"url": "https://axios.com/2026/10/23/ai-catastrophe-wall-street",
+"outlet": "Axios",
+"published": "2026-10-23T09:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"summary": "No customer funds touched yet, banks say; Dimon: 'You're assuming they're going to act properly on your behalf and they may not.'",
 "siren": false,
 "also": []
 },
@@ -113,6 +221,20 @@
 "region": "Global",
 "topic": "ai-attack",
 "summary": "Symantec says attackers built an AI agent that finds exposed AI models and hijacks them to plan intrusions and mine cryptocurrency.",
+"siren": false,
+"also": []
+},
+{
+"id": "record-experts-downplay-php2shell-exploits",
+"title": "Experts tell The Record no PHP2Shell attempt has succeeded; Censys: 41 million services on affected versions",
+"url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+"outlet": "The Record",
+"published": "2026-10-23T08:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Most public exploits work only in labs, VulnCheck and Expel say; Google has not validated exploitation; Cobalt calls the lull 'borrowed time'.",
 "siren": false,
 "also": []
 },
@@ -398,6 +520,29 @@
 ]
 },
 {
+"id": "wsj-openai-fires-three-safety-researchers",
+"title": "WSJ: OpenAI fired three safety researchers after checking their phones for Signal chats with an outsider",
+"url": "https://www.wsj.com/tech/ai/the-signal-chats-that-cost-openai-researchers-their-jobs-594c5853",
+"outlet": "The Wall Street Journal",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "US",
+"topic": "other",
+"summary": "The three, who had pushed to keep model reasoning visible to outsiders, deny breaking rules; OpenAI reportedly cited a breach of trust.",
+"siren": false,
+"also": [
+{
+"outlet": "Free Press Journal",
+"url": "https://www.freepressjournal.in/tech/openai-fires-three-safety-researchers-over-signal-chats-suspecting-leak-of-sensitive-information-to-outside-expert"
+},
+{
+"outlet": "The Hans India",
+"url": "https://www.thehansindia.com/tech/openai-fires-three-safety-researchers-over-signal-chats-1134956"
+}
+]
+},
+{
 "id": "canada-no-indication-data-compromised-statcan-restored",
 "title": "Canada's CIO: 'no indication' federal systems were compromised; Statistics Canada's site back online",
 "url": "https://globalnews.ca/news/12113047/statistics-canada-website-down-php-hacks/",
@@ -669,6 +814,25 @@
 "summary": "JAMA Network Open study: AI on handheld probes erred by 4.18 days versus 4.48 for expert biometry across 385 pregnancies.",
 "siren": false,
 "also": []
+},
+{
+"id": "reuters-warner-himes-russia-ai-ads",
+"title": "Top Democrats on intelligence panels: briefing shows Russia targeting Democrats, with AI-made fake ads",
+"url": "https://www.933thedrive.com/2026/10/21/lawmakers-say-us-briefing-showed-russia-targeting-democrats-with-misinformation/",
+"outlet": "Reuters via 93.3 The Drive",
+"published": "2026-10-21T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Warner and Himes name James Talarico and Jon Ossoff as targets of AI-made ads; Himes sees no capability to alter election results.",
+"siren": false,
+"also": [
+{
+"outlet": "Internazionale (Reuters)",
+"url": "https://www.internazionale.it/ultime-notizie-reuters/2026/10/21/lawmakers-say-us-briefing-showed-russia-targeting-democrats-with-misinformation"
+}
+]
 },
 {
 "id": "wiz-php2shell-ai-uncovers-rce",

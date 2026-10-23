@@ -3,9 +3,9 @@
 "key": "confirmed",
 "value": "0",
 "label": "organizations confirmed breached",
-"detail": "Hunt.io, Wordfence, SOCRadar and Previdian all report no successful remote-code execution, and Hunt.io says no vendor has reported one; Sophos retracted its one claim.",
-"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
-"source_label": "SecurityWeek, Oct 23"
+"detail": "Dozens of experts told The Record on Oct 23 that no attempt is known to have succeeded and most public exploits work only in labs; Google has not validated in-the-wild exploitation; Sophos retracted its one claim.",
+"source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+"source_label": "The Record, Oct 23"
 },
 {
 "key": "attempts",
@@ -25,11 +25,11 @@
 },
 {
 "key": "vulnerable",
-"value": "34.4M",
-"label": "PHP services Censys still assesses as vulnerable",
-"detail": "Across about 3.1 million hosts, as of Oct 23. Versions before 8.2 will never get an official fix.",
-"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-"source_label": "The Hacker News, Oct 23"
+"value": "41M+",
+"label": "PHP services Censys counts on affected versions",
+"detail": "As of Oct 22, against about 1 million on a fixed release; Censys separately assesses 34.4 million services on 3.1 million hosts as vulnerable. Versions before 8.2 will never get an official fix.",
+"source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+"source_label": "The Record, Oct 23"
 },
 {
 "key": "patched",
@@ -43,7 +43,7 @@
 "key": "kev",
 "value": "Not listed",
 "label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "Re-checked 12:40 ET Oct 23: catalog still at its Oct 21 version. No federal emergency directive either. A listing is CISA's formal verdict that exploitation is real.",
+"detail": "Re-checked 18:45 ET Oct 23: CISA updated the catalog to version 2026.10.23 with two other flaws and still left the PHP bugs out. No federal emergency directive either. A listing is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
 "source_label": "CISA KEV catalog"
 }

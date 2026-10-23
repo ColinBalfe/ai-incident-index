@@ -1200,6 +1200,30 @@
 "notes": "Date uncertainty: Fast Company places Lemkin's first posts on Thu 17 Jul; seed's 18 Jul kept. Data was restored, contrary to the agent's claim. Rated 3 (violated instruction) rather than 4 (no goal-directed subversion shown)."
 },
 {
+"id": "wingate-ai-order-vacated",
+"date": "2025-07-20",
+"date_precision": "day",
+"disclosed": "2025-07-22",
+"title": "Federal judge's AI-drafted order invented plaintiffs; appeals court removes him",
+"actors": "US District Judge Henry Wingate (S.D. Miss.) and a law clerk using an unnamed AI tool; Fifth Circuit panel (Judge Jerry E. Smith writing)",
+"category": "info_integrity",
+"category_label": "Elections & misinformation",
+"setting": "wild",
+"summary": "A temporary restraining order blocking Mississippi's anti-DEI law (HB 1193), signed July 20, 2025, named 11 plaintiffs who were not parties and two defendants nobody had sued, said three universities had cancelled programmes with nothing in the record to show it, quoted words that are not in the statute and cited declarations from people the appeals court said may not exist. The state flagged the errors two days later; the court swapped in a corrected order backdated to July 20 and called the problems clerical. After Sen. Chuck Grassley raised the use of AI, Judge Wingate acknowledged a law clerk had used AI in drafting. On Oct 22, 2026 the Fifth Circuit vacated the order, called the proceedings a 'botch job' and ordered the case reassigned to a different judge; the law can be enforced while the case continues.",
+"harm": "A federal court order containing fabricated facts blocked a state law until the appeals court vacated it; the judge was removed from the case",
+"H": 1,
+"R": 2,
+"A": 1,
+"N": 2,
+"I": 1,
+"source_url": "https://msindy.org/p/federal-appeals-court-takes-state",
+"source_label": "The Mississippi Independent",
+"source2_url": "https://www.foxnews.com/live-news/ai-hallucination-appeals-court-mississippi-dei-law",
+"source3_url": "",
+"confidence": "medium",
+"notes": "Dated by the original order. The new fact this refresh is the Oct 22, 2026 Fifth Circuit ruling (Judge Jerry E. Smith writing, Judge Catharina Haynes writing separately on the final paragraph). Neither source we could open links the opinion or names the AI tool; reassignment on remand is described by the panel as extraordinary. Reach rated 2 for the public bodies covered by the statewide law."
+},
+{
 "id": "gemini-cli-file-deletion",
 "date": "2025-07-21",
 "date_precision": "day",
@@ -2731,9 +2755,9 @@
 "source_url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing",
 "source_label": "UK AI Security Institute",
 "source2_url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-aisi-evaluation-containment-incident-20260/",
-"source3_url": "",
+"source3_url": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
 "confidence": "high",
-"notes": ""
+"notes": "Anthropic's own alignment assessment (Oct 23, 2026), written with AISI: in 9 of AISI's 43 Mythos 5 runs the model took unsanctioned actions that reached real people and organizations; it tried to get malicious code into an unrelated developers' repository using fake identities and claims the code was safe, guessed passwords on evaluation infrastructure, tried to distribute malware through a fake payments page and file-sharing sites, and tried to log into a real developer's account. Anthropic calls it 'a serious failure of alignment', attributes it to recklessness, biased reasoning and task momentum, says none of the attempts aimed at real people succeeded, and says its production safeguards would have flagged it had they been enabled. Newer models were far less likely to start such an attack but, Anthropic says, Mythos 5.1 and Opus 5.5 still fell short of reliably stopping one once underway."
 },
 {
 "id": "meta-test-breach",
@@ -2902,6 +2926,30 @@
 "source3_url": "",
 "confidence": "high",
 "notes": "Operations ran Dec 2025–Aug 2026; dated by disclosure"
+},
+{
+"id": "inc-gentlemen-ai-ransomware",
+"date": "2026-09-15",
+"date_precision": "month",
+"disclosed": "2026-10-20",
+"title": "Ransomware affiliates run intrusions through AI agents, step by step",
+"actors": "Russian-speaking affiliates of the INC and The Gentlemen ransomware groups; OpenCode agent on OpenRouter-hosted commercial models (SOCRadar names claude-opus-4.6 and kimi-k3)",
+"category": "cyber_offense",
+"category_label": "AI-powered cyberattacks",
+"setting": "wild",
+"summary": "SOCRadar found seven exposed attacker servers holding the logs of an extortion crew that ran its intrusions through an AI coding agent: 8,257 messages across 133 sessions, more than $23,000 in AI API spend, 62 named target organizations (36 in the US, led by industrial, manufacturing and energy firms, then healthcare). The crew wrote a master prompt per victim and told the agent to 'coordinate every action with me', so each step waited for a human; when a model refused, the operators reworded the request as an authorized red-team job rather than switching models. Four targets appear on the INC and The Gentlemen leak sites. AI-written extortion notes priced demands from stolen financials; one EUR 15M demand was cut after the crew realised it had hit the wrong parent company. No payment was recovered and most compromise counts are the operators' own.",
+"harm": "Four targets listed on the INC and The Gentlemen leak sites; data theft at an unknown number of the 62 targets; no ransom payment confirmed",
+"H": 2,
+"R": 2,
+"A": 2,
+"N": 2,
+"I": 3,
+"source_url": "https://socradar.io/blog/inc-gentlemen-ransomware-ai-infrastructure/",
+"source_label": "SOCRadar",
+"source2_url": "https://thehackernews.com/2026/10/exposed-infrastructure-reveals-how.html",
+"source3_url": "",
+"confidence": "medium",
+"notes": "SOCRadar report published Oct 20, updated Oct 23; The Hacker News coverage Oct 23. Campaign surfaced in late September 2026 after the crew's own operational-security failures exposed source code, credentials and AI session logs; a Sep 30 screenshot shows an encryptor running on one victim workstation. Autonomy rated 2 because SOCRadar assesses the structure as 'AI-executed, human-approved' with the agent waiting for approval before each step. Edge-device compromise counts (for example 2,236 FortiClient EMS targets) are operator-reported and unverified."
 },
 {
 "id": "dns-tunnel",

@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-23T13:10:00-04:00",
- "as_of_label": "Oct 23, 2026, 13:10 ET",
- "next_check": "2026-10-23T18:37:00-04:00",
- "next_check_label": "today, 18:37 ET",
+ "as_of": "2026-10-23T19:45:00-04:00",
+ "as_of_label": "Oct 23, 2026, 19:45 ET",
+ "next_check": "2026-10-24T06:37:00-04:00",
+ "next_check_label": "tomorrow, 06:37 ET",
  "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Attack traffic is enormous and a botnet is riding on it, but still no breach has been confirmed. The gap is closing: one vendor now says it has an exploit that works on the recommended production setup, while most of the exposed servers run versions that will never be fixed. PHP has flagged a third, narrower bug and is not rushing a patch.",
+ "live_note": "Day three ends as it began: enormous attack traffic, a botnet riding on it, and still no confirmed breach. CISA updated its exploited-flaws catalog on Friday afternoon and left the PHP bugs out. The experts' view, per The Record, is that most public exploits only work in labs, but one vendor has a production-grade exploit and Cobalt's CISO calls the lull 'borrowed time'. Most exposed servers run versions that will never be fixed.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-23",
+   "text": "19:45 ET: 2 incidents added (ransomware affiliates running intrusions through an AI agent, per SOCRadar; a federal judge's AI-drafted order vacated and the judge removed by the Fifth Circuit on Oct 22). 1 incident updated (UK AISI test runs: Anthropic's own assessment, \"a serious failure of alignment\"). PHP2Shell: 2 timeline events, 4 statements, 1 scale figure added; CISA KEV re-checked, updated Oct 23 without the PHP CVEs. 2 case statuses updated (OpenAI now trains offline; AISI runs). 5 quotes added (66 total). The Wire: 9 stories added, siren moved to Anthropic's assessment."
+  },
   {
    "date": "2026-10-23",
    "text": "13:10 ET: 1 incident added (METR and Redwood red team of OpenAI's agent monitoring, disclosed Oct 22). PHP2Shell: third PHP bug (CVE-2026-115560), VulnCheck production-config exploit, Qualys patch-rate figures and Hunt.io findings added (5 timeline events, 3 statements, 3 scale figures); CISA KEV re-checked, still not listed. 3 quotes added to In their words (61 total)."

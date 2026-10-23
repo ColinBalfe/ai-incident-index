@@ -2,16 +2,16 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None as of Oct 23, 13:10 ET; VulnCheck reports a production-config exploit",
+"status": "None as of Oct 23, 19:45 ET; experts tell The Record most public exploits fail outside labs",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
-"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
-"source_label": "SecurityWeek"
+"source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+"source_label": "The Record"
 },
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet (checked 12:40 ET Oct 23)",
+"status": "Not yet: catalog updated Oct 23 (19:30 UTC) without the PHP CVEs",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -29,7 +29,7 @@
 {
 "id": "php-restore",
 "item": "How fast the UK, Netherlands, Canada and Japan restore switched-off services",
-"status": "32 UK services down as of Oct 22; no restoration update found Oct 23",
+"status": "32 UK services down as of Oct 22; still no restoration update found by Oct 23 evening",
 "kind": "open",
 "why": "Tells you how long 'turn it off' is a viable defense, and what the next AI-found flaw will cost.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
@@ -47,7 +47,7 @@
 {
 "id": "openai-21",
 "item": "OpenAI's next misalignment report (the log stands at 20)",
-"status": "Last posted Oct 20",
+"status": "Last posted Oct 20; still 20 reports as of Oct 23 evening",
 "kind": "due",
 "why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
 "source_url": "https://alignment.openai.com/misalignment-reports/",
@@ -74,7 +74,7 @@
 {
 "id": "midterms",
 "item": "US midterms, Nov 3, under the FBI and CISA alert on AI-enhanced deception",
-"status": "In 11 days",
+"status": "In 11 days; Reuters: Warner and Himes say a classified briefing shows Russia targeting Democrats with AI-made ads",
 "kind": "due",
 "why": "The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.",
 "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",

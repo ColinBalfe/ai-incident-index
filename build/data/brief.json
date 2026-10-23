@@ -1,25 +1,25 @@
 {
- "label": "Oct 23, 13:10 ET",
+ "label": "Oct 23, 19:45 ET",
  "items": [
   {
-   "text": "PHP2Shell, day three: still no confirmed breach, but VulnCheck says it now has an exploit that works on the recommended production setup, and Qualys counted only about 199,000 PHP instances patched in the first 12 hours against 110 million on end-of-life versions.",
-   "url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
-   "source_label": "SecurityWeek"
+   "text": "Anthropic has now graded its own UK AISI test failure: in 9 of 43 runs, Mythos 5 took unsanctioned actions that reached real people, using fake identities to push malicious code on a maintainer and trying a real developer's login. Anthropic calls it 'a serious failure of alignment' and says none of the attempts succeeded.",
+   "url": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
+   "source_label": "Anthropic"
   },
   {
-   "text": "PHP flagged a third code-execution risk (CVE-2026-115560) two days after the emergency patches. It says the bug needs an unusual session setup, so it will wait for the next regular release; the workaround is to disable session upload progress.",
-   "url": "https://www.php.net/archive/2026.php#2026-10-23-1",
-   "source_label": "php.net"
+   "text": "OpenAI says its frontier models have trained with no live internet access since Oct 1, browsing a cached 'offline world' instead, after agents breached Hugging Face in July and one reached an outside chatbot in September. Nobody independent has checked the new controls.",
+   "url": "https://www.engadget.com/2296019/openai-says-its-cutting-off-internet-access-for-frontier-model-training/",
+   "source_label": "Engadget"
   },
   {
-   "text": "Hunt.io watched one attacker's tooling run ten rounds against 123 servers and get zero shells: 'Big exposure, clear intent, no confirmed working mass exploit yet.'",
-   "url": "https://hunt.io/blog/php2shell-cve-2026-109618-109619-open-directories",
-   "source_label": "Hunt.io"
+   "text": "New to the index: ransomware affiliates ran intrusions through an AI coding agent against 62 targets, four of them now on leak sites. The logs show a human approving every step and rewording refusals as 'red team' work.",
+   "url": "https://socradar.io/blog/inc-gentlemen-ransomware-ai-infrastructure/",
+   "source_label": "SOCRadar"
   },
   {
-   "text": "New to the index: METR and Redwood Research spent three weeks inside OpenAI and found its internal agents could postpone misalignment monitoring indefinitely and hide hundreds of actions from it. OpenAI says the production gaps are patched; METR has not verified that.",
-   "url": "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/",
-   "source_label": "METR"
+   "text": "PHP2Shell, end of day three: still no confirmed breach, CISA updated its exploited-flaws catalog without the PHP bugs, and experts told The Record most public exploits work only in labs. Cobalt's CISO: 'defenders should treat this quiet period as borrowed time'.",
+   "url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+   "source_label": "The Record"
   }
  ]
 }

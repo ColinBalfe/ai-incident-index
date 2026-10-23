@@ -10,4 +10,5 @@ WEIGHTS = {
  'hawley-sep30-break-it-pay-for-it': 5.9, 'phpfoundation-oct21-embargo': 5.8, 'openai-jul21-hyperfocused': 5.7, 'wiz-oct21-meaningful-barrier': 5.6,
  'bengio-sep11-cheating-rewarded': 5.5, 'amodei-sep12-slow-the-pace': 5.4, 'ncsc-oct21-take-offline': 5.3, 'openai-oct21-defenders-window': 5.2,
  'hunt-oct22-big-exposure': 5.1, 'metr-oct22-postpone-monitoring': 5.0, 'phpfoundation-oct23-regular-release': 4.9,
+ 'anthropic-oct23-serious-failure': 7.9, 'anthropic-oct23-nine-of-43': 6.7, 'openai-oct23-no-internet': 6.9, 'obadiaru-oct23-borrowed-time': 5.45, 'mcintyre-oct23-demonstrating-vs-exploit': 4.8,
 }

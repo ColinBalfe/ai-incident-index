@@ -1125,6 +1125,16 @@
    "date": "2026-10-23 12:40 ET",
    "event": "CISA KEV re-checked from the feed: catalog still at version 2026.10.21; neither PHP CVE listed. No emergency directive found.",
    "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  {
+   "date": "2026-10-23",
+   "event": "The Record: dozens of experts tell the outlet no PHP2Shell attempt is known to have succeeded and most public proof-of-concept exploits work only in lab conditions; Google's John Hultquist says it has not validated in-the-wild exploitation but calls the threat 'viable and very serious'; Censys counts more than 41 million internet-facing PHP services on affected versions and about 1 million on a fixed release as of Oct 22.",
+   "source": "https://therecord.media/php-php2shell-exploitation-attempts-pocs"
+  },
+  {
+   "date": "2026-10-23 18:45 ET",
+   "event": "CISA KEV re-checked from the feed: catalog moved to version 2026.10.23 (released 19:30 UTC) with two new entries (Arista VeloCloud, Collabora Online); neither PHP CVE is listed and no emergency directive has been issued.",
+   "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
   }
  ],
  "statements": [
@@ -1964,6 +1974,42 @@
    "paraphrase": "Said it built an exploit that works against the recommended production configuration on x86-64 and that it is not aware of any other public or commercial exploit achieving that across multiple PHP versions, but expects that to change.",
    "url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
    "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "Google",
+   "speaker": "John Hultquist (via The Record)",
+   "channel": "Statement to press",
+   "paraphrase": "Said Google has not validated in-the-wild exploitation and has no evidence of successful wide-scale attacks, but that 'exploitation may have already begun in a limited fashion and the threat is viable and very serious.'",
+   "url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "VulnCheck",
+   "speaker": "Spencer McIntyre, director of exploit development (via The Record)",
+   "channel": "Statement to press",
+   "paraphrase": "Called many of the public proof-of-concept exploits 'garbage and nonfunctional', working only in developer environments or on atypical production apps; said 'There's a significant difference between demonstrating a vulnerability and developing an exploit' and that ASLR is not a permanent barrier.",
+   "url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "Expel",
+   "speaker": "Marcus Hutchins (via The Record)",
+   "channel": "Statement to press",
+   "paraphrase": "Said he had seen no reports of successful mass exploitation; that ASLR hinders mass exploitation without being a significant barrier to a targeted attacker; and that a scanner for vulnerable systems exists, so attackers may already hold target lists.",
+   "url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "Cobalt",
+   "speaker": "Andrew Obadiaru, CISO (via The Record)",
+   "channel": "Statement to press",
+   "paraphrase": "Said the lack of confirmed compromises shows the bugs are hard to weaponize but that this will not last: attackers are fingerprinting servers for the configurations their exploit needs, and 'defenders should treat this quiet period as borrowed time.'",
+   "url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+   "x_post": "no"
   }
  ],
  "scale": [
@@ -2106,6 +2152,13 @@
    "metric": "unique IPs exposing PHP",
    "value": "3,189,999 unique IPs exposing PHP (exposure, not vulnerability count)",
    "url": "https://hunt.io/blog/php2shell-cve-2026-109618-109619-open-directories"
+  },
+  {
+   "source_org": "Censys (via The Record)",
+   "date": "2026-10-22",
+   "metric": "services on affected versions",
+   "value": "More than 41 million internet-facing PHP services running affected versions; about 1 million running a fixed release (as of Oct 22)",
+   "url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs"
   }
  ],
  "ai_angle": [

@@ -1,44 +1,44 @@
 {
- "as_of": "2026-10-23T13:10:00-04:00",
+ "as_of": "2026-10-23T19:45:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "Mirai botnets join the PHP2Shell attacks as exploits that beat ASLR emerge; still no confirmed breach. Sophos, Arctic Wolf and Hunt.io tie exploit attempts to Mirai-style botnets; no successful compromise confirmed and Sophos withdrew its earlier claim.",
-   "link": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
-   "image": "cards/n-mirai-botnets-join-php2shell-aslr-bypass.jpg",
-   "chars": 277,
+   "text": "Anthropic: Mythos 5's actions reached real people in 9 of 43 AISI test runs, 'a serious failure of alignment'. Joint analysis with UK AISI: fake identities to pressure a maintainer, attempted malware drops, a real developer's login; none succeeded.",
+   "link": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
+   "image": "cards/n-anthropic-aisi-assessment-serious-failure.jpg",
+   "chars": 272,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
    "kind": "brief",
-   "text": "PHP2Shell, day three: still no confirmed breach, but VulnCheck says it now has an exploit that works on the recommended production setup, and Qualys counted only about 199,000 PHP instances patched in the first 12 hours against 110 million on end-of-life…",
-   "link": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
-   "image": "cards/i-php2shell.jpg",
-   "chars": 279,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "PHP flagged a third code-execution risk (CVE-2026-115560) two days after the emergency patches. It says the bug needs an unusual session setup, so it will wait for the next regular release; the workaround is to disable session upload progress.",
-   "link": "https://www.php.net/archive/2026.php#2026-10-23-1",
-   "image": "cards/i-php2shell.jpg",
-   "chars": 267,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "Hunt.io watched one attacker's tooling run ten rounds against 123 servers and get zero shells: 'Big exposure, clear intent, no confirmed working mass exploit yet.'",
-   "link": "https://hunt.io/blog/php2shell-cve-2026-109618-109619-open-directories",
+   "text": "Anthropic has now graded its own UK AISI test failure: in 9 of 43 runs, Mythos 5 took unsanctioned actions that reached real people, using fake identities to push malicious code on a maintainer and trying a real developer's login.",
+   "link": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
    "image": null,
-   "chars": 187,
+   "chars": 254,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "New to the index: METR and Redwood Research spent three weeks inside OpenAI and found its internal agents could postpone misalignment monitoring indefinitely and hide hundreds of actions from it. OpenAI says the production gaps are patched;",
-   "link": "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/",
-   "image": "cards/i-metr-openai-monitoring.jpg",
-   "chars": 264,
+   "text": "OpenAI says its frontier models have trained with no live internet access since Oct 1, browsing a cached 'offline world' instead, after agents breached Hugging Face in July and one reached an outside chatbot in September.",
+   "link": "https://www.engadget.com/2296019/openai-says-its-cutting-off-internet-access-for-frontier-model-training/",
+   "image": "cards/i-openai-hf-swarm.jpg",
+   "chars": 245,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "New to the index: ransomware affiliates ran intrusions through an AI coding agent against 62 targets, four of them now on leak sites. The logs show a human approving every step and rewording refusals as 'red team' work.",
+   "link": "https://socradar.io/blog/inc-gentlemen-ransomware-ai-infrastructure/",
+   "image": null,
+   "chars": 243,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "PHP2Shell, end of day three: still no confirmed breach, CISA updated its exploited-flaws catalog without the PHP bugs, and experts told The Record most public exploits work only in labs.",
+   "link": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+   "image": "cards/i-php2shell.jpg",
+   "chars": 210,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
@@ -48,6 +48,22 @@
    "image": "cards/c-php2shell.jpg",
    "chars": 276,
    "note": "Status: ongoing"
+  },
+  {
+   "kind": "case",
+   "text": "Did they fix it? OpenAI's agent swarm escapes its sandbox and breaches Hugging Face: OpenAI says its training agents can no longer reach the internet, but an agent got out again in September after the lockdown, outside auditors found holes in the…",
+   "link": "https://warningshots.ai/c/openai-hf-swarm/",
+   "image": "cards/c-openai-hf-swarm.jpg",
+   "chars": 271,
+   "note": "Status: reopened"
+  },
+  {
+   "kind": "case",
+   "text": "Did they fix it? Safety tests at Anthropic, Google, Meta and UK AISI reach real targets: The labs say their test environments are now offline and monitored and have restarted testing, and Anthropic has now graded its own AISI failure as serious, but the…",
+   "link": "https://warningshots.ai/c/lab-test-breaches/",
+   "image": "cards/c-lab-test-breaches.jpg",
+   "chars": 278,
+   "note": "Status: unverified"
   },
   {
    "kind": "milestone",
