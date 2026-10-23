@@ -914,7 +914,7 @@ function drawEdges() {
   const caps = capRows(); const sec = document.getElementById('capabilities');
   if (!caps.length) { sec.style.display = 'none'; return; } sec.style.display = '';
   if (!box.clientWidth) return;
-  const W = box.clientWidth, narrow = W < 600, H = narrow ? 300 : 320, m = { l: 12, r: 12, t: narrow ? 72 : 54, b: 26 };
+  const W = box.clientWidth, narrow = W < 600, H = narrow ? 310 : 330, m = { l: 12, r: 12, t: narrow ? 78 : 64, b: 26 };
   const today = new Date(C.asOf);
   const x = d3.scaleUtc([new Date('2023-01-01'), d3.utcMonth.offset(today, 2)], [m.l, W - m.r]);
   const yT = m.t + 34, yB = H - m.b - 44;
@@ -932,19 +932,23 @@ function drawEdges() {
   cps.forEach((p) => { let l = 0; while (l < OFFC.length - 1 && laneC[l] != null && p.px - laneC[l] < 12) l++; laneC[l] = p.px; p.py = yT + OFFC[l]; });
   const byId = new Map(inc.map((p) => [p.r.id, p]));
   const threads = svg.append('g');
-  cps.forEach((p) => (p.c.related_incident_ids || []).forEach((id) => { const q = byId.get(id); if (!q) return; threads.append('path').attr('class', 'thread').attr('data-cap', p.c.id).attr('d', `M${p.px},${p.py + 5} C${p.px},${(p.py + q.py) / 2} ${q.px},${(p.py + q.py) / 2} ${q.px},${q.py - 4}`).attr('fill', 'none').attr('stroke', 'var(--steel)').attr('stroke-width', 1.2).attr('opacity', 0.45); }));
+  cps.forEach((p) => { const qs = (p.c.related_incident_ids || []).map((id) => byId.get(id)).filter(Boolean).sort((a, b) => b.r.severity - a.r.severity); qs.forEach((q, i) => { const strong = i < 2 && q.r.severity >= 55; threads.append('path').attr('class', 'thread' + (strong ? ' strong' : ' weak')).attr('data-cap', p.c.id).attr('d', `M${p.px},${p.py + 5} C${p.px},${(p.py + q.py) / 2} ${q.px},${(p.py + q.py) / 2} ${q.px},${q.py - 4}`).attr('fill', 'none').attr('stroke', 'var(--steel)').attr('stroke-width', 1.2).attr('opacity', strong ? 0.4 : 0); }); });
+  const resetThreads = () => { threads.selectAll('.thread.strong').attr('opacity', 0.4).attr('stroke-width', 1.2); threads.selectAll('.thread.weak').attr('opacity', 0); };
   const dots = svg.append('g').selectAll('circle').data(inc).join('circle').attr('cx', (p) => p.px).attr('cy', (p) => p.py).attr('r', 3.6)
     .attr('fill', (p) => kind(p.r) === 'auto' ? 'var(--alarm)' : kind(p.r) === 'wild' ? 'var(--steel)' : 'var(--paper)').attr('stroke', (p) => kind(p.r) === 'lab' ? 'var(--ink-3)' : 'var(--paper)').attr('stroke-width', 1.2).attr('opacity', (p) => kind(p.r) === 'auto' ? 1 : 0.8);
   const sq = svg.append('g').selectAll('rect').data(cps).join('rect').attr('x', (p) => p.px - 5.5).attr('y', (p) => p.py - 5.5).attr('width', 11).attr('height', 11).attr('rx', 2)
     .attr('fill', 'var(--ink)').attr('stroke', (p) => stStatus(p.c, 'consequences') === 'yes' ? 'var(--alarm)' : 'var(--paper)').attr('stroke-width', (p) => stStatus(p.c, 'consequences') === 'yes' ? 2 : 1.5);
-  // labels for milestones with consequences and the newest three
-  const picks = new Set(narrow ? cps.filter((p) => stStatus(p.c, 'consequences') === 'yes').slice(-2).map((p) => p.c.id) : cps.filter((p) => stStatus(p.c, 'consequences') === 'yes').map((p) => p.c.id).concat(cps.slice(-3).map((p) => p.c.id)));
+  // labels: the newest milestone plus the most-linked ones, spaced out
+  const byLinks = cps.slice().sort((a, b) => (b.c.related_incident_ids || []).length - (a.c.related_incident_ids || []).length);
+  const picks = new Set([cps[cps.length - 1].c.id]); const minGap = narrow ? 90 : 70;
+  byLinks.forEach((p) => { if (picks.size >= (narrow ? 3 : 7)) return; if ([...picks].some((id) => Math.abs(cps.find((q) => q.c.id === id).px - p.px) < minGap)) return; picks.add(p.c.id); });
   const lab = svg.append('g'); const placed = [];
   cps.filter((p) => picks.has(p.c.id)).forEach((p) => {
     const short = p.c.title.length > (narrow ? 26 : 40) ? p.c.title.slice(0, narrow ? 24 : 38).trimEnd() + '…' : p.c.title;
     const anchor = p.px > W * 0.62 ? 'end' : 'start'; const w = short.length * 5.9; const x0 = anchor === 'end' ? p.px - 9 - w : p.px + 9, x1 = x0 + w;
-    let yy = p.py - 11; for (let k = 0; k < 6; k++) { const hit = placed.find((b) => x0 < b.x1 + 6 && x1 > b.x0 - 6 && Math.abs(yy - b.y) < 13); if (!hit) break; yy = hit.y - 13; }
+    let yy = yT - 36; for (let k = 0; k < 6; k++) { const hit = placed.find((b) => x0 < b.x1 + 6 && x1 > b.x0 - 6 && Math.abs(yy - b.y) < 13); if (!hit) break; yy = hit.y - 13; }
     if (yy < 12) return; placed.push({ x0, x1, y: yy });
+    lab.append('line').attr('x1', p.px).attr('x2', p.px).attr('y1', yy + 3).attr('y2', p.py - 7).attr('stroke', 'var(--line-2)').attr('stroke-width', 1);
     lab.append('text').attr('x', p.px + (anchor === 'end' ? -9 : 9)).attr('y', yy).attr('text-anchor', anchor).attr('font-size', 11).attr('font-weight', 600).attr('fill', 'var(--ink-2)').text(short);
   });
   const tip = makeTip(box);
@@ -952,18 +956,18 @@ function drawEdges() {
   const del = d3.Delaunay.from(all, (p) => p.px, (p) => p.py);
   const hi = svg.append('rect').attr('width', 16).attr('height', 16).attr('rx', 3).attr('fill', 'none').attr('stroke', 'var(--ink)').attr('stroke-width', 1.5).attr('opacity', 0);
   svg.append('rect').attr('x', 0).attr('y', 0).attr('width', W).attr('height', H - m.b).attr('fill', 'transparent').style('cursor', 'pointer')
-    .on('pointermove', (ev) => { const [px, py] = d3.pointer(ev); const p = all[del.find(px, py)]; if (!p || Math.hypot(p.px - px, p.py - py) > 30) { tip.hide(); hi.attr('opacity', 0); threads.selectAll('.thread').attr('opacity', 0.45).attr('stroke-width', 1.2); return; }
+    .on('pointermove', (ev) => { const [px, py] = d3.pointer(ev); const p = all[del.find(px, py)]; if (!p || Math.hypot(p.px - px, p.py - py) > 30) { tip.hide(); hi.attr('opacity', 0); resetThreads(); return; }
       hi.attr('x', p.px - 8).attr('y', p.py - 8).attr('opacity', 1);
-      if (p.t === 'cap') { threads.selectAll('.thread').attr('opacity', 0.2); threads.selectAll(`.thread[data-cap="${p.c.id}"]`).attr('opacity', 1).attr('stroke-width', 2); const d1 = el('div'); d1.append(el('span', 't-val', p.c.metric_value || ''), el('span', 't-sec', p.c.metric_value ? ' ' + (p.c.metric_label || '') : (p.c.domain ? DOMAIN[p.c.domain] || p.c.domain : ''))); tip.show([el('div', 't-sec', fmtDate(new Date(p.c.date)) + (p.c.org ? ', ' + p.c.org : '')), el('div', 't-title', p.c.title), d1, el('div', 't-sec', p.c.what || ''), el('div', 't-cta', 'Click for the evidence')], p.px * box.clientWidth / W, p.py * box.clientWidth / W); }
-      else { threads.selectAll('.thread').attr('opacity', 0.45).attr('stroke-width', 1.2); tip.show(incidentTip(p.r), p.px * box.clientWidth / W, p.py * box.clientWidth / W); } })
-    .on('pointerleave', () => { tip.hide(); hi.attr('opacity', 0); threads.selectAll('.thread').attr('opacity', 0.45).attr('stroke-width', 1.2); })
+      if (p.t === 'cap') { threads.selectAll('.thread').attr('opacity', 0.08); threads.selectAll(`.thread[data-cap="${p.c.id}"]`).attr('opacity', 1).attr('stroke-width', 2); const d1 = el('div'); d1.append(el('span', 't-val', p.c.metric_value || ''), el('span', 't-sec', p.c.metric_value ? ' ' + (p.c.metric_label || '') : (p.c.domain ? DOMAIN[p.c.domain] || p.c.domain : ''))); tip.show([el('div', 't-sec', fmtDate(new Date(p.c.date)) + (p.c.org ? ', ' + p.c.org : '')), el('div', 't-title', p.c.title), d1, el('div', 't-sec', p.c.what || ''), el('div', 't-cta', 'Click for the evidence')], p.px * box.clientWidth / W, p.py * box.clientWidth / W); }
+      else { resetThreads(); tip.show(incidentTip(p.r), p.px * box.clientWidth / W, p.py * box.clientWidth / W); } })
+    .on('pointerleave', () => { tip.hide(); hi.attr('opacity', 0); resetThreads(); })
     .on('click', (ev) => { const [px, py] = d3.pointer(ev); const p = all[del.find(px, py)]; if (!p || Math.hypot(p.px - px, p.py - py) > 30) return; if (p.t === 'cap') { cap.openId = p.c.id; cap.open = true; cap.domain = 'all'; drawCapGrid(); document.getElementById('cap-' + p.c.id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } else openIncident(p.r.id); });
   keepTip(box, svg.node());
-  onVisible(box, 'edges', (instant) => { if (instant) return; sq.attr('opacity', 0).transition().delay((p, i) => i * 40).duration(300).attr('opacity', 1); threads.selectAll('.thread').attr('opacity', 0).transition().delay(600).duration(600).attr('opacity', 0.45); });
+  onVisible(box, 'edges', (instant) => { if (instant) return; sq.attr('opacity', 0).transition().delay((p, i) => i * 40).duration(300).attr('opacity', 1); threads.selectAll('.thread.strong').attr('opacity', 0).transition().delay(600).duration(600).attr('opacity', 0.4); });
   legend(document.getElementById('lg-edges'), [{ color: 'var(--ink)', label: 'capability milestone' }, { color: 'var(--alarm)', shape: 'ring', label: 'with documented real-world consequences' }, { color: 'var(--alarm)', label: 'incident where the AI acted on its own' }, { color: 'var(--steel)', label: 'other real-world incident' }, { color: 'var(--ink-3)', shape: 'ring', label: 'lab or test finding' }]);
-  const nCons = caps.filter((c) => stStatus(c, 'consequences') === 'yes').length, nDemo = caps.filter((c) => ['no', 'unknown'].includes(stStatus(c, 'reproduced')) && ['no', 'unknown'].includes(stStatus(c, 'reliable'))).length;
+  const nCons = caps.filter((c) => stStatus(c, 'consequences') === 'yes').length, nRel = caps.filter((c) => stStatus(c, 'reliable') === 'yes').length, nRelPart = caps.filter((c) => stStatus(c, 'reliable') === 'partial').length;
   const linked = new Set(caps.flatMap((c) => c.related_incident_ids || []).filter((id) => byId.has(id)));
-  call.replaceChildren(el('b', null, String(caps.length)), txt(' capability milestones since 2023. '), el('b', null, String(nCons)), txt(' have produced documented real-world consequences, good or bad; '), el('b', null, String(nDemo)), txt(' remain demonstrations that nobody has reproduced or made reliable. '), el('b', null, String(linked.size)), txt(' incidents on the bottom line trace directly to a capability on the top line.'));
+  call.replaceChildren(el('b', null, String(caps.length)), txt(' capability milestones since 2023. Only '), el('b', null, String(nRel)), txt(' ' + (nRel === 1 ? 'has' : 'have') + ' published evidence of reliability for a defined task, '), el('b', null, String(nRelPart)), txt(' partial, yet '), el('b', null, String(nCons)), txt(' are already producing documented real-world consequences, and '), el('b', null, String(linked.size)), txt(' incidents on the bottom line trace to a capability on the top line. Capability is reaching real life faster than reliability. The threads show the strongest links; hover a milestone for all of its incidents.'));
   shareRow(document.getElementById('share-edges'), { anchor: 'card-edges', text: `What AI could do, and what it did: ${caps.length} capability milestones since 2023 on one line, every major incident on the other, with the threads between them. Warning Shots:`, svgBox: box, name: 'both-edges', title: 'Both edges: what AI could do, and what it did', embed: 'edges', embedH: 480 });
 }
 function cellNode(c, k, i) { const st = stStatus(c, k); const d = el('div', 'cell c' + (i + 1) + ' ' + st); d.title = STAGES[i][1] + ': ' + st; return d; }
