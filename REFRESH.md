@@ -53,8 +53,11 @@ Keep descriptions of hacking techniques high-level. Never invent a figure; if a 
 cd build && python3 build_data.py && python3 build_deep.py && python3 build_live.py && cp data/*.json ../data/ && cd ..
 python3 build_site.py
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
-node make_og.mjs http://127.0.0.1:8765/index.html
-node shot.mjs    http://127.0.0.1:8765/index.html
+node make_og.mjs    http://127.0.0.1:8765/index.html
+node make_cards.mjs http://127.0.0.1:8765/index.html   # share cards for every dispatch; re-renders only changed records
+python3 build_pages.py                                  # i/<id>/, c/<id>/, m/<id>/ pages with their own cards, sitemap.xml
+cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)
+node shot.mjs       http://127.0.0.1:8765/index.html
 ```
 
 `shot.mjs` must print `errors none` three times. The build prints the Wire's story count and the siren headline; check both. Look at `shots/site-desktop-top.png` and `shots/site-phone-top.png` before publishing. If anything fails, fix it; do not publish a broken page.
@@ -73,4 +76,4 @@ GitHub Pages redeploys automatically within a couple of minutes. Confirm the liv
 
 ## 6. Report
 
-Finish with a short summary: what was added (counts), what changed on the live incident, anything that could not be verified, and the next scheduled check.
+Finish with a short summary: what was added (counts), what changed on the live incident, anything that could not be verified, and the next scheduled check. Then paste the post queue from `posts/<date>.md` in full (the editor approves and posts by hand; nothing posts itself). On Sundays run `python3 build_posts.py --week-ahead` so the queue includes the next-14-days post.

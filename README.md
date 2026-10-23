@@ -16,6 +16,9 @@ data/                what the page loads
 index.template.html  page template; build_site.py fills the OG tags and build id -> index.html
 assets/app.js        all page logic (d3 v7, vendored)
 make_og.mjs          renders assets/og.png (the share card) from the live page with Playwright
+make_cards.mjs       renders a 1200x630 share card per dispatch into cards/ (incremental, manifest-based)
+build_pages.py       writes i/<id>/, c/<id>/ and m/<id>/ pages (own title, description and card; redirect to the deep link) plus sitemap.xml and robots.txt
+build/build_posts.py drafts the post queue for X from each refresh into posts/ (nothing posts itself)
 shot.mjs, sections.mjs  QA screenshots at desktop and phone widths; print console errors
 REFRESH.md           the refresh runbook used by the scheduled task
 ```

@@ -58,7 +58,7 @@ const ICON = {
 function shareRow(node, o) {
   if (!node) return;
   node.replaceChildren();
-  const link = SITE + (o.anchor ? '#' + o.anchor : '');
+  const m0 = o.anchor && /^(i|c|m)=/.exec(o.anchor); const link = m0 ? SITE + m0[1] + '/' + encodeURIComponent(o.anchor.slice(2)) + '/' : SITE + (o.anchor ? '#' + o.anchor : '');
   const mk = (icon, label, fn) => { const b = el('button'); b.type = 'button'; b.innerHTML = ICON[icon]; b.append(txt(' ' + label)); b.addEventListener('click', (e) => { e.stopPropagation(); fn(); }); return b; };
   node.append(mk('link', 'Copy link', () => copy(link)));
   if (o.text) node.append(mk('text', 'Copy text', () => copy(o.text + ' ' + link)));
@@ -77,33 +77,36 @@ function wrapText(ctx, text, maxW, maxLines) {
   if (lines.length === maxLines && words.join(' ') !== lines.join(' ')) { let last = lines[maxLines - 1]; while (ctx.measureText(last + '…').width > maxW && last.length) last = last.slice(0, -1).trimEnd(); lines[maxLines - 1] = last + '…'; }
   return lines;
 }
+async function drawCard(c, W, H) {
+  try { await Promise.all([document.fonts.load('900 66px Playfair'), document.fonts.load('400 34px Archivo'), document.fonts.load('800 28px Archivo'), document.fonts.load('600 26px Archivo')]); } catch (e) {}
+  const cv = el('canvas'); cv.width = W; cv.height = H; const x = cv.getContext('2d');
+  const NAVY = '#0A111E', BONE = '#F4F3EF', RED = '#FF3300', MUTE = '#A8B3C2', SLATE = '#2A364B';
+  const wide = W > H, P = wide ? 60 : 72, k = wide ? 0.82 : 1; // scale type on the landscape card
+  x.fillStyle = NAVY; x.fillRect(0, 0, W, H);
+  const top = wide ? 54 : 72;
+  x.fillStyle = BONE; x.font = `900 ${Math.round(92 * k)}px Playfair`; x.textBaseline = 'alphabetic'; x.fillText('W', P, top + 78 * k);
+  const wW = x.measureText('W').width; x.fillStyle = RED; x.beginPath(); x.arc(P + wW + 22 * k, top + 36 * k, 11 * k, 0, Math.PI * 2); x.fill(); x.fillStyle = BONE; x.beginPath(); x.arc(P + wW + 22 * k, top + 70 * k, 11 * k, 0, Math.PI * 2); x.fill();
+  x.font = `800 ${Math.round(30 * k)}px Archivo`; x.fillStyle = BONE; let wx = P + wW + 58 * k; for (const ch of 'WARNING SHOTS') { x.fillText(ch, wx, top + 64 * k); wx += x.measureText(ch).width + 3 * k; }
+  x.font = `600 ${Math.round(24 * k)}px Archivo`; x.fillStyle = MUTE; x.textAlign = 'right'; x.fillText(c.kicker || '', W - P, top + 64 * k); x.textAlign = 'left';
+  const rule = top + 112 * k; x.fillStyle = SLATE; x.fillRect(P, rule, W - 2 * P, 2);
+  const maxLines = wide ? 3 : 4; let size = wide ? 54 : 64, lines;
+  for (;;) { x.font = `900 ${size}px Playfair`; lines = wrapText(x, c.headline, W - 2 * P, maxLines + 1); if (lines.length <= maxLines || size <= 40) break; size -= 4; }
+  x.fillStyle = BONE; let y = rule + 34 * k + size; lines.forEach((l) => { x.fillText(l, P, y); y += size * 1.12; });
+  y += 10 * k; const fs = wide ? 26 : 32; x.font = `400 ${fs}px Archivo`; x.fillStyle = MUTE;
+  const footTop = H - (wide ? 118 : 150), room = Math.max(1, Math.floor((footTop - 96 * k - y) / (fs * 1.38)));
+  wrapText(x, c.finding, W - 2 * P, Math.min(wide ? 3 : 5, room)).forEach((l) => { x.fillText(l, P, y); y += fs * 1.38; });
+  let by = Math.max(y + 18 * k, footTop - 92 * k);
+  if (c.impact) { x.strokeStyle = RED; x.lineWidth = 3; x.font = `700 ${Math.round(26 * k)}px Archivo`; const tw = x.measureText(c.impact).width + 36 * k; x.strokeRect(P, by, tw, 50 * k); x.fillStyle = RED; x.fillText(c.impact, P + 18 * k, by + 35 * k); x.fillStyle = MUTE; x.font = `400 ${Math.round(24 * k)}px Archivo`; wrapText(x, c.evidence || '', W - 2 * P - tw - 24 * k, 2).forEach((l, i) => x.fillText(l, P + tw + 24 * k, by + 24 * k + i * 30 * k)); }
+  else if (c.evidence) { x.fillStyle = MUTE; x.font = `400 ${Math.round(24 * k)}px Archivo`; wrapText(x, c.evidence, W - 2 * P, 2).forEach((l, i) => x.fillText(l, P, by + 24 * k + i * 30 * k)); }
+  x.fillStyle = SLATE; x.fillRect(P, footTop, W - 2 * P, 2);
+  x.font = `600 ${Math.round(26 * k)}px Archivo`; x.fillStyle = BONE; x.fillText('warningshots.ai', P, footTop + 50 * k);
+  x.font = `400 ${Math.round(24 * k)}px Archivo`; x.fillStyle = MUTE; x.fillText('See what’s coming. Know what it means for you.', P, footTop + 86 * k);
+  x.textAlign = 'right'; x.fillText(c.stamp || ('As of ' + fmtET(D.meta.as_of)), W - P, footTop + 86 * k); x.textAlign = 'left';
+  return cv;
+}
 async function briefingCard(c) {
   toast('Rendering card');
-  try { await Promise.all([document.fonts.load('900 66px Playfair'), document.fonts.load('400 34px Archivo'), document.fonts.load('800 28px Archivo'), document.fonts.load('600 26px Archivo')]); } catch (e) {}
-  const S = 1080, cv = el('canvas'); cv.width = S; cv.height = S; const x = cv.getContext('2d');
-  const NAVY = '#0A111E', BONE = '#F4F3EF', RED = '#FF3300', MUTE = '#A8B3C2', SLATE = '#2A364B';
-  x.fillStyle = NAVY; x.fillRect(0, 0, S, S);
-  // mark + wordmark
-  x.fillStyle = BONE; x.font = '900 92px Playfair'; x.textBaseline = 'alphabetic'; x.fillText('W', 72, 150);
-  const wW = x.measureText('W').width; x.fillStyle = RED; x.beginPath(); x.arc(72 + wW + 22, 108, 11, 0, Math.PI * 2); x.fill(); x.fillStyle = BONE; x.beginPath(); x.arc(72 + wW + 22, 142, 11, 0, Math.PI * 2); x.fill();
-  x.font = '800 30px Archivo'; x.fillStyle = BONE; const wm = 'WARNING SHOTS'; let wx = 72 + wW + 58; for (const ch of wm) { x.fillText(ch, wx, 136); wx += x.measureText(ch).width + 3; }
-  // kicker, top right
-  x.font = '600 24px Archivo'; x.fillStyle = MUTE; x.textAlign = 'right'; x.fillText(c.kicker || '', S - 72, 136); x.textAlign = 'left';
-  x.fillStyle = SLATE; x.fillRect(72, 184, S - 144, 2);
-  // headline
-  let size = 64, lines; for (;;) { x.font = `900 ${size}px Playfair`; lines = wrapText(x, c.headline, S - 144, 5); if (lines.length <= 4 || size <= 46) break; size -= 4; }
-  x.fillStyle = BONE; let y = 184 + 40 + size; lines.forEach((l) => { x.fillText(l, 72, y); y += size * 1.12; });
-  // finding
-  y += 14; x.font = '400 32px Archivo'; x.fillStyle = MUTE; wrapText(x, c.finding, S - 144, 5).forEach((l) => { x.fillText(l, 72, y); y += 44; });
-  // impact + evidence block
-  let by = Math.max(y + 24, 760);
-  if (c.impact) { x.strokeStyle = RED; x.lineWidth = 3; x.font = '700 26px Archivo'; const tw = x.measureText(c.impact).width + 36; x.strokeRect(72, by, tw, 50); x.fillStyle = RED; x.fillText(c.impact, 90, by + 35); x.fillStyle = MUTE; x.font = '400 24px Archivo'; wrapText(x, c.evidence || '', S - 144 - tw - 24, 2).forEach((l, i) => x.fillText(l, 72 + tw + 24, by + 24 + i * 30)); by += 50; }
-  else if (c.evidence) { x.fillStyle = MUTE; x.font = '400 24px Archivo'; wrapText(x, c.evidence, S - 144, 2).forEach((l, i) => x.fillText(l, 72, by + 24 + i * 30)); by += 60; }
-  // footer
-  x.fillStyle = SLATE; x.fillRect(72, S - 150, S - 144, 2);
-  x.font = '600 26px Archivo'; x.fillStyle = BONE; x.fillText('warningshots.ai', 72, S - 96);
-  x.font = '400 24px Archivo'; x.fillStyle = MUTE; x.fillText('See what’s coming. Know what it means for you.', 72, S - 60);
-  x.textAlign = 'right'; x.fillText(c.stamp || ('As of ' + fmtET(D.meta.as_of)), S - 72, S - 60); x.textAlign = 'left';
+  const cv = await drawCard(c, 1080, 1080);
   cv.toBlob((blob) => { if (!blob) { toast('Could not render card'); return; } showCard(blob, c.name || 'briefing-card'); }, 'image/png');
 }
 function showCard(blob, name) {
@@ -119,6 +122,9 @@ function showCard(blob, name) {
   m.querySelector('.more-btn').focus();
 }
 const cardForIncident = (r) => ({ name: r.ws.toLowerCase(), kicker: r.ws + '  ·  ' + showDate(r), headline: r.title, finding: (r.summary || '').split('. ').slice(0, 2).join('. ').replace(/\.?$/, '.'), impact: r.level + ' ' + r.tier.toUpperCase() + '  ·  ' + r.severity + '/100', evidence: 'Evidence: ' + (r.source_label ? r.source_label : 'primary source linked') + (r.confidence ? '; confidence ' + r.confidence : '') + '. Rated by a published formula; ' + (r.setting === 'wild' ? 'real-world incident.' : 'lab or test finding.') });
+const cardForCase = (f) => { const cur = fixCur(f); const r = C.scored.find((x) => x.id === f.incident_id); return { name: 'case-' + f.incident_id, kicker: 'DID THEY FIX IT?  ·  ' + (cur.date ? fmtDate(new Date(cur.date)) : ''), headline: f.name, finding: f.one_liner || cur.note || '', impact: (FIXST[cur.status] || cur.status).toUpperCase(), evidence: 'Chain: report → response → claimed fix → independent check → now. ' + (f.what_would_change_it ? 'What would change it: ' + f.what_would_change_it : '') }; };
+const cardForCap = (c) => ({ name: 'milestone-' + c.id, kicker: 'WHAT AI CAN NOW DO  ·  ' + (c.date_precision === 'month' ? fmtMonth(new Date(c.date)) : fmtDate(new Date(c.date))), headline: c.title, finding: c.what || '', impact: c.metric_value ? (c.metric_value + (c.metric_label ? '  ·  ' + c.metric_label : '')).toUpperCase().slice(0, 40) : '', evidence: 'Demonstrated ' + stStatus(c, 'demonstrated') + ', reproduced ' + stStatus(c, 'reproduced') + ', accessible ' + stStatus(c, 'accessible') + ', reliable ' + stStatus(c, 'reliable') + ', real consequences ' + stStatus(c, 'consequences') + '. ' + (c.org || '') });
+window.WS = { async card(kind, id, W, H) { const c = kind === 'i' ? cardForIncident(C.scored.find((r) => r.id === id)) : kind === 'c' ? cardForCase(fixRows().find((f) => f.incident_id === id)) : kind === 'm' ? cardForCap(capRows().find((x) => x.id === id)) : kind === 'n' ? cardForNews(newsItems().find((n) => n.id === id)) : null; if (!c) return null; c.stamp = ' '; const cv = await drawCard(c, W || 1200, H || 630); return cv.toDataURL('image/jpeg', 0.88); }, ids() { const sn = newsItems().find((n) => n.siren); return { i: C.scored.map((r) => r.id), c: fixRows().map((f) => f.incident_id), m: capRows().map((c) => c.id), n: sn ? [sn.id] : [] }; } };
 const cardForNews = (n) => ({ name: 'wire-' + (n.id || 'story'), kicker: 'THE WIRE  ·  ' + fmtDate(new Date(n.published)), headline: n.title, finding: n.summary || '', evidence: 'Reported by ' + [n.outlet].concat((n.also || []).map((a) => a.outlet)).reduce((acc, o, i, arr) => acc + (i === 0 ? '' : i === arr.length - 1 ? ' and ' : ', ') + o, '') + '. Headline by Warning Shots; the story is the outlet’s.', stamp: 'Board as of ' + fmtET(D.meta.as_of) });
 let fontB64 = null;
 async function fontData() {
@@ -1049,6 +1055,7 @@ function drawCapGrid() {
     if (c.everyday) { const e2 = el('div', 'ev'); e2.append(el('b', null, 'For real lives, jobs and families: '), txt(c.everyday)); det.append(e2); }
     const relRows = (c.related_incident_ids || []).map((id) => C.scored.find((r) => r.id === id)).filter(Boolean);
     if (relRows.length) { const rel = el('div', 'rel'); rel.append(el('span', 'lbl', 'Incidents it made possible:')); relRows.forEach((r) => { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierColor(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', (e) => { e.stopPropagation(); openIncident(r.id); }); rel.append(b); }); det.append(rel); }
+    const shc = el('div', 'share'); shareRow(shc, { anchor: 'm=' + c.id, text: c.title + '. ' + (c.what || '') + ' Warning Shots:', card: cardForCap(c) }); det.append(shc);
     const src = el('div', 'ev'); src.append(el('b', null, 'Sources: ')); [[c.source_url, 'primary'], [c.source2_url, 'second']].forEach(([u, t], i) => { if (!u) return; if (i) src.append(txt(', ')); const a = el('a', null, t); a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); src.append(a); }); if (c.confidence && c.confidence !== 'high') src.append(txt('. Confidence: ' + c.confidence)); det.append(src);
     row.append(left, ...STAGES.map(([k], i) => cellNode(c, k, i)), det);
     const toggle = () => { cap.openId = cap.openId === c.id ? null : c.id; row.classList.toggle('open'); };
@@ -1096,6 +1103,7 @@ function drawFixes() {
     if (f.what_would_change_it) { const w = el('div', 'wd'); w.append(el('b', null, 'What would change it: '), txt(f.what_would_change_it)); det.append(w); }
     const r0 = C.scored.find((r) => r.id === f.incident_id); const dive = D.deepdives.find((d) => d.incident_id === f.incident_id);
     const links = el('div', 'wd'); if (r0) { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r0.severity)); sc.style.color = tierColor(r0.tier); b.append(sc, el('span', null, 'Open the incident')); b.addEventListener('click', (e) => { e.stopPropagation(); openIncident(r0.id); }); links.append(b); } if (dive) { const a = el('a', null, 'Full breakdown'); a.href = '#d=' + dive.incident_id; a.style.marginLeft = '10px'; a.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); go('#d=' + dive.incident_id); }); links.append(a); } if (links.children.length) det.append(links);
+    const sh2 = el('div', 'share'); shareRow(sh2, { anchor: 'c=' + f.incident_id, text: f.name + ': ' + (f.one_liner || '') + ' Warning Shots:', card: cardForCase(f) }); det.append(sh2);
     row.append(name, chainNode(f), line, det);
     const toggle = () => { fixOpen.id = fixOpen.id === f.incident_id ? null : f.incident_id; row.classList.toggle('open'); };
     row.addEventListener('click', (e) => { if (e.target.closest('a, button')) return; toggle(); }); row.addEventListener('keydown', (e) => { if (e.key === 'Enter') toggle(); });
@@ -1243,6 +1251,8 @@ function route() {
   if (ALIAS[h]) h = ALIAS[h];
   if (CHART_DRAW[h]) { showChart(h); document.getElementById('charts').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
   if (h.startsWith('i=')) { openIncident(decodeURIComponent(h.slice(2))); return; }
+  if (h.startsWith('c=')) { const id = decodeURIComponent(h.slice(2)); if (fixRows().find((f) => f.incident_id === id)) { fixOpen.id = id; drawFixes(); document.getElementById('fix-' + id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
+  if (h.startsWith('m=')) { const id = decodeURIComponent(h.slice(2)); if (capRows().find((c) => c.id === id)) { cap.openId = id; cap.open = true; cap.domain = 'all'; drawCapGrid(); document.getElementById('cap-' + id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
   if (h.startsWith('q=')) { const n = document.getElementById('q-' + decodeURIComponent(h.slice(2))); if (n) { quotesOpen = true; drawQuotes(); document.getElementById('q-' + decodeURIComponent(h.slice(2)))?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
   if (h.startsWith('d=')) { const id = decodeURIComponent(h.slice(2)); if (D.deepdives.find((d) => d.incident_id === id)) { dd.id = id; dd.vfilter = 'all'; drawDeepDive(); document.getElementById('dives').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); } return; }
   if (h === 'top') { window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); return; }

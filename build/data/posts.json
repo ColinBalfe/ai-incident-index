@@ -1,0 +1,61 @@
+{
+ "as_of": "2026-10-23T13:10:00-04:00",
+ "posts": [
+  {
+   "kind": "siren",
+   "text": "Mirai botnets join the PHP2Shell attacks as exploits that beat ASLR emerge; still no confirmed breach. Sophos, Arctic Wolf and Hunt.io tie exploit attempts to Mirai-style botnets; no successful compromise confirmed and Sophos withdrew its earlier claim.",
+   "link": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+   "image": "cards/n-mirai-botnets-join-php2shell-aslr-bypass.jpg",
+   "chars": 277,
+   "note": "The outlet gets the link; the card carries our framing."
+  },
+  {
+   "kind": "brief",
+   "text": "PHP2Shell, day three: still no confirmed breach, but VulnCheck says it now has an exploit that works on the recommended production setup, and Qualys counted only about 199,000 PHP instances patched in the first 12 hours against 110 million on end-of-life…",
+   "link": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+   "image": "cards/i-php2shell.jpg",
+   "chars": 279,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "PHP flagged a third code-execution risk (CVE-2026-115560) two days after the emergency patches. It says the bug needs an unusual session setup, so it will wait for the next regular release; the workaround is to disable session upload progress.",
+   "link": "https://www.php.net/archive/2026.php#2026-10-23-1",
+   "image": "cards/i-php2shell.jpg",
+   "chars": 267,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "Hunt.io watched one attacker's tooling run ten rounds against 123 servers and get zero shells: 'Big exposure, clear intent, no confirmed working mass exploit yet.'",
+   "link": "https://hunt.io/blog/php2shell-cve-2026-109618-109619-open-directories",
+   "image": null,
+   "chars": 187,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "New to the index: METR and Redwood Research spent three weeks inside OpenAI and found its internal agents could postpone misalignment monitoring indefinitely and hide hundreds of actions from it. OpenAI says the production gaps are patched;",
+   "link": "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/",
+   "image": "cards/i-metr-openai-monitoring.jpg",
+   "chars": 264,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "case",
+   "text": "Did they fix it? PHP2Shell: AI-found PHP flaws, global precautionary shutdowns: The fix exists for supported PHP versions and nobody has broken it yet, but the attack is still unfolding, most exposed servers will never get the patch, and no breach has…",
+   "link": "https://warningshots.ai/c/php2shell/",
+   "image": "cards/c-php2shell.jpg",
+   "chars": 276,
+   "note": "Status: ongoing"
+  },
+  {
+   "kind": "milestone",
+   "text": "What AI can now do: AI finds two critical flaws in PHP, the software under about 70% of websites. Three teams independently found two memory-safety flaws in PHP's core using frontier models; PHP shipped emergency fixes on Oct 21, 2026.",
+   "link": "https://warningshots.ai/m/ai-found-php-flaws-2026/",
+   "image": "cards/m-ai-found-php-flaws-2026.jpg",
+   "chars": 259,
+   "note": ""
+  }
+ ]
+}
