@@ -12,6 +12,12 @@
  "site_name": "Warning Shots",
  "live_name": "PHP2Shell",
  "repo_url": "https://github.com/ColinBalfe/ai-incident-index",
+ "newsletter": {
+  "action": "",
+  "fields": {},
+  "email_field": "email",
+  "note": ""
+ },
  "changelog": [
   {
    "date": "2026-10-23",

@@ -211,9 +211,9 @@ function drawHeadline() {
     stat(fmtN(h.n), [el('b', null, fmtN(h.n_wild)), txt(' real-world incidents and '), el('b', null, fmtN(h.n_lab)), txt(' lab or test findings, scored')]),
     stat(h.n_critical === 0 ? 'None' : String(h.n_critical), [txt(h.n_critical === 0 ? 'rated Critical yet. Odds of one within 12 months: ' : 'rated Critical. Odds of another within 12 months: '), el('b', null, crit ? crit.probability_label : '—')]),
   );
-  shareRow(document.getElementById('hero-share'), { anchor: 'top', text: `AI has started breaking in on its own. Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year; in ${pct(h.agentic_recent)} of this year's real-world cases the AI itself did the acting. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
+  shareRow(document.getElementById('hero-share'), { anchor: 'record', text: `AI has started breaking in on its own. Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year; in ${pct(h.agentic_recent)} of this year's real-world cases the AI itself did the acting. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
   const up = document.getElementById('tb-updated');
-  const tickUp = () => { const ms = Date.now() - Date.parse(D.meta.as_of); const mins = Math.max(0, Math.round(ms / 6e4)); const nx = D.meta.next_check ? Date.parse(D.meta.next_check) - Date.now() : null; const nxs = nx != null && nx > 0 ? ', next check in ' + (nx > 3.6e6 ? Math.floor(nx / 3.6e6) + 'h ' + Math.round((nx % 3.6e6) / 6e4) + 'm' : Math.max(1, Math.round(nx / 6e4)) + ' min') : (nx != null ? ', refresh due' : ''); up.textContent = (mins < 60 ? 'Updated ' + mins + ' min ago' : 'Updated ' + relTime(D.meta.as_of)) + (window.innerWidth > 1100 ? nxs : ''); up.title = 'Last refresh ' + fmtET(D.meta.as_of) + '. ' + D.meta.schedule; };
+  const tickUp = () => { const ms = Date.now() - Date.parse(D.meta.as_of); const mins = Math.max(0, Math.round(ms / 6e4)); const nx = D.meta.next_check ? Date.parse(D.meta.next_check) - Date.now() : null; const nxs = nx != null && nx > 0 ? ', next check in ' + (nx > 3.6e6 ? Math.floor(nx / 3.6e6) + 'h ' + Math.round((nx % 3.6e6) / 6e4) + 'm' : Math.max(1, Math.round(nx / 6e4)) + ' min') : (nx != null ? ', refresh due' : ''); const short = (mins < 60 ? 'Updated ' + mins + ' min ago' : 'Updated ' + relTime(D.meta.as_of)); up.textContent = short + nxs; up.title = 'Last refresh ' + fmtET(D.meta.as_of) + '. ' + D.meta.schedule; const nu = document.getElementById('nav-updated'); if (nu) nu.textContent = short; };
   tickUp(); clearInterval(window._tickUp); window._tickUp = setInterval(tickUp, 30000);
   document.getElementById('foot-updated').textContent = fmtET(D.meta.as_of) + '. ' + D.meta.schedule + ' Next check ' + fmtETsmart(D.meta.next_check) + '.';
 }
@@ -288,15 +288,19 @@ function drawTimeline(animate) {
     .on('click', (ev) => { const [px, py] = d3.pointer(ev); const r = rows[delaunay.find(px, py)]; if (r && Math.hypot(x(r._d) - px, y(r.severity) - py) <= 36) openIncident(r.id); });
   keepTip(box, svg.node());
   if (animate && !reduced && !heroAnimated) {
-    heroAnimated = true;
     const T = 2600, x0 = x.range()[0], x1 = x(today);
-    const sweep = svg.append('line').attr('y1', m.t).attr('y2', H - m.b).attr('stroke', 'var(--alarm)').attr('stroke-width', 1.5).attr('x1', x0).attr('x2', x0).attr('opacity', 0.9);
-    dots.attr('r', 0);
-    dots.transition().delay((r) => T * (Math.min(x(r._d), x1) - x0) / (x1 - x0)).duration(420).ease(d3.easeBackOut.overshoot(2.2)).attr('r', rOf);
-    yc.attr('opacity', 0).transition().delay(T + 200).duration(500).attr('opacity', 1);
-    const L = path.node().getTotalLength(); path.attr('stroke-dasharray', L + ' ' + L).attr('stroke-dashoffset', L).transition().delay(T * (x(pts[0][0]) - x0) / (x1 - x0)).duration(T * (x(pts[pts.length - 1][0]) - x(pts[0][0])) / (x1 - x0)).ease(d3.easeLinear).attr('stroke-dashoffset', 0);
-    lab.attr('opacity', 0).transition().delay(T + 200).duration(500).attr('opacity', 1);
-    sweep.transition().duration(T).ease(d3.easeLinear).attr('x1', x1).attr('x2', x1).transition().duration(600).attr('opacity', 0).remove();
+    const L = path.node().getTotalLength();
+    dots.attr('r', 0); yc.attr('opacity', 0); lab.attr('opacity', 0); path.attr('stroke-dasharray', L + ' ' + L).attr('stroke-dashoffset', L);
+    onVisible(box, 'hero-sweep', (instant) => {
+      heroAnimated = true;
+      if (instant) { dots.attr('r', rOf); yc.attr('opacity', 1); lab.attr('opacity', 1); path.attr('stroke-dashoffset', 0); return; }
+      const sweep = svg.append('line').attr('y1', m.t).attr('y2', H - m.b).attr('stroke', 'var(--alarm)').attr('stroke-width', 1.5).attr('x1', x0).attr('x2', x0).attr('opacity', 0.9);
+      dots.transition().delay((r) => T * (Math.min(x(r._d), x1) - x0) / (x1 - x0)).duration(420).ease(d3.easeBackOut.overshoot(2.2)).attr('r', rOf);
+      yc.transition().delay(T + 200).duration(500).attr('opacity', 1);
+      path.transition().delay(T * (x(pts[0][0]) - x0) / (x1 - x0)).duration(T * (x(pts[pts.length - 1][0]) - x(pts[0][0])) / (x1 - x0)).ease(d3.easeLinear).attr('stroke-dashoffset', 0);
+      lab.transition().delay(T + 200).duration(500).attr('opacity', 1);
+      sweep.transition().duration(T).ease(d3.easeLinear).attr('x1', x1).attr('x2', x1).transition().duration(600).attr('opacity', 0).remove();
+    });
   }
   legend(document.getElementById('lg-autonomy'), [{ color: 'var(--alarm)', label: 'real-world incident where the AI acted on its own' }, { color: 'var(--steel)', label: 'other real-world incident' }, { color: 'var(--ink-3)', shape: 'ring', label: 'lab or test finding' }, { color: 'var(--ink)', shape: 'bar', label: '6-month average, real-world' }]);
 }
@@ -633,12 +637,12 @@ function drawCalendar() {
 }
 
 /* ---------- deep dives */
-const dd = { id: null, vfilter: 'all' };
+const dd = { id: null, vfilter: 'all', vAll: false, tlAll: false };
 const VSTAT = { confirmed: 'var(--alarm)', reported: 'color-mix(in oklab, var(--alarm) 50%, var(--paper))', attacked: 'var(--amber)', disrupted: 'var(--steel)', other: 'var(--line-2)', unnamed: 'var(--line-2)' };
 function drawDeepDive() {
   const dds = D.deepdives.slice().sort((a, b) => +a.order - +b.order);
   if (!dd.id || !dds.find((d) => d.incident_id === dd.id)) dd.id = dds[0].incident_id;
-  document.getElementById('dd-tabs').replaceChildren(...dds.map((d) => { const b = el('button', d.incident_id === dd.id ? 'on' : ''); b.id = 'dd-' + d.incident_id; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(d.incident_id === dd.id)); if (d.status === 'active') b.append(el('i')); b.append(txt(d.tab_label)); b.addEventListener('click', () => { dd.id = d.incident_id; dd.vfilter = 'all'; document.querySelectorAll('#seg-vstatus button').forEach((x) => x.classList.toggle('on', x.dataset.v === 'all')); history.replaceState(null, '', '#d=' + d.incident_id); drawDeepDive(); }); return b; }));
+  document.getElementById('dd-tabs').replaceChildren(...dds.map((d) => { const b = el('button', d.incident_id === dd.id ? 'on' : ''); b.id = 'dd-' + d.incident_id; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(d.incident_id === dd.id)); if (d.status === 'active') b.append(el('i')); b.append(txt(d.tab_label)); b.addEventListener('click', () => { dd.id = d.incident_id; dd.vfilter = 'all'; dd.vAll = false; dd.tlAll = false; document.querySelectorAll('#seg-vstatus button').forEach((x) => x.classList.toggle('on', x.dataset.v === 'all')); history.replaceState(null, '', '#d=' + d.incident_id); drawDeepDive(); }); return b; }));
   const d = dds.find((x) => x.incident_id === dd.id);
   const h = el('h3'); h.append(txt(d.name), el('span', 'status' + (d.status === 'active' ? ' active' : ''), d.status_label));
   const rel = el('div', 'dd-rel');
@@ -661,7 +665,11 @@ function drawDeepDive() {
   drawVictims();
   const tl = D.timeline.filter((t) => t.incident_id === d.incident_id).sort((a, b) => a.date.localeCompare(b.date));
   drawTrack(d, tl);
-  document.getElementById('dd-timeline').replaceChildren(...tl.map((t) => { const it = el('div', 'tl-item'); const sp = el('span', null, t.event); if (t.source_url) { const a = el('a', null, 'source'); a.href = t.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; sp.append(a); } it.append(el('b', null, t.date_label || fmtDate(new Date(t.date))), sp); return it; }));
+  const tlBox = document.getElementById('dd-timeline'); const tlShow = dd.tlAll ? tl : tl.slice(Math.max(0, tl.length - 8));
+  tlBox.replaceChildren(...tlShow.map((t) => { const it = el('div', 'tl-item'); const sp = el('span', null, t.event); if (t.source_url) { const a = el('a', null, 'source'); a.href = t.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; sp.append(a); } it.append(el('b', null, t.date_label || fmtDate(new Date(t.date))), sp); return it; }));
+  let tm = document.getElementById('tl-more'); if (!tm) { tm = el('div'); tm.id = 'tl-more'; tlBox.after(tm); }
+  tm.replaceChildren();
+  if (tl.length > 8) { const b = el('button', 'more-btn', dd.tlAll ? 'Show fewer' : 'Show all ' + tl.length + ' events'); b.type = 'button'; b.addEventListener('click', () => { dd.tlAll = !dd.tlAll; drawDeepDive(); }); tm.append(b); }
   const sigs = D.signals.filter((x) => x.related_incident === d.signal_tag).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6);
   document.getElementById('dd-signals').replaceChildren(...(sigs.length ? sigs.map((x) => sigRow(x, true)) : [el('p', 'count', 'No official statements tracked yet.')]));
   document.getElementById('dd-impl').replaceChildren(...D.implications.filter((x) => x.incident_id === d.incident_id).map((x) => { const it = el('div', 'impl-item'); it.append(el('div', null, x.text)); if (x.source_url) { const s = el('div', 'src'); const a = el('a', null, x.source_label || 'source'); a.href = x.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; s.append(a); it.append(s); } return it; }));
@@ -709,8 +717,13 @@ function drawVictims() {
   const all = D.victims.filter((v) => v.incident_id === dd.id);
   const order = { confirmed: 0, reported: 1, attacked: 2, disrupted: 3, other: 4, unnamed: 5 };
   const rows = all.filter((v) => dd.vfilter === 'all' || v.status_group === dd.vfilter || (dd.vfilter === 'other' && v.status_group === 'unnamed') || (dd.vfilter === 'confirmed' && v.status_group === 'reported')).sort((a, b) => order[a.status_group] - order[b.status_group] || (b.date || '').localeCompare(a.date || ''));
-  cnt.textContent = all.length ? `Showing ${rows.length} of ${all.length} entries` : '';
-  box.replaceChildren(...rows.map((v) => {
+  const limit = dd.vAll ? rows.length : 8;
+  cnt.textContent = all.length ? (rows.length > limit ? `The first ${limit} of ${rows.length} entries, compromised first` : `Showing ${rows.length} of ${all.length} entries`) : '';
+  let vm = document.getElementById('v-more'); if (!vm) { vm = el('div'); vm.id = 'v-more'; box.after(vm); }
+  vm.replaceChildren();
+  if (rows.length > limit) { const b = el('button', 'more-btn', 'Show all ' + rows.length + ' organizations'); b.type = 'button'; b.addEventListener('click', () => { dd.vAll = true; drawVictims(); }); vm.append(b); }
+  else if (dd.vAll && rows.length > 8) { const b = el('button', 'more-btn', 'Show fewer'); b.type = 'button'; b.addEventListener('click', () => { dd.vAll = false; drawVictims(); }); vm.append(b); }
+  box.replaceChildren(...rows.slice(0, limit).map((v) => {
     const r = el('div', 'vrow'); const a = el('div'); a.append(el('div', 'org', v.organization), el('div', 'sub', [v.sector, v.country].filter(Boolean).join(', ')));
     const b = el('div', 'ext'); b.append(el('span', null, v.extent)); if (v.how) b.append(el('span', 'how', v.how));
     if (v.source_url) { const sp = el('span', 'how'); const lk = el('a', null, (v.date_label || v.date || '') + (v.date_label || v.date ? ', ' : '') + (v.source_label || 'source')); lk.href = v.source_url; lk.target = '_blank'; lk.rel = 'noopener noreferrer'; sp.append(lk); b.append(sp); }
@@ -887,6 +900,29 @@ function embedMode() {
   setTimeout(() => drawAll(false), 50);
 }
 
+/* ---------- masthead: signup + sticky nav */
+function drawSignup() {
+  const f = document.getElementById('signup'); if (!f) return;
+  const nl = D.meta.newsletter || {};
+  if (!nl.action) { f.hidden = true; return; }
+  f.action = nl.action; f.hidden = false; if (nl.email_field) f.querySelector('input[type=email]').name = nl.email_field;
+  f.querySelectorAll('input[type=hidden]').forEach((h) => h.remove());
+  Object.entries(nl.fields || {}).forEach(([k, v]) => { const h = el('input'); h.type = 'hidden'; h.name = k; h.value = v; f.append(h); });
+  if (nl.note) f.querySelector('small').textContent = nl.note;
+  if (!f._wired) { f._wired = true; f.addEventListener('submit', () => { setTimeout(() => { const ok = el('div', 'ok', 'Check your inbox to confirm.'); f.querySelector('.ok')?.remove(); f.append(ok); f.querySelector('input[type=email]').value = ''; }, 300); }); }
+}
+const navbar = document.getElementById('navbar'), masthead = document.querySelector('.masthead');
+if (navbar && masthead && 'IntersectionObserver' in window) new IntersectionObserver((es) => { es.forEach((e) => navbar.classList.toggle('scrolled', !e.isIntersecting && e.boundingClientRect.top < 0)); }, { threshold: 0 }).observe(masthead);
+const navLinks = [...document.querySelectorAll('#nav-scroll a')];
+let navT;
+function markNav() {
+  let cur = null;
+  navLinks.forEach((a) => { const n = document.getElementById(a.getAttribute('href').slice(1)); if (n && n.getBoundingClientRect().top <= 90) cur = a; });
+  navLinks.forEach((a) => a.classList.toggle('on', a === cur));
+  if (cur && window.innerWidth < 960) { const sc = document.getElementById('nav-scroll'); const r = cur.getBoundingClientRect(), sr = sc.getBoundingClientRect(); if (r.left < sr.left || r.right > sr.right - 28) sc.scrollTo({ left: cur.offsetLeft - 12, behavior: reduced ? 'auto' : 'smooth' }); }
+}
+window.addEventListener('scroll', () => { clearTimeout(navT); navT = setTimeout(markNav, 80); }, { passive: true });
+
 /* ---------- chart tabs */
 const CHART_DRAW = { 'card-quarters': () => drawQuarters(), 'card-disclosure': () => drawDisclosure(), 'card-scatter': () => drawScatter(), 'card-horizon': () => drawHorizon(), 'card-pipeline': () => drawPipeline() };
 function showChart(id) {
@@ -896,7 +932,7 @@ function showChart(id) {
   if (C.scored) CHART_DRAW[id]();
 }
 document.getElementById('chart-tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) showChart(b.dataset.pane); });
-const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', method: 'about', context: 'about', brief: 'wire' };
+const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', method: 'about', context: 'about', brief: 'wire', now: 'wire' };
 
 /* ---------- routing */
 function go(hash) { location.hash = hash; route(); }
@@ -907,6 +943,7 @@ function route() {
   if (h.startsWith('i=')) { openIncident(decodeURIComponent(h.slice(2))); return; }
   if (h.startsWith('q=')) { const n = document.getElementById('q-' + decodeURIComponent(h.slice(2))); if (n) { quotesOpen = true; drawQuotes(); document.getElementById('q-' + decodeURIComponent(h.slice(2)))?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
   if (h.startsWith('d=')) { const id = decodeURIComponent(h.slice(2)); if (D.deepdives.find((d) => d.incident_id === id)) { dd.id = id; dd.vfilter = 'all'; drawDeepDive(); document.getElementById('dives').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); } return; }
+  if (h === 'top') { window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); return; }
   const n = h && document.getElementById(h); if (n) n.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
 }
 window.addEventListener('hashchange', route);
@@ -914,7 +951,7 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('cli
 
 /* ---------- draw everything */
 function drawAll(first) {
-  drawHeadline(); drawTimeline(first && !EMBED); drawTicker(); drawWire(); drawNow(); drawBrief(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawSignals(); drawList(); drawContext();
+  drawSignup(); drawHeadline(); drawTimeline(first && !EMBED); drawTicker(); drawWire(); drawNow(); drawBrief(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawSignals(); drawList(); drawContext();
 }
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) drawAll(false); }, 160); });
 async function checkForUpdate() {

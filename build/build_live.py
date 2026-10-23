@@ -61,6 +61,10 @@ META = dict(
  schedule='Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.',
  live_incident='php2shell', live_note=LIVE_NOTE, live_since='2026-10-21T14:00:00Z', live_since_label='hours since the PHP fix shipped (Oct 21, about 14:00 UTC)',
  site_url='https://warningshots.ai/', site_name='Warning Shots', live_name='PHP2Shell', repo_url='https://github.com/ColinBalfe/ai-incident-index',
+ # Newsletter signup in the masthead. Hidden until `action` is set to the list provider's form endpoint
+ # (Buttondown: https://buttondown.com/api/emails/embed-subscribe/<username> with fields {'embed': '1'};
+ #  Kit: https://app.kit.com/forms/<form id>/subscriptions with the field name email_address, see `email_field`).
+ newsletter=dict(action='', fields={}, email_field='email', note=''),
  changelog=CHANGELOG,
 )
 

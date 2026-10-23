@@ -7,7 +7,8 @@ const ctx = await browser.newContext({ viewport: { width: 1200, height: 630 }, d
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: 'networkidle' });
 await page.addStyleTag({ content: `
-  .topbar, .sub.chart-note, #lg-autonomy, #hero-share, #hero-stats, main > :not(.hero-band), .drawer, .drawer-bg, .toast { display: none !important; }
+  .masthead, .navbar, .sub.chart-note, #lg-autonomy, #hero-share, #hero-stats, main > :not(.hero-band), .drawer, .drawer-bg, .toast { display: none !important; }
+  .hero-band { margin-top: 0 !important; }
   html, body { background: #0F1418; overflow: hidden; }
   .hero { padding: 34px 48px 0 !important; max-width: none !important; }
   .hero-band { border: 0 !important; }
