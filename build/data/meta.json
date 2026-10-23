@@ -1,9 +1,9 @@
 {
  "as_of": "2026-10-23T10:30:00-04:00",
  "as_of_label": "Oct 23, 2026, 10:30 ET",
- "next_check": "2026-10-24T07:00:00-04:00",
- "next_check_label": "Oct 24, 7:00 ET",
- "schedule": "Refreshed daily by a scheduled research run; more often while an incident is live.",
+ "next_check": "2026-10-23T12:37:00-04:00",
+ "next_check_label": "today, 12:37 ET",
+ "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
  "live_incident": "php2shell",
  "live_note": "Attack traffic is enormous and the first botnet is riding on it, but no breach has been confirmed, and researchers now say reliable exploitation is harder than the leak implied. The damage so far is self-inflicted: switched-off services.",
  "site_url": "https://colinbalfe.github.io/ai-incident-index/",

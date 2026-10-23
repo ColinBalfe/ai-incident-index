@@ -43,8 +43,8 @@ CHANGELOG = [
 
 META = dict(
  as_of=AS_OF, as_of_label=AS_OF_LABEL,
- next_check='2026-10-24T07:00:00-04:00', next_check_label='Oct 24, 7:00 ET',
- schedule='Refreshed daily by a scheduled research run; more often while an incident is live.',
+ next_check='2026-10-23T12:37:00-04:00', next_check_label='today, 12:37 ET',
+ schedule='Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.',
  live_incident='php2shell', live_note=LIVE_NOTE,
  site_url='https://colinbalfe.github.io/ai-incident-index/',
  changelog=CHANGELOG,
