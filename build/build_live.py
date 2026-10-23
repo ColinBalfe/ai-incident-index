@@ -42,6 +42,7 @@ BRIEF = dict(label='Oct 23, 10:30 ET', items=[
 ])
 
 CHANGELOG = [
+ dict(date='2026-10-23', text='Launched at warningshots.ai. Added "In their words": 58 verbatim, source-verified quotes from the people in charge, with pull quotes in each incident. Added the daily brief, embeddable charts and share tools.'),
  dict(date='2026-10-23', text='PHP2Shell: overnight figures added (Mirai recruitment, 32 UK services down, 34.4M vulnerable services, still no confirmed breach). Second independent fact-check of the deep dives applied; 34 corrections.'),
  dict(date='2026-10-22', text='Added deep dives for six multi-victim incidents (146 organizations), 103 official statements, and PHP2Shell as incident 133.'),
  dict(date='2026-10-22', text='Index launched: 132 incidents scored, 20 forecasts, catalyst calendar.'),
@@ -52,7 +53,7 @@ META = dict(
  next_check='2026-10-23T12:37:00-04:00', next_check_label='today, 12:37 ET',
  schedule='Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.',
  live_incident='php2shell', live_note=LIVE_NOTE,
- site_url='https://colinbalfe.github.io/ai-incident-index/',
+ site_url='https://warningshots.ai/',
  changelog=CHANGELOG,
 )
 

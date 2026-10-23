@@ -282,7 +282,17 @@ print(C2(s_['org_type'] for s_ in sig), C2(s_['channel'] for s_ in sig))
 qp = f'{R}/quotes.json'
 if os.path.exists(qp):
     qs = json.load(open(qp))
+    from quote_weights import WEIGHTS
     for q in qs:
         assert q.get('quote') and q.get('speaker') and q.get('date') and q.get('url'), q.get('id')
+        q['weight'] = WEIGHTS.get(q['id'], 5)
+        if q.get('quote_en'):
+            q['original'] = q['quote']; q['quote'] = q.pop('quote_en'); q['lang'] = 'ja'
+        t = q.get('title') or ''
+        if t.endswith(', ' + q['speaker']): t = t[:-len(', ' + q['speaker'])]
+        if t.startswith('Company statement') or t.startswith('Statement,') or t.startswith('Incident report') or t.startswith('Alert,') or t.startswith('Advisory,') or t.startswith('Misalignment report') or t.startswith('Alignment team report') or t.startswith('Independent investigation'):
+            t = t.split(',')[0]
+        q['title'] = t
+        for k in ('verify_note', 'context'): q.pop(k, None)
     json.dump(qs, open(f'{OUT}/quotes.json', 'w'), ensure_ascii=False, indent=0)
     print('quotes', len(qs))

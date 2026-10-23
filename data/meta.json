@@ -6,8 +6,12 @@
  "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
  "live_incident": "php2shell",
  "live_note": "Attack traffic is enormous and the first botnet is riding on it, but no breach has been confirmed, and researchers now say reliable exploitation is harder than the leak implied. The damage so far is self-inflicted: switched-off services.",
- "site_url": "https://colinbalfe.github.io/ai-incident-index/",
+ "site_url": "https://warningshots.ai/",
  "changelog": [
+  {
+   "date": "2026-10-23",
+   "text": "Launched at warningshots.ai. Added \"In their words\": 58 verbatim, source-verified quotes from the people in charge, with pull quotes in each incident. Added the daily brief, embeddable charts and share tools."
+  },
   {
    "date": "2026-10-23",
    "text": "PHP2Shell: overnight figures added (Mirai recruitment, 32 UK services down, 34.4M vulnerable services, still no confirmed breach). Second independent fact-check of the deep dives applied; 34 corrections."

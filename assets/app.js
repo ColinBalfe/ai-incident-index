@@ -670,8 +670,9 @@ function quoteCard(q, lead) {
   const c = el('div', 'qt' + (lead ? ' lead' : '') + (q.lang === 'ja' ? ' ja' : ''));
   const bq = el('blockquote', null, q.quote); c.append(bq);
   if (q.original) c.append(el('div', 'orig', q.original));
-  const who = el('div', 'who'); who.append(el('b', null, q.speaker)); if (q.title) who.append(txt(', '), el('span', null, q.title)); c.append(who);
-  const meta = el('div', 'meta'); meta.append(el('span', null, fmtDate(new Date(q.date))), el('span', 'chip' + (q.channel === 'X post' ? ' x' : ''), q.channel + (q.via ? ', via ' + q.via : '')));
+  const who = el('div', 'who'); who.append(el('b', null, q.speaker)); if (q.title) who.append(txt(', '), el('span', null, q.title.split(';')[0])); c.append(who);
+  const via = q.via ? q.via.split(' (')[0].replace(/ transcribing.*$/, '') : '';
+  const meta = el('div', 'meta'); meta.append(el('span', null, fmtDate(new Date(q.date))), el('span', 'chip' + (q.channel === 'X post' ? ' x' : ''), q.channel + (via ? ', via ' + via : '')));
   const dive = D.deepdives.find((d) => d.incident_id === q.incident_id); if (dive) { const a = el('a', null, dive.tab_label.replace(' (live)', '')); a.href = '#d=' + dive.incident_id; a.addEventListener('click', (e) => { e.preventDefault(); go('#d=' + dive.incident_id); }); meta.append(a); }
   if (q.url) { const a = el('a', null, q.channel === 'X post' ? 'View post' : 'Source'); a.href = q.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; meta.append(a); }
   const sh = el('div', 'share'); shareRow(sh, { anchor: 'q=' + q.id, text: `“${q.quote}” — ${q.speaker}${q.title ? ', ' + q.title : ''} (${fmtDate(new Date(q.date))}). Warning Shots:` });
@@ -684,7 +685,9 @@ function drawQuotes() {
   sec.style.display = '';
   const n = quotesOpen ? qs.length : Math.min(7, qs.length);
   box.replaceChildren(...qs.slice(0, n).map((q, i) => quoteCard(q, i === 0)));
-  if (qs.length > 7) { const b = el('button', 'more-btn', quotesOpen ? 'Show fewer' : 'Show all ' + qs.length + ' quotes'); b.type = 'button'; b.addEventListener('click', () => { quotesOpen = !quotesOpen; drawQuotes(); }); box.append(b); }
+  let more = document.getElementById('quotes-more'); if (!more) { more = el('div'); more.id = 'quotes-more'; box.after(more); }
+  more.replaceChildren();
+  if (qs.length > 7) { const b = el('button', 'more-btn', quotesOpen ? 'Show fewer' : 'Show all ' + qs.length + ' quotes'); b.type = 'button'; b.addEventListener('click', () => { quotesOpen = !quotesOpen; drawQuotes(); if (!quotesOpen) document.getElementById('words').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }); more.append(b); }
   shareRow(document.getElementById('words-share'), { anchor: 'words', text: 'What the people in charge actually said about this year\'s AI incidents, verbatim and sourced. Warning Shots:' });
 }
 function embedMode() {
