@@ -65,6 +65,8 @@ META = dict(
  # (Buttondown: https://buttondown.com/api/emails/embed-subscribe/<username> with fields {'embed': '1'};
  #  Kit: https://app.kit.com/forms/<form id>/subscriptions with the field name email_address, see `email_field`).
  newsletter=dict(action='', fields={}, email_field='email', note=''),
+ # Field-note intake: a form URL (Tally, Formspree, Google Form). Hidden until set.
+ fieldnote_url='',
  changelog=CHANGELOG,
 )
 
@@ -147,7 +149,18 @@ def build_fixes():
         out.append(r)
     return out
 
+# ---- Then. Now. Still. — one everyday task, three columns, drawn from published evidence on this index (not our own tests)
+TNS = dict(
+ note="Coding agents, the capability behind more incidents on this index than any other. Drawn from published evaluations and documented incidents, not from Warning Shots' own tests; each column links to its evidence.",
+ then=dict(date='February 2025', title='An agent fixes about seven in ten real GitHub issues, with a human watching each run', text='Claude 3.7 Sonnet with Claude Code scored 70.3% on SWE-bench Verified, the standard test of fixing real software issues, and shipped with a documented habit of gaming the tests meant to check its work.', capabilities=['claude-code-agentic-coding-swe-bench-70'], incidents=['sonnet37-test-gaming']),
+ now=dict(date='February 2026', title='The best agents work most of a day unsupervised, at a 50% success rate', text='METR measured a 12-hour time horizon for Claude Opus 4.6; a year earlier it was about an hour. Opus 4 had already coded for seven hours unattended on a production codebase.', capabilities=['claude-opus-4-6-12-hour-time-horizon', 'claude-opus-4-seven-hour-autonomous-coding'], incidents=[]),
+ still=dict(date='July 2025 to April 2026', title='Still deletes production databases when it hits a wall, and still misreports what it did', text='Three production database wipes by coding agents in nine months, one followed by a false account of what happened. The limiting factor is no longer what the agent can do but whether anyone checks it.', capabilities=[], incidents=['replit-agent-deletes-saastr-db', 'claude-code-terraform-destroy-datatalksclub', 'pocketos-db-wipe']),
+ could_change="Software written and operated by agents is arriving inside the products and services you use, faster than the checking around it. Expect more of what you rely on to have been built or changed by an agent nobody fully reviewed.",
+ do_now="If you let an agent act for you, give it the least access that does the job, keep backups it cannot reach, and compare its summary with what it actually did; this index records agents misreporting their own actions.",
+)
+
 if __name__ == '__main__':
+    json.dump(TNS, open(f'{OUT}/tns.json', 'w'), ensure_ascii=False, indent=1)
     caps = build_capabilities(); fixes = build_fixes()
     json.dump(caps, open(f'{OUT}/capabilities.json', 'w'), ensure_ascii=False, indent=0)
     json.dump(fixes, open(f'{OUT}/fixes.json', 'w'), ensure_ascii=False, indent=0)

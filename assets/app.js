@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const D = {};
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -11,12 +11,13 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ---------- theme */
 const root = document.documentElement;
 try { const t = localStorage.getItem('aii-theme'); if (t) root.dataset.theme = t; } catch (e) {}
-document.getElementById('theme').addEventListener('click', () => {
-  const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-  root.dataset.theme = dark ? 'light' : 'dark';
-  try { localStorage.setItem('aii-theme', root.dataset.theme); } catch (e) {}
-  drawAll(false);
-});
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+function paintMode() { const d = isDark(); document.getElementById('mode-dark').setAttribute('aria-pressed', String(d)); document.getElementById('mode-light').setAttribute('aria-pressed', String(!d)); }
+function setTheme(t) { root.dataset.theme = t; try { localStorage.setItem('aii-theme', t); } catch (e) {} paintMode(); if (typeof drawAll === 'function' && window.__ready) drawAll(false); }
+document.getElementById('mode-dark').addEventListener('click', () => setTheme('dark'));
+document.getElementById('mode-light').addEventListener('click', () => setTheme('light'));
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (!root.dataset.theme) paintMode(); });
+paintMode();
 
 /* ---------- helpers */
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
@@ -166,6 +167,7 @@ function compute() {
   const asOf = D.meta.as_of.slice(0, 10);
   C.asOf = asOf;
   C.scored = D.incidents.map((r) => ({ ...r, ...sevScore(r) }));
+  C.scored.slice().sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id)).forEach((r, i) => { r.ws = 'WS-' + String(i + 1).padStart(4, '0'); r.level = 'WS-' + (TIERS.findIndex((t) => t.name === r.tier) + 1); });
   const t = Date.parse(asOf), yr = 365.25 * 864e5, d = (r) => Date.parse(r.date);
   const last12 = C.scored.filter((r) => d(r) > t - yr && d(r) <= t), prior12 = C.scored.filter((r) => d(r) > t - 2 * yr && d(r) <= t - yr);
   const wild = C.scored.filter((r) => r.setting === 'wild');
@@ -786,9 +788,9 @@ function openIncident(id) {
   const r = C.scored.find((x) => x.id === id); if (!r) return;
   const body = document.getElementById('drawer-body');
   const big = el('div', 'big'); big.append(txt(String(r.severity)), el('small', null, '/100'));
-  const pill = el('span', 'pill'); const pd = el('i'); pd.style.background = tierColor(r.tier); pill.append(pd, txt(r.tier)); big.append(pill);
+  const pill = el('span', 'pill'); const pd = el('i'); pd.style.background = tierColor(r.tier); pill.append(pd, txt(r.level + ' ' + r.tier)); big.append(pill);
   const h = el('h3', null, r.title);
-  const meta = el('div', 'dmeta', [showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', '));
+  const meta = el('div', 'dmeta', [r.ws, showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', '));
   const share = el('div', 'share');
   body.replaceChildren(big, h, meta, ...detailNodes(r, true), share);
   shareRow(share, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). ${r.summary.split('. ')[0]}. Warning Shots:` });
@@ -818,8 +820,8 @@ function drawList() {
   box.replaceChildren(...rows.slice(0, limit).map((r) => {
     const row = el('div', 'row' + (ls.open === r.id ? ' open' : '')); row.id = 'row-' + r.id; row.tabIndex = 0;
     const sw = el('div'); const sb = el('div', 'sevbar'); const si = el('i'); si.style.width = r.severity + '%'; si.style.background = tierColor(r.tier); sb.append(si); sw.append(el('div', 'sev', String(r.severity)), sb);
-    const mid = el('div'); const rt_ = el('div', 'rtitle', r.title); if (isNew(r.disclosed || r.date)) rt_.append(el('span', 'new-tag', 'new')); mid.append(rt_, el('div', 'rmeta', ['#' + rank.get(r.id), showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab'].filter(Boolean).join(', ')));
-    const pill = el('span', 'pill'); const pd = el('i'); pd.style.background = tierColor(r.tier); pill.append(pd, txt(r.tier));
+    const mid = el('div'); const rt_ = el('div', 'rtitle', r.title); if (isNew(r.disclosed || r.date)) rt_.append(el('span', 'new-tag', 'new')); mid.append(rt_, el('div', 'rmeta', [r.ws, showDate(r), r.actors, r.category_label, r.setting === 'wild' ? 'in the wild' : 'in the lab', 'ranked #' + rank.get(r.id)].filter(Boolean).join(', ')));
+    const pill = el('span', 'pill'); const pd = el('i'); pd.style.background = tierColor(r.tier); pill.append(pd, txt(r.level + ' ' + r.tier));
     const det = el('div', 'rdetail'); det.append(...detailNodes(r, false)); const sh = el('div', 'share'); shareRow(sh, { anchor: 'i=' + r.id, text: `${r.title} (${r.severity}/100, ${r.tier.toLowerCase()}). Warning Shots:` }); det.append(sh);
     row.append(sw, mid, pill, det);
     const toggle = () => { ls.open = ls.open === r.id ? null : r.id; row.classList.toggle('open'); };
@@ -892,7 +894,7 @@ function drawQuotes() {
 function embedMode() {
   if (!EMBED) return;
   document.body.classList.add('embed');
-  const targets = { timeline: ['ch-timeline', 'lg-autonomy', 'hero-share'], now: ['now'], wire: ['siren', 'wire-board'], edges: ['card-edges'], capabilities: ['card-capgrid'], fixes: ['card-fixes'], quarters: ['card-quarters'], disclosure: ['card-disclosure'], scatter: ['card-scatter'], horizon: ['card-horizon'], pipeline: ['card-pipeline'], words: ['quotes'], brief: ['brief'] };
+  const targets = { timeline: ['ch-timeline', 'lg-autonomy', 'hero-share'], now: ['now'], wire: ['siren', 'wire-board'], edges: ['card-edges'], capabilities: ['card-capgrid'], tns: ['card-tns'], fixes: ['card-fixes'], why: ['why'], quarters: ['card-quarters'], disclosure: ['card-disclosure'], scatter: ['card-scatter'], horizon: ['card-horizon'], pipeline: ['card-pipeline'], words: ['quotes'], brief: ['brief'] };
   const ids = targets[EMBED] || targets.timeline;
   const host = el('div', 'embed-host wrap');
   if (EMBED === 'timeline') { const p = el('div', 'panel'); const t = el('div', 'panel-title'); t.append(txt('AI has started breaking in on its own: severe incidents went from '), el('b', null, String(C.headline.severe_prior12)), txt(' to '), el('b', null, String(C.headline.severe_last12)), txt(' in a year')); p.append(t, el('div', 'panel-note', 'Every major AI incident since 2023, scored 0–100. The stronger a dot’s color, the more the AI did on its own.')); ids.forEach((id) => { const n = document.getElementById(id); if (n) p.append(n); }); host.append(p); }
@@ -1045,6 +1047,58 @@ function drawFixes() {
   shareRow(document.getElementById('share-fixes'), { anchor: 'card-fixes', text: `Did they fix it? ${rows.length} major AI incidents tracked from report to response to claimed fix to independent check. Verified fixes so far: ${counts.get('fixed') || 0}. Warning Shots:`, embed: 'fixes', embedH: 760 });
 }
 
+/* ---------- signal ribbon (real telemetry only) */
+function drawRibbon() {
+  const box = document.getElementById('ribbon-in'); if (!box) return;
+  const asOf = Date.parse(D.meta.as_of), day = 864e5, within = (iso, h) => iso && (asOf - Date.parse(iso)) <= h * 3.6e6 && Date.parse(iso) <= asOf + day;
+  const stamp = fmtET(D.meta.as_of);
+  const newInc = C.scored.filter((r) => within(r.disclosed || r.date, 24 * 7)).length;
+  const newIncDay = C.scored.filter((r) => within(r.disclosed || r.date, 24)).length;
+  const fx = fixRows(); const openCases = fx.filter((f) => fixCur(f).status !== 'fixed').length;
+  const fxUpd = fx.filter((f) => f.chain.some((c) => within(c.date, 24 * 7))).length;
+  const caps = capRows().filter((c) => within(c.date, 24 * 7)).length;
+  const wire = newsItems().filter((n) => n.published && (asOf + 3 * 3.6e6 - Date.parse(n.published)) <= 24 * 3.6e6).length;
+  const items = [
+    { n: newIncDay, l: (newIncDay === 1 ? 'new incident, 24h' : 'new incidents, 24h'), href: '#all', hot: newIncDay > 0, t: `Incidents added to this index with an event or disclosure date in the 24 hours before the last refresh (${stamp}). ${newInc} in the last 7 days. Deduplicated by event; this index is curated, not a census. Source: data/incidents.json.` },
+    { n: openCases, l: 'open cases of ' + fx.length, href: '#fixes', hot: false, t: `Major incidents in "Did they fix it?" with no independently verified fix as of ${stamp}. Source: data/fixes.json.` },
+    { n: caps, l: (caps === 1 ? 'new advance, 7d' : 'new advances, 7d'), href: '#capabilities', hot: caps > 0, t: `Capability milestones added with a date in the 7 days before ${stamp}. Source: data/capabilities.json.` },
+    { n: fxUpd, l: (fxUpd === 1 ? 'follow-up moved, 7d' : 'follow-ups moved, 7d'), href: '#fixes', hot: fxUpd > 0, t: `Cases with a dated change in their report → response → fix → check chain in the 7 days before ${stamp}. Source: data/fixes.json.` },
+    { n: wire, l: (wire === 1 ? 'report on the Wire, 24h' : 'reports on the Wire, 24h'), href: '#wire', hot: false, t: `Stories on the Wire published in the 24 hours up to about three hours after ${stamp}. Links to the outlets; nothing is copied. Source: data/news.json.` },
+  ];
+  box.replaceChildren(...items.map((it) => { const a = el('a', 'rb' + (it.hot ? ' hot' : '')); a.href = it.href; a.title = it.t; a.setAttribute('aria-label', it.n + ' ' + it.l + '. ' + it.t); a.append(el('b', null, String(it.n)), el('span', null, it.l)); a.addEventListener('click', (e) => { e.preventDefault(); if (it.href === '#all') { ls.sort = 'new'; document.getElementById('sel-sort').value = 'new'; drawList(); } go(it.href); }); return a; }));
+  const u = el('span', 'rb-upd'); u.append(el('i'), txt('Updated ' + stamp + (D.meta.next_check ? ', next ' + fmtETsmart(D.meta.next_check).replace('today ', '') : ''))); u.title = D.meta.schedule || ''; box.append(u);
+  const ed = document.getElementById('edition'); if (ed) ed.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(D.meta.as_of)) + ' edition';
+}
+
+/* ---------- "I don't use AI. Why does this matter to me?" */
+const WHY = [
+  { id: 'php2shell', k: 'The websites you use', s: 'Government, bank and hospital sites went offline for days as a precaution after AI found two flaws in the software under most of the web.', m: 'Open the live breakdown', go: '#d=php2shell' },
+  { id: 'destefano-voice-clone-kidnap-scam', k: 'A phone call from family', s: 'Three seconds of audio is enough to clone a voice. Scams that use a relative’s voice to demand money are on this index from 2023 on.', m: 'Open the incident' },
+  { id: 'bank-accounts-agents', k: 'Your bank account', s: 'Four big US banks found third-party AI agents operating inside customer accounts and are restricting them.', m: 'Open the incident' },
+  { id: 'raine-v-openai', k: 'A teenager’s chatbot', s: 'Lawsuits over what chatbots said to minors, and new state rules on companionship features, are tracked here as they happen.', m: 'Open the incident' },
+];
+function drawWhy() {
+  const box = document.getElementById('why-grid'); if (!box) return;
+  const rows = WHY.map((w) => ({ w, r: C.scored.find((r) => r.id === w.id) })).filter((x) => x.r);
+  document.getElementById('why').style.display = rows.length ? '' : 'none';
+  box.replaceChildren(...rows.map(({ w, r }) => { const c = el('div', 'why'); c.tabIndex = 0; c.append(el('div', 'why-k', w.k), el('div', 'why-t', r.title), el('div', 'why-s', w.s), el('div', 'why-m', showDate(r) + ', ' + r.level + ' ' + r.tier + '. ' + w.m)); const open = () => { if (w.go) go(w.go); else openIncident(r.id); }; c.addEventListener('click', open); c.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(); }); return c; }));
+}
+
+/* ---------- Then. Now. Still. (from published evidence) */
+function drawTNS() {
+  const card = document.getElementById('card-tns'), box = document.getElementById('tns'); if (!card) return;
+  const t = D.tns; if (!t || !t.then) { card.style.display = 'none'; return; } card.style.display = '';
+  document.getElementById('tns-note').textContent = t.note || '';
+  const capOf = (id) => capRows().find((c) => c.id === id), incOf = (id) => C.scored.find((r) => r.id === id);
+  const col = (k, label, cls) => { const d = el('div', 'tns-col ' + cls); d.append(el('div', 'k', label)); const it = t[k]; if (it.date) d.append(el('div', 'd', it.date)); d.append(el('div', 't', it.title)); const s2 = el('div', 's', it.text); (it.capabilities || []).forEach((id) => { const c = capOf(id); if (!c) return; const a = el('a', null, 'source'); a.href = c.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; s2.append(a); }); d.append(s2);
+    if (it.incidents && it.incidents.length) { const ul = el('ul'); it.incidents.forEach((id) => { const r = incOf(id); if (!r) return; const li = el('li'); const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierColor(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', () => openIncident(r.id)); li.append(b); ul.append(li); }); d.append(ul); }
+    return d; };
+  const foot = el('div', 'tns-foot'); [['could_change', 'What this could change for you'], ['do_now', 'What you can do now']].forEach(([k, l]) => { if (!t[k]) return; const d = el('div'); d.append(el('b', null, l), txt(t[k])); foot.append(d); });
+  box.replaceChildren(col('then', 'Then', 'c-then'), col('now', 'Now', 'c-now'), col('still', 'Still', 'c-still'), foot);
+  shareRow(document.getElementById('share-tns'), { anchor: 'card-tns', text: `Then. Now. Still. ${t.then.title} → ${t.now.title} → still: ${t.still.title}. Warning Shots:`, embed: 'tns', embedH: 520 });
+}
+function drawFieldnote() { const f = document.getElementById('fieldnote'); if (!f) return; const u = (D.meta.fieldnote_url || '').trim(); f.hidden = !u; if (u) document.getElementById('fieldnote-link').href = u; }
+
 /* ---------- masthead: signup + sticky nav */
 function drawSignup() {
   const f = document.getElementById('signup'); if (!f) return;
@@ -1096,7 +1150,7 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('cli
 
 /* ---------- draw everything */
 function drawAll(first) {
-  drawSignup(); drawHeadline(); drawTimeline(first && !EMBED); drawTicker(); drawWire(); drawNow(); drawBrief(); drawEdges(); drawCapGrid(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawFixes(); drawSignals(); drawList(); drawContext();
+  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawTimeline(first && !EMBED); drawTicker(); drawWire(); drawNow(); drawBrief(); drawWhy(); drawEdges(); drawTNS(); drawCapGrid(); drawQuotes(); drawHooks(); drawQuarters(); drawDisclosure(); drawScatter(); drawHorizon(); drawPipeline(); drawWatch(); drawDrivers(); drawForecast(); drawCalendar(); drawDeepDive(); drawFixes(); drawSignals(); drawList(); drawContext();
 }
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) drawAll(false); }, 160); });
 async function checkForUpdate() {
@@ -1112,6 +1166,6 @@ async function checkForUpdate() {
 setInterval(checkForUpdate, 5 * 60 * 1000);
 Promise.all(FILES.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => { if (!r.ok) throw new Error(f); return r.json(); }).then((j) => { D[f] = j; }))
   .concat(OPTIONAL.map((f) => fetch('data/' + f + '.json?v=' + (window.AII_BUILD || '')).then((r) => r.ok ? r.json() : null).then((j) => { D[f] = j; }).catch(() => { D[f] = null; }))))
-  .then(() => { compute(); if (EMBED) { embedMode(); } else { drawAll(true); route(); } })
+  .then(() => { compute(); window.__ready = true; if (EMBED) { embedMode(); } else { drawAll(true); route(); } })
   .catch((e) => { console.error(e); document.getElementById('headline').textContent = 'The data could not be loaded. Reload the page or try again shortly.'; });
 })();

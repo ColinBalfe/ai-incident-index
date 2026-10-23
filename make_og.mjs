@@ -9,7 +9,7 @@ await page.goto(url, { waitUntil: 'networkidle' });
 await page.addStyleTag({ content: `
   .masthead, .navbar, .sub.chart-note, #lg-autonomy, #hero-share, #hero-stats, main > :not(.hero-band), .drawer, .drawer-bg, .toast { display: none !important; }
   .hero-band { margin-top: 0 !important; }
-  html, body { background: #0F1B2D; overflow: hidden; }
+  html, body { background: #0A111E; overflow: hidden; }
   .hero { padding: 34px 48px 0 !important; max-width: none !important; }
   .hero-band { border: 0 !important; }
   .hl { font-size: 50px !important; max-width: none !important; margin: 0 !important; }

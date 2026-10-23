@@ -32,5 +32,33 @@ tpl = open('index.template.html', encoding='utf-8').read()
 out = (tpl.replace('{{OG_TITLE}}', og_title.replace('"', '&quot;')).replace('{{OG_DESC}}', og_desc.replace('"', '&quot;'))
           .replace('{{SITE_URL}}', meta['site_url']).replace('{{REPO_URL}}', meta.get('repo_url', 'https://github.com/ColinBalfe/ai-incident-index')).replace('{{BUILD}}', build))
 open('index.html', 'w', encoding='utf-8').write(out)
+
+# ---- RSS: the Wire and the daily brief
+import html as _html, email.utils as _eu
+def _rfc(iso):
+    try:
+        d = dt.datetime.fromisoformat(iso.replace('Z', '+00:00'))
+        return _eu.format_datetime(d)
+    except ValueError:
+        return _eu.format_datetime(dt.datetime.now(dt.timezone.utc))
+site = meta['site_url']
+items = []
+try:
+    brief = json.load(open('data/brief.json'))
+    for i, it in enumerate(brief.get('items', [])):
+        items.append(dict(title='Since the last refresh: ' + it['text'][:90].rstrip() + ('…' if len(it['text']) > 90 else ''), link=site + '#brief', guid=site + '#brief-' + meta['as_of'] + '-' + str(i), date=_rfc(meta['as_of']), desc=it['text'] + (' Source: ' + it['url'] if it.get('url') else '')))
+except (OSError, ValueError):
+    pass
+try:
+    for n in json.load(open('data/news.json'))[:40]:
+        items.append(dict(title=n['title'], link=n['url'], guid=n['url'], date=_rfc(n['published']), desc=(n.get('summary') or '') + ' (' + n.get('outlet', '') + ')'))
+except (OSError, ValueError):
+    pass
+rss = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0"><channel>', f'<title>{_html.escape(title)}: the Wire and the daily brief</title>', f'<link>{site}</link>',
+       '<description>See what’s coming. Know what it means for you. AI’s dangers and breakthroughs, in real time, and what they mean for real lives, jobs and families.</description>', f'<lastBuildDate>{_rfc(meta["as_of"])}</lastBuildDate>']
+for it in items:
+    rss.append(f'<item><title>{_html.escape(it["title"])}</title><link>{_html.escape(it["link"])}</link><guid isPermaLink="false">{_html.escape(it["guid"])}</guid><pubDate>{it["date"]}</pubDate><description>{_html.escape(it["desc"])}</description></item>')
+rss.append('</channel></rss>')
+open('feed.xml', 'w', encoding='utf-8').write('\n'.join(rss))
 json.dump(dict(build=build, og_title=og_title, og_desc=og_desc, severe_last12=s12, severe_prior12=p12, agentic_share=share, n=n), open('assets/build.json', 'w'))
 print('built', build, '|', og_title, '|', og_desc)
