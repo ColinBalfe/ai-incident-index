@@ -1,0 +1,37 @@
+# Weekly source audit: every URL in data/*.json is fetched; dead and unreachable ones are written to research/link_audit.json,
+# which the Sunday refresh run reads and repairs (see REFRESH.md, section 2a). Nothing on the site changes from this workflow alone.
+name: Link audit
+on:
+  schedule:
+    - cron: '0 9 * * 0'   # Sundays 09:00 UTC (05:00 ET), before the 06:37 ET refresh
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: link-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect source URLs
+        run: python3 build/collect_urls.py /tmp/urls.txt /tmp/usage.json
+      - name: Check them
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --timeout 25 --max-retries 2 --retry-wait-time 3 --max-concurrency 6 --accept 200..=206,300..=308,401,403,429 --user-agent "Mozilla/5.0 (compatible; WarningShotsLinkAudit/1.0; +https://warningshots.ai/)" /tmp/urls.txt
+          format: json
+          output: /tmp/lychee.json
+          fail: false
+      - name: Summarize
+        run: python3 build/summarize_audit.py /tmp/lychee.json /tmp/usage.json research/link_audit.json
+      - name: Commit the report
+        run: |
+          git config user.name "link-audit"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/link_audit.json
+          git diff --cached --quiet && echo "no change" && exit 0
+          git commit -m "Link audit: $(python3 -c "import json;d=json.load(open('research/link_audit.json'));print(f\"{d['total']} checked, {len(d['dead'])} dead, {len(d['unreachable'])} unreachable\")")"
+          git pull --rebase origin main
+          git push

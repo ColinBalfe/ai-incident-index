@@ -68,8 +68,10 @@ function shareRow(node, o) {
   if (o.svgBox) node.append(mk('img', 'Save image', () => svgToPng(o.svgBox, o.name || 'chart', o.title || '')));
   if (o.embed) node.append(mk('embed', 'Embed', () => copy(`<iframe src="${SITE}?embed=${o.embed}" width="100%" height="${o.embedH || 560}" style="border:0;max-width:100%" loading="lazy" title="${(o.title || 'Warning Shots').replace(/"/g, '')}"></iframe>`)));
   if (o.card) node.append(mk('card', 'Briefing card', () => briefingCard(o.card)));
+  if (m0) { const a = el('a'); a.innerHTML = ICON.page; a.append(txt(' Full page')); a.href = link; node.append(a); }
 }
 ICON.card = '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>';
+ICON.page = '<svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>';
 
 /* ---------- briefing cards: 1080 x 1080, generated from the same structured content as the page */
 function wrapText(ctx, text, maxW, maxLines) {
@@ -279,6 +281,9 @@ function drawHeadline() {
   const up = document.getElementById('tb-updated');
   const tickUp = () => { const ms = Date.now() - Date.parse(D.meta.as_of); const mins = Math.max(0, Math.round(ms / 6e4)); const nx = D.meta.next_check ? Date.parse(D.meta.next_check) - Date.now() : null; const nxm = nx != null ? Math.round(nx / 6e4) : null; const nxs = nxm != null && nxm > 0 ? ', next check in ' + (nxm >= 60 ? Math.floor(nxm / 60) + 'h ' + (nxm % 60) + 'm' : nxm + ' min') : (nx != null ? (nxm <= -120 ? ', refresh overdue' : ', refresh due') : ''); const short = (mins < 60 ? 'Updated ' + mins + ' min ago' : 'Updated ' + relTime(D.meta.as_of)); up.textContent = short + nxs; up.title = 'Last refresh ' + fmtET(D.meta.as_of) + '. ' + D.meta.schedule; const nu = document.getElementById('nav-updated'); if (nu) nu.textContent = short; };
   tickUp(); clearInterval(window._tickUp); window._tickUp = setInterval(tickUp, 30000);
+  // Say so plainly when the page is behind: two missed refresh windows (14 hours) without a new as_of.
+  const staleCheck = () => { const hrs = (Date.now() - Date.parse(D.meta.as_of)) / 3.6e6; let bar = document.getElementById('stale'); if (hrs < 14) { if (bar) bar.remove(); return; } if (!bar) { bar = el('div', 'stale wrap'); bar.id = 'stale'; bar.setAttribute('role', 'status'); document.getElementById('ticker').before(bar); } bar.replaceChildren(el('b', null, 'This page is behind. '), txt('The last refresh was ' + Math.round(hrs) + ' hours ago and the scheduled runs (6:37, 12:37 and 18:37 ET) have not published since. The Wire and the brief may be stale; the record, scores and sources are unaffected.')); };
+  staleCheck(); clearInterval(window._staleT); window._staleT = setInterval(staleCheck, 60000);
   document.getElementById('foot-updated').textContent = fmtET(D.meta.as_of) + '. ' + D.meta.schedule + ' Next check ' + fmtETsmart(D.meta.next_check) + '.';
 }
 let heroAnimated = false;

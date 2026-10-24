@@ -20,7 +20,7 @@ manifest.webmanifest, assets/icon-*.png  home-screen icon and name
 assets/app.js        all page logic (d3 v7, vendored as assets/vendor/d3-lite.min.js, only the modules the page uses; regenerate from assets/vendor/d3-lite.entry.js with esbuild)
 make_og.mjs          renders assets/og.png (the share card) from the live page with Playwright
 make_cards.mjs       renders a 1200x630 share card per dispatch into cards/ (incremental, manifest-based)
-build_pages.py       writes i/<id>/, c/<id>/ and m/<id>/ pages (own title, description and card; redirect to the deep link) plus sitemap.xml and robots.txt
+build_pages.py       writes a full page for every incident (i/<id>/), case (c/<id>/) and milestone (m/<id>/) in the site's design (assets/dispatch.css), plus i/, c/, m/ index pages, sitemap.xml and robots.txt
 build/build_posts.py drafts the post queue for X from each refresh into posts/ (nothing posts itself)
 shot.mjs, sections.mjs  QA screenshots at desktop and phone widths; print console errors
 REFRESH.md           the refresh runbook used by the scheduled task

@@ -47,6 +47,15 @@ Keep descriptions of hacking techniques high-level. Never invent a figure; if a 
 - "Then. Now. Still." (`TNS` in `build/build_live.py`): one everyday task in three columns, each pointing at capability ids and incident ids already on the index. Change it only when a stronger documented comparison exists; never describe it as a Warning Shots test.
 - The signal ribbon, the WS dispatch numbers (date order) and the WS-1 to WS-5 levels (the tiers) are computed from the data at page load; nothing to edit. `feed.xml` (the Wire and the brief) is written by `build_site.py`.
 
+## 2a. Sundays: the source audit
+
+A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/*.json` early on Sunday mornings and writes `research/link_audit.json` (dead: 404/410/DNS; unreachable: timeouts and 5xx; 401/403/429 count as alive). On the Sunday 06:37 run, and on any run where that file is newer than `as_of`:
+
+1. For each `dead` URL, find the claim it supports (`used_in` names the file and record id) and repair it: a different outlet or document stating the same fact, or an archived copy (`https://web.archive.org/web/2026/<url>`). Update the research file; never leave a figure without a live or archived source. If nothing supports the claim any more, say so in the record's `notes` and soften the claim.
+2. For each `unreachable` URL, open it once by hand. Leave it if it loads; treat it as dead if it does not.
+3. Re-verify the figures in ten records picked at random (dates, numbers, who said what) against their sources, and fix what drifted.
+4. Note the count repaired in the changelog entry ("source audit: 3 dead links replaced, 10 records re-verified").
+
 ## 3. Build and check
 
 ```
@@ -56,7 +65,7 @@ python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
 node prerender.mjs  http://127.0.0.1:8765/index.html   # bakes the first screen (ribbon, ticker, siren, brief, Wire, live rail) into index.html so the headline is in the first paint
 node make_og.mjs    http://127.0.0.1:8765/index.html
 node make_cards.mjs http://127.0.0.1:8765/index.html   # share cards for every dispatch; re-renders only changed records
-python3 build_pages.py                                  # i/<id>/, c/<id>/, m/<id>/ pages with their own cards, sitemap.xml
+python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml
 cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)
 node shot.mjs       http://127.0.0.1:8765/index.html
 ```
