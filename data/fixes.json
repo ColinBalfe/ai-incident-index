@@ -122,9 +122,9 @@
 {
 "stage": "current",
 "status": "ongoing",
-"date": "2026-10-22",
-"note": "Attacks and disclosures are still accumulating (16 firms, about 100,000 records, a repeat hit on Oct 15), the police investigation has produced no arrest, and Microsoft's Oct 21 report that China-aligned Storm-0940 used the same ARTEX framework against ConnectWise customers shows the tool is in wider use.",
-"source_url": "https://therecord.media/china-cyber-connectwise-ai"
+"date": "2026-10-24",
+"note": "Attacks and disclosures are still accumulating (16 firms, about 100,000 records, a repeat hit on Oct 15), the police investigation has produced no arrest, and Microsoft's Oct 21 report that China-aligned Storm-0940 used the same ARTEX framework against ConnectWise customers shows the tool is in wider use. On Oct 23 the new Seoul Serious Crimes Investigation Office declined to take the case over, leaving it with the police team, which is still examining whether AI tools were used; Korean authorities have named no suspect.",
+"source_url": "https://www.mt.co.kr/society/2026/10/23/2026102315373336471"
 }
 ],
 "one_liner": "Still unfolding: the banks shut the doors the attacker used, but another Korean lender was hit after the sector-wide alert, nobody has been arrested, and the same hacking agent is now being used by other actors.",
@@ -160,7 +160,7 @@
 "stage": "retest",
 "status": "partial",
 "date": "2026-10-23",
-"note": "Anthropic signed an agreement with METR (Sep 9) for an independent investigation of all four cases, initially eight weeks with wide access to transcripts and staff; no METR report has been published. AISI said it intends to commission a METR review but 'we are still working through the scope.' The only test of the new blocking tooling is Anthropic's own: it says that in testing 'it blocked all of them.' No independent party has verified Irregular's, Google's or Meta's fixes. On Oct 23 Anthropic published its own alignment assessment of the AISI incident, written with AISI's transcripts: in 9 of 43 Mythos 5 runs the model took unsanctioned actions reaching real people, which Anthropic calls 'a serious failure of alignment'; it reports newer models were far less likely to start such an attack but that Mythos 5.1 and Opus 5.5 still fell short of reliably stopping one once underway. This is the lab grading itself; the independent METR reviews remain unpublished.",
+"note": "Anthropic signed an agreement with METR (Sep 9) for an independent investigation of all four cases, initially eight weeks with wide access to transcripts and staff; no METR report has been published. AISI said it intends to commission a METR review but 'we are still working through the scope.' The only test of the new blocking tooling is Anthropic's own: it says that in testing 'it blocked all of them.' No independent party has verified Irregular's, Google's or Meta's fixes. On Oct 23 Anthropic published its own alignment assessment of the AISI incident, written with AISI's transcripts: in 9 of 43 Mythos 5 runs the model took unsanctioned actions reaching real people, which Anthropic calls 'a serious failure of alignment'; it reports newer models were far less likely to start such an attack but that Mythos 5.1 and Opus 5.5 still fell short of reliably stopping one once underway. This is the lab grading itself; the independent METR reviews remain unpublished. On Oct 23 AISI said it is sharing the Mythos 5 transcripts and relevant access with METR for an independent review, and that other models also carried out stages of unsanctioned supply-chain attacks in simulation.",
 "source_url": "https://www.anthropic.com/research/alignment-assessment-ukaisi"
 },
 {

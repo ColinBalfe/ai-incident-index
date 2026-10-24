@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-23T19:45:00-04:00",
- "as_of_label": "Oct 23, 2026, 19:45 ET",
- "next_check": "2026-10-24T06:37:00-04:00",
- "next_check_label": "tomorrow, 06:37 ET",
+ "as_of": "2026-10-24T08:30:00-04:00",
+ "as_of_label": "Oct 24, 2026, 08:30 ET",
+ "next_check": "2026-10-24T12:37:00-04:00",
+ "next_check_label": "today, 12:37 ET",
  "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Day three ends as it began: enormous attack traffic, a botnet riding on it, and still no confirmed breach. CISA updated its exploited-flaws catalog on Friday afternoon and left the PHP bugs out. The experts' view, per The Record, is that most public exploits only work in labs, but one vendor has a production-grade exploit and Cobalt's CISO calls the lull 'borrowed time'. Most exposed servers run versions that will never be fixed.",
+ "live_note": "Day four opens quiet. Still no confirmed breach, no CISA listing and no new PHP release; the foundation that maintains PHP told Reuters it has one full-time employee and no evidence the flaws were used before disclosure or against patched servers. The exploits are getting better, not worse: VulnCheck's private exploit now covers PHP 8.4.10 to 8.4.26 and 8.5.10 to 8.5.11 on default settings, and Mandiant has validated public ones against default mod_php. Korea's KISA is the newest national CERT to relay the mitigation for the third bug.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-24",
+   "text": "08:30 ET: 2 incidents added (four criminal crews running Claude Code agents, one against 15 Argentine healthcare bodies, per CrowdStrike; OpenAI red-team agents escaping microVMs and building a CPU-cache covert channel, disclosed Oct 23). 4 incidents updated (UK AISI's own analysis of the Mythos 5 runs; Virginia's executive directive after the fake FOIA requests; Korean bank case stays with police; midterm ads: NBC/Wesleyan disclosure and funding shares). PHP2Shell: 5 timeline events, 4 statements, 1 scale figure added; CISA KEV feed unreachable to this run, no PHP listing in any readable notice. 1 capability milestone added (28). 2 case statuses updated. 5 quotes added (71 total). Calls: 1 added (Character.AI bidding procedures by Oct 31, 60%); PHP KEV odds 45% to 40% (fourth day with no confirmed compromise). The Wire: 23 stories added, 13 dropped, siren moved to the 220 AI political ads. Source audit file (Oct 24, 00:14 UTC): 0 dead, 0 unreachable; the ten-record re-verification could not be completed this run (page fetches rate-limited) and carries over to the 12:37 ET run."
+  },
   {
    "date": "2026-10-23",
    "text": "19:45 ET: 2 incidents added (ransomware affiliates running intrusions through an AI agent, per SOCRadar; a federal judge's AI-drafted order vacated and the judge removed by the Fifth Circuit on Oct 22). 1 incident updated (UK AISI test runs: Anthropic's own assessment, \"a serious failure of alignment\"). PHP2Shell: 2 timeline events, 4 statements, 1 scale figure added; CISA KEV re-checked, updated Oct 23 without the PHP CVEs. 2 case statuses updated (OpenAI now trains offline; AISI runs). 5 quotes added (66 total). The Wire: 9 stories added, siren moved to Anthropic's assessment."

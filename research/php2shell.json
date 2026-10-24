@@ -24,7 +24,7 @@
   "reported_to_php": "2026-08-24",
   "disclosure_date": "2026-10-21",
   "first_known_exploitation": "2026-10-17 (single probe against Amazon MadPot honeypot, during embargo)",
-  "status_as_of": "2026-10-23",
+  "status_as_of": "2026-10-24",
   "sources": [
    "https://www.wiz.io/blog/php2shell-php-rce",
    "https://thehackernews.com/2026/10/someone-tried-to-exploit-php2shell-4.html",
@@ -1135,6 +1135,31 @@
    "date": "2026-10-23 18:45 ET",
    "event": "CISA KEV re-checked from the feed: catalog moved to version 2026.10.23 (released 19:30 UTC) with two new entries (Arista VeloCloud, Collabora Online); neither PHP CVE is listed and no emergency directive has been issued.",
    "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  {
+   "date": "2026-10-23",
+   "event": "The PHP Foundation's executive director, Elizabeth Barron, tells The Register the foundation has no evidence of successful exploitation of the two flaws before disclosure and none on patched versions; Mandiant CTO Charles Carmakal says it has validated some public exploits that achieve code execution against default mod_php deployments but not PHP-FPM, calls many others 'vibe-coded', and says exploitation 'may have already begun in a limited fashion'.",
+   "source": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208"
+  },
+  {
+   "date": "2026-10-23 17:30 ET",
+   "event": "VulnCheck's status update: its private exploit now covers PHP 8.4.10 to 8.4.26 and 8.5.10 to 8.5.11 on default mod_php settings, including default WordPress Docker installs; the one real exploitation attempt it logged (Oct 21) tried and failed to plant a web shell, and all ten follow-up reads returned 404. Its exposure count: PHP on 2,608,039 internet-facing hosts, 99.998% of them on vulnerable or likely vulnerable versions.",
+   "source": "https://www.vulncheck.com/blog/php2shell-vulnerabilities"
+  },
+  {
+   "date": "2026-10-23 17:58 ET",
+   "event": "Reuters: the PHP Foundation has one full-time employee (Barron) and 14 mostly part-time contractors; Barron says the foundation has no evidence the flaws were exploited before disclosure or on patched sites and has received 'no further indication from OpenAI, Wiz or Calif' of problems on patched systems. PHP now receives nearly twice as many proposed code changes as a year ago without a matching rise in contributors.",
+   "source": "https://whtc.com/2026/10/23/php-foundation-under-funded-with-one-full-time-staff-member-director-says/"
+  },
+  {
+   "date": "2026-10-24",
+   "event": "Korea's KISA (KrCERT/CC) publishes security notice #2581 recommending the temporary mitigation for the third PHP bug, CVE-2026-115560 (disable session upload progress and restart PHP workers); no exploitation of the third bug is reported.",
+   "source": "https://www.boho.or.kr/kr/bbs/list.do?menuNo=205020&bbsId=B0000133"
+  },
+  {
+   "date": "2026-10-24 08:00 ET",
+   "event": "Fourth morning after the patches: no named organization has confirmed a PHP2Shell compromise; no PHP release after Oct 21 (php.net's newest entry is the Oct 23 advisory). CISA's KEV feed could not be opened by this run; the latest readable notices show CISA's Oct 23 additions were Collabora Online and Arista VeloCloud only, with no PHP entry and no emergency directive.",
+   "source": "https://vulners.com/cisa/CISA:64286C09B02566675A407045C00A9BFC"
   }
  ],
  "statements": [
@@ -2010,6 +2035,42 @@
    "paraphrase": "Said the lack of confirmed compromises shows the bugs are hard to weaponize but that this will not last: attackers are fingerprinting servers for the configurations their exploit needs, and 'defenders should treat this quiet period as borrowed time.'",
    "url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
    "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "PHP Foundation",
+   "speaker": "Elizabeth Barron, Executive Director (via The Register)",
+   "channel": "Statement to press",
+   "paraphrase": "Said the foundation has 'no evidence of successful exploitation of the two vulnerabilities from Wednesday prior to disclosure' and 'no evidence of any exploitation of these vulnerabilities on patched PHP versions'; said the third bug 'can be mitigated with a configuration setting' and will get a full advisory with the next regular release.",
+   "url": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "Mandiant (Google Cloud)",
+   "speaker": "Charles Carmakal, CTO (via The Register)",
+   "channel": "Statement to press",
+   "paraphrase": "Said 'exploitation may have already begun in a limited fashion and the threat is viable and very serious'; no evidence of successful wide-scale exploitation; many circulating proofs of concept are 'vibe-coded' and cannot achieve code execution, but Mandiant has validated some that work against default mod_php deployments and not PHP-FPM.",
+   "url": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "PHP Foundation",
+   "speaker": "Elizabeth Barron, Executive Director (via Reuters)",
+   "channel": "Interview",
+   "paraphrase": "'We have one full-time staff member (that's me) and 14 mostly part-time contractors'; called PHP 'incredibly under-funded'; no evidence of exploitation before disclosure or on patched sites; 'We received no further indication from OpenAI, Wiz or Calif' of problems on patched systems.",
+   "url": "https://whtc.com/2026/10/23/php-foundation-under-funded-with-one-full-time-staff-member-director-says/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "KISA (Korea Internet & Security Agency)",
+   "speaker": null,
+   "channel": "Security notice (boho.or.kr #2581)",
+   "paraphrase": "Recommended the temporary mitigation for CVE-2026-115560 (session.upload_progress.enabled=0, then restart all PHP workers), noting no official patch yet; servers that already applied the setting on Oct 21 need no further action.",
+   "url": "https://www.boho.or.kr/kr/bbs/list.do?menuNo=205020&bbsId=B0000133",
+   "x_post": "no"
   }
  ],
  "scale": [
@@ -2159,6 +2220,13 @@
    "metric": "services on affected versions",
    "value": "More than 41 million internet-facing PHP services running affected versions; about 1 million running a fixed release (as of Oct 22)",
    "url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs"
+  },
+  {
+   "source_org": "VulnCheck",
+   "date": "2026-10-23",
+   "metric": "exposed hosts (VulnCheck estimate)",
+   "value": "2,608,039 internet-facing hosts running PHP; 2,607,985 (99.998%) vulnerable or likely vulnerable; 1,474,985 advertise a version below the fixed build, 1,133,000 hide the version; 700,000+ on PHP 3.x-7.3",
+   "url": "https://www.vulncheck.com/blog/php2shell-vulnerabilities"
   }
  ],
  "ai_angle": [

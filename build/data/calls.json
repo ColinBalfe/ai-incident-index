@@ -1,5 +1,28 @@
 [
 {
+"id": "characterai-bid-procedures-by-oct31",
+"question": "The Delaware bankruptcy court approves Character.AI's bidding procedures at or after the Oct 30 hearing with Disney's $700,000 break-up fee intact by Oct 31",
+"opened": "2026-10-24",
+"resolve_by": "2026-10-31",
+"odds": 0.6,
+"horizon": "days",
+"basis": "31 states and DC filed a 27-page objection on Oct 23 (Docket 66) asking the court to deny or cut the 3.5% fee, lower the $21.7 million overbid floor and give bidders 21 more days. Break-up fees for stalking-horse bidders are routinely approved in Delaware, but a coordinated objection from most state attorneys general in a case about harm to minors is not routine, and courts often trim timelines rather than fees.",
+"signposts": "The Oct 30 10 a.m. ET hearing docket; a revised bidding-procedures order; Disney amending its terms before the hearing.",
+"tags": [
+"character-ai",
+"chatbot-harm",
+"courts"
+],
+"related": {
+"incident_id": "setzer-character-ai-suicide",
+"watch_id": "",
+"capability_id": ""
+},
+"source_url": "https://ppc.land/32-states-say-character-ai-sale-rules-block-bids-that-would-beat-disney/",
+"resolution": null,
+"odds_label": "60%"
+},
+{
 "id": "cisa-directive-by-oct31",
 "question": "CISA issues an emergency directive (not an advisory) on the PHP2Shell flaws by Oct 31",
 "opened": "2026-10-23",
@@ -45,9 +68,9 @@
 "question": "CISA adds CVE-2026-109618 or CVE-2026-109619 (PHP2Shell) to its Known Exploited Vulnerabilities catalog by Oct 31",
 "opened": "2026-10-23",
 "resolve_by": "2026-10-31",
-"odds": 0.45,
+"odds": 0.4,
 "horizon": "days",
-"basis": "KEV listing requires reliable evidence of active exploitation, not attempts. Three days in: millions of attempts, a working exploit for the recommended configuration per VulnCheck, and still no confirmed compromise; CISA updated the catalog on Oct 23 without the PHP CVEs. One confirmed breach anywhere would likely flip this within a day.",
+"basis": "KEV listing requires reliable evidence of active exploitation, not attempts. Three days in: millions of attempts, a working exploit for the recommended configuration per VulnCheck, and still no confirmed compromise; CISA updated the catalog on Oct 23 without the PHP CVEs. One confirmed breach anywhere would likely flip this within a day. Oct 24 update: a fourth day with no confirmed compromise, the PHP Foundation saying it has no evidence of exploitation on patched systems, and Mandiant validating code execution only against default mod_php; odds 45% to 40%.",
 "signposts": "CISA's KEV JSON feed; a named organization confirming a PHP2Shell compromise; a CISA alert escalating from advisory to directive.",
 "tags": [
 "php2shell",
@@ -60,7 +83,7 @@
 },
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
 "resolution": null,
-"odds_label": "45%"
+"odds_label": "40%"
 },
 {
 "id": "uk-services-restored-by-oct31",

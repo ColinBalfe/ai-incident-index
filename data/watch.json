@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None as of Oct 23, 19:45 ET; experts tell The Record most public exploits fail outside labs",
+"status": "None as of Oct 24, 08:30 ET; PHP Foundation: no evidence of exploitation on patched servers (Reuters, Oct 23)",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -11,7 +11,7 @@
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet: catalog updated Oct 23 (19:30 UTC) without the PHP CVEs",
+"status": "Not yet: CISA's Oct 23 additions were Collabora and Arista only; feed not reachable to this run on Oct 24",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -38,7 +38,7 @@
 {
 "id": "php-115560",
 "item": "Whether the third PHP bug (CVE-2026-115560) turns out to be wider than PHP says",
-"status": "Informational advisory only; no exploitation reported",
+"status": "Informational advisory only; KISA relayed the mitigation Oct 24; no exploitation reported",
 "kind": "open",
 "why": "PHP says it needs an unusual session configuration and is leaving the fix to the next regular release. If researchers find common apps that match, the no-rush call gets tested.",
 "source_url": "https://www.php.net/archive/2026.php#2026-10-23-1",
@@ -47,7 +47,7 @@
 {
 "id": "openai-21",
 "item": "OpenAI's next misalignment report (the log stands at 20)",
-"status": "Last posted Oct 20; still 20 reports as of Oct 23 evening",
+"status": "Last posted Oct 20; still 20 reports as of Oct 24 morning",
 "kind": "due",
 "why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
 "source_url": "https://alignment.openai.com/misalignment-reports/",
@@ -56,7 +56,7 @@
 {
 "id": "korea-attrib",
 "item": "Korean regulators' final tally and police attribution; any Microsoft report backing its Storm-0940 claim",
-"status": "Open",
+"status": "Seoul Serious Crimes office declined the case Oct 23; police keep it, no suspect named",
 "kind": "open",
 "why": "Would confirm the same open-source hacking agent in both a criminal campaign and a state-aligned one.",
 "source_url": "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/",
@@ -74,7 +74,7 @@
 {
 "id": "midterms",
 "item": "US midterms, Nov 3, under the FBI and CISA alert on AI-enhanced deception",
-"status": "In 11 days; Reuters: Warner and Himes say a classified briefing shows Russia targeting Democrats with AI-made ads",
+"status": "In 10 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Mississippi AG orders a deepfake ad pulled",
 "kind": "due",
 "why": "The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.",
 "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",

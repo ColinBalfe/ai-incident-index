@@ -3,9 +3,9 @@
 "key": "confirmed",
 "value": "0",
 "label": "organizations confirmed breached",
-"detail": "Dozens of experts told The Record on Oct 23 that no attempt is known to have succeeded and most public exploits work only in labs; Google has not validated in-the-wild exploitation; Sophos retracted its one claim.",
-"source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
-"source_label": "The Record, Oct 23"
+"detail": "Fourth morning, still none. The PHP Foundation told Reuters on Oct 23 it has no evidence of exploitation before disclosure or on patched sites; Mandiant has validated public exploits only against default mod_php, not PHP-FPM; Sophos retracted its one claim.",
+"source_url": "https://whtc.com/2026/10/23/php-foundation-under-funded-with-one-full-time-staff-member-director-says/",
+"source_label": "Reuters via WHTC, Oct 23"
 },
 {
 "key": "attempts",
@@ -33,17 +33,17 @@
 },
 {
 "key": "patched",
-"value": "199K",
-"label": "PHP instances Qualys saw patched in the first 12 hours",
-"detail": "From about 12,000 customers. Qualys counts about 110 million instances (71%) on end-of-life versions that will mostly never get a fix, and 44 million on supported branches still unpatched.",
-"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
-"source_label": "SecurityWeek, Oct 23"
+"value": "99.998%",
+"label": "of 2.6M exposed PHP hosts VulnCheck rates vulnerable or likely vulnerable",
+"detail": "2,608,039 internet-facing hosts as of Oct 23: 1,474,985 advertise a version below the fixed build, 1,133,000 hide their version, 700,000+ run PHP 3.x to 7.3. Qualys separately saw 199,000 instances patched in the first 12 hours and counts about 110 million on end-of-life versions.",
+"source_url": "https://www.vulncheck.com/blog/php2shell-vulnerabilities",
+"source_label": "VulnCheck, Oct 23"
 },
 {
 "key": "kev",
 "value": "Not listed",
 "label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "Re-checked 18:45 ET Oct 23: CISA updated the catalog to version 2026.10.23 with two other flaws and still left the PHP bugs out. No federal emergency directive either. A listing is CISA's formal verdict that exploitation is real.",
+"detail": "Re-checked Oct 24 morning: the catalog feed could not be opened by this run, but every readable notice shows CISA's Oct 23 additions were Collabora Online and Arista VeloCloud only, with no PHP entry and no federal emergency directive. A listing is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
 "source_label": "CISA KEV catalog"
 }

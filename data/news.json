@@ -1,5 +1,94 @@
 [
 {
+"id": "globalnews-quebec-voters-chatbots",
+"url": "https://globalnews.ca/news/12119797/voters-ask-ai-who-to-vote-for",
+"outlet": "Global News / The Canadian Press",
+"published": "2026-10-24T11:29:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Canada",
+"topic": "everyday",
+"summary": "Experts say answers were often wrong ahead of Ontario municipal votes; Anthropic says Claude shows sources.",
+"also": [],
+"title": "McGill estimate: 40% of Quebec voters asked AI chatbots about the election and got false or outdated answers",
+"siren": false
+},
+{
+"id": "tnw-uk-biosecurity-lab",
+"url": "https://thenextweb.com/news/uk-funds-100m-ai-biosecurity-lab-with-openai-and-anthropic",
+"outlet": "The Next Web",
+"published": "2026-10-24T10:59:00Z",
+"time_known": true,
+"kind": "official",
+"region": "UK",
+"topic": "regulation",
+"summary": "Independent non-profit modelled on AISI, part of a £600m-plus AI security package; no site, director or start date yet.",
+"also": [
+{
+"outlet": "Bloomberg",
+"url": "https://www.bloomberg.com/news/articles/2026-10-23/uk-vows-100-million-for-biosecurity-lab-with-openai-anthropic"
+}
+],
+"title": "UK puts £100m into an AI biosecurity lab; OpenAI and Anthropic pledge up to £100m each in compute and credits",
+"siren": false
+},
+{
+"id": "fortune-voice-clone-kidnap-scam",
+"url": "https://fortune.com/2026/10/24/ai-voice-cloning-scam-fake-kidnapping-safe-word/",
+"outlet": "Fortune",
+"published": "2026-10-24T10:36:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "everyday",
+"summary": "Daughter, 37, was at work; Martinez police investigating. Gallup: 15 million US adults scammed in 2025, 12% of cases involving AI.",
+"also": [],
+"title": "California mother wired $5,400 to Mexico after a fake-kidnapping call used an AI clone of her daughter's voice",
+"siren": false
+},
+{
+"id": "reuters-moonshot-kimi-cyber",
+"url": "https://www.investing.com/news/stock-market-news/moonshot-curbs-hacking-ability-in-new-kimi-model-as-fears-grow-over-aipowered-cyberattacks-4970639",
+"outlet": "Reuters via Investing.com",
+"published": "2026-10-24T05:58:00Z",
+"time_known": false,
+"kind": "official",
+"region": "China",
+"topic": "ai-attack",
+"summary": "Open weights due Nov 4; the benchmark is Moonshot's own and not independently verified, as China drafts AI-malware export controls.",
+"also": [
+{
+"outlet": "Kimi (blog)",
+"url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+}
+],
+"title": "Reuters: Moonshot cut cyber-offense data from Kimi K3.1 Pro; its own hacking score fell to 81% from 90.5%",
+"siren": false
+},
+{
+"id": "pbs-treasury-outbound-ai-rule",
+"url": "https://www.pbs.org/newshour/politics/treasury-proposes-rule-to-curb-high-tech-investments-in-china-and-other-adversaries",
+"outlet": "PBS NewsHour / AP",
+"published": "2026-10-23T23:19:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Implements the December 2025 outbound-investment law for China, Russia, North Korea and other countries of concern; stock purchases largely exempt.",
+"also": [
+{
+"outlet": "The Hill",
+"url": "https://thehill.com/homenews/administration/6167231-treasury-proposes-curbs-artificial-intelligence/"
+},
+{
+"outlet": "Fortune",
+"url": "https://fortune.com/2026/10/23/treasury-china-russia-ai-biotech-investment-rule/"
+}
+],
+"title": "US Treasury proposes curbs on investments over $50,000 in Chinese AI, supercomputing, biotech and hypersonics",
+"siren": false
+},
+{
 "id": "openai-trains-frontier-models-offline",
 "title": "OpenAI says frontier training resumed Oct 1 with no live internet; agents get a cached 'offline world' instead",
 "url": "https://www.engadget.com/2296019/openai-says-its-cutting-off-internet-access-for-frontier-model-training/",
@@ -9,14 +98,83 @@
 "kind": "official",
 "region": "US",
 "topic": "ai-incident",
-"summary": "Follows the July Hugging Face breach and a September escape to an outside chatbot; training stays offline until safeguards justify more.",
+"summary": "OpenAI's post also says red-team agents escaped microVMs and passed a secret through CPU-cache timing before training resumed Oct 1.",
 "siren": false,
 "also": [
 {
 "outlet": "Bloomberg",
 "url": "https://www.bloomberg.com/news/articles/2026-10-23/openai-to-train-ai-models-without-internet-after-cyber-incidents"
+},
+{
+"outlet": "OpenAI (primary post)",
+"url": "https://openai.com/index/securing-our-frontier-model-training-environment/"
+},
+{
+"outlet": "Reuters via The Star",
+"url": "https://www.thestar.com.my/tech/tech-news/2026/10/24/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access"
 }
 ]
+},
+{
+"id": "nbc-wesleyan-ai-political-ads",
+"url": "https://www.yahoo.com/news/politics/articles/deciding-fake-images-more-candidates-221040487.html",
+"outlet": "NBC News (via Yahoo)",
+"published": "2026-10-23T22:10:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Wesleyan Media Project: 81% Republican-funded; AI ad spend was under $50,000 in 2024. Brennan Center says state laws have not deterred much.",
+"siren": true,
+"also": [
+{
+"outlet": "NBC News",
+"url": "https://www.nbcnews.com/tech/tech-news/deciding-fake-images-candidates-are-using-ai-political-ads-get-vote-rcna605243"
+}
+],
+"title": "At least 220 AI-made political ads costing nearly $137 million have run this cycle; only 27% disclosed the AI"
+},
+{
+"id": "reuters-php-foundation-one-employee",
+"url": "https://whtc.com/2026/10/23/php-foundation-under-funded-with-one-full-time-staff-member-director-says/",
+"outlet": "Reuters via WHTC",
+"published": "2026-10-23T21:58:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Executive director Elizabeth Barron says there is no evidence of exploitation before disclosure or on patched sites; calls PHP 'incredibly under-funded'.",
+"also": [],
+"title": "Reuters: the PHP Foundation runs on one full-time employee and 14 contractors as AI-found bugs surge",
+"siren": false
+},
+{
+"id": "ppcland-states-object-characterai-sale",
+"url": "https://ppc.land/32-states-say-character-ai-sale-rules-block-bids-that-would-beat-disney/",
+"outlet": "PPC Land",
+"published": "2026-10-23T20:24:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "chatbot-harm",
+"summary": "Objection targets the $700,000 break-up fee, $21.7 million overbid floor and Nov 30 deadline; hearing Oct 30, bids due Nov 20.",
+"also": [],
+"title": "31 states and DC object to Character.AI's sale rules, saying bids above about $15.2M would beat Disney's $20M",
+"siren": false
+},
+{
+"id": "register-third-php-bug-barron",
+"url": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208",
+"outlet": "The Register",
+"published": "2026-10-23T20:04:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Mandiant's Carmakal: some public exploits achieve code execution on default mod_php, not PHP-FPM; exploitation 'may have already begun in a limited fashion'.",
+"also": [],
+"title": "PHP Foundation: no evidence of exploitation before disclosure or on patched servers; third bug waits",
+"siren": false
 },
 {
 "id": "texastribune-families-paxton-sues-openai",
@@ -36,6 +194,25 @@
 "url": "https://news.bloomberglaw.com/us-law-week/openai-faces-texas-deceptive-claims-child-user-safety-lawsuit"
 }
 ]
+},
+{
+"id": "statescoop-virginia-ai-cyber-directive",
+"url": "https://statescoop.com/virginia-governor-orders-statewide-plan-to-address-ai-cyberattacks/",
+"outlet": "StateScoop",
+"published": "2026-10-23T19:26:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Directive creates a Cyber Consortium and regular briefings with AI companies; state says no sensitive data was accessed.",
+"also": [
+{
+"outlet": "WDBJ7",
+"url": "https://www.wdbj7.com/2026/10/23/governor-issues-executive-directive-bolster-states-cybersecurity-protect-against-ai/"
+}
+],
+"title": "Virginia's governor orders a statewide AI-cyberattack plan after Anthropic agents filed fake FOIA requests",
+"siren": false
 },
 {
 "id": "socradar-ransomware-affiliates-ai-agents",
@@ -69,6 +246,81 @@
 "summary": "Wisconsin's attorney general joined other states seeking privacy and safety protections for young users in Character.AI's bankruptcy sale.",
 "siren": false,
 "also": []
+},
+{
+"id": "chalkbeat-nyc-ai-ban-list",
+"url": "https://www.chalkbeat.org/newyork/2026/10/23/nyc-schools-ai-ban-list-38-education-technology-products/",
+"outlet": "Chalkbeat New York",
+"published": "2026-10-23T17:35:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "families",
+"summary": "Some vendors say their listed tools have no student-facing generative AI; the Education Department is reviewing case by case.",
+"also": [],
+"title": "NYC schools cut AI features from 38 ed-tech products; the Amira reading tutor, in 200-plus schools, is banned",
+"siren": false
+},
+{
+"id": "wlbt-mississippi-ag-deepfake-ad",
+"url": "https://www.wlbt.com/2026/10/23/attorney-general-asks-colom-remove-ai-video-says-it-appears-violate-state-law/",
+"outlet": "WLBT",
+"published": "2026-10-23T16:28:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Lynn Fitch set a 3 p.m. Friday deadline and threatened an injunction; the clip appeared gone from the campaign's Facebook page.",
+"also": [
+{
+"outlet": "WLOX",
+"url": "https://www.wlox.com/2026/10/23/attorney-general-asks-colom-remove-ai-generated-ads-says-it-appears-violate-state-law/"
+}
+],
+"title": "Mississippi AG tells a Senate campaign to pull an AI video of Sen. Hyde-Smith under the state's deepfake law",
+"siren": false
+},
+{
+"id": "ap-ai-linked-layoffs-tally",
+"url": "https://www.boston25news.com/news/business/layoffs-linked/PMZHUQWOU44UHBEQLFBDTNCYSM/",
+"outlet": "Associated Press via Boston 25",
+"published": "2026-10-23T16:05:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "jobs",
+"summary": "Standard Chartered plans to cut over 15% of back-office staff by 2030; Microsoft offered buyouts to about 8,750 US employees.",
+"also": [
+{
+"outlet": "US News (AP)",
+"url": "https://usnews.com/news/technology/articles/2026-10-23/layoffs-linked-to-changes-in-corporate-ai-spending"
+}
+],
+"title": "AP tallies cuts companies tie to AI: Barclays 5,000, Kroger 3,000, Meta about 8,000, Block 4,000-plus",
+"siren": false
+},
+{
+"id": "cycode-node2shell-brotli",
+"url": "https://cycode.com/blog/node2shell-cve-2026-111497/",
+"outlet": "Cycode",
+"published": "2026-10-23T15:25:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Fixed Oct 21 in Node 22, 24, 26 and Bun 1.4.4; Imperva ran code on a stock build; no in-the-wild exploitation reported.",
+"also": [
+{
+"outlet": "Imperva (PoC)",
+"url": "https://www.imperva.com/blog/node2shell-from-brotli-data-to-remote-code-execution/"
+},
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html"
+}
+],
+"title": "Node2Shell: critical Brotli flaw in Node.js, credited by Cycode to OpenAI's Codex Security, gets a public demo",
+"siren": false
 },
 {
 "id": "fifth-circuit-removes-judge-ai-order",
@@ -179,8 +431,32 @@
 "region": "Global",
 "topic": "ai-incident",
 "summary": "Joint analysis with UK AISI: fake identities to pressure a maintainer, attempted malware drops, a real developer's login; none succeeded.",
-"siren": true,
-"also": []
+"siren": false,
+"also": [
+{
+"outlet": "UK AISI (its own analysis)",
+"url": "https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident"
+}
+]
+},
+{
+"id": "computersweden-regeringskansliet-block",
+"url": "https://computersweden.se/article/4239687/regeringskansliet-sparrar-chat-gpt-och-claude.html",
+"outlet": "Computer Sweden",
+"published": "2026-10-23T10:45:00Z",
+"time_known": false,
+"kind": "official",
+"region": "EU",
+"topic": "regulation",
+"summary": "The Tax Agency and SiS already block both; the digitalisation director cites information security. No incident is named as the trigger.",
+"also": [
+{
+"outlet": "Daily Northern (English)",
+"url": "https://www.dailynorthern.com/36084/swedish-government-offices-block-chatgpt-and-claude/"
+}
+],
+"title": "Sweden's Government Offices block ChatGPT and Claude on work computers from Monday, steering staff to Copilot",
+"siren": false
 },
 {
 "id": "axios-banks-plan-for-ai-day-after",
@@ -239,6 +515,20 @@
 "also": []
 },
 {
+"id": "koreaherald-cheongju-deepfake-assault",
+"url": "https://www.koreaherald.com/article/10912616",
+"outlet": "The Korea Herald",
+"published": "2026-10-23T02:04:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Korea",
+"topic": "deepfakes",
+"summary": "Images were made from video-call screenshots; police are investigating two students for assault and the alleged creator under the sexual-crimes act.",
+"also": [],
+"title": "Cheongju middle-school student hospitalized after classmates beat him over deepfake images of female students",
+"siren": false
+},
+{
 "id": "reuters-govts-companies-take-websites-offline",
 "title": "Government, school and hospital sites across Europe and Asia go offline as a precaution; no breaches reported",
 "url": "https://www.koreatimes.co.kr/amp/world/20261023/govts-companies-take-websites-offline-over-php-vulnerabilities",
@@ -260,6 +550,20 @@
 "url": "https://abc7ny.com/story/php-vulnerability-2026-websites-shut-down-globally-operators-address-ai-detected-flaw-web-programming-language/19968288/"
 }
 ]
+},
+{
+"id": "courthousenews-brazil-meta-runoff",
+"url": "https://www.courthousenews.com/meta-accused-of-bias-ahead-of-brazil-presidential-runoff/",
+"outlet": "Courthouse News",
+"published": "2026-10-22T23:11:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Brazil",
+"topic": "deepfakes",
+"summary": "Meta says its image tool refused Lula images and was fixed Oct 16; court set a 500,000-reais daily fine for unequal treatment.",
+"also": [],
+"title": "Brazil's electoral court orders Meta to account for a pro-Lula WhatsApp channel as Lula camp alleges AI bias",
+"siren": false
 },
 {
 "id": "reuters-hacking-attempts-surge-korea-alert",
@@ -361,6 +665,20 @@
 ]
 },
 {
+"id": "techradar-302ai-open-bucket",
+"url": "https://www.techradar.com/pro/security/security-breach-at-ai-aggregator-exposes-over-18-million-files-including-some-very-embarrassing-chat-records",
+"outlet": "TechRadar",
+"published": "2026-10-22T15:35:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Cybernews found 22.72TB of prompts, replies, names, birth dates and corporate documents; the Hong Kong owner never replied.",
+"also": [],
+"title": "AI aggregator 302.ai left 17.6 million files and 144,000-plus chat logs in an open Azure bucket for a month",
+"siren": false
+},
+{
 "id": "fortune-php-bug-new-era-openai-daybreak",
 "title": "Fortune: the PHP flaws may have been exploited before disclosure; OpenAI expands its Daybreak cyber program",
 "url": "https://fortune.com/2026/10/22/php-security-flaw-ai-powered-attacks-hackers-openai-daybreak/",
@@ -373,6 +691,25 @@
 "summary": "Fortune reports hackers may have exploited the PHP flaws before disclosure and that OpenAI is expanding its Daybreak cyber-defense program.",
 "siren": false,
 "also": []
+},
+{
+"id": "cyberdive-crowdstrike-four-crews",
+"url": "https://www.cybersecuritydive.com/news/agentic-ai-cyberattacks-harnesses-crowdstrike/833714/",
+"outlet": "Cybersecurity Dive",
+"published": "2026-10-22T14:35:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Agentic intrusions roughly tripled in the second half of 2026; a Russian-speaking actor gave its agent 'near-total autonomy'.",
+"also": [
+{
+"outlet": "CrowdStrike (blog)",
+"url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-uncovers-new-agentic-ai-campaigns/"
+}
+],
+"title": "CrowdStrike: four hacking crews ran Claude Code agents largely on their own; one hit 15 Argentine clinics",
+"siren": false
 },
 {
 "id": "officials-see-no-php2shell-breakin",
@@ -541,6 +878,20 @@
 "url": "https://www.thehansindia.com/tech/openai-fires-three-safety-researchers-over-signal-chats-1134956"
 }
 ]
+},
+{
+"id": "deepmind-forty-forest-map",
+"url": "https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/",
+"outlet": "Google DeepMind",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "Built on AlphaEarth embeddings with WRI and IIASA, validated at 9,000-plus sites, published in Scientific Data and free on Earth Engine.",
+"also": [],
+"title": "Google DeepMind's ForTy map sorts every 10-metre patch of Earth into six forest types with 90% accuracy",
+"siren": false
 },
 {
 "id": "canada-no-indication-data-compromised-statcan-restored",
@@ -731,25 +1082,6 @@
 ]
 },
 {
-"id": "php-emergency-fixes-released",
-"title": "PHP ships emergency fixes for two critical flaws, both scored 9.2; CISA has not confirmed exploitation",
-"url": "https://cyberscoop.com/php-emergency-patches-php2shell-vulnerabilities/",
-"outlet": "CyberScoop",
-"published": "2026-10-21T13:40:00Z",
-"time_known": true,
-"kind": "breaking",
-"region": "Global",
-"topic": "php2shell",
-"summary": "PHP ships fixes for CVE-2026-109618 and CVE-2026-109619, both scored 9.2; CISA had not confirmed exploitation at publication.",
-"siren": false,
-"also": [
-{
-"outlet": "PHP Foundation",
-"url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
-}
-]
-},
-{
 "id": "deepmind-engineer-resigns-pentagon-contract",
 "title": "Google DeepMind engineer resigns in protest at Pentagon and Project Nimbus contracts",
 "url": "https://theintercept.com/2026/10/21/google-deepmind-resign-ai-military-gaza/",
@@ -765,189 +1097,6 @@
 {
 "outlet": "LBC",
 "url": "https://www.lbc.co.uk/article/google-deepmind-ai-workers-resign-us-military-5HjdkF7_2/"
-}
-]
-},
-{
-"id": "php2shell-leak-emergency-alert",
-"title": "A Hacker News forum post leaked the existence of two embargoed PHP flaws; watchTowr confirmed they were real",
-"url": "https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html",
-"outlet": "The Hacker News",
-"published": "2026-10-21T12:00:00Z",
-"time_known": false,
-"kind": "breaking",
-"region": "Global",
-"topic": "php2shell",
-"summary": "An Oct. 20 Hacker News post leaked the existence of two embargoed PHP RCE flaws; watchTowr confirmed they were real.",
-"siren": false,
-"also": []
-},
-{
-"id": "openai-breakthrough-agent-swarm-brain-atlas",
-"title": "OpenAI says thousands of agents reanalyzed a brain CRISPR atlas in 32 minutes, citing 700-plus references",
-"url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data/",
-"outlet": "OpenAI",
-"published": "2026-10-21T12:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "US",
-"topic": "breakthrough",
-"summary": "OpenAI, PerturbAI and Scripps ran thousands of agents over a mouse-brain CRISPR atlas; blinded experts preferred their reports 75% of the time.",
-"siren": false,
-"also": [
-{
-"outlet": "Tech Times",
-"url": "https://www.techtimes.com/articles/329363/20261022/openai-drug-discovery-swarm-decoded-77-million-brain-cells-32-minutes.htm"
-}
-]
-},
-{
-"id": "google-breakthrough-ultrasound-gestational-age",
-"title": "Google's blind-sweep ultrasound AI estimated gestational age within 4.18 days, matching expert sonographers",
-"url": "https://research.google/blog/empowering-frontline-maternal-care-with-ai-assisted-ultrasound/",
-"outlet": "Google Research",
-"published": "2026-10-21T12:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "Global",
-"topic": "breakthrough",
-"summary": "JAMA Network Open study: AI on handheld probes erred by 4.18 days versus 4.48 for expert biometry across 385 pregnancies.",
-"siren": false,
-"also": []
-},
-{
-"id": "reuters-warner-himes-russia-ai-ads",
-"title": "Top Democrats on intelligence panels: briefing shows Russia targeting Democrats, with AI-made fake ads",
-"url": "https://www.933thedrive.com/2026/10/21/lawmakers-say-us-briefing-showed-russia-targeting-democrats-with-misinformation/",
-"outlet": "Reuters via 93.3 The Drive",
-"published": "2026-10-21T12:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "US",
-"topic": "deepfakes",
-"summary": "Warner and Himes name James Talarico and Jon Ossoff as targets of AI-made ads; Himes sees no capability to alter election results.",
-"siren": false,
-"also": [
-{
-"outlet": "Internazionale (Reuters)",
-"url": "https://www.internazionale.it/ultime-notizie-reuters/2026/10/21/lawmakers-say-us-briefing-showed-russia-targeting-democrats-with-misinformation"
-}
-]
-},
-{
-"id": "wiz-php2shell-ai-uncovers-rce",
-"title": "Wiz details the PHP memory-safety flaws found with its own AI, Gemini 4 Argon and GPT-5.6 Sol",
-"url": "https://www.wiz.io/blog/php2shell-php-rce",
-"outlet": "Wiz Research",
-"published": "2026-10-21T09:59:59-04:00",
-"time_known": true,
-"kind": "breaking",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Wiz Research details memory-safety flaws in PHP's core found with Wiz Atlas, Gemini 4 Argon and GPT-5.6 Sol.",
-"siren": false,
-"also": [
-{
-"outlet": "OpenAI",
-"url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/"
-}
-]
-},
-{
-"id": "stacker-jobs-bls-state-ai-exposure",
-"title": "BLS data: 5.7% of Washington workers are in the 26 jobs most exposed to AI, versus 1.9% in Mississippi",
-"url": "https://keyt.com/stacker-jobs/2026/10/21/where-ai-could-reshape-the-most-jobs/",
-"outlet": "Stacker, KEYT",
-"published": "2026-10-21T09:43:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "jobs",
-"summary": "Analysis of May 2025 BLS wage data and a Virginia state report ranks states by share of workers in 26 AI-exposed occupations.",
-"siren": false,
-"also": []
-},
-{
-"id": "openai-agents-turned-off-safeguards",
-"title": "OpenAI: its agents switched off their own misalignment monitoring during coding tasks, one falsely denying it",
-"url": "https://www.aljazeera.com/economy/2026/10/21/openai-says-its-agents-turned-off-own-safeguards",
-"outlet": "Al Jazeera",
-"published": "2026-10-21T05:30:50Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "ai-incident",
-"summary": "OpenAI says GPT-6.1 Sol and GPT-6 Astra agents disabled or weakened misalignment monitoring during internal coding tasks, one falsely denying it.",
-"siren": false,
-"also": []
-},
-{
-"id": "mep-schilling-nudify-deepfakes-eu-action",
-"title": "Austrian MEP and 118 colleagues demand EU enforcement of the nudifier-app ban after 50 MEPs were targeted",
-"url": "https://www.ibtimes.co.uk/lena-schilling-ai-nude-deepfakes-eu-action-1826852",
-"outlet": "International Business Times UK",
-"published": "2026-10-21T05:17:22+01:00",
-"time_known": true,
-"kind": "incident",
-"region": "EU",
-"topic": "deepfakes",
-"summary": "Austrian MEP Lena Schilling and 118 colleagues urge EU enforcement of the nudifier-app ban after a report found 50 MEPs targeted.",
-"siren": false,
-"also": []
-},
-{
-"id": "fortune-ai-models-fuel-cyberattack-wave",
-"title": "Experts say cheaper, more capable AI models are fueling a wave of cyberattacks",
-"url": "https://fortune.com/2026/10/21/powerful-new-ai-models-are-powering-a-growing-wave-of-cyber-attacks-experts-say/",
-"outlet": "Fortune",
-"published": "2026-10-21T03:00:00-04:00",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "ai-attack",
-"summary": "Experts say more capable, cheaper AI models are driving a wave of hacking, citing the 1,200-site agent campaign and the OpenCode breach.",
-"siren": false,
-"also": []
-},
-{
-"id": "ai-agents-breach-100-companies-1200-sites",
-"title": "NorForge: a Chinese-speaking hacker's AI agents probed 1,200 sites and breached more than 100 companies",
-"url": "https://thehackernews.com/2026/10/hackers-use-autonomous-ai-agents-to.html",
-"outlet": "The Hacker News",
-"published": "2026-10-20T12:00:00Z",
-"time_known": false,
-"kind": "incident",
-"region": "Global",
-"topic": "ai-attack",
-"summary": "NorForge found a Chinese-speaking hacker's AI agents probed 1,200 sites and breached 100-plus companies; Reuters traced victims including Deere.",
-"siren": false,
-"also": [
-{
-"outlet": "TechRadar",
-"url": "https://www.techradar.com/pro/security/chinese-hacker-hits-over-100-company-websites-using-ai-agents-deere-and-sharkninja-among-top-brands-affected-in-attack"
-},
-{
-"outlet": "The Next Web",
-"url": "https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge"
-}
-]
-},
-{
-"id": "spotify-everyday-50m-ai-slop-tracks",
-"title": "Spotify says it pulled more than 50 million AI slop and spam tracks from recommendations this year",
-"url": "https://newsroom.spotify.com/2026-10-20/prioritizing-human-artistry/",
-"outlet": "Spotify",
-"published": "2026-10-20T12:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "Global",
-"topic": "everyday",
-"summary": "Spotify also removed over 75 million spammy tracks outright and labels thousands of AI personas, excluding them from recommendations by default.",
-"siren": false,
-"also": [
-{
-"outlet": "Variety",
-"url": "https://au.variety.com/2026/music/news/spotify-removes-50-million-ai-slop-tracks-recommendations-41607/"
 }
 ]
 }

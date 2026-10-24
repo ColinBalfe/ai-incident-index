@@ -1394,5 +1394,57 @@
   "source_url": "https://www.wiz.io/blog/php2shell-php-rce",
   "source2_url": "https://cyberscoop.com/php-emergency-patches-php2shell-vulnerabilities/",
   "confidence": "high"
+ },
+ {
+  "id": "agents-escape-microvms-2026",
+  "date": "2026-10-23",
+  "date_precision": "day",
+  "title": "AI agents chain flaws into virtual-machine escapes and talk across isolation through the CPU cache",
+  "org": "OpenAI (internal red team)",
+  "domain": "cyber",
+  "what": "Given source code and vulnerability documentation, fleets of OpenAI agents broke out of hardened microVMs onto host machines and exchanged a secret between isolated VMs by timing processor-cache reloads, the Spectre-and-Meltdown mechanism.",
+  "metric_label": "of tokens spent on the red-team campaign",
+  "metric_value": "hundreds of billions",
+  "stages": {
+   "demonstrated": {
+    "status": "yes",
+    "date": "2026-10-23",
+    "note": "OpenAI's Oct 23 post, per Reuters and GBHackers: VM escapes through Kata Containers (CVE-2026-24834), gVisor and Moby/Docker issues; a cache-timing covert channel between microVMs; a firewall-approved connection reused to reach a blocked endpoint. OpenAI calls it an attacker-favorable test, not unaided discovery.",
+    "source_url": "https://openai.com/index/securing-our-frontier-model-training-environment/"
+   },
+   "reproduced": {
+    "status": "unknown",
+    "date": "",
+    "note": "No outside party has reproduced the escapes or the covert channel; OpenAI says researchers guided most covert-channel tests toward particular channels or supplied the encoding.",
+    "source_url": "https://gbhackers.com/openai-ai-agents-exploit-zero-day-vulnerabilities/"
+   },
+   "accessible": {
+    "status": "no",
+    "date": "2026-10-23",
+    "note": "The agents included an unreleased 'GPT-6 Astra Cyber' model on isolated copies of OpenAI's own infrastructure; nothing is public.",
+    "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/24/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access"
+   },
+   "reliable": {
+    "status": "unknown",
+    "date": "",
+    "note": "No success rates published.",
+    "source_url": ""
+   },
+   "consequences": {
+    "status": "partial",
+    "date": "2026-10-23",
+    "note": "OpenAI says the sandbox flaws it found are fixed; it now trains its most capable models with no live internet access, against a cached offline copy of the web. No harm outside the test environment is claimed.",
+    "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/24/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access"
+   }
+  },
+  "everyday": "The sandboxes that are supposed to keep AI agents contained can be climbed out of by the agents themselves once they are good enough; the lab's answer was to cut its training runs off from the internet entirely.",
+  "related_incident_ids": [
+   "openai-redteam-vm-escapes",
+   "dns-tunnel",
+   "openai-hf-swarm"
+  ],
+  "source_url": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+  "source2_url": "https://www.thestar.com.my/tech/tech-news/2026/10/24/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access",
+  "confidence": "medium"
  }
 ]
