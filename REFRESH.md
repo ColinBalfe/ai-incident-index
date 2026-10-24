@@ -67,6 +67,7 @@ node make_og.mjs    http://127.0.0.1:8765/index.html
 node make_cards.mjs http://127.0.0.1:8765/index.html   # share cards for every dispatch; re-renders only changed records
 python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml
 cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)
+cd build && python3 build_brief.py && cd ..                                  # the daily brief script (briefs/<date>.md) and the forecast ledger (research/forecast_log.jsonl)
 node shot.mjs       http://127.0.0.1:8765/index.html
 ```
 
@@ -88,4 +89,6 @@ If the rebase reports a conflict, keep both sides' intent (your data rows and ch
 
 ## 6. Report
 
-Finish with a short summary: what was added (counts), what changed on the live incident, anything that could not be verified, and the next scheduled check. Then paste the post queue from `posts/<date>.md` in full (the editor approves and posts by hand; nothing posts itself). On Sundays run `python3 build_posts.py --week-ahead` so the queue includes the next-14-days post.
+Finish with a short summary: what was added (counts), what changed on the live incident, anything that could not be verified, and the next scheduled check. Then paste the post queue from `posts/<date>.md` in full (the editor approves and posts by hand; nothing posts itself), and the daily brief from `briefs/<date>.md` in full (the editor reads, cuts, records or mails it). On Sundays run `python3 build_posts.py --week-ahead` so the queue includes the next-14-days post.
+
+Forecast resolutions: when a forecast's event has happened, or its `resolve_by` date has passed, add `resolved: yes|no`, `resolved_date` and a one-line `resolution_note` with a source to that forecast (in `build/aux_data.py`, where the forecasts live) rather than deleting it. The ledger in the brief grades these in public; a forecast is never silently edited after its window closes, only resolved or replaced with a new, dated one.

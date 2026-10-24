@@ -22,6 +22,8 @@ make_og.mjs          renders assets/og.png (the share card) from the live page w
 make_cards.mjs       renders a 1200x630 share card per dispatch into cards/ (incremental, manifest-based)
 build_pages.py       writes a full page for every incident (i/<id>/), case (c/<id>/) and milestone (m/<id>/) in the site's design (assets/dispatch.css), plus i/, c/, m/ index pages, sitemap.xml and robots.txt
 build/build_posts.py drafts the post queue for X from each refresh into posts/ (nothing posts itself)
+build/build_brief.py  writes the daily brief script (briefs/<date>.md: the level, the siren, the board, fix watch, the ledger, the shot, for you) and keeps research/forecast_log.jsonl, the forecast ledger
+feed.xml, feed-dispatches.xml  RSS: the Wire and the brief; every incident, case and milestone with its own page
 shot.mjs, sections.mjs  QA screenshots at desktop and phone widths; print console errors
 REFRESH.md           the refresh runbook used by the scheduled task
 ```
@@ -38,6 +40,12 @@ node shot.mjs    http://127.0.0.1:8765/index.html   # expect "errors none" three
 ```
 
 `prerender.mjs`, `make_og.mjs`, `make_cards.mjs` and `shot.mjs` need `npm i playwright` and a Chromium; set the `executablePath` at the top of each file to yours.
+
+## On the page
+
+Desktop and tablets: one page, sections in order (the Wire, why it matters, the record, what AI can now do, quotes, the pattern, the escalation, what's next, inside the incidents, did they fix it, official signals, all incidents, about). Below the first screen, sections draw as they come into view.
+
+Phones (under 760px): a front page (the siren, the brief, the live rail, six Wire stories, one card per section) with each section opening as its own view and a bottom bar; "Show everything on one page instead" at the foot of the front restores the single column (remembered in that browser). Search (`/`, `⌘K`, or the button in the nav) covers incidents, the Wire, cases, milestones, quotes and statements from the data already loaded.
 
 ## Scoring
 

@@ -23,6 +23,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <script type="application/ld+json">{{JSONLD}}</script>
 <link rel="alternate" type="application/rss+xml" title="Warning Shots: the Wire and the daily brief" href="feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Warning Shots: dispatches (incidents, cases, milestones)" href="feed-dispatches.xml">
 <meta name="theme-color" content="#F4F3EF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A111E" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -105,7 +106,7 @@ b, strong { font-weight: 600; }
 .mh-grid { display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 10px; padding-top: clamp(20px, 3vw, 34px); padding-bottom: clamp(16px, 2.4vw, 26px); }
 .logo { display: inline-flex; align-items: center; gap: clamp(10px, 1.4vw, 18px); text-decoration: none; color: inherit; }
 .logo .mark { width: clamp(58px, 7.8vw, 98px); height: auto; display: block; flex: none; margin: -10px 0; }
-.wordmark { font-size: clamp(1.25rem, 3.3vw, 2.35rem); font-weight: 800; letter-spacing: .07em; text-transform: uppercase; font-variation-settings: 'wdth' 100; color: var(--ink); white-space: nowrap; line-height: 1; padding-top: .08em; }
+.wordmark { margin: 0; font-size: clamp(1.25rem, 3.3vw, 2.35rem); font-weight: 800; letter-spacing: .07em; text-transform: uppercase; font-variation-settings: 'wdth' 100; color: var(--ink); white-space: nowrap; line-height: 1; padding-top: .08em; }
 .mh-tag { margin: 10px 0 0; color: var(--ink-2); font-size: clamp(1rem, 1.35vw, 1.15rem); max-width: 52ch; line-height: 1.4; text-wrap: balance; letter-spacing: -0.005em; }
 .mh-right { display: grid; gap: 10px; justify-items: center; margin-top: 6px; }
 @media (min-width: 1000px) { .mh-right { position: absolute; right: clamp(16px, 4vw, 40px); top: clamp(22px, 3.4vw, 40px); justify-items: end; text-align: right; margin: 0; } }
@@ -161,6 +162,50 @@ b, strong { font-weight: 600; }
 .mode button[aria-pressed="true"]:hover { color: var(--paper); }
 .mode button::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 6px; background: var(--line-2); vertical-align: 1px; }
 .mode button[aria-pressed="true"]::before { background: var(--signal); }
+
+
+/* ----- phones: a front page and section views instead of one long column (body.mf); desktop is untouched */
+.mf-only { display: none; }
+.linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--ink-2); text-decoration: underline; cursor: pointer; }
+#front .sec-k { display: flex; justify-content: space-between; align-items: baseline; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+#front .sec-k .k { letter-spacing: 0; text-transform: none; }
+.front-cards { display: grid; gap: 10px; margin-top: 10px; }
+.fcard { border: 1px solid var(--line); background: var(--panel); padding: 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; text-decoration: none; color: inherit; }
+.fcard .ck { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); grid-column: 1 / -1; }
+.fcard .ct { font-family: var(--serif); font-weight: 700; font-size: 1.08rem; line-height: 1.25; }
+.fcard .ct b { color: var(--alarm); font-weight: 700; }
+.fcard .ar { font-size: 20px; color: var(--ink-3); }
+.fcard .cs { font-size: 12.5px; color: var(--ink-2); grid-column: 1 / -1; }
+.fcard.dark-scope { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.fcard .spark { display: flex; align-items: flex-end; gap: 2px; height: 26px; grid-column: 1 / -1; margin-top: 4px; }
+.fcard .spark i { flex: 1; background: var(--line-2); display: block; min-height: 2px; }
+.fcard .spark i.r { background: var(--alarm); }
+.front-more { margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.front-more a { font-size: 13px; padding: 10px 12px; border: 1px solid var(--line); text-decoration: none; color: var(--ink-2); background: var(--panel); line-height: 1.3; }
+.front-more a b { color: var(--ink); display: block; font-weight: 600; }
+.front-foot { margin: 18px 0 0; font-size: 13px; color: var(--ink-3); text-align: center; }
+.tabbar { display: none; }
+.mf-back { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 0; margin-bottom: 4px; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.mf-back a { text-decoration: none; color: var(--ink); font-weight: 600; }
+.mf-back .k { color: var(--ink-3); }
+@media (max-width: 759px) {
+  body.mf [data-mf="off"] { display: none !important; }
+  body.mf .mf-only { display: inline-block; }
+  body.mf { padding-bottom: 64px; }
+  body.mf .tabbar { display: grid; position: fixed; left: 0; right: 0; bottom: 0; height: 64px; z-index: 35; grid-template-columns: repeat(5, 1fr); background: #0A111E; border-top: 1px solid #2A364B; padding-bottom: env(safe-area-inset-bottom); }
+  body.mf .tabbar a { display: grid; place-items: center; align-content: center; gap: 4px; font-size: 10.5px; letter-spacing: .04em; color: #A8B3C2; text-decoration: none; }
+  body.mf .tabbar a.on { color: #F4F3EF; }
+  body.mf .tabbar svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  body.mf .tabbar a.on svg { stroke: #FF3300; }
+  body.mf:not(.mf-sec) .wire-grid { display: flex; flex-direction: column; }
+  body.mf:not(.mf-sec) .wire-grid .now { order: -1; margin-bottom: 16px; }
+  body.mf:not(.mf-sec) #front { display: block; padding-top: 28px; }
+  body.mf:not(.mf-sec) #wire-chips, body.mf:not(.mf-sec) #wire-share { display: none; }
+  body.mf:not(.mf-sec) .now .live .d, body.mf:not(.mf-sec) .now .live:nth-child(n+5), body.mf:not(.mf-sec) .now .now-share { display: none; }
+  body.mf:not(.mf-sec) .now .live-grid { grid-template-columns: repeat(2, 1fr); }
+  body.mf .drawer { padding-bottom: 72px; }
+  body.mf .toast { bottom: 80px; }
+}
 
 /* ----- type scale */
 h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
@@ -699,6 +744,27 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 
 /* ----- briefing card preview */
 .card-modal { position: fixed; inset: 0; background: rgba(10, 17, 30, .72); z-index: 70; display: grid; place-items: center; padding: 16px; }
+.card-modal.top { place-items: start center; padding-top: min(12vh, 90px); }
+.search-box { max-width: min(94vw, 680px); padding: 0; overflow: hidden; }
+.search-box form { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.search-box form svg { width: 18px; height: 18px; stroke: var(--ink-3); fill: none; stroke-width: 2; stroke-linecap: round; flex: none; }
+.search-box input { flex: 1; font: inherit; font-size: 17px; border: 0; outline: 0; background: transparent; color: var(--ink); min-width: 0; }
+.search-box .esc { font-size: 11px; color: var(--ink-3); border: 1px solid var(--line-2); padding: 1px 6px; }
+.search-res { max-height: min(62vh, 560px); overflow-y: auto; }
+.search-res .grp { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); padding: 10px 14px 4px; }
+.search-res a, .search-res button.r { display: block; width: 100%; text-align: left; font: inherit; background: none; border: 0; border-top: 1px solid var(--line); padding: 9px 14px; color: var(--ink); text-decoration: none; cursor: pointer; }
+.search-res a:hover, .search-res button.r:hover, .search-res .r.on { background: color-mix(in oklab, var(--line) 45%, var(--panel)); }
+.search-res .rt { font-size: 15px; line-height: 1.3; }
+.search-res .rt mark { background: color-mix(in oklab, var(--amber) 35%, transparent); color: inherit; padding: 0 1px; }
+.search-res .rk { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.search-res .rk b { color: var(--ink-2); font-weight: 600; }
+.search-res .empty { padding: 18px 14px; color: var(--ink-3); font-size: 14px; }
+.search-foot { display: flex; justify-content: space-between; gap: 10px; padding: 8px 14px; border-top: 1px solid var(--line); font-size: 12px; color: var(--ink-3); }
+.nav-search { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line-2); background: transparent; color: var(--ink-2); height: 26px; padding: 0 8px; font-size: 12.5px; cursor: pointer; }
+.nav-search:hover { color: var(--ink); border-color: var(--ink); }
+.nav-search svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+.nav-search kbd { font: inherit; font-size: 10.5px; border: 1px solid var(--line-2); padding: 0 4px; color: var(--ink-3); }
+@media (max-width: 760px) { .nav-search span, .nav-search kbd { display: none; } .nav-search { padding: 0 7px; } }
 .card-box { background: var(--panel); border: 1px solid var(--line-2); padding: 14px; max-width: min(92vw, 560px); width: 100%; }
 .card-box img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
 .card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
@@ -719,7 +785,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
     <div>
       <a class="logo" href="#top" aria-label="Warning Shots, home">
         <svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>
-        <span class="wordmark">Warning Shots</span>
+        <h1 class="wordmark">Warning Shots</h1>
       </a>
       <p class="mh-tag">See what’s coming. Know what it means for you.</p>
     </div>
@@ -739,10 +805,11 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
   <div class="wrap">
     <a class="mini" href="#top"><svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>Warning Shots</a>
     <div class="nav-scroll" id="nav-scroll">
-      <a href="#wire">The Wire</a><a href="#record">Record</a><a href="#capabilities">Capabilities</a><a href="#words">Quotes</a><a href="#charts">Charts</a><a href="#next">Forecast</a><a href="#dives">Incidents</a><a href="#fixes">Did they fix it?</a><a href="#all">All</a><a href="#about">About</a>
+      <a href="#front" class="mf-only">Front</a><a href="#wire">The Wire</a><a href="#record">Record</a><a href="#capabilities">Capabilities</a><a href="#words">Quotes</a><a href="#charts">Charts</a><a href="#next">Forecast</a><a href="#dives">Incidents</a><a href="#fixes">Did they fix it?</a><a href="#all">All</a><a href="#about">About</a>
     </div>
     <div class="nav-right">
       <span class="nav-updated" id="nav-updated"></span>
+      <button type="button" class="nav-search" id="nav-search" title="Search the index (press /)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd aria-hidden="true">/</kbd></button>
       <div class="mode" role="group" aria-label="Appearance"><span class="mode-l" aria-hidden="true">Mode</span><button type="button" id="mode-dark" aria-pressed="false" title="Night_Ops: dark appearance">Night_Ops</button><button type="button" id="mode-light" aria-pressed="true" title="Newsprint: light appearance">Newsprint</button></div>
     </div>
   </div>
@@ -783,6 +850,13 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
     </div>
   </section>
 
+  <section class="wrap front" id="front" aria-label="The rest of the index" hidden>
+    <div class="sec-k"><span>The rest of the index</span><span class="k" id="front-stamp"></span></div>
+    <div class="front-cards" id="front-cards"></div>
+    <div class="front-more" id="front-more"></div>
+    <p class="front-foot"><button type="button" class="linkish" id="mf-off">Show everything on one page instead</button></p>
+  </section>
+
   <section class="wrap" id="why">
     <div class="panel why-panel">
       <div class="why-head"><h2>I don’t use AI. Why does this matter to me?</h2><p class="lede">Because the systems you rely on already do. Four things on this index that reached people who never opened a chatbot.</p></div>
@@ -792,7 +866,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 
   <div class="hero-band dark-scope">
   <section class="hero wrap" id="record">
-    <h1 class="hl" id="headline"><span class="sk">AI has started breaking in on its own.</span></h1>
+    <h2 class="hl" id="headline"><span class="sk">AI has started breaking in on its own.</span></h2>
     <p class="sub" id="sub"><span class="sk">Severe AI incidents went from 3 to 12 in a year. In half of this year's real-world cases the AI itself did the acting.</span></p>
     <p class="sub chart-note">Every major AI safety incident since 2023, scored 0–100 and sourced. Each dot is an incident. Red: a real-world incident where the AI acted on its own.</p>
     <div class="chart hero-chart" id="ch-timeline"></div>
@@ -1035,7 +1109,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
       </details>
       <details class="fold" id="fold-data">
         <summary>Data, downloads and corrections<span class="k">everything is open</span></summary>
-        <p>Everything on this page is open: <a href="data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="data/victims.json">organizations affected</a>, <a href="data/signals.json">official statements</a>, <a href="data/quotes.json">quotes</a>, <a href="data/forecasts.json">forecasts</a>, <a href="data/news.json">the Wire</a>. Cite as "Warning Shots (The AI Incident Index)" with a link. Corrections and additions: open an issue on <a href="{{REPO_URL}}">GitHub</a>.</p>
+        <p>Everything on this page is open: <a href="data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="data/victims.json">organizations affected</a>, <a href="data/signals.json">official statements</a>, <a href="data/quotes.json">quotes</a>, <a href="data/forecasts.json">forecasts</a>, <a href="data/news.json">the Wire</a>. RSS: <a href="feed.xml">the Wire and the brief</a>, <a href="feed-dispatches.xml">dispatches</a>. Cite as "Warning Shots (The AI Incident Index)" with a link. Corrections and additions: open an issue on <a href="{{REPO_URL}}">GitHub</a>.</p>
       </details>
       <div class="fieldnote" id="fieldnote" hidden>
         <div><h3>Seeing a failure, or a breakthrough, from the inside?</h3><p>Tell us what happened: a short description, the dates, public links that support it, and how to reach you if you want a reply. Submissions go to the editor, are treated as unverified until checked, and are never published without review.</p></div>
@@ -1049,6 +1123,13 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
     <p class="foot">Warning Shots, the AI Incident Index, is maintained by Colin Balfe with Claude. The name is OpenAI’s own phrase for the Hugging Face breach: “a warning shot for the company and the world.” Research, scoring and forecasts are the index's own; every incident links to its primary source. Last refresh <span id="foot-updated">—</span> <a href="{{REPO_URL}}">Source</a>.</p>
   </section>
 </main>
+<nav class="tabbar" id="tabbar" aria-label="Front page, Wire, record, cases, next" hidden>
+  <a href="#front" data-tab="front"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Front</a>
+  <a href="#wire" data-tab="wire"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Wire</a>
+  <a href="#record" data-tab="record"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-6 4 3 4-7"/></svg>Record</a>
+  <a href="#fixes" data-tab="fixes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Cases</a>
+  <a href="#next" data-tab="next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Next</a>
+</nav>
 
 <div class="drawer-bg" id="drawer-bg"></div>
 <aside class="drawer" id="drawer" aria-label="Incident detail" aria-hidden="true" inert>

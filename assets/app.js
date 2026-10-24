@@ -463,7 +463,8 @@ function drawWire() {
   const chip = (k, label, n) => { const b = el('button', k === wire.topic ? 'on' : ''); b.type = 'button'; b.append(txt(label), el('b', null, String(n))); b.addEventListener('click', () => { wire.topic = k; drawWire(); }); return b; };
   chips.replaceChildren(chip('all', 'All', rest.length), ...topics.filter((t) => t[1] >= 1).map(([k, n]) => chip(k, TOPIC[k] || k, n)));
   const rows = rest.filter((n) => wire.topic === 'all' || (n.topic || 'other') === wire.topic);
-  const limit = (wire.open || wire.topic !== 'all') ? rows.length : (window.innerWidth < 760 ? 12 : 40);
+  const mfFront = MF() && mfCur === 'front';
+  const limit = (wire.open || wire.topic !== 'all') ? rows.length : (mfFront ? 6 : window.innerWidth < 760 ? 12 : 40);
   const fresh = (n) => n.published && (Date.parse(D.meta.as_of) - Date.parse(n.published)) < 8 * 3.6e6;
   board.replaceChildren(...rows.slice(0, limit).map((n) => {
     const it = el('div', 'wi');
@@ -476,7 +477,7 @@ function drawWire() {
   const hours = span[0] && span[1] ? Math.round((Date.parse(span[1]) - Date.parse(span[0])) / 3.6e6) : 0;
   cnt.textContent = items.length + ' reports from the last ' + (hours >= 48 ? Math.round(hours / 24) + ' days' : hours + ' hours') + ', newest first. Every headline links to the outlet.';
   more.replaceChildren();
-  if (rows.length > limit) { const b = el('button', 'more-btn', 'Show all ' + rows.length + ' stories'); b.type = 'button'; b.addEventListener('click', () => { wire.open = true; drawWire(); }); more.append(b); }
+  if (rows.length > limit) { const b = el('button', 'more-btn', (mfFront ? 'All ' : 'Show all ') + rows.length + ' stories' + (mfFront ? ' →' : '')); b.type = 'button'; b.addEventListener('click', () => { if (mfFront) { go('#wire'); return; } wire.open = true; drawWire(); }); more.append(b); }
   else if (wire.open && rows.length > 12) { const b = el('button', 'more-btn', 'Show fewer'); b.type = 'button'; b.addEventListener('click', () => { wire.open = false; drawWire(); document.getElementById('wire').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }); more.append(b); }
   shareRow(document.getElementById('wire-share'), { anchor: 'wire', text: 'The Wire: the latest reports on AI incidents, AI-driven attacks and what governments and labs are saying, worldwide, refreshed through the day. Warning Shots:', embed: 'wire', embedH: 720 });
 }
@@ -1192,6 +1193,74 @@ function drawSinceVisit() {
   bar.append(txtNode, note, reset);
 }
 
+
+/* ---------- site-wide search: incidents, the Wire, cases, milestones, quotes and statements, from the data already loaded */
+let SIDX = null;
+const snorm = (x) => String(x || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[’‘]/g, "'");
+function searchIndex() {
+  if (SIDX) return SIDX;
+  const rows = [];
+  C.scored.forEach((r) => rows.push({ kind: 'Incidents', title: r.title, text: [r.summary, r.actors, r.harm, r.category_label, r.ws].join(' '), kicker: r.ws + ' · ' + showDate(r) + ' · ' + r.severity + '/100 ' + r.tier, go: () => go('#i=' + r.id) }));
+  newsItems().forEach((n) => rows.push({ kind: 'The Wire', title: n.title, text: [n.summary, n.outlet, n.topic].join(' '), kicker: (n.outlet || '') + ' · ' + ageShort(n), href: n.url }));
+  fixRows().forEach((f) => rows.push({ kind: 'Did they fix it?', title: f.name, text: [f.one_liner].concat(f.chain.map((c) => c.note)).join(' '), kicker: 'Case · ' + String(fixCur(f).status || '').replace('_', ' '), go: () => go('#c=' + f.incident_id) }));
+  capRows().forEach((c) => rows.push({ kind: 'What AI can now do', title: c.title, text: [c.what, c.org, c.everyday, c.domain].join(' '), kicker: 'Milestone · ' + fmtDate(new Date(c.date)) + (c.org ? ' · ' + c.org : ''), go: () => go('#m=' + c.id) }));
+  (D.quotes || []).forEach((q) => { if (q && q.quote) rows.push({ kind: 'In their words', title: q.quote, text: [q.speaker, q.title].join(' '), kicker: (q.speaker || '') + (q.title ? ', ' + q.title : '') + (q.date ? ' · ' + fmtDate(new Date(q.date)) : ''), go: () => go('#q=' + q.id) }); });
+  (D.signals || []).forEach((x) => { if (x && x.gist) rows.push({ kind: 'Official signals', title: x.gist, text: [x.org, x.speaker, x.quote].join(' '), kicker: (x.org || '') + (x.date ? ' · ' + fmtDate(new Date(x.date)) : ''), href: x.url || null, go: x.url ? null : () => go('#signals') }); });
+  rows.forEach((r) => { r.t = snorm(r.title); r.x = snorm(r.text); });
+  SIDX = rows; return rows;
+}
+const KIND_W = { 'Incidents': 1.3, 'Did they fix it?': 1.2, 'What AI can now do': 1.15, 'The Wire': 1.1, 'In their words': 1, 'Official signals': 1 };
+function searchRun(q) {
+  const toks = snorm(q).split(/[^a-z0-9%$.+-]+/).filter((t) => t.length >= 2);
+  if (!toks.length) return { toks, rows: [] };
+  const out = [];
+  for (const r of searchIndex()) {
+    let score = 0, all = true;
+    for (const t of toks) { const inT = r.t.includes(t), inX = r.x.includes(t); if (!inT && !inX) { all = false; break; } score += inT ? 3 : 1; if (r.t.startsWith(t)) score += 1; }
+    if (all) out.push([score * (KIND_W[r.kind] || 1), r]);
+  }
+  out.sort((a, b) => b[0] - a[0]);
+  return { toks, rows: out.map((x) => x[1]) };
+}
+function markText(node, text, toks) {
+  const low = snorm(text); let i = 0;
+  const hits = []; toks.forEach((t) => { let p = low.indexOf(t); while (p >= 0 && hits.length < 40) { hits.push([p, p + t.length]); p = low.indexOf(t, p + t.length); } });
+  hits.sort((a, b) => a[0] - b[0]);
+  for (const [a, b] of hits) { if (a < i) continue; if (a > i) node.append(txt(text.slice(i, a))); node.append(el('mark', null, text.slice(a, b))); i = b; }
+  if (i < text.length) node.append(txt(text.slice(i)));
+}
+function showSearch(prefill) {
+  let m = document.getElementById('search-modal'); if (m) { m.querySelector('input').focus(); return; }
+  if (!C.scored) return;
+  m = el('div', 'card-modal top'); m.id = 'search-modal'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-label', 'Search the index');
+  const box = el('div', 'card-box search-box'); const form = el('form'); form.setAttribute('role', 'search');
+  form.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+  const input = el('input'); input.type = 'search'; input.placeholder = 'Search incidents, the Wire, cases, milestones, quotes, statements'; input.setAttribute('aria-label', 'Search'); input.autocomplete = 'off'; input.value = prefill || '';
+  const esc = el('span', 'esc', 'esc'); form.append(input, esc);
+  const res = el('div', 'search-res'); res.setAttribute('role', 'listbox');
+  const foot = el('div', 'search-foot'); foot.append(el('span', null, '↑ ↓ to move, Enter to open'), el('span', null, 'Searches everything loaded on this page; the Wire opens the outlet.'));
+  box.append(form, res, foot); m.append(box); document.body.append(m);
+  const close = () => { m.remove(); document.getElementById('nav-search')?.focus(); };
+  let cur = -1, rowsEls = [];
+  const render = () => {
+    const { toks, rows } = searchRun(input.value); res.replaceChildren(); rowsEls = []; cur = -1;
+    if (!input.value.trim()) { res.append(el('div', 'empty', 'Try a company, a model, a country, a date, “deepfake”, “wrongful death”, “PHP”.')); return; }
+    if (!rows.length) { res.append(el('div', 'empty', 'Nothing matches. Try fewer words.')); return; }
+    const groups = []; const byKind = {}; rows.forEach((r) => { if (!byKind[r.kind]) { byKind[r.kind] = []; groups.push(r.kind); } if (byKind[r.kind].length < 6) byKind[r.kind].push(r); });
+    let n = 0;
+    groups.forEach((k) => { res.append(el('div', 'grp', k)); byKind[k].forEach((r) => { if (n >= 30) return; n++;
+      const a = r.href ? el('a', 'r') : el('button', 'r'); if (r.href) { a.href = r.href; a.target = '_blank'; a.rel = 'noopener noreferrer'; } else a.type = 'button';
+      a.setAttribute('role', 'option'); const t = el('div', 'rt'); markText(t, r.title.length > 160 ? r.title.slice(0, 158) + '…' : r.title, toks); const kk = el('div', 'rk'); kk.append(txt(r.kicker)); a.append(t, kk);
+      a.addEventListener('click', () => { if (r.go) { close(); r.go(); } else setTimeout(close, 50); }); res.append(a); rowsEls.push(a); }); });
+  };
+  const move = (d) => { if (!rowsEls.length) return; rowsEls[cur]?.classList.remove('on'); cur = (cur + d + rowsEls.length) % rowsEls.length; rowsEls[cur].classList.add('on'); rowsEls[cur].scrollIntoView({ block: 'nearest' }); };
+  input.addEventListener('input', render);
+  form.addEventListener('submit', (e) => { e.preventDefault(); (rowsEls[cur >= 0 ? cur : 0])?.click(); });
+  m.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); close(); } else if (e.key === 'ArrowDown') { e.preventDefault(); move(1); } else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); } });
+  m.addEventListener('click', (e) => { if (e.target === m) close(); });
+  render(); input.focus(); if (prefill) input.select();
+}
+document.getElementById('nav-search')?.addEventListener('click', () => showSearch());
 /* ---------- keyboard shortcuts: J/K move through dispatches, Enter opens, S briefing card, ? help, Esc closes */
 const KEYS_OFF = () => { try { return localStorage.getItem('ws-keys') === 'off'; } catch (e) { return false; } };
 function navItems() { return [...document.querySelectorAll('.wi, .row, .fix, .cap, .why')].filter((n) => n.offsetParent !== null); }
@@ -1201,16 +1270,18 @@ function showHelp() {
   let m = document.getElementById('help-modal'); if (m) { m.remove(); return; }
   m = el('div', 'card-modal'); m.id = 'help-modal'; const box = el('div', 'card-box help-box');
   const off = KEYS_OFF();
-  box.innerHTML = '<h3>Keyboard</h3><table class="keys"><tr><td><kbd>J</kbd> / <kbd>K</kbd></td><td>Next / previous dispatch (Wire stories, incidents, cases, milestones)</td></tr><tr><td><kbd>Enter</kbd></td><td>Open the focused dispatch</td></tr><tr><td><kbd>S</kbd></td><td>Briefing card for the focused incident</td></tr><tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></td><td>Jump to the Wire, the record, the Wire’s live panel</td></tr><tr><td><kbd>Esc</kbd></td><td>Close</td></tr><tr><td><kbd>?</kbd></td><td>This help</td></tr></table><p class="count">Single-key shortcuts are ignored while you type. Every action also has a visible control.</p>';
+  box.innerHTML = '<h3>Keyboard</h3><table class="keys"><tr><td><kbd>J</kbd> / <kbd>K</kbd></td><td>Next / previous dispatch (Wire stories, incidents, cases, milestones)</td></tr><tr><td><kbd>Enter</kbd></td><td>Open the focused dispatch</td></tr><tr><td><kbd>S</kbd></td><td>Briefing card for the focused incident</td></tr><tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></td><td>Jump to the Wire, the record, the Wire’s live panel</td></tr><tr><td><kbd>/</kbd> or <kbd>⌘K</kbd></td><td>Search everything on the index</td></tr><tr><td><kbd>Esc</kbd></td><td>Close</td></tr><tr><td><kbd>?</kbd></td><td>This help</td></tr></table><p class="count">Single-key shortcuts are ignored while you type. Every action also has a visible control.</p>';
   const acts = el('div', 'card-actions'); const tgl = el('button', 'more-btn', off ? 'Turn shortcuts on' : 'Turn shortcuts off'); tgl.type = 'button'; tgl.addEventListener('click', () => { try { localStorage.setItem('ws-keys', off ? 'on' : 'off'); } catch (e) {} m.remove(); toast(off ? 'Shortcuts on' : 'Shortcuts off'); });
   const close = el('button', 'more-btn', 'Close'); close.type = 'button'; close.addEventListener('click', () => m.remove()); acts.append(tgl, close); box.append(acts); m.append(box); m.addEventListener('click', (e) => { if (e.target === m) m.remove(); }); document.body.append(m); close.focus();
 }
 document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); showSearch(); return; }
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
   if (e.key === '?') { e.preventDefault(); showHelp(); return; }
+  if (e.key === '/') { e.preventDefault(); showSearch(); return; }
   if (KEYS_OFF()) return;
-  if (e.key === 'Escape') { document.getElementById('card-modal')?.remove(); document.getElementById('help-modal')?.remove(); return; }
+  if (e.key === 'Escape') { document.getElementById('card-modal')?.remove(); document.getElementById('help-modal')?.remove(); document.getElementById('search-modal')?.remove(); return; }
   if (e.key === 'j' || e.key === 'J') { e.preventDefault(); focusNav(1); }
   else if (e.key === 'k' || e.key === 'K') { e.preventDefault(); focusNav(-1); }
   else if (e.key === 's' || e.key === 'S') { const n = document.activeElement; const id = n && n.id && n.id.startsWith('row-') ? n.id.slice(4) : null; const r = id && C.scored ? C.scored.find((x) => x.id === id) : null; if (r) { e.preventDefault(); briefingCard(cardForIncident(r)); } }
@@ -1233,6 +1304,7 @@ if (navbar && masthead && 'IntersectionObserver' in window) new IntersectionObse
 const navLinks = [...document.querySelectorAll('#nav-scroll a')];
 let navT;
 function markNav() {
+  if (MF()) return;
   let cur = null;
   navLinks.forEach((a) => { const n = document.getElementById(a.getAttribute('href').slice(1)); if (n && n.getBoundingClientRect().top <= 90) cur = a; });
   navLinks.forEach((a) => a.classList.toggle('on', a === cur));
@@ -1258,6 +1330,7 @@ function route() {
   let h = location.hash.slice(1);
   if (ALIAS[h]) h = ALIAS[h];
   if (!C.scored) { const n0 = h && !h.includes('=') && document.getElementById(h); if (n0) n0.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
+  if (MF()) { const t = mfTarget(h); if (t === 'front') { showFront(); return; } if (t) showSection(t); }
   if (CHART_DRAW[h]) { drawThrough('charts'); showChart(h); document.getElementById('charts').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
   if (h.startsWith('i=')) { openIncident(decodeURIComponent(h.slice(2))); return; }
   if (h.startsWith('c=')) { const id = decodeURIComponent(h.slice(2)); if (fixRows().find((f) => f.incident_id === id)) { fixOpen.id = id; drawThrough('fixes'); drawFixes(); document.getElementById('fix-' + id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
@@ -1268,8 +1341,77 @@ function route() {
   const n = h && document.getElementById(h); if (n) { const sid = sectionOf(n); if (sid) drawThrough(sid); n.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }
 }
 window.addEventListener('hashchange', route);
-document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => { const h = a.getAttribute('href'); if (h.length < 2) return; e.preventDefault(); history.replaceState(null, '', h); route(); }));
+document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => { const h = a.getAttribute('href'); if (h.length < 2) return; e.preventDefault(); if (MF() && h !== location.hash) history.pushState(null, '', h); else history.replaceState(null, '', h); route(); }));
 
+
+/* ---------- phones: a front page and section views (body.mf). Desktop and the one-page mode are untouched. */
+const MF_PREF = () => { try { return localStorage.getItem('ws-mf'); } catch (e) { return null; } };
+const MF = () => !EMBED && window.innerWidth < 760 && MF_PREF() !== 'off';
+const MF_SECTIONS = [['wire', 'The Wire'], ['why', 'I don’t use AI'], ['record', 'The record'], ['capabilities', 'What AI can now do'], ['words', 'In their words'], ['pattern', 'The pattern of 2026'], ['charts', 'The escalation, five ways'], ['next', 'Where this goes next'], ['dives', 'Inside the incidents'], ['fixes', 'Did they fix it?'], ['signals', 'Official signals'], ['all', 'All incidents'], ['about', 'About the data']];
+let mfCur = null; // null = not in phone mode; 'front' or a section id
+function mfTarget(h) {
+  if (!h || h === 'front' || h === 'top') return 'front';
+  if (h === 'wire' || h === 'now' || h === 'brief' || h === 'since') return 'wire';
+  if (CHART_DRAW[h]) return 'charts';
+  if (h.startsWith('i=')) return null;
+  if (h.startsWith('c=')) return 'fixes'; if (h.startsWith('m=')) return 'capabilities'; if (h.startsWith('q=')) return 'words'; if (h.startsWith('d=')) return 'dives';
+  const n = document.getElementById(h); if (!n) return 'front';
+  const host = n.closest('main > *'); if (!host) return 'front';
+  const sec = host.matches('section') ? host : host.querySelector('section');
+  return sec && MF_SECTIONS.some(([id]) => id === sec.id) ? sec.id : 'front';
+}
+function mfApply(target) {
+  const body = document.body, main = document.querySelector('main'), front = document.getElementById('front'), tab = document.getElementById('tabbar');
+  document.querySelector('.mf-back')?.remove();
+  if (!target) { body.classList.remove('mf', 'mf-sec'); [...main.children].forEach((c) => c.removeAttribute('data-mf')); front.hidden = true; tab.hidden = true; mfCur = null; document.querySelectorAll('#tabbar a, #nav-scroll a').forEach((a) => a.classList.remove('on')); return; }
+  body.classList.add('mf'); tab.hidden = false; mfCur = target;
+  const keep = new Set(['ribbon', 'since', 'ticker', 'stale']);
+  body.classList.toggle('mf-sec', target !== 'front');
+  [...main.children].forEach((c) => {
+    if (keep.has(c.id)) { c.removeAttribute('data-mf'); return; }
+    const sec = c.matches('section') ? c : c.querySelector('section'); const id = sec ? sec.id : c.id;
+    const show = target === 'front' ? (id === 'wire' || id === 'front') : id === target;
+    if (show) c.removeAttribute('data-mf'); else c.setAttribute('data-mf', 'off');
+  });
+  front.hidden = target !== 'front';
+  if (target !== 'front') {
+    const sec = document.getElementById(target); const i = MF_SECTIONS.findIndex(([id]) => id === target);
+    const bar = el('div', 'mf-back'); const back = el('a', null, '← Front'); back.href = '#front'; bar.append(back, el('span', 'k', (MF_SECTIONS[i] ? MF_SECTIONS[i][1] : '') + ' · section ' + (i + 1) + ' of ' + MF_SECTIONS.length));
+    sec.prepend(bar);
+  }
+  const tabFor = target === 'front' ? 'front' : target === 'wire' ? 'wire' : target === 'record' ? 'record' : target === 'fixes' ? 'fixes' : target === 'next' ? 'next' : '';
+  document.querySelectorAll('#tabbar a').forEach((a) => a.classList.toggle('on', a.dataset.tab === tabFor));
+  document.querySelectorAll('#nav-scroll a').forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + (target === 'front' ? 'front' : target)));
+}
+function showSection(id) { if (!MF()) return; const re = mfCur !== id; mfApply(id); if (id === 'wire') { if (!wire.open) { wire.open = true; } drawWire(); } else drawSection(id); if (re) window.scrollTo({ top: Math.max(0, document.getElementById(id).getBoundingClientRect().top + scrollY - 52), behavior: 'auto' }); }
+function showFront() { if (!MF()) return; const re = mfCur !== 'front'; mfApply('front'); if (wire.open) { wire.open = false; drawWire(); } drawFront(); if (re) window.scrollTo({ top: 0, behavior: 'auto' }); }
+function mfSync() {
+  if (!MF()) { if (mfCur) { mfApply(null); if (wire.open && window.innerWidth >= 760) { wire.open = false; } drawAll(false); } return; }
+  let h = location.hash.slice(1); if (ALIAS[h]) h = ALIAS[h];
+  const t = mfTarget(h); if (t === 'front' || t === null) { if (mfCur !== 'front' && !(t === null && mfCur)) showFront(); } else if (mfCur !== t) showSection(t);
+}
+function drawFront() {
+  const box = document.getElementById('front-cards'), more = document.getElementById('front-more'); if (!box || !C.scored) return;
+  const h = C.headline, fx = fixRows(), caps = capRows(), live = D.deepdives.find((d) => d.incident_id === D.meta.live_incident) || D.deepdives[0];
+  const card = (href, kicker, title, sub, opts) => { const a = el('a', 'fcard' + (opts && opts.dark ? ' dark-scope' : '')); a.href = href; a.append(el('span', 'ck', kicker)); const t = el('span', 'ct'); if (opts && opts.titleNodes) t.append(...opts.titleNodes); else t.textContent = title; a.append(t, el('span', 'ar', '→'), el('span', 'cs', sub)); if (opts && opts.spark) a.append(opts.spark); return a; };
+  const spark = el('span', 'spark'); const qs = (C.quarterly || []).slice(-14); const mx = Math.max(1, ...qs.map((q) => q.n)); qs.forEach((q, i) => { const b = el('i', i >= qs.length - 4 ? 'r' : ''); b.style.height = Math.round(q.n / mx * 100) + '%'; b.title = q.quarter + ': ' + q.n; spark.append(b); });
+  const verified = fx.filter((f) => fixCur(f).status === 'fixed').length, reopened = fx.filter((f) => fixCur(f).status === 'reopened').length;
+  const lastMoved = fx.slice().sort((a, b) => Math.max(...b.chain.map((c) => Date.parse(c.date) || 0)) - Math.max(...a.chain.map((c) => Date.parse(c.date) || 0)))[0];
+  const newest = caps[0]; const nextCat = (D.catalysts || []).filter((c) => c.date >= C.asOf).sort((a, b) => a.date.localeCompare(b.date))[0]; const topF = (D.forecasts || []).slice().sort((a, b) => +b.probability - +a.probability)[0];
+  const vc = C.victimCounts[live.incident_id] || {}; const countries = new Set((D.victims || []).filter((v) => v.incident_id === live.incident_id && v.country).map((v) => v.country)).size;
+  const pct = (x) => Math.round(x * 100) + '%';
+  box.replaceChildren(
+    card('#record', 'The record · ' + fmtN(h.n) + ' incidents since 2023', '', 'Severe incidents ' + h.severe_prior12 + ' → ' + h.severe_last12 + ' in a year; in ' + pct(h.agentic_recent) + ' of this year’s real-world cases the AI did the acting.', { dark: true, titleNodes: [txt('AI has started breaking in '), el('b', null, 'on its own.')], spark }),
+    card('#fixes', 'Did they fix it? · ' + fx.length + ' cases', '', lastMoved ? 'Newest move: ' + lastMoved.name.split(':')[0] + ', ' + String(fixCur(lastMoved).status).replace('_', ' ') + '.' : 'Checked every refresh.', { titleNodes: [el('b', null, String(verified)), txt(' of ' + fx.length + ' verified fixed. ' + reopened + ' reopened.')] }),
+    card('#capabilities', 'What AI can now do · ' + caps.length + ' milestones', newest ? newest.title : '', 'Both edges: the same capabilities drive the breakthroughs and the incidents.'),
+    card('#next', 'Where this goes next', nextCat ? nextCat.date_label + ': ' + nextCat.event : 'The next two weeks', topF ? topF.probability_label + ' that ' + topF.event.charAt(0).toLowerCase() + topF.event.slice(1) + '.' : ''),
+    card('#dives', 'Inside the incidents', live.name, (vc.rows ? vc.rows + ' organizations' + (countries ? ' in ' + countries + ' countries' : '') + ', ' : '') + 'the map, the timeline, what officials said.'),
+  );
+  const link = (href, t, sub) => { const a = el('a'); a.href = href; a.append(el('b', null, t), txt(sub)); return a; };
+  more.replaceChildren(link('#why', 'I don’t use AI', 'Why it still matters'), link('#words', 'In their words', (D.quotes || []).length + ' quotes, verbatim'), link('#signals', 'Official signals', (D.signals || []).length + ' statements'), link('#pattern', 'The pattern of 2026', 'What changed this year'), link('#charts', 'The escalation', 'Five ways to count it'), link('#all', 'All incidents', fmtN(h.n) + ', ranked and searchable'), link('#about', 'About the data', 'Scores, sources, corrections'));
+  document.getElementById('front-stamp').textContent = 'Updated ' + fmtET(D.meta.as_of);
+}
+document.getElementById('mf-off')?.addEventListener('click', () => { try { localStorage.setItem('ws-mf', 'off'); } catch (e) {} mfApply(null); drawAll(false); toast('One page. The front page is in the ? help.'); });
 /* ---------- draw everything
    The first screen (masthead, ribbon, ticker, the Wire, the brief) is drawn as soon as the data arrives. Everything below is drawn
    when it comes within a screen of the viewport, and pre-drawn in idle time after that, so a phone is not asked to lay out
@@ -1290,24 +1432,27 @@ const LAZY = [
 ];
 const drawn = new Set();
 // A section that comes within a screen of the viewport is drawn together with everything still undrawn above it, so nothing above the reader ever changes height under them (Safari has no scroll anchoring).
-const lazyIO = ('IntersectionObserver' in window) ? new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) drawThrough(e.target.id); }); }, { rootMargin: '900px 0px' }) : null;
+const lazyIO = ('IntersectionObserver' in window) ? new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { if (MF()) drawSection(e.target.id); else drawThrough(e.target.id); } }); }, { rootMargin: '900px 0px' }) : null;
 function drawSection(id) {
   const spec = LAZY.find((s) => s[0] === id); if (!spec || !C.scored) return;
   const first = !drawn.has(id); drawn.add(id);
   const sec = document.getElementById(id); if (sec) { sec.classList.remove('pending'); if (lazyIO) lazyIO.unobserve(sec); }
   spec[1].forEach((fn) => { try { fn(first); } catch (err) { console.error(id, err); } });
 }
-function drawThrough(id) { for (const [sid] of LAZY) { if (!drawn.has(sid)) drawSection(sid); if (sid === id) break; } }
+function drawThrough(id) { if (MF()) { drawSection(id); return; } for (const [sid] of LAZY) { if (!drawn.has(sid)) drawSection(sid); if (sid === id) break; } }
 function drawEverything() { LAZY.forEach(([sid]) => drawSection(sid)); }
 let idleT = null;
 function preDraw() {
+  if (MF()) return;
   const next = LAZY.find(([sid]) => !drawn.has(sid)); if (!next) return;
   const run = () => { drawSection(next[0]); preDraw(); };
   if (document.hidden) { idleT = setTimeout(preDraw, 2000); return; }
   if ('requestIdleCallback' in window) idleT = requestIdleCallback(run, { timeout: 2500 }); else idleT = setTimeout(run, 200);
 }
 function drawAll(first) {
+  if (MF() && !mfCur) mfApply('front');
   drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawWire(); drawNow(); drawBrief();
+  if (MF()) { drawFront(); if (mfCur && mfCur !== 'front') drawSection(mfCur); }
   if (EMBED || !lazyIO) { drawEverything(); return; }
   if (first) {
     LAZY.forEach(([sid]) => { const sec = document.getElementById(sid); if (sec) { sec.classList.add('pending'); lazyIO.observe(sec); } });
@@ -1315,7 +1460,7 @@ function drawAll(first) {
   } else { drawn.forEach((sid) => drawSection(sid)); }
 }
 window.WS.drawAll = () => { if (!C.scored) return false; drawEverything(); return true; };
-let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) drawAll(false); }, 160); });
+let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) { mfSync(); drawAll(false); } }, 160); });
 const DATA_ALL = FILES.concat(OPTIONAL);
 async function loadBundle(url, opts) {
   const r = await fetch(url, opts); if (!r.ok) throw new Error('bundle ' + r.status);
@@ -1331,7 +1476,7 @@ async function checkForUpdate() {
     const m = await (await fetch('data/meta.json?t=' + Date.now(), { cache: 'no-store' })).json();
     if (!D.meta || m.as_of === D.meta.as_of) return;
     try { await loadBundle('data/bundle.json?t=' + Date.now(), { cache: 'no-store' }); } catch (e) { await loadFiles('?t=' + Date.now(), { cache: 'no-store' }); }
-    compute(); drawAll(false);
+    compute(); SIDX = null; drawAll(false);
     const what = (m.changelog && m.changelog[0] && m.changelog[0].text) || 'new data';
     toastEl.classList.add('wide'); toast('Updated just now: ' + (what.length > 160 ? what.slice(0, 158) + '…' : what)); clearTimeout(toastT); toastT = setTimeout(() => { toastEl.classList.remove('on'); setTimeout(() => toastEl.classList.remove('wide'), 300); }, 9000);
   } catch (e) { /* offline or mid-deploy: try again next time */ }

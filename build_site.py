@@ -80,5 +80,31 @@ for it in items:
     rss.append(f'<item><title>{_html.escape(it["title"])}</title><link>{_html.escape(it["link"])}</link><guid isPermaLink="false">{_html.escape(it["guid"])}</guid><pubDate>{it["date"]}</pubDate><description>{_html.escape(it["desc"])}</description></item>')
 rss.append('</channel></rss>')
 open('feed.xml', 'w', encoding='utf-8').write('\n'.join(rss))
+
+# ---- RSS: dispatches (new incidents, cases that moved, milestones), each linking to its own page
+disp = []
+def _sev_tier(r):
+    s = sev(r); return s, ('Critical' if s >= 80 else 'Severe' if s >= 60 else 'Serious' if s >= 40 else 'Moderate' if s >= 20 else 'Minor')
+for r in sorted(inc, key=lambda r: (r.get('disclosed') or r['date']), reverse=True)[:40]:
+    s_, t_ = _sev_tier(r)
+    disp.append(dict(title=f"{r['title']} ({s_}/100 {t_})", link=f"{site}i/{r['id']}/", guid=f"{site}i/{r['id']}/", date=_rfc((r.get('disclosed') or r['date']) + 'T12:00:00+00:00'), desc=r.get('summary') or ''))
+try:
+    for f in json.load(open('data/fixes.json')):
+        cur = next((c for c in f['chain'] if c['stage'] == 'current'), {})
+        disp.append(dict(title=f"Did they fix it? {f['name']}: {cur.get('status', '')}", link=f"{site}c/{f['incident_id']}/", guid=f"{site}c/{f['incident_id']}/#{cur.get('date', '')}", date=_rfc((cur.get('date') or meta['as_of'][:10]) + 'T12:00:00+00:00'), desc=f.get('one_liner') or cur.get('note') or ''))
+except (OSError, ValueError):
+    pass
+try:
+    for c in sorted(json.load(open('data/capabilities.json')), key=lambda c: c['date'], reverse=True)[:20]:
+        disp.append(dict(title=f"What AI can now do: {c['title']}", link=f"{site}m/{c['id']}/", guid=f"{site}m/{c['id']}/", date=_rfc(c['date'] + 'T12:00:00+00:00'), desc=c.get('what') or ''))
+except (OSError, ValueError):
+    pass
+disp.sort(key=lambda it: _eu.parsedate_to_datetime(it['date']), reverse=True)
+rss2 = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0"><channel>', f'<title>{_html.escape(title)}: dispatches</title>', f'<link>{site}</link>',
+        '<description>Every incident, case and capability milestone on the index as it lands, each on its own page with sources.</description>', f'<lastBuildDate>{_rfc(meta["as_of"])}</lastBuildDate>']
+for it in disp[:80]:
+    rss2.append(f'<item><title>{_html.escape(it["title"])}</title><link>{_html.escape(it["link"])}</link><guid isPermaLink="false">{_html.escape(it["guid"])}</guid><pubDate>{it["date"]}</pubDate><description>{_html.escape(it["desc"])}</description></item>')
+rss2.append('</channel></rss>')
+open('feed-dispatches.xml', 'w', encoding='utf-8').write('\n'.join(rss2))
 json.dump(dict(build=build, og_title=og_title, og_desc=og_desc, severe_last12=s12, severe_prior12=p12, agentic_share=share, n=n), open('assets/build.json', 'w'))
 print('built', build, '|', og_title, '|', og_desc)
