@@ -20,7 +20,10 @@ manifest.webmanifest, assets/icon-*.png  home-screen icon and name
 assets/app.js        all page logic (d3 v7, vendored as assets/vendor/d3-lite.min.js, only the modules the page uses; regenerate from assets/vendor/d3-lite.entry.js with esbuild)
 make_og.mjs          renders assets/og.png (the share card) from the live page with Playwright
 make_cards.mjs       renders a 1200x630 share card per dispatch into cards/ (incremental, manifest-based)
+build_tools.py       the two free tools: shield/ (the family safe word card) and scraped/ (a robots.txt generator for AI crawlers, list from the ai.robots.txt project, cached in data/ai-bots.json)
+pageshell.py         the shared page shell (masthead, nav, footer) for dispatch and tool pages
 build_pages.py       writes a full page for every incident (i/<id>/), case (c/<id>/) and milestone (m/<id>/) in the site's design (assets/dispatch.css), plus i/, c/, m/ index pages, sitemap.xml and robots.txt
+research/calls.json  the index's short and medium calls (dated yes/no questions with odds and, later, resolutions); merged with the long forecasts into data/calls.json
 build/build_posts.py drafts the post queue for X from each refresh into posts/ (nothing posts itself)
 build/build_brief.py  writes the daily brief script (briefs/<date>.md: the level, the siren, the board, fix watch, the ledger, the shot, for you) and keeps research/forecast_log.jsonl, the forecast ledger
 feed.xml, feed-dispatches.xml  RSS: the Wire and the brief; every incident, case and milestone with its own page
@@ -40,6 +43,10 @@ node shot.mjs    http://127.0.0.1:8765/index.html   # expect "errors none" three
 ```
 
 `prerender.mjs`, `make_og.mjs`, `make_cards.mjs` and `shot.mjs` need `npm i playwright` and a Chromium; set the `executablePath` at the top of each file to yours.
+
+## The call sheet
+
+"The next warning shots" at the top of the page are dated yes/no questions with the index's odds: short calls resolve in days (CISA listing a flaw, a report being posted, services coming back), long ones in months (the twenty forecasts). The refresh grades them against named sources, a call is never edited after it resolves, and the record (wins–losses and a Brier score) is shown next to the calls. Readers make their own calls; picks and the reader's record live in that browser only until there is a backend for a leaderboard.
 
 ## On the page
 

@@ -47,6 +47,16 @@ Keep descriptions of hacking techniques high-level. Never invent a figure; if a 
 - "Then. Now. Still." (`TNS` in `build/build_live.py`): one everyday task in three columns, each pointing at capability ids and incident ids already on the index. Change it only when a stronger documented comparison exists; never describe it as a Warning Shots test.
 - The signal ribbon, the WS dispatch numbers (date order) and the WS-1 to WS-5 levels (the tiers) are computed from the data at page load; nothing to edit. `feed.xml` (the Wire and the brief) is written by `build_site.py`.
 
+## 2b. The call sheet (every refresh)
+
+`research/calls.json` holds the index's short and medium calls: dated yes/no questions with the index's odds. `build/aux_data.py` holds the long forecasts; `build/build_live.py` merges both into `data/calls.json`. Rules:
+
+1. **Grade first.** For every open call whose `resolve_by` has passed, or whose question has been settled by events, set `resolution: {outcome: yes|no|void, date, note, source_url}` with a source that shows it. `void` is only for a question that turned out to be unanswerable as written (say why). Never change a question, its odds or its date after it resolves, and never delete a resolved call: misses stay on the board.
+2. **Move odds on evidence, not mood.** Before a call resolves, its `odds` may change when something material happens; say what in the changelog ("CISA KEV odds 45% → 70%: Sophos confirmed a compromise"). The forecast ledger (`research/forecast_log.jsonl`, written by `build_brief.py`) records every refresh's odds, so moves are public.
+3. **Keep the board stocked.** At least five open short calls (`horizon: days`, resolving within about two weeks) at all times, drawn from the watch list and the live incident. A good call is specific, checkable at a named source, and has odds you would defend; avoid questions whose answer is already public.
+4. Field names: `id` (stable, kebab-case, ends with the resolve date, e.g. `php-kev-by-oct31`), `question`, `opened`, `resolve_by`, `odds` (0–1), `horizon` (`days|weeks|months`), `basis`, `signposts`, `tags`, `related` (`incident_id`, `watch_id`, `capability_id`), `source_url` (where it will be checked), `resolution`.
+5. The report pastes the graded calls (hit or miss) and any odds that moved, with the reason.
+
 ## 2a. Sundays: the source audit
 
 A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/*.json` early on Sunday mornings and writes `research/link_audit.json` (dead: 404/410/DNS; unreachable: timeouts and 5xx; 401/403/429 count as alive). On the Sunday 06:37 run, and on any run where that file is newer than `as_of`:
@@ -65,6 +75,7 @@ python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
 node prerender.mjs  http://127.0.0.1:8765/index.html   # bakes the first screen (ribbon, ticker, siren, brief, Wire, live rail) into index.html so the headline is in the first paint
 node make_og.mjs    http://127.0.0.1:8765/index.html
 node make_cards.mjs http://127.0.0.1:8765/index.html   # share cards for every dispatch; re-renders only changed records
+python3 build_tools.py                                  # the two free tools (shield/, scraped/); refreshes the AI-crawler list from GitHub when reachable
 python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml
 cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)
 cd build && python3 build_brief.py && cd ..                                  # the daily brief script (briefs/<date>.md) and the forecast ledger (research/forecast_log.jsonl)

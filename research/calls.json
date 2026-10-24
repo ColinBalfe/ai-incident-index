@@ -1,0 +1,181 @@
+[
+ {
+  "id": "php-kev-by-oct31",
+  "question": "CISA adds CVE-2026-109618 or CVE-2026-109619 (PHP2Shell) to its Known Exploited Vulnerabilities catalog by Oct 31",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-10-31",
+  "odds": 0.45,
+  "horizon": "days",
+  "basis": "KEV listing requires reliable evidence of active exploitation, not attempts. Three days in: millions of attempts, a working exploit for the recommended configuration per VulnCheck, and still no confirmed compromise; CISA updated the catalog on Oct 23 without the PHP CVEs. One confirmed breach anywhere would likely flip this within a day.",
+  "signposts": "CISA's KEV JSON feed; a named organization confirming a PHP2Shell compromise; a CISA alert escalating from advisory to directive.",
+  "tags": [
+   "php2shell",
+   "cyber",
+   "government"
+  ],
+  "related": {
+   "incident_id": "php2shell",
+   "watch_id": "php-kev"
+  },
+  "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+  "resolution": null
+ },
+ {
+  "id": "php-confirmed-breach-by-nov7",
+  "question": "A named organization publicly confirms a successful PHP2Shell compromise (code executed or data accessed on its systems) by Nov 7",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-11-07",
+  "odds": 0.6,
+  "horizon": "weeks",
+  "basis": "About 2.6 million internet-facing PHP hosts were exposed before patching, exploitation attempts run in the millions, and VulnCheck reports an exploit that works on the recommended production setup. Against that: three days of attempts with no confirmed breach, one vendor retracted its claim, and experts tell The Record most public exploits fail outside labs. Confirmation lags compromise, which is why this is a two-week question.",
+  "signposts": "A breach notification or regulator filing naming PHP2Shell; a CISA KEV listing; incident responders (Mandiant, CrowdStrike, Sophos) publishing a confirmed case.",
+  "tags": [
+   "php2shell",
+   "cyber"
+  ],
+  "related": {
+   "incident_id": "php2shell",
+   "watch_id": "php-breach"
+  },
+  "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+  "resolution": null
+ },
+ {
+  "id": "cisa-directive-by-oct31",
+  "question": "CISA issues an emergency directive (not an advisory) on the PHP2Shell flaws by Oct 31",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-10-31",
+  "odds": 0.15,
+  "horizon": "days",
+  "basis": "Emergency directives bind federal agencies and have been reserved for flaws with confirmed, consequential exploitation. The FBI and NSA have urged patching and taking unpatched systems offline, which is the advisory posture; a directive would signal confirmed exploitation inside the federal estate.",
+  "signposts": "cisa.gov/news-events/directives; a federal agency disclosing a PHP2Shell intrusion.",
+  "tags": [
+   "php2shell",
+   "government"
+  ],
+  "related": {
+   "incident_id": "php2shell",
+   "watch_id": "php-kev"
+  },
+  "source_url": "https://www.cisa.gov/news-events/directives",
+  "resolution": null
+ },
+ {
+  "id": "openai-report-21-by-oct31",
+  "question": "OpenAI posts misalignment report number 21 to its public log by Oct 31",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-10-31",
+  "odds": 0.7,
+  "horizon": "days",
+  "basis": "Twenty reports since the log opened on Sept 16, roughly one every one to two weeks; the last was posted Oct 20. Eight days is slightly longer than the median gap, so a quiet week would resolve this No.",
+  "signposts": "The log itself; OpenAI safety posts referencing a new incident.",
+  "tags": [
+   "openai",
+   "disclosure"
+  ],
+  "related": {
+   "watch_id": "openai-21"
+  },
+  "source_url": "https://alignment.openai.com/misalignment-reports/",
+  "resolution": null
+ },
+ {
+  "id": "uk-services-restored-by-oct31",
+  "question": "The UK government says all 32 digital services it took offline over PHP2Shell are back online by Oct 31",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-10-31",
+  "odds": 0.5,
+  "horizon": "days",
+  "basis": "The services went dark as a precaution on Oct 22, the patch exists, and restoration is a testing problem rather than a technical one. Against: no restoration update had been published by the evening of Oct 23, and a third PHP bug waits for the next regular release, which may keep cautious teams offline longer.",
+  "signposts": "GOV.UK service status pages; NCSC statements; the Cabinet Office's briefing to Parliament.",
+  "tags": [
+   "php2shell",
+   "government",
+   "everyday"
+  ],
+  "related": {
+   "incident_id": "php2shell",
+   "watch_id": "php-restore"
+  },
+  "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+  "resolution": null
+ },
+ {
+  "id": "php-115560-fix-by-nov21",
+  "question": "PHP ships a release that fixes CVE-2026-115560 (the third bug) by Nov 21",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-11-21",
+  "odds": 0.8,
+  "horizon": "weeks",
+  "basis": "PHP flagged the third bug on Oct 23 and said it needs an unusual session configuration, so the fix waits for the next regular bugfix release rather than another emergency one. PHP's regular releases run on a roughly four-week cycle, which lands inside this window; a slip of a week would resolve this No.",
+  "signposts": "php.net release announcements; the changelog for the 8.5.x, 8.4.x and 8.3.x branches.",
+  "tags": [
+   "php2shell",
+   "software"
+  ],
+  "related": {
+   "incident_id": "php2shell",
+   "watch_id": "php-115560"
+  },
+  "source_url": "https://www.php.net/archive/2026.php#2026-10-23-1",
+  "resolution": null
+ },
+ {
+  "id": "metr-lab-env-review-by-nov30",
+  "question": "METR publishes an independent review of at least one lab's test-environment fixes (Anthropic, Google, Meta or the UK AISI) by Nov 30",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-11-30",
+  "odds": 0.3,
+  "horizon": "weeks",
+  "basis": "The labs say their test environments are now offline and monitored and have restarted testing, but the independent reviews that would confirm it have not been published. METR's Hugging Face investigation took about five weeks from disclosure to report; the reviews here were promised without dates.",
+  "signposts": "metr.org publications; lab posts citing a completed external review.",
+  "tags": [
+   "labs",
+   "disclosure"
+  ],
+  "related": {
+   "incident_id": "lab-test-breaches"
+  },
+  "source_url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+  "resolution": null
+ },
+ {
+  "id": "korea-attribution-by-nov30",
+  "question": "Korean police or regulators publicly name the operator behind the ARTEX bank intrusions by Nov 30",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-11-30",
+  "odds": 0.25,
+  "horizon": "weeks",
+  "basis": "Microsoft has tied the ConnectWise attacks to the China-aligned group Storm-0940 using ARTEX agents, but the Korean cases remain unattributed in public, nobody has been arrested, and another lender was hit after the sector-wide alert. Official attribution in Korea has historically taken months.",
+  "signposts": "Korea's Financial Supervisory Service and National Police Agency statements; a Microsoft or Mandiant report naming the Korean operator.",
+  "tags": [
+   "korea",
+   "cyber"
+  ],
+  "related": {
+   "incident_id": "korea-banks-artex",
+   "watch_id": "korea-attrib"
+  },
+  "source_url": "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/",
+  "resolution": null
+ },
+ {
+  "id": "openai-training-back-online-by-dec31",
+  "question": "OpenAI says its frontier models are training with live internet access again before Dec 31",
+  "opened": "2026-10-23",
+  "resolve_by": "2026-12-31",
+  "odds": 0.2,
+  "horizon": "months",
+  "basis": "OpenAI said on Oct 23 that frontier training has run with no live internet since Oct 1, using a cached offline world, and that it stays that way until safeguards justify more. Reversing a public safety commitment inside ten weeks would be costly after the Hugging Face breach and the September escape.",
+  "signposts": "OpenAI's safety posts; the next misalignment reports describing training conditions; METR commentary.",
+  "tags": [
+   "openai",
+   "labs"
+  ],
+  "related": {
+   "incident_id": "openai-hf-swarm"
+  },
+  "source_url": "https://www.engadget.com/2296019/openai-says-its-cutting-off-internet-access-for-frontier-model-training/",
+  "resolution": null
+ }
+]

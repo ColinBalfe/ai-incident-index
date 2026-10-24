@@ -32,7 +32,18 @@ def first_sentence(t):
 def days_since(iso):
     d = when(iso); return None if d is None else int((AS_OF - d).total_seconds() // 86400)
 
-inc = D('incidents'); news = D('news'); fixes = D('fixes'); caps = D('capabilities'); fc = D('forecasts'); watch = D('watch'); cats = D('catalysts'); brief = D('brief'); live = D('live'); dds = D('deepdives'); tns = D('tns')
+inc = D('incidents'); news = D('news'); fixes = D('fixes'); caps = D('capabilities'); watch = D('watch'); cats = D('catalysts'); brief = D('brief'); live = D('live'); dds = D('deepdives'); tns = D('tns')
+try:
+    fc = D('calls')
+except (OSError, ValueError):
+    fc = [dict(id=f['id'], question=f['event'], odds=float(f['probability']), odds_label=f['probability_label'], resolve_by=f['resolve_by'], basis=f.get('basis', ''), resolution=None) for f in D('forecasts')]
+for f in fc:
+    f.setdefault('probability', f.get('odds')); f.setdefault('probability_label', f.get('odds_label')); f.setdefault('event', f.get('question'))
+def hit(f): r = f.get('resolution') or {}; return r.get('outcome') in ('yes', 'no') and ((float(f['odds']) >= 0.5) == (r['outcome'] == 'yes'))
+graded = [f for f in fc if (f.get('resolution') or {}).get('outcome') in ('yes', 'no')]
+record = (sum(1 for f in graded if hit(f)), sum(1 for f in graded if not hit(f)))
+brier = (sum((float(f['odds']) - (1 if f['resolution']['outcome'] == 'yes' else 0)) ** 2 for f in graded) / len(graded)) if graded else None
+open_calls = [f for f in fc if not f.get('resolution')]
 scored = sorted(inc, key=lambda r: (r['date'], r['id']))
 for i, r in enumerate(scored): r['ws'] = 'WS-%04d' % (i + 1); r['severity'], r['t'] = sev(r)
 
@@ -47,12 +58,12 @@ if os.path.exists(log_path):
             except ValueError: pass
 if not any(r.get('as_of') == meta['as_of'] for r in rows):
     with open(log_path, 'a', encoding='utf-8') as fh:
-        for f in fc: fh.write(json.dumps(dict(as_of=meta['as_of'], id=f['id'], p=float(f['probability']), resolve_by=f.get('resolve_by'), resolved=f.get('resolved')), ensure_ascii=False) + '\n')
+        for f in fc: fh.write(json.dumps(dict(as_of=meta['as_of'], id=f['id'], p=float(f['probability']), resolve_by=f.get('resolve_by'), resolved=(f.get('resolution') or {}).get('outcome')), ensure_ascii=False) + '\n')
 snapshots = sorted({r['as_of'] for r in rows if r.get('as_of') != meta['as_of']})
 prev_as_of = next((s for s in reversed(snapshots) if (AS_OF - when(s)).total_seconds() >= 20 * 3600), None)
 prev = {r['id']: r['p'] for r in rows if r.get('as_of') == prev_as_of} if prev_as_of else {}
 moved = sorted([(f, prev[f['id']]) for f in fc if f['id'] in prev and abs(float(f['probability']) - prev[f['id']]) >= 0.05], key=lambda x: -abs(float(x[0]['probability']) - x[1]))
-resolved = [f for f in fc if f.get('resolved') in ('yes', 'no')]
+resolved = sorted([f for f in fc if (f.get('resolution') or {}).get('outcome') and 0 <= (hours_ago(f['resolution']['date'] + 'T12:00:00-04:00') or 1e9) <= 24 * 7], key=lambda f: f['resolution']['date'], reverse=True)
 
 # ---- the level: highest tier among incidents with an event or disclosure in the last 7 days, read as WS-1..5
 recent = [r for r in scored if (hours_ago(r.get('disclosed') or r['date']) or 1e9) <= 7 * 24 and (hours_ago(r.get('disclosed') or r['date']) or 0) >= -24]
@@ -113,6 +124,7 @@ L.append('')
 L.append('## 1. The level (15s)')
 L.append(f'Today’s level: **{level}**' + (f', set by {top["title"]} ({top["ws"]}, {top["severity"]}/100).' if top else '. No incident on the index was reported or disclosed in the last seven days.'))
 if live_dd: L.append(f'{live_dd["name"]}' + (f', day {live_day}.' if live_day is not None else '.') + ' ' + ' '.join(f'{x["value"]} {x["label"]};' for x in live[:3]).rstrip(';') + '.')
+L.append(f'The index’s record on its calls: **{record[0]}–{record[1]}**' + (f', Brier {brier:.2f}' if brier is not None else '') + f'; {len(open_calls)} open, the next resolves {fdate(min(open_calls, key=lambda f: f["resolve_by"])["resolve_by"]) if open_calls else "—"}.')
 L.append('_Formula: the highest WS level among incidents reported or disclosed in the last seven days. Not a prediction._')
 L.append('')
 L.append('## 2. The siren (90s)')
@@ -121,13 +133,18 @@ if siren:
     if siren.get('summary'): L.append(siren['summary'])
     L.append(f'What it is and what it isn’t: say which figures are confirmed and by whom; name what has not happened. Link: {siren["url"]}')
 L.append('')
-L.append('## 3. The board (90s, one line each)')
+L.append('## 3. The board (90s, one line each: the containment pulse, then the capability pulse)')
 for n in board:
     L.append(f'- **{n["title"]}** — {n.get("summary") or ""} ({n["outlet"]}, {fdate(n.get("published"))}) {n["url"]}')
 if new_inc:
     for r in new_inc: L.append(f'- New on the index: **{r["title"]}** ({r["ws"]}, {r["severity"]}/100 {TIERS[r["t"]]}). {first_sentence(r.get("summary"))} {site}i/{r["id"]}/')
-if new_caps:
-    c = max(new_caps, key=lambda c: c['date']); L.append(f'- Both edges: **{c["title"]}** — {first_sentence(c.get("what"))} Reliable for a defined task: {((c.get("stages") or {}).get("reliable") or {}).get("status", "unknown")}. {site}m/{c["id"]}/')
+cap_pulse = max(new_caps, key=lambda c: c['date']) if new_caps else None
+if cap_pulse:
+    L.append(f'- Capability pulse: **{cap_pulse["title"]}** — {first_sentence(cap_pulse.get("what"))} Reliable for a defined task: {((cap_pulse.get("stages") or {}).get("reliable") or {}).get("status", "unknown")}. {site}m/{cap_pulse["id"]}/')
+else:
+    bk = next((n for n in rest if n.get('topic') == 'breakthrough' and n not in board), None)
+    if bk: L.append(f'- Capability pulse: **{bk["title"]}** — {bk.get("summary") or ""} ({bk["outlet"]}, {fdate(bk.get("published"))}) {bk["url"]}')
+    else: L.append('- Capability pulse: no new milestone or breakthrough story this cycle; say so, do not pad.')
 L.append('')
 L.append('## 4. Fix watch (45s)')
 if moved_case:
@@ -136,16 +153,18 @@ if moved_case:
 L.append(f'The tally: {verified} of {len(fixes)} cases on the index have an independently verified fix; {reopened} have recurred after a claimed fix.')
 L.append('')
 L.append('## 5. The ledger (45s)')
+if resolved:
+    L.append('Graded this week:')
+    for f in resolved:
+        r = f['resolution']; L.append(f'- **{"Called it" if hit(f) else "Missed"}**: {f["event"]} → {r["outcome"]} (we said {f["probability_label"]}). {r.get("note") or ""} {r.get("source_url") or ""}'.rstrip())
 if moved:
     L.append(f'Odds that moved since {fdate(prev_as_of)}:')
     for f, p0 in moved: L.append(f'- {f["event"]}: {int(round(p0 * 100))}% → **{f["probability_label"]}** (by {fdate(f["resolve_by"])}). Say why, from the basis: {first_sentence(f.get("basis"))}')
-else:
-    L.append('No forecast moved by five points or more since the last brief. Standing odds to repeat:')
-    for f in sorted(fc, key=lambda f: -float(f['probability']))[:3]: L.append(f'- **{f["probability_label"]}** that {f["event"][0].lower() + f["event"][1:]} (by {fdate(f["resolve_by"])}).')
-if resolved:
-    for f in resolved: L.append(f'- Graded: {f["event"]} — resolved **{f["resolved"]}** ({f.get("resolution_note") or ""}).')
-nearest = min(fc, key=lambda f: f['resolve_by']) if fc else None
-if nearest: L.append(f'Next to resolve: {nearest["event"]} ({nearest["probability_label"]}), by {fdate(nearest["resolve_by"])}.')
+elif not resolved:
+    L.append('No call moved by five points or more since the last brief. The short calls on the board:')
+    for f in sorted(open_calls, key=lambda f: f['resolve_by'])[:3]: L.append(f'- **{f["probability_label"]}** — {f["event"]}' + ('' if fdate(f['resolve_by']) in f['event'] else f' (by {fdate(f["resolve_by"])})') + '.')
+nearest = min(open_calls, key=lambda f: f['resolve_by']) if open_calls else None
+if nearest: L.append(f'Next to resolve: {nearest["event"]} ({nearest["probability_label"]}), {fdate(nearest["resolve_by"])}. Make your call at warningshots.ai.')
 L.append('')
 L.append('## 6. The shot (30s)')
 for c in upcoming: L.append(f'- {c["date_label"]}: {c["event"]} — {first_sentence(c.get("why"))}')

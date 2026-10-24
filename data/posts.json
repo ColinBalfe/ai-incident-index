@@ -72,6 +72,30 @@
    "image": "cards/m-ai-found-php-flaws-2026.jpg",
    "chars": 259,
    "note": ""
+  },
+  {
+   "kind": "call-new",
+   "text": "New call, 50%: The UK government says all 32 digital services it took offline over PHP2Shell are back online by Oct 31. The services went dark as a precaution on Oct 22, the patch exists, and restoration is a testing problem rather than a technical one.",
+   "link": "https://warningshots.ai/#fc-uk-services-restored-by-oct31",
+   "image": null,
+   "chars": 277,
+   "note": ""
+  },
+  {
+   "kind": "call-new",
+   "text": "New call, 45%: CISA adds CVE-2026-109618 or CVE-2026-109619 (PHP2Shell) to its Known Exploited Vulnerabilities catalog by Oct 31. KEV listing requires reliable evidence of active exploitation, not attempts. Make yours:",
+   "link": "https://warningshots.ai/#fc-php-kev-by-oct31",
+   "image": null,
+   "chars": 242,
+   "note": ""
+  },
+  {
+   "kind": "call-new",
+   "text": "New call, 70%: OpenAI posts misalignment report number 21 to its public log by Oct 31. Twenty reports since the log opened on Sept 16, roughly one every one to two weeks; the last was posted Oct 20. Make yours:",
+   "link": "https://warningshots.ai/#fc-openai-report-21-by-oct31",
+   "image": null,
+   "chars": 234,
+   "note": ""
   }
  ]
 }

@@ -49,48 +49,8 @@ def av_color(org_type):
     t = (org_type or '').lower()
     return 'var(--av-agency)' if 'agency' in t or 'security' in t else 'var(--av-gov)' if 'gov' in t or 'regulator' in t or 'legislat' in t or 'court' in t else 'var(--av-lab)'
 
-# ---------- the shell
-tpl = open('index.template.html', encoding='utf-8').read()
-MARK = re.search(r'<a class="logo"[^>]*>\s*(<svg class="mark nf".*?</svg>)', tpl, re.S).group(1)
-NAV = '<nav aria-label="Sections"><a href="/#wire">The Wire</a><a href="/#record" class="opt2">Record</a><a href="/#capabilities" class="opt">Capabilities</a><a href="/#fixes" class="opt">Did they fix it?</a><a href="/i/">All incidents</a></nav>'
-FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means for you.</span><span>Scores are the index’s own, by a <a href="/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}.</span></div></footer>'
-SCRIPT = """<script>
-document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { var t = b.getAttribute('data-copy'); var done = function () { var x = document.getElementById('toast'); x.textContent = 'Copied'; x.classList.add('on'); setTimeout(function () { x.classList.remove('on'); }, 1500); };
-  if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function () { window.prompt('Copy this link', t); }); else window.prompt('Copy this link', t); }); });
-</script>"""
-
-def shell(*, title, desc, url, img, body, jsonld, kind):
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)} — Warning Shots</title>
-<meta name="description" content="{esc(desc)}">
-<link rel="canonical" href="{esc(url)}">
-<meta property="og:type" content="article"><meta property="og:site_name" content="Warning Shots"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{esc(url)}"><meta property="og:image" content="{esc(img)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(desc)}"><meta name="twitter:image" content="{esc(img)}">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icon-180.png"><link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#F4F3EF" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A111E" media="(prefers-color-scheme: dark)">
-<link rel="alternate" type="application/rss+xml" title="Warning Shots: the Wire and the daily brief" href="/feed.xml">
-<link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/dispatch.css?v={build}">
-<script>try {{ var t = localStorage.getItem('aii-theme'); if (t) document.documentElement.dataset.theme = t; }} catch (e) {{}}</script>
-<script type="application/ld+json">{jsonld}</script>
-</head>
-<body data-kind="{kind}">
-<a class="skip" href="#main">Skip to content</a>
-<header class="mast"><div class="wrap"><a class="logo" href="/" aria-label="Warning Shots, home">{MARK}<span class="wm">Warning Shots</span></a>{NAV}</div></header>
-<main id="main"><div class="wrap">
-{body}
-</div></main>
-{FOOT}
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-{SCRIPT}
-</body>
-</html>
-"""
+# ---------- the shell (shared with build_tools.py)
+from pageshell import shell, MARK, NAV, FOOT, SCRIPT
 
 def article_ld(title, desc, url, img, published, section):
     d = {"@context": "https://schema.org", "@type": "Article", "headline": title[:110], "description": desc, "url": url, "mainEntityOfPage": url, "image": [img],
@@ -285,6 +245,12 @@ case_rows = [f'<li><span class="t"><a href="/c/{esc(f["incident_id"])}/">{esc(f[
 urls.append(index_page('c', 'Did they fix it?', 'What happened after the headline, for each major incident: the report, the response, the claimed fix, whether anyone independent checked, and where it stands. Re-checked every refresh.', case_rows, 'For each major AI incident: the report, the response, the claimed fix, whether anyone independent checked, and where it stands today. Warning Shots.'))
 cap_rows = [f'<li><span class="t"><a href="/m/{esc(c["id"])}/">{esc(c["title"])}</a><small>{esc(fdate(c["date"], c.get("date_precision")))} · {esc(c.get("org") or "")} · {esc((c.get("domain") or "").capitalize())} · reliable: {esc(((c.get("stages") or {}).get("reliable") or {}).get("status") or "unknown")}</small></span></li>' for c in sorted(caps, key=lambda c: c['date'], reverse=True)]
 urls.append(index_page('m', 'What AI can now do', 'Dated, sourced results that moved what AI can do, each graded from demonstration to real consequences. The breakthroughs and the incidents come from the same capabilities.', cap_rows, f'{len(caps)} AI capability milestones since 2023, graded from demonstration to real consequences. Warning Shots.'))
+
+# ---------- the tools (built by build_tools.py) go in the sitemap too
+try:
+    urls += [u for u in json.load(open('data/tool_urls.json')) if u not in urls]
+except (OSError, ValueError):
+    pass
 
 # ---------- prune pages for records that no longer exist
 keep = {u.replace(site, '') for u in urls}

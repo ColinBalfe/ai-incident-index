@@ -85,6 +85,22 @@ for c in caps:
     if within(c.get('date'), 24 * 7):
         add('milestone', f"What AI can now do: {c['title']}. {first_sentence(c.get('what'))} Reliable for a defined task: {(c.get('stages', {}).get('reliable') or {}).get('status', 'unknown')}.", link=f"{site}m/{c['id']}/", image=card('m', c['id']))
 
+# 5b. the call sheet: graded calls (24h) and new calls (24h); the site is the destination
+try:
+    calls = D('calls')
+except (OSError, ValueError):
+    calls = []
+new_calls = []
+for c in calls:
+    r = c.get('resolution') or {}
+    if r.get('outcome') in ('yes', 'no') and within(r.get('date') + 'T12:00:00-04:00', 24):
+        hit = (float(c['odds']) >= 0.5) == (r['outcome'] == 'yes')
+        add('call-graded', f"{'Called it' if hit else 'Missed'}. We said {c['odds_label']}: {c['question']}. Resolved {r['outcome'].upper()}. {first_sentence(r.get('note'))} Every call and its grade:", link=f"{site}#fc-{c['id']}", note='A miss is posted with the same prominence as a hit; that is what makes the record worth anything.')
+    elif not r and within(c.get('opened') + 'T12:00:00-04:00', 24) and c.get('horizon') in ('days', 'weeks'):
+        new_calls.append(c)
+for c in sorted(new_calls, key=lambda c: (c['resolve_by'], abs(0.5 - float(c['odds']))))[:3]:   # the three soonest; the rest are on the board
+    add('call-new', f"New call, {c['odds_label']}: {c['question']}. {first_sentence(c.get('basis'))} Make yours:", link=f"{site}#fc-{c['id']}")
+
 # 6. the week ahead (Sundays, or on request)
 if AS_OF.astimezone(ET).weekday() == 6 or '--week-ahead' in sys.argv:
     lines = ['The next 14 days on Warning Shots:']

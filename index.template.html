@@ -207,6 +207,52 @@ b, strong { font-weight: 600; }
   body.mf .toast { bottom: 80px; }
 }
 
+
+/* ----- the next warning shots: the call strip and the call sheet */
+.calls { padding-top: clamp(22px, 3vw, 34px); }
+.calls-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.calls-head h2 { font-family: var(--sans); font-size: clamp(1.15rem, 1.8vw, 1.4rem); font-weight: 700; display: inline-flex; align-items: center; gap: 10px; }
+.calls-head .k b { color: var(--ink); font-weight: 600; }
+.calls-head .calls-all { margin-left: auto; text-decoration: none; }
+.calls-head .calls-all:hover { text-decoration: underline; }
+.calls-strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+@media (max-width: 1100px) { .calls-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } .calls-strip .call:nth-child(n+4) { display: none; } }
+@media (max-width: 759px) { .calls-strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin-left: -16px; margin-right: -16px; padding: 0 16px 6px; scrollbar-width: none; } .calls-strip::-webkit-scrollbar { display: none; } .calls-strip .call { flex: 0 0 82%; scroll-snap-align: start; } .calls-strip .call:nth-child(n+4) { display: block; } }
+.call { border: 1px solid var(--line-2); border-top: 3px solid var(--alarm); background: var(--panel); padding: 12px 14px 10px; display: flex; flex-direction: column; gap: 8px; min-height: 196px; position: relative; }
+.call.lean-no { border-top-color: var(--line-2); }
+.call-top { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; color: var(--ink-3); letter-spacing: .04em; text-transform: uppercase; }
+.call-top b { color: var(--alarm); font-weight: 600; }
+.call-q { font-family: var(--serif); font-weight: 700; font-size: 1.02rem; line-height: 1.28; letter-spacing: 0; margin: 0; flex: 1; text-wrap: pretty; }
+.call-odds { display: flex; align-items: baseline; gap: 8px; }
+.call-odds b { font-size: 1.9rem; font-weight: 500; line-height: 1; letter-spacing: -0.03em; font-variation-settings: 'wdth' 78; font-variant-numeric: tabular-nums; }
+.call-odds span { font-size: 12px; color: var(--ink-2); line-height: 1.25; }
+.call-pick { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--ink-3); flex-wrap: wrap; }
+.call-pick button { font: inherit; font-size: 12.5px; font-weight: 600; border: 1px solid var(--line-2); background: var(--panel); color: var(--ink); padding: 5px 12px; cursor: pointer; min-height: 30px; }
+.call-pick button:hover { border-color: var(--ink); }
+.call-pick button.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.call-pick .you { margin-left: auto; }
+.call-pick .you b { color: var(--ink); font-weight: 600; }
+.call-why { background: none; border: 0; padding: 0; font: inherit; font-size: 12.5px; color: var(--ink-2); text-decoration: underline; cursor: pointer; text-align: left; }
+.call-basis { font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 8px; }
+.call-basis b { color: var(--ink); }
+.call-basis a { color: var(--ink-2); }
+.call.graded .call-top b { color: var(--ink-2); }
+.call-out { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border: 1px solid var(--line-2); align-self: flex-start; }
+.call-out.hit { color: var(--ok); border-color: var(--ok); }
+.call-out.miss { color: var(--alarm); border-color: var(--alarm); }
+.call-record { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 12px 0 6px; font-size: 13.5px; color: var(--ink-2); padding: 10px 12px; border: 1px solid var(--line); background: var(--paper); }
+.call-record b { color: var(--ink); font-weight: 600; }
+.fc .fc-pick { display: inline-flex; gap: 6px; margin-left: 10px; vertical-align: middle; }
+.fc .fc-pick button { font: inherit; font-size: 11.5px; font-weight: 600; border: 1px solid var(--line-2); background: var(--panel); color: var(--ink); padding: 2px 8px; cursor: pointer; min-height: 24px; }
+.fc .fc-pick button.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.fc .fc-res { font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; margin-left: 8px; }
+.fc .fc-res.hit { color: var(--ok); } .fc .fc-res.miss { color: var(--alarm); }
+.fc .fc-due { font-size: 12px; color: var(--ink-3); margin-left: 8px; }
+
+.why-tools { margin: 16px 0 0; padding: 12px 14px; border: 1px solid var(--line); background: var(--panel); font-size: 14.5px; color: var(--ink-2); }
+.why-tools b { color: var(--ink); }
+.why-tools a { color: var(--ink); }
+
 /* ----- type scale */
 h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
 h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.6rem, 2.7vw, 2.15rem); letter-spacing: -0.01em; }
@@ -820,6 +866,15 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
   <div class="since wrap" id="since" hidden></div>
   <div class="ticker dark-scope" id="ticker" aria-label="Latest official statements"><div class="ticker-label"><span class="pulse" aria-hidden="true"></span>Latest</div><div class="ticker-track"><div class="ticker-run" id="ticker-run"></div></div></div>
 
+  <section class="wrap calls" id="calls" aria-labelledby="calls-h">
+    <div class="calls-head">
+      <h2 id="calls-h"><span class="pulse" aria-hidden="true"></span>The next warning shots</h2>
+      <span class="k" id="calls-k"></span>
+      <a class="k calls-all" href="#card-forecast">All calls →</a>
+    </div>
+    <div class="calls-strip" id="calls-strip"></div>
+  </section>
+
   <section class="wrap wire" id="wire" aria-labelledby="wire-h">
     <div class="wire-head">
       <h2 id="wire-h"><span class="pulse" aria-hidden="true"></span>The Wire</h2>
@@ -861,6 +916,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
     <div class="panel why-panel">
       <div class="why-head"><h2>I don’t use AI. Why does this matter to me?</h2><p class="lede">Because the systems you rely on already do. Four things on this index that reached people who never opened a chatbot.</p></div>
       <div class="why-grid" id="why-grid"></div>
+    <p class="why-tools"><b>Two things you can do today, free, nothing leaves your browser:</b> <a href="/shield/">make your family a safe word</a> against voice-clone and imposter calls, and <a href="/scraped/">keep your work out of AI training sets</a> with a robots.txt built for the 200 crawlers that scrape for AI.</p>
     </div>
   </section>
 
@@ -979,7 +1035,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 
   <section class="wrap" id="next">
     <div class="sec-head"><h2>Where this goes next</h2></div>
-    <p class="lede">What to watch in the next two weeks, the dated tests after that, probabilities for the next twelve months, and the five forces behind the trend.</p>
+    <p class="lede">What to watch in the next two weeks, the dated tests after that, the full call sheet with the index’s record, and the five forces behind the trend.</p>
     <div class="grid2 next-grid">
       <div class="panel" id="card-watch">
         <div class="panel-title">The next 14 days</div>
@@ -991,8 +1047,9 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <div id="cal-more"></div>
       </div>
       <div class="panel" id="card-forecast">
-        <div class="panel-title">Forecast: the probability each happens by the date shown</div>
-        <div class="panel-note">Calibrated judgments from this index, based on the base rates in the charts and the dated catalysts. Open any line for the reasoning and the signposts that would move it.</div>
+        <div class="panel-title">The call sheet: every dated yes/no question the index has put odds on</div>
+        <div class="panel-note">Short calls resolve in days, long ones in months. The odds are this index’s judgment from the base rates in the charts and the dated catalysts; a call is never edited after it resolves, and misses stay on the board. Make your own call on any line; your record is kept in this browser. Open a line for the reasoning and the signposts that would move it.</div>
+        <div class="call-record" id="call-record"></div>
         <div id="forecast-list"></div>
         <div id="forecast-more"></div>
         <div class="share" id="share-forecast"></div>

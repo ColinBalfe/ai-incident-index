@@ -164,6 +164,32 @@ TNS = dict(
  do_now="If you let an agent act for you, give it the least access that does the job, keep backups it cannot reach, and compare its summary with what it actually did; this index records agents misreporting their own actions.",
 )
 
+
+def build_calls():
+    """The call sheet: every dated yes/no question the index has put odds on, short (research/calls.json) and long (aux_data.FORECASTS),
+    with resolutions. A call is never edited after it resolves; odds may move before then (the brief's ledger logs every refresh)."""
+    import datetime as dt
+    from aux_data import FORECASTS
+    here = os.path.dirname(os.path.abspath(__file__))
+    short = json.load(open(os.path.join(here, '..', 'research', 'calls.json'), encoding='utf-8'))
+    out, seen = [], set()
+    def push(c):
+        assert c['id'] not in seen, 'duplicate call id ' + c['id']; seen.add(c['id'])
+        assert c['question'] and c['resolve_by'] and 0 < float(c['odds']) < 1, 'bad call ' + c['id']
+        dt.date.fromisoformat(c['resolve_by']); dt.date.fromisoformat(c['opened'])
+        r = c.get('resolution')
+        if r:
+            assert r.get('outcome') in ('yes', 'no', 'void') and r.get('date') and (r.get('note') or r.get('source_url')), 'bad resolution ' + c['id']
+        c['odds'] = round(float(c['odds']), 2); c['odds_label'] = str(int(round(c['odds'] * 100))) + '%'
+        out.append(c)
+    for c in short:
+        push(dict(c))
+    for f in FORECASTS:
+        push(dict(id=f['id'], question=f['event'], opened=f.get('opened', '2026-10-22'), resolve_by=f['resolve_by'], odds=float(f['probability']), horizon='months' if f['horizon_months'] >= 3 else 'weeks',
+                  horizon_label=f['horizon'], basis=f['basis'], signposts=f.get('signposts', ''), tags=f.get('tags', []), related=f.get('related', {}), source_url=f.get('source_url', ''), resolution=f.get('resolution')))
+    out.sort(key=lambda c: (c['resolution'] is not None, c['resolve_by'], c['id']))
+    return out
+
 if __name__ == '__main__':
     json.dump(TNS, open(f'{OUT}/tns.json', 'w'), ensure_ascii=False, indent=1)
     caps = build_capabilities(); fixes = build_fixes()
@@ -174,6 +200,9 @@ if __name__ == '__main__':
     json.dump(WATCH, open(f'{OUT}/watch.json', 'w'), ensure_ascii=False, indent=0)
     json.dump(META, open(f'{OUT}/meta.json', 'w'), ensure_ascii=False, indent=1)
     json.dump(BRIEF, open(f'{OUT}/brief.json', 'w'), ensure_ascii=False, indent=1)
+    calls = build_calls()
+    json.dump(calls, open(f'{OUT}/calls.json', 'w'), ensure_ascii=False, indent=0)
+    print('calls', len(calls), 'open', sum(1 for c in calls if not c['resolution']), 'resolved', sum(1 for c in calls if c['resolution']))
     news = build_news()
     json.dump(news, open(f'{OUT}/news.json', 'w'), ensure_ascii=False, indent=0)
     print('live', len(LIVE), 'watch', len(WATCH), 'news', len(news), 'siren', next((r['title'] for r in news if r['siren']), None))

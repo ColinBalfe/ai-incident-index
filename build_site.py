@@ -44,7 +44,7 @@ open('index.html', 'w', encoding='utf-8').write(out)
 
 # ---- data/bundle.json: every data file in one request (the page preloads it; the individual files stay for scripts and the update check)
 FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta',
-         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns']
+         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls']
 bundle = {}
 for f in FILES:
     try:

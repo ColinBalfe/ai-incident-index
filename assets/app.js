@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const D = {};
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -672,20 +672,89 @@ function drawWatch() {
 function drawDrivers() {
   document.getElementById('drivers').replaceChildren(...D.drivers.map((d) => { const c = el('div', 'driver'); c.append(el('div', 'dn', d.stat), el('div', 'dl', d.stat_label), el('h4', null, d.title), el('p', null, d.body)); return c; }));
 }
+
+/* ---------- the next warning shots: the call sheet (dated yes/no questions with the index's odds), reader picks kept in this browser */
+const callRows = () => (D.calls || []).filter((c) => c && c.question && c.resolve_by);
+const callOpen = (c) => !c.resolution;
+const callDays = (c) => Math.ceil((Date.parse(c.resolve_by + 'T00:00:00-04:00') - Date.now()) / 864e5); // whole days until the resolution date, Eastern
+const callLean = (c) => +c.odds >= 0.5;
+const houseHit = (c) => !!(c.resolution && c.resolution.outcome !== 'void' && (callLean(c) === (c.resolution.outcome === 'yes')));
+const PICKS = (() => { try { return JSON.parse(localStorage.getItem('ws-calls') || '{}'); } catch (e) { return {}; } })();
+function setPick(id, pick) { if (PICKS[id] && PICKS[id].pick === pick) delete PICKS[id]; else PICKS[id] = { pick, at: new Date().toISOString() }; try { localStorage.setItem('ws-calls', JSON.stringify(PICKS)); } catch (e) {} drawCallStrip(); drawForecast(); drawRibbon(); }
+function houseRecord() {
+  const g = callRows().filter((c) => c.resolution && c.resolution.outcome !== 'void');
+  const w = g.filter(houseHit).length;
+  return { w, l: g.length - w, n: g.length, brier: g.length ? g.reduce((a, c) => a + Math.pow(+c.odds - (c.resolution.outcome === 'yes' ? 1 : 0), 2), 0) / g.length : null, open: callRows().filter(callOpen).length };
+}
+function myRecord() {
+  const made = Object.keys(PICKS).filter((id) => callRows().some((c) => c.id === id));
+  const g = callRows().filter((c) => PICKS[c.id] && c.resolution && c.resolution.outcome !== 'void');
+  const w = g.filter((c) => PICKS[c.id].pick === c.resolution.outcome).length;
+  return { made: made.length, w, l: g.length - w, n: g.length };
+}
+function callDue(c) {
+  if (c.resolution) return (c.resolution.outcome === 'void' ? 'Void' : 'Resolved ' + (c.resolution.outcome === 'yes' ? 'yes' : 'no')) + ' · ' + fmtDate(new Date(c.resolution.date));
+  const d = callDays(c);
+  return (d < 0 ? 'Awaiting grade' : d === 0 ? 'Resolves today' : d === 1 ? 'Resolves tomorrow' : 'Resolves in ' + d + ' days') + ' · ' + fmtDay(new Date(c.resolve_by + 'T12:00:00Z'));
+}
+function pickButtons(c, cls) {
+  const wrap = el('span', cls || 'call-pick'); const mine = PICKS[c.id] && PICKS[c.id].pick;
+  if (c.resolution) {
+    const out = c.resolution.outcome;
+    if (mine) { const hit = mine === out; wrap.append(el('span', 'you', ''), txt('')); const y = wrap.querySelector('.you'); y.append(txt('You said ' + mine + ': '), el('b', null, out === 'void' ? 'void' : hit ? 'right' : 'wrong')); }
+    return wrap;
+  }
+  ['yes', 'no'].forEach((p) => { const b = el('button', mine === p ? 'on' : ''); b.type = 'button'; b.textContent = p === 'yes' ? 'Yes' : 'No'; b.setAttribute('aria-pressed', String(mine === p)); b.setAttribute('aria-label', 'Your call: ' + p); b.addEventListener('click', (e) => { e.stopPropagation(); setPick(c.id, p); }); wrap.append(b); });
+  const you = el('span', 'you'); if (mine) { you.append(txt('You: '), el('b', null, mine)); } else if (cls !== 'fc-pick') you.textContent = 'Your call';
+  wrap.append(you); return wrap;
+}
+let callOpenWhy = null;
+function drawCallStrip() {
+  const box = document.getElementById('calls-strip'), k = document.getElementById('calls-k'), sec = document.getElementById('calls'); if (!box) return;
+  const all = callRows(); if (!all.length) { sec.style.display = 'none'; return; } sec.style.display = '';
+  const open = all.filter(callOpen).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by) || Math.abs(0.5 - +a.odds) - Math.abs(0.5 - +b.odds));
+  const recent = all.filter((c) => c.resolution && (Date.now() - Date.parse(c.resolution.date)) < 7 * 864e5).sort((a, b) => b.resolution.date.localeCompare(a.resolution.date));
+  const show = recent.slice(0, 1).concat(open).slice(0, 5);
+  const hr = houseRecord(), me = myRecord();
+  k.replaceChildren(el('b', null, String(hr.open) + ' open calls'), txt(' · the index’s record '), el('b', null, hr.w + '–' + hr.l), txt(hr.n ? ' · Brier ' + hr.brier.toFixed(2) : (open.length ? ' · first grade ' + fmtDay(new Date(open[0].resolve_by)) : '')), txt(me.made ? ' · your calls ' + me.made + (me.n ? ', record ' + me.w + '–' + me.l : '') : ' · make yours below'));
+  box.replaceChildren(...show.map((c) => {
+    const card = el('article', 'call' + (callLean(c) ? '' : ' lean-no') + (c.resolution ? ' graded' : '')); card.dataset.id = c.id; card.setAttribute('aria-label', 'Call: ' + c.question);
+    const top = el('div', 'call-top'); const due = el('span'); if (!c.resolution && callDays(c) <= 3) { due.append(el('b', null, callDue(c))); } else due.textContent = callDue(c); top.append(due, el('span', null, c.horizon === 'days' ? 'short' : c.horizon === 'weeks' ? 'weeks' : 'long'));
+    const q = el('h3', 'call-q', c.question);
+    const odds = el('div', 'call-odds'); odds.append(el('b', null, c.odds_label || Math.round(+c.odds * 100) + '%'), el('span', null, +c.odds === 0.5 ? 'a coin flip, by the index' : callLean(c) ? 'the index says yes' : 'chance of yes; the index leans no'));
+    card.append(top, q, odds);
+    if (c.resolution) { const o = el('span', 'call-out ' + (c.resolution.outcome === 'void' ? '' : houseHit(c) ? 'hit' : 'miss')); o.textContent = c.resolution.outcome === 'void' ? 'void' : (c.resolution.outcome === 'yes' ? 'Yes' : 'No') + ' · index ' + (houseHit(c) ? 'right' : 'wrong'); card.append(o); }
+    card.append(pickButtons(c));
+    const why = el('button', 'call-why', callOpenWhy === c.id ? 'Hide the reasoning' : 'Why these odds'); why.type = 'button'; why.addEventListener('click', () => { callOpenWhy = callOpenWhy === c.id ? null : c.id; drawCallStrip(); }); card.append(why);
+    if (callOpenWhy === c.id) { const b = el('div', 'call-basis'); b.append(el('b', null, 'Why: '), txt(c.basis || '')); if (c.signposts) b.append(el('br'), el('b', null, 'Watch for: '), txt(c.signposts)); if (c.resolution && c.resolution.note) b.append(el('br'), el('b', null, 'Resolution: '), txt(c.resolution.note + ' ')); if ((c.resolution && c.resolution.source_url) || c.source_url) { const a = el('a', null, 'source'); a.href = (c.resolution && c.resolution.source_url) || c.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; b.append(txt(' '), a); } card.append(b); }
+    return card;
+  }));
+}
 let fcOpen = false;
 function drawForecast() {
-  const box = document.getElementById('forecast-list'), more = document.getElementById('forecast-more');
-  const groups = d3.groups(D.forecasts, (r) => r.horizon).sort((a, b) => +a[1][0].horizon_months - +b[1][0].horizon_months);
-  const LIMIT = 20; let shown = 0;
-  box.replaceChildren(...groups.map(([hz, items]) => {
-    const g = el('div', 'fc-group'); g.append(el('div', 'fc-ghead', hz + ', by ' + fmtDate(new Date(items[0].resolve_by))));
-    items.slice().sort((a, b) => +b.probability - +a.probability).forEach((r) => {
+  const box = document.getElementById('forecast-list'), more = document.getElementById('forecast-more'), rec = document.getElementById('call-record'); if (!box) return;
+  const all = callRows(); if (!all.length) return;
+  const hr = houseRecord(), me = myRecord();
+  if (rec) { rec.replaceChildren(el('span', null, ''), el('span', null, ''), el('span', null, '')); const [a, b, c] = rec.children; a.append(el('b', null, 'The index’s record: ' + hr.w + '–' + hr.l), txt(hr.n ? ' on ' + hr.n + ' graded calls, Brier ' + hr.brier.toFixed(2) + ' (0 is perfect, 0.25 is coin-flipping)' : ' · nothing has resolved yet; the first short calls grade on ' + fmtDay(new Date(all.filter(callOpen).sort((x, y) => x.resolve_by.localeCompare(y.resolve_by))[0].resolve_by)))); b.append(el('b', null, 'Your record: ' + (me.made ? me.w + '–' + me.l : '—')), txt(me.made ? ' on ' + me.n + ' graded, ' + me.made + ' calls made' : ' · tap Yes or No on any call')); c.append(txt(hr.open + ' open calls. Odds can move before a call resolves; every refresh’s odds are logged, and the brief reports what moved.')); }
+  const now = Date.now();
+  const groups = [['Resolving within a week', (c) => callOpen(c) && callDays(c) <= 7], ['Within a month', (c) => callOpen(c) && callDays(c) > 7 && callDays(c) <= 31], ['Within three months', (c) => callOpen(c) && callDays(c) > 31 && callDays(c) <= 93], ['Later', (c) => callOpen(c) && callDays(c) > 93], ['Graded', (c) => !callOpen(c)]];
+  const LIMIT = 14; let shown = 0;
+  box.replaceChildren(...groups.map(([label, test]) => {
+    const items = all.filter(test).sort((a, b) => (callOpen(a) ? a.resolve_by.localeCompare(b.resolve_by) || (+b.odds - +a.odds) : (b.resolution.date.localeCompare(a.resolution.date))));
+    const g = el('div', 'fc-group'); if (!items.length) return g; g.append(el('div', 'fc-ghead', label + ' · ' + items.length));
+    items.forEach((r) => {
       if (!fcOpen && shown >= LIMIT) return; shown++;
-      const row = el('div', 'fc'); row.tabIndex = 0; row.id = 'fc-' + r.id;
-      const bar = el('div', 'fc-bar'), track = el('div', 'fc-track'), fill = el('div', 'fc-fill'); const p = +r.probability; fill.style.width = (p * 100) + '%'; fill.style.background = p >= 0.5 ? 'var(--alarm)' : 'color-mix(in oklab, var(--alarm) 50%, var(--line-2))'; track.append(fill);
-      bar.append(track, el('span', 'fc-pct', r.probability_label));
-      const more = el('div', 'fc-more'); const b1 = el('div'); b1.append(el('b', null, 'Why: '), txt(r.basis)); const b2 = el('div'); b2.style.marginTop = '4px'; b2.append(el('b', null, 'Watch for: '), txt(r.signposts)); more.append(b1, b2);
-      row.append(el('div', 'fc-event', r.event), bar, more);
+      const row = el('div', 'fc' + (r.resolution ? ' graded' : '')); row.tabIndex = 0; row.id = 'fc-' + r.id;
+      const ev = el('div', 'fc-event'); ev.append(txt(r.question));
+      if (r.resolution) { const res = el('span', 'fc-res ' + (r.resolution.outcome === 'void' ? '' : houseHit(r) ? 'hit' : 'miss')); res.textContent = r.resolution.outcome === 'void' ? 'void' : (r.resolution.outcome === 'yes' ? 'Yes' : 'No') + ' · index ' + (houseHit(r) ? 'right' : 'wrong'); ev.append(res); }
+      ev.append(el('span', 'fc-due', callDue(r)));
+      const bar = el('div', 'fc-bar'), track = el('div', 'fc-track'), fill = el('div', 'fc-fill'); const p = +r.odds; fill.style.width = (p * 100) + '%'; fill.style.background = p >= 0.5 ? 'var(--alarm)' : 'color-mix(in oklab, var(--alarm) 50%, var(--line-2))'; track.append(fill);
+      bar.append(track, el('span', 'fc-pct', r.odds_label || Math.round(p * 100) + '%'));
+      if (!r.resolution || PICKS[r.id]) bar.append(pickButtons(r, 'fc-pick'));
+      const moreB = el('div', 'fc-more'); const b1 = el('div'); b1.append(el('b', null, 'Why: '), txt(r.basis || '')); const b2 = el('div'); b2.style.marginTop = '4px'; b2.append(el('b', null, 'Watch for: '), txt(r.signposts || '')); moreB.append(b1, b2);
+      if (r.resolution && r.resolution.note) { const b3 = el('div'); b3.style.marginTop = '4px'; b3.append(el('b', null, 'Resolution: '), txt(r.resolution.note + ' ')); if (r.resolution.source_url) { const a = el('a', null, 'source'); a.href = r.resolution.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); b3.append(a); } moreB.append(b3); }
+      else if (r.source_url) { const b4 = el('div'); b4.style.marginTop = '4px'; const a = el('a', null, 'Where it will be checked'); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); b4.append(a); moreB.append(b4); }
+      row.append(ev, bar, moreB);
       const toggle = () => row.classList.toggle('open');
       row.addEventListener('click', toggle); row.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
       g.append(row);
@@ -693,9 +762,9 @@ function drawForecast() {
     return g;
   }).filter((g) => g.children.length > 1));
   more.replaceChildren();
-  if (D.forecasts.length > LIMIT) { const b = el('button', 'more-btn', fcOpen ? 'Show fewer' : 'Show all ' + D.forecasts.length + ' forecasts'); b.type = 'button'; b.addEventListener('click', () => { fcOpen = !fcOpen; drawForecast(); }); more.append(b); }
-  const top = D.forecasts.slice().sort((a, b) => +b.probability - +a.probability)[0];
-  shareRow(document.getElementById('share-forecast'), { anchor: 'card-forecast', text: `Twenty dated forecasts for AI safety over the next year, each with its reasoning. Highest: ${top.probability_label} that ${top.event.charAt(0).toLowerCase() + top.event.slice(1)}. Warning Shots:` });
+  if (all.length > LIMIT) { const b = el('button', 'more-btn', fcOpen ? 'Show fewer' : 'Show all ' + all.length + ' calls'); b.type = 'button'; b.addEventListener('click', () => { fcOpen = !fcOpen; drawForecast(); }); more.append(b); }
+  const soon = all.filter(callOpen).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by))[0];
+  shareRow(document.getElementById('share-forecast'), { anchor: 'card-forecast', text: `${hr.open} dated yes/no calls on AI's dangers and breakthroughs, with odds, graded in public. Next to resolve: ${soon ? soon.question + ' (' + (soon.odds_label || '') + ')' : ''}. Warning Shots:` });
 }
 let calOpen = false;
 function drawCalendar() {
@@ -965,7 +1034,7 @@ function drawQuotes() {
 function embedMode() {
   if (!EMBED) return;
   document.body.classList.add('embed');
-  const targets = { timeline: ['ch-timeline', 'lg-autonomy', 'hero-share'], now: ['now'], wire: ['siren', 'wire-board'], edges: ['card-edges'], capabilities: ['card-capgrid'], tns: ['card-tns'], fixes: ['card-fixes'], why: ['why'], quarters: ['card-quarters'], disclosure: ['card-disclosure'], scatter: ['card-scatter'], horizon: ['card-horizon'], pipeline: ['card-pipeline'], words: ['quotes'], brief: ['brief'] };
+  const targets = { timeline: ['ch-timeline', 'lg-autonomy', 'hero-share'], now: ['now'], wire: ['siren', 'wire-board'], calls: ['calls'], edges: ['card-edges'], capabilities: ['card-capgrid'], tns: ['card-tns'], fixes: ['card-fixes'], why: ['why'], quarters: ['card-quarters'], disclosure: ['card-disclosure'], scatter: ['card-scatter'], horizon: ['card-horizon'], pipeline: ['card-pipeline'], words: ['quotes'], brief: ['brief'] };
   const ids = targets[EMBED] || targets.timeline;
   const host = el('div', 'embed-host wrap');
   if (EMBED === 'timeline') { const p = el('div', 'panel'); const t = el('div', 'panel-title'); t.append(txt('AI has started breaking in on its own: severe incidents went from '), el('b', null, String(C.headline.severe_prior12)), txt(' to '), el('b', null, String(C.headline.severe_last12)), txt(' in a year')); p.append(t, el('div', 'panel-note', 'Every major AI incident since 2023, scored 0–100. The stronger a dot’s color, the more the AI did on its own.')); ids.forEach((id) => { const n = document.getElementById(id); if (n) p.append(n); }); host.append(p); }
@@ -1138,6 +1207,7 @@ function drawRibbon() {
     { n: fxUpd, l: (fxUpd === 1 ? 'follow-up moved, 7d' : 'follow-ups moved, 7d'), href: '#fixes', hot: fxUpd > 0, t: `Cases with a dated change in their report → response → fix → check chain in the 7 days before ${stamp}. Source: data/fixes.json.` },
     { n: wire, l: (wire === 1 ? 'report on the Wire, 24h' : 'reports on the Wire, 24h'), href: '#wire', hot: false, t: `Stories on the Wire published in the 24 hours up to about three hours after ${stamp}. Links to the outlets; nothing is copied. Source: data/news.json.` },
   ];
+  const hrc = houseRecord(); if (callRows().length) items.unshift({ n: hrc.n ? hrc.w + '–' + hrc.l : hrc.open, l: hrc.n ? 'the index’s record, ' + hrc.open + ' open' : 'open calls, graded in public', href: '#calls', hot: false, t: `Dated yes/no questions with the index's odds. ${hrc.n ? hrc.w + ' right, ' + hrc.l + ' wrong so far; Brier ' + hrc.brier.toFixed(2) + '.' : 'Nothing has resolved yet.'} Source: data/calls.json.` });
   box.replaceChildren(...items.map((it) => { const a = el('a', 'rb' + (it.hot ? ' hot' : '')); a.href = it.href; a.title = it.t; a.append(el('b', null, String(it.n)), el('span', null, it.l)); a.addEventListener('click', (e) => { e.preventDefault(); if (it.href === '#all') { ls.sort = 'new'; document.getElementById('sel-sort').value = 'new'; drawList(); } go(it.href); }); return a; }));
   const u = el('span', 'rb-upd'); u.append(el('i'), txt('Updated ' + stamp + (D.meta.next_check ? ', next ' + fmtETsmart(D.meta.next_check).replace('today ', '') : ''))); u.title = D.meta.schedule || ''; box.append(u);
   const ed = document.getElementById('edition'); if (ed) ed.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(D.meta.as_of)) + ' edition';
@@ -1187,6 +1257,7 @@ function drawSinceVisit() {
   if (caps) parts.push(caps + (caps === 1 ? ' new advance' : ' new advances'));
   if (moved.length) parts.push(moved.length + (moved.length === 1 ? ' case moved (' : ' cases moved (') + moved.slice(0, 3).map((f) => f.name.split(':')[0]).join(', ') + ')');
   if (news) parts.push(news + (news === 1 ? ' report on the Wire' : ' reports on the Wire'));
+  const graded = callRows().filter((c) => c.resolution && between(c.resolution.date)); if (graded.length) { const mine = graded.filter((c) => PICKS[c.id]); const right = mine.filter((c) => PICKS[c.id].pick === c.resolution.outcome).length; parts.push(graded.length + (graded.length === 1 ? ' call graded' : ' calls graded') + (mine.length ? ' (you were right on ' + right + ' of ' + mine.length + ')' : '')); }
   bar.hidden = false; bar.replaceChildren();
   const txtNode = el('span'); txtNode.append(el('b', null, 'Since your last visit (' + fmtET(prev) + '): '), txt(parts.length ? parts.join(', ') + '.' : 'nothing material changed. You’re caught up.'));
   const note = el('span', 'since-note', 'Saved in this browser only.'); const reset = el('button', null, 'Reset'); reset.type = 'button'; reset.addEventListener('click', () => { try { localStorage.removeItem('ws-last-asof'); } catch (e) {} bar.hidden = true; toast('Reset'); });
@@ -1204,12 +1275,13 @@ function searchIndex() {
   newsItems().forEach((n) => rows.push({ kind: 'The Wire', title: n.title, text: [n.summary, n.outlet, n.topic].join(' '), kicker: (n.outlet || '') + ' · ' + ageShort(n), href: n.url }));
   fixRows().forEach((f) => rows.push({ kind: 'Did they fix it?', title: f.name, text: [f.one_liner].concat(f.chain.map((c) => c.note)).join(' '), kicker: 'Case · ' + String(fixCur(f).status || '').replace('_', ' '), go: () => go('#c=' + f.incident_id) }));
   capRows().forEach((c) => rows.push({ kind: 'What AI can now do', title: c.title, text: [c.what, c.org, c.everyday, c.domain].join(' '), kicker: 'Milestone · ' + fmtDate(new Date(c.date)) + (c.org ? ' · ' + c.org : ''), go: () => go('#m=' + c.id) }));
+  callRows().forEach((c) => rows.push({ kind: 'The call sheet', title: c.question, text: [c.basis, c.signposts, (c.tags || []).join(' ')].join(' '), kicker: (c.odds_label || '') + ' · ' + callDue(c), go: () => go('#fc-' + c.id) }));
   (D.quotes || []).forEach((q) => { if (q && q.quote) rows.push({ kind: 'In their words', title: q.quote, text: [q.speaker, q.title].join(' '), kicker: (q.speaker || '') + (q.title ? ', ' + q.title : '') + (q.date ? ' · ' + fmtDate(new Date(q.date)) : ''), go: () => go('#q=' + q.id) }); });
   (D.signals || []).forEach((x) => { if (x && x.gist) rows.push({ kind: 'Official signals', title: x.gist, text: [x.org, x.speaker, x.quote].join(' '), kicker: (x.org || '') + (x.date ? ' · ' + fmtDate(new Date(x.date)) : ''), href: x.url || null, go: x.url ? null : () => go('#signals') }); });
   rows.forEach((r) => { r.t = snorm(r.title); r.x = snorm(r.text); });
   SIDX = rows; return rows;
 }
-const KIND_W = { 'Incidents': 1.3, 'Did they fix it?': 1.2, 'What AI can now do': 1.15, 'The Wire': 1.1, 'In their words': 1, 'Official signals': 1 };
+const KIND_W = { 'Incidents': 1.3, 'Did they fix it?': 1.2, 'The call sheet': 1.2, 'What AI can now do': 1.15, 'The Wire': 1.1, 'In their words': 1, 'Official signals': 1 };
 function searchRun(q) {
   const toks = snorm(q).split(/[^a-z0-9%$.+-]+/).filter((t) => t.length >= 2);
   if (!toks.length) return { toks, rows: [] };
@@ -1263,7 +1335,7 @@ function showSearch(prefill) {
 document.getElementById('nav-search')?.addEventListener('click', () => showSearch());
 /* ---------- keyboard shortcuts: J/K move through dispatches, Enter opens, S briefing card, ? help, Esc closes */
 const KEYS_OFF = () => { try { return localStorage.getItem('ws-keys') === 'off'; } catch (e) { return false; } };
-function navItems() { return [...document.querySelectorAll('.wi, .row, .fix, .cap, .why')].filter((n) => n.offsetParent !== null); }
+function navItems() { return [...document.querySelectorAll('.call, .wi, .row, .fix, .cap, .why')].filter((n) => n.offsetParent !== null); }
 let navIdx = -1;
 function focusNav(d) { const items = navItems(); if (!items.length) return; const cur = items.indexOf(document.activeElement); navIdx = cur >= 0 ? cur + d : (d > 0 ? 0 : items.length - 1); navIdx = Math.max(0, Math.min(items.length - 1, navIdx)); const n = items[navIdx]; if (!n.hasAttribute('tabindex')) n.tabIndex = 0; n.focus({ preventScroll: true }); n.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); }
 function showHelp() {
@@ -1325,6 +1397,7 @@ const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', meth
 
 /* ---------- routing */
 function go(hash) { location.hash = hash; route(); }
+const PREFIX_SEC = [['fc-', 'next'], ['fix-', 'fixes'], ['cap-', 'capabilities'], ['q-', 'words'], ['row-', 'all'], ['dd-', 'dives'], ['card-', 'charts']];
 function sectionOf(node) { const hit = LAZY.find(([sid]) => { const s = document.getElementById(sid); return s && s.contains(node); }); return hit ? hit[0] : null; }
 function route() {
   let h = location.hash.slice(1);
@@ -1338,7 +1411,9 @@ function route() {
   if (h.startsWith('q=')) { drawThrough('words'); const n = document.getElementById('q-' + decodeURIComponent(h.slice(2))); if (n) { quotesOpen = true; drawQuotes(); document.getElementById('q-' + decodeURIComponent(h.slice(2)))?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } return; }
   if (h.startsWith('d=')) { const id = decodeURIComponent(h.slice(2)); if (D.deepdives.find((d) => d.incident_id === id)) { dd.id = id; dd.vfilter = 'all'; drawThrough('dives'); drawDeepDive(); document.getElementById('dives').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); } return; }
   if (h === 'top') { window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); return; }
-  const n = h && document.getElementById(h); if (n) { const sid = sectionOf(n); if (sid) drawThrough(sid); n.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }
+  let n = h && document.getElementById(h);
+  if (!n && h) { const pre = PREFIX_SEC.find(([p]) => h.startsWith(p)); if (pre) { drawThrough(pre[1]); n = document.getElementById(h); } }
+  if (n) { const sid = sectionOf(n); if (sid) drawThrough(sid); if (n.classList.contains('fc')) n.classList.add('open'); n.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: n.matches('section, .hero-band') ? 'start' : 'center' }); }
 }
 window.addEventListener('hashchange', route);
 document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => { const h = a.getAttribute('href'); if (h.length < 2) return; e.preventDefault(); if (MF() && h !== location.hash) history.pushState(null, '', h); else history.replaceState(null, '', h); route(); }));
@@ -1355,7 +1430,7 @@ function mfTarget(h) {
   if (CHART_DRAW[h]) return 'charts';
   if (h.startsWith('i=')) return null;
   if (h.startsWith('c=')) return 'fixes'; if (h.startsWith('m=')) return 'capabilities'; if (h.startsWith('q=')) return 'words'; if (h.startsWith('d=')) return 'dives';
-  const n = document.getElementById(h); if (!n) return 'front';
+  const n = document.getElementById(h); if (!n) { const pre = PREFIX_SEC.find(([p]) => h.startsWith(p)); return pre ? pre[1] : 'front'; }
   const host = n.closest('main > *'); if (!host) return 'front';
   const sec = host.matches('section') ? host : host.querySelector('section');
   return sec && MF_SECTIONS.some(([id]) => id === sec.id) ? sec.id : 'front';
@@ -1370,7 +1445,7 @@ function mfApply(target) {
   [...main.children].forEach((c) => {
     if (keep.has(c.id)) { c.removeAttribute('data-mf'); return; }
     const sec = c.matches('section') ? c : c.querySelector('section'); const id = sec ? sec.id : c.id;
-    const show = target === 'front' ? (id === 'wire' || id === 'front') : id === target;
+    const show = target === 'front' ? (id === 'wire' || id === 'front' || id === 'calls') : id === target;
     if (show) c.removeAttribute('data-mf'); else c.setAttribute('data-mf', 'off');
   });
   front.hidden = target !== 'front';
@@ -1408,7 +1483,7 @@ function drawFront() {
     card('#dives', 'Inside the incidents', live.name, (vc.rows ? vc.rows + ' organizations' + (countries ? ' in ' + countries + ' countries' : '') + ', ' : '') + 'the map, the timeline, what officials said.'),
   );
   const link = (href, t, sub) => { const a = el('a'); a.href = href; a.append(el('b', null, t), txt(sub)); return a; };
-  more.replaceChildren(link('#why', 'I don’t use AI', 'Why it still matters'), link('#words', 'In their words', (D.quotes || []).length + ' quotes, verbatim'), link('#signals', 'Official signals', (D.signals || []).length + ' statements'), link('#pattern', 'The pattern of 2026', 'What changed this year'), link('#charts', 'The escalation', 'Five ways to count it'), link('#all', 'All incidents', fmtN(h.n) + ', ranked and searchable'), link('#about', 'About the data', 'Scores, sources, corrections'));
+  more.replaceChildren(link('/shield/', 'The family safe word', 'Beat voice-clone calls'), link('/scraped/', 'Block AI crawlers', 'A robots.txt for your site'), link('#why', 'I don’t use AI', 'Why it still matters'), link('#words', 'In their words', (D.quotes || []).length + ' quotes, verbatim'), link('#signals', 'Official signals', (D.signals || []).length + ' statements'), link('#pattern', 'The pattern of 2026', 'What changed this year'), link('#charts', 'The escalation', 'Five ways to count it'), link('#all', 'All incidents', fmtN(h.n) + ', ranked and searchable'), link('#about', 'About the data', 'Scores, sources, corrections'));
   document.getElementById('front-stamp').textContent = 'Updated ' + fmtET(D.meta.as_of);
 }
 document.getElementById('mf-off')?.addEventListener('click', () => { try { localStorage.setItem('ws-mf', 'off'); } catch (e) {} mfApply(null); drawAll(false); toast('One page. The front page is in the ? help.'); });
@@ -1451,7 +1526,7 @@ function preDraw() {
 }
 function drawAll(first) {
   if (MF() && !mfCur) mfApply('front');
-  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawWire(); drawNow(); drawBrief();
+  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawCallStrip(); drawWire(); drawNow(); drawBrief();
   if (MF()) { drawFront(); if (mfCur && mfCur !== 'front') drawSection(mfCur); }
   if (EMBED || !lazyIO) { drawEverything(); return; }
   if (first) {
