@@ -362,5 +362,31 @@
 "related_incident": "PHP2Shell",
 "significance": "medium",
 "url": "https://x.com/ThaiCERTByNCSA/status/2113173590954950970"
+},
+{
+"id": "php-s28",
+"date": "2026-10-23",
+"org": "Palo Alto Networks Unit 42",
+"org_type": "security firm",
+"speaker": "",
+"channel": "Blog",
+"gist": "Observed attackers using agentic AI attack platforms for post-exploitation; in one case against a government entity in Europe they had password hashes and multi-factor authentication secrets within two hours of initial exploitation, set up an NTLM-relay tunnel into Active Directory and attempted Domain Admin escalation. 'The commands and behavioral markers used in the attack are strong indicators of an agentic attacker.' Cortex Xpanse counts over 22.6 million exposed instances potentially vulnerable.",
+"quote": "",
+"related_incident": "PHP2Shell",
+"significance": "medium",
+"url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+},
+{
+"id": "php-s29",
+"date": "2026-10-22",
+"org": "New York Department of Financial Services",
+"org_type": "government",
+"speaker": "",
+"channel": "Industry letter",
+"gist": "Told regulated firms to patch immediately and take unpatchable systems offline; web application firewalls 'may provide limited protection' but 'should not be used as a substitute for patching or isolation'.",
+"quote": "",
+"related_incident": "PHP2Shell",
+"significance": "medium",
+"url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws"
 }
 ]

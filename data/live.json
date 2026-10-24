@@ -2,10 +2,10 @@
 {
 "key": "confirmed",
 "value": "0",
-"label": "organizations confirmed breached",
-"detail": "Fourth morning, still none. The PHP Foundation told Reuters on Oct 23 it has no evidence of exploitation before disclosure or on patched sites; Mandiant has validated public exploits only against default mod_php, not PHP-FPM; Sophos retracted its one claim.",
-"source_url": "https://whtc.com/2026/10/23/php-foundation-under-funded-with-one-full-time-staff-member-director-says/",
-"source_label": "Reuters via WHTC, Oct 23"
+"label": "organizations confirmed breached by name",
+"detail": "Still none by name. Palo Alto Networks' Unit 42 now describes one intrusion at an unnamed government entity in Europe: within two hours of exploitation an attacker it judges to be an AI agent had password hashes and multi-factor secrets and was trying for domain admin. The victim, the data source and the outcome are not stated; TechCrunch calls it a confirmed compromise. Sophos retracted its one earlier claim.",
+"source_url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+"source_label": "Unit 42, updated Oct 23, 12:30 PT"
 },
 {
 "key": "attempts",
@@ -43,8 +43,8 @@
 "key": "kev",
 "value": "Not listed",
 "label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "Re-checked Oct 24 morning: the catalog feed could not be opened by this run, but every readable notice shows CISA's Oct 23 additions were Collabora Online and Arista VeloCloud only, with no PHP entry and no federal emergency directive. A listing is CISA's formal verdict that exploitation is real.",
+"detail": "The feed, opened directly at 12:40 ET Oct 24: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; the Oct 23 additions were Arista VeloCloud and Collabora Online. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-"source_label": "CISA KEV catalog"
+"source_label": "CISA KEV catalog, version 2026.10.23"
 }
 ]

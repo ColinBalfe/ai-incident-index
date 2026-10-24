@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None as of Oct 24, 08:30 ET; PHP Foundation: no evidence of exploitation on patched servers (Reuters, Oct 23)",
+"status": "None by name as of Oct 24, 13:50 ET; Unit 42 reports one unnamed European government entity with credentials and MFA secrets taken (Oct 23)",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -11,7 +11,7 @@
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet: CISA's Oct 23 additions were Collabora and Arista only; feed not reachable to this run on Oct 24",
+"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly on Oct 24, has no PHP entry",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -29,7 +29,7 @@
 {
 "id": "php-restore",
 "item": "How fast the UK, Netherlands, Canada and Japan restore switched-off services",
-"status": "32 UK services down as of Oct 22; still no restoration update found by Oct 23 evening",
+"status": "32 UK services down as of Oct 22, no update since; French prefecture sites back Oct 23; a Michigan credit union restored banking in about 24 hours",
 "kind": "open",
 "why": "Tells you how long 'turn it off' is a viable defense, and what the next AI-found flaw will cost.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
@@ -47,7 +47,7 @@
 {
 "id": "openai-21",
 "item": "OpenAI's next misalignment report (the log stands at 20)",
-"status": "Last posted Oct 20; still 20 reports as of Oct 24 morning",
+"status": "Last posted Oct 20; still 20 reports as of Oct 24 afternoon",
 "kind": "due",
 "why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
 "source_url": "https://alignment.openai.com/misalignment-reports/",
@@ -56,7 +56,7 @@
 {
 "id": "korea-attrib",
 "item": "Korean regulators' final tally and police attribution; any Microsoft report backing its Storm-0940 claim",
-"status": "Seoul Serious Crimes office declined the case Oct 23; police keep it, no suspect named",
+"status": "Seoul Serious Crimes office declined the case Oct 23; police keep it, no suspect named; Wiz (Oct 22) ties ARTEX tooling to Storm-0940 activity against software vendors, no link to the banks",
 "kind": "open",
 "why": "Would confirm the same open-source hacking agent in both a criminal campaign and a state-aligned one.",
 "source_url": "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/",
@@ -74,10 +74,19 @@
 {
 "id": "midterms",
 "item": "US midterms, Nov 3, under the FBI and CISA alert on AI-enhanced deception",
-"status": "In 10 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Mississippi AG orders a deepfake ad pulled",
+"status": "In 10 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Colom pulled the Hyde-Smith AI video by the Mississippi AG's 4 p.m. deadline Oct 23",
 "kind": "due",
 "why": "The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.",
 "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",
 "source_label": "Reuters via The Star"
+},
+{
+"id": "texas-openai",
+"item": "Texas v. OpenAI: OpenAI's answer, any move to federal court, and whether other states join",
+"status": "Filed Oct 23 in Collin County; OpenAI says it will work with Texas on industry-wide standards",
+"kind": "open",
+"why": "The first state suit asking a court to bar minors from ChatGPT and to put new model releases behind a court-appointed evaluator. If it survives, every lab faces the same ask.",
+"source_url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-sues-openai-and-ceo-sam-altman-lying-users-and-harming-texans",
+"source_label": "Texas Attorney General"
 }
 ]

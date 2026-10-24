@@ -27,16 +27,16 @@
 {
 "stage": "retest",
 "status": "partial",
-"date": "2026-10-23",
-"note": "No independent party has reported a way around the Oct 21 patch. VulnCheck says it has a working exploit against the recommended production configuration of unpatched hosts, kept to paying customers, and 'We are not aware of any other public or commercial exploit that achieves RCE on multiple versions of PHP.' Hunt.io, Wordfence, SOCRadar and Sansec report millions of attempts but no confirmed compromise; Sophos corrected its one claim of a successful exploit. Nobody has published an independent review of the patch's completeness, and CISA has not added either CVE to its Known Exploited Vulnerabilities list.",
+"date": "2026-10-24",
+"note": "No independent party has reported a way around the Oct 21 patch. VulnCheck says it has a working exploit against the recommended production configuration of unpatched hosts, kept to paying customers, and 'We are not aware of any other public or commercial exploit that achieves RCE on multiple versions of PHP.' Hunt.io, Wordfence, SOCRadar and Sansec report millions of attempts but no confirmed compromise; Sophos corrected its one claim of a successful exploit. Nobody has published an independent review of the patch's completeness, and CISA has not added either CVE to its Known Exploited Vulnerabilities list. Oct 24: CISA's catalog, opened directly, still lists neither CVE (version 2026.10.23).",
 "source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/"
 },
 {
 "stage": "current",
 "status": "ongoing",
-"date": "2026-10-23",
-"note": "Day three after the patch: a Mirai variant is trying to recruit servers, a production-grade exploit exists but is held by one vendor, a third PHP bug is unpatched by design, most exposed hosts run versions that will never be fixed, and no organization has confirmed a breach.",
-"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/"
+"date": "2026-10-24",
+"note": "Day four after the patch: the first vendor account of a successful intrusion. Unit 42 says an AI-driven attacker had password hashes and MFA secrets at an unnamed European government entity within two hours of exploitation; no named organization has confirmed a breach, CISA's catalog still has no PHP entry, a Mirai variant is still trying to recruit servers, a third PHP bug is unpatched by design and most exposed hosts run versions that will never be fixed.",
+"source_url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
 }
 ],
 "one_liner": "The fix exists for supported PHP versions and nobody has broken it yet, but the attack is still unfolding, most exposed servers will never get the patch, and no breach has been confirmed anywhere.",

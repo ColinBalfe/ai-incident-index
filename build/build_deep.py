@@ -87,8 +87,8 @@ print('timeline', len(timeline), 'impl', len(impl), 'deepdives', len(DEEPDIVES))
 AGENCY = ('NSA', 'CISA', 'NCSC', 'Canadian Centre', 'CERT', 'BSI', 'ANSSI', 'Australian Cyber Security Centre', 'KISA', 'JPCERT', 'Japan IPA',
           'Singapore', 'HKCERT', 'ThaiCERT', 'Switzerland', 'INCIBE', 'URSIV', 'Japan National Cybersecurity Office', 'FBI', 'ENISA', 'Belgium Centre', 'NHS', 'Tokyo Metropolitan Police', 'China MIIT')
 LAB = ('OpenAI', 'Google DeepMind')
-SECFIRM = ('Wiz', 'CrowdStrike', 'Sophos', 'watchTowr', 'Sansec', 'Patchstack', 'NCC Group', 'Huntress', 'Mondoo', 'Trail of Bits', 'SentinelOne', 'TLP:Black', 'Center for Internet Security', 'Calif')
-GOV = ('Government', 'White House', 'Netherlands government', 'Germany Federal', 'Australian Government', 'Australian Home Affairs', 'South Korea', 'UK Government', 'Kenya', 'UK Office for Budget')
+SECFIRM = ('Wiz', 'Palo Alto Networks', 'CrowdStrike', 'Sophos', 'watchTowr', 'Sansec', 'Patchstack', 'NCC Group', 'Huntress', 'Mondoo', 'Trail of Bits', 'SentinelOne', 'TLP:Black', 'Center for Internet Security', 'Calif')
+GOV = ('Government', 'New York Department', 'White House', 'Netherlands government', 'Germany Federal', 'Australian Government', 'Australian Home Affairs', 'South Korea', 'UK Government', 'Kenya', 'UK Office for Budget')
 def otype(org):
     if org.startswith('Rep.'): return 'legislature'
     if any(org.startswith(x) or x in org for x in AGENCY): return 'security agency'
@@ -103,6 +103,7 @@ KEEP = [
  ('ENISA, European Commission', 'Joint statement'), ('Germany BSI', 'Interview'), ('Government of Japan', 'Press conference'), ('South Korea Ministry of Science and ICT', 'X post'),
  ('URSIV', 'Government press release'), ('Rep. Lori Trahan', 'X post'), ('Australian Government', 'Press'), ('UK Government', 'Press statement'), ('Trail of Bits', 'Interview'),
  ('CrowdStrike', 'Blog'), ('NCC Group', 'Press comment'), ('ThaiCERT', 'X post'),
+ ('Palo Alto Networks Unit 42', 'Blog'), ('New York Department of Financial Services', 'Industry letter'),
 ]
 HIGH = {'NSA', 'NSA Cybersecurity Directorate', 'CISA', 'Government of Canada', 'White House', 'FBI Cyber Division', 'PHP Foundation', 'Amazon / AWS', 'Wiz', 'OpenAI', 'Cloudflare', 'Sophos', 'South Korea Ministry of Science and ICT', 'UK Government'}
 php_signals = []

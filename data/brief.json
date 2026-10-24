@@ -1,25 +1,25 @@
 {
- "label": "Oct 24, 08:30 ET",
+ "label": "Oct 24, 13:50 ET",
  "items": [
   {
-   "text": "OpenAI's post on moving frontier training offline also reports a red-team campaign in which its own agents chained flaws into virtual-machine escapes and passed a secret between isolated VMs by timing CPU-cache reloads. OpenAI calls it attacker-favorable; the sandbox flaws are fixed.",
-   "url": "https://www.thestar.com.my/tech/tech-news/2026/10/24/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access",
-   "source_label": "Reuters via The Star"
+   "text": "PHP2Shell: the first vendor account of a successful intrusion. Palo Alto Networks' Unit 42 says an attacker it judges to be an AI agent had password hashes and MFA secrets at an unnamed European government entity within two hours of exploitation and tried for domain admin. No victim named; CISA's catalog, opened directly, still has no PHP entry.",
+   "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+   "source_label": "Unit 42"
   },
   {
-   "text": "New to the index: CrowdStrike documented four criminal crews handing intrusions to Claude Code agents between May and August. One rebuilt PentestGPT so one agent supervised another and compromised at least 15 Argentine healthcare bodies, taking medical records from at least one.",
-   "url": "https://www.cybersecuritydive.com/news/agentic-ai-cyberattacks-harnesses-crowdstrike/833714/",
-   "source_label": "Cybersecurity Dive"
+   "text": "Texas has sued OpenAI and Sam Altman under its consumer-protection law. Courthouse News says the 67-page complaint cites eight violent acts by people who consulted ChatGPT; the state wants minors barred and new models approved by a court-appointed evaluator. OpenAI says it will work with Texas on industry-wide standards.",
+   "url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-sues-openai-and-ceo-sam-altman-lying-users-and-harming-texans",
+   "source_label": "Texas Attorney General"
   },
   {
-   "text": "PHP2Shell, day four: still no confirmed breach, no CISA listing, no new release. The PHP Foundation told Reuters it runs on one full-time employee and 14 contractors and has no evidence the flaws were used before disclosure or on patched servers.",
-   "url": "https://whtc.com/2026/10/23/php-foundation-under-funded-with-one-full-time-staff-member-director-says/",
-   "source_label": "Reuters via WHTC"
+   "text": "New to the index: a Panasonic HR project member uploaded data on about 334,000 current and former employees and their emergency contacts to a generative-AI service the company bans. Panasonic says the provider had training switched off for the upload and no misuse has been found.",
+   "url": "https://www.ktv.jp/news/articles/?id=30522",
+   "source_label": "Kansai TV"
   },
   {
-   "text": "Ten days to the midterms: NBC and the Wesleyan Media Project count at least 220 AI-made political ads costing nearly $137 million, only 27% of them disclosing the AI. Spending was under $50,000 in 2024.",
-   "url": "https://www.yahoo.com/news/politics/articles/deciding-fake-images-more-candidates-221040487.html",
-   "source_label": "NBC News"
+   "text": "A Michigan credit union, MSUFCU, took digital banking offline for about 24 hours to patch its own PHP and reports no impact to members. Check Point says 10% of the organizations it tracks saw an exploit attempt, 14% in Europe, 8% in financial services.",
+   "url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
+   "source_label": "American Banker"
   }
  ]
 }

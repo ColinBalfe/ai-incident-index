@@ -1,5 +1,33 @@
 [
 {
+"id": "winbuzzer-deepseek-v41-flash",
+"title": "DeepSeek V4.1 Flash: Intelligence Index 39 to 45 and 35% cheaper per task, but still near the bottom on facts",
+"url": "https://winbuzzer.com/2026/10/24/deepseeks-flash-ai-improves-coding-but-still-lags-on-facts-xcxwbn/",
+"outlet": "WinBuzzer",
+"published": "2026-10-24T15:39:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "Artificial Analysis: Terminal-Bench 4.0 27% to 34%; Omniscience score 5 against 46 for Claude Opus 5.5.",
+"siren": false,
+"also": []
+},
+{
+"id": "techcrunch-php-ocalypse",
+"title": "TechCrunch reconstructs PHP2Shell: bugs seen in 2024, Calif found the path, Amazon saw probes a week early",
+"url": "https://techcrunch.com/2026/10/24/php-ocalypse-how-two-critical-web-bugs-almost-broke-the-internet/",
+"outlet": "TechCrunch",
+"published": "2026-10-24T15:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Calif says AI helped exploit but most work was human PHP expertise; cites Palo Alto and Trail of Bits on compromises.",
+"siren": false,
+"also": []
+},
+{
 "id": "globalnews-quebec-voters-chatbots",
 "url": "https://globalnews.ca/news/12119797/voters-ask-ai-who-to-vote-for",
 "outlet": "Global News / The Canadian Press",
@@ -12,6 +40,20 @@
 "also": [],
 "title": "McGill estimate: 40% of Quebec voters asked AI chatbots about the election and got false or outdated answers",
 "siren": false
+},
+{
+"id": "foxnews-bonjovi-ai-video-scam",
+"title": "A fake Bon Jovi sent AI videos that said her name; a Louisiana fan lost $10,000 and nearly her home",
+"url": "https://www.foxnews.com/us/jon-bon-jovi-impersonator-uses-ai-videos-scam-woman-10k-nearly-costing-her-home",
+"outlet": "Fox News",
+"published": "2026-10-24T11:00:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "everyday",
+"summary": "Money requests began seven months after first contact in late 2024, via Venmo, PayPal, Cash App and crypto; IP traced to Lagos.",
+"siren": false,
+"also": []
 },
 {
 "id": "tnw-uk-biosecurity-lab",
@@ -47,6 +89,85 @@
 "siren": false
 },
 {
+"id": "thn-google-privacy-ai-ads",
+"title": "Google's updated privacy policy lets Gmail, Drive and Photos data shared with AI Search personalize ads",
+"url": "https://thehackernews.com/2026/10/google-says-gmail-and-photos-data.html",
+"outlet": "The Hacker News",
+"published": "2026-10-24T10:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "Global",
+"topic": "everyday",
+"summary": "Effective Oct 16; opt-in through Personal Intelligence, not on by default; EEA, UK, Switzerland and Nigeria excluded.",
+"siren": false,
+"also": [
+{
+"outlet": "Android Authority",
+"url": "https://www.androidauthority.com/google-personal-intelligence-privacy-3727111/"
+},
+{
+"outlet": "The Verge",
+"url": "https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update"
+}
+]
+},
+{
+"id": "thn-brotli-flaw-beyond-nodejs",
+"title": "AI-found Brotli bug behind Node2Shell also hits Bun, Envoy, Istio and Python; the fix sat unreleased since Feb",
+"url": "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html",
+"outlet": "The Hacker News",
+"published": "2026-10-24T09:30:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "CVE-2026-111497, reported by OpenAI's Codex Security team; no in-the-wild exploitation or reliable public exploit yet.",
+"siren": false,
+"also": []
+},
+{
+"id": "thn-litellm-postmortem-master-key",
+"title": "LiteLLM post-mortem: a master key left in a public repo since May let an attacker hijack the release pipeline",
+"url": "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html",
+"outlet": "The Hacker News",
+"published": "2026-10-24T09:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "other",
+"summary": "Poisoned 1.107.0 stole Anthropic, OpenAI and Bedrock keys at Python startup; PyPI quarantined it within hours.",
+"siren": false,
+"also": []
+},
+{
+"id": "ians-bengal-ai-police-id",
+"title": "Bengal police arrest a man who flashed an AI-made police ID at traffic officers to make them drive him home",
+"url": "https://www.socialnews.xyz/2026/10/24/man-arrested-in-bengal-for-threatening-traffic-cops-with-ai-generated-police-identity-card/",
+"outlet": "IANS via SocialNews.XYZ",
+"published": "2026-10-24T08:17:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "India",
+"topic": "deepfakes",
+"summary": "A scan showed the card was fake; he reportedly admitted making it with AI and was produced in Barrackpore court Saturday.",
+"siren": false,
+"also": []
+},
+{
+"id": "hankyung-artex-variants-japan",
+"title": "Korea Economic Daily, via Nikkei: modified ARTEX hacking agents keep spreading after the developer pulled them",
+"url": "https://hankyung.com/article/202610242500i",
+"outlet": "Korea Economic Daily",
+"published": "2026-10-24T07:08:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "ai-attack",
+"summary": "Variants tuned for remote access and scanning; claims of use against Japan are unsourced; a similar tool, Strix, has appeared.",
+"siren": false,
+"also": []
+},
+{
 "id": "reuters-moonshot-kimi-cyber",
 "url": "https://www.investing.com/news/stock-market-news/moonshot-curbs-hacking-ability-in-new-kimi-model-as-fears-grow-over-aipowered-cyberattacks-4970639",
 "outlet": "Reuters via Investing.com",
@@ -64,6 +185,20 @@
 ],
 "title": "Reuters: Moonshot cut cyber-offense data from Kimi K3.1 Pro; its own hacking score fell to 81% from 90.5%",
 "siren": false
+},
+{
+"id": "koreajoongang-cyfirma-minjun",
+"title": "CYFIRMA: Korean-speaking actors on I2P preparing PHP2Shell attacks on banks and government in four countries",
+"url": "https://www.koreajoongangdaily.com/business/hackers-used-korean-to-coordinate-potential-php-attack-targeting-banks-government-logistics-report/12936296",
+"outlet": "Korea JoongAng Daily",
+"published": "2026-10-24T05:35:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Lazarus link rated only moderate; no victim or North Korean infrastructure identified; Korean experts skeptical.",
+"siren": false,
+"also": []
 },
 {
 "id": "pbs-treasury-outbound-ai-rule",
@@ -125,7 +260,7 @@
 "region": "US",
 "topic": "deepfakes",
 "summary": "Wesleyan Media Project: 81% Republican-funded; AI ad spend was under $50,000 in 2024. Brennan Center says state laws have not deterred much.",
-"siren": true,
+"siren": false,
 "also": [
 {
 "outlet": "NBC News",
@@ -147,6 +282,20 @@
 "also": [],
 "title": "Reuters: the PHP Foundation runs on one full-time employee and 14 contractors as AI-found bugs surge",
 "siren": false
+},
+{
+"id": "runtimewire-gvisor-openai-july",
+"title": "Google's gVisor team: OpenAI reported its sandbox issues July 22; exploiting them needed a discouraged setup",
+"url": "https://runtimewire.com/article/exclusive-google-s-gvisor-team-says-openai-reported-its-sandbox-issues-on-july-2",
+"outlet": "RuntimeWire",
+"published": "2026-10-23T21:26:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Fix shipped the next week; timeline does not show the gVisor issue caused OpenAI's Sept 20 training-run escape.",
+"siren": false,
+"also": []
 },
 {
 "id": "ppcland-states-object-characterai-sale",
@@ -186,12 +335,39 @@
 "kind": "official",
 "region": "US",
 "topic": "families",
-"summary": "Paxton filed in Collin County district court, alleging minors became addicted to a tool faking compassion to collect data without parental oversight.",
+"summary": "Collin County suit under the DTPA; Courthouse News: 67 pages, eight violent acts cited, injunction to bar minors and gate new models.",
 "siren": false,
 "also": [
 {
 "outlet": "Bloomberg Law",
 "url": "https://news.bloomberglaw.com/us-law-week/openai-faces-texas-deceptive-claims-child-user-safety-lawsuit"
+},
+{
+"outlet": "Texas Attorney General",
+"url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-sues-openai-and-ceo-sam-altman-lying-users-and-harming-texans"
+},
+{
+"outlet": "Courthouse News",
+"url": "https://www.courthousenews.com/texas-attorney-general-sues-openai-for-lying-about-chatgpt-safety-and-safeguards/"
+}
+]
+},
+{
+"id": "unit42-php2shell-agentic-postexploitation",
+"title": "Unit 42: an AI-run attacker took password hashes and MFA secrets at a European government body in two hours",
+"url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+"outlet": "Palo Alto Networks Unit 42",
+"published": "2026-10-23T19:30:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "Europe",
+"topic": "php2shell",
+"summary": "First vendor account of a successful PHP2Shell intrusion; victim unnamed, data source unstated, domain-admin outcome not given.",
+"siren": true,
+"also": [
+{
+"outlet": "TechCrunch",
+"url": "https://techcrunch.com/2026/10/24/php-ocalypse-how-two-critical-web-bugs-almost-broke-the-internet/"
 }
 ]
 },
@@ -215,6 +391,39 @@
 "siren": false
 },
 {
+"id": "techrepublic-tech-layoffs-2026",
+"title": "Tech layoffs reach 196,349 people in 2026; about a quarter of explained cuts cite AI",
+"url": "https://www.techrepublic.com/article/news-tech-layoffs-2026-companies-cutting-jobs/",
+"outlet": "TechRepublic",
+"published": "2026-10-23T19:21:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "jobs",
+"summary": "TrueUp count as of Oct 23; GoLayoffs: 17 of 66 explained announcements referenced AI, which does not prove replacement.",
+"siren": false,
+"also": []
+},
+{
+"id": "artificialanalysis-kimi-k31-pro",
+"title": "Kimi K3.1 Pro jumps 11 points to fourth on the Intelligence Index; Terminal-Bench 4.0 from 13% to 67%",
+"url": "https://artificialanalysis.ai/articles/kimi-k3-1-pro-launch-benchmarks",
+"outlet": "Artificial Analysis",
+"published": "2026-10-23T18:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "Independent scores: 55 vs Opus 5.5's 58; weights due later would make it the top open-weights model.",
+"siren": false,
+"also": [
+{
+"outlet": "Kimi (blog)",
+"url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+}
+]
+},
+{
 "id": "socradar-ransomware-affiliates-ai-agents",
 "title": "Leaked logs: ransomware affiliates ran intrusions through an AI agent at 62 targets; four now on leak sites",
 "url": "https://thehackernews.com/2026/10/exposed-infrastructure-reveals-how.html",
@@ -232,6 +441,20 @@
 "url": "https://socradar.io/blog/inc-gentlemen-ransomware-ai-infrastructure/"
 }
 ]
+},
+{
+"id": "cbs-sacks-bank-agents",
+"title": "White House AI czar: agents in bank accounts 'are in no way cyberattacks'; banks should offer read-only access",
+"url": "https://www.cbsnews.com/news/ai-agents-customer-bank-accounts-security/",
+"outlet": "CBS News",
+"published": "2026-10-23T17:46:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"summary": "Chase: never share passwords; Morgan Stanley sees no rogue agents; Axios says dozens of institutions are affected.",
+"siren": false,
+"also": []
 },
 {
 "id": "wisconsin-characterai-bankruptcy-protections",
@@ -279,6 +502,20 @@
 ],
 "title": "Mississippi AG tells a Senate campaign to pull an AI video of Sen. Hyde-Smith under the state's deepfake law",
 "siren": false
+},
+{
+"id": "americanbanker-msufcu-php",
+"title": "A Michigan credit union went dark 24 hours to patch PHP; New York's regulator: firewalls are no substitute",
+"url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
+"outlet": "American Banker",
+"published": "2026-10-23T16:18:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "php2shell",
+"summary": "MSUFCU reports no member impact; Check Point saw attempts at 8% of financial firms; no US bank reports a compromise.",
+"siren": false,
+"also": []
 },
 {
 "id": "ap-ai-linked-layoffs-tally",
@@ -359,6 +596,20 @@
 "url": "https://www.cnbc.com/2026/10/23/american-express-job-cuts.html"
 }
 ]
+},
+{
+"id": "ktv-panasonic-genai-upload",
+"title": "Panasonic: a staffer put HR data on 334,000 employees, ex-employees and relatives into a banned AI service",
+"url": "https://www.ktv.jp/news/articles/?id=30522",
+"outlet": "Kansai TV",
+"published": "2026-10-23T13:20:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Japan",
+"topic": "ai-incident",
+"summary": "Employee numbers, addresses, phones and emails; provider says training was off for the upload; no misuse found so far.",
+"siren": false,
+"also": []
 },
 {
 "id": "mirai-botnets-join-php2shell-aslr-bypass",
@@ -459,6 +710,48 @@
 "siren": false
 },
 {
+"id": "forbes-patch-the-planet-numbers",
+"title": "Forbes: OpenAI's bug program has found 1,995 flaws; of 130 AI-written patches deployed, 16 broke something",
+"url": "https://www.forbes.com/sites/thomasbrewster/2026/10/23/inside-openais-plan-to-protect-the-internet-before-hackers-break-it/",
+"outlet": "Forbes",
+"published": "2026-10-23T10:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "other",
+"summary": "1,316 bugs still await patches; Anthropic's Glasswing has 29,000 candidates and 6,000 triaged; $1bn in tokens for maintainers.",
+"siren": false,
+"also": []
+},
+{
+"id": "fortune-pantheon-ai-job-losses",
+"title": "Pantheon Macroeconomics: AI is now costing the US more than 10,000 jobs a month, net",
+"url": "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk",
+"outlet": "Fortune",
+"published": "2026-10-23T10:24:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "jobs",
+"summary": "Accounting, advertising, office admin and legal shrink while data-center construction hires; Goldman's 9% is temporary displacement.",
+"siren": false,
+"also": []
+},
+{
+"id": "euronews-french-kids-ai-survey",
+"title": "French survey: 40% of 11-to-12-year-olds use AI weekly; only 26% of their parents know",
+"url": "https://www.euronews.com/2026/10/23/french-kids-use-ai-far-more-than-their-parents-think-survey-finds",
+"outlet": "Euronews",
+"published": "2026-10-23T09:54:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "EU",
+"topic": "families",
+"summary": "YouGov/Interface poll of 1,138 parents and 970 children; 92% of young users say they spend more time with it than they'd like.",
+"siren": false,
+"also": []
+},
+{
 "id": "axios-banks-plan-for-ai-day-after",
 "title": "Axios: the biggest US banks plan for the 'day after' an AI catastrophe; JPMorgan moves to block agent access",
 "url": "https://axios.com/2026/10/23/ai-catastrophe-wall-street",
@@ -498,7 +791,12 @@
 "topic": "ai-attack",
 "summary": "Symantec says attackers built an AI agent that finds exposed AI models and hijacks them to plan intrusions and mine cryptocurrency.",
 "siren": false,
-"also": []
+"also": [
+{
+"outlet": "The Register",
+"url": "https://www.theregister.com/security/2026/10/24/autonomous-attack-agent-in-skynet-mode-hijacks-other-models-to-carry-out-its-evil-deeds/5305215"
+}
+]
 },
 {
 "id": "record-experts-downplay-php2shell-exploits",
@@ -550,6 +848,20 @@
 "url": "https://abc7ny.com/story/php-vulnerability-2026-websites-shut-down-globally-operators-address-ai-detected-flaw-web-programming-language/19968288/"
 }
 ]
+},
+{
+"id": "cybernews-fortinet-ai-found-fixes",
+"title": "Fortinet ships fixes found by Anthropic's and OpenAI's cyber models but withholds the CVEs until Nov 10",
+"url": "https://cybernews.com/security/fortinet-critical-flaws-patches-november-disclosure/",
+"outlet": "Cybernews",
+"published": "2026-10-23T00:33:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "First release from its frontier-AI testing program; watchTowr expects the patches to be reverse-engineered and exploited before disclosure.",
+"siren": false,
+"also": []
 },
 {
 "id": "courthousenews-brazil-meta-runoff",
@@ -628,6 +940,39 @@
 "region": "US",
 "topic": "deepfakes",
 "summary": "PolitiFact ties an AI-generated video making a baseless accusation against Texas Senate candidate James Talarico to Russia's Storm-1516 operation.",
+"siren": false,
+"also": []
+},
+{
+"id": "olivepress-pp-deepfake-video",
+"title": "Spain's Partido Popular posts an AI video of the PM's wife and allies 'confessing'; PSOE threatens to sue",
+"url": "https://www.theolivepress.es/spain-news/2026/10/22/pp-ai-pedro-sanchez-video-psoe/",
+"outlet": "The Olive Press",
+"published": "2026-10-22T16:45:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "EU",
+"topic": "deepfakes",
+"summary": "51-second clip with AI likenesses of Begoña Gómez, Zapatero and Ábalos; disclaimer in tiny lettering, per El País.",
+"siren": false,
+"also": [
+{
+"outlet": "The Guardian",
+"url": "https://www.theguardian.com/world/2026/oct/23/opposition-deepfake-video-spain-election"
+}
+]
+},
+{
+"id": "wiz-artex-storm0940-vendors",
+"title": "Wiz: an ARTEX-driven actor overlapping Storm-0940 password-sprays software engineers in 24-to-30-hour sessions",
+"url": "https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors",
+"outlet": "Wiz Research",
+"published": "2026-10-22T16:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Hundreds of Entra ID and Okta users hit; ARTEX had 12,000-plus forks when it went closed-source Oct 8; no victim named.",
 "siren": false,
 "also": []
 },

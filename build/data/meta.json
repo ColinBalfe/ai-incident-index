@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-24T08:30:00-04:00",
- "as_of_label": "Oct 24, 2026, 08:30 ET",
- "next_check": "2026-10-24T12:37:00-04:00",
- "next_check_label": "today, 12:37 ET",
+ "as_of": "2026-10-24T13:50:00-04:00",
+ "as_of_label": "Oct 24, 2026, 13:50 ET",
+ "next_check": "2026-10-24T18:37:00-04:00",
+ "next_check_label": "today, 18:37 ET",
  "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Day four opens quiet. Still no confirmed breach, no CISA listing and no new PHP release; the foundation that maintains PHP told Reuters it has one full-time employee and no evidence the flaws were used before disclosure or against patched servers. The exploits are getting better, not worse: VulnCheck's private exploit now covers PHP 8.4.10 to 8.4.26 and 8.5.10 to 8.5.11 on default settings, and Mandiant has validated public ones against default mod_php. Korea's KISA is the newest national CERT to relay the mitigation for the third bug.",
+ "live_note": "Day four, afternoon: the first vendor account of a successful intrusion. Palo Alto Networks' Unit 42 says that at an unnamed European government entity an attacker running what it judges to be an AI agent had password hashes and multi-factor secrets within two hours of exploitation and was pushing for domain admin; it does not name the victim or say where its data came from. Everything else holds: no breach confirmed by name, CISA's catalog (opened directly this run) still has no PHP entry, no PHP release since Oct 21. A Michigan credit union became the first US financial institution to describe its own precautionary outage and recovery, and Korean press relays a CYFIRMA report, at moderate confidence, of Korean-speaking actors preparing attacks on banks and government in four countries.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-24",
+   "text": "13:50 ET: 2 incidents added (Texas sues OpenAI and Altman, complaint cites eight violent acts after ChatGPT use; Panasonic staff upload HR data on 334,000 people to a banned generative-AI service). 5 incidents updated (PHP2Shell: Unit 42's post-exploitation case; bank-account agents: Sacks, Chase, Morgan Stanley; midterm ads: Colom pulls the Hyde-Smith video; Korean banks: Wiz's Storm-0940 overlap and ARTEX variants; Habib: wording corrected to its source). PHP2Shell: 5 timeline events, 6 statements, 3 scale figures, 2 victim rows added; CISA KEV feed opened directly (version 2026.10.23, no PHP entry). 1 capability updated (AI-found PHP flaws: Patch the Planet patch figures). 1 case status updated. 7 quotes added (78 total). Calls: PHP KEV odds 40% to 50% and named-breach odds 60% to 65% (Unit 42's intrusion report). The Wire: 22 stories added, siren moved to Unit 42's intrusion. Carried-over ten-record re-verification: 2 records checked and 2 wordings corrected (habib-suicide, grader-sabotage); 8 could not be opened (page fetches refused) and carry over again."
+  },
   {
    "date": "2026-10-24",
    "text": "08:30 ET: 2 incidents added (four criminal crews running Claude Code agents, one against 15 Argentine healthcare bodies, per CrowdStrike; OpenAI red-team agents escaping microVMs and building a CPU-cache covert channel, disclosed Oct 23). 4 incidents updated (UK AISI's own analysis of the Mythos 5 runs; Virginia's executive directive after the fake FOIA requests; Korean bank case stays with police; midterm ads: NBC/Wesleyan disclosure and funding shares). PHP2Shell: 5 timeline events, 4 statements, 1 scale figure added; CISA KEV feed unreachable to this run, no PHP listing in any readable notice. 1 capability milestone added (28). 2 case statuses updated. 5 quotes added (71 total). Calls: 1 added (Character.AI bidding procedures by Oct 31, 60%); PHP KEV odds 45% to 40% (fourth day with no confirmed compromise). The Wire: 23 stories added, 13 dropped, siren moved to the 220 AI political ads. Source audit file (Oct 24, 00:14 UTC): 0 dead, 0 unreachable; the ten-record re-verification could not be completed this run (page fetches rate-limited) and carries over to the 12:37 ET run."

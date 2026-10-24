@@ -81,15 +81,15 @@
 "source_url": "https://www.wiz.io/blog/php2shell-php-rce"
 },
 "reliable": {
-"status": "unknown",
-"date": "",
-"note": "No published success rate for AI-driven discovery of flaws of this severity in widely used software.",
-"source_url": ""
+"status": "partial",
+"date": "2026-10-23",
+"note": "Forbes, Oct 23: OpenAI's Patch the Planet program (run with Trail of Bits) has found 1,995 bugs, 1,316 of them still awaiting a patch; of 130 AI-written patches deployed, 16 caused functional problems and one a performance problem, none a new weakness. Anthropic's Glasswing has found more than 29,000 possible bugs and triaged about 6,000. No published success rate for discovery of flaws of PHP2Shell's severity.",
+"source_url": "https://www.forbes.com/sites/thomasbrewster/2026/10/23/inside-openais-plan-to-protect-the-internet-before-hackers-break-it/"
 },
 "consequences": {
 "status": "yes",
-"date": "2026-10-23",
-"note": "PHP2Shell: governments from the Netherlands to Japan took public services offline as a precaution; millions of exploit attempts; no confirmed breach as of Oct 23.",
+"date": "2026-10-24",
+"note": "PHP2Shell: governments from the Netherlands to Japan took public services offline as a precaution; millions of exploit attempts; on Oct 23 Unit 42 reported the first successful post-exploitation intrusion, at an unnamed European government entity; no named organization had confirmed a breach as of Oct 24.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
 }
 },

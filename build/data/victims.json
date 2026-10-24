@@ -1120,6 +1120,38 @@
 "source_label": "Infosecurity Magazine"
 },
 {
+"id": "php-76",
+"incident_id": "php2shell",
+"organization": "Unnamed government entity in Europe (Unit 42 case)",
+"sector": "Government",
+"country": "Europe (unnamed)",
+"status": "Unconfirmed claim",
+"status_group": "other",
+"date": "2026-10-23",
+"date_label": "Oct 23",
+"extent": "Palo Alto Networks' Unit 42 reports that within two hours of initial exploitation an attacker it judges to be an AI agent accessed password hashes and multi-factor authentication secrets, set up a relay into Active Directory and attempted domain-admin escalation. The entity is not named and has made no statement; Unit 42 does not say where its data came from or whether the escalation succeeded. Damage: credentials and MFA secrets reported accessed (vendor report, unconfirmed by the entity)",
+"how": "",
+"count": 1,
+"source_url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+"source_label": "Paloaltonetworks"
+},
+{
+"id": "php-77",
+"incident_id": "php2shell",
+"organization": "MSU Federal Credit Union",
+"sector": "Financial services",
+"country": "United States",
+"status": "Took services offline",
+"status_group": "disrupted",
+"date": "2026-10-21",
+"date_label": "Oct 21–22",
+"extent": "Took its website and digital banking offline on Oct 21 after federal warnings, patched the in-house PHP systems and restored online and mobile banking on Oct 22, about 24 hours later; some functions still returning on Oct 23.",
+"how": "",
+"count": 1,
+"source_url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
+"source_label": "Americanbanker"
+},
+{
 "id": "v-00",
 "incident_id": "openai-hf-swarm",
 "organization": "Hugging Face",

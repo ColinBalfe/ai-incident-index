@@ -31,7 +31,7 @@
    "https://cybersecuritynews.com/critical-php-vulnerabilities/",
    "https://www.govinfosecurity.com/attackers-exploit-leaked-zero-day-flaws-in-widely-used-php-a-33161"
   ],
-  "cisa_kev": "Not listed as of KEV catalog 2026.10.21 (feed re-checked 12:40 ET Oct 23; SecurityWeek also reports not listed as of the morning of Oct 23); no emergency directive found",
+  "cisa_kev": "Not listed as of catalog version 2026.10.23 (released Oct 23, 19:30 UTC; the feed was opened directly at 12:40 ET Oct 24: 1,756 entries, none of CVE-2026-109618, -109619 or -115560; the Oct 23 additions were Arista VeloCloud and Collabora Online). No emergency directive found; cisa.gov pages were not reachable to this run and no outlet reports one.",
   "threat_actors": [
    {
     "name": "Unidentified actor using commercial anonymization network",
@@ -863,6 +863,27 @@
    "what_happened": "Took sites offline.",
    "damage": "none reported (precautionary outage)",
    "source": "https://www.infosecurity-magazine.com/news/php2shell-exploitation-attempt/"
+  },
+  {
+   "name": "Unnamed government entity in Europe (Unit 42 case)",
+   "sector": "Government",
+   "country": "Europe (unnamed)",
+   "status": "unconfirmed claim",
+   "date": "2026-10-23",
+   "what_happened": "Palo Alto Networks' Unit 42 reports that within two hours of initial exploitation an attacker it judges to be an AI agent accessed password hashes and multi-factor authentication secrets, set up a relay into Active Directory and attempted domain-admin escalation. The entity is not named and has made no statement; Unit 42 does not say where its data came from or whether the escalation succeeded.",
+   "damage": "credentials and MFA secrets reported accessed (vendor report, unconfirmed by the entity)",
+   "note": "Vendor-reported, unnamed; first account of a successful post-exploitation intrusion. Not retracted.",
+   "source": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+  },
+  {
+   "name": "MSU Federal Credit Union",
+   "sector": "Financial services",
+   "country": "United States",
+   "status": "exposed/patching",
+   "date": "2026-10-21 to 2026-10-22",
+   "what_happened": "Took its website and digital banking offline on Oct 21 after federal warnings, patched the in-house PHP systems and restored online and mobile banking on Oct 22, about 24 hours later; some functions still returning on Oct 23.",
+   "damage": "none reported (precautionary outage; 'no impact to member information at this time')",
+   "source": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws"
   }
  ],
  "timeline": [
@@ -1160,6 +1181,31 @@
    "date": "2026-10-24 08:00 ET",
    "event": "Fourth morning after the patches: no named organization has confirmed a PHP2Shell compromise; no PHP release after Oct 21 (php.net's newest entry is the Oct 23 advisory). CISA's KEV feed could not be opened by this run; the latest readable notices show CISA's Oct 23 additions were Collabora Online and Arista VeloCloud only, with no PHP entry and no emergency directive.",
    "source": "https://vulners.com/cisa/CISA:64286C09B02566675A407045C00A9BFC"
+  },
+  {
+   "date": "2026-10-23 12:18 ET",
+   "event": "American Banker: MSU Federal Credit Union ($8.9 billion, East Lansing, Michigan) took its website and digital banking offline on Oct 21 after federal warnings, patched the PHP systems it builds and maintains itself and restored online and mobile banking on Oct 22, about 24 hours later; 'There is no impact to member information at this time' (chief of staff Allison Horn). New York's Department of Financial Services told regulated firms in an Oct 22 industry letter to patch immediately, take unpatchable systems offline and not treat web application firewalls as a substitute for patching or isolation. The Japanese Bankers Association said the interbank settlement network was not affected. No US bank or credit union has reported a compromise.",
+   "source": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws"
+  },
+  {
+   "date": "2026-10-23 15:30 ET",
+   "event": "Palo Alto Networks' Unit 42 updates its PHP2Shell threat brief with the first vendor account of a successful intrusion: 'In one case, the attackers targeted a government entity in Europe' and within two hours of initial exploitation 'had successfully accessed password hashes and multi-factor authentication secrets', set up a relay into Active Directory and attempted domain-admin escalation. Unit 42 judges the command style 'strong indicators of an agentic attacker' (output wrapped in machine-readable delimiters for a model to parse). The entity is not named, the data source is not stated, and the outcome of the escalation attempt is not given. Cortex Xpanse counts more than 22.6 million exposed instances potentially vulnerable.",
+   "source": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+  },
+  {
+   "date": "2026-10-23 06:21 ET",
+   "event": "French prefecture websites (Nord, Rhône, Bouches-du-Rhône, Gironde) come back online at 10:21 UTC after going dark at 17:05 UTC on Oct 21, per the volunteer phpocalypse tracker, which stopped automated checks on Oct 23 with every site it had listed as dark recovered (DigiD and NCSC-NL on Oct 21; Valtori, Overheid.nl, CNIL, Belgian Foreign Affairs, NotuBiz and the Dutch data-protection authority on Oct 22). Observational, not an official restoration notice.",
+   "source": "https://allixsenos.github.io/phpocalypse-tracker/sites.csv"
+  },
+  {
+   "date": "2026-10-23",
+   "event": "CYFIRMA (Singapore) publishes a report, relayed by Korea JoongAng Daily on Oct 24, that Korean-speaking actors on the I2P anonymity network are preparing PHP2Shell attacks, dubbed 'June 2026 Minjun', against government and financial institutions in South Korea, the United States, Japan and Australia, with manufacturing, logistics, aviation and trading firms also listed. CYFIRMA rates its confidence in the preparations high and a Lazarus link moderate; no victim, malware or infrastructure tied to North Korea is identified, and Korean security sources say the language and target choice alone prove nothing. Korea's science ministry and KISA had issued a 'caution' alert on Oct 22.",
+   "source": "https://www.koreajoongangdaily.com/business/hackers-used-korean-to-coordinate-potential-php-attack-targeting-banks-government-logistics-report/12936296"
+  },
+  {
+   "date": "2026-10-24 12:40 ET",
+   "event": "The CISA KEV feed, opened directly by this run: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; no additions dated Oct 24. php.net's newest entry remains the Oct 23 informational advisory; no PHP release since Oct 21 (PHP 8.6.0 RC5 is planned for Nov 5). TechCrunch's Oct 24 reconstruction says Palo Alto Networks and Trail of Bits 'later reported confirmed compromises as of late Friday'; the Unit 42 case is the only such account this run could read, and no Trail of Bits post claiming a compromise was found.",
+   "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
   }
  ],
  "statements": [
@@ -2071,6 +2117,60 @@
    "paraphrase": "Recommended the temporary mitigation for CVE-2026-115560 (session.upload_progress.enabled=0, then restart all PHP workers), noting no official patch yet; servers that already applied the setting on Oct 21 need no further action.",
    "url": "https://www.boho.or.kr/kr/bbs/list.do?menuNo=205020&bbsId=B0000133",
    "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "Palo Alto Networks Unit 42",
+   "speaker": null,
+   "channel": "Blog (threat brief, updated 12:30 p.m. PT)",
+   "paraphrase": "Observed attackers using agentic AI attack platforms for post-exploitation; in one case against a government entity in Europe they had password hashes and multi-factor authentication secrets within two hours of initial exploitation, set up an NTLM-relay tunnel into Active Directory and attempted Domain Admin escalation. 'The commands and behavioral markers used in the attack are strong indicators of an agentic attacker.' Cortex Xpanse counts over 22.6 million exposed instances potentially vulnerable.",
+   "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-22",
+   "organization": "New York Department of Financial Services",
+   "speaker": null,
+   "channel": "Industry letter (via American Banker)",
+   "paraphrase": "Told regulated firms to patch immediately and take unpatchable systems offline; web application firewalls 'may provide limited protection' but 'should not be used as a substitute for patching or isolation'.",
+   "url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "MSU Federal Credit Union",
+   "speaker": "Allison Horn, chief of staff (via American Banker)",
+   "channel": "Statement to press",
+   "paraphrase": "Took website and digital banking offline Oct 21 and restored them Oct 22 after patching in-house PHP systems; 'There is no impact to member information at this time.'",
+   "url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "Japanese Bankers Association",
+   "speaker": null,
+   "channel": "Statement (via Jiji Press, American Banker)",
+   "paraphrase": "Megabanks and several regional banks suspended some online services as a precaution; the network that settles payments among nearly all of Japan's banks was not affected.",
+   "url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "CYFIRMA",
+   "speaker": null,
+   "channel": "Report (via Korea JoongAng Daily)",
+   "paraphrase": "Korean-speaking actors on I2P are preparing PHP2Shell attacks ('June 2026 Minjun') on government and financial targets in South Korea, the US, Japan and Australia; confidence high on the preparations, moderate on a Lazarus link; no compromise reported.",
+   "url": "https://www.koreajoongangdaily.com/business/hackers-used-korean-to-coordinate-potential-php-attack-targeting-banks-government-logistics-report/12936296",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "Calif",
+   "speaker": null,
+   "channel": "Statement to press (via TechCrunch)",
+   "paraphrase": "AI helped with exploitation but most of the work relied on human expertise in PHP's codebase: 'No model is simply capable of unearthing \"all bugs\" with simple prompts. At least for now.'",
+   "url": "https://techcrunch.com/2026/10/24/php-ocalypse-how-two-critical-web-bugs-almost-broke-the-internet/",
+   "x_post": "no"
   }
  ],
  "scale": [
@@ -2227,6 +2327,27 @@
    "metric": "exposed hosts (VulnCheck estimate)",
    "value": "2,608,039 internet-facing hosts running PHP; 2,607,985 (99.998%) vulnerable or likely vulnerable; 1,474,985 advertise a version below the fixed build, 1,133,000 hide the version; 700,000+ on PHP 3.x-7.3",
    "url": "https://www.vulncheck.com/blog/php2shell-vulnerabilities"
+  },
+  {
+   "source_org": "Palo Alto Networks (Cortex Xpanse)",
+   "date": "2026-10-23",
+   "metric": "exposed instances potentially vulnerable",
+   "value": "Over 22.6 million exposed instances potentially vulnerable to CVE-2026-109618 and CVE-2026-109619 (exposure, not exploitation)",
+   "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+  },
+  {
+   "source_org": "Check Point Research",
+   "date": "2026-10-22",
+   "metric": "share of organizations seeing exploit attempts",
+   "value": "10% of organizations worldwide saw exploitation attempts (outcome unknown); Europe 14%, North America, Latin America and APAC 6%, Africa 4%; telecom 20%, education 18%, government 9%, financial services 8%",
+   "url": "https://blog.checkpoint.com/ai-security/php2shell-one-in-ten-organizations-impacted-as-europe-bears-the-brunt/"
+  },
+  {
+   "source_org": "VirusTotal (via BleepingComputer)",
+   "date": "2026-10-23",
+   "metric": "PHP hosts exposed online",
+   "value": "More than 5.1 million PHP hosts exposed online, about 3.8 million with at least one open port",
+   "url": "https://www.bleepingcomputer.com/news/security/php-shares-mitigation-for-new-and-unpatched-rce-vulnerability/"
   }
  ],
  "ai_angle": [
