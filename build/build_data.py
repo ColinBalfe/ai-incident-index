@@ -21,7 +21,7 @@ CAT = {
  "misalignment_wild": "Rogue AI behavior",
  "psych_harm": "Mental health & violence",
  "child_safety": "Child safety",
- "info_integrity": "Elections & misinformation",
+ "info_integrity": "Misinformation & fabrication",
  "security_vuln": "AI security flaws",
  "capability_threshold": "Capability thresholds",
  "privacy_data": "Privacy & data leaks",

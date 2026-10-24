@@ -12,6 +12,7 @@ for inp, items in (rep.get('fail_map') or {}).items():
         if code in (404, 410) or (code is None and any(k in blob for k in ('dns', 'resolve', 'certificate', 'not found'))): dead.append(row)
         else: unreachable.append(row)
 out = dict(checked_at=dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), total=rep.get('total'), successful=rep.get('successful'), excluded=rep.get('excludes'),
+           counters={k: rep.get(k) for k in ('errors', 'timeouts', 'unknown', 'unsupported', 'redirects', 'cached') if rep.get(k) is not None},
            dead=sorted(dead, key=lambda r: r['url']), unreachable=sorted(unreachable, key=lambda r: r['url']),
            note='dead: 404/410/DNS failures, replace the source or link an archived copy; unreachable: timeouts and 5xx, re-check by hand before changing anything. 401/403/429 count as alive (the site answered).')
 json.dump(out, open(sys.argv[3], 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
