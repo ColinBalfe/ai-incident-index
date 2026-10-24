@@ -1,0 +1,9 @@
+{
+ "checked_at": "2026-10-24T00:14:46+00:00",
+ "total": 521,
+ "successful": 514,
+ "excluded": 1,
+ "dead": [],
+ "unreachable": [],
+ "note": "dead: 404/410/DNS failures, replace the source or link an archived copy; unreachable: timeouts and 5xx, re-check by hand before changing anything. 401/403/429 count as alive (the site answered)."
+}
