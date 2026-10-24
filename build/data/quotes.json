@@ -1092,5 +1092,61 @@
 "via": "",
 "verified": true,
 "weight": 5
+},
+{
+"id": "prince-oct24-sky-is-falling",
+"incident_id": "php2shell",
+"quote": "I think we're going to have a couple years where every single week it's going to feel like the sky is falling.",
+"speaker": "Matthew Prince",
+"title": "Chief executive, Cloudflare",
+"org_type": "company",
+"date": "2026-10-24",
+"channel": "interview",
+"url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
+"via": "Reuters, read on the Honolulu Star-Advertiser",
+"verified": true,
+"weight": 5
+},
+{
+"id": "rahman-oct24-not-more-attacks",
+"incident_id": "php2shell",
+"quote": "more disclosed vulnerabilities do not automatically mean more successful attacks.",
+"speaker": "Ramy Rahman",
+"title": "Senior principal solutions engineer, ArmorCode",
+"org_type": "company",
+"date": "2026-10-24",
+"channel": "interview",
+"url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
+"via": "Reuters, read on the Honolulu Star-Advertiser",
+"verified": true,
+"weight": 5
+},
+{
+"id": "fagerland-oct19-new-world",
+"incident_id": "cairn-agents-100-company-sites",
+"quote": "It's a new world now.",
+"speaker": "Snorre Fagerland",
+"title": "Principal threat researcher, NorForge",
+"org_type": "researcher",
+"date": "2026-10-19",
+"channel": "interview",
+"url": "https://www.staradvertiser.com/2026/10/19/breaking-news/how-one-hacker-used-ai-agents-to-break-into-over-100-company-websites/",
+"via": "Reuters, read on the Honolulu Star-Advertiser",
+"verified": true,
+"weight": 5
+},
+{
+"id": "shah-oct21-offense-ahead",
+"incident_id": "cybercartel-carliy0s-latam-banks",
+"quote": "Offense is way ahead of defense right now, that's just how it is.",
+"speaker": "Ankur Shah",
+"title": "CEO, Straiker",
+"org_type": "company",
+"date": "2026-10-21",
+"channel": "interview",
+"url": "https://www.pymnts.com/?p=4328775",
+"via": "The Information, relayed by PYMNTS",
+"verified": true,
+"weight": 5
 }
 ]

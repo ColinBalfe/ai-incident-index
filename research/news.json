@@ -22,14 +22,18 @@
   "kind": "official",
   "region": "UK",
   "topic": "regulation",
-  "summary": "Independent non-profit modelled on AISI, part of a \u00a3600m-plus AI security package; no site, director or start date yet.",
+  "summary": "Independent non-profit modelled on AISI, part of a £600m-plus AI security package; no site, director or start date yet.",
   "also": [
    {
     "outlet": "Bloomberg",
     "url": "https://www.bloomberg.com/news/articles/2026-10-23/uk-vows-100-million-for-biosecurity-lab-with-openai-anthropic"
+   },
+   {
+    "outlet": "ITV News",
+    "url": "https://www.itv.com/news/2026-10-24/tech-tycoons-must-not-be-allowed-to-let-rip-with-ai-minister-warns"
    }
   ],
-  "title": "UK puts \u00a3100m into an AI biosecurity lab; OpenAI and Anthropic pledge up to \u00a3100m each in compute and credits",
+  "title": "UK puts £100m into an AI biosecurity lab; OpenAI and Anthropic pledge up to £100m each in compute and credits",
   "siren": false
  },
  {
@@ -1408,7 +1412,7 @@
   "kind": "incident",
   "region": "EU",
   "topic": "deepfakes",
-  "summary": "51-second clip with AI likenesses of Bego\u00f1a G\u00f3mez, Zapatero and \u00c1balos; disclaimer in tiny lettering, per El Pa\u00eds.",
+  "summary": "51-second clip with AI likenesses of Begoña Gómez, Zapatero and Ábalos; disclaimer in tiny lettering, per El País.",
   "siren": false,
   "also": [
    {
@@ -1444,5 +1448,122 @@
   "summary": "Hundreds of Entra ID and Okta users hit; ARTEX had 12,000-plus forks when it went closed-source Oct 8; no victim named.",
   "siren": false,
   "also": []
+ },
+ {
+  "id": "abc-patrick-white-publishing-ai",
+  "title": "Authors paid up to $17,000 to a 'Patrick White Publishing'; ABC finds its storefronts and covers are AI-made",
+  "url": "https://www.abc.net.au/news/2026-10-25/patrick-white-publishing-authors-unhappy-service-ai-art/107255794",
+  "outlet": "ABC News (Australia)",
+  "published": "2026-10-24T21:29:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Australia",
+  "topic": "everyday",
+  "summary": "Google Maps storefront images carry OpenAI watermarks; the company's ABN belongs to an unrelated firm that reported it to Scamwatch.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "reuters-ai-bugs-fresh-disruptions",
+  "title": "Reuters: Cloudflare's Prince knows of 'a bunch' more severe AI-found flaws; VulnCheck sees disclosures doubled",
+  "url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
+  "outlet": "Reuters (via Honolulu Star-Advertiser)",
+  "published": "2026-10-24T17:05:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "Seven experts expect PHP2Shell-style weeks for years; curl's Stenberg and ArmorCode's Rahman say more bugs found does not mean more breaches.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "techcrunch-convovo-grok-gpt-midterm-picks",
+  "title": "Forced to pick, Grok 4.7 named the Republican in 92% of 500 midterm races; GPT-6.1 Sol the Democrat in 97%",
+  "url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+  "outlet": "TechCrunch",
+  "published": "2026-10-24T15:00:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "United States",
+  "topic": "everyday",
+  "summary": "Convovo study led by Cornell's Tapan Parikh; the models agreed under 10% of the time. OpenAI: the API test is not ChatGPT.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "handelsblatt-forsa-global-ai-rules",
+  "title": "Forsa: 70% of Germans call global AI rules 'very important'; 47% among under-30s, 93% of Green voters",
+  "url": "https://www.handelsblatt.com/politik/deutschland/kuenstliche-intelligenz-umfrage-grosse-mehrheit-fuer-weltweit-gueltige-ki-regeln/100264640.html",
+  "outlet": "Handelsblatt (dpa)",
+  "published": "2026-10-24T02:39:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Germany",
+  "topic": "regulation",
+  "summary": "Poll of 1,000 for Internationale Politik, fieldwork Oct 9 and 12; 9% call global rules unimportant, 26% of AfD voters.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "wmar-hopkins-bayview-ai-upload",
+  "title": "Johns Hopkins Bayview tells 3,182 patients a worker put their records into an unapproved public AI tool",
+  "url": "https://www.wmar2news.com/local/patients-data-sent-to-ai-tool-johns-hopkins-bayview-medical-center-oct-23-2026",
+  "outlet": "WMAR-2 News",
+  "published": "2026-10-23T23:34:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "United States",
+  "topic": "ai-incident",
+  "summary": "Found Sept 21; names, treatment dates, medications and record numbers from May to September; letters went out Oct 22, tool unnamed.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "redwood-simulated-control-evals",
+  "title": "Redwood: simulated attacks predict monitor safety within 3.6 points, but not Hugging Face-style agent chains",
+  "url": "https://blog.redwoodresearch.org/p/simulated-control-evaluations",
+  "outlet": "Redwood Research",
+  "published": "2026-10-23T22:13:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "other",
+  "summary": "LLM-simulated tool outputs replace live runs for testing misalignment monitors; authors say long-horizon multi-agent attacks remain the gap.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "upi-brazil-runoff-deepfakes",
+  "title": "Brazil votes Sunday after 804 election filings, 920 AI political posts counted and a 24-hour order to Meta",
+  "url": "https://www.yahoo.com/news/politics/articles/brazils-presidential-runoff-puts-ai-144444105.html",
+  "outlet": "UPI (via Yahoo News)",
+  "published": "2026-10-23T14:44:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Brazil",
+  "topic": "deepfakes",
+  "summary": "Agência Lupa: 60% of the AI posts were deepfakes; the court removed 20 Lula posts; 13 US lawmakers want a Meta audit.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "pymnts-cybercartel-claude-grok",
+  "title": "Straiker: CyberCartel's Claude- and Grok-driven agents hit 400-plus Latin American banks and fintechs",
+  "url": "https://www.pymnts.com/?p=4328775",
+  "outlet": "PYMNTS",
+  "published": "2026-10-21T17:50:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Latin America",
+  "topic": "ai-attack",
+  "summary": "A 4,493-record stolen database with 903 account numbers and 67 passwords; Anthropic cut the credential, xAI is investigating.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Straiker",
+    "url": "https://www.straiker.ai/blog/inside-carliy0s-how-cybercartel-used-multiple-ai-models-to-attack-latin-american-banks"
+   }
+  ]
  }
 ]

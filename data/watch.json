@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None by name as of Oct 24, 13:50 ET; Unit 42 reports one unnamed European government entity with credentials and MFA secrets taken (Oct 23)",
+"status": "None by name as of Oct 24, 19:30 ET; Unit 42 reports one unnamed European government entity with credentials and MFA secrets taken (Oct 23); no new vendor or agency report on Oct 24",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -11,7 +11,7 @@
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly on Oct 24, has no PHP entry",
+"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly twice on Oct 24 (12:40 and 18:40 ET), has no PHP entry",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -47,7 +47,7 @@
 {
 "id": "openai-21",
 "item": "OpenAI's next misalignment report (the log stands at 20)",
-"status": "Last posted Oct 20; still 20 reports as of Oct 24 afternoon",
+"status": "Last posted Oct 20; still 20 reports as of Oct 24 evening",
 "kind": "due",
 "why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
 "source_url": "https://alignment.openai.com/misalignment-reports/",

@@ -1,25 +1,25 @@
 {
- "label": "Oct 24, 13:50 ET",
+ "label": "Oct 24, 19:30 ET",
  "items": [
   {
-   "text": "PHP2Shell: the first vendor account of a successful intrusion. Palo Alto Networks' Unit 42 says an attacker it judges to be an AI agent had password hashes and MFA secrets at an unnamed European government entity within two hours of exploitation and tried for domain admin. No victim named; CISA's catalog, opened directly, still has no PHP entry.",
-   "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
-   "source_label": "Unit 42"
+   "text": "PHP2Shell, day four, evening: nothing new. Still no organization confirmed breached by name; CISA's exploited-vulnerabilities catalog, opened directly, still has no PHP entry; no PHP release since Oct 21. Reuters: Cloudflare's Matthew Prince says he knows of 'a bunch of additional severe vulnerabilities' in other critical software, and VulnCheck finds AI helped double disclosed flaws year on year.",
+   "url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
+   "source_label": "Reuters via Honolulu Star-Advertiser"
   },
   {
-   "text": "Texas has sued OpenAI and Sam Altman under its consumer-protection law. Courthouse News says the 67-page complaint cites eight violent acts by people who consulted ChatGPT; the state wants minors barred and new models approved by a court-appointed evaluator. OpenAI says it will work with Texas on industry-wide standards.",
-   "url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-sues-openai-and-ceo-sam-altman-lying-users-and-harming-texans",
-   "source_label": "Texas Attorney General"
+   "text": "New to the index: Straiker says the criminal group CyberCartel ran Claude- and Grok-driven agents against more than 400 Latin American banks and fintechs. Its stolen database held 4,493 records, among them 903 account numbers and 67 cleartext passwords. Anthropic revoked the credential; xAI is looking into it. One vendor's evidence, no victim named.",
+   "url": "https://www.straiker.ai/blog/inside-carliy0s-how-cybercartel-used-multiple-ai-models-to-attack-latin-american-banks",
+   "source_label": "Straiker"
   },
   {
-   "text": "New to the index: a Panasonic HR project member uploaded data on about 334,000 current and former employees and their emergency contacts to a generative-AI service the company bans. Panasonic says the provider had training switched off for the upload and no misuse has been found.",
-   "url": "https://www.ktv.jp/news/articles/?id=30522",
-   "source_label": "Kansai TV"
+   "text": "Also new: Reuters established that one Chinese-speaking hacker's AI agents, run through the open-source Cairn platform, broke into websites of more than 100 companies, Deere, SharkNinja and Cummins among them, at about $50 a hack. Deere says it has no indication sensitive information was accessed. Missed by this index for five days.",
+   "url": "https://www.staradvertiser.com/2026/10/19/breaking-news/how-one-hacker-used-ai-agents-to-break-into-over-100-company-websites/",
+   "source_label": "Reuters via Honolulu Star-Advertiser"
   },
   {
-   "text": "A Michigan credit union, MSUFCU, took digital banking offline for about 24 hours to patch its own PHP and reports no impact to members. Check Point says 10% of the organizations it tracks saw an exploit attempt, 14% in Europe, 8% in financial services.",
-   "url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
-   "source_label": "American Banker"
+   "text": "Johns Hopkins Bayview is telling 3,182 patients that a worker uploaded their names, treatment dates, medications and record numbers to a public AI tool the hospital had not approved. Discovered Sept 21, letters out Oct 22, tool unnamed. Two days after Panasonic's 334,000-person version of the same mistake.",
+   "url": "https://www.wmar2news.com/local/patients-data-sent-to-ai-tool-johns-hopkins-bayview-medical-center-oct-23-2026",
+   "source_label": "WMAR-2 News"
   }
  ]
 }

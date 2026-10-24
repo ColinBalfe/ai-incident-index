@@ -43,7 +43,7 @@
 "key": "kev",
 "value": "Not listed",
 "label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "The feed, opened directly at 12:40 ET Oct 24: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; the Oct 23 additions were Arista VeloCloud and Collabora Online. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real.",
+"detail": "The feed, opened directly at 18:40 ET Oct 24 (and at 12:40 ET): catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; the Oct 23 additions were Arista VeloCloud and Collabora Online. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
 "source_label": "CISA KEV catalog, version 2026.10.23"
 }

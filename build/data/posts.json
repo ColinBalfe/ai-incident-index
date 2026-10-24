@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-24T13:50:00-04:00",
+ "as_of": "2026-10-24T19:30:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -11,34 +11,34 @@
   },
   {
    "kind": "brief",
-   "text": "PHP2Shell: the first vendor account of a successful intrusion. Palo Alto Networks' Unit 42 says an attacker it judges to be an AI agent had password hashes and MFA secrets at an unnamed European government entity within two hours of exploitation and…",
-   "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+   "text": "PHP2Shell, day four, evening: nothing new. Still no organization confirmed breached by name; CISA's exploited-vulnerabilities catalog, opened directly, still has no PHP entry; no PHP release since Oct 21.",
+   "link": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
    "image": "cards/i-php2shell.jpg",
-   "chars": 274,
+   "chars": 228,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Texas has sued OpenAI and Sam Altman under its consumer-protection law. Courthouse News says the 67-page complaint cites eight violent acts by people who consulted ChatGPT;",
-   "link": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-sues-openai-and-ceo-sam-altman-lying-users-and-harming-texans",
+   "text": "New to the index: Straiker says the criminal group CyberCartel ran Claude- and Grok-driven agents against more than 400 Latin American banks and fintechs. Its stolen database held 4,493 records, among them 903 account numbers and 67 cleartext passwords.",
+   "link": "https://www.straiker.ai/blog/inside-carliy0s-how-cybercartel-used-multiple-ai-models-to-attack-latin-american-banks",
    "image": null,
-   "chars": 196,
+   "chars": 277,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "New to the index: a Panasonic HR project member uploaded data on about 334,000 current and former employees and their emergency contacts to a generative-AI service the company bans.",
-   "link": "https://www.ktv.jp/news/articles/?id=30522",
+   "text": "Also new: Reuters established that one Chinese-speaking hacker's AI agents, run through the open-source Cairn platform, broke into websites of more than 100 companies, Deere, SharkNinja and Cummins among them, at about $50 a hack.",
+   "link": "https://www.staradvertiser.com/2026/10/19/breaking-news/how-one-hacker-used-ai-agents-to-break-into-over-100-company-websites/",
    "image": null,
-   "chars": 205,
+   "chars": 254,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "A Michigan credit union, MSUFCU, took digital banking offline for about 24 hours to patch its own PHP and reports no impact to members. Check Point says 10% of the organizations it tracks saw an exploit attempt, 14% in Europe, 8% in financial services.",
-   "link": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
-   "image": "cards/i-php2shell.jpg",
-   "chars": 276,
+   "text": "Johns Hopkins Bayview is telling 3,182 patients that a worker uploaded their names, treatment dates, medications and record numbers to a public AI tool the hospital had not approved. Discovered Sept 21, letters out Oct 22, tool unnamed.",
+   "link": "https://www.wmar2news.com/local/patients-data-sent-to-ai-tool-johns-hopkins-bayview-medical-center-oct-23-2026",
+   "image": null,
+   "chars": 260,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {

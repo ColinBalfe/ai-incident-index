@@ -1206,6 +1206,16 @@
    "date": "2026-10-24 12:40 ET",
    "event": "The CISA KEV feed, opened directly by this run: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; no additions dated Oct 24. php.net's newest entry remains the Oct 23 informational advisory; no PHP release since Oct 21 (PHP 8.6.0 RC5 is planned for Nov 5). TechCrunch's Oct 24 reconstruction says Palo Alto Networks and Trail of Bits 'later reported confirmed compromises as of late Friday'; the Unit 42 case is the only such account this run could read, and no Trail of Bits post claiming a compromise was found.",
    "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  {
+   "date": "2026-10-24 18:40 ET",
+   "event": "Evening check, day four: nothing new. The CISA KEV feed, opened directly: still catalog version 2026.10.23 (released Oct 23, 19:30 UTC), 1,756 entries, no PHP2Shell CVE; the latest additions remain Arista VeloCloud and Collabora Online. php.net's archive, opened directly: newest entry still the Oct 23 informational advisory; no PHP release since Oct 21. No vendor research, agency advisory or named compromise dated after midday Oct 24 was found in a sweep of the security press and of Unit 42, CrowdStrike, Sophos, Censys, Cloudflare, Rapid7, Fortinet, Huntress, F5, watchTowr and the NCSC-NL repository. TechCrunch's line that Trail of Bits has 'confirmed compromises' links to an X post by its CEO Dan Guido (x.com/dguido/status/2113825891021144306), which this run could not open; no Trail of Bits publication making that claim was found.",
+   "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+  },
+  {
+   "date": "2026-10-24",
+   "event": "Reuters (Raphael Satter and AJ Vicens): seven security professionals say AI-driven bug finding will keep producing weeks like this one. VulnCheck research due in the coming days finds AI helped drive a doubling of disclosed vulnerabilities year on year; Cloudflare CEO Matthew Prince says he knows of 'a bunch of additional severe vulnerabilities that are present in other pieces of critical software'. curl's Daniel Stenberg and ArmorCode's Ramy Rahman push back: AI-found bugs tend to be obscure and 'more disclosed vulnerabilities do not automatically mean more successful attacks'.",
+   "source": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/"
   }
  ],
  "statements": [
@@ -2170,6 +2180,33 @@
    "channel": "Statement to press (via TechCrunch)",
    "paraphrase": "AI helped with exploitation but most of the work relied on human expertise in PHP's codebase: 'No model is simply capable of unearthing \"all bugs\" with simple prompts. At least for now.'",
    "url": "https://techcrunch.com/2026/10/24/php-ocalypse-how-two-critical-web-bugs-almost-broke-the-internet/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "Cloudflare",
+   "speaker": "Matthew Prince, CEO",
+   "channel": "Interview (Reuters)",
+   "paraphrase": "Knows of 'a bunch of additional severe vulnerabilities' in other critical software found the same way: 'I think we're going to have a couple years where every single week it's going to feel like the sky is falling.'",
+   "url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "VulnCheck",
+   "speaker": "Patrick Garrity, researcher",
+   "channel": "Interview (Reuters)",
+   "paraphrase": "Research due in the coming days finds AI helped drive a year-on-year doubling of disclosed vulnerabilities; four or five disclosures like this week's in one week means many more are coming.",
+   "url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "ArmorCode",
+   "speaker": "Ramy Rahman, senior principal solutions engineer",
+   "channel": "Interview (Reuters)",
+   "paraphrase": "Pushback on the alarm: 'more disclosed vulnerabilities do not automatically mean more successful attacks.'",
+   "url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
    "x_post": "no"
   }
  ],
