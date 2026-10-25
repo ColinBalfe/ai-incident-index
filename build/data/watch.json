@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None by name as of Oct 25, 13:35 ET; Unit 42 reports one unnamed European government entity with credentials and MFA secrets taken (Oct 23); Trail of Bits' cited X post is an exploit update, not a breach report; an independent honeypot report shows 35 shells on three decoy servers Oct 24, the first public end-to-end code execution in the wild, on a deliberately easy configuration",
+"status": "None by name as of Oct 25, 18:55 ET; Unit 42 reports one unnamed European government entity with credentials and MFA secrets taken (Oct 23); Trail of Bits' cited X post is an exploit update, not a breach report; an independent honeypot report shows 35 shells on three decoy servers Oct 24, the first public end-to-end code execution in the wild, on a deliberately easy configuration",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -11,7 +11,7 @@
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly again at 13:15 ET Oct 25, has no PHP entry; odds held at 45%",
+"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly at 13:15 ET Oct 25, has no PHP entry; the evening run could not open the feed, and Tenable (Oct 23) and Senserva (Oct 25) show no PHP listing; odds held at 45%",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -47,7 +47,7 @@
 {
 "id": "openai-21",
 "item": "OpenAI's next misalignment report (the log stands at 20)",
-"status": "Last posted Oct 20; still 20 reports and 3 notices as of Oct 25 afternoon",
+"status": "Last posted Oct 20; still 20 reports and 3 notices as of Oct 25 evening",
 "kind": "due",
 "why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
 "source_url": "https://alignment.openai.com/misalignment-reports/",
@@ -74,7 +74,7 @@
 {
 "id": "midterms",
 "item": "US midterms, Nov 3, under the FBI and CISA alert on AI-enhanced deception",
-"status": "In 9 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Colom pulled the Hyde-Smith AI video by the Mississippi AG's 4 p.m. deadline Oct 23",
+"status": "In 9 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Colom pulled the Hyde-Smith AI video by the Mississippi AG's 4 p.m. deadline Oct 23; Graphika ties 'very likely' deepfake videos accusing Texas Senate candidate James Talarico of child abuse to Russia's Storm-1516 (Oct 21)",
 "kind": "due",
 "why": "The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.",
 "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",

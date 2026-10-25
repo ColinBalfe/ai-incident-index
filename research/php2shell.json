@@ -1312,6 +1312,16 @@
    "date": "2026-10-25 13:15 ET",
    "event": "Midday check, day five: the CISA KEV JSON feed, opened directly: still catalog version 2026.10.23 (released Oct 23, 19:30 UTC), 1,756 entries, none of the three PHP CVEs; no emergency directive found. php.net archive: no release after Oct 21 (newest item the Oct 23 informational advisory on CVE-2026-115560; PHP 8.6.0 RC5 is planned for Nov 5). NCSC-NL's alert was last updated Oct 23, 15:45, with 'one report of possible misuse abroad' that 'has not been confirmed to have actually succeeded'. No organization has confirmed a compromise by name.",
    "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  {
+   "date": "2026-10-25 18:40 ET",
+   "event": "Evening check, day five: nothing has moved. php.net's archive, opened directly: newest entry still the Oct 23 informational advisory on CVE-2026-115560, no release after Oct 21 (8.6.0 RC5 planned Nov 5). The CISA KEV JSON could not be opened by this run; Tenable's FAQ (updated Oct 23, 18:00 ET) says the CVEs were not in the catalog as of Oct 23, and Senserva's tracker (updated Oct 25) lists the week's KEV additions as Collabora, Arista, EG Secure Solutions, Siemens and four Plex CVEs, none PHP. Unit 42's brief carries 'Updated October 25' in its title, but its own change log ends Oct 23, 12:30 PT. The Hacker News' Oct 25 roundup adds Bitsight's count of nearly 37 million internet-facing systems running PHP or PHP-related software and names no victim. No organization has confirmed a compromise by name.",
+   "source": "https://www.php.net/archive/2026"
+  },
+  {
+   "date": "2026-10-25",
+   "event": "Korea: Shinhan Financial extends its emergency PHP checks to subsidiaries outside its FIRST security-monitoring system, with a checklist covering PHP use, system impact, mitigation status and schedules; Broadcom lists three affected security products (Symantec Endpoint Protection Manager, Carbon Black App Control Server, Cloud SOC SpanVA); KB Kookmin and Woori have applied emergency patches, per eToday. The same report says financial authorities found security-management gaps at 130 of 555 firms checked, mainly unapplied patches and end-of-support systems, without tying that inspection to PHP2Shell. Financial News (Oct 25 and 26 KST) reports small web-shop operators who cannot tell whether they are affected and are waiting on hosting providers; KISA has no exploitation report.",
+   "source": "https://www.etoday.co.kr/news/view/2639738"
   }
  ],
  "statements": [
@@ -2403,6 +2413,33 @@
    "paraphrase": "Reports 35 shell starts parented by Apache workers on three single-worker mod_php honeypots from two source addresses on Oct 24, calling it packet-to-process evidence of the full chain; warns it 'is not a measurement of exploit reliability on other worker counts, PHP builds, or applications'.",
    "url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
    "x_post": "no"
+  },
+  {
+   "date": "2026-10-25",
+   "organization": "Bitsight",
+   "speaker": "Bitsight (via The Hacker News)",
+   "channel": "report",
+   "paraphrase": "Counts nearly 37 million internet-facing systems running PHP or PHP-related software and says that only updating PHP on the host itself closes the gap.",
+   "url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-25",
+   "organization": "CYFIRMA",
+   "speaker": "Kumar Ritesh, CEO (via The Hacker News)",
+   "channel": "report",
+   "paraphrase": "Says the suspected DPRK-linked scanning of 216 hosts across 12 countries is paced to evade threshold-based alerting, which 'is unlikely to catch it'; no compromise confirmed.",
+   "url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-25",
+   "organization": "Shinhan Financial Group / Broadcom (via eToday)",
+   "speaker": "Company notices as reported",
+   "channel": "statement to press",
+   "paraphrase": "Shinhan widens emergency PHP checks to subsidiaries outside its FIRST monitoring system; Broadcom lists Symantec Endpoint Protection Manager, Carbon Black App Control Server and Cloud SOC SpanVA as affected.",
+   "url": "https://www.etoday.co.kr/news/view/2639738",
+   "x_post": "no"
   }
  ],
  "scale": [
@@ -2608,6 +2645,13 @@
    "metric": "hosts in a suspected DPRK operator target set",
    "value": "216 hosts filtered as unpatched or partly mitigated, about one third already scanned at the time of the exchange; 15 staging and 21 scan-node addresses; no organization identified, no compromise confirmed",
    "url": "https://cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure"
+  },
+  {
+   "source_org": "Bitsight (via The Hacker News)",
+   "date": "2026-10-25",
+   "metric": "internet-facing systems running PHP or PHP-related software",
+   "value": "nearly 37 million, concentrated in the US, Germany, France, the Netherlands and Japan",
+   "url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html"
   }
  ],
  "ai_angle": [

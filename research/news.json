@@ -2043,5 +2043,99 @@
     "url": "https://www.lbc.co.uk/article/google-deepmind-ai-workers-resign-us-military-5HjdkF7_2/"
    }
   ]
+ },
+ {
+  "id": "thn-php2shell-government-entity-roundup",
+  "title": "Hacker News roundup: AI-paced PHP2Shell intrusion at a European government body; Bitsight counts nearly 37M PHP systems",
+  "url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
+  "outlet": "The Hacker News",
+  "published": "2026-10-25T00:00:00Z",
+  "time_known": false,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "Unit 42's two-hour credential theft, CYFIRMA's 216-host DPRK-suspected scan and Bitsight's exposure count; no victim named.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Unit 42",
+    "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+   }
+  ]
+ },
+ {
+  "id": "bleeping-agents-md-downloads-hijack",
+  "title": "Planted AGENTS.md in a Downloads folder hijacked Codex in 90% of tests; a CLAUDE.md variant leaked a Claude Code token",
+  "url": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/",
+  "outlet": "BleepingComputer",
+  "published": "2026-10-25T15:49:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "Forever Security found the file on a customer's PC; Claude Code alone launched 1,300-plus sessions from Downloads folders.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "toi-netanyahu-ai-nuclear-image",
+  "title": "Netanyahu shares an AI image of a nuclear strike on Tel Aviv two days before Israel votes; rivals call it fearmongering",
+  "url": "https://www.timesofisrael.com/pm-posts-ai-image-of-nuke-hitting-tel-aviv-warns-of-2nd-holocaust-if-hes-not-elected",
+  "outlet": "The Times of Israel",
+  "published": "2026-10-25T15:36:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Israel",
+  "topic": "deepfakes",
+  "summary": "Text by a right-wing activist warns of a 'second Holocaust'; Eisenkot, Golan, Bennett and Lapid respond.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "The Jerusalem Post",
+    "url": "https://www.jpost.com/israel-election-2026/article-912797"
+   }
+  ]
+ },
+ {
+  "id": "etoday-korea-php-shinhan-broadcom",
+  "title": "Korean banks widen PHP2Shell checks; regulators found security gaps at 130 of 555 financial firms inspected",
+  "url": "https://www.etoday.co.kr/news/view/2639738",
+  "outlet": "eToday (Korea)",
+  "published": "2026-10-25T04:31:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Korea",
+  "topic": "php2shell",
+  "summary": "Shinhan extends checks to unmonitored subsidiaries; Broadcom lists three affected products; the 555-firm inspection is not tied to PHP.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "fnnews-korea-smes-php2shell",
+  "title": "Korean small businesses say they cannot tell whether PHP2Shell affects them; KISA reports no exploitation yet",
+  "url": "https://www.fnnews.com/news/202610250601277183",
+  "outlet": "Financial News (Korea)",
+  "published": "2026-10-24T21:01:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Korea",
+  "topic": "php2shell",
+  "summary": "Cafe24 and Gabia patched; PHP 8.1 and older get no official fix; professors urge help for SMEs and schools.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "fnnews-korea-third-php-bug-shops",
+  "title": "Third PHP flaw lands on Korean web shops with no security staff; KISA's workaround is to switch off upload tracking",
+  "url": "https://www.fnnews.com/news/202610260530430132",
+  "outlet": "Financial News (Korea)",
+  "published": "2026-10-25T20:30:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Korea",
+  "topic": "everyday",
+  "summary": "Shop operators say they can only wait on hosting providers; some had not heard of the flaws days after the Oct 22 alert.",
+  "siren": false,
+  "also": []
  }
 ]

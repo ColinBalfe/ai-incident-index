@@ -27,7 +27,7 @@
 "key": "vulnerable",
 "value": "41M+",
 "label": "PHP services Censys counts on affected versions",
-"detail": "As of Oct 22, against about 1 million on a fixed release; Censys separately assesses 34.4 million services on 3.1 million hosts as vulnerable. Versions before 8.2 will never get an official fix.",
+"detail": "As of Oct 22, against about 1 million on a fixed release; Censys separately assesses 34.4 million services on 3.1 million hosts as vulnerable; Bitsight (Oct 25, via The Hacker News) counts nearly 37 million internet-facing systems running PHP or PHP-related software. Versions before 8.2 will never get an official fix.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
 "source_label": "The Record, Oct 23"
 },
@@ -43,7 +43,7 @@
 "key": "kev",
 "value": "Not listed",
 "label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "The feed, opened directly at 13:15 ET Oct 25 (and at 06:40 ET, and three times on Oct 24): catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; the Oct 23 additions were Arista VeloCloud and Collabora Online. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real.",
+"detail": "The feed, last opened directly at 13:15 ET Oct 25: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs. The evening run could not open the feed; Tenable's FAQ (updated Oct 23) and Senserva's tracker (updated Oct 25, listing the week's additions as Collabora, Arista, EG Secure Solutions, Siemens and four Plex CVEs) both show no PHP entry. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
 "source_label": "CISA KEV catalog, version 2026.10.23"
 }

@@ -1,25 +1,25 @@
 {
- "label": "Oct 25, 13:35 ET",
+ "label": "Oct 25, 18:55 ET",
  "items": [
   {
-   "text": "PHP2Shell, day five: the public exploit technique has now been seen working end to end in the wild. An independent honeypot report dated Oct 24 correlates 35 shell starts with 35 exploit requests on three single-worker PHP 8.4.26 decoys, from two hosting addresses, Friday 15:35 to 18:57 UTC. Deliberately easy targets, no victims; still no organization confirmed breached by name, still no CISA listing (checked 13:15 ET), still no PHP release since Oct 21.",
-   "url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
-   "source_label": "0x4D31 honeypot report"
+   "text": "PHP2Shell, day five, evening: nothing has moved. No organization confirmed breached by name, no PHP release since Oct 21 (php.net checked 18:40 ET), no CISA listing that any readable source shows (Tenable, Oct 23; Senserva's tracker, Oct 25). Unit 42's brief says 'Updated October 25' in its title but its change log ends Oct 23. One new number: Bitsight counts nearly 37 million internet-facing systems running PHP or PHP-related software.",
+   "url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
+   "source_label": "The Hacker News"
   },
   {
-   "text": "Japan's emergency alerts are coming back after the precautionary PHP shutdown: NTT Docomo restored Area Mail (J-Alert, flood and evacuation warnings) in full at 20:01 JST Sunday, a night earlier than planned; SoftBank has earthquake and tsunami warnings back since 09:25 JST, with government evacuation alerts due Oct 26. Nepal's thousands of government sites await a central patch from Sunday evening.",
-   "url": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
-   "source_label": "Keitai Watch"
+   "text": "Two days before Israel votes, Netanyahu's official accounts shared an AI-generated image of a mushroom cloud over a city that appeared to be Tel Aviv, with text warning of 'the danger of a second Holocaust' if voters pick a leader who cannot confront Iran. Eisenkot: 'Netanyahu, you're hysterical.' Golan: 'I ask that he be kept away from social media.' Added to the Israel election entry.",
+   "url": "https://www.timesofisrael.com/pm-posts-ai-image-of-nuke-hitting-tel-aviv-warns-of-2nd-holocaust-if-hes-not-elected",
+   "source_label": "The Times of Israel"
   },
   {
-   "text": "New to the index: Israel votes Tuesday after a campaign in which a sitting finance minister posted an AI video of the Supreme Court president and attorney general being dragged from a protest, the prime minister shared one evoking a rival's son killed in Gaza, and bots built against Iran were turned to Likud, per Al Jazeera and Haaretz. A university monitor is reported to have found about one in eight election posts AI-made.",
-   "url": "https://www.aljazeera.com/news/2026/10/25/bots-deepfakes-and-surveillance-israels-election-goes-to-war-online",
-   "source_label": "Al Jazeera"
+   "text": "Added late to the index: Microsoft's Oct 21 finding that China-aligned Storm-0940 ran the open-source ARTEX AI agent against 2,250-plus Microsoft 365 tenants after the ConnectWise Cloud Backup compromise, with 'multiple instances where the time from initial targeting to privileged access was less than 3 hours'. Most targeting failed; data theft is not confirmed. Same tool as the Korean bank breaches.",
+   "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+   "source_label": "Microsoft Security"
   },
   {
-   "text": "Also new: Nigeria's cybercrime police say a 23-year-old used AI voice cloning and deepfakes to pose as Elon Musk in a crypto scheme, one of nine arrests made with the UK's NCA, the RCMP and Germany's BKA; $15,900 in crypto recovered. And Spain's PP deepfake ad now faces a criminal complaint before the Audiencia Nacional for defamation and digital identity theft.",
-   "url": "https://blueprint.ng/police-nab-9-recover-15900-in-cryptocurrency-others/",
-   "source_label": "Blueprint (Nigeria)"
+   "text": "Also new: a malicious AGENTS.md found in a customer's Downloads folder hijacked OpenAI's Codex in 90% of Forever Security's tests, and a CLAUDE.md variant exposed a Claude Code token about half the time; Graphika's attribution of 'very likely' deepfake videos smearing Texas Senate candidate James Talarico to Russia's Storm-1516; and a Cheongju middle-schooler beaten and hospitalised over sexual deepfakes of classmates, with police investigating all three students.",
+   "url": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/",
+   "source_label": "BleepingComputer"
   }
  ]
 }

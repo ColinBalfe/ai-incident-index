@@ -1,5 +1,52 @@
 [
 {
+"id": "fnnews-korea-third-php-bug-shops",
+"title": "Third PHP flaw lands on Korean web shops with no security staff; KISA's workaround is to switch off upload tracking",
+"url": "https://www.fnnews.com/news/202610260530430132",
+"outlet": "Financial News (Korea)",
+"published": "2026-10-25T20:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "everyday",
+"summary": "Shop operators say they can only wait on hosting providers; some had not heard of the flaws days after the Oct 22 alert.",
+"siren": false,
+"also": []
+},
+{
+"id": "bleeping-agents-md-downloads-hijack",
+"title": "Planted AGENTS.md in a Downloads folder hijacked Codex in 90% of tests; a CLAUDE.md variant leaked a Claude Code token",
+"url": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/",
+"outlet": "BleepingComputer",
+"published": "2026-10-25T15:49:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Forever Security found the file on a customer's PC; Claude Code alone launched 1,300-plus sessions from Downloads folders.",
+"siren": false,
+"also": []
+},
+{
+"id": "toi-netanyahu-ai-nuclear-image",
+"title": "Netanyahu shares an AI image of a nuclear strike on Tel Aviv two days before Israel votes; rivals call it fearmongering",
+"url": "https://www.timesofisrael.com/pm-posts-ai-image-of-nuke-hitting-tel-aviv-warns-of-2nd-holocaust-if-hes-not-elected",
+"outlet": "The Times of Israel",
+"published": "2026-10-25T15:36:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Israel",
+"topic": "deepfakes",
+"summary": "Text by a right-wing activist warns of a 'second Holocaust'; Eisenkot, Golan, Bennett and Lapid respond.",
+"siren": false,
+"also": [
+{
+"outlet": "The Jerusalem Post",
+"url": "https://www.jpost.com/israel-election-2026/article-912797"
+}
+]
+},
+{
 "id": "volokh-ai-deepfakes-in-court-database",
 "title": "Tracker lists 26 court cases of alleged AI-faked evidence; AI-hallucination rulings database passes 2,200",
 "url": "https://reason.com/volokh/2026/10/25/ai-deepfakes-in-court/",
@@ -155,6 +202,20 @@
 "also": []
 },
 {
+"id": "etoday-korea-php-shinhan-broadcom",
+"title": "Korean banks widen PHP2Shell checks; regulators found security gaps at 130 of 555 financial firms inspected",
+"url": "https://www.etoday.co.kr/news/view/2639738",
+"outlet": "eToday (Korea)",
+"published": "2026-10-25T04:31:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Shinhan extends checks to unmonitored subsidiaries; Broadcom lists three affected products; the 555-firm inspection is not tied to PHP.",
+"siren": false,
+"also": []
+},
+{
 "id": "abc-ap-ai-blocs-kazakhstan",
 "title": "AP: Kazakhstan joins both the US-led Pax Silica and China's 29-country AI body as nations hedge between blocs",
 "url": "https://abcnews.com/Technology/wireStory/us-china-form-ai-blocs-countries-increasingly-torn-137547790",
@@ -253,6 +314,25 @@
 "also": []
 },
 {
+"id": "thn-php2shell-government-entity-roundup",
+"title": "Hacker News roundup: AI-paced PHP2Shell intrusion at a European government body; Bitsight counts nearly 37M PHP systems",
+"url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
+"outlet": "The Hacker News",
+"published": "2026-10-25T00:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Unit 42's two-hour credential theft, CYFIRMA's 216-host DPRK-suspected scan and Bitsight's exposure count; no victim named.",
+"siren": false,
+"also": [
+{
+"outlet": "Unit 42",
+"url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+}
+]
+},
+{
 "id": "github-0x4d31-honeypot-rce-evidence",
 "title": "Honeypot logs 35 shells from two addresses: first public end-to-end PHP2Shell code execution in the wild",
 "url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
@@ -317,6 +397,20 @@
 "url": "https://crimefightersng.com/news/npf-nccc-arrests-nine-over-international-fraud-elon-musk-impersonation"
 }
 ]
+},
+{
+"id": "fnnews-korea-smes-php2shell",
+"title": "Korean small businesses say they cannot tell whether PHP2Shell affects them; KISA reports no exploitation yet",
+"url": "https://www.fnnews.com/news/202610250601277183",
+"outlet": "Financial News (Korea)",
+"published": "2026-10-24T21:01:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Cafe24 and Gabia patched; PHP 8.1 and older get no official fix; professors urge help for SMEs and schools.",
+"siren": false,
+"also": []
 },
 {
 "id": "kathmandupost-nepal-sites-offline",
@@ -1557,20 +1651,6 @@
 "also": []
 },
 {
-"id": "cert-in-india-php-advisory",
-"title": "India's CERT-In rates the PHP flaws critical; no Indian victims identified so far",
-"url": "https://www.freepressjournal.in/tech/php-security-flaw-which-indian-websites-are-affected",
-"outlet": "The Free Press Journal",
-"published": "2026-10-22T15:48:00+05:30",
-"time_known": true,
-"kind": "official",
-"region": "India",
-"topic": "php2shell",
-"summary": "CERT-In rated the PHP flaws critical in advisory CIVN-2026-0510; no Indian victims identified so far.",
-"siren": false,
-"also": []
-},
-{
 "id": "techradar-302ai-open-bucket",
 "url": "https://www.techradar.com/pro/security/security-breach-at-ai-aggregator-exposes-over-18-million-files-including-some-very-embarrassing-chat-records",
 "outlet": "TechRadar",
@@ -1828,20 +1908,6 @@
 "also": []
 },
 {
-"id": "ilsole24ore-php2shell-global-emergency",
-"title": "Il Sole 24 Ore: how the early-leaked PHP flaws pushed European institutions to pull websites offline",
-"url": "https://en.ilsole24ore.com/art/php2shell-when-a-software-vulnerability-becomes-a-global-emergency-AJIlhFrB",
-"outlet": "Il Sole 24 Ore",
-"published": "2026-10-22T10:14:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "EU",
-"topic": "php2shell",
-"summary": "Italy's business daily describes how the early-leaked PHP2Shell flaws pushed European institutions to pull websites offline.",
-"siren": false,
-"also": []
-},
-{
 "id": "metr-redwood-flaws-openai-monitoring",
 "title": "Outside evaluators found holes in OpenAI's agent monitoring, one letting agents hide hundreds of actions",
 "url": "https://www.ksl.com/article/51639721/external-evaluators-find-flaws-in-openais-ai-monitoring-system-in-pilot-review",
@@ -1857,67 +1923,6 @@
 {
 "outlet": "CNBC",
 "url": "https://www.cnbc.com/2026/10/22/metr-redwood-research-open-ai-test.html"
-}
-]
-},
-{
-"id": "php2shell-exploitation-started-before-patches",
-"title": "AWS saw PHP2Shell probing four days before the patches; over a million servers still unpatched on Oct 21",
-"url": "https://www.securityweek.com/php2shell-exploitation-started-days-before-patches/",
-"outlet": "SecurityWeek",
-"published": "2026-10-22T09:48:58Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Amazon honeypots saw PHP2Shell probing on Oct. 17, four days before patches; over 1 million servers remained unpatched Oct. 21.",
-"siren": false,
-"also": [
-{
-"outlet": "The Register",
-"url": "https://www.theregister.com/cyber-crime/2026/10/22/hackers-pile-on-php2shell-as-aws-reveals-attacks-began-before-disclosure/5304749"
-},
-{
-"outlet": "AWS",
-"url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/"
-}
-]
-},
-{
-"id": "axios-unvetted-ai-agents-bank-accounts",
-"title": "Four big US banks found unvetted third-party AI agents inside customer accounts and are restricting them",
-"url": "https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access",
-"outlet": "Axios",
-"published": "2026-10-22T09:00:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "ai-incident",
-"summary": "Morgan Stanley, Bank of America, JPMorgan and Wells Fargo found unvetted third-party AI agents in customer accounts and are restricting them.",
-"siren": false,
-"also": [
-{
-"outlet": "Decrypt",
-"url": "https://decrypt.co/381602/banks-rogue-ai-agents-inside-customer-accounts"
-}
-]
-},
-{
-"id": "fbi-nsa-advice-php-flaws",
-"title": "FBI and NSA urge organizations to patch the PHP flaws, take unpatched systems offline and hunt for compromise",
-"url": "https://www.newsweek.com/fbi-issues-advice-as-security-issue-hits-global-websites-12603155",
-"outlet": "Newsweek",
-"published": "2026-10-22T04:42:00-04:00",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "php2shell",
-"summary": "FBI and NSA urge organizations to patch the PHP flaws, take unpatched systems offline and check for signs of compromise.",
-"siren": false,
-"also": [
-{
-"outlet": "NSA",
-"url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4630238/nsa-advisory-php-updates/"
 }
 ]
 }

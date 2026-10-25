@@ -167,7 +167,7 @@ ids = [r['id'] for r in rows]
 dupes = {i for i in ids if ids.count(i) > 1}
 assert not dupes, dupes
 rows.sort(key=lambda r: r['date'])
-assert all(r['date'] <= '2026-10-24' for r in rows), [r['id'] for r in rows if r['date'] > '2026-10-24']
+assert all(r['date'] <= '2026-10-25' for r in rows), [r['id'] for r in rows if r['date'] > '2026-10-25']
 
 json.dump(rows, open(f'{OUT}/incidents.json', 'w'), ensure_ascii=False, indent=0)
 json.dump(FORECASTS, open(f'{OUT}/forecasts.json', 'w'), ensure_ascii=False, indent=0)

@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-25T13:35:00-04:00",
+ "as_of": "2026-10-25T18:55:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -11,34 +11,34 @@
   },
   {
    "kind": "brief",
-   "text": "PHP2Shell, day five: the public exploit technique has now been seen working end to end in the wild. An independent honeypot report dated Oct 24 correlates 35 shell starts with 35 exploit requests on three single-worker PHP 8.4.26 decoys, from two hosting…",
-   "link": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
+   "text": "PHP2Shell, day five, evening: nothing has moved. No organization confirmed breached by name, no PHP release since Oct 21 (php.net checked 18:40 ET), no CISA listing that any readable source shows (Tenable, Oct 23; Senserva's tracker, Oct 25).",
+   "link": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
    "image": "cards/i-php2shell.jpg",
-   "chars": 279,
+   "chars": 266,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Japan's emergency alerts are coming back after the precautionary PHP shutdown: NTT Docomo restored Area Mail (J-Alert, flood and evacuation warnings) in full at 20:01 JST Sunday, a night earlier than planned;",
-   "link": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
-   "image": "cards/i-php2shell.jpg",
-   "chars": 232,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "New to the index: Israel votes Tuesday after a campaign in which a sitting finance minister posted an AI video of the Supreme Court president and attorney general being dragged from a protest, the prime minister shared one evoking a rival's son killed in…",
-   "link": "https://www.aljazeera.com/news/2026/10/25/bots-deepfakes-and-surveillance-israels-election-goes-to-war-online",
+   "text": "Two days before Israel votes, Netanyahu's official accounts shared an AI-generated image of a mushroom cloud over a city that appeared to be Tel Aviv, with text warning of 'the danger of a second Holocaust' if voters pick a leader who cannot confront…",
+   "link": "https://www.timesofisrael.com/pm-posts-ai-image-of-nuke-hitting-tel-aviv-warns-of-2nd-holocaust-if-hes-not-elected",
    "image": null,
-   "chars": 279,
+   "chars": 275,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Also new: Nigeria's cybercrime police say a 23-year-old used AI voice cloning and deepfakes to pose as Elon Musk in a crypto scheme, one of nine arrests made with the UK's NCA, the RCMP and Germany's BKA; $15,900 in crypto recovered.",
-   "link": "https://blueprint.ng/police-nab-9-recover-15900-in-cryptocurrency-others/",
+   "text": "Added late to the index: Microsoft's Oct 21 finding that China-aligned Storm-0940 ran the open-source ARTEX AI agent against 2,250-plus Microsoft 365 tenants after the ConnectWise Cloud Backup compromise, with 'multiple instances where the time from…",
+   "link": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
    "image": null,
-   "chars": 257,
+   "chars": 274,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "Also new: a malicious AGENTS.md found in a customer's Downloads folder hijacked OpenAI's Codex in 90% of Forever Security's tests, and a CLAUDE.md variant exposed a Claude Code token about half the time;",
+   "link": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/",
+   "image": null,
+   "chars": 227,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
@@ -47,6 +47,14 @@
    "link": "https://warningshots.ai/i/israel-election-ai-deepfakes/",
    "image": "cards/i-israel-election-ai-deepfakes.jpg",
    "chars": 246,
+   "note": ""
+  },
+  {
+   "kind": "incident",
+   "text": "New on the index: A malicious AGENTS.md found in a customer's Downloads folder hijacked OpenAI's Codex in 90% of tests; a CLAUDE.md variant exposed a Claude Code token about half the time, Forever Security says (WS-2 Moderate, 35/100).",
+   "link": "https://warningshots.ai/i/agents-md-downloads-hijack/",
+   "image": "cards/i-agents-md-downloads-hijack.jpg",
+   "chars": 259,
    "note": ""
   },
   {
@@ -67,7 +75,7 @@
   },
   {
    "kind": "week-ahead",
-   "text": "The next 14 days on Warning Shots:\n• First confirmed PHP2Shell compromise (None by name as of Oct 25, 13:35 ET)\n• CISA lists the PHP flaws as exploited, or issues an emergency directive (Not yet: catalog version 2026.10.23)\n• Growth of the Potassium…",
+   "text": "The next 14 days on Warning Shots:\n• First confirmed PHP2Shell compromise (None by name as of Oct 25, 18:55 ET)\n• CISA lists the PHP flaws as exploited, or issues an emergency directive (Not yet: catalog version 2026.10.23)\n• Growth of the Potassium…",
    "link": "https://warningshots.ai/#next",
    "image": null,
    "chars": 274,
