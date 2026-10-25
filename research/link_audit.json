@@ -1,14 +1,14 @@
 {
- "checked_at": "2026-10-25T10:40:39+00:00",
- "total": 590,
- "successful": 581,
+ "checked_at": "2026-10-25T13:35:20+00:00",
+ "total": 601,
+ "successful": 592,
  "excluded": 1,
  "counters": {
   "errors": 7,
   "timeouts": 1,
   "unknown": 0,
   "unsupported": 0,
-  "redirects": 59,
+  "redirects": 56,
   "cached": 0
  },
  "dead": [],
