@@ -746,10 +746,11 @@
    "sector": "Telecom",
    "country": "Japan",
    "status": "exposed/patching",
-   "date": "2026-10-22",
-   "what_happened": "Some web services paused.",
-   "damage": "none reported (precautionary outage)",
-   "source": "https://safeguard.sh/resources/blog/php2shell-south-korea-japan-asia-response"
+   "date": "2026-10-22 to 2026-10-26",
+   "what_happened": "Some web services paused. SoftBank suspended emergency-alert emails for SoftBank, Y!mobile and LINEMO from Oct 23 with inspections due to finish Oct 26, so users cannot receive earthquake, tsunami, disaster or evacuation information through them and were pointed to alternative apps; NTT Docomo suspended some transmissions including J-Alert and local evacuation information but kept earthquake early warnings and tsunami alerts, per FNN (Oct 25).",
+   "damage": "none reported (precautionary outage; emergency-alert email delivery suspended)",
+   "source": "https://safeguard.sh/resources/blog/php2shell-south-korea-japan-asia-response",
+   "source2": "https://en.fnnews.com/news/202610251125023293"
   },
   {
    "name": "Sukiya, World Quest",
@@ -884,6 +885,46 @@
    "what_happened": "Took its website and digital banking offline on Oct 21 after federal warnings, patched the in-house PHP systems and restored online and mobile banking on Oct 22, about 24 hours later; some functions still returning on Oct 23.",
    "damage": "none reported (precautionary outage; 'no impact to member information at this time')",
    "source": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws"
+  },
+  {
+   "name": "Nepal government websites (GIWIMS shared platform), Nepal Rastra Bank, Department of Revenue Investigation (VCTS)",
+   "sector": "Government, central bank",
+   "country": "Nepal",
+   "status": "exposed/patching",
+   "date": "2026-10-21 to 2026-10-25",
+   "what_happened": "Thousands of government sites on the shared GIWIMS platform taken offline centrally, with the central bank's website and web services and the freight-tracking system VCTS; restoration expected between Sunday evening Oct 25 and Tuesday Oct 27 after a central patch and audits. Systems not using PHP returned from Oct 22.",
+   "damage": "none reported (precautionary outage; NCSC: no unauthorised access found)",
+   "source": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline"
+  },
+  {
+   "name": "Nepali banks (Nabil Bank, Sanima Bank, Nepal Investment Mega Bank and others)",
+   "sector": "Financial services",
+   "country": "Nepal",
+   "status": "exposed/patching",
+   "date": "2026-10-21 to 2026-10-25",
+   "what_happened": "Private banks shut websites and digital services while patching; Nabil, Sanima and Nepal Investment Mega Bank have updated and resumed, per the Kathmandu Post.",
+   "damage": "none reported (precautionary outage)",
+   "source": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline"
+  },
+  {
+   "name": "Samsung Electronics, SK, Hyundai Motor, LG, HD Hyundai, POSCO, GS",
+   "sector": "Conglomerates (electronics, energy, autos, steel)",
+   "country": "South Korea",
+   "status": "exposed/patching",
+   "date": "2026-10-21 to 2026-10-25",
+   "what_happened": "The five largest groups say checks and patching found no breach exploiting the flaws (most services run on Java); POSCO formed an emergency response team and patched PHP systems, GS issued an emergency notice and updated some PHP sites, per Newsis.",
+   "damage": "none reported (self-declared, after checks)",
+   "source": "https://www.newsis.com/view/NISX20261025_0003839898"
+  },
+  {
+   "name": "Orbis, Bandai Namco Holdings (online stores)",
+   "sector": "Retail (cosmetics, games)",
+   "country": "Japan",
+   "status": "exposed/patching",
+   "date": "2026-10-21 to 2026-10-25",
+   "what_happened": "Orbis inspected its online store from the night of Oct 21, resumed at midday Oct 22, then suspended it again the same day after the third bug surfaced, with no restart date as of Oct 23 evening; Bandai Namco is patching or replacing programs and has not identified the full scope.",
+   "damage": "none reported (precautionary outage; lost sales)",
+   "source": "https://en.fnnews.com/news/202610251125023293"
   }
  ],
  "timeline": [
@@ -1216,6 +1257,36 @@
    "date": "2026-10-24",
    "event": "Reuters (Raphael Satter and AJ Vicens): seven security professionals say AI-driven bug finding will keep producing weeks like this one. VulnCheck research due in the coming days finds AI helped drive a doubling of disclosed vulnerabilities year on year; Cloudflare CEO Matthew Prince says he knows of 'a bunch of additional severe vulnerabilities that are present in other pieces of critical software'. curl's Daniel Stenberg and ArmorCode's Ramy Rahman push back: AI-found bugs tend to be obscure and 'more disclosed vulnerabilities do not automatically mean more successful attacks'.",
    "source": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/"
+  },
+  {
+   "date": "2026-10-25 06:40 ET",
+   "event": "Morning check, day five: still nothing on the scoreboard. The CISA KEV feed, opened directly: catalog version 2026.10.23 (released Oct 23, 19:30 UTC), 1,756 entries, no PHP2Shell CVE; the latest additions remain Arista VeloCloud Orchestrator and Collabora Online. php.net's archive, opened directly: newest entry still the Oct 23 informational advisory; no PHP release since Oct 21. The Oct 25 reporting is all Asian: Korean groups saying they found no breach, a Japanese count of service suspensions, Nepal's government platform still offline. No vendor or agency published new research overnight.",
+   "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  {
+   "date": "2026-10-24 02:52 UTC",
+   "event": "The X post by Trail of Bits CEO Dan Guido that TechCrunch's Oct 24 reconstruction links for 'confirmed compromises', opened by this run: it announces that the firm's own exploit is 'now production-grade' (stock php.ini-production, ASLR, under load; ARM64 and x86-64; MediaWiki, WordPress, phpBB and Laravel; Apache/mod_php and nginx/php-fpm to root). It is an exploit-capability update, not a report that any organization was compromised. Unit 42's unnamed European government entity remains the only account of a successful intrusion.",
+   "source": "https://x.com/dguido/status/2113825891021144306"
+  },
+  {
+   "date": "2026-10-25",
+   "event": "Japan: the cumulative count of service suspensions has passed 500, per an analysis of X posts by the security firm Assured relayed by FNN's Tokyo correspondent; as of 14:00 JST on Oct 23, 285 of them (about 60% of organizations that announced a suspension) had posted no resumption notice. SoftBank's emergency-alert emails (SoftBank, Y!mobile, LINEMO) have been suspended since Oct 23 with inspections due to finish Oct 26, so users cannot receive earthquake, tsunami, disaster or evacuation information through them; NTT Docomo suspended some transmissions including J-Alert and local evacuation information but kept earthquake early warnings and tsunami alerts. Orbis resumed its online store at midday Oct 22 and re-suspended it the same day after the third bug surfaced; Bandai Namco: 'We have not yet identified the full scope of the impact.'",
+   "source": "https://en.fnnews.com/news/202610251125023293"
+  },
+  {
+   "date": "2026-10-25",
+   "event": "South Korea: Samsung Electronics, SK, Hyundai Motor, LG and HD Hyundai say they have found no breach exploiting the flaws (most of their web services run on Java rather than PHP); POSCO set up an emergency response team and patched its PHP systems, GS issued an emergency notice and updated some PHP sites, per Newsis. The reported worry is contractors and small firms on PHP 8.1 or older, which cannot take the Oct 21 patch; PHP 8.2 support ends Dec 31. Science Minister Bae Kyung-hoon told the Oct 23 National Assembly audit a cross-ministry plan would follow. KISA on Oct 24 recommended a temporary mitigation for the third bug, CVE-2026-115560, which the Oct 21 updates do not cover, and advised checking for signs of intrusion as well as patch status.",
+   "source": "https://www.newsis.com/view/NISX20261025_0003839898"
+  },
+  {
+   "date": "2026-10-25",
+   "event": "Nepal: thousands of government websites, which run on the shared GIWIMS platform, and Nepal Rastra Bank's website and web services remain offline as a precaution, along with the Department of Revenue Investigation's freight-tracking system (VCTS); private banks shut digital services too, and Nabil Bank, Sanima Bank and Nepal Investment Mega Bank have since restored theirs, per the Kathmandu Post. The government's Software Development and Operation Centre expects to patch the platform centrally and bring the sites back between Sunday evening and Tuesday, after the Dashain holiday; systems not using PHP came back from Oct 22. The National Cyber Security Centre's director says there have been no cases of unauthorised access linked to the flaws in Nepal.",
+   "source": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline"
+  },
+  {
+   "date": "2026-10-24",
+   "event": "BBC profiles Ondřej Surý, the volunteer who packages PHP for Debian and Ubuntu in his spare time: warned in advance by the PHP project, he had to rush the packages when the leak brought the release forward, and received more than $10,000 (£7,470) in donations in a few days. 'I think this is was the most severe incident in years,' he said, adding that with AI capabilities improving in cyber security 'this might not be an isolated incident.'",
+   "source": "https://www.bbc.com/news/articles/cw30ejqljl43o"
   }
  ],
  "statements": [
@@ -2208,6 +2279,51 @@
    "paraphrase": "Pushback on the alarm: 'more disclosed vulnerabilities do not automatically mean more successful attacks.'",
    "url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
    "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "Trail of Bits",
+   "speaker": "Dan Guido, CEO",
+   "channel": "X post",
+   "paraphrase": "'Update: Our PHP exploit is now production-grade' against stock production configuration with ASLR and under load, on ARM64 and x86-64, for MediaWiki, WordPress, phpBB and Laravel, reaching root on Apache/mod_php and nginx/php-fpm. No compromise of any organization is claimed.",
+   "url": "https://x.com/dguido/status/2113825891021144306",
+   "x_post": "https://x.com/dguido/status/2113825891021144306"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "Korea Internet & Security Agency (KISA)",
+   "speaker": "Agency guidance",
+   "channel": "Advisory (relayed by Topstar News, Oct 25)",
+   "paraphrase": "Recommends a temporary mitigation for CVE-2026-115560, which the Oct 21 PHP updates do not fix, and checking systems for signs of intrusion rather than relying on patch status alone.",
+   "url": "https://www.topstarnews.net/news/articleView.html?idxno=16257370",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-25",
+   "organization": "Nepal National Cyber Security Centre",
+   "speaker": "Raj Kumar Maharjan, director and spokesperson",
+   "channel": "Interview (Kathmandu Post)",
+   "paraphrase": "'The systems were shut down as a precaution. There have been no cases of unauthorised access or cyberattacks in Nepal linked to this issue so far.' The centre issued an advisory on Oct 22.",
+   "url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-25",
+   "organization": "Assured (Japan)",
+   "speaker": "Yasuhiro Suzuki, investigation lead",
+   "channel": "Interview (FNN)",
+   "paraphrase": "On why 285 Japanese services had no resumption notice: 'In some cases, it takes time to find out where PHP is being used, including within a company and by contractors; in others, software support has ended.'",
+   "url": "https://en.fnnews.com/news/202610251125023293",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "Debian/Ubuntu PHP packaging (volunteer); Internet Systems Consortium",
+   "speaker": "Ondřej Surý, volunteer PHP packager",
+   "channel": "Interview (BBC)",
+   "paraphrase": "Called it 'the most severe incident in years' and said that because AI capabilities in cyber security are improving, 'this might not be an isolated incident'; more than $10,000 in donations arrived in a few days.",
+   "url": "https://www.bbc.com/news/articles/cw30ejqljl43o",
+   "x_post": "no"
   }
  ],
  "scale": [
@@ -2385,6 +2501,20 @@
    "metric": "PHP hosts exposed online",
    "value": "More than 5.1 million PHP hosts exposed online, about 3.8 million with at least one open port",
    "url": "https://www.bleepingcomputer.com/news/security/php-shares-mitigation-for-new-and-unpatched-rce-vulnerability/"
+  },
+  {
+   "source_org": "Assured (via FNN)",
+   "date": "2026-10-23",
+   "metric": "service suspensions in Japan",
+   "value": "Cumulative suspensions passed 500 (analysis of X posts); as of 14:00 JST Oct 23, 285 of them, about 60% of organizations that announced a suspension, had no resumption notice",
+   "url": "https://en.fnnews.com/news/202610251125023293"
+  },
+  {
+   "source_org": "Censys",
+   "date": "2026-10-23",
+   "metric": "PHP hosts and web properties detected (advisory update 2)",
+   "value": "4,184,559 hosts and 67,597,101 web properties running PHP; the counts are not additive and keep rising as detection improves, not because exposure grew",
+   "url": "https://censys.com/advisory/cve-2026-109618-cve-2026-109619/"
   }
  ],
  "ai_angle": [

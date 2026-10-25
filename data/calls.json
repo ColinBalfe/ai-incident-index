@@ -68,9 +68,9 @@
 "question": "CISA adds CVE-2026-109618 or CVE-2026-109619 (PHP2Shell) to its Known Exploited Vulnerabilities catalog by Oct 31",
 "opened": "2026-10-23",
 "resolve_by": "2026-10-31",
-"odds": 0.5,
+"odds": 0.45,
 "horizon": "days",
-"basis": "KEV listing requires reliable evidence of active exploitation, not attempts. Three days in: millions of attempts, a working exploit for the recommended configuration per VulnCheck, and still no confirmed compromise; CISA updated the catalog on Oct 23 without the PHP CVEs. One confirmed breach anywhere would likely flip this within a day. Oct 24 update: a fourth day with no confirmed compromise, the PHP Foundation saying it has no evidence of exploitation on patched systems, and Mandiant validating code execution only against default mod_php; odds 45% to 40%. Oct 24, 13:50 ET: 40% to 50%. Unit 42 published the first vendor account of a successful post-exploitation intrusion (an unnamed European government entity); CISA listings usually follow a vendor or victim report, and the catalog checked directly this run still has no PHP entry.",
+"basis": "KEV listing requires reliable evidence of active exploitation, not attempts. Three days in: millions of attempts, a working exploit for the recommended configuration per VulnCheck, and still no confirmed compromise; CISA updated the catalog on Oct 23 without the PHP CVEs. One confirmed breach anywhere would likely flip this within a day. Oct 24 update: a fourth day with no confirmed compromise, the PHP Foundation saying it has no evidence of exploitation on patched systems, and Mandiant validating code execution only against default mod_php; odds 45% to 40%. Oct 24, 13:50 ET: 40% to 50%. Unit 42 published the first vendor account of a successful post-exploitation intrusion (an unnamed European government entity); CISA listings usually follow a vendor or victim report, and the catalog checked directly this run still has no PHP entry. Oct 25: lowered to 45% on time decay: day five with the catalog still at version 2026.10.23, no new exploitation report from any vendor or agency overnight, and six days left in the window.",
 "signposts": "CISA's KEV JSON feed; a named organization confirming a PHP2Shell compromise; a CISA alert escalating from advisory to directive.",
 "tags": [
 "php2shell",
@@ -83,7 +83,7 @@
 },
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
 "resolution": null,
-"odds_label": "50%"
+"odds_label": "45%"
 },
 {
 "id": "uk-services-restored-by-oct31",

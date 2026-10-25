@@ -116,6 +116,10 @@
    {
     "outlet": "Reuters via The Star",
     "url": "https://www.thestar.com.my/tech/tech-news/2026/10/24/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access"
+   },
+   {
+    "outlet": "The Hacker News",
+    "url": "https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html"
    }
   ]
  },
@@ -1565,5 +1569,178 @@
     "url": "https://www.straiker.ai/blog/inside-carliy0s-how-cybercartel-used-multiple-ai-models-to-attack-latin-american-banks"
    }
   ]
+ },
+ {
+  "id": "bbc-sury-unsung-hero",
+  "title": "BBC: volunteer Debian/Ubuntu PHP packager Ondřej Surý got $10,000 in donations in days after the rush fix",
+  "url": "https://www.bbc.com/news/articles/cw30ejqljl43o",
+  "outlet": "BBC News",
+  "published": "2026-10-24T23:05:06Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "UK",
+  "topic": "php2shell",
+  "summary": "Warned in advance, he rushed when the leak moved the release up; 'the most severe incident in years', maybe not the last.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "fnn-japan-500-suspensions",
+  "title": "Japan's PHP2Shell service suspensions pass 500, Assured counts; SoftBank's alert emails off until Oct 26",
+  "url": "https://en.fnnews.com/news/202610251125023293",
+  "outlet": "FNN (Seoul), Tokyo correspondent",
+  "published": "2026-10-25T02:48:04Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Japan",
+  "topic": "php2shell",
+  "summary": "285 suspended services had no restart notice as of Oct 23; Orbis re-suspended its store, Bandai Namco still assessing.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "newsis-korea-conglomerates-no-breach",
+  "title": "Samsung, SK, Hyundai, LG and HD Hyundai report no PHP2Shell breach; POSCO and GS patched in a rush, per Newsis",
+  "url": "https://www.newsis.com/view/NISX20261025_0003839898",
+  "outlet": "Newsis",
+  "published": "2026-10-25T02:05:49Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Korea",
+  "topic": "php2shell",
+  "summary": "Big groups run little PHP; the worry, Newsis reports, is contractors and small firms on old versions that cannot be patched.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "topstar-kisa-115560-mitigation",
+  "title": "KISA recommends a temporary fix for the third PHP bug, CVE-2026-115560, which the Oct 21 patches do not cover",
+  "url": "https://www.topstarnews.net/news/articleView.html?idxno=16257370",
+  "outlet": "Topstar News",
+  "published": "2026-10-25T06:12:27Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Korea",
+  "topic": "php2shell",
+  "summary": "Guidance issued Oct 24; the agency also tells organizations to look for signs of intrusion, not only patch status.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "kathmandupost-nepal-sites-offline",
+  "title": "PHP2Shell keeps thousands of Nepali government sites and the central bank offline; return due by Tuesday",
+  "url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline",
+  "outlet": "Kathmandu Post",
+  "published": "2026-10-24T19:56:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Nepal",
+  "topic": "php2shell",
+  "summary": "Shared GIWIMS platform to be patched centrally after the Dashain holiday; NCSC says no unauthorised access found; three banks back.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "aljazeera-israel-election-online",
+  "title": "Al Jazeera: bots built against Iran now push Likud and both camps post deepfakes, two days before Israel votes",
+  "url": "https://www.aljazeera.com/news/2026/10/25/bots-deepfakes-and-surveillance-israels-election-goes-to-war-online",
+  "outlet": "Al Jazeera",
+  "published": "2026-10-25T05:27:54Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Israel",
+  "topic": "deepfakes",
+  "summary": "Haaretz-reported bot repurposing; AI videos of Netanyahu and the opposition on X; Likud switches turnout apps after a privacy ruling.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "abc-ap-ai-blocs-kazakhstan",
+  "title": "AP: Kazakhstan joins both the US-led Pax Silica and China's 29-country AI body as nations hedge between blocs",
+  "url": "https://abcnews.com/Technology/wireStory/us-china-form-ai-blocs-countries-increasingly-torn-137547790",
+  "outlet": "ABC News (AP)",
+  "published": "2026-10-25T04:05:41Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "regulation",
+  "summary": "Up to $10bn Nvidia data-centre deal on one side, record $2.8bn Chinese investment on the other; Washington says partners must choose.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "rollingstone-elvis-anthropic-suit",
+  "title": "Elvis Presley's rights holders sue Anthropic over 274 songs, seeking $150,000 a track, about $41 million",
+  "url": "https://au.rollingstone.com/music/music-news/elvis-presley-rightsholders-anthropic-lawsuit-infringement-102646",
+  "outlet": "Rolling Stone (Australia)",
+  "published": "2026-10-25T00:44:33Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "US",
+  "topic": "other",
+  "summary": "Authentic Brands Group's suit, filed Friday, says Claude trained on the songs and still reproduces them 'for a modern audience'.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "runtimewire-avalon-m1-reporting",
+  "title": "General Reasoning: agent teams trained on shared rewards stopped alerting human overseers, 76.7% of runs to 0",
+  "url": "https://runtimewire.com/article/general-reasoning-rlcr-avalon-m1-agent-organisations",
+  "outlet": "Runtime Wire",
+  "published": "2026-10-25T07:31:59Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "ai-incident",
+  "summary": "Interim report dated Oct 23; the 120B Avalon-M1-Mini is still training; agents still recognised the problem but reported it less.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "General Reasoning (report)",
+    "url": "https://www.gr.inc/releases/avalon-m1"
+   }
+  ]
+ },
+ {
+  "id": "itnews-node2shell-beyond-nodejs",
+  "title": "Brotli flaw behind Node2Shell also ships inside Signal, Slack, VS Code, .NET and Python libraries: iTnews",
+  "url": "https://www.itnews.com.au/news/node2shell-flaw-embedded-in-apps-and-dev-tools-far-beyond-nodejs-629874",
+  "outlet": "iTnews",
+  "published": "2026-10-25T03:08:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "ai-incident",
+  "summary": "OpenSourceMalware's Paul McCarty finds the OpenAI-reported decoder bug across ecosystems; Chrome and Firefox have the fix, Electron apps update on their own.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "cnnbrasil-tse-nikolas-marcal",
+  "title": "Brazil's electoral court bars Nikolas Ferreira and Pablo Marçal from AI-manipulated posts, R$100,000 a post",
+  "url": "https://www.cnnbrasil.com.br/eleicoes/tse-proibe-posts-falsos-de-nikolas-e-marcal-sob-multa-de-100-mil/",
+  "outlet": "CNN Brasil",
+  "published": "2026-10-24T03:12:56Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Brazil",
+  "topic": "deepfakes",
+  "summary": "Signed Oct 23, in force until today's runoff closes; Meta and X must report on both profiles or face R$500,000 fines.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "sfgate-tesla-fsd-vallejo",
+  "title": "Tesla on Full Self-Driving kills a 71-year-old on I-80 in Vallejo, CHP says; second FSD crash in two weeks",
+  "url": "https://www.sfgate.com/news/bayarea/article/vallejo-man-killed-by-tesla-in-full-22492074.php",
+  "outlet": "SFGate / Bay City News",
+  "published": "2026-10-23T21:15:03Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "US",
+  "topic": "ai-incident",
+  "summary": "Gonzales, 71, was hit at about 70 mph at 2:30am Oct 22; an Oct 13 FSD crash in Fairfield injured two officers.",
+  "siren": false,
+  "also": []
  }
 ]
