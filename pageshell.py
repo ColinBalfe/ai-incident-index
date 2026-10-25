@@ -4,6 +4,9 @@ Imported by build_pages.py and build_tools.py. Reads data/meta.json, assets/buil
 import json, os, re, html, datetime as dt
 from zoneinfo import ZoneInfo
 here = os.path.dirname(os.path.abspath(__file__))
+import sys; sys.path.insert(0, here)
+from analytics import tag as _analytics_tag
+ANALYTICS = _analytics_tag()
 meta = json.load(open(os.path.join(here, 'data', 'meta.json'), encoding='utf-8')); site = meta['site_url']
 build = json.load(open(os.path.join(here, 'assets', 'build.json')))['build']
 esc = html.escape
@@ -48,6 +51,7 @@ def shell(*, title, desc, url, img, body, jsonld, kind):
 {FOOT}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 {SCRIPT}
+{ANALYTICS}
 </body>
 </html>
 """

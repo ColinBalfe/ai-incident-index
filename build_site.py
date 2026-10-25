@@ -40,6 +40,10 @@ jsonld = json.dumps({"@context": "https://schema.org", "@graph": [
 tpl = open('index.template.html', encoding='utf-8').read()
 out = (tpl.replace('{{OG_TITLE}}', og_title.replace('"', '&quot;')).replace('{{OG_DESC}}', og_desc.replace('"', '&quot;'))
           .replace('{{JSONLD}}', jsonld).replace('{{SITE_URL}}', meta['site_url']).replace('{{REPO_URL}}', meta.get('repo_url', 'https://github.com/ColinBalfe/ai-incident-index')).replace('{{BUILD}}', build))
+from analytics import tag as _analytics_tag   # visitor counter (Cloudflare Web Analytics); empty until analytics.json has a token
+_an = _analytics_tag()
+if _an:
+    out = out.replace('</body>', _an + '\n</body>', 1)
 open('index.html', 'w', encoding='utf-8').write(out)
 
 # ---- data/bundle.json: every data file in one request (the page preloads it; the individual files stay for scripts and the update check)
