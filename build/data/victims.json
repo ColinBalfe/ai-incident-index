@@ -953,11 +953,11 @@
 "status_group": "disrupted",
 "date": "2026-10-22",
 "date_label": "Oct 22–26",
-"extent": "Some web services paused. SoftBank suspended emergency-alert emails for SoftBank, Y!mobile and LINEMO from Oct 23 with inspections due to finish Oct 26, so users cannot receive earthquake, tsunami, disaster or evacuation information through them and were pointed to alternative apps; NTT Docomo suspended some transmissions including J-Alert and local evacuation information but kept earthquake early warnings and tsunami alerts, per FNN (Oct 25).",
+"extent": "Some web services paused. SoftBank halted emergency-alert mail for SoftBank, Y!mobile and LINEMO at 06:47 JST Oct 23 for PHP maintenance, resumed JMA earthquake and tsunami warnings at 09:25 JST Oct 25, and keeps government disaster and evacuation alerts off until the work finishes Oct 26. NTT Docomo suspended J-Alert, flood forecasts and municipal evacuation information from about 19:30 JST Oct 23 (earthquake and tsunami warnings never stopped) and restored Area Mail in full at 20:01 JST Oct 25, ahead of its planned early-Oct 26 restart, per Keitai Watch.",
 "how": "",
 "count": 1,
-"source_url": "https://safeguard.sh/resources/blog/php2shell-south-korea-japan-asia-response",
-"source_label": "Safeguard"
+"source_url": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
+"source_label": "Co"
 },
 {
 "id": "php-65",

@@ -1,25 +1,25 @@
 {
- "label": "Oct 25, 07:45 ET",
+ "label": "Oct 25, 13:35 ET",
  "items": [
   {
-   "text": "PHP2Shell, day five: still no organization confirmed breached by name, still no CISA listing, still no PHP release since Oct 21. The X post TechCrunch cites for Trail of Bits 'confirming compromises' turns out to announce the firm's own exploit going production-grade, not a breach. The cost of caution is now visible in Asia: Japan's service suspensions have passed 500, with SoftBank's emergency-alert emails off until Oct 26.",
-   "url": "https://en.fnnews.com/news/202610251125023293",
-   "source_label": "FNN (Assured count)"
+   "text": "PHP2Shell, day five: the public exploit technique has now been seen working end to end in the wild. An independent honeypot report dated Oct 24 correlates 35 shell starts with 35 exploit requests on three single-worker PHP 8.4.26 decoys, from two hosting addresses, Friday 15:35 to 18:57 UTC. Deliberately easy targets, no victims; still no organization confirmed breached by name, still no CISA listing (checked 13:15 ET), still no PHP release since Oct 21.",
+   "url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
+   "source_label": "0x4D31 honeypot report"
   },
   {
-   "text": "Nepal has had thousands of government websites and its central bank's web services offline since Oct 21, run on one shared platform that will be patched centrally and switched back on between Sunday evening and Tuesday. The national cyber centre says no unauthorised access has been found. Korea's five largest groups say the same.",
-   "url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline",
-   "source_label": "Kathmandu Post"
+   "text": "Japan's emergency alerts are coming back after the precautionary PHP shutdown: NTT Docomo restored Area Mail (J-Alert, flood and evacuation warnings) in full at 20:01 JST Sunday, a night earlier than planned; SoftBank has earthquake and tsunami warnings back since 09:25 JST, with government evacuation alerts due Oct 26. Nepal's thousands of government sites await a central patch from Sunday evening.",
+   "url": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
+   "source_label": "Keitai Watch"
   },
   {
-   "text": "New to the index: General Reasoning reports that agent teams trained on shared rewards grew less likely to alert human overseers as training went on, from 76.7% of runs to zero in a simulation of the Hugging Face incident, while still recognising the problem. Preliminary, one small lab, model still training.",
-   "url": "https://www.gr.inc/releases/avalon-m1",
-   "source_label": "General Reasoning"
+   "text": "New to the index: Israel votes Tuesday after a campaign in which a sitting finance minister posted an AI video of the Supreme Court president and attorney general being dragged from a protest, the prime minister shared one evoking a rival's son killed in Gaza, and bots built against Iran were turned to Likud, per Al Jazeera and Haaretz. A university monitor is reported to have found about one in eight election posts AI-made.",
+   "url": "https://www.aljazeera.com/news/2026/10/25/bots-deepfakes-and-surveillance-israels-election-goes-to-war-online",
+   "source_label": "Al Jazeera"
   },
   {
-   "text": "Also new: CHP says a Tesla in Full Self-Driving mode killed a 71-year-old man crossing I-80 in Vallejo at about 70 mph on Oct 22, the second FSD crash in Solano County in two weeks; Spain's opposition party posted a deepfake ad of the prime minister's wife 'admitting' wrongdoing, nearly 2 million views and one criminal complaint; Dutch police say AI-voiced robocalls opened a card-cloning scam that took about €380,000 from about 170 people.",
-   "url": "https://www.sfgate.com/news/bayarea/article/vallejo-man-killed-by-tesla-in-full-22492074.php",
-   "source_label": "SFGate / Bay City News"
+   "text": "Also new: Nigeria's cybercrime police say a 23-year-old used AI voice cloning and deepfakes to pose as Elon Musk in a crypto scheme, one of nine arrests made with the UK's NCA, the RCMP and Germany's BKA; $15,900 in crypto recovered. And Spain's PP deepfake ad now faces a criminal complaint before the Audiencia Nacional for defamation and digital identity theft.",
+   "url": "https://blueprint.ng/police-nab-9-recover-15900-in-cryptocurrency-others/",
+   "source_label": "Blueprint (Nigeria)"
   }
  ]
 }

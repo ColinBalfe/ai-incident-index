@@ -1,5 +1,94 @@
 [
 {
+"id": "volokh-ai-deepfakes-in-court-database",
+"title": "Tracker lists 26 court cases of alleged AI-faked evidence; AI-hallucination rulings database passes 2,200",
+"url": "https://reason.com/volokh/2026/10/25/ai-deepfakes-in-court/",
+"outlet": "Reason (Volokh Conspiracy)",
+"published": "2026-10-25T12:01:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "deepfakes",
+"summary": "Damien Charlotin's 'AI Deepfakes in Court' logs fabricated texts, records and correspondence submitted as evidence.",
+"siren": false,
+"also": []
+},
+{
+"id": "tnw-openai-phone-checks-greenblatt",
+"title": "OpenAI security checked fired safety researchers' phones for Signal chats with Redwood's Greenblatt, per WSJ",
+"url": "https://thenextweb.com/news/openai-safety-researchers-fired-signal-chats-greenblatt-wsj",
+"outlet": "The Next Web",
+"published": "2026-10-25T11:57:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "other",
+"summary": "Korbak, Balesni and Wang say they were never told what they leaked; Greenblatt calls the accusations false.",
+"siren": false,
+"also": [
+{
+"outlet": "The Decoder",
+"url": "https://the-decoder.com/three-fired-openai-safety-researchers-say-they-were-never-told-what-they-actually-leaked/"
+},
+{
+"outlet": "WinBuzzer",
+"url": "https://winbuzzer.com/2026/10/24/openai-probed-safety-researchers-signal-messaging-before-firings-xcxwbn/"
+}
+]
+},
+{
+"id": "ktai-docomo-area-mail-restored",
+"title": "Docomo restores J-Alert and evacuation alerts at 20:01 JST, earlier than planned, after PHP maintenance",
+"url": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
+"outlet": "Keitai Watch",
+"published": "2026-10-25T11:34:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Japan",
+"topic": "php2shell",
+"summary": "Area Mail suspended since 19:30 JST Oct 23; earthquake and tsunami warnings never stopped; full service back Sunday evening.",
+"siren": false,
+"also": []
+},
+{
+"id": "investing-goldman-kospi-ai-unwind",
+"title": "Goldman cuts its Kospi target 25% to 9,000 as the AI trade unwinds; the index is down over 35% from June",
+"url": "https://ng.investing.com/news/stock-market-news/goldman-sachs-cuts-kospi-target-by-25-amid-ai-stock-selloff-2755949",
+"outlet": "Investing.com",
+"published": "2026-10-25T09:54:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Korea",
+"topic": "everyday",
+"summary": "Strategists say chip valuations imply a 65% drop in 2027 sector earnings; forward P/E near 4, unseen in 18 markets since 2006.",
+"siren": false,
+"also": [
+{
+"outlet": "Bloomberg",
+"url": "https://www.bloomberg.com/news/articles/2026-10-25/goldman-cuts-kospi-12-month-target-by-25-as-ai-trade-unravels"
+}
+]
+},
+{
+"id": "gizmodo-alpha-school-2x-claims",
+"title": "NYT documents: fewer than half of Alpha School's K-8 pupils met its advertised '2x learning' goal last year",
+"url": "https://gizmodo.com/the-ai-centric-private-school-chain-reportedly-isnt-meeting-its-own-academic-goals-2000830291",
+"outlet": "Gizmodo",
+"published": "2026-10-25T09:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "families",
+"summary": "About half missed the math target and one in five the reading target at the AI-tutored chain; spokesperson declined interviews.",
+"siren": false,
+"also": [
+{
+"outlet": "The New York Times",
+"url": "https://www.nytimes.com/2026/10/23/us/alpha-school-ai-education-parents.html"
+}
+]
+},
+{
 "id": "runtimewire-avalon-m1-reporting",
 "title": "General Reasoning: agent teams trained on shared rewards stopped alerting human overseers, 76.7% of runs to 0",
 "url": "https://runtimewire.com/article/general-reasoning-rlcr-avalon-m1-agent-organisations",
@@ -31,6 +120,25 @@
 "summary": "Guidance issued Oct 24; the agency also tells organizations to look for signs of intrusion, not only patch status.",
 "siren": false,
 "also": []
+},
+{
+"id": "ratopati-nepal-sites-day-four",
+"title": "Nepal's government sites enter a fourth day offline; licences and the central bank still down, passports back",
+"url": "https://english.ratopati.com/story/84478/most-government-websites-have-been-down-for-four-days",
+"outlet": "Ratopati",
+"published": "2026-10-25T06:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Nepal",
+"topic": "php2shell",
+"summary": "Shared GIWIMS platform awaits a central patch; Transport, Revenue Investigation, Land Management and Nepal Rastra Bank sites remain suspended.",
+"siren": false,
+"also": [
+{
+"outlet": "Kathmandu Post",
+"url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline"
+}
+]
 },
 {
 "id": "aljazeera-israel-election-online",
@@ -89,6 +197,20 @@
 "also": []
 },
 {
+"id": "ktai-softbank-quake-alerts-resume",
+"title": "SoftBank gets quake and tsunami alerts back at 09:25 JST; evacuation alerts stay off until Oct 26",
+"url": "https://k-tai.watch.impress.co.jp/docs/news/2150959.html",
+"outlet": "Keitai Watch",
+"published": "2026-10-25T02:48:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Japan",
+"topic": "php2shell",
+"summary": "Emergency-alert mail was halted at 06:47 JST Oct 23 for PHP maintenance; users pointed to Yahoo! Bousai Sokuho meanwhile.",
+"siren": false,
+"also": []
+},
+{
 "id": "newsis-korea-conglomerates-no-breach",
 "title": "Samsung, SK, Hyundai, LG and HD Hyundai report no PHP2Shell breach; POSCO and GS patched in a rush, per Newsis",
 "url": "https://www.newsis.com/view/NISX20261025_0003839898",
@@ -115,6 +237,39 @@
 "summary": "Authentic Brands Group's suit, filed Friday, says Claude trained on the songs and still reproduces them 'for a modern audience'.",
 "siren": false,
 "also": []
+},
+{
+"id": "npr-pentagon-gao-responsible-ai",
+"title": "GAO: six of ten Pentagon AI teams found operational risks; the responsible-AI office has filled 3 of 10 posts",
+"url": "https://www.opb.org/article/2026/10/24/the-pentagons-guidelines-for-responsible-ai-arent-always-followed-report-shows/",
+"outlet": "NPR via OPB",
+"published": "2026-10-25T00:39:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Four of ten projects were not aligned with the 2021 responsible-AI tenets; the Pentagon agreed with GAO but had not acted by Oct 22.",
+"siren": false,
+"also": []
+},
+{
+"id": "github-0x4d31-honeypot-rce-evidence",
+"title": "Honeypot logs 35 shells from two addresses: first public end-to-end PHP2Shell code execution in the wild",
+"url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
+"outlet": "0x4D31 honeypot-data (GitHub)",
+"published": "2026-10-24T23:33:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Two hosting-network addresses, Oct 24 15:35 to 18:57 UTC; author warns the favorable configuration says nothing about reliability elsewhere.",
+"siren": false,
+"also": [
+{
+"outlet": "Raw report",
+"url": "https://raw.githubusercontent.com/0x4D31/honeypot-data/main/reports/php2shell/2026-10-24-confirmed-rce.md"
+}
+]
 },
 {
 "id": "bbc-sury-unsung-hero",
@@ -145,6 +300,25 @@
 "also": []
 },
 {
+"id": "blueprint-nigeria-musk-voice-clone-arrests",
+"title": "Nigeria arrests nine with UK, Canadian and German help; one allegedly cloned Elon Musk's voice for a scam",
+"url": "https://blueprint.ng/police-nab-9-recover-15900-in-cryptocurrency-others/",
+"outlet": "Blueprint (Nigeria)",
+"published": "2026-10-24T21:28:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Nigeria",
+"topic": "everyday",
+"summary": "$15,900 in crypto recovered; two Canadian romance-fraud victims lost more than CA$417,000; suspects not yet tried.",
+"siren": false,
+"also": [
+{
+"outlet": "Crime Fighters",
+"url": "https://crimefightersng.com/news/npf-nccc-arrests-nine-over-international-fraud-elon-musk-impersonation"
+}
+]
+},
+{
 "id": "kathmandupost-nepal-sites-offline",
 "title": "PHP2Shell keeps thousands of Nepali government sites and the central bank offline; return due by Tuesday",
 "url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline",
@@ -155,6 +329,39 @@
 "region": "Nepal",
 "topic": "php2shell",
 "summary": "Shared GIWIMS platform to be patched centrally after the Dashain holiday; NCSC says no unauthorised access found; three banks back.",
+"siren": false,
+"also": []
+},
+{
+"id": "the420-spain-pp-deepfake-complaint",
+"title": "Spain's PP deepfake ad draws a criminal complaint for defamation and digital identity theft",
+"url": "https://the420.in/spain-election-deepfake-pp-ai-political-ad-legal-complaint/",
+"outlet": "The420.in",
+"published": "2026-10-24T18:24:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "EU",
+"topic": "deepfakes",
+"summary": "Leire Díez asks judge Pedraz for the video's immediate removal; minister López condemns it, the PP's Sémper calls it satire.",
+"siren": false,
+"also": [
+{
+"outlet": "Vozpópuli",
+"url": "https://www.vozpopuli.com/tribunales/leire-diez-se-querella-contra-el-pp-por-el-video-hecho-con-ia-en-el-que-la-acusan-de-haber-contratado-matones-contra-biedma.html"
+}
+]
+},
+{
+"id": "riotimes-brazil-lupa-ai-election-posts",
+"title": "Lupa counts 1,423 AI-made posts in Brazil's campaign: 54% unlabelled, 716 deepfakes, 548 by candidates",
+"url": "https://www.riotimesonline.com/brazil-lupa-tracker-1423-ai-election-posts-2026/",
+"outlet": "The Rio Times",
+"published": "2026-10-24T17:11:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Brazil",
+"topic": "deepfakes",
+"summary": "VigIA tracker, Aug 16 to Oct 22: Lula in 509 posts, Flávio Bolsonaro in 247; Instagram 794, Facebook 690; runoff Oct 25.",
 "siren": false,
 "also": []
 },
@@ -211,6 +418,53 @@
 "region": "United States",
 "topic": "everyday",
 "summary": "Convovo study led by Cornell's Tapan Parikh; the models agreed under 10% of the time. OpenAI: the API test is not ChatGPT.",
+"siren": false,
+"also": []
+},
+{
+"id": "futurism-characterai-horror-show",
+"title": "Futurism: Character.AI's suicide and school-shooter bots reached minor decoy accounts as it lost $8-9M a month",
+"url": "https://futurism.com/artificial-intelligence/character-ai-horror-show-bankrupt",
+"outlet": "Futurism",
+"published": "2026-10-24T12:53:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "chatbot-harm",
+"summary": "Retrospective after the Chapter 11 filing; revenue peaked at $5.3 million a month per 404 Media's reading of court papers.",
+"siren": false,
+"also": []
+},
+{
+"id": "cnbc-data-center-voter-backlash-poll",
+"title": "CNBC poll: 63% of US voters oppose an AI data center within 10 miles of home; 13% support one",
+"url": "https://politicalwire.com/2026/10/24/trump-ai-data-center-push-faces-voter-backlash/",
+"outlet": "CNBC via Political Wire",
+"published": "2026-10-24T12:02:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"summary": "All-America survey finds bipartisan resistance to the data-center build-out nine days before the midterms.",
+"siren": false,
+"also": [
+{
+"outlet": "CNBC",
+"url": "https://www.cnbc.com/2026/10/24/trump-ai-data-centers-voter-backlash-midterms.html"
+}
+]
+},
+{
+"id": "cyfirma-dprk-php2shell-advisory-v3",
+"title": "CYFIRMA says a suspected North Korean crew is staging PHP2Shell attacks on 216 hosts; unconfirmed elsewhere",
+"url": "https://cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure",
+"outlet": "CYFIRMA",
+"published": "2026-10-24T12:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Version 3 lists 15 staging and 21 scan addresses, rates the DPRK nexus 'HIGH', names no organization, confirms no compromise.",
 "siren": false,
 "also": []
 },
@@ -457,6 +711,20 @@
 "siren": false
 },
 {
+"id": "cdispatch-colom-removes-video",
+"title": "Colom pulls his AI video of Sen. Hyde-Smith after Mississippi's AG says it 'appears to violate' state law",
+"url": "https://cdispatch.com/news/colom-removes-ai-video-of-senator-after-ags-ultimatum/",
+"outlet": "The Dispatch (Columbus, Miss.)",
+"published": "2026-10-23T23:09:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Campaign calls the ad parody but removes it 'in the spirit of being good stewards' of donor money; AG asks it to preserve records.",
+"siren": false,
+"also": []
+},
+{
 "id": "openai-trains-frontier-models-offline",
 "title": "OpenAI says frontier training resumed Oct 1 with no live internet; agents get a cached 'offline world' instead",
 "url": "https://www.engadget.com/2296019/openai-says-its-cutting-off-internet-access-for-frontier-model-training/",
@@ -666,6 +934,20 @@
 "region": "US",
 "topic": "jobs",
 "summary": "TrueUp count as of Oct 23; GoLayoffs: 17 of 66 explained announcements referenced AI, which does not prove replacement.",
+"siren": false,
+"also": []
+},
+{
+"id": "otempo-tse-flavio-two-hour-order",
+"title": "Brazil's electoral court gives Flávio Bolsonaro and Meta two hours to pull an AI anti-Lula WhatsApp video",
+"url": "https://www.otempo.com.br/eleicoes/2026/presidentes/2026/10/23/bellizze-da-2-horas-para-flavio-apagar-video-com-ia-e-ataques-a-lula-no-whatsapp",
+"outlet": "O Tempo",
+"published": "2026-10-23T19:08:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Brazil",
+"topic": "deepfakes",
+"summary": "Minister Bellizze orders Meta to preserve reach and monetisation records; Lula's request for a R$30,000-per-post fine is refused.",
 "siren": false,
 "also": []
 },
@@ -970,6 +1252,25 @@
 ]
 },
 {
+"id": "gr-avalon-m1-overseer-alerts",
+"title": "General Reasoning: agent teams trained on shared rewards stopped alerting overseers, 76.7% of runs to zero",
+"url": "https://www.gr.inc/releases/avalon-m1",
+"outlet": "General Reasoning",
+"published": "2026-10-23T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Avalon-M1 report on a simulated Hugging Face incident: agents still recognised the problem but stopped reporting it; model still training.",
+"siren": false,
+"also": [
+{
+"outlet": "TokenPost",
+"url": "https://www.tokenpost.com/news/technology/40421"
+}
+]
+},
+{
 "id": "computersweden-regeringskansliet-block",
 "url": "https://computersweden.se/article/4239687/regeringskansliet-sparrar-chat-gpt-och-claude.html",
 "outlet": "Computer Sweden",
@@ -1268,25 +1569,6 @@
 "summary": "CERT-In rated the PHP flaws critical in advisory CIVN-2026-0510; no Indian victims identified so far.",
 "siren": false,
 "also": []
-},
-{
-"id": "australia-asd-site-down-minister-not-a-breach",
-"title": "Australian tax, health and ASD sites went offline over the PHP flaw; minister says 'this isn't a breach'",
-"url": "https://www.canberratimes.com.au/story/9373541/asd-website-down-after-global-cyber-security-flaw-exposed/",
-"outlet": "The Canberra Times",
-"published": "2026-10-22T15:46:00+11:00",
-"time_known": true,
-"kind": "official",
-"region": "Australia",
-"topic": "php2shell",
-"summary": "ASD, ATO and health department sites went offline over the PHP flaw; Science Minister Tim Ayres says 'this isn't a breach'.",
-"siren": false,
-"also": [
-{
-"outlet": "AAP",
-"url": "https://aapnews.aap.com.au/news/government-websites-go-dark-after-ai-discovers-flaw"
-}
-]
 },
 {
 "id": "techradar-302ai-open-bucket",

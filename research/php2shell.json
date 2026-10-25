@@ -747,10 +747,10 @@
    "country": "Japan",
    "status": "exposed/patching",
    "date": "2026-10-22 to 2026-10-26",
-   "what_happened": "Some web services paused. SoftBank suspended emergency-alert emails for SoftBank, Y!mobile and LINEMO from Oct 23 with inspections due to finish Oct 26, so users cannot receive earthquake, tsunami, disaster or evacuation information through them and were pointed to alternative apps; NTT Docomo suspended some transmissions including J-Alert and local evacuation information but kept earthquake early warnings and tsunami alerts, per FNN (Oct 25).",
-   "damage": "none reported (precautionary outage; emergency-alert email delivery suspended)",
-   "source": "https://safeguard.sh/resources/blog/php2shell-south-korea-japan-asia-response",
-   "source2": "https://en.fnnews.com/news/202610251125023293"
+   "what_happened": "Some web services paused. SoftBank halted emergency-alert mail for SoftBank, Y!mobile and LINEMO at 06:47 JST Oct 23 for PHP maintenance, resumed JMA earthquake and tsunami warnings at 09:25 JST Oct 25, and keeps government disaster and evacuation alerts off until the work finishes Oct 26. NTT Docomo suspended J-Alert, flood forecasts and municipal evacuation information from about 19:30 JST Oct 23 (earthquake and tsunami warnings never stopped) and restored Area Mail in full at 20:01 JST Oct 25, ahead of its planned early-Oct 26 restart, per Keitai Watch.",
+   "damage": "none reported (precautionary outage; emergency-alert delivery partly suspended for about two days)",
+   "source": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
+   "source2": "https://k-tai.watch.impress.co.jp/docs/news/2150959.html"
   },
   {
    "name": "Sukiya, World Quest",
@@ -1287,6 +1287,31 @@
    "date": "2026-10-24",
    "event": "BBC profiles Ondřej Surý, the volunteer who packages PHP for Debian and Ubuntu in his spare time: warned in advance by the PHP project, he had to rush the packages when the leak brought the release forward, and received more than $10,000 (£7,470) in donations in a few days. 'I think this is was the most severe incident in years,' he said, adding that with AI capabilities improving in cyber security 'this might not be an isolated incident.'",
    "source": "https://www.bbc.com/news/articles/cw30ejqljl43o"
+  },
+  {
+   "date": "2026-10-24 15:35 to 18:57 UTC",
+   "event": "First public packet-to-process evidence of the full PHP2Shell chain reaching code execution in the wild, on honeypots: a researcher publishing as 0x4D31 reports that on three disposable PHP 8.4.26 honeypots, packet captures and kernel process events correlate 35 complete execution-stage requests with 35 shell starts parented by Apache workers, from two hosting-network source addresses (OVH US, 3 shells from 15:35 UTC; Interserver, 32 shells from 16:46 to 18:57 UTC), using the published leak-guided technique; two further addresses only crashed workers. The author stresses the targets ran an 'intentionally favorable single-worker mod_php profile', that this 'is not a measurement of exploit reliability on other worker counts, PHP builds, or applications', and that no second-stage file was downloaded. A companion report covering Oct 22 to early Oct 24 found no confirmed code execution, so the first confirmed shells date from Friday afternoon UTC. Honeypots, not real victims.",
+   "source": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md"
+  },
+  {
+   "date": "2026-10-24",
+   "event": "CYFIRMA issues version 3 of its advisory on a suspected North Korean campaign staging PHP2Shell attacks: it says Korean-speaking operators have filtered a 216-host target set of unpatched or partly mitigated servers, lists 15 staging addresses and 21 compromised scan nodes (38 addresses in all), rates a North Korean state nexus 'HIGH' confidence and a Lazarus link 'MODERATE', identifies no organization and confirms no compromise. A single vendor's claim; no other firm has corroborated the attribution.",
+   "source": "https://cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure"
+  },
+  {
+   "date": "2026-10-25 09:25 JST",
+   "event": "SoftBank resumes Japan Meteorological Agency earthquake early warnings and tsunami warnings over its emergency-alert mail for SoftBank, Y!mobile and LINEMO subscribers, halted since 06:47 JST Oct 23 for PHP maintenance; national and municipal disaster and evacuation alerts stay off until the work finishes on Oct 26, per Keitai Watch.",
+   "source": "https://k-tai.watch.impress.co.jp/docs/news/2150959.html"
+  },
+  {
+   "date": "2026-10-25 20:01 JST",
+   "event": "NTT Docomo restores its Area Mail emergency alerts in full at 20:01 JST, ahead of the early-Oct 26 restart it had announced; J-Alert, river flood forecasts and municipal disaster and evacuation information had been suspended since about 19:30 JST Oct 23 as a precaution over the PHP flaws (earthquake and tsunami warnings never stopped), per Keitai Watch.",
+   "source": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html"
+  },
+  {
+   "date": "2026-10-25 13:15 ET",
+   "event": "Midday check, day five: the CISA KEV JSON feed, opened directly: still catalog version 2026.10.23 (released Oct 23, 19:30 UTC), 1,756 entries, none of the three PHP CVEs; no emergency directive found. php.net archive: no release after Oct 21 (newest item the Oct 23 informational advisory on CVE-2026-115560; PHP 8.6.0 RC5 is planned for Nov 5). NCSC-NL's alert was last updated Oct 23, 15:45, with 'one report of possible misuse abroad' that 'has not been confirmed to have actually succeeded'. No organization has confirmed a compromise by name.",
+   "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
   }
  ],
  "statements": [
@@ -2324,6 +2349,60 @@
    "paraphrase": "Called it 'the most severe incident in years' and said that because AI capabilities in cyber security are improving, 'this might not be an isolated incident'; more than $10,000 in donations arrived in a few days.",
    "url": "https://www.bbc.com/news/articles/cw30ejqljl43o",
    "x_post": "no"
+  },
+  {
+   "date": "2026-10-25",
+   "organization": "Software Development and Operation Centre (SDOC), Nepal",
+   "speaker": "Kiran Timilsina, chief executive",
+   "channel": "Interview (Kathmandu Post)",
+   "paraphrase": "'Most Nepal government websites run on a shared platform called GIWIMS, which is now being audited.' Technical decisions by Sunday evening, then a central patch; sites return in stages from Sunday evening through Monday or Tuesday; legacy systems on PHP 8.1 and older may need upgrading first.",
+   "url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-25",
+   "organization": "NTT Docomo",
+   "speaker": "Company notice (via Keitai Watch)",
+   "channel": "Service notice",
+   "paraphrase": "Area Mail emergency alerts resumed in full at 20:01 JST on Oct 25, earlier than the planned early-Oct 26 restart; the suspension from about 19:30 JST Oct 23 was a precautionary response to the PHP vulnerability.",
+   "url": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-25",
+   "organization": "SoftBank (SoftBank, Y!mobile, LINEMO)",
+   "speaker": "Company notice (via Keitai Watch)",
+   "channel": "Service notice",
+   "paraphrase": "JMA earthquake early warnings and tsunami warnings over emergency-alert mail resumed at 09:25 JST Oct 25; government and municipal disaster and evacuation information remains suspended until maintenance finishes on Oct 26; users pointed to apps such as Yahoo! Bousai Sokuho meanwhile.",
+   "url": "https://k-tai.watch.impress.co.jp/docs/news/2150959.html",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-23",
+   "organization": "NCSC-NL (Netherlands)",
+   "speaker": "Alert update, 15:45",
+   "channel": "Agency alert",
+   "paraphrase": "'At this moment one report of possible misuse abroad is known to us, but it has not been confirmed that the attack actually succeeded.' Further research shows exploiting the flaws is 'complicated' and the chance of large-scale abuse 'smaller than previously estimated'. No update on Oct 24 or 25.",
+   "url": "https://www.ncsc.nl/alerts/kwetsbaarheden-php-patches-beschikbaar-update-nu",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "CYFIRMA",
+   "speaker": "Threat advisory, version 3",
+   "channel": "Vendor advisory",
+   "paraphrase": "Assesses with 'HIGH' confidence that a North Korean state-nexus actor is staging PHP2Shell attacks against a filtered 216-host target set, with a 'MODERATE' Lazarus link; 'no organisation is identified in this advisory' and no compromise is confirmed. Unverified by any other vendor.",
+   "url": "https://cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-24",
+   "organization": "Independent researcher (0x4D31, honeypot-data)",
+   "speaker": "Observation report",
+   "channel": "GitHub report",
+   "paraphrase": "Reports 35 shell starts parented by Apache workers on three single-worker mod_php honeypots from two source addresses on Oct 24, calling it packet-to-process evidence of the full chain; warns it 'is not a measurement of exploit reliability on other worker counts, PHP builds, or applications'.",
+   "url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
+   "x_post": "no"
   }
  ],
  "scale": [
@@ -2515,6 +2594,20 @@
    "metric": "PHP hosts and web properties detected (advisory update 2)",
    "value": "4,184,559 hosts and 67,597,101 web properties running PHP; the counts are not additive and keep rising as detection improves, not because exposure grew",
    "url": "https://censys.com/advisory/cve-2026-109618-cve-2026-109619/"
+  },
+  {
+   "source_org": "0x4D31 (independent honeypot report)",
+   "date": "2026-10-24",
+   "metric": "confirmed code-execution events on honeypots",
+   "value": "35 Apache-parented shell starts on 3 PHP 8.4.26 honeypots from 2 source addresses (3 and 32), between 15:35 and 18:57 UTC; honeypots ran a deliberately favorable single-worker configuration; 2 other addresses only crashed workers",
+   "url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md"
+  },
+  {
+   "source_org": "CYFIRMA (single-vendor claim)",
+   "date": "2026-10-24",
+   "metric": "hosts in a suspected DPRK operator target set",
+   "value": "216 hosts filtered as unpatched or partly mitigated, about one third already scanned at the time of the exchange; 15 staging and 21 scan-node addresses; no organization identified, no compromise confirmed",
+   "url": "https://cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure"
   }
  ],
  "ai_angle": [

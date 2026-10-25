@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None by name as of Oct 25, 07:45 ET; Unit 42 reports one unnamed European government entity with credentials and MFA secrets taken (Oct 23); Trail of Bits' cited X post is an exploit update, not a breach report; nothing new overnight",
+"status": "None by name as of Oct 25, 13:35 ET; Unit 42 reports one unnamed European government entity with credentials and MFA secrets taken (Oct 23); Trail of Bits' cited X post is an exploit update, not a breach report; an independent honeypot report shows 35 shells on three decoy servers Oct 24, the first public end-to-end code execution in the wild, on a deliberately easy configuration",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -11,7 +11,7 @@
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly again at 06:40 ET Oct 25, has no PHP entry; odds cut to 45% on time decay",
+"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly again at 13:15 ET Oct 25, has no PHP entry; odds held at 45%",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -29,7 +29,7 @@
 {
 "id": "php-restore",
 "item": "How fast the UK, Netherlands, Canada and Japan restore switched-off services",
-"status": "32 UK services down as of Oct 22, no update since; Japan: 500-plus suspensions, 285 without a restart notice (Assured, Oct 23), SoftBank alert emails off until Oct 26; Nepal: thousands of government sites and the central bank due back by Oct 27; a Michigan credit union restored banking in about 24 hours",
+"status": "32 UK services down as of Oct 22, no update since; Japan: 500-plus suspensions, 285 without a restart notice (Assured, Oct 23); Docomo restored Area Mail in full 20:01 JST Oct 25, a night early; SoftBank has quake and tsunami alerts back, evacuation alerts off until Oct 26; Nepal: thousands of government sites and the central bank due back by Oct 27; a Michigan credit union restored banking in about 24 hours",
 "kind": "open",
 "why": "Tells you how long 'turn it off' is a viable defense, and what the next AI-found flaw will cost.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
@@ -47,7 +47,7 @@
 {
 "id": "openai-21",
 "item": "OpenAI's next misalignment report (the log stands at 20)",
-"status": "Last posted Oct 20; still 20 reports and 3 notices as of Oct 25 morning",
+"status": "Last posted Oct 20; still 20 reports and 3 notices as of Oct 25 afternoon",
 "kind": "due",
 "why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
 "source_url": "https://alignment.openai.com/misalignment-reports/",
