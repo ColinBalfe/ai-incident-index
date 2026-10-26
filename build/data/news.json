@@ -123,10 +123,10 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "Day 6: no real victim yet, no US government warning",
+"tag": "No real victim named, no US government warning yet",
 "red": false,
 "label": "confirmed",
-"wall_rank": 4
+"wall_rank": 2
 },
 {
 "id": "gulfnews-dubai-cafe-ai-refund-photo",
@@ -161,10 +161,11 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "41,907 break-in attempts from 68 countries",
+"tag": "TU Delft's sensors alone logged 41,907 break-in attempts since Oct 21",
 "red": false,
 "label": "tried",
-"wall_rank": 3
+"wall_rank": 1,
+"receipt": "Counted by TU Delft's decoy servers and network telescope, Oct 21 to 11:04 UTC Oct 26, from 586 addresses in 68 countries. Their sensors only: Cloudflare reported millions of attempts across its network."
 },
 {
 "id": "sbs-agibot-110-humanoids-record",
@@ -260,15 +261,8 @@
 "summary": "Marcus Hutchins calls it the best in-the-wild confirmation yet; Dataminr saw 'no known compromises' before it; VirusTotal: 5.1M exposed hosts.",
 "siren": false,
 "also": [],
-"img": "/assets/img/code-screen-malinowski.jpg",
-"img_credit": "Photo: Dominik Malinowski / Unsplash",
-"img_alt": "Lines of web code on a dark computer screen",
-"img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q",
-"wall": "lead",
-"tag": "Hackers proved the flaw in most websites works",
 "red": true,
 "label": "proven",
-"wall_rank": 1,
 "moved": {
 "dir": "up",
 "at": "2026-10-26T09:19:00Z",
@@ -464,10 +458,16 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "Still-unfixed server fell in 19 hours; break-in instructions now public",
-"red": false,
-"label": "confirmed",
-"wall_rank": 2
+"tag": "A $2,000 test server, left open on purpose, fell in 19 hours",
+"red": true,
+"label": "proven",
+"wall_rank": 0,
+"moved": {
+"dir": "up",
+"at": "2026-10-26T09:19:00Z",
+"note": "From Tried to Proven: test and decoy servers actually broken into"
+},
+"receipt": "A challenge server left unpatched on purpose, with $2,000 in Bitcoin as the prize, fell at 15:47 UTC on Oct 25. A test system, not a real victim. A researcher's decoy servers were also broken into on Oct 24 (BleepingComputer)."
 },
 {
 "id": "koreaherald-ai-synthetic-shoppers",

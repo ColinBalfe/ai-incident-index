@@ -22,15 +22,22 @@ document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListen
   if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function () { window.prompt('Copy this link', t); }); else window.prompt('Copy this link', t); }); });
 </script>"""
 
+def _short(t, n=62):
+    t = (t or '').strip()
+    if len(t) <= n: return t
+    cut = t[:n].rsplit(' ', 1)[0].rstrip(' ,;:—-')
+    return cut + '…'
+
 def shell(*, title, desc, url, img, body, jsonld, kind):
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)} — Warning Shots</title>
+<title>{esc(_short(title))} | Warning Shots</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{esc(url)}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Warning Shots"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{esc(url)}"><meta property="og:image" content="{esc(img)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(desc)}"><meta name="twitter:image" content="{esc(img)}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icon-180.png"><link rel="manifest" href="/manifest.webmanifest">

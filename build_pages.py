@@ -56,6 +56,11 @@ def article_ld(title, desc, url, img, published, section):
     d = {"@context": "https://schema.org", "@type": "Article", "headline": title[:110], "description": desc, "url": url, "mainEntityOfPage": url, "image": [img],
          "datePublished": published, "dateModified": AS_OF, "articleSection": section, "isAccessibleForFree": True,
          "author": {"@type": "Organization", "name": "Warning Shots", "url": site}, "publisher": {"@type": "NewsMediaOrganization", "name": "Warning Shots", "url": site, "logo": {"@type": "ImageObject", "url": site + "assets/icon-512.png"}}}
+    crumbs = {"i": ("All incidents", site + "i/"), "c": ("Did they fix it?", site + "c/"), "m": ("What AI can now do", site + "m/")}
+    kind = url.replace(site, '').split('/')[0]
+    if kind in crumbs:
+        d = {"@context": "https://schema.org", "@graph": [{k: v for k, v in d.items() if k != "@context"},
+             {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Warning Shots", "item": site}, {"@type": "ListItem", "position": 2, "name": crumbs[kind][0], "item": crumbs[kind][1]}, {"@type": "ListItem", "position": 3, "name": title[:110], "item": url}]}]}
     return json.dumps(d, ensure_ascii=False).replace('</', '<\\/')
 
 def share_html(url, text, card, deep, deep_label):
@@ -275,9 +280,21 @@ for kind in ('i', 'c', 'm'):
 
 # ---------- sitemap + robots
 lastmod = AS_OF_DATE
-sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', f'<url><loc>{esc(site)}</loc><lastmod>{lastmod}</lastmod><changefreq>hourly</changefreq><priority>1.0</priority></url>']
+sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">', f'<url><loc>{esc(site)}</loc><lastmod>{lastmod}</lastmod><changefreq>hourly</changefreq><priority>1.0</priority></url>']
+_lm = {}  # each page's own last real change, not the refresh time
+for r in scored: _lm[f'{site}i/{r["id"]}/'] = max((r.get('disclosed') or r['date'])[:10], r['date'][:10]) if len(r['date']) >= 10 else (r.get('disclosed') or r['date'] + '-01')[:10]
+for f_ in fixes: _lm[f'{site}c/{f_["incident_id"]}/'] = max([c.get('date', '')[:10] for c in f_['chain'] if c.get('date')] or [lastmod])
+for c in caps: _lm[f'{site}m/{c["id"]}/'] = max([c['date'][:10]] + [((c.get('stages') or {}).get(k) or {}).get('date', '')[:10] for k in ('demonstrated', 'reproduced', 'accessible', 'reliable', 'consequences')])
+def _img(u):
+    for k in ('i', 'c', 'm'):
+        mm = re.match(re.escape(site) + k + r'/([^/]+)/$', u)
+        if mm and os.path.exists(f'cards/{k}-{mm.group(1)}.jpg'):
+            return f'<image:image><image:loc>{esc(site)}cards/{k}-{esc(mm.group(1))}.jpg</image:loc></image:image>'
+    return ''
 for u in urls:
-    sm.append(f'<url><loc>{esc(u)}</loc><lastmod>{lastmod}</lastmod></url>')
+    lm = _lm.get(u) or lastmod
+    if len(lm) < 10 or lm > lastmod: lm = lastmod
+    sm.append(f'<url><loc>{esc(u)}</loc><lastmod>{lm}</lastmod>{_img(u)}</url>')
 sm.append('</urlset>')
 open('sitemap.xml', 'w', encoding='utf-8').write('\n'.join(sm))
 # ---------- Google News sitemap: pages for incidents disclosed in the last 48 hours, plus the live tracker
@@ -299,4 +316,36 @@ ns.append('</urlset>')
 open('news-sitemap.xml', 'w', encoding='utf-8').write('\n'.join(ns))
 json.dump([u for u, _, _ in _news], open('data/fresh_urls.json', 'w'))
 open('robots.txt', 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\nSitemap: {site}sitemap.xml\nSitemap: {site}news-sitemap.xml\n')
+_sev = sorted(scored, key=lambda r: -r['severity'])
+_live = by_id.get(meta.get('live_incident') or '')
+llms = f'''# Warning Shots: The AI Incident Index
+
+> A live index of AI's dangers and breakthroughs as they land on real lives: every significant AI incident since 2023, scored 0-100 by a published formula and linked to its sources, with a headline page refreshed three times a day (6:37, 12:37 and 18:37 US Eastern).
+
+Last refresh: {as_of_label}. {len(scored)} incidents scored. Corrections and retractions are logged publicly; retracted claims are labelled as such on every page.
+
+## Start here
+- [Front page: today's headlines]({site}): the level of the day, the running story, three columns of headlines each linking to the original reporting
+- [The Record]({site}index/): every incident scored, charts, forecasts and their track record, and whether fixes held
+- [The Wire]({site}wire/): every report from the last three days, newest first
+- [All incidents]({site}i/): one page per incident, newest first
+- [Did they fix it?]({site}c/): report, response, claimed fix, independent check, current status
+- [What AI can now do]({site}m/): capability milestones graded from demonstration to real consequences
+{f"- [Live tracker: {_live['title']}]({site}php2shell/)" if _live and os.path.exists('php2shell/index.html') else ''}
+
+## Data
+- [incidents.json]({site}data/incidents.json) and [incidents.csv]({site}data/incidents.csv): every incident with its five factor ratings, dates, summary and sources
+- [forecasts.json]({site}data/forecasts.json): dated forecasts with probabilities and resolution dates
+- [RSS: the Wire and the brief]({site}feed.xml), [RSS: new incident, case and milestone pages]({site}feed-dispatches.xml)
+
+## How scores work
+Each incident is rated on Harm (0-5), Reach (0-5), Autonomy (0-4), Novelty (0-5) and Irreversibility (0-5). Harm score = 100 x (0.5 H/5 + 0.25 R/5 + 0.25 I/5); signal score = 100 x (0.6 A/4 + 0.4 N/5); severity = 0.55 x harm + 0.45 x signal. Tiers: under 20 Minor (WS-1), 20-39 Moderate (WS-2), 40-59 Serious (WS-3), 60-79 Severe (WS-4), 80+ Critical (WS-5). Proof is graded in three rungs that are never blurred: Tried (attempts logged), Proven (a test system actually broken into), Hit (a real victim confirmed).
+
+## The most severe incidents
+''' + '\n'.join(f'- [{r["title"]}]({site}i/{r["id"]}/): {r["severity"]}/100, {r["tier"]}' for r in _sev[:15]) + '''
+
+## Citing
+Warning Shots, The AI Incident Index, warningshots.ai. Please cite the incident page and the original sources it links.
+'''
+open('llms.txt', 'w', encoding='utf-8').write(llms)
 print('pages', len(urls), '(incidents', len(scored), 'cases', len(fixes), 'milestones', len(caps), '+ 3 indexes), sitemap written')

@@ -498,7 +498,7 @@ function drawLevel() {
   const how = el('a', null, 'How the scores work →'); how.href = '/index/#about';
   det.append(ul, how);
   why.addEventListener('click', () => { det.hidden = !det.hidden; why.setAttribute('aria-expanded', String(!det.hidden)); });
-  const brand = el('a', 'lvl-brand'); brand.href = '#top'; brand.setAttribute('aria-label', 'Warning Shots: the masthead'); brand.append(el('b', null, 'Warning Shots'), txt(' · AI’s dangers and breakthroughs, checked three times a day'));
+  const brand = el('a', 'lvl-brand'); brand.href = '#top'; brand.setAttribute('aria-label', 'Warning Shots: the masthead'); const mk = document.querySelector('.masthead .logo .mark'); if (mk) { const c = mk.cloneNode(true); c.setAttribute('class', 'lvl-mark'); c.setAttribute('aria-hidden', 'true'); brand.append(c); } brand.append(el('b', null, 'Warning Shots'), el('span', 'lvl-desc', '· AI’s dangers and breakthroughs, checked three times a day'));
   box.replaceChildren(brand, a1, why, a2, a3, det);
 }
 function drawWall() {
@@ -509,12 +509,13 @@ function drawWall() {
   if (!siren) { box.hidden = true; lead.hidden = true; return; }
   box.hidden = false; lead.hidden = false;
   const ext = (a, n) => { a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = (n.outlet || '') + ': ' + n.title; return a; };
-  const dots = (t) => /[.!?…]$/.test(t) ? t : t + '...';
+  const dots = (t) => t; // complete lines, never teaser-style ellipses
   const chip = (n) => { if (!WALL_LABEL[n.label]) return null; const c = el('span', 'wl-lab ' + n.label, WALL_LABEL[n.label]); if (TIP[n.label]) { c.setAttribute('data-tip', TIP[n.label]); c.tabIndex = 0; } return c; };
   const movedMark = (n) => { const m = n.moved; if (!m || !m.at) return null; const t = Date.parse(m.at); const recent = PREV_VISIT ? t > PREV_VISIT : (Date.parse(D.meta.as_of) - t) < 36 * 3.6e6; if (!recent) return null; const up = m.dir === 'up'; const k = el('span', 'mv ' + (up ? 'up' : 'down'), up ? '▲' : '▼'); k.setAttribute('data-tip', (up ? 'Moved up' : 'Moved down') + (PREV_VISIT ? ' since you last looked' : ' in the last day') + ': ' + (m.note || '') + ' (' + fmtET(m.at) + ').'); k.tabIndex = 0; k.setAttribute('aria-label', up ? 'Moved up' : 'Moved down'); return k; };
   const line = (n, withOutlet) => {
     const w = el('div', 'wl'); if (isNewToReader(n)) { const d = el('i', 'newdot'); d.setAttribute('data-tip', 'New since you last looked (' + fmtET(new Date(PREV_VISIT).toISOString()) + ').'); w.append(d); } const mv = movedMark(n); if (mv) w.append(mv); const c = chip(n); if (c) w.append(c);
     w.append(ext(el('a', 'dl' + (n.red ? ' red' : ''), dots(n.tag)), n));
+    if (n.receipt) { const rc0 = el('sup', 'rcpt', 'ⓘ'); rc0.setAttribute('data-tip', n.receipt); rc0.tabIndex = 0; rc0.setAttribute('aria-label', 'Where this number comes from'); w.append(rc0); }
     if (withOutlet) w.append(el('span', 'wl-o', (n.outlet || '') + (ageShort(n).endsWith('h ago') || ageShort(n) === 'just now' ? ' · ' + ageShort(n).replace(' ago', '') : '')));
     return w;
   };
@@ -534,7 +535,7 @@ function drawWall() {
       const lad = el('div', 'rungs'); lad.setAttribute('aria-label', 'Proof so far: ' + (at >= 0 ? RUNGS[at][1] : 'none'));
       RUNGS.forEach(([k, lbl, def], i) => { const r = (sr.rungs || {})[k] || {}; const st = el('span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); st.tabIndex = 0; st.setAttribute('data-tip', (TIP[k] || lbl) + (r.note ? ' ' + r.note + '.' : '') + (i > at ? ' Not reached yet.' : '')); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
       const rc = sr.state !== 'closed' && sr.recheck ? el('div', 'serial-r') : null;
-      if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(sr.recheck_at || D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(leadLines && leadLines.childNodes.length ? 'all four lines still true.' : sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources then: ' + sr.recheck + '. A "no" is only news if someone just looked.'); }
+      if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(sr.recheck_at || D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(leadLines && leadLines.childNodes.length ? 'every line here still true.' : sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources then: ' + sr.recheck + '. A "no" is only news if someone just looked.'); }
       const nt = sr.state !== 'closed' && sr.next_test && sr.next_test.date ? el('div', 'serial-t') : null;
       if (nt) { nt.append(el('b', null, 'Next test ' + fmtDate(new Date(sr.next_test.date + 'T12:00:00Z')) + ': '), txt(sr.next_test.text)); nt.setAttribute('data-tip', 'A dated question the index committed to in advance; it is graded on that date, right or wrong, on the Record.'); }
       box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft); return box2;
@@ -544,7 +545,8 @@ function drawWall() {
   const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n, false)));
   // The running story and the lead cluster are one block: the photo, then the serial's day, case and proof ladder with the lines under it.
   const srl = D.meta && D.meta.serial;
-  if (srl && srl.name) { cluster.classList.add('with-serial'); cluster.append(buildSerial(srl, ll)); } else cluster.append(ll);
+  if (srl && srl.name && srl.exposure && srl.state !== 'closed') { const vc0 = (C.victimCounts || {})[srl.incident_id] || {}; const nOrg = vc0.rows || 0; if (nOrg) { const w = el('div', 'wl'); const a = el('a', 'dl', srl.exposure.text.replace('{n}', nOrg)); a.href = srl.exposure.url; if (srl.exposure.tip) { const rc1 = el('sup', 'rcpt', 'ⓘ'); rc1.setAttribute('data-tip', srl.exposure.tip); rc1.tabIndex = 0; w.append(a, rc1); } else w.append(a); ll.append(w); } }
+  if (srl && srl.name) { cluster.classList.add('with-serial'); if (!withImg) cluster.classList.add('no-pic'); cluster.append(buildSerial(srl, ll)); } else cluster.append(ll);
   // 2. the siren: a centred picture, the headline, then what is confirmed (the masthead follows in the page)
   const sv = el('div', 'dl-siren');
   if (siren.img) sv.append(pic(siren, 'dl-hero'));

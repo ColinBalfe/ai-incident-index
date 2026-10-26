@@ -1,0 +1,42 @@
+# Warning Shots: The AI Incident Index
+
+> A live index of AI's dangers and breakthroughs as they land on real lives: every significant AI incident since 2023, scored 0-100 by a published formula and linked to its sources, with a headline page refreshed three times a day (6:37, 12:37 and 18:37 US Eastern).
+
+Last refresh: Oct 26, 2026, 3:25 PM ET. 160 incidents scored. Corrections and retractions are logged publicly; retracted claims are labelled as such on every page.
+
+## Start here
+- [Front page: today's headlines](https://warningshots.ai/): the level of the day, the running story, three columns of headlines each linking to the original reporting
+- [The Record](https://warningshots.ai/index/): every incident scored, charts, forecasts and their track record, and whether fixes held
+- [The Wire](https://warningshots.ai/wire/): every report from the last three days, newest first
+- [All incidents](https://warningshots.ai/i/): one page per incident, newest first
+- [Did they fix it?](https://warningshots.ai/c/): report, response, claimed fix, independent check, current status
+- [What AI can now do](https://warningshots.ai/m/): capability milestones graded from demonstration to real consequences
+- [Live tracker: PHP2Shell: AI-found PHP flaws leak, trigger global shutdowns](https://warningshots.ai/php2shell/)
+
+## Data
+- [incidents.json](https://warningshots.ai/data/incidents.json) and [incidents.csv](https://warningshots.ai/data/incidents.csv): every incident with its five factor ratings, dates, summary and sources
+- [forecasts.json](https://warningshots.ai/data/forecasts.json): dated forecasts with probabilities and resolution dates
+- [RSS: the Wire and the brief](https://warningshots.ai/feed.xml), [RSS: new incident, case and milestone pages](https://warningshots.ai/feed-dispatches.xml)
+
+## How scores work
+Each incident is rated on Harm (0-5), Reach (0-5), Autonomy (0-4), Novelty (0-5) and Irreversibility (0-5). Harm score = 100 x (0.5 H/5 + 0.25 R/5 + 0.25 I/5); signal score = 100 x (0.6 A/4 + 0.4 N/5); severity = 0.55 x harm + 0.45 x signal. Tiers: under 20 Minor (WS-1), 20-39 Moderate (WS-2), 40-59 Serious (WS-3), 60-79 Severe (WS-4), 80+ Critical (WS-5). Proof is graded in three rungs that are never blurred: Tried (attempts logged), Proven (a test system actually broken into), Hit (a real victim confirmed).
+
+## The most severe incidents
+- [OpenAI agent swarm breaches Hugging Face](https://warningshots.ai/i/openai-hf-swarm/): 78/100, Severe
+- [State hackers run a mostly AI-automated espionage campaign](https://warningshots.ai/i/gtg1002-claude-code-espionage/): 77/100, Severe
+- [PHP2Shell: AI-found PHP flaws leak, trigger global shutdowns](https://warningshots.ai/i/php2shell/): 70/100, Severe
+- [Criminal uses Claude Code to run a 17-victim extortion spree](https://warningshots.ai/i/anthropic-vibe-hacking-gtg2002/): 68/100, Severe
+- [Lone hacker's AI-agent campaign linked to Korean bank breaches](https://warningshots.ai/i/korea-banks-artex/): 67/100, Severe
+- [OpenAI agent breaks into Australia's Medicare portal](https://warningshots.ai/i/openai-medicare/): 66/100, Severe
+- [Russian state espionage campaign run through Claude](https://warningshots.ai/i/claude-espionage-ru/): 66/100, Severe
+- [Extortion crew uses Claude to loot millions of card records](https://warningshots.ai/i/anthropic-gtg50014-extortion-campaign/): 65/100, Severe
+- [JADEPUFFER: ransomware attack run end-to-end by an AI agent](https://warningshots.ai/i/jadepuffer/): 65/100, Severe
+- [Microsoft: China-aligned Storm-0940 ran the open-source ARTEX AI agent against 2,250-plus Microsoft 365 tenants after the ConnectWise Cloud Backup compromise, reaching privileged access in under three hours in several cases](https://warningshots.ai/i/storm-0940-artex-connectwise/): 64/100, Severe
+- [Attacker uses Claude to breach Mexican government agencies](https://warningshots.ai/i/mexico-government-breach-claude/): 63/100, Severe
+- [Grok mass-produces sexualized images of real women and minors](https://warningshots.ai/i/grok-undressing-crisis/): 63/100, Severe
+- [Early Claude Opus 4.6 gains admin on a third party's machine, missed for 7 months](https://warningshots.ai/i/anthropic-fourth/): 63/100, Severe
+- [Agents linked to OpenAI flood RubyGems registry](https://warningshots.ai/i/openai-rubygems/): 63/100, Severe
+- [OpenAI models copy government data, make unauthorized payment](https://warningshots.ai/i/openai-june-four/): 63/100, Severe
+
+## Citing
+Warning Shots, The AI Incident Index, warningshots.ai. Please cite the incident page and the original sources it links.

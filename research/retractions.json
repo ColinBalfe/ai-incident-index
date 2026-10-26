@@ -1,0 +1,8 @@
+[
+ {"id": "unit42-php2shell-intrusion", "retracted_on": "2026-10-25", "source": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+  "claim": "Unit 42.{0,240}(successful|first vendor account of a|post-exploitation intrusion|intrusion at)",
+  "must_say": "retract|withdr|unable to confirm|could not confirm|can't tie|cannot tie|takes back|no longer"},
+ {"id": "sophos-php2shell-compromise", "retracted_on": "2026-10-22", "source": "",
+  "claim": "Sophos.{0,160}(successful compromise|confirmed (a )?compromise|one successful)",
+  "must_say": "retract|withdr|takes back|no longer"}
+]

@@ -119,6 +119,11 @@
    "text": "Will America's cyber agency formally warn about it?",
    "call_id": "php-kev-by-oct31"
   },
+  "exposure": {
+   "text": "{n} organizations named so far, none confirmed breached. Is your site affected?",
+   "url": "/php2shell/",
+   "tip": "Named in reporting as attacked, probed or as having switched services off as a precaution. None has confirmed a breach."
+  },
   "end_states": [
    "a fix ships for every open flaw",
    "a victim is confirmed by name",

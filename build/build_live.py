@@ -125,6 +125,7 @@ SERIAL = dict(
  recheck="still no formal US government warning, still no real victim confirmed",
  recheck_at='2026-10-26T13:20:00-04:00',  # when the sources behind `recheck` were last actually checked; never the page time by default
  next_test=dict(date='2026-10-31', text="Will America's cyber agency formally warn about it?", call_id='php-kev-by-oct31'),
+ exposure=dict(text='{n} organizations named so far, none confirmed breached. Is your site affected?', url='/php2shell/', tip='Named in reporting as attacked, probed or as having switched services off as a precaution. None has confirmed a breach.'),
  end_states=['a fix ships for every open flaw', 'a victim is confirmed by name', 'an agency lists it as exploited', '7 days with no new fact'],
 )
 

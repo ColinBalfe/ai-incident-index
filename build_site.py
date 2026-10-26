@@ -38,10 +38,21 @@ jsonld = json.dumps({"@context": "https://schema.org", "@graph": [
      "logo": {"@type": "ImageObject", "url": site_url + "assets/icon-512.png", "width": 512, "height": 512}},
     {"@type": "WebSite", "@id": site_url + "#site", "url": site_url, "name": title, "description": og_desc, "inLanguage": "en", "publisher": {"@id": site_url + "#org"}, "dateModified": meta['as_of']},
     {"@type": "Dataset", "name": "The AI Incident Index", "url": site_url + "index/#all", "description": f"{n} AI incidents since 2023, each scored 0–100 on harm, reach, irreversibility, autonomy and novelty, with sources. Open data from {title}.",
-     "creator": {"@id": site_url + "#org"}, "dateModified": meta['as_of'], "isAccessibleForFree": True,
+     "creator": {"@id": site_url + "#org"}, "dateModified": meta['as_of'], "isAccessibleForFree": True, "temporalCoverage": "2023-01-01/..", "keywords": ["AI incidents", "AI safety", "AI security", "AI risk", "incident database", "agentic AI", "deepfakes", "cybersecurity"], "variableMeasured": ["harm", "reach", "autonomy", "novelty", "irreversibility", "severity 0-100"], "measurementTechnique": "Each incident rated on five factors by a published rubric; severity = 0.55 x harm score + 0.45 x signal score.",
      "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": site_url + "data/incidents.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": site_url + "data/incidents.csv"}]},
 ]}, ensure_ascii=False).replace('</', '<\\/')
 tpl = open('index.template.html', encoding='utf-8').read()
+# Readable versions of the charts, so search engines, screen readers and touch users get the numbers without hovering
+import html as _h
+_AUT = ['A person misused it', 'People relied on it', 'It took a bounded action', 'It ran multi-step operations', 'It worked against its operator']
+_top = sorted(inc, key=lambda r: -sev(r))[:10]
+TOP_TABLE = '<table><tr><th>Score</th><th>Incident</th><th>Date</th></tr>' + ''.join(f'<tr><td>{sev(r)}</td><td><a href="/i/{_h.escape(r["id"])}/">{_h.escape(r["title"])}</a></td><td>{_h.escape(r["date"])}</td></tr>' for r in _top) + '</table>'
+_q = {}
+for r in inc:
+    y, m = int(r['date'][:4]), int(r['date'][5:7]) if len(r['date']) >= 7 else 1
+    k = f'{y} Q{(m - 1) // 3 + 1}'; _q.setdefault(k, [0] * 5); _q[k][min(4, int(r['A']))] += 1
+QUARTERS_TABLE = '<table><tr><th>Quarter</th><th>Incidents</th>' + ''.join(f'<th>{a}</th>' for a in _AUT) + '</tr>' + ''.join(f'<tr><td>{k}</td><td>{sum(v)}</td>' + ''.join(f'<td>{x}</td>' for x in v) + '</tr>' for k, v in sorted(_q.items())) + '</table>'
+tpl = tpl.replace('{{TOP_TABLE}}', TOP_TABLE).replace('{{QUARTERS_TABLE}}', QUARTERS_TABLE)
 out = (tpl.replace('{{OG_TITLE}}', og_title.replace('"', '&quot;')).replace('{{OG_DESC}}', og_desc.replace('"', '&quot;'))
           .replace('{{JSONLD}}', jsonld).replace('{{SITE_URL}}', meta['site_url']).replace('{{REPO_URL}}', meta.get('repo_url', 'https://github.com/ColinBalfe/ai-incident-index')).replace('{{BUILD}}', build).replace('{{SEV_PRIOR}}', str(p12)).replace('{{SEV_LAST}}', str(s12)).replace('{{AGENTIC}}', str(share)))
 from analytics import tag as _analytics_tag   # visitor counter (Cloudflare Web Analytics); empty until analytics.json has a token
@@ -101,7 +112,7 @@ items = []
 try:
     brief = json.load(open('data/brief.json'))
     for i, it in enumerate(brief.get('items', [])):
-        items.append(dict(title='Since the last refresh: ' + it['text'][:90].rstrip() + ('…' if len(it['text']) > 90 else ''), link=site + 'wire/#brief', guid=site + '#brief-' + meta['as_of'] + '-' + str(i), date=_rfc(meta['as_of']), desc=it['text'] + (' Source: ' + it['url'] if it.get('url') else '')))
+        items.append(dict(title='Since the last refresh: ' + it['text'][:90].rstrip() + ('…' if len(it['text']) > 90 else ''), link=site + 'wire/#brief', guid=site + 'wire/#brief-' + __import__('hashlib').sha1(it['text'].encode()).hexdigest()[:12], date=_rfc(meta['as_of']), desc=it['text'] + (' Source: ' + it['url'] if it.get('url') else '')))
 except (OSError, ValueError):
     pass
 try:
@@ -141,5 +152,5 @@ for it in disp[:80]:
     rss2.append(f'<item><title>{_html.escape(it["title"])}</title><link>{_html.escape(it["link"])}</link><guid isPermaLink="false">{_html.escape(it["guid"])}</guid><pubDate>{it["date"]}</pubDate><description>{_html.escape(it["desc"])}</description></item>')
 rss2.append('</channel></rss>')
 open('feed-dispatches.xml', 'w', encoding='utf-8').write('\n'.join(rss2))
-json.dump(dict(build=build, og_title=og_title, og_desc=og_desc, severe_last12=s12, severe_prior12=p12, agentic_share=share, n=n), open('assets/build.json', 'w'))
+json.dump(dict(build=build, og_title=og_title, og_desc=og_desc, severe_last12=s12, severe_prior12=p12, agentic_share=share, n=len(inc)), open('assets/build.json', 'w'))
 print('built', build, '|', og_title, '|', og_desc)
