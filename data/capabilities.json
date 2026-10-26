@@ -88,8 +88,8 @@
 },
 "consequences": {
 "status": "yes",
-"date": "2026-10-24",
-"note": "PHP2Shell: governments from the Netherlands to Japan took public services offline as a precaution; millions of exploit attempts; on Oct 23 Unit 42 reported the first successful post-exploitation intrusion, at an unnamed European government entity; no named organization had confirmed a breach as of Oct 24.",
+"date": "2026-10-26",
+"note": "PHP2Shell: governments from the Netherlands to Japan took public services offline as a precaution; millions of exploit attempts. Unit 42's Oct 23 report of a successful intrusion at a European government body was retracted on Oct 25 (it could not tie the break-in to these flaws); as of Oct 26 code execution is confirmed only on researchers' decoy servers and no organization has confirmed a breach.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
 }
 },

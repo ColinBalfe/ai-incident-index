@@ -1241,7 +1241,7 @@
   },
   {
    "date": "2026-10-23 15:30 ET",
-   "event": "Palo Alto Networks' Unit 42 updates its PHP2Shell threat brief with the first vendor account of a successful intrusion: 'In one case, the attackers targeted a government entity in Europe' and within two hours of initial exploitation 'had successfully accessed password hashes and multi-factor authentication secrets', set up a relay into Active Directory and attempted domain-admin escalation. Unit 42 judges the command style 'strong indicators of an agentic attacker' (output wrapped in machine-readable delimiters for a model to parse). The entity is not named, the data source is not stated, and the outcome of the escalation attempt is not given. Cortex Xpanse counts more than 22.6 million exposed instances potentially vulnerable.",
+   "event": "Palo Alto Networks' Unit 42 updates its PHP2Shell threat brief with the first vendor account of a successful intrusion: 'In one case, the attackers targeted a government entity in Europe' and within two hours of initial exploitation 'had successfully accessed password hashes and multi-factor authentication secrets', set up a relay into Active Directory and attempted domain-admin escalation. Unit 42 judges the command style 'strong indicators of an agentic attacker' (output wrapped in machine-readable delimiters for a model to parse). The entity is not named, the data source is not stated, and the outcome of the escalation attempt is not given. Cortex Xpanse counts more than 22.6 million exposed instances potentially vulnerable. [Retracted by Unit 42 on Oct 25: it could not confirm the initial access involved the PHP2Shell flaws.]",
    "source": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
   },
   {

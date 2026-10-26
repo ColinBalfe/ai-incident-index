@@ -489,7 +489,7 @@ function drawLevel() {
   const why = el('button', 'lvl-why', 'Why ' + top.level + ' today?'); why.type = 'button'; why.setAttribute('aria-expanded', 'false');
   const wall = newsItems().filter((x) => x.tag && x.wall);
   const a2 = el('span', 'lvl-n');
-  if (PREV_VISIT) { const k = wall.filter(isNewToReader).length; a2.append(el('i', 'newdot'), el('b', null, String(k)), txt(k === 1 ? ' new since you last looked' : ' new since you last looked')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
+  if (PREV_VISIT) { const k = wall.filter(isNewToReader).length; if (k) a2.append(el('i', 'newdot'), el('b', null, String(k)), txt(' new since you last looked')); else a2.append(txt('Nothing new since you last looked')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
   else { a2.append(el('b', null, String(wall.length)), txt(' headlines from the last 3 days')); }
   const a3 = el('a', 'lvl-s'); a3.href = '#record'; a3.append(txt('Severe incidents, last 12 months: '), el('b', null, String(h.severe_last12 ?? '')), txt(' (was ' + (h.severe_prior12 ?? '') + ')'));
   const det = el('div', 'lvl-det'); det.hidden = true;
@@ -498,7 +498,8 @@ function drawLevel() {
   const how = el('a', null, 'How the scores work →'); how.href = '/index/#about';
   det.append(ul, how);
   why.addEventListener('click', () => { det.hidden = !det.hidden; why.setAttribute('aria-expanded', String(!det.hidden)); });
-  box.replaceChildren(a1, why, a2, a3, det);
+  const brand = el('a', 'lvl-brand'); brand.href = '#top'; brand.setAttribute('aria-label', 'Warning Shots: the masthead'); brand.append(el('b', null, 'Warning Shots'), txt(' · AI’s dangers and breakthroughs, checked three times a day'));
+  box.replaceChildren(brand, a1, why, a2, a3, det);
 }
 function drawWall() {
   const lead = document.getElementById('wall-lead'), box = document.getElementById('wall'); if (!box || !lead) return;
@@ -590,7 +591,7 @@ function drawWire() {
   const topics = d3.rollups(rest, (v) => v.length, (n) => n.topic || 'other').sort((a, b) => b[1] - a[1]);
   if (!topics.find((t) => t[0] === wire.topic)) wire.topic = 'all';
   const chip = (k, label, n) => { const b = el('button', k === wire.topic ? 'on' : ''); b.type = 'button'; b.append(txt(label), el('b', null, String(n))); b.addEventListener('click', () => { wire.topic = k; drawWire(); }); return b; };
-  chips.replaceChildren(chip('all', 'All', rest.length), ...topics.filter((t) => t[1] >= 1).map(([k, n]) => chip(k, TOPIC[k] || k, n)));
+  chips.replaceChildren(chip('all', 'All', items.length), ...topics.filter((t) => t[1] >= 1).map(([k, n]) => chip(k, TOPIC[k] || k, n)));
   const rows = rest.filter((n) => wire.topic === 'all' || (n.topic || 'other') === wire.topic);
   const mfFront = MF() && mfCur === 'front';
   const limit = (wire.open || wire.topic !== 'all') ? rows.length : (mfFront ? 6 : window.innerWidth < 760 ? 12 : 40);
