@@ -6,7 +6,7 @@ import { chromium } from 'playwright';
 import fs from 'fs';
 const url = process.argv[2] || 'http://127.0.0.1:8765/index.html';
 const file = process.argv[3] || new URL('./index.html', import.meta.url).pathname;
-const IDS = ['wall', 'ribbon-in', 'edition', 'tb-updated', 'ticker-run', 'wire-count', 'wire-stamp', 'siren', 'brief-stamp', 'brief-share', 'brief-list', 'brief-caught', 'wire-chips', 'wire-board', 'wire-more', 'wire-share', 'now-title', 'now-note', 'live-grid', 'now-link', 'now-stamp', 'now-share'];
+const IDS = ['wall-lead', 'wall', 'ribbon-in', 'edition', 'tb-updated', 'ticker-run', 'wire-count', 'wire-stamp', 'siren', 'brief-stamp', 'brief-share', 'brief-list', 'brief-caught', 'wire-chips', 'wire-board', 'wire-more', 'wire-share', 'now-title', 'now-note', 'live-grid', 'now-link', 'now-stamp', 'now-share'];
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
 // A phone-width context: the Wire board shows its short form (12 stories) below 760px, so the phone's first paint is final; wider screens extend the board when the script runs.
 const page = await (await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, reducedMotion: 'reduce', colorScheme: 'light' })).newPage();

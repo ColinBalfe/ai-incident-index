@@ -38,7 +38,9 @@
 "tag": "AI AGENTS GET INSIDE ANTHROPIC IN UNDER 12 HOURS",
 "wall": "siren",
 "red": true,
-"wall_rank": 0
+"wall_rank": 0,
+"img": "https://gizmodo.com/app/uploads/2026/10/GettyImages-2297777280-1200x675.jpg",
+"img_credit": "Photo: Kevin Dietsch/Getty, via Gizmodo"
 },
 {
 "id": "axios-anthropic-s1-risk-factors",
@@ -54,9 +56,9 @@
 "siren": false,
 "also": [],
 "tag": "Anthropic's own IPO filing: AI could pose 'catastrophic or existential' risk",
-"wall": "top",
+"wall": 3,
 "red": true,
-"wall_rank": 1
+"wall_rank": -3
 },
 {
 "id": "securityweek-php2shell-working-shells",
@@ -71,10 +73,10 @@
 "summary": "35 shells from two IPs on three decoys Oct 24, on a deliberately favorable setup; no second-stage download seen.",
 "siren": false,
 "also": [],
-"tag": "Shells confirmed on decoys, no victim named, and CISA still hasn't listed it",
-"wall": 1,
+"tag": "No victim named; CISA still hasn't listed it",
+"wall": "lead",
 "red": false,
-"wall_rank": 5
+"wall_rank": 3
 },
 {
 "id": "gulfnews-dubai-cafe-ai-refund-photo",
@@ -107,10 +109,10 @@
 "summary": "171 source IPs sent code or a dropper; two IPs probed before the fix shipped; busiest hour 21:00 UTC Oct 21.",
 "siren": false,
 "also": [],
-"tag": "41,907 attack requests from 68 countries, and counting",
-"wall": 1,
+"tag": "41,907 attack requests from 68 countries",
+"wall": "lead",
 "red": false,
-"wall_rank": 6
+"wall_rank": 2
 },
 {
 "id": "sbs-agibot-110-humanoids-record",
@@ -202,10 +204,12 @@
 "summary": "Marcus Hutchins calls it the best in-the-wild confirmation yet; Dataminr saw 'no known compromises' before it; VirusTotal: 5.1M exposed hosts.",
 "siren": false,
 "also": [],
-"tag": "PHP2SHELL NOW WORKS IN THE WILD",
-"wall": 1,
+"tag": "PHP2Shell now works in the wild",
+"wall": "lead",
 "red": true,
-"wall_rank": 4
+"wall_rank": 0,
+"img": "https://www.bleepstatic.com/content/hl-images/2026/10/26/PHP-headpic.jpg",
+"img_credit": "Image: BleepingComputer"
 },
 {
 "id": "npr-deepmind-hurricane-isaias",
@@ -239,9 +243,9 @@
 "siren": false,
 "also": [],
 "tag": "Government test: once Mythos 5 started attacking, it kept going in 98% of replays",
-"wall": "top",
+"wall": 1,
 "red": false,
-"wall_rank": 3
+"wall_rank": -1
 },
 {
 "id": "techtimesuk-grok-csam-prospect-park",
@@ -392,10 +396,10 @@
 "summary": "The unpatched PHP server fell at 15:47 UTC Oct 25; the published script worked in about seven of ten lab runs.",
 "siren": false,
 "also": [],
-"tag": "Unpatched PHP server cracked in 19 hours; the exploit is now public",
-"wall": 1,
-"red": true,
-"wall_rank": 7
+"tag": "Unpatched server cracked in 19 hours; exploit now public",
+"wall": "lead",
+"red": false,
+"wall_rank": 1
 },
 {
 "id": "koreaherald-ai-synthetic-shoppers",
@@ -507,9 +511,9 @@
 }
 ],
 "tag": "Claude asked for an access token on its own, then pulled paywalled Georgia vote data",
-"wall": "top",
+"wall": 3,
 "red": false,
-"wall_rank": 2
+"wall_rank": -2
 },
 {
 "id": "kjd-samsung-skhynix-ai-chip-profit",

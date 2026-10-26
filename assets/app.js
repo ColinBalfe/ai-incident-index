@@ -448,27 +448,31 @@ function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url
 /* ---------- the headline wall: index-written lines on top of credible reporting (research/news.json: tag, wall, red, wall_rank).
    Each line must be supportable by the story it links to; the outlet's own framing is in the tooltip and the small print. */
 function drawWall() {
-  const box = document.getElementById('wall'); if (!box) return;
+  const lead = document.getElementById('wall-lead'), box = document.getElementById('wall'); if (!box || !lead) return;
   const items = newsItems().filter((n) => n.tag && n.wall).sort((a, b) => (a.wall_rank ?? 999) - (b.wall_rank ?? 999));
   const siren = items.find((n) => n.wall === 'siren');
-  if (!siren) { box.hidden = true; document.body.classList.remove('has-wall'); return; }
-  box.hidden = false; document.body.classList.add('has-wall');
-  const line = (n, cls) => {
-    const w = el('div', 'wl' + (n.red ? ' red' : '') + (cls ? ' ' + cls : ''));
-    const a = el('a', 'wl-a', n.tag); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = (n.outlet || '') + ': ' + n.title;
-    w.append(a, el('span', 'wl-o', (n.outlet || '') + ' · ' + ageShort(n)));
-    return w;
-  };
-  const top = el('div', 'wall-top'); items.filter((n) => n.wall === 'top').slice(0, 3).forEach((n) => top.append(line(n)));
-  const sb = el('div', 'wall-siren'); const ic = el('span', 'wall-ic'); ic.innerHTML = SIREN_SVG;
-  const sa = el('a', 'wall-sl' + (siren.red ? ' red' : ''), siren.tag); sa.href = siren.url; sa.target = '_blank'; sa.rel = 'noopener noreferrer'; sa.title = (siren.outlet || '') + ': ' + siren.title;
-  const sm = el('div', 'wall-sm'); sm.append(el('b', null, siren.outlet || ''), txt(' · ' + ageShort(siren) + ' · '), el('span', null, siren.title));
-  sb.append(ic, sa, sm);
+  if (!siren) { box.hidden = true; lead.hidden = true; return; }
+  box.hidden = false; lead.hidden = false;
+  const ext = (a, n) => { a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = (n.outlet || '') + ': ' + n.title; return a; };
+  const dots = (t) => /[.!?…]$/.test(t) ? t : t + '...';
+  const line = (n) => { const a = ext(el('a', 'dl' + (n.red ? ' red' : ''), dots(n.tag)), n); return a; };
+  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; im.alt = n.title; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.referrerPolicy = 'no-referrer'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) f.append(el('figcaption', null, n.img_credit)); return f; };
+  // 1. the lead cluster: a picture, then four lines
+  const cl = items.filter((n) => n.wall === 'lead').slice(0, 4);
+  const cluster = el('div', 'dl-cluster');
+  const withImg = cl.find((n) => n.img); if (withImg) cluster.append(pic(withImg, 'dl-pic'));
+  const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n))); cluster.append(ll);
+  // 2. the siren: a centred picture, then the headline (the masthead follows in the page)
+  const sv = el('div', 'dl-siren');
+  if (siren.img) sv.append(pic(siren, 'dl-hero'));
+  sv.append(ext(el('a', 'dl-head' + (siren.red ? ' red' : ''), siren.tag + (/[!?]$/.test(siren.tag) ? '' : '!')), siren));
+  lead.replaceChildren(...(cl.length ? [cluster] : []), sv);
+  // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');
-  [1, 2, 3].forEach((c) => { const col = el('div', 'wall-col'); items.filter((n) => +n.wall === c).slice(0, 14).forEach((n) => col.append(line(n))); cols.append(col); });
-  const foot = el('p', 'wall-foot'); foot.append(txt('Every line here is written by Warning Shots and links straight to the original reporting; hover or tap through for the outlet’s own headline. '), (() => { const a = el('a', null, 'The full Wire, ' + newsItems().length + ' reports ↓'); a.href = '#wire'; return a; })());
+  [1, 2, 3].forEach((c) => { const col = el('div', 'wall-col'); items.filter((n) => +n.wall === c).slice(0, 15).forEach((n) => col.append(line(n))); cols.append(col); });
   const more = el('button', 'wall-more', 'More headlines'); more.type = 'button'; more.addEventListener('click', () => box.classList.add('open'));
-  box.replaceChildren(top, sb, cols, more, foot);
+  const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots and links straight to the original reporting; hover for the outlet’s own headline. '), (() => { const a = el('a', null, 'The full Wire, ' + newsItems().length + ' reports ↓'); a.href = '#wire'; return a; })());
+  box.replaceChildren(cols, more, foot);
 }
 function drawWire() {
   const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');
