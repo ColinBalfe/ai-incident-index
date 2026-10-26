@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Warning Shots: See what’s coming. Know what it means for you.</title>
+<title>Warning Shots: See what’s coming and know what it means.</title>
 <meta name="description" content="{{OG_DESC}}">
 <link rel="canonical" href="{{SITE_URL}}">
 <meta property="og:type" content="website">
@@ -342,7 +342,7 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 @media (prefers-reduced-motion: no-preference) { .siren-ic .dome { animation: sirenGlow 1.1s ease-in-out infinite; } .siren-ic .ray { animation: sirenRay 1.1s ease-in-out infinite; } }
 @keyframes sirenGlow { 0%, 100% { opacity: .55; } 50% { opacity: 1; filter: drop-shadow(0 0 5px var(--alarm)); } }
 @keyframes sirenRay { 0%, 100% { opacity: 0; } 50% { opacity: .9; } }
-.siren-t { font-family: var(--serif); font-size: clamp(1.3rem, 2.8vw, 2.1rem); font-weight: 900; line-height: 1.12; letter-spacing: 0; text-transform: uppercase; text-decoration: none; text-wrap: balance; display: block; }
+.siren-t { font-family: var(--serif); font-size: clamp(1.7rem, 3.6vw, 2.9rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.012em; text-decoration: none; text-wrap: balance; display: block; }
 .siren-t:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 4px; }
 .siren-m { grid-column: 2; font-size: 13px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
 .siren-m b { color: var(--ink); font-weight: 600; }
@@ -381,7 +381,9 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .now-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); }
 .now-head h2 { font-size: .95rem; font-weight: 600; color: var(--alarm); letter-spacing: 0; }
 .now-title { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; margin-top: 8px; letter-spacing: 0; text-wrap: balance; }
-.now-note { color: var(--ink-2); margin: 6px 0 0; font-size: 13.5px; line-height: 1.45; }
+.now-note { color: var(--ink-2); margin: 6px 0 0; font-size: 13.5px; line-height: 1.45; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; cursor: pointer; }
+.now-note.open { -webkit-line-clamp: unset; display: block; }
+.now-more { background: none; border: 0; padding: 0; margin-top: 4px; font: inherit; font-size: 12.5px; font-weight: 600; color: var(--alarm); cursor: pointer; }
 .live-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; margin-top: 14px; }
 @media (max-width: 979px) { .live-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } }
 .live { border-top: 1px solid var(--line); padding-top: 8px; }
@@ -390,7 +392,8 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .live.alarm .v { color: var(--alarm); }
 .live.ok .v { color: var(--ok); }
 .live .l { font-size: 12.5px; color: var(--ink-2); margin-top: 5px; line-height: 1.35; }
-.live .d { font-size: 11.5px; color: var(--ink-3); margin-top: 4px; line-height: 1.35; }
+.live .d { font-size: 11.5px; color: var(--ink-3); margin-top: 4px; line-height: 1.35; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; cursor: pointer; }
+.live .d.open { -webkit-line-clamp: unset; display: block; }
 .live .d a { color: var(--ink-3); }
 .now .stamp { font-size: 12px; color: var(--ink-3); margin-top: 12px; font-variant-numeric: tabular-nums; }
 .now-foot { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 14px; font-size: 14px; }
@@ -818,6 +821,46 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 .siren .share { grid-column: 2; margin-top: 4px; }
 @media (max-width: 560px) { .siren .share { grid-column: 1; } }
 
+
+/* ----- what it means for you */
+.foryou { padding-top: clamp(34px, 5vw, 64px); }
+.fy-head { border-top: 3px solid var(--ink); padding-top: 18px; display: grid; gap: 8px 40px; }
+@media (min-width: 900px) { .fy-head { grid-template-columns: auto minmax(0, 1fr); align-items: end; } .fy-head h2 { white-space: nowrap; } }
+.fy-head h2 { font-family: var(--serif); font-size: clamp(2rem, 4.2vw, 3.2rem); line-height: 1.02; letter-spacing: -0.015em; margin: 0; }
+.fy-head .lede { margin: 0; max-width: 34rem; }
+.fy-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 22px; }
+@media (max-width: 899px) { .fy-tabs { display: flex; overflow-x: auto; scrollbar-width: none; margin-left: -16px; margin-right: -16px; padding: 0 16px 4px; } .fy-tabs::-webkit-scrollbar { display: none; } .fy-tab { flex: 0 0 auto; } }
+.fy-tab { font: inherit; text-align: left; border: 1px solid var(--line-2); background: var(--panel); color: var(--ink); padding: 12px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 3px; min-height: 64px; transition: border-color .12s, background .12s; }
+.fy-tab:hover { border-color: var(--ink); }
+.fy-tab .fy-l { font-weight: 700; font-size: 15px; line-height: 1.2; }
+.fy-tab .fy-n { font-size: 12px; color: var(--ink-3); }
+.fy-tab.on { background: var(--ink); color: var(--paper); border-color: var(--ink); box-shadow: inset 0 -3px 0 var(--alarm); }
+.fy-tab.on .fy-n { color: color-mix(in oklab, var(--paper) 70%, transparent); }
+.fy-tab:focus-visible { outline: 2px solid var(--alarm); outline-offset: 2px; }
+.fy-body { display: grid; gap: 18px; margin-top: 18px; }
+@media (min-width: 900px) { .fy-body { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 32px; } }
+.fy-lede { font-family: var(--serif); font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 1.35; margin: 0 0 4px; text-wrap: pretty; }
+.fy-h { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-top: 18px; padding-bottom: 6px; border-bottom: 1px solid var(--line-2); }
+.fy-list { list-style: none; margin: 0; padding: 0; }
+.fy-list li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.fy-s { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15.5px; line-height: 1.35; }
+.fy-s:hover { color: var(--alarm); text-decoration: underline; }
+.fy-new { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--alarm); color: #fff; padding: 1px 6px; margin-right: 8px; vertical-align: 2px; }
+.fy-m { font-size: 12.5px; color: var(--ink-3); margin-top: 3px; }
+.fy-empty { color: var(--ink-3); font-size: 14px; }
+.fy-rec { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.fy-do { background: var(--paper); color: var(--ink); box-shadow: 0 0 0 1px var(--line-2); padding: clamp(18px, 2.4vw, 26px); align-self: start; border-top: 3px solid var(--alarm); }
+.fy-do-k { font-family: var(--serif); font-weight: 700; font-size: 1.45rem; line-height: 1.1; }
+.fy-do ol { list-style: none; counter-reset: fy; margin: 14px 0 0; padding: 0; }
+.fy-do li { counter-increment: fy; position: relative; padding: 12px 0 12px 40px; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.45; }
+.fy-do li::before { content: counter(fy); position: absolute; left: 0; top: 10px; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--alarm); color: var(--alarm); font-weight: 700; font-size: 13px; display: grid; place-items: center; }
+.fy-do li a { display: block; margin-top: 4px; color: var(--alarm); font-weight: 600; font-size: 13.5px; text-decoration: none; }
+.fy-do li a:hover { text-decoration: underline; }
+.fy-do-note { font-size: 12px; color: var(--ink-3); margin: 10px 0 0; }
+.fc-word { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.fc-word.hi { color: var(--alarm); }
+.call-pick-none { display: none; }
+
 /* ----- toast */
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 2px; font-size: 13px; opacity: 0; transition: opacity .15s, transform .15s; z-index: 60; pointer-events: none; }
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
@@ -833,7 +876,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>
         <h1 class="wordmark">Warning Shots</h1>
       </a>
-      <p class="mh-tag">See what’s coming. Know what it means for you.</p>
+      <p class="mh-tag">See what’s coming and know what it means.</p>
     </div>
     <div class="mh-right">
       <div class="edition" id="edition"></div>
@@ -851,7 +894,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
   <div class="wrap">
     <a class="mini" href="#top"><svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>Warning Shots</a>
     <div class="nav-scroll" id="nav-scroll">
-      <a href="#front" class="mf-only">Front</a><a href="#wire">The Wire</a><a href="#record">Record</a><a href="#capabilities">Capabilities</a><a href="#words">Quotes</a><a href="#charts">Charts</a><a href="#next">Forecast</a><a href="#dives">Incidents</a><a href="#fixes">Did they fix it?</a><a href="#all">All</a><a href="#about">About</a>
+      <a href="#front" class="mf-only">Front</a><a href="#wire">The Wire</a><a href="#why">For you</a><a href="#record">Record</a><a href="#capabilities">Capabilities</a><a href="#words">Quotes</a><a href="#charts">Charts</a><a href="#next">Forecast</a><a href="#dives">Incidents</a><a href="#fixes">Did they fix it?</a><a href="#all">All</a><a href="#about">About</a>
     </div>
     <div class="nav-right">
       <span class="nav-updated" id="nav-updated"></span>
@@ -865,15 +908,6 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
   <div class="ribbon dark-scope" id="ribbon" aria-label="Signal ribbon"><div class="wrap ribbon-in" id="ribbon-in"></div></div>
   <div class="since wrap" id="since" hidden></div>
   <div class="ticker dark-scope" id="ticker" aria-label="Latest official statements"><div class="ticker-label"><span class="pulse" aria-hidden="true"></span>Latest</div><div class="ticker-track"><div class="ticker-run" id="ticker-run"></div></div></div>
-
-  <section class="wrap calls" id="calls" aria-labelledby="calls-h">
-    <div class="calls-head">
-      <h2 id="calls-h"><span class="pulse" aria-hidden="true"></span>The next warning shots</h2>
-      <span class="k" id="calls-k"></span>
-      <a class="k calls-all" href="#card-forecast">All calls →</a>
-    </div>
-    <div class="calls-strip" id="calls-strip"></div>
-  </section>
 
   <section class="wrap wire" id="wire" aria-labelledby="wire-h">
     <div class="wire-head">
@@ -896,7 +930,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
       <aside class="now" id="now" aria-labelledby="now-h">
         <div class="now-head"><span class="pulse" aria-hidden="true"></span><h2 id="now-h">Happening now</h2></div>
         <h3 class="now-title" id="now-title"></h3>
-        <p class="now-note" id="now-note"></p>
+        <p class="now-note" id="now-note" title="Click to read the full note"></p><button type="button" class="now-more" id="now-more">Read the full note</button>
         <div class="live-grid" id="live-grid"></div>
         <div class="now-foot"><a class="cta" href="#d=php2shell" id="now-link">Full breakdown</a></div>
         <div class="stamp" id="now-stamp"></div>
@@ -905,19 +939,20 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
     </div>
   </section>
 
+  <section class="wrap foryou" id="why" aria-labelledby="fy-h">
+    <div class="fy-head">
+      <h2 id="fy-h">What it means for you</h2>
+      <p class="lede">You don’t have to use AI for it to reach you. Pick what matters to you: the latest reporting, the incidents on the record, and what you can do about it today.</p>
+    </div>
+    <div class="fy-tabs" id="fy-tabs" role="tablist" aria-label="Topics"></div>
+    <div class="fy-body" id="why-grid"></div>
+  </section>
+
   <section class="wrap front" id="front" aria-label="The rest of the index" hidden>
     <div class="sec-k"><span>The rest of the index</span><span class="k" id="front-stamp"></span></div>
     <div class="front-cards" id="front-cards"></div>
     <div class="front-more" id="front-more"></div>
     <p class="front-foot"><button type="button" class="linkish" id="mf-off">Show everything on one page instead</button></p>
-  </section>
-
-  <section class="wrap" id="why">
-    <div class="panel why-panel">
-      <div class="why-head"><h2>I don’t use AI. Why does this matter to me?</h2><p class="lede">Because the systems you rely on already do. Four things on this index that reached people who never opened a chatbot.</p></div>
-      <div class="why-grid" id="why-grid"></div>
-    <p class="why-tools"><b>Two things you can do today, free, nothing leaves your browser:</b> <a href="/shield/">make your family a safe word</a> against voice-clone and imposter calls, and <a href="/scraped/">keep your work out of AI training sets</a> with a robots.txt built for the 200 crawlers that scrape for AI.</p>
-    </div>
   </section>
 
   <div class="hero-band dark-scope">
@@ -1024,7 +1059,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
       </div>
       <div class="panel pane" id="card-pipeline" role="tabpanel" hidden>
         <div class="panel-title">From the lab to the wild: when each dangerous behavior first appeared</div>
-        <div class="panel-note">Dangerous behaviors show up in safety tests first, then in the real world months later. Hollow dot: first seen in a test. Filled dot: first seen in real use. Open arrows are the behaviors still waiting to arrive, with this index's estimated odds of a first real-world case within 12 months.</div>
+        <div class="panel-note">Dangerous behaviors show up in safety tests first, then in the real world months later. Hollow dot: first seen in a test. Filled dot: first seen in real use. Open arrows are the behaviors still waiting to arrive, with this index's estimate of a first real-world case within 12 months.</div>
         <div class="legend" id="lg-pipeline"></div>
         <div class="chart" id="ch-pipeline" style="min-height:420px"></div>
         <div class="callout" id="pipeline-callout"></div>
@@ -1035,7 +1070,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 
   <section class="wrap" id="next">
     <div class="sec-head"><h2>Where this goes next</h2></div>
-    <p class="lede">What to watch in the next two weeks, the dated tests after that, the full call sheet with the index’s record, and the five forces behind the trend.</p>
+    <p class="lede">What to watch in the next two weeks, the dated tests after that, what the index expects and how it has done, and the five forces behind the trend.</p>
     <div class="grid2 next-grid">
       <div class="panel" id="card-watch">
         <div class="panel-title">The next 14 days</div>
@@ -1047,8 +1082,8 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <div id="cal-more"></div>
       </div>
       <div class="panel" id="card-forecast">
-        <div class="panel-title">The call sheet: every dated yes/no question the index has put odds on</div>
-        <div class="panel-note">Short calls resolve in days, long ones in months. The odds are this index’s judgment from the base rates in the charts and the dated catalysts; a call is never edited after it resolves, and misses stay on the board. Make your own call on any line; your record is kept in this browser. Open a line for the reasoning and the signposts that would move it.</div>
+        <div class="panel-title">What the index expects, and how it has done</div>
+        <div class="panel-note">Dated questions this index has committed to in advance, so its judgment can be checked. Each is graded when its date passes; a question is never edited after it resolves, and misses stay on the page. Open a line for the reasoning and what would change it.</div>
         <div class="call-record" id="call-record"></div>
         <div id="forecast-list"></div>
         <div id="forecast-more"></div>

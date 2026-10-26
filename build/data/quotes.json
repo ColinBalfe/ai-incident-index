@@ -1554,5 +1554,33 @@
 "via": "Kathmandu Post",
 "verified": true,
 "weight": 5
+},
+{
+"id": "karimi-confirmed-rce",
+"incident_id": "php2shell",
+"quote": "This is now confirmed RCE with usable memory disclosure, not just a crash followed by a suspicious process",
+"speaker": "Adel Karimi",
+"title": "Detection and response lead, Perplexity",
+"org_type": "company",
+"date": "2026-10-26",
+"channel": "X post",
+"url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
+"via": "SecurityWeek",
+"verified": true,
+"weight": 5
+},
+{
+"id": "cathedral-wake-up-call",
+"incident_id": "cathedral-agents-anthropic-internal-systems",
+"quote": "a wake-up call for every company in America",
+"speaker": "Cathedral",
+"title": "Draft report reviewed by The Washington Post",
+"org_type": "company",
+"date": "2026-10-26",
+"channel": "report",
+"url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
+"via": "Gizmodo, citing The Washington Post",
+"verified": true,
+"weight": 5
 }
 ]

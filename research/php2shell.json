@@ -1363,6 +1363,16 @@
    "date": "2026-10-26",
    "event": "CISA's catalog, opened directly at 07:08 ET: version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of CVE-2026-109618, -109619 or -115560; the newest additions are still dated Oct 23. php.net's archive, read the same morning: no entry after the Oct 23 informational advisory. Day six without a listing, a release or an organization confirmed breached by name.",
    "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "SecurityWeek (09:30 ET) recaps the honeypot evidence: 35 shells on Oct 24 from two IP addresses across three decoys run by Perplexity's Adel Karimi, on a deliberately favorable single-worker mod_php setup, no second-stage download; it names no affected organization and says the flaws were still not on CISA's exploited list as of the morning of Oct 26.",
+   "source": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "php.net posts updated Windows builds (8.5.12-1, 8.4.27-1, 8.3.36-1, 8.2.35-1) bundling Brotli 1.2.1 for CVE-2026-111497, the Node2Shell library flaw. This is not a fix for the PHP2Shell CVEs or for CVE-2026-115560; no PHP release for those since Oct 21.",
+   "source": "https://www.php.net/archive/2026.php"
   }
  ],
  "statements": [
@@ -2518,6 +2528,15 @@
    "paraphrase": "'We have brought government websites back online'; thousands of sites on the shared GIWMS platform were patched centrally; some vendor-managed sites remain inaccessible.",
    "url": "https://kathmandupost.com/science-technology/2026/10/26/most-nepal-government-websites-back-online-after-php2shell-flaw",
    "x_post": "no"
+  },
+  {
+   "date": "2026-10-26",
+   "organization": "Perplexity",
+   "speaker": "Adel Karimi, detection and response lead",
+   "channel": "X, quoted by SecurityWeek",
+   "paraphrase": "Calls the honeypot result 'confirmed RCE with usable memory disclosure', and cautions that it was shown on an intentionally favorable single-worker mod_php profile.",
+   "url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
+   "x_post": "yes"
   }
  ],
  "scale": [

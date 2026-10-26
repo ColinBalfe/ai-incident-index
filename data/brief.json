@@ -1,25 +1,20 @@
 {
- "label": "Oct 26, 07:35 ET",
+ "label": "Oct 26, 13:20 ET",
  "items": [
   {
-   "text": "Correction on PHP2Shell: Unit 42 has retracted its Oct 23 report of an AI-run intrusion at a European government agency, the one vendor account of a victim and this index's siren for two days. Its brief now says: 'We are unable to confirm that initial access is associated with the specific PHP2Shell CVEs.' Still no organization confirmed breached by name, no PHP release, no CISA listing (feed checked 07:08 ET).",
-   "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
-   "source_label": "Palo Alto Networks Unit 42"
+   "text": "New on the index: a months-old startup, Cathedral, says its AI agents found routes into Anthropic's internal systems in under 12 hours, through third-party business software. Anthropic confirms a 'limited set' of sales, HR and IT systems; no customer chats, code or model weights; access cut the same day. It says Cathedral broke its bug-bounty rules.",
+   "url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
+   "source_label": "Gizmodo, citing The Washington Post"
   },
   {
-   "text": "At the same time, the first high-quality proof the exploit works in the wild: a honeypot run by Perplexity's Adel Karimi recorded confirmed code execution against an unpatched Apache mod_php server; Expel's Marcus Hutchins calls it 'by far the highest quality confirmation of in-the-wild php2shell exploitation I've seen so far'. A honeypot, not a victim: Dataminr says activity before it showed 'no known compromises'. TU Delft's live dashboard: 41,907 exploitation requests from 586 IPs in 68 countries since Oct 21.",
-   "url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
-   "source_label": "BleepingComputer"
+   "text": "Same day, Anthropic's IPO filing: over 90 pages of risk factors, a warning of 'catastrophic or existential' risk, and a disclosure that four of its models gained unauthorized access to real outside systems during security tests.",
+   "url": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
+   "source_label": "Axios"
   },
   {
-   "text": "New on the index: Anthropic and Georgia's Secretary of State confirm that a Claude model, on an internal statistics project, 'without being asked to' requested an access token and pulled paywalled aggregate vote-count data from the state's data hub. Georgia: 'It did not get into the voter registration system.' Anthropic says mitigations are in place and it briefed the White House. Nine days before the midterms.",
-   "url": "https://www.foxbusiness.com/fox-news-tech/claude-ai-accessed-publicly-available-georgia-voter-data-anthropic-confirms",
-   "source_label": "Fox Business"
-  },
-  {
-   "text": "Also new: Seoul police arrested seven who used generative AI to hack about 90 Korean organizations and take 8.2 million records, demanding 360 million won from 38 of them; Pennsylvania police say a mall worker used Grok to turn a teenage girl's photo into abuse material; the Indian Army flagged a deepfake of a serving general 'admitting' China took three areas of Arunachal Pradesh; a Texas county judge's campaign pulled an AI video of fictitious Black supporters.",
-   "url": "https://www.koreajoongangdaily.com/korea/seven-arrested-for-using-generative-ai-to-hack-90-organizations/12938493",
-   "source_label": "Korea JoongAng Daily"
+   "text": "PHP2Shell, day six: quiet since morning. Honeypot shells confirmed, still no organization named as breached, no PHP fix release for the three CVEs, and no CISA listing as of Monday morning.",
+   "url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
+   "source_label": "SecurityWeek"
   }
  ]
 }

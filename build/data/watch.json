@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None by name as of Oct 26, 07:35 ET. Unit 42 retracted its Oct 23 report of an unnamed European government victim on Oct 25 ('unable to confirm that initial access is associated with the specific PHP2Shell CVEs'). What remains is a honeypot: Perplexity's Adel Karimi recorded confirmed code execution against an unpatched mod_php server, endorsed by Expel's Marcus Hutchins (BleepingComputer, Oct 26); Dataminr: 'no known compromises' before it; odds of a named victim by Nov 7 cut 65% to 60%",
+"status": "None by name as of Oct 26, 13:20 ET (SecurityWeek, 09:30 ET, names none). Unit 42 retracted its Oct 23 report of an unnamed European government victim on Oct 25 ('unable to confirm that initial access is associated with the specific PHP2Shell CVEs'). What remains is a honeypot: Perplexity's Adel Karimi recorded confirmed code execution against an unpatched mod_php server, endorsed by Expel's Marcus Hutchins (BleepingComputer, Oct 26); Dataminr: 'no known compromises' before it; odds of a named victim by Nov 7 cut 65% to 60%",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -47,7 +47,7 @@
 {
 "id": "openai-21",
 "item": "OpenAI's next misalignment report (the log stands at 20)",
-"status": "Last posted Oct 20; still 20 reports and 3 notices as of Oct 26 morning",
+"status": "Last posted Oct 20; nothing new as of Oct 26, 13:00 ET",
 "kind": "due",
 "why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
 "source_url": "https://alignment.openai.com/misalignment-reports/",

@@ -55,7 +55,8 @@ Keep descriptions of hacking techniques high-level. Never invent a figure; if a 
 2. **Move odds on evidence, not mood.** Before a call resolves, its `odds` may change when something material happens; say what in the changelog ("CISA KEV odds 45% → 70%: Sophos confirmed a compromise"). The forecast ledger (`research/forecast_log.jsonl`, written by `build_brief.py`) records every refresh's odds, so moves are public.
 3. **Keep the board stocked.** At least five open short calls (`horizon: days`, resolving within about two weeks) at all times, drawn from the watch list and the live incident. A good call is specific, checkable at a named source, and has odds you would defend; avoid questions whose answer is already public.
 4. Field names: `id` (stable, kebab-case, ends with the resolve date, e.g. `php-kev-by-oct31`), `question`, `opened`, `resolve_by`, `odds` (0–1), `horizon` (`days|weeks|months`), `basis`, `signposts`, `tags`, `related` (`incident_id`, `watch_id`, `capability_id`), `source_url` (where it will be checked), `resolution`.
-5. The report pastes the graded calls (hit or miss) and any odds that moved, with the reason.
+5. Presentation: the page shows these as the index's own expectations in plain words (very likely, likely, could go either way, unlikely, very unlikely), never as a betting board. Readers do not place picks and there is no reader record; keep it that way. Odds live in the data and the changelog so moves stay accountable.
+6. The report pastes the graded calls (hit or miss) and any odds that moved, with the reason.
 
 ## 2a. Sundays: the source audit
 

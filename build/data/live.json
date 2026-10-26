@@ -43,7 +43,7 @@
 "key": "kev",
 "value": "Not listed",
 "label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "The feed, opened directly at 07:08 ET Oct 26: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; the newest additions are still the Oct 23 Arista and Collabora entries. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real; the Oct 26 honeypot confirmation is the kind of evidence one rests on.",
+"detail": "Not listed as of Monday morning, per SecurityWeek (09:30 ET Oct 26); this run could not open the feed itself. Last opened directly at 07:08 ET Oct 26: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; the newest additions are still the Oct 23 Arista and Collabora entries. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real; the Oct 26 honeypot confirmation is the kind of evidence one rests on.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
 "source_label": "CISA KEV catalog, version 2026.10.23, checked Oct 26"
 }

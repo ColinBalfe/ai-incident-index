@@ -1709,5 +1709,37 @@
   "verified": true,
   "verify_note": "Copied from the page as fetched, Oct 26, 07:10 ET.",
   "weight": 4
+ },
+ {
+  "id": "karimi-confirmed-rce",
+  "incident_id": "php2shell",
+  "quote": "This is now confirmed RCE with usable memory disclosure, not just a crash followed by a suspicious process",
+  "speaker": "Adel Karimi",
+  "title": "Detection and response lead, Perplexity",
+  "org_type": "company",
+  "date": "2026-10-26",
+  "channel": "X post",
+  "url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
+  "via": "SecurityWeek",
+  "context": "On his honeypot evidence of PHP2Shell code execution; he adds it was shown on an intentionally favorable single-worker mod_php setup.",
+  "verified": true,
+  "verify_note": "Copied from SecurityWeek as fetched, Oct 26, 13:10 ET; X post URL not retrieved.",
+  "weight": 5
+ },
+ {
+  "id": "cathedral-wake-up-call",
+  "incident_id": "cathedral-agents-anthropic-internal-systems",
+  "quote": "a wake-up call for every company in America",
+  "speaker": "Cathedral",
+  "title": "Draft report reviewed by The Washington Post",
+  "org_type": "company",
+  "date": "2026-10-26",
+  "channel": "report",
+  "url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
+  "via": "Gizmodo, citing The Washington Post",
+  "context": "On its AI agents reaching Anthropic's internal systems through third-party software in under 12 hours; Anthropic disputes that Cathedral followed its bounty rules.",
+  "verified": true,
+  "verify_note": "Copied from Gizmodo as fetched, Oct 26, 13:10 ET.",
+  "weight": 5
  }
 ]

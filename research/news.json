@@ -1,5 +1,108 @@
 [
  {
+  "id": "gizmodo-cathedral-agents-anthropic",
+  "title": "A startup's AI agents reached Anthropic's internal sales, HR and IT systems in under 12 hours",
+  "url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
+  "outlet": "Gizmodo",
+  "published": "2026-10-26T15:00:00Z",
+  "time_known": true,
+  "kind": "breaking",
+  "region": "US",
+  "topic": "ai-attack",
+  "summary": "Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights; access cut the same day.",
+  "siren": true,
+  "also": [
+   {
+    "outlet": "Cyber Security News",
+    "url": "https://cybersecuritynews.com/anthropic-internal-system-breach/"
+   }
+  ]
+ },
+ {
+  "id": "axios-anthropic-s1-risk-factors",
+  "title": "Anthropic's IPO filing warns of 'catastrophic or existential' risk; four models reached real outside systems in tests",
+  "url": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
+  "outlet": "Axios",
+  "published": "2026-10-26T13:52:48Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "US",
+  "topic": "ai-incident",
+  "summary": "Over 90 pages of risk factors; Anthropic says it found no sign the models pursued goals beyond their assigned tasks.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "securityweek-php2shell-working-shells",
+  "title": "PHP2Shell: honeypot shells confirmed, still no named victim and no CISA listing as of Monday morning",
+  "url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
+  "outlet": "SecurityWeek",
+  "published": "2026-10-26T13:30:10Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "35 shells from two IPs on three decoys Oct 24, on a deliberately favorable setup; no second-stage download seen.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "gulfnews-dubai-cafe-ai-refund-photo",
+  "title": "Dubai café says a customer used an AI-faked spill photo to claim a delivery refund",
+  "url": "https://gulfnews.com/uae/dubai-cafe-ai-generated-photo-food-delivery-refund-claim-1.500724167",
+  "outlet": "Gulf News",
+  "published": "2026-10-26T12:51:00Z",
+  "time_known": false,
+  "kind": "incident",
+  "region": "UAE",
+  "topic": "everyday",
+  "summary": "The café spotted the wrong drink, cups and branding, and asks delivery apps to protect small restaurants from faked claims.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "npr-deepmind-hurricane-isaias",
+  "title": "Google DeepMind's model called Hurricane Isaias's Florida landfall when standard models pointed elsewhere",
+  "url": "https://www.kuow.org/npr-news/2026-10-26/how-ai-is-transforming-hurricane-forecasts",
+  "outlet": "NPR (via KUOW)",
+  "published": "2026-10-26T09:00:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "breakthrough",
+  "summary": "AI beat physics-based models on the track but trailed the Hurricane Center's blend on intensity.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "helpnet-arrakis-dormant-agents",
+  "title": "Survey: 76% of company AI agents idle for 60 days, many still holding live credentials",
+  "url": "https://www.helpnetsecurity.com/2026/10/26/arrakis-dormant-ai-agent-risks-report/",
+  "outlet": "Help Net Security",
+  "published": "2026-10-26T05:30:27Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "Arrakis: 19% use keys that never expire; 82% had at least one exposure.",
+  "siren": false,
+  "also": []
+ },
+ {
+  "id": "ibtimes-star50-ai-selloff",
+  "title": "China's AI-heavy STAR50 index down 40% since July, about $480 billion erased",
+  "url": "https://www.ibtimes.com.au/china-ai-stock-bubble-bursts-star50-index-falls-1877429",
+  "outlet": "International Business Times AU",
+  "published": "2026-10-26T15:14:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "China",
+  "topic": "everyday",
+  "summary": "AI stocks make up 42% of Chinese market value; retail buyers are exposed.",
+  "siren": false,
+  "also": []
+ },
+ {
   "id": "volokh-ai-deepfakes-in-court-database",
   "title": "Tracker lists 26 court cases of alleged AI-faked evidence; AI-hallucination rulings database passes 2,200",
   "url": "https://reason.com/volokh/2026/10/25/ai-deepfakes-in-court/",
@@ -2168,7 +2271,7 @@
   "region": "US",
   "topic": "ai-incident",
   "summary": "Georgia says the voter-registration system was untouched; Anthropic says only aggregate counts were pulled and mitigations are in place.",
-  "siren": true,
+  "siren": false,
   "also": [
    {
     "outlet": "Fox Business",

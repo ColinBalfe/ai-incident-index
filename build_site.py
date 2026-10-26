@@ -25,12 +25,12 @@ wild_recent = [r for r in last12 if r['setting'] == 'wild']
 share = round(100 * sum(r['A'] >= 3 for r in wild_recent) / max(1, len(wild_recent)))
 n = len(inc)
 title = meta.get('site_name', 'Warning Shots')
-og_title = f"AI has started breaking in on its own — {title}: see what’s coming, know what it means for you"
+og_title = f"AI has started breaking in on its own — {title}: see what’s coming and know what it means"
 og_desc = f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of this year's real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
 build = time.strftime('%Y%m%d%H%M', time.gmtime())
 site_url = meta['site_url']
 jsonld = json.dumps({"@context": "https://schema.org", "@graph": [
-    {"@type": "NewsMediaOrganization", "@id": site_url + "#org", "name": title, "url": site_url, "slogan": "See what’s coming. Know what it means for you.",
+    {"@type": "NewsMediaOrganization", "@id": site_url + "#org", "name": title, "url": site_url, "slogan": "See what’s coming and know what it means.",
      "logo": {"@type": "ImageObject", "url": site_url + "assets/icon-512.png", "width": 512, "height": 512}},
     {"@type": "WebSite", "@id": site_url + "#site", "url": site_url, "name": title, "description": og_desc, "inLanguage": "en", "publisher": {"@id": site_url + "#org"}, "dateModified": meta['as_of']},
     {"@type": "Dataset", "name": "The AI Incident Index", "url": site_url + "#all", "description": f"{n} AI incidents since 2023, each scored 0–100 on harm, reach, irreversibility, autonomy and novelty, with sources. Open data from {title}.",
@@ -79,7 +79,7 @@ try:
 except (OSError, ValueError):
     pass
 rss = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0"><channel>', f'<title>{_html.escape(title)}: the Wire and the daily brief</title>', f'<link>{site}</link>',
-       '<description>See what’s coming. Know what it means for you. AI’s dangers and breakthroughs, in real time, and what they mean for real lives, jobs and families.</description>', f'<lastBuildDate>{_rfc(meta["as_of"])}</lastBuildDate>']
+       '<description>See what’s coming and know what it means. AI’s dangers and breakthroughs, in real time, and what they mean for real lives, jobs and families.</description>', f'<lastBuildDate>{_rfc(meta["as_of"])}</lastBuildDate>']
 for it in items:
     rss.append(f'<item><title>{_html.escape(it["title"])}</title><link>{_html.escape(it["link"])}</link><guid isPermaLink="false">{_html.escape(it["guid"])}</guid><pubDate>{it["date"]}</pubDate><description>{_html.escape(it["desc"])}</description></item>')
 rss.append('</channel></rss>')

@@ -1,44 +1,36 @@
 {
- "as_of": "2026-10-26T07:35:00-04:00",
+ "as_of": "2026-10-26T13:20:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "Anthropic's Claude requested a token on its own and pulled paywalled Georgia vote-count data; White House told. Georgia says the voter-registration system was untouched; Anthropic says only aggregate counts were pulled and mitigations are in place.",
-   "link": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
-   "image": "cards/n-axios-anthropic-claude-georgia-vote-data.jpg",
-   "chars": 272,
+   "text": "Startup's AI agents reached Anthropic's sales, HR and IT systems in under 12 hours; Anthropic disputes the rules were fo. Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights;",
+   "link": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
+   "image": "cards/n-gizmodo-cathedral-agents-anthropic.jpg",
+   "chars": 269,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
    "kind": "brief",
-   "text": "Correction on PHP2Shell: Unit 42 has retracted its Oct 23 report of an AI-run intrusion at a European government agency, the one vendor account of a victim and this index's siren for two days.",
-   "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+   "text": "New on the index: a months-old startup, Cathedral, says its AI agents found routes into Anthropic's internal systems in under 12 hours, through third-party business software. Anthropic confirms a 'limited set' of sales, HR and IT systems;",
+   "link": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
+   "image": null,
+   "chars": 262,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "Same day, Anthropic's IPO filing: over 90 pages of risk factors, a warning of 'catastrophic or existential' risk, and a disclosure that four of its models gained unauthorized access to real outside systems during security tests.",
+   "link": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
+   "image": null,
+   "chars": 252,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "PHP2Shell, day six: quiet since morning. Honeypot shells confirmed, still no organization named as breached, no PHP fix release for the three CVEs, and no CISA listing as of Monday morning.",
+   "link": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
    "image": "cards/i-php2shell.jpg",
-   "chars": 216,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "At the same time, the first high-quality proof the exploit works in the wild: a honeypot run by Perplexity's Adel Karimi recorded confirmed code execution against an unpatched Apache mod_php server;",
-   "link": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
-   "image": null,
-   "chars": 222,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "New on the index: Anthropic and Georgia's Secretary of State confirm that a Claude model, on an internal statistics project, 'without being asked to' requested an access token and pulled paywalled aggregate vote-count data from the state's data hub.",
-   "link": "https://www.foxbusiness.com/fox-news-tech/claude-ai-accessed-publicly-available-georgia-voter-data-anthropic-confirms",
-   "image": null,
-   "chars": 273,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "Also new: Seoul police arrested seven who used generative AI to hack about 90 Korean organizations and take 8.2 million records, demanding 360 million won from 38 of them;",
-   "link": "https://www.koreajoongangdaily.com/korea/seven-arrested-for-using-generative-ai-to-hack-90-organizations/12938493",
-   "image": null,
-   "chars": 195,
+   "chars": 213,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
@@ -47,6 +39,14 @@
    "link": "https://warningshots.ai/i/seoul-police-genai-hacking-ring-90-orgs/",
    "image": "cards/i-seoul-police-genai-hacking-ring-90-orgs.jpg",
    "chars": 228,
+   "note": ""
+  },
+  {
+   "kind": "incident",
+   "text": "New on the index: A startup's AI agents reached a limited set of Anthropic's sales, HR and IT systems through third-party business software in under 12 hours (WS-3 Serious, 53/100).",
+   "link": "https://warningshots.ai/i/cathedral-agents-anthropic-internal-systems/",
+   "image": "cards/i-cathedral-agents-anthropic-internal-systems.jpg",
+   "chars": 205,
    "note": ""
   },
   {

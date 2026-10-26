@@ -1,6 +1,6 @@
 # Warning Shots
 
-See what’s coming. Know what it means for you.
+See what’s coming and know what it means.
 
 A public, live-updated index of every major AI safety incident since January 2023: scored 0–100 by a fixed rubric, linked to its primary source, and projected forward with dated forecasts. It also tracks, for the biggest multi-victim incidents, every organization publicly named as hit, and what security agencies, governments and AI companies have said. The Wire, at the top of the page, is a rolling board of links to the latest reporting worldwide on AI's dangers and breakthroughs and what they mean for real lives, jobs and families. "What AI can now do" is a capability index graded from demonstration to real consequences, drawn against the incident line. "Did they fix it?" tracks each major incident from report to response to claimed fix to independent check.
 

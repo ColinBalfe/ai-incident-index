@@ -678,6 +678,7 @@ const callRows = () => (D.calls || []).filter((c) => c && c.question && c.resolv
 const callOpen = (c) => !c.resolution;
 const callDays = (c) => Math.ceil((Date.parse(c.resolve_by + 'T00:00:00-04:00') - Date.now()) / 864e5); // whole days until the resolution date, Eastern
 const callLean = (c) => +c.odds >= 0.5;
+const likelyWord = (p) => (p = +p, p >= 0.85 ? 'Very likely' : p >= 0.6 ? 'Likely' : p > 0.4 ? 'Could go either way' : p > 0.15 ? 'Unlikely' : 'Very unlikely');
 const houseHit = (c) => !!(c.resolution && c.resolution.outcome !== 'void' && (callLean(c) === (c.resolution.outcome === 'yes')));
 const PICKS = (() => { try { return JSON.parse(localStorage.getItem('ws-calls') || '{}'); } catch (e) { return {}; } })();
 function setPick(id, pick) { if (PICKS[id] && PICKS[id].pick === pick) delete PICKS[id]; else PICKS[id] = { pick, at: new Date().toISOString() }; try { localStorage.setItem('ws-calls', JSON.stringify(PICKS)); } catch (e) {} drawCallStrip(); drawForecast(); drawRibbon(); }
@@ -698,6 +699,7 @@ function callDue(c) {
   return (d < 0 ? 'Awaiting grade' : d === 0 ? 'Resolves today' : d === 1 ? 'Resolves tomorrow' : 'Resolves in ' + d + ' days') + ' · ' + fmtDay(new Date(c.resolve_by + 'T12:00:00Z'));
 }
 function pickButtons(c, cls) {
+  return el('span', 'call-pick-none');
   const wrap = el('span', cls || 'call-pick'); const mine = PICKS[c.id] && PICKS[c.id].pick;
   if (c.resolution) {
     const out = c.resolution.outcome;
@@ -735,7 +737,7 @@ function drawForecast() {
   const box = document.getElementById('forecast-list'), more = document.getElementById('forecast-more'), rec = document.getElementById('call-record'); if (!box) return;
   const all = callRows(); if (!all.length) return;
   const hr = houseRecord(), me = myRecord();
-  if (rec) { rec.replaceChildren(el('span', null, ''), el('span', null, ''), el('span', null, '')); const [a, b, c] = rec.children; a.append(el('b', null, 'The index’s record: ' + hr.w + '–' + hr.l), txt(hr.n ? ' on ' + hr.n + ' graded calls, Brier ' + hr.brier.toFixed(2) + ' (0 is perfect, 0.25 is coin-flipping)' : ' · nothing has resolved yet; the first short calls grade on ' + fmtDay(new Date(all.filter(callOpen).sort((x, y) => x.resolve_by.localeCompare(y.resolve_by))[0].resolve_by)))); b.append(el('b', null, 'Your record: ' + (me.made ? me.w + '–' + me.l : '—')), txt(me.made ? ' on ' + me.n + ' graded, ' + me.made + ' calls made' : ' · tap Yes or No on any call')); c.append(txt(hr.open + ' open calls. Odds can move before a call resolves; every refresh’s odds are logged, and the brief reports what moved.')); }
+  if (rec) { rec.replaceChildren(el('span', null, ''), el('span', null, ''), el('span', null, '')); const [a, b, c] = rec.children; a.append(el('b', null, 'Track record: ' + hr.w + ' right, ' + hr.l + ' wrong'), txt(hr.n ? ' on ' + hr.n + ' graded questions' : ' · nothing has resolved yet; the first questions are graded on ' + fmtDay(new Date(all.filter(callOpen).sort((x, y) => x.resolve_by.localeCompare(y.resolve_by))[0].resolve_by)))); c.append(txt(hr.open + ' open questions. The index’s estimate can move before a question resolves when the evidence does; every change is logged and explained in the changelog.')); }
   const now = Date.now();
   const groups = [['Resolving within a week', (c) => callOpen(c) && callDays(c) <= 7], ['Within a month', (c) => callOpen(c) && callDays(c) > 7 && callDays(c) <= 31], ['Within three months', (c) => callOpen(c) && callDays(c) > 31 && callDays(c) <= 93], ['Later', (c) => callOpen(c) && callDays(c) > 93], ['Graded', (c) => !callOpen(c)]];
   const LIMIT = 14; let shown = 0;
@@ -748,9 +750,7 @@ function drawForecast() {
       const ev = el('div', 'fc-event'); ev.append(txt(r.question));
       if (r.resolution) { const res = el('span', 'fc-res ' + (r.resolution.outcome === 'void' ? '' : houseHit(r) ? 'hit' : 'miss')); res.textContent = r.resolution.outcome === 'void' ? 'void' : (r.resolution.outcome === 'yes' ? 'Yes' : 'No') + ' · index ' + (houseHit(r) ? 'right' : 'wrong'); ev.append(res); }
       ev.append(el('span', 'fc-due', callDue(r)));
-      const bar = el('div', 'fc-bar'), track = el('div', 'fc-track'), fill = el('div', 'fc-fill'); const p = +r.odds; fill.style.width = (p * 100) + '%'; fill.style.background = p >= 0.5 ? 'var(--alarm)' : 'color-mix(in oklab, var(--alarm) 50%, var(--line-2))'; track.append(fill);
-      bar.append(track, el('span', 'fc-pct', r.odds_label || Math.round(p * 100) + '%'));
-      if (!r.resolution || PICKS[r.id]) bar.append(pickButtons(r, 'fc-pick'));
+      const bar = el('div', 'fc-bar'); const p = +r.odds; const w = el('span', 'fc-word' + (p >= 0.6 ? ' hi' : p <= 0.4 ? ' lo' : ''), (r.resolution ? 'Expected: ' : 'The index expects: ') + likelyWord(p).toLowerCase()); w.title = 'The index’s estimate: ' + Math.round(p * 100) + '%'; bar.append(w);
       const moreB = el('div', 'fc-more'); const b1 = el('div'); b1.append(el('b', null, 'Why: '), txt(r.basis || '')); const b2 = el('div'); b2.style.marginTop = '4px'; b2.append(el('b', null, 'Watch for: '), txt(r.signposts || '')); moreB.append(b1, b2);
       if (r.resolution && r.resolution.note) { const b3 = el('div'); b3.style.marginTop = '4px'; b3.append(el('b', null, 'Resolution: '), txt(r.resolution.note + ' ')); if (r.resolution.source_url) { const a = el('a', null, 'source'); a.href = r.resolution.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); b3.append(a); } moreB.append(b3); }
       else if (r.source_url) { const b4 = el('div'); b4.style.marginTop = '4px'; const a = el('a', null, 'Where it will be checked'); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); b4.append(a); moreB.append(b4); }
@@ -762,9 +762,9 @@ function drawForecast() {
     return g;
   }).filter((g) => g.children.length > 1));
   more.replaceChildren();
-  if (all.length > LIMIT) { const b = el('button', 'more-btn', fcOpen ? 'Show fewer' : 'Show all ' + all.length + ' calls'); b.type = 'button'; b.addEventListener('click', () => { fcOpen = !fcOpen; drawForecast(); }); more.append(b); }
+  if (all.length > LIMIT) { const b = el('button', 'more-btn', fcOpen ? 'Show fewer' : 'Show all ' + all.length + ' questions'); b.type = 'button'; b.addEventListener('click', () => { fcOpen = !fcOpen; drawForecast(); }); more.append(b); }
   const soon = all.filter(callOpen).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by))[0];
-  shareRow(document.getElementById('share-forecast'), { anchor: 'card-forecast', text: `${hr.open} dated yes/no calls on AI's dangers and breakthroughs, with odds, graded in public. Next to resolve: ${soon ? soon.question + ' (' + (soon.odds_label || '') + ')' : ''}. Warning Shots:` });
+  shareRow(document.getElementById('share-forecast'), { anchor: 'card-forecast', text: `What Warning Shots expects next on AI's dangers, graded in public. Next up: ${soon ? soon.question : ''}. Warning Shots:` });
 }
 let calOpen = false;
 function drawCalendar() {
@@ -1207,24 +1207,96 @@ function drawRibbon() {
     { n: fxUpd, l: (fxUpd === 1 ? 'follow-up moved, 7d' : 'follow-ups moved, 7d'), href: '#fixes', hot: fxUpd > 0, t: `Cases with a dated change in their report → response → fix → check chain in the 7 days before ${stamp}. Source: data/fixes.json.` },
     { n: wire, l: (wire === 1 ? 'report on the Wire, 24h' : 'reports on the Wire, 24h'), href: '#wire', hot: false, t: `Stories on the Wire published in the 24 hours up to about three hours after ${stamp}. Links to the outlets; nothing is copied. Source: data/news.json.` },
   ];
-  const hrc = houseRecord(); if (callRows().length) items.unshift({ n: hrc.n ? hrc.w + '–' + hrc.l : hrc.open, l: hrc.n ? 'the index’s record, ' + hrc.open + ' open' : 'open calls, graded in public', href: '#calls', hot: false, t: `Dated yes/no questions with the index's odds. ${hrc.n ? hrc.w + ' right, ' + hrc.l + ' wrong so far; Brier ' + hrc.brier.toFixed(2) + '.' : 'Nothing has resolved yet.'} Source: data/calls.json.` });
+  const hrc = houseRecord(); if (false) items.unshift({ n: hrc.n ? hrc.w + '–' + hrc.l : hrc.open, l: hrc.n ? 'the index’s record, ' + hrc.open + ' open' : 'open calls, graded in public', href: '#calls', hot: false, t: `Dated yes/no questions with the index's odds. ${hrc.n ? hrc.w + ' right, ' + hrc.l + ' wrong so far; Brier ' + hrc.brier.toFixed(2) + '.' : 'Nothing has resolved yet.'} Source: data/calls.json.` });
   box.replaceChildren(...items.map((it) => { const a = el('a', 'rb' + (it.hot ? ' hot' : '')); a.href = it.href; a.title = it.t; a.append(el('b', null, String(it.n)), el('span', null, it.l)); a.addEventListener('click', (e) => { e.preventDefault(); if (it.href === '#all') { ls.sort = 'new'; document.getElementById('sel-sort').value = 'new'; drawList(); } go(it.href); }); return a; }));
   const u = el('span', 'rb-upd'); u.append(el('i'), txt('Updated ' + stamp + (D.meta.next_check ? ', next ' + fmtETsmart(D.meta.next_check).replace('today ', '') : ''))); u.title = D.meta.schedule || ''; box.append(u);
   const ed = document.getElementById('edition'); if (ed) ed.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(D.meta.as_of)) + ' edition';
 }
 
-/* ---------- "I don't use AI. Why does this matter to me?" */
-const WHY = [
-  { id: 'php2shell', k: 'The websites you use', s: 'Government, bank and hospital sites went offline for days as a precaution after AI found two flaws in the software under most of the web.', m: 'Open the live breakdown', go: '#d=php2shell' },
-  { id: 'destefano-voice-clone-kidnap-scam', k: 'A phone call from family', s: 'Three seconds of audio is enough to clone a voice. Scams that use a relative’s voice to demand money are on this index from 2023 on.', m: 'Open the incident' },
-  { id: 'bank-accounts-agents', k: 'Your bank account', s: 'Four big US banks found third-party AI agents operating inside customer accounts and are restricting them.', m: 'Open the incident' },
-  { id: 'raine-v-openai', k: 'A teenager’s chatbot', s: 'Lawsuits over what chatbots said to minors, and new state rules on companionship features, are tracked here as they happen.', m: 'Open the incident' },
+/* ---------- What it means for you: five everyday lenses on the same data. The chosen lens is remembered in this browser only. */
+const LENSES = [
+  { id: 'family', label: 'Your family', lede: 'Chatbots your kids talk to, deepfakes made of children, and calls that sound like someone you love.',
+    topics: ['families', 'chatbot-harm'], cats: ['child_safety', 'psych_harm'], kw: /\b(child|children|teen|teenage|kids?|school|student|minor|parent|family|classmate)s?\b/i,
+    act: [
+      ['Agree a family safe word, so a cloned voice asking for money can be checked with one question.', '/shield/', 'Make one, free'],
+      ['Ask which chatbots your kids talk to, and look at the companion or “friend” settings together.'],
+      ['If someone makes a sexual image of a child, report it; Take It Down helps remove it from major platforms.', 'https://takeitdown.ncmec.org/', 'NCMEC Take It Down'],
+    ] },
+  { id: 'money', label: 'Your money', lede: 'Voice-clone and deepfake scams, AI agents inside bank accounts, and faked photos used for refunds.',
+    topics: ['everyday'], cats: ['fraud_deepfake'], kw: /\b(scam|scams|fraud|bank|banks|refund|crypto|money|savings|voice[- ]clon\w*|impersonat\w*)\b/i,
+    act: [
+      ['If a call or video asks you to move money urgently, hang up and call back on a number you already have.'],
+      ['Treat a familiar voice or face as unproven; a few seconds of audio is enough to clone one.', '/shield/', 'The safe-word tool'],
+      ['Don’t hand an AI agent or app your bank login; banks are restricting third-party agents found inside accounts.'],
+    ] },
+  { id: 'work', label: 'Your job', lede: 'Layoffs tied to AI, and staff pasting patient, customer and HR records into tools nobody approved.',
+    topics: ['jobs'], cats: ['privacy_data', 'agent_accident'], kw: /\b(jobs?|layoffs?|hiring|workers?|employees?|staff|workplace|uploaded)\b/i,
+    act: [
+      ['Don’t paste customer, patient or HR data into an AI tool your employer hasn’t approved; two employers on this index did it this month.'],
+      ['If you run AI agents at work, give them only the access the task needs, and retire idle ones with their keys.'],
+      ['Check an agent’s report of what it did against what it actually changed; agents on this index have misreported their own work.'],
+    ] },
+  { id: 'site', label: 'Your website', lede: 'The PHP flaws AI found, AI agents breaking into company systems, and crawlers scraping for training data.',
+    topics: ['php2shell', 'ai-attack'], cats: ['cyber_offense', 'security_vuln', 'ai_vuln'], kw: /\b(php|website|hack\w*|breach\w*|intrusion)\b/i,
+    act: [
+      ['If your site runs on PHP, ask your host or developer whether it is on a release fixed on or after Oct 21, 2026.', '#d=php2shell', 'The PHP2Shell breakdown'],
+      ['Keep your work out of AI training sets with a robots.txt built for the crawlers that scrape for AI.', '/scraped/', 'Build one, free'],
+      ['Review which outside tools and AI agents hold keys to your systems; this week’s breaches went through third-party software.'],
+    ] },
+  { id: 'vote', label: 'Elections & news', lede: 'AI-made campaign ads, deepfakes of candidates and officials, and what governments are doing about it.',
+    topics: ['deepfakes', 'regulation'], cats: ['info_integrity'], kw: /\b(election|elections|vote|voters?|campaign|candidate|midterms?|deepfakes?)\b/i,
+    act: [
+      ['Before sharing a shocking clip of a candidate, check whether a major outlet or the campaign has confirmed it.'],
+      ['Political AI ads often aren’t labelled; a study of the 2026 US midterms found only about a quarter were disclosed.'],
+      ['The US midterms are Nov 3; the FBI and CISA have warned officials about AI-powered deception before the vote.'],
+    ] },
 ];
+let LAST_SEEN = null; // the as_of of the reader's previous visit, set once by drawSinceVisit
+const lensPref = () => { try { return localStorage.getItem('ws-lens'); } catch (e) { return null; } };
+let lensCur = null;
+function lensStories(L) {
+  return newsItems().filter((n) => (L.topics.includes(n.topic) && (L.id !== 'money' || L.kw.test(n.title + ' ' + (n.summary || '')))) || (n.topic !== 'php2shell' || L.id === 'site') && L.kw.test(n.title));
+}
+function lensIncidents(L) {
+  return C.scored.filter((r) => L.cats.includes(r.category) && r.setting !== 'lab').sort((a, b) => String(b.disclosed || b.date).localeCompare(String(a.disclosed || a.date)));
+}
 function drawWhy() {
-  const box = document.getElementById('why-grid'); if (!box) return;
-  const rows = WHY.map((w) => ({ w, r: C.scored.find((r) => r.id === w.id) })).filter((x) => x.r);
-  document.getElementById('why').style.display = rows.length ? '' : 'none';
-  box.replaceChildren(...rows.map(({ w, r }) => { const c = el('div', 'why'); c.tabIndex = 0; c.append(el('div', 'why-k', w.k), el('div', 'why-t', r.title), el('div', 'why-s', w.s), el('div', 'why-m', showDate(r) + ', ' + r.level + ' ' + r.tier + '. ' + w.m)); const open = () => { if (w.go) go(w.go); else openIncident(r.id); }; c.addEventListener('click', open); c.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(); }); return c; }));
+  const box = document.getElementById('why-grid'), tabs = document.getElementById('fy-tabs'); if (!box || !tabs) return;
+  if (!lensCur) lensCur = LENSES.some((l) => l.id === lensPref()) ? lensPref() : 'family';
+  const L = LENSES.find((l) => l.id === lensCur);
+  tabs.replaceChildren(...LENSES.map((l) => {
+    const n = lensStories(l).filter((x) => x.published && Date.now() - Date.parse(x.published) < 72 * 3.6e6).length;
+    const b = el('button', 'fy-tab' + (l.id === lensCur ? ' on' : '')); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(l.id === lensCur));
+    b.append(el('span', 'fy-l', l.label), el('span', 'fy-n', n ? n + ' this week' : 'quiet this week'));
+    b.addEventListener('click', () => { lensCur = l.id; try { localStorage.setItem('ws-lens', l.id); } catch (e) {} drawWhy(); });
+    return b;
+  }));
+  const seen = LAST_SEEN ? Date.parse(LAST_SEEN) : null;
+  const stories = lensStories(L).slice(0, 5), incs = lensIncidents(L).slice(0, 3);
+  const left = el('div', 'fy-feed');
+  left.append(el('p', 'fy-lede', L.lede));
+  left.append(el('div', 'fy-h', 'The latest'));
+  const ul = el('ol', 'fy-list');
+  if (!stories.length) ul.append(el('li', 'fy-empty', 'Nothing new on the Wire for this in the last three days.'));
+  stories.forEach((n) => {
+    const li = el('li'); const a = el('a', 'fy-s'); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    if (seen && n.published && Date.parse(n.published) > seen) a.append(el('span', 'fy-new', 'New'));
+    a.append(txt(n.title)); li.append(a, el('div', 'fy-m', (n.outlet || '') + ' · ' + ageShort(n))); ul.append(li);
+  });
+  left.append(ul);
+  if (incs.length) {
+    left.append(el('div', 'fy-h', 'On the record'));
+    const rec = el('div', 'fy-rec');
+    incs.forEach((r) => { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierText(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', () => openIncident(r.id)); rec.append(b); });
+    left.append(rec);
+  }
+  const right = el('div', 'fy-do dark-scope');
+  right.append(el('div', 'fy-do-k', 'What you can do'));
+  const ol = el('ol');
+  L.act.forEach(([t, href, label]) => { const li = el('li'); li.append(el('span', null, t)); if (href) { const a = el('a', null, label + ' →'); a.href = href; if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } li.append(a); } ol.append(li); });
+  right.append(ol);
+  right.append(el('p', 'fy-do-note', 'Your choice of topic is remembered in this browser only.'));
+  box.replaceChildren(left, right);
 }
 
 /* ---------- Then. Now. Still. (from published evidence) */
@@ -1246,7 +1318,7 @@ function drawFieldnote() { const f = document.getElementById('fieldnote'); if (!
 function drawSinceVisit() {
   const bar = document.getElementById('since'); if (!bar) return;
   let prev = null; try { prev = localStorage.getItem('ws-last-asof'); } catch (e) {}
-  const cur = D.meta.as_of;
+  const cur = D.meta.as_of; if (LAST_SEEN === null) LAST_SEEN = (prev && prev !== cur) ? prev : '';
   try { localStorage.setItem('ws-last-asof', cur); } catch (e) {}
   if (!prev || prev === cur || Date.parse(prev) > Date.parse(cur)) { bar.hidden = true; return; }
   const t0 = Date.parse(prev), t1 = Date.parse(cur), between = (iso) => iso && Date.parse(iso) > t0 && Date.parse(iso) <= t1 + 3 * 3.6e6;
@@ -1257,7 +1329,7 @@ function drawSinceVisit() {
   if (caps) parts.push(caps + (caps === 1 ? ' new advance' : ' new advances'));
   if (moved.length) parts.push(moved.length + (moved.length === 1 ? ' case moved (' : ' cases moved (') + moved.slice(0, 3).map((f) => f.name.split(':')[0]).join(', ') + ')');
   if (news) parts.push(news + (news === 1 ? ' report on the Wire' : ' reports on the Wire'));
-  const graded = callRows().filter((c) => c.resolution && between(c.resolution.date)); if (graded.length) { const mine = graded.filter((c) => PICKS[c.id]); const right = mine.filter((c) => PICKS[c.id].pick === c.resolution.outcome).length; parts.push(graded.length + (graded.length === 1 ? ' call graded' : ' calls graded') + (mine.length ? ' (you were right on ' + right + ' of ' + mine.length + ')' : '')); }
+  const graded = callRows().filter((c) => c.resolution && between(c.resolution.date)); if (graded.length) parts.push(graded.length + (graded.length === 1 ? ' forecast graded' : ' forecasts graded'));
   bar.hidden = false; bar.replaceChildren();
   const txtNode = el('span'); txtNode.append(el('b', null, 'Since your last visit (' + fmtET(prev) + '): '), txt(parts.length ? parts.join(', ') + '.' : 'nothing material changed. You’re caught up.'));
   const note = el('span', 'since-note', 'Saved in this browser only.'); const reset = el('button', null, 'Reset'); reset.type = 'button'; reset.addEventListener('click', () => { try { localStorage.removeItem('ws-last-asof'); } catch (e) {} bar.hidden = true; toast('Reset'); });
@@ -1275,7 +1347,7 @@ function searchIndex() {
   newsItems().forEach((n) => rows.push({ kind: 'The Wire', title: n.title, text: [n.summary, n.outlet, n.topic].join(' '), kicker: (n.outlet || '') + ' · ' + ageShort(n), href: n.url }));
   fixRows().forEach((f) => rows.push({ kind: 'Did they fix it?', title: f.name, text: [f.one_liner].concat(f.chain.map((c) => c.note)).join(' '), kicker: 'Case · ' + String(fixCur(f).status || '').replace('_', ' '), go: () => go('#c=' + f.incident_id) }));
   capRows().forEach((c) => rows.push({ kind: 'What AI can now do', title: c.title, text: [c.what, c.org, c.everyday, c.domain].join(' '), kicker: 'Milestone · ' + fmtDate(new Date(c.date)) + (c.org ? ' · ' + c.org : ''), go: () => go('#m=' + c.id) }));
-  callRows().forEach((c) => rows.push({ kind: 'The call sheet', title: c.question, text: [c.basis, c.signposts, (c.tags || []).join(' ')].join(' '), kicker: (c.odds_label || '') + ' · ' + callDue(c), go: () => go('#fc-' + c.id) }));
+  callRows().forEach((c) => rows.push({ kind: 'What to expect', title: c.question, text: [c.basis, c.signposts, (c.tags || []).join(' ')].join(' '), kicker: likelyWord(c.odds) + ' · ' + callDue(c), go: () => go('#fc-' + c.id) }));
   (D.quotes || []).forEach((q) => { if (q && q.quote) rows.push({ kind: 'In their words', title: q.quote, text: [q.speaker, q.title].join(' '), kicker: (q.speaker || '') + (q.title ? ', ' + q.title : '') + (q.date ? ' · ' + fmtDate(new Date(q.date)) : ''), go: () => go('#q=' + q.id) }); });
   (D.signals || []).forEach((x) => { if (x && x.gist) rows.push({ kind: 'Official signals', title: x.gist, text: [x.org, x.speaker, x.quote].join(' '), kicker: (x.org || '') + (x.date ? ' · ' + fmtDate(new Date(x.date)) : ''), href: x.url || null, go: x.url ? null : () => go('#signals') }); });
   rows.forEach((r) => { r.t = snorm(r.title); r.x = snorm(r.text); });
@@ -1419,10 +1491,15 @@ window.addEventListener('hashchange', route);
 document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => { const h = a.getAttribute('href'); if (h.length < 2) return; e.preventDefault(); if (MF() && h !== location.hash) history.pushState(null, '', h); else history.replaceState(null, '', h); route(); }));
 
 
+/* ---------- long live-panel notes open on click */
+document.addEventListener('click', (e) => {
+  const m = e.target.closest && e.target.closest('#now-more, #now-note'); if (m) { const n = document.getElementById('now-note'); const o = n.classList.toggle('open'); const b = document.getElementById('now-more'); if (b) b.textContent = o ? 'Show less' : 'Read the full note'; return; }
+  const d = e.target.closest && e.target.closest('.live .d'); if (d && e.target.tagName !== 'A') d.classList.toggle('open');
+});
 /* ---------- phones: a front page and section views (body.mf). Desktop and the one-page mode are untouched. */
 const MF_PREF = () => { try { return localStorage.getItem('ws-mf'); } catch (e) { return null; } };
 const MF = () => !EMBED && window.innerWidth < 760 && MF_PREF() !== 'off';
-const MF_SECTIONS = [['wire', 'The Wire'], ['why', 'I don’t use AI'], ['record', 'The record'], ['capabilities', 'What AI can now do'], ['words', 'In their words'], ['pattern', 'The pattern of 2026'], ['charts', 'The escalation, five ways'], ['next', 'Where this goes next'], ['dives', 'Inside the incidents'], ['fixes', 'Did they fix it?'], ['signals', 'Official signals'], ['all', 'All incidents'], ['about', 'About the data']];
+const MF_SECTIONS = [['wire', 'The Wire'], ['why', 'What it means for you'], ['record', 'The record'], ['capabilities', 'What AI can now do'], ['words', 'In their words'], ['pattern', 'The pattern of 2026'], ['charts', 'The escalation, five ways'], ['next', 'Where this goes next'], ['dives', 'Inside the incidents'], ['fixes', 'Did they fix it?'], ['signals', 'Official signals'], ['all', 'All incidents'], ['about', 'About the data']];
 let mfCur = null; // null = not in phone mode; 'front' or a section id
 function mfTarget(h) {
   if (!h || h === 'front' || h === 'top') return 'front';
@@ -1445,7 +1522,7 @@ function mfApply(target) {
   [...main.children].forEach((c) => {
     if (keep.has(c.id)) { c.removeAttribute('data-mf'); return; }
     const sec = c.matches('section') ? c : c.querySelector('section'); const id = sec ? sec.id : c.id;
-    const show = target === 'front' ? (id === 'wire' || id === 'front' || id === 'calls') : id === target;
+    const show = target === 'front' ? (id === 'wire' || id === 'front' || id === 'why') : id === target;
     if (show) c.removeAttribute('data-mf'); else c.setAttribute('data-mf', 'off');
   });
   front.hidden = target !== 'front';
@@ -1483,7 +1560,7 @@ function drawFront() {
     card('#dives', 'Inside the incidents', live.name, (vc.rows ? vc.rows + ' organizations' + (countries ? ' in ' + countries + ' countries' : '') + ', ' : '') + 'the map, the timeline, what officials said.'),
   );
   const link = (href, t, sub) => { const a = el('a'); a.href = href; a.append(el('b', null, t), txt(sub)); return a; };
-  more.replaceChildren(link('/shield/', 'The family safe word', 'Beat voice-clone calls'), link('/scraped/', 'Block AI crawlers', 'A robots.txt for your site'), link('#why', 'I don’t use AI', 'Why it still matters'), link('#words', 'In their words', (D.quotes || []).length + ' quotes, verbatim'), link('#signals', 'Official signals', (D.signals || []).length + ' statements'), link('#pattern', 'The pattern of 2026', 'What changed this year'), link('#charts', 'The escalation', 'Five ways to count it'), link('#all', 'All incidents', fmtN(h.n) + ', ranked and searchable'), link('#about', 'About the data', 'Scores, sources, corrections'));
+  more.replaceChildren(link('/shield/', 'The family safe word', 'Beat voice-clone calls'), link('/scraped/', 'Block AI crawlers', 'A robots.txt for your site'), link('#why', 'What it means for you', 'Family, money, job, website, vote'), link('#words', 'In their words', (D.quotes || []).length + ' quotes, verbatim'), link('#signals', 'Official signals', (D.signals || []).length + ' statements'), link('#pattern', 'The pattern of 2026', 'What changed this year'), link('#charts', 'The escalation', 'Five ways to count it'), link('#all', 'All incidents', fmtN(h.n) + ', ranked and searchable'), link('#about', 'About the data', 'Scores, sources, corrections'));
   document.getElementById('front-stamp').textContent = 'Updated ' + fmtET(D.meta.as_of);
 }
 document.getElementById('mf-off')?.addEventListener('click', () => { try { localStorage.setItem('ws-mf', 'off'); } catch (e) {} mfApply(null); drawAll(false); toast('One page. The front page is in the ? help.'); });
@@ -1526,7 +1603,7 @@ function preDraw() {
 }
 function drawAll(first) {
   if (MF() && !mfCur) mfApply('front');
-  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawCallStrip(); drawWire(); drawNow(); drawBrief();
+  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawWire(); drawNow(); drawBrief();
   if (MF()) { drawFront(); if (mfCur && mfCur !== 'front') drawSection(mfCur); }
   if (EMBED || !lazyIO) { drawEverything(); return; }
   if (first) {

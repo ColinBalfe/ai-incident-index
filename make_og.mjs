@@ -24,7 +24,7 @@ await page.evaluate(() => {
   const meta = JSON.parse(document.querySelector('meta[name="description"]').content ? '{}' : '{}');
   const f = document.createElement('div'); f.className = 'og-foot';
   const up = document.getElementById('tb-updated').title.split('.')[0].replace(/^Last refresh /, '');
-  f.innerHTML = '<span><b>Warning Shots</b>. See what’s coming. Know what it means for you.</span><span>Updated ' + up + '</span>';
+  f.innerHTML = '<span><b>Warning Shots</b>. See what’s coming and know what it means.</span><span>Updated ' + up + '</span>';
   document.body.append(f);
   window.dispatchEvent(new Event('resize'));
 });
