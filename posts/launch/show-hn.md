@@ -13,7 +13,6 @@ I built Warning Shots to track AI incidents the way a newsroom tracks a beat: ev
 Two things the data shows: severe incidents went from 3 to 13 in a year, and in 42% of this year's real-world cases the AI system itself did the acting, rather than a person using it as a tool.
 
 Things I tried to get right:
-- Retractions run as big as the claims. When Palo Alto's Unit 42 withdrew a report this week, the correction went on the front page in the same column.
 - Proof is graded: Tried (attempts logged), Proven (a test system broken into), Hit (a real victim confirmed). They're never blurred.
 - Dated forecasts that are never edited after they resolve; misses stay up.
 - The data is open: https://warningshots.ai/data/incidents.json and .csv. The formula is on the page.

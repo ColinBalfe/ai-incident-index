@@ -153,7 +153,7 @@ pbody = f"""{STYLE}<article class="pr">
 {copybox(cite_data, 'dataset citation')}
 <p>Linking to a single incident? Every incident has its own page, for example <a href="/i/">the full list</a>. Link to that page so readers land on the sources.</p>
 <h2>How it works</h2>
-<p>Each incident is rated on five factors (harm, reach, autonomy, novelty and irreversibility) and combined into a 0–100 score by a <a href="/index/#about">formula published on the site</a>. Claims about live events are graded by proof: <b>Tried</b> (attempts logged), <b>Proven</b> (a test system broken into, no real victim yet), <b>Hit</b> (a real victim confirmed). The three are never blurred. Retractions run as prominently as the claims they correct, forecasts are dated and never edited after they resolve, and every change is logged.</p>
+<p>Each incident is rated on five factors (harm, reach, autonomy, novelty and irreversibility) and combined into a 0–100 score by a <a href="/index/#about">formula published on the site</a>. Claims about live events are graded by proof: <b>Tried</b> (attempts logged), <b>Proven</b> (a test system broken into, no real victim yet), <b>Hit</b> (a real victim confirmed). The three are never blurred. Forecasts are dated and never edited after they resolve, and every change is logged.</p>
 <h2>Screenshots</h2>
 {f'<div class="pr-shots">{shots_html}</div>' if shots else '<p>Screenshots coming soon.</p>'}
 <h2>Logo and badge</h2>
