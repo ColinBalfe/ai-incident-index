@@ -7,7 +7,8 @@ const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'ca
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
-const FRONT_IDS = new Set(['wall', 'wall-lead', 'level', 'wire', 'why', 'front', 'now', 'brief', 'since', 'siren']);
+const FRONT_IDS = new Set(['wall', 'wall-lead', 'level', 'why', 'front', 'recfoot']);
+const WIRE_IDS = new Set(['wire', 'now', 'brief', 'since', 'siren', 'ribbon', 'ticker']);
 const RECORD_IDS = new Set(['record', 'capabilities', 'words', 'pattern', 'charts', 'next', 'dives', 'fixes', 'signals', 'all', 'about']);
 const D = {};
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -519,9 +520,30 @@ function drawWall() {
   const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; im.alt = n.img_alt || ''; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) { const fc = el('figcaption'); if (n.img_credit_url) { const c = el('a', null, n.img_credit); c.href = n.img_credit_url; c.target = '_blank'; c.rel = 'noopener noreferrer'; fc.append(c); } else fc.textContent = n.img_credit; f.append(fc); } return f; };
   // 1. the lead cluster: a picture, then four lines
   const cl = items.filter((n) => n.wall === 'lead').slice(0, 4);
+  const buildSerial = (sr, leadLines) => {
+      const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1;
+      const box2 = el('div', 'serial' + (sr.state === 'closed' ? ' closed' : ''));
+      const hd = el('div', 'serial-h'); hd.append(el('span', 'serial-n', sr.name), el('span', 'serial-d', sr.state === 'closed' ? 'Closed ' + fmtDate(new Date(sr.closed + 'T12:00:00Z')) : 'Day ' + day));
+      const inc0 = C.scored.find((r) => r.id === sr.incident_id); const caseNo = inc0 ? el('a', 'serial-c', 'Case ' + inc0.ws) : null; if (caseNo) { caseNo.href = '/i/' + inc0.id + '/'; caseNo.setAttribute('data-tip', 'Case ' + inc0.ws + ' in the index: scored ' + inc0.severity + '/100 (' + inc0.tier + ') by the published formula. Opens the case file.'); }
+      const a = leadLines && leadLines.childNodes.length && sr.state !== 'closed' ? leadLines : el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); if (a.tagName === 'A') a.href = sr.url || '#';
+      const ft = el('div', 'serial-f'); const tr = el('a', null, (sr.tech_name ? sr.tech_name + ' ' : '') + 'live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
+      if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
+      const RUNGS = [['tried', 'Tried', 'attempts logged'], ['proven', 'Proven', 'a test system broken into'], ['hit', 'Hit', 'a real victim confirmed']];
+      const at = RUNGS.findIndex(([k]) => k === sr.rung);
+      const lad = el('div', 'rungs'); lad.setAttribute('aria-label', 'Proof so far: ' + (at >= 0 ? RUNGS[at][1] : 'none'));
+      RUNGS.forEach(([k, lbl, def], i) => { const r = (sr.rungs || {})[k] || {}; const st = el('span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); st.tabIndex = 0; st.setAttribute('data-tip', (TIP[k] || lbl) + (r.note ? ' ' + r.note + '.' : '') + (i > at ? ' Not reached yet.' : '')); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
+      const rc = sr.state !== 'closed' && sr.recheck ? el('div', 'serial-r') : null;
+      if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(sr.recheck_at || D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(leadLines && leadLines.childNodes.length ? 'all four lines still true.' : sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources then: ' + sr.recheck + '. A "no" is only news if someone just looked.'); }
+      const nt = sr.state !== 'closed' && sr.next_test && sr.next_test.date ? el('div', 'serial-t') : null;
+      if (nt) { nt.append(el('b', null, 'Next test ' + fmtDate(new Date(sr.next_test.date + 'T12:00:00Z')) + ': '), txt(sr.next_test.text)); nt.setAttribute('data-tip', 'A dated question the index committed to in advance; it is graded on that date, right or wrong, on the Record.'); }
+      box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft); return box2;
+  };
   const cluster = el('div', 'dl-cluster');
   const withImg = cl.find((n) => n.img); if (withImg) cluster.append(pic(withImg, 'dl-pic'));
-  const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n, false))); cluster.append(ll);
+  const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n, false)));
+  // The running story and the lead cluster are one block: the photo, then the serial's day, case and proof ladder with the lines under it.
+  const srl = D.meta && D.meta.serial;
+  if (srl && srl.name) { cluster.classList.add('with-serial'); cluster.append(buildSerial(srl, ll)); } else cluster.append(ll);
   // 2. the siren: a centred picture, the headline, then what is confirmed (the masthead follows in the page)
   const sv = el('div', 'dl-siren');
   if (siren.img) sv.append(pic(siren, 'dl-hero'));
@@ -537,25 +559,6 @@ function drawWall() {
   const cols = el('div', 'wall-cols');
   [1, 2, 3].forEach((c) => {
     const col = el('div', 'wall-col'); col.append(el('h2', 'wall-ch', WALL_COLS[c]));
-    const sr = D.meta && D.meta.serial;
-    if (c === 1 && sr && sr.name) {
-      const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1;
-      const box2 = el('div', 'serial' + (sr.state === 'closed' ? ' closed' : ''));
-      const hd = el('div', 'serial-h'); hd.append(el('span', 'serial-n', sr.name), el('span', 'serial-d', sr.state === 'closed' ? 'Closed ' + fmtDate(new Date(sr.closed + 'T12:00:00Z')) : 'Day ' + day));
-      const inc0 = C.scored.find((r) => r.id === sr.incident_id); const caseNo = inc0 ? el('a', 'serial-c', 'Case ' + inc0.ws) : null; if (caseNo) { caseNo.href = '/i/' + inc0.id + '/'; caseNo.setAttribute('data-tip', 'Case ' + inc0.ws + ' in the index: scored ' + inc0.severity + '/100 (' + inc0.tier + ') by the published formula. Opens the case file.'); }
-      const a = el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); a.href = sr.url || '#';
-      const ft = el('div', 'serial-f'); const tr = el('a', null, (sr.tech_name ? sr.tech_name + ' ' : '') + 'live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
-      if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
-      const RUNGS = [['tried', 'Tried', 'attempts logged'], ['proven', 'Proven', 'a test system broken into'], ['hit', 'Hit', 'a real victim confirmed']];
-      const at = RUNGS.findIndex(([k]) => k === sr.rung);
-      const lad = el('div', 'rungs'); lad.setAttribute('aria-label', 'Proof so far: ' + (at >= 0 ? RUNGS[at][1] : 'none'));
-      RUNGS.forEach(([k, lbl, def], i) => { const r = (sr.rungs || {})[k] || {}; const st = el('span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); st.tabIndex = 0; st.setAttribute('data-tip', (TIP[k] || lbl) + (r.note ? ' ' + r.note + '.' : '') + (i > at ? ' Not reached yet.' : '')); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
-      const rc = sr.state !== 'closed' && sr.recheck ? el('div', 'serial-r') : null;
-      if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(sr.recheck_at || D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources at the last refresh. A "no" is only news if someone just looked.'); }
-      const nt = sr.state !== 'closed' && sr.next_test && sr.next_test.date ? el('div', 'serial-t') : null;
-      if (nt) { nt.append(el('b', null, 'Next test ' + fmtDate(new Date(sr.next_test.date + 'T12:00:00Z')) + ': '), txt(sr.next_test.text)); nt.setAttribute('data-tip', 'A dated question the index committed to in advance; it is graded on that date, right or wrong, on the Record.'); }
-      box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft); col.append(box2);
-    }
     items.filter((n) => +n.wall === c).slice(0, 15).forEach((n) => col.append(line(n, true)));
     if (c === 3) {
       const pr = el('div', 'protect'); pr.append(el('div', 'protect-h', 'Protect yourself'));
@@ -568,7 +571,7 @@ function drawWall() {
   const ed = el('p', 'wall-ed');
   if (D.meta.quiet) ed.append(el('b', 'quiet', 'Rechecked ' + fmtET(D.meta.as_of) + ': nothing moved. '));
   if (D.meta.edition) { const ea = el('a', null, 'Edition No. ' + D.meta.edition); ea.href = '/' + (D.meta.edition_path || 'archive/'); ea.setAttribute('data-tip', 'Edition No. ' + D.meta.edition + ', published ' + fmtET(D.meta.as_of) + '. Opens a frozen copy of this page exactly as published.'); const cl = el('a', null, 'what changed'); cl.href = '/index/#changelog'; const all = el('a', null, 'every edition'); all.href = '/archive/'; ed.append(ea, txt(' · ' + fmtET(D.meta.as_of) + ' · '), cl, txt(' · '), all); }
-  const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it; retractions run as big as the claims they correct. '), (() => { const a = el('a', null, 'The full Wire, ' + newsItems().length + ' reports ↓'); a.href = '#wire'; return a; })());
+  const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it; retractions run as big as the claims they correct. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })());
   box.replaceChildren(cols, more, ed, foot);
 }
 function drawWire() {
@@ -1384,16 +1387,16 @@ function lensStories(L) {
   return newsItems().filter((n) => (L.topics.includes(n.topic) && (L.id !== 'money' || L.kw.test(n.title + ' ' + (n.summary || '')))) || (n.topic !== 'php2shell' || L.id === 'site') && L.kw.test(n.title));
 }
 function lensIncidents(L) {
-  return C.scored.filter((r) => L.cats.includes(r.category) && r.setting !== 'lab').sort((a, b) => String(b.disclosed || b.date).localeCompare(String(a.disclosed || a.date)));
+  const cut = Date.parse(D.meta.as_of) - 72 * 3.6e6; // the front page already carries the last three days; this shows the record behind them
+  return C.scored.filter((r) => L.cats.includes(r.category) && r.setting !== 'lab' && Date.parse(r.disclosed || r.date) < cut).sort((a, b) => String(b.disclosed || b.date).localeCompare(String(a.disclosed || a.date)));
 }
 function drawWhy() {
   const box = document.getElementById('why-grid'), tabs = document.getElementById('fy-tabs'); if (!box || !tabs) return;
   if (!lensCur) lensCur = LENSES.some((l) => l.id === lensPref()) ? lensPref() : 'family';
   const L = LENSES.find((l) => l.id === lensCur);
   tabs.replaceChildren(...LENSES.map((l) => {
-    const n = lensStories(l).filter((x) => x.published && Date.now() - Date.parse(x.published) < 72 * 3.6e6).length;
     const b = el('button', 'fy-tab' + (l.id === lensCur ? ' on' : '')); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(l.id === lensCur));
-    b.append(el('span', 'fy-l', l.label), el('span', 'fy-n', n ? n + ' this week' : 'quiet this week'));
+    b.append(el('span', 'fy-l', l.label));
     b.addEventListener('click', () => { lensCur = l.id; try { localStorage.setItem('ws-lens', l.id); } catch (e) {} drawWhy(); });
     return b;
   }));
@@ -1401,17 +1404,9 @@ function drawWhy() {
   const stories = lensStories(L).slice(0, 5), incs = lensIncidents(L).slice(0, 3);
   const left = el('div', 'fy-feed');
   left.append(el('p', 'fy-lede', L.lede));
-  left.append(el('div', 'fy-h', 'The latest'));
-  const ul = el('ol', 'fy-list');
-  if (!stories.length) ul.append(el('li', 'fy-empty', 'Nothing new on the Wire for this in the last three days.'));
-  stories.forEach((n) => {
-    const li = el('li'); const a = el('a', 'fy-s'); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-    if (seen && n.published && Date.parse(n.published) > seen) a.append(el('span', 'fy-new', 'New'));
-    a.append(txt(n.title)); li.append(a, el('div', 'fy-m', (n.outlet || '') + ' · ' + ageShort(n))); ul.append(li);
-  });
-  left.append(ul);
+
   if (incs.length) {
-    left.append(el('div', 'fy-h', 'On the record'));
+    left.append(el('div', 'fy-h', 'It has happened before'));
     const rec = el('div', 'fy-rec');
     incs.forEach((r) => { const b = el('button', 'relchip'); b.type = 'button'; const sc = el('b', null, String(r.severity)); sc.style.color = tierText(r.tier); b.append(sc, el('span', null, r.title)); b.addEventListener('click', () => openIncident(r.id)); rec.append(b); });
     left.append(rec);
@@ -1600,10 +1595,12 @@ function pageFor(h) {
   if (!h || h === 'top' || h.startsWith('i=')) return null;
   if (/^(d|c|m|q)=/.test(h) || /^(fc-|fix-|cap-|q-|row-|dd-|card-)/.test(h) || CHART_DRAW[h]) return 'record';
   if (RECORD_IDS.has(h)) return 'record';
+  if (WIRE_IDS.has(h)) return 'wire';
   if (FRONT_IDS.has(h)) return 'front';
   const n = document.getElementById(h); if (!n) return null;
   const host = n.closest('main > *'); const sec = host && (host.matches('section') ? host : host.querySelector('section'));
   if (sec && RECORD_IDS.has(sec.id)) return 'record';
+  if (sec && WIRE_IDS.has(sec.id)) return 'wire';
   if (sec && FRONT_IDS.has(sec.id)) return 'front';
   return null;
 }
@@ -1612,7 +1609,7 @@ function sectionOf(node) { const hit = LAZY.find(([sid]) => { const s = document
 function route() {
   let h = location.hash.slice(1);
   if (ALIAS[h]) h = ALIAS[h];
-  if (!EMBED) { const want = pageFor(h); if (want && want !== PAGE) { location.replace((want === 'record' ? '/index/' : '/') + '#' + h); return; } }
+  if (!EMBED) { const want = pageFor(h); if (want && want !== PAGE) { location.replace((want === 'record' ? '/index/' : want === 'wire' ? '/wire/' : '/') + '#' + h); return; } }
   if (!C.scored) { const n0 = h && !h.includes('=') && document.getElementById(h); if (n0) n0.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
   if (MF()) { const t = mfTarget(h); if (t === 'front') { showFront(); return; } if (t) showSection(t); }
   if (CHART_DRAW[h]) { drawThrough('charts'); showChart(h); document.getElementById('charts').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
@@ -1721,7 +1718,7 @@ const LAZY_ALL = [
   ['all', [() => drawList()]],
   ['about', [() => drawContext()]],
 ];
-const LAZY = EMBED ? LAZY_ALL : LAZY_ALL.filter(([sid]) => (sid === 'why') === (PAGE === 'front'));
+const LAZY = EMBED ? LAZY_ALL : PAGE === 'wire' ? [] : LAZY_ALL.filter(([sid]) => (sid === 'why') === (PAGE === 'front'));
 const drawn = new Set();
 // A section that comes within a screen of the viewport is drawn together with everything still undrawn above it, so nothing above the reader ever changes height under them (Safari has no scroll anchoring).
 const lazyIO = ('IntersectionObserver' in window) ? new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { if (MF()) drawSection(e.target.id); else drawThrough(e.target.id); } }); }, { rootMargin: '900px 0px' }) : null;

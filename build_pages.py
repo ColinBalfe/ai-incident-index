@@ -257,6 +257,8 @@ if os.path.exists('php2shell/index.html') and site + 'php2shell/' not in urls:
     urls.insert(0, site + 'php2shell/')
 if os.path.exists('index/index.html') and site + 'index/' not in urls:
     urls.insert(0, site + 'index/')
+if os.path.exists('wire/index.html') and site + 'wire/' not in urls:
+    urls.insert(0, site + 'wire/')
 
 # ---------- prune pages for records that no longer exist
 keep = {u.replace(site, '') for u in urls}

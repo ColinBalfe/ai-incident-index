@@ -6,7 +6,7 @@ import json, os, urllib.request
 here = os.path.dirname(os.path.abspath(__file__)); os.chdir(here)
 KEY = '9a423bc0bf936048cfebe22836aec515'
 site = json.load(open('data/meta.json'))['site_url']
-urls = [site, site + 'index/', site + 'php2shell/', site + 'i/']
+urls = [site, site + 'wire/', site + 'index/', site + 'php2shell/', site + 'i/']
 try: urls += [u for u in json.load(open('data/fresh_urls.json')) if u not in urls]
 except (OSError, ValueError): pass
 body = json.dumps({"host": site.split('/')[2], "key": KEY, "keyLocation": site + KEY + '.txt', "urlList": urls}).encode()

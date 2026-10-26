@@ -55,9 +55,17 @@ rec = rec.replace('<title>Warning Shots: live AI incidents, threats and breakthr
 rec = rec.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}index/">', 1)
 rec = rec.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}index/">', 1)
 rec = rec.replace(og_title.replace('"', '&quot;'), (f"AI has started breaking in on its own — the Record, {title}").replace('"', '&quot;'))
-rec = rec.replace('<a class="skip" href="#wire">Skip to the Wire</a>', '<a class="skip" href="#record">Skip to the Record</a>', 1)
+rec = rec.replace('<a class="skip" href="#wall">Skip to the headlines</a>', '<a class="skip" href="#record">Skip to the Record</a>', 1)
 os.makedirs('index', exist_ok=True)
 open('index/index.html', 'w', encoding='utf-8').write(rec)
+# ---- the Wire (/wire/): every report from the last three days, the refresh box and the live panel
+wre = out.replace('{{PAGE}}', 'wire')
+wre = wre.replace('<title>Warning Shots: live AI incidents, threats and breakthroughs</title>', f'<title>The Wire: every AI threat and breakthrough reported in the last three days | {title}</title>', 1)
+wre = wre.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}wire/">', 1)
+wre = wre.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}wire/">', 1)
+wre = wre.replace('<a class="skip" href="#wall">Skip to the headlines</a>', '<a class="skip" href="#wire">Skip to the Wire</a>', 1)
+os.makedirs('wire', exist_ok=True)
+open('wire/index.html', 'w', encoding='utf-8').write(wre)
 # ---- data/incidents.csv: the same rows as data/incidents.json, for spreadsheets
 import csv as _csv
 _rows = json.load(open('data/incidents.json', encoding='utf-8'))

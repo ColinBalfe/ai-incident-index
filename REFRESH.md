@@ -112,6 +112,10 @@ A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/
 3. Re-verify the figures in ten records picked at random (dates, numbers, who said what) against their sources, and fix what drifted.
 4. Note the count repaired in the changelog entry ("source audit: 3 dead links replaced, 10 records re-verified").
 
+### No repeats
+
+The front page (`/`) carries each story once: the lead cluster (the running story with its four lines), the siren, the three columns. The full Wire board, the 'since the last refresh' box and the live panel live on `/wire/`; the charts, scores and trackers on `/index/`. Never put the running story's story in a column as well, and keep the four lead lines different from the running story's `recheck` text.
+
 ## 3. Build and check
 
 ```
@@ -130,7 +134,7 @@ python3 snapshot.py                                     # freezes this edition i
 node shot.mjs       http://127.0.0.1:8765/index.html
 ```
 
-`prerender.mjs` must print `prerendered 21 blocks` (it exits non-zero if the page threw or a block was missing; never publish without it, or the first paint is empty). `shot.mjs` must print `errors none` three times. The build prints the Wire's story count and the siren headline; check both. Look at `shots/site-desktop-top.png` and `shots/site-phone-top.png` before publishing. If anything fails, fix it; do not publish a broken page.
+`prerender.mjs` must print `prerendered 5 blocks` (it exits non-zero if the page threw or a block was missing; never publish without it, or the first paint is empty). `shot.mjs` must print `errors none` three times. The build prints the Wire's story count and the siren headline; check both. Look at `shots/site-desktop-top.png` and `shots/site-phone-top.png` before publishing. If anything fails, fix it; do not publish a broken page.
 
 ## 4. Fact-check what you added
 
