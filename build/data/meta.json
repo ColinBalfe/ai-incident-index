@@ -116,7 +116,7 @@
   "recheck_at": "2026-10-26T13:20:00-04:00",
   "next_test": {
    "date": "2026-10-31",
-   "text": "Will America's cyber agency formally warn about it?",
+   "text": "Will America's cyber agency formally warn about the flaw under most websites?",
    "call_id": "php-kev-by-oct31"
   },
   "exposure": {

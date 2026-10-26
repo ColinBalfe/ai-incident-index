@@ -489,8 +489,15 @@ function drawLevel() {
   const why = el('button', 'lvl-why', 'Why ' + top.level + ' today?'); why.type = 'button'; why.setAttribute('aria-expanded', 'false');
   const wall = newsItems().filter((x) => x.tag && x.wall);
   const a2 = el('span', 'lvl-n');
-  if (PREV_VISIT) { const k = wall.filter(isNewToReader).length; if (k) a2.append(el('i', 'newdot'), el('b', null, String(k)), txt(' new since you last looked')); else a2.append(txt('Nothing new since you last looked')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
+  let lastState = null; try { lastState = JSON.parse(localStorage.getItem('ws-last-state') || 'null'); } catch (e) {}
+  const srN = D.meta.serial || {}; const nowState = { level: top.level, rung: srN.rung || '', serial: srN.incident_id || '' };
+  if (PREV_VISIT) { const k = wall.filter(isNewToReader).length; const bits = [];
+    if (lastState && lastState.level && lastState.level !== nowState.level) bits.push('level moved ' + lastState.level + ' → ' + nowState.level);
+    if (lastState && lastState.serial === nowState.serial && lastState.rung && lastState.rung !== nowState.rung) bits.push('the running story moved up to ' + nowState.rung.charAt(0).toUpperCase() + nowState.rung.slice(1));
+    if (k || bits.length) { a2.append(el('i', 'newdot')); if (k) a2.append(el('b', null, String(k)), txt(' new' + (bits.length ? ', ' : ''))); if (bits.length) a2.append(txt(bits.join(', '))); a2.append(txt(' since you last looked')); }
+    else a2.append(txt('Nothing new since you last looked: level unchanged, no new rung')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
   else { a2.append(el('b', null, String(wall.length)), txt(' headlines from the last 3 days')); }
+  try { localStorage.setItem('ws-last-state', JSON.stringify(nowState)); } catch (e) {}
   const a3 = el('a', 'lvl-s'); a3.href = '#record'; a3.append(txt('Severe incidents, last 12 months: '), el('b', null, String(h.severe_last12 ?? '')), txt(' (was ' + (h.severe_prior12 ?? '') + ')'));
   const det = el('div', 'lvl-det'); det.hidden = true;
   det.append(el('p', null, 'The level is the highest score among incidents disclosed in the last 24 hours and the live incident, by the index’s published formula. Today it is set by:'));
@@ -529,6 +536,7 @@ function drawWall() {
       const inc0 = C.scored.find((r) => r.id === sr.incident_id); const caseNo = inc0 ? el('a', 'serial-c', 'Case ' + inc0.ws) : null; if (caseNo) { caseNo.href = '/i/' + inc0.id + '/'; caseNo.setAttribute('data-tip', 'Case ' + inc0.ws + ' in the index: scored ' + inc0.severity + '/100 (' + inc0.tier + ') by the published formula. Opens the case file.'); }
       const a = leadLines && leadLines.childNodes.length && sr.state !== 'closed' ? leadLines : el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); if (a.tagName === 'A') a.href = sr.url || '#';
       const ft = el('div', 'serial-f'); const tr = el('a', null, (sr.tech_name ? sr.tech_name + ' ' : '') + 'live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
+      if (sr.state !== 'closed') { const shr = el('div', 'share serial-share'); shareRow(shr, { anchor: 'wall-lead', text: sr.name + ', day ' + day + ': ' + (sr.standing || '') + ' Via Warning Shots:' }); box2.shareRow = shr; }
       if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
       const RUNGS = [['tried', 'Tried', 'attempts logged'], ['proven', 'Proven', 'a test system broken into'], ['hit', 'Hit', 'a real victim confirmed']];
       const at = RUNGS.findIndex(([k]) => k === sr.rung);
@@ -538,12 +546,13 @@ function drawWall() {
       if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(sr.recheck_at || D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(leadLines && leadLines.childNodes.length ? 'every line here still true.' : sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources then: ' + sr.recheck + '. A "no" is only news if someone just looked.'); }
       const nt = sr.state !== 'closed' && sr.next_test && sr.next_test.date ? el('div', 'serial-t') : null;
       if (nt) { nt.append(el('b', null, 'Next test ' + fmtDate(new Date(sr.next_test.date + 'T12:00:00Z')) + ': '), txt(sr.next_test.text)); nt.setAttribute('data-tip', 'A dated question the index committed to in advance; it is graded on that date, right or wrong, on the Record.'); }
-      box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft); return box2;
+      box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft, ...(box2.shareRow ? [box2.shareRow] : [])); return box2;
   };
   const cluster = el('div', 'dl-cluster');
   const withImg = cl.find((n) => n.img); if (withImg) cluster.append(pic(withImg, 'dl-pic'));
   const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n, false)));
   // The running story and the lead cluster are one block: the photo, then the serial's day, case and proof ladder with the lines under it.
+  const srN = D.meta.serial || {};
   const srl = D.meta && D.meta.serial;
   if (srl && srl.name && srl.exposure && srl.state !== 'closed') { const vc0 = (C.victimCounts || {})[srl.incident_id] || {}; const nOrg = vc0.rows || 0; if (nOrg) { const w = el('div', 'wl'); const a = el('a', 'dl', srl.exposure.text.replace('{n}', nOrg)); a.href = srl.exposure.url; if (srl.exposure.tip) { const rc1 = el('sup', 'rcpt', 'ⓘ'); rc1.setAttribute('data-tip', srl.exposure.tip); rc1.tabIndex = 0; w.append(a, rc1); } else w.append(a); ll.append(w); } }
   if (srl && srl.name) { cluster.classList.add('with-serial'); if (!withImg) cluster.classList.add('no-pic'); cluster.append(buildSerial(srl, ll)); } else cluster.append(ll);
@@ -573,9 +582,21 @@ function drawWall() {
   const more = el('button', 'wall-more', 'More headlines'); more.type = 'button'; more.addEventListener('click', () => box.classList.add('open'));
   const ed = el('p', 'wall-ed');
   if (D.meta.quiet) ed.append(el('b', 'quiet', 'Rechecked ' + fmtET(D.meta.as_of) + ': nothing moved. '));
-  if (D.meta.edition) { const ea = el('a', null, 'Edition No. ' + D.meta.edition); ea.href = '/' + (D.meta.edition_path || 'archive/'); ea.setAttribute('data-tip', 'Edition No. ' + D.meta.edition + ', published ' + fmtET(D.meta.as_of) + '. Opens a frozen copy of this page exactly as published.'); const cl = el('a', null, 'what changed'); cl.href = '/index/#changelog'; const all = el('a', null, 'every edition'); all.href = '/archive/'; ed.append(ea, txt(' · ' + fmtET(D.meta.as_of) + ' · '), cl, txt(' · '), all); }
+  const slotH = [6.6167, 12.6167, 18.6167]; const etH = (() => { const p = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date(D.meta.as_of)); const g = (t) => +p.find((x) => x.type === t).value; return g('hour') + g('minute') / 60; })();
+  const extra = !slotH.some((h) => etH >= h - 0.25 && etH <= h + 1.5);
+  if (D.meta.edition) { const ea = el('a', null, (extra ? 'Extra edition, No. ' : 'Edition No. ') + D.meta.edition); ea.href = '/' + (D.meta.edition_path || 'archive/'); ea.setAttribute('data-tip', 'Edition No. ' + D.meta.edition + ', published ' + fmtET(D.meta.as_of) + '. Opens a frozen copy of this page exactly as published.'); const cl = el('a', null, 'what changed'); cl.href = '/index/#changelog'; const all = el('a', null, 'every edition'); all.href = '/archive/'; ed.append(ea, txt(' · ' + fmtET(D.meta.as_of) + ' · '), cl, txt(' · '), all); if (extra) ea.setAttribute('data-tip', 'An extra edition outside the 6:37, 12:37 and 6:37 schedule, published because something worth adding came in. Opens a frozen copy.'); }
+  const cu = el('p', 'wall-cu'); cu.append(el('b', null, 'You’re caught up as of ' + fmtET(D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.'), txt(D.meta.next_check ? ' Next edition ' + fmtET(D.meta.next_check).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.' : ''));
   const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it; retractions run as big as the claims they correct. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })());
-  box.replaceChildren(cols, more, ed, foot);
+  // Coming up: the next dated tests, so the reader knows when the loops close (no odds on the front page)
+  const up = el('div', 'comingup'); const asOfD = D.meta.as_of.slice(0, 10);
+  const open = (D.calls || []).filter((c) => c && !c.resolution && c.resolve_by >= asOfD).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by));
+  const firstDay = open.length ? open[0].resolve_by : null; const nDay = open.filter((c) => c.resolve_by === firstDay).length;
+  const graded = (D.calls || []).some((c) => c && c.resolution);
+  if (firstDay) { const r1 = el('a', 'cu-i'); r1.href = '/index/#next'; const nt = (srN0 => srN0 && srN0.next_test && srN0.next_test.date === firstDay ? srN0.next_test.text + ' ' : '')(D.meta.serial);
+    r1.append(el('b', null, fmtDate(new Date(firstDay + 'T12:00:00Z')) + (graded ? '' : ': the index’s first graded day.')), txt(' ' + nt + nDay + ' of its dated forecasts resolve, right or wrong, in public →')); up.append(r1); }
+  (D.catalysts || []).filter((c) => c.date > asOfD && c.date !== firstDay).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 2).forEach((c) => { const r = el('a', 'cu-i'); r.href = '/index/#next'; r.append(el('b', null, c.date_label + ':'), txt(' ' + c.event)); up.append(r); });
+  if (up.childNodes.length) up.prepend(el('div', 'cu-h', 'Coming up'));
+  box.replaceChildren(cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, foot);
 }
 function drawWire() {
   const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');
