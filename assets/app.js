@@ -515,7 +515,7 @@ function drawWall() {
   const siren = items.find((n) => n.wall === 'siren');
   if (!siren) { box.hidden = true; lead.hidden = true; return; }
   box.hidden = false; lead.hidden = false;
-  const ext = (a, n) => { a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = (n.outlet || '') + ': ' + n.title; return a; };
+  const ext = (a, n) => { a.href = n.url; if (/^https?:/.test(n.url || '')) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } a.title = (n.outlet || '') + ': ' + n.title; return a; };
   const dots = (t) => t; // complete lines, never teaser-style ellipses
   const chip = (n) => { if (!WALL_LABEL[n.label]) return null; const c = el('span', 'wl-lab ' + n.label, WALL_LABEL[n.label]); if (TIP[n.label]) { c.setAttribute('data-tip', TIP[n.label]); c.tabIndex = 0; } return c; };
   const movedMark = (n) => { const m = n.moved; if (!m || !m.at) return null; const t = Date.parse(m.at); const recent = PREV_VISIT ? t > PREV_VISIT : (Date.parse(D.meta.as_of) - t) < 36 * 3.6e6; if (!recent) return null; const up = m.dir === 'up'; const k = el('span', 'mv ' + (up ? 'up' : 'down'), up ? '▲' : '▼'); k.setAttribute('data-tip', (up ? 'Moved up' : 'Moved down') + (PREV_VISIT ? ' since you last looked' : ' in the last day') + ': ' + (m.note || '') + ' (' + fmtET(m.at) + ').'); k.tabIndex = 0; k.setAttribute('aria-label', up ? 'Moved up' : 'Moved down'); return k; };
@@ -548,30 +548,41 @@ function drawWall() {
       if (nt) { nt.append(el('b', null, 'Next test ' + fmtDate(new Date(sr.next_test.date + 'T12:00:00Z')) + ': '), txt(sr.next_test.text)); nt.setAttribute('data-tip', 'A dated question the index committed to in advance; it is graded on that date, right or wrong, on the Record.'); }
       box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft, ...(box2.shareRow ? [box2.shareRow] : [])); return box2;
   };
-  const cluster = el('div', 'dl-cluster');
-  const withImg = cl.find((n) => n.img); if (withImg) cluster.append(pic(withImg, 'dl-pic'));
+  // The lead is the day's strongest story: one photo, one big headline, one plain sentence. The running story sits under it as a
+  // one-line strip that opens to the proof ladder and the lines; it takes the lead itself only when meta.serial.lead is set
+  // (a real victim, a formal government warning: an escalation, not a quiet day).
   const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n, false)));
-  // The running story and the lead cluster are one block: the photo, then the serial's day, case and proof ladder with the lines under it.
-  const srN = D.meta.serial || {};
   const srl = D.meta && D.meta.serial;
   if (srl && srl.name && srl.exposure && srl.state !== 'closed') { const vc0 = (C.victimCounts || {})[srl.incident_id] || {}; const nOrg = vc0.rows || 0; if (nOrg) { const w = el('div', 'wl'); const a = el('a', 'dl', srl.exposure.text.replace('{n}', nOrg)); a.href = srl.exposure.url; if (srl.exposure.tip) { const rc1 = el('sup', 'rcpt', 'ⓘ'); rc1.setAttribute('data-tip', srl.exposure.tip); rc1.tabIndex = 0; w.append(a, rc1); } else w.append(a); ll.append(w); } }
-  if (srl && srl.name) { cluster.classList.add('with-serial'); if (!withImg) cluster.classList.add('no-pic'); cluster.append(buildSerial(srl, ll)); } else cluster.append(ll);
-  // 2. the siren: a centred picture, the headline, then what is confirmed (the masthead follows in the page)
+  const takeover = !!(srl && srl.name && srl.state !== 'closed' && srl.lead && srl.lead.tag);
+  const hero = takeover ? Object.assign({ url: srl.url, outlet: 'Warning Shots', published: D.meta.as_of }, srl.lead) : siren;
   const sv = el('div', 'dl-siren');
-  if (siren.img) sv.append(pic(siren, 'dl-hero'));
+  if (hero.img) sv.append(pic(hero, 'dl-hero'));
   const lvTop = (document.querySelector('#level .lvl-l b') || {}).textContent || '';
-  const kick = el('div', 'dl-kick'); kick.append(el('span', 'dot'), txt([lvTop, 'Developing', fmtET(siren.published)].filter(Boolean).join(' · ')));
-  const body = el('div', 'dl-body'); body.append(kick, ext(el('a', 'dl-head' + (siren.red ? ' red' : ''), siren.tag), siren));
+  const kick = el('div', 'dl-kick'); kick.append(el('span', 'dot'), txt([lvTop, takeover ? srl.name + ', day ' + (Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1) : 'Developing', fmtET(hero.published)].filter(Boolean).join(' · ')));
+  const body = el('div', 'dl-body'); body.append(kick, ext(el('a', 'dl-head' + (hero.red ? ' red' : ''), hero.tag), hero));
   sv.append(body);
-  if (siren.standfirst) body.append(el('p', 'dl-stand', siren.standfirst));
-  if (siren.action && siren.action.text && siren.action.url) { const ac = el('a', 'dl-act', siren.action.text + ' →'); ac.href = siren.action.url; if (/^https?:/.test(siren.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } body.append(ac); }
-  const so = el('div', 'dl-src'); so.append(txt(siren.outlet + ' · ' + ageShort(siren) + ' · '), ext(el('a', null, 'Read the original reporting →'), siren)); body.append(so);
-  lead.replaceChildren(...(cl.length ? [cluster] : []), sv);
+  if (hero.standfirst) body.append(el('p', 'dl-stand', hero.standfirst));
+  if (hero.action && hero.action.text && hero.action.url) { const ac = el('a', 'dl-act', hero.action.text + ' →'); ac.href = hero.action.url; if (/^https?:/.test(hero.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } body.append(ac); }
+  const so = el('div', 'dl-src'); if (takeover) { const t = el('a', null, (srl.tech_name ? srl.tech_name + ' ' : '') + 'live tracker →'); t.href = srl.url; so.append(t); } else { so.append(txt(hero.outlet + ' · ' + ageShort(hero) + ' · '), ext(el('a', null, 'Read the original reporting →'), hero)); } body.append(so);
+  let strip = null;
+  if (srl && srl.name) {
+    const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1;
+    strip = el('div', 'sstrip');
+    const row = el('button', 'sstrip-row'); row.type = 'button'; row.setAttribute('aria-expanded', 'false');
+    row.append(el('span', 'ss-day', srl.state === 'closed' ? 'Closed' : 'Day ' + day), el('span', 'ss-name', srl.name));
+    const rc = WALL_LABEL[srl.rung] ? el('span', 'wl-lab ' + srl.rung, WALL_LABEL[srl.rung]) : null; if (rc) row.append(rc);
+    row.append(el('span', 'ss-st', srl.state === 'closed' ? (srl.verdict || '') : (srl.strip || srl.standing || '')), el('span', 'ss-more', 'Follow it ▾'));
+    const panel = buildSerial(srl, takeover ? null : ll); panel.hidden = true;
+    row.addEventListener('click', () => { panel.hidden = !panel.hidden; row.setAttribute('aria-expanded', String(!panel.hidden)); row.lastChild.textContent = panel.hidden ? 'Follow it ▾' : 'Close ▴'; });
+    strip.append(row, panel);
+  }
+  lead.replaceChildren(sv, ...(strip ? [strip] : []));
   // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');
   [1, 2, 3].forEach((c) => {
     const col = el('div', 'wall-col'); col.append(el('h2', 'wall-ch', WALL_COLS[c]));
-    items.filter((n) => +n.wall === c).slice(0, 15).forEach((n) => col.append(line(n, true)));
+    (c === 1 && takeover ? [siren] : []).concat(items.filter((n) => +n.wall === c).slice(0, 15)).forEach((n) => col.append(line(n, true)));
     if (c === 3) {
       const pr = el('div', 'protect'); pr.append(el('div', 'protect-h', 'Protect yourself'));
       [['Set a family safe word (2 minutes)', '/shield/'], ['Check if your email was in a breach', 'https://haveibeenpwned.com/'], ['Keep your site out of AI training sets', '/scraped/']].forEach(([t, u]) => { const a = el('a', null, t + ' →'); a.href = u; if (/^https?:/.test(u)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } pr.append(a); });

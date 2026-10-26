@@ -116,7 +116,7 @@ A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/
 
 ### No repeats
 
-The front page (`/`) carries each story once: the lead cluster (the running story with its four lines), the siren, the three columns. The full Wire board, the 'since the last refresh' box and the live panel live on `/wire/`; the charts, scores and trackers on `/index/`. Never put the running story's story in a column as well, and keep the four lead lines different from the running story's `recheck` text.
+The front page (`/`) carries each story once: the lead (the siren: the day's strongest story, one photo, one big headline, one plain sentence), then the running-story strip (one line: day, name, rung chip and `serial.strip`, a plain status of ten words or fewer; it opens to the proof ladder and the four lead lines), then the three columns. The running story takes the lead slot only on escalation: set `serial.lead` (tag, standfirst, img and credits) when it reaches Hit or a formal government warning, and clear it when the story cools; the siren then heads the first column. Keep `serial.strip` true at every refresh. The full Wire board, the 'since the last refresh' box and the live panel live on `/wire/`; the charts, scores and trackers on `/index/`. Never put the running story's story in a column as well, and keep the four lead lines different from the running story's `recheck` text.
 
 ## 3. Build and check
 

@@ -119,6 +119,8 @@
    "text": "Will America's cyber agency formally warn about the flaw under most websites?",
    "call_id": "php-kev-by-oct31"
   },
+  "strip": "A test server fell. No real victim yet.",
+  "lead": null,
   "exposure": {
    "text": "{n} organizations named so far, none confirmed breached. Is your site affected?",
    "url": "/php2shell/",
