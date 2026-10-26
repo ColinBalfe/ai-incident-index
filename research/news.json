@@ -21,8 +21,10 @@
   "wall": "siren",
   "red": true,
   "wall_rank": 0,
-  "img": "https://gizmodo.com/app/uploads/2026/10/GettyImages-2297777280-1200x675.jpg",
-  "img_credit": "Photo: Kevin Dietsch/Getty, via Gizmodo"
+  "img": "assets/img/server-rack-ache.jpg",
+  "img_credit": "Photo: Kevin Ache / Unsplash",
+  "img_alt": "Racks of servers and network equipment in a dark server room",
+  "img_credit_url": "https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0"
  },
  {
   "id": "axios-anthropic-s1-risk-factors",
@@ -2325,8 +2327,10 @@
   "wall": "lead",
   "red": true,
   "wall_rank": 0,
-  "img": "https://www.bleepstatic.com/content/hl-images/2026/10/26/PHP-headpic.jpg",
-  "img_credit": "Image: BleepingComputer"
+  "img": "assets/img/code-screen-malinowski.jpg",
+  "img_credit": "Photo: Dominik Malinowski / Unsplash",
+  "img_alt": "Lines of web code on a dark computer screen",
+  "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q"
  },
  {
   "id": "axios-anthropic-claude-georgia-vote-data",

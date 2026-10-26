@@ -456,7 +456,7 @@ function drawWall() {
   const ext = (a, n) => { a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = (n.outlet || '') + ': ' + n.title; return a; };
   const dots = (t) => /[.!?…]$/.test(t) ? t : t + '...';
   const line = (n) => { const a = ext(el('a', 'dl' + (n.red ? ' red' : ''), dots(n.tag)), n); return a; };
-  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; im.alt = n.title; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.referrerPolicy = 'no-referrer'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) f.append(el('figcaption', null, n.img_credit)); return f; };
+  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; im.alt = n.img_alt || ''; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.referrerPolicy = 'no-referrer'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) { const fc = el('figcaption'); if (n.img_credit_url) { const c = el('a', null, n.img_credit); c.href = n.img_credit_url; c.target = '_blank'; c.rel = 'noopener noreferrer'; fc.append(c); } else fc.textContent = n.img_credit; f.append(fc); } return f; };
   // 1. the lead cluster: a picture, then four lines
   const cl = items.filter((n) => n.wall === 'lead').slice(0, 4);
   const cluster = el('div', 'dl-cluster');
