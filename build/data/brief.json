@@ -1,6 +1,11 @@
 {
- "label": "Oct 26, 13:20 ET",
+ "label": "Oct 26, 15:25 ET",
  "items": [
+  {
+   "text": "Anthropic's IPO filing warns that no single insurer, 'and potentially the insurance industry in the aggregate', may have the capacity to cover a catastrophic AI incident. Separately, Microsoft offered voluntary buyouts to about 60,000 staff at VP level and below, per Bloomberg; its internal memo does not mention AI. And Britain's 'Be Ready' campaign tells households to keep three days of supplies, naming cyber attacks and severe weather.",
+   "url": "https://www.implicator.ai/anthropic-s1-ipo-safety-pitch-founder-control/",
+   "source_label": "Implicator"
+  },
   {
    "text": "New on the index: a months-old startup, Cathedral, says its AI agents found routes into Anthropic's internal systems in under 12 hours, through third-party business software. Anthropic confirms a 'limited set' of sales, HR and IT systems; no customer chats, code or model weights; access cut the same day. It says Cathedral broke its bug-bounty rules.",
    "url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",

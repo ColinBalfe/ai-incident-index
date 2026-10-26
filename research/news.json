@@ -1,5 +1,67 @@
 [
  {
+  "id": "implicator-anthropic-s1-insurance",
+  "title": "Anthropic's S-1: a catastrophic AI incident could exceed what any insurer, possibly the whole industry, can cover",
+  "url": "https://www.implicator.ai/anthropic-s1-ipo-safety-pitch-founder-control/",
+  "outlet": "Implicator",
+  "published": "2026-10-26T15:28:16Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "US",
+  "topic": "ai-incident",
+  "summary": "The IPO filing says no single insurer, \"and potentially the insurance industry in the aggregate\", may have capacity to cover a catastrophic AI incident.",
+  "siren": false,
+  "also": [],
+  "tag": "Anthropic: an AI disaster could be too big to insure",
+  "wall": 2,
+  "red": false,
+  "label": "confirmed",
+  "wall_rank": 12.5
+ },
+ {
+  "id": "techcrunch-microsoft-buyouts-60000",
+  "title": "Microsoft offers voluntary buyouts to about 60,000 staff, more than a quarter of its workforce, in its AI-era overhaul",
+  "url": "https://techcrunch.com/2026/10/26/microsoft-offers-buyouts-to-around-60000-employees-reports-say/",
+  "outlet": "TechCrunch",
+  "published": "2026-10-26T15:58:00Z",
+  "time_known": true,
+  "kind": "breaking",
+  "region": "US",
+  "topic": "jobs",
+  "summary": "VP level and below in the US, Canada, India and the UK, per Bloomberg; Microsoft's memo calls it a new choice and doesn't mention AI.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Engadget",
+    "url": "https://www.engadget.com/2297175/microsoft-reportedly-offers-voluntary-buyouts-to-60000-employees/"
+   }
+  ],
+  "tag": "Microsoft offered buyouts to 60,000 workers, a quarter of its staff",
+  "wall": 2,
+  "red": false,
+  "label": "reported",
+  "wall_rank": 12.6
+ },
+ {
+  "id": "ibtimes-uk-be-ready-three-days",
+  "title": "Britain's 'Be Ready' campaign tells households to keep three days of supplies, naming cyber attacks and severe weather",
+  "url": "https://www.ibtimes.co.uk/uk-households-prepare-three-days-disruption-1827455",
+  "outlet": "International Business Times UK",
+  "published": "2026-10-23T11:55:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "UK",
+  "topic": "everyday",
+  "summary": "Water, food, cash, a radio and medicines for three days without power, water or internet; no specific threat cited.",
+  "siren": false,
+  "also": [],
+  "tag": "Stock three days of supplies, Britain tells households, citing cyber attacks",
+  "wall": 3,
+  "red": false,
+  "label": "confirmed",
+  "wall_rank": 20.5
+ },
+ {
   "id": "gizmodo-cathedral-agents-anthropic",
   "title": "A startup's AI agents reached Anthropic's internal sales, HR and IT systems in under 12 hours",
   "url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",

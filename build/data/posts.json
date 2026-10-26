@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-26T13:20:00-04:00",
+ "as_of": "2026-10-26T15:25:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -8,6 +8,14 @@
    "image": "cards/n-gizmodo-cathedral-agents-anthropic.jpg",
    "chars": 267,
    "note": "The outlet gets the link; the card carries our framing."
+  },
+  {
+   "kind": "brief",
+   "text": "Anthropic's IPO filing warns that no single insurer, 'and potentially the insurance industry in the aggregate', may have the capacity to cover a catastrophic AI incident.",
+   "link": "https://www.implicator.ai/anthropic-s1-ipo-safety-pitch-founder-control/",
+   "image": null,
+   "chars": 194,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",

@@ -1,6 +1,6 @@
 {
- "as_of": "2026-10-26T13:20:00-04:00",
- "as_of_label": "Oct 26, 2026, 13:20 ET",
+ "as_of": "2026-10-26T15:25:00-04:00",
+ "as_of_label": "Oct 26, 2026, 15:25 ET",
  "next_check": "2026-10-26T18:37:00-04:00",
  "next_check_label": "Monday, 18:37 ET",
  "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-26",
+   "text": "15:25 ET: 3 stories added to the front page (Anthropic's S-1 on catastrophic AI incidents exceeding insurers' capacity, per Implicator, with only the fragment 'potentially the insurance industry in the aggregate' quoted from the filing; Microsoft's voluntary buyouts for about 60,000 staff, per TechCrunch and Engadget citing Bloomberg, labelled Reported because the AI link is the reporters' framing and Microsoft's memo does not mention AI; Britain's 'Be Ready' three-day supplies campaign, Oct 22, per IBTimes UK, which names cyber attacks and severe weather and cites no specific threat). 0 incidents added or corrected. No change to PHP2Shell. Coverage widened in the runbook: on-the-record risk admissions in filings, AI-linked job cuts at named large employers, and government preparedness advice that names cyber threats."
+  },
   {
    "date": "2026-10-26",
    "text": "13:20 ET: 1 incident added (Cathedral's AI agents reaching a limited set of Anthropic's sales, HR and IT systems through third-party software in under 12 hours, disclosed Oct 26 by The Washington Post, per Gizmodo and Cyber Security News; the Post itself could not be opened; whether the work stayed within Anthropic's bounty rules is disputed). 0 incidents corrected. PHP2Shell: quiet; 2 timeline events (SecurityWeek's 09:30 ET recap, no named victim and no KEV listing as of Monday morning; php.net's Oct 26 Windows builds for the separate Brotli flaw, not a PHP2Shell fix), 1 statement (Karimi via SecurityWeek); the CISA KEV feed could not be opened by this run, so the no-listing finding rests on SecurityWeek; TU Delft's dashboard served a copy older than the morning figure and was not used. 2 quotes added (113 total). Calls: no resolutions, no odds moved. 0 capabilities, 0 case statuses changed (the new incident scores about 53, below the 55 threshold). The Wire: 7 stories added; siren moved to the Cathedral story. Anthropic's Oct 26 IPO filing (four models reached real outside systems in tests) recorded on the Wire and in the brief. OpenAI's misalignment log (newest Oct 20), METR (Oct 22), AISI (Oct 23 incident post, already tracked) and the AI Incident Database (newest 1788) checked: nothing untracked. Checked and set aside: Railway and OpenCode breaches (AI keys the motive, not AI the cause); a WhatsApp support-bot hidden-instruction report (not shown to have caused harm); Montana's Oct 14 suit and the Habib case (already tracked). Site: redesigned front (tagline, no betting strip, 'since your last visit', 'What it means for you')."
@@ -109,6 +113,7 @@
   "closed": "",
   "verdict": "",
   "recheck": "still no formal US government warning, still no real victim confirmed",
+  "recheck_at": "2026-10-26T13:20:00-04:00",
   "next_test": {
    "date": "2026-10-31",
    "text": "Will America's cyber agency formally warn about it?",
@@ -122,6 +127,6 @@
   ]
  },
  "quiet": false,
- "edition": 10,
- "edition_path": "archive/2026-10-26-1320/"
+ "edition": 11,
+ "edition_path": "archive/2026-10-26-1525/"
 }

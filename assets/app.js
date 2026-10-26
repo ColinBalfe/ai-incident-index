@@ -551,7 +551,7 @@ function drawWall() {
       const lad = el('div', 'rungs'); lad.setAttribute('aria-label', 'Proof so far: ' + (at >= 0 ? RUNGS[at][1] : 'none'));
       RUNGS.forEach(([k, lbl, def], i) => { const r = (sr.rungs || {})[k] || {}; const st = el('span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); st.tabIndex = 0; st.setAttribute('data-tip', (TIP[k] || lbl) + (r.note ? ' ' + r.note + '.' : '') + (i > at ? ' Not reached yet.' : '')); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
       const rc = sr.state !== 'closed' && sr.recheck ? el('div', 'serial-r') : null;
-      if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources at the last refresh. A "no" is only news if someone just looked.'); }
+      if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(sr.recheck_at || D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources at the last refresh. A "no" is only news if someone just looked.'); }
       const nt = sr.state !== 'closed' && sr.next_test && sr.next_test.date ? el('div', 'serial-t') : null;
       if (nt) { nt.append(el('b', null, 'Next test ' + fmtDate(new Date(sr.next_test.date + 'T12:00:00Z')) + ': '), txt(sr.next_test.text)); nt.setAttribute('data-tip', 'A dated question the index committed to in advance; it is graded on that date, right or wrong, on the Record.'); }
       box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft); col.append(box2);
