@@ -5,6 +5,7 @@ const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AI
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
 const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls'];
 const EMBED = new URLSearchParams(location.search).get('embed');
+const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
 const FRONT_IDS = new Set(['wall', 'wall-lead', 'level', 'wire', 'why', 'front', 'now', 'brief', 'since', 'siren']);
 const RECORD_IDS = new Set(['record', 'capabilities', 'words', 'pattern', 'charts', 'next', 'dives', 'fixes', 'signals', 'all', 'about']);
@@ -495,9 +496,12 @@ function drawWall() {
   // 2. the siren: a centred picture, the headline, then what is confirmed (the masthead follows in the page)
   const sv = el('div', 'dl-siren');
   if (siren.img) sv.append(pic(siren, 'dl-hero'));
-  sv.append(ext(el('a', 'dl-head' + (siren.red ? ' red' : ''), siren.tag), siren));
-  if (siren.standfirst) sv.append(el('p', 'dl-stand', siren.standfirst));
-  const so = el('div', 'dl-src'); so.append(txt(siren.outlet + ' · ' + ageShort(siren) + ' · '), ext(el('a', null, 'Read the original reporting →'), siren)); sv.append(so);
+  const lvTop = (document.querySelector('#level .lvl-l b') || {}).textContent || '';
+  const kick = el('div', 'dl-kick'); kick.append(el('span', 'dot'), txt([lvTop, 'Developing', fmtET(siren.published)].filter(Boolean).join(' · ')));
+  const body = el('div', 'dl-body'); body.append(kick, ext(el('a', 'dl-head' + (siren.red ? ' red' : ''), siren.tag), siren));
+  sv.append(body);
+  if (siren.standfirst) body.append(el('p', 'dl-stand', siren.standfirst));
+  const so = el('div', 'dl-src'); so.append(txt(siren.outlet + ' · ' + ageShort(siren) + ' · '), ext(el('a', null, 'Read the original reporting →'), siren)); body.append(so);
   lead.replaceChildren(...(cl.length ? [cluster] : []), sv);
   // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');

@@ -24,7 +24,7 @@ await page.evaluate(() => {
   const meta = JSON.parse(document.querySelector('meta[name="description"]').content ? '{}' : '{}');
   const f = document.createElement('div'); f.className = 'og-foot';
   const up = document.getElementById('tb-updated').title.split('.')[0].replace(/^Last refresh /, '');
-  f.innerHTML = '<span><b>Warning Shots</b>. See what’s coming and know what it means.</span><span>Updated ' + up + '</span>';
+  f.innerHTML = '<span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Updated ' + up + '</span>';
   document.body.append(f);
   window.dispatchEvent(new Event('resize'));
 });
@@ -41,7 +41,7 @@ await page.evaluate(() => {
   const img = document.querySelector('#wall-lead .dl-hero img');
   const up = document.getElementById('tb-updated').title.split('.')[0].replace(/^Last refresh /, '');
   const c = document.createElement('div'); c.id = 'og-siren';
-  c.innerHTML = '<div class="bg"></div><div class="shade"></div><div class="tx"><div class="k"><i></i>Developing</div><div class="h"></div></div><div class="ft"><b>WARNING SHOTS</b><span>See what’s coming and know what it means · Updated ' + up + '</span></div>';
+  c.innerHTML = '<div class="bg"></div><div class="shade"></div><div class="tx"><div class="k"><i></i>Developing</div><div class="h"></div></div><div class="ft"><b>WARNING SHOTS</b><span>See what’s coming. Know what it means · Updated ' + up + '</span></div>';
   if (img) c.querySelector('.bg').style.backgroundImage = 'url(' + img.src + ')';
   c.querySelector('.h').textContent = head.textContent;
   document.body.append(c);
