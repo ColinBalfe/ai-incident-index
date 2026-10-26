@@ -577,7 +577,23 @@ function drawWall() {
     row.addEventListener('click', () => { panel.hidden = !panel.hidden; row.setAttribute('aria-expanded', String(!panel.hidden)); row.lastChild.textContent = panel.hidden ? 'Follow it ▾' : 'Close ▴'; });
     strip.append(row, panel);
   }
-  lead.replaceChildren(sv, ...(strip ? [strip] : []));
+  // The dateline: the edition's date, said like the top of a broadcast
+  const dl = el('div', 'dateline'); { const f = (d, o) => new Intl.DateTimeFormat('en-US', Object.assign({ timeZone: 'America/New_York' }, o)).format(d); const ed = new Date(D.meta.as_of);
+    const same = f(ed, { year: 'numeric', month: 'numeric', day: 'numeric' }) === f(new Date(), { year: 'numeric', month: 'numeric', day: 'numeric' });
+    dl.append(el('span', 'dl-today', (same ? 'Today is ' : '') + f(ed, { weekday: 'long', month: 'long', day: 'numeric' })), ...(same ? [] : [el('span', 'dl-ed', 'Latest edition')])); }
+  // What it means for you: does it touch the reader, and one thing to do today. A lens picker rewrites both; the choice stays in this browser.
+  const youBox = hero.you && hero.you.touch ? (() => {
+    const Y = hero.you; const box = el('section', 'you'); box.setAttribute('aria-label', 'What it means for you');
+    const head = el('div', 'you-h'); head.append(el('span', 'you-k', 'What it means for you'));
+    const tabs = el('div', 'you-tabs'); tabs.setAttribute('role', 'tablist');
+    const opts = [['all', 'Everyone']].concat(LENSES.filter((l) => Y.lens && Y.lens[l.id]).map((l) => [l.id, l.label]));
+    let cur = (() => { try { const v = localStorage.getItem('ws-lens'); return opts.some((o) => o[0] === v) ? v : 'all'; } catch (e) { return 'all'; } })();
+    const t1 = el('p', 'you-t'), t2 = el('p', 'you-do');
+    const paint = () => { const L = cur !== 'all' && Y.lens && Y.lens[cur] ? Y.lens[cur] : Y; t1.textContent = L.touch; const td = L.today || Y.today || []; t2.replaceChildren(el('b', null, 'Do this today: '), txt(td[0] || '')); if (td[1]) { const a = el('a', null, ' ' + (td[2] || 'How') + ' →'); a.href = td[1]; t2.append(a); }
+      tabs.querySelectorAll('button').forEach((b) => { const on = b.dataset.k === cur; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); }); };
+    opts.forEach(([k, lbl]) => { const b = el('button', 'you-tab', lbl); b.type = 'button'; b.dataset.k = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => { cur = k; try { if (k !== 'all') localStorage.setItem('ws-lens', k); } catch (e) {} paint(); }); tabs.append(b); });
+    head.append(tabs); box.append(head, t1, t2); paint(); return box; })() : null;
+  lead.replaceChildren(dl, sv, ...(youBox ? [youBox] : []), ...(strip ? [strip] : []));
   // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');
   [1, 2, 3].forEach((c) => {

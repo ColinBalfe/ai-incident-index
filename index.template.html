@@ -1052,6 +1052,21 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
 .sk { color: transparent; background: var(--line); border-radius: 1px; }
 
+
+/* the dateline and "What it means for you" */
+.dateline { max-width: 1240px; margin: 0 auto 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; border-top: 4px solid var(--lvc); padding-top: 14px; }
+.dl-today { font: 800 clamp(17px, 2.2vw, 26px)/1.1 Arial, 'Helvetica Neue', Helvetica, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.dl-ed { font: 700 12px/1 Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.dateline + .dl-siren { margin-top: 0 !important; } body[data-lead="a"] .dateline + .dl-siren { border-top: 0; padding-top: 4px; }
+.you { max-width: 1240px; margin: 22px auto 0; background: var(--panel); border: 1px solid var(--line-2); border-left: 5px solid var(--lvc); padding: 14px clamp(14px, 2vw, 22px) 16px; }
+.you-h { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.you-k { font: 800 13px/1 Arial, 'Helvetica Neue', Helvetica, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--lvc); }
+.you-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.you-tab { appearance: none; font: 600 13px/1 var(--sans); padding: 7px 11px; border: 1px solid var(--line-2); background: var(--paper); color: var(--ink-2); border-radius: 999px; cursor: pointer; }
+.you-tab.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.you-t { margin: 12px 0 0; font-family: var(--serif); font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.42; color: var(--ink); max-width: 80ch; }
+.you-do { margin: 10px 0 0; font-size: 15.5px; line-height: 1.45; color: var(--ink); }
+.you-do b { color: var(--lvc); } .you-do a { font-weight: 700; color: var(--ink); }
 /* the running-story strip under the lead */
 .dl-lead > .dl-siren:first-child { margin-top: 0; }
 .sstrip { max-width: 1240px; margin: 22px auto 0; border-top: 3px solid var(--lvc); border-bottom: 1px solid var(--line-2); }

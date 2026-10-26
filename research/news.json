@@ -88,7 +88,41 @@
   "red": false,
   "label": "confirmed",
   "wall_rank": 0,
-  "standfirst": "Anthropic confirms the agents reached a limited set of its sales, HR and IT systems through outside business software. No customer chats, code or model weights. Access was cut the same day; Anthropic says the startup broke its bug-bounty rules."
+  "standfirst": "Anthropic confirms the agents reached a limited set of its sales, HR and IT systems through outside business software. No customer chats, code or model weights. Access was cut the same day; Anthropic says the startup broke its bug-bounty rules.",
+  "you": {
+   "touch": "If you use Claude, Anthropic says no customer chats were touched. The warning is how they got in: not through the AI itself, but through the kind of outside business software almost every company, bank and school runs.",
+   "today": [
+    "Turn on two-step login for your email. It takes about three minutes."
+   ],
+   "lens": {
+    "family": {
+     "touch": "Nothing here reached families. It is a reminder that AI tools now do real break-in work; the version that reaches homes is a cloned voice asking for money.",
+     "today": [
+      "Agree a family safe word, so a cloned voice can be checked with one question.",
+      "/shield/",
+      "Make one, free"
+     ]
+    },
+    "money": {
+     "touch": "No payment or customer data was reported taken. But banks and shops run the same kind of outside business software, and this is the kind of door now being tested by AI.",
+     "today": [
+      "Turn on two-step login for your email and your bank. It takes about three minutes."
+     ]
+    },
+    "work": {
+     "touch": "The way in was outside software wired into staff systems: sales, HR and IT. Every AI tool or agent your employer connects to those systems is another door of the same kind.",
+     "today": [
+      "Don’t connect an AI tool to your work email or files unless your employer has approved it."
+     ]
+    },
+    "site": {
+     "touch": "The agents went through third-party business software, not Anthropic’s own product. Your weak point is likely the same: the outside apps that hold keys to your systems.",
+     "today": [
+      "List the outside apps with access to your accounts and remove the ones you no longer use."
+     ]
+    }
+   }
+  }
  },
  {
   "id": "axios-anthropic-s1-risk-factors",
