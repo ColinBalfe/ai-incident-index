@@ -165,3 +165,11 @@ p.meta { color: var(--ink-2); font-size: 14px; margin: 10px 0 0; }
 footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--ink-3); font-size: 13px; }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
 footer a { color: var(--ink-2); }
+
+/* related incidents rail on dispatch pages */
+.rel ul { list-style: none; margin: 0; padding: 0; }
+.rel li { padding: 9px 0; border-bottom: 1px solid var(--line); }
+.rel li a { color: var(--ink); text-decoration: none; font-weight: 600; }
+.rel li a:hover { text-decoration: underline; }
+.rel li b { display: inline-block; min-width: 2.2em; color: var(--alarm); font-variant-numeric: tabular-nums; }
+.rel li small { display: block; color: var(--ink-3); font-size: 12.5px; margin-top: 2px; padding-left: 2.2em; }

@@ -169,6 +169,11 @@ def incident_page(r, prev, nxt):
     notes = (' ' + esc(r['notes'])) if r.get('notes') else ''
     body.append(f'<section class="src"><h2>Sources</h2><p>{src}.{conf}{notes}</p><p class="k">Factor ratings and the score are this index’s judgments by a published formula; facts, dates and figures come from the linked sources. Where a lawsuit is pending, the summary reports allegations, not findings.</p></section>')
     share_text = f'{r["title"]} ({r["severity"]}/100, {r["tier"].lower()}). {first_sentence(r["summary"])} Warning Shots:'
+    # Related on the index: the nearest incidents of the same kind, so a reader landing from search has a next click
+    rel = sorted([x for x in scored if x['id'] != r['id'] and x.get('category') == r.get('category')], key=lambda x: abs((dt.date.fromisoformat(x['date'][:7] + '-01') - dt.date.fromisoformat(r['date'][:7] + '-01')).days))[:4]
+    if rel:
+        items = ''.join(f'<li><a href="/i/{esc(x["id"])}/"><b>{x["severity"]}</b> {esc(clip(x["title"], 110))}</a><small>{esc(fdate(x["date"], x.get("date_precision")))} · {esc(x["tier"])}</small></li>' for x in rel)
+        body.append(f'<section class="rel"><h2>Related on the index</h2><ul>{items}</ul><p class="k"><a href="/wire/">The latest AI threats and breakthroughs, checked three times a day →</a></p></section>')
     body.append(share_html(url, share_text, f'/cards/i-{r["id"]}.jpg' if os.path.exists(f'cards/i-{r["id"]}.jpg') else '', f'/#i={r["id"]}', 'Open on the index'))
     body.append(prevnext(prev, nxt, 'i', lambda x: x['title'], lambda x: f'{x["ws"]} · {fdate(x["date"], x.get("date_precision"))} · {x["severity"]}/100 {x["tier"]}'))
     desc = f'{first_sentence(r["summary"])} {r["tier"]}, {r["severity"]}/100. {"Real-world incident" if r["setting"] == "wild" else "Lab or test finding"}, {fdate(r["date"], r.get("date_precision"))}. Scored and sourced by Warning Shots.'
