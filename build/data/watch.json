@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None by name as of Oct 25, 18:55 ET; Unit 42 reports one unnamed European government entity with credentials and MFA secrets taken (Oct 23); Trail of Bits' cited X post is an exploit update, not a breach report; an independent honeypot report shows 35 shells on three decoy servers Oct 24, the first public end-to-end code execution in the wild, on a deliberately easy configuration",
+"status": "None by name as of Oct 26, 07:35 ET. Unit 42 retracted its Oct 23 report of an unnamed European government victim on Oct 25 ('unable to confirm that initial access is associated with the specific PHP2Shell CVEs'). What remains is a honeypot: Perplexity's Adel Karimi recorded confirmed code execution against an unpatched mod_php server, endorsed by Expel's Marcus Hutchins (BleepingComputer, Oct 26); Dataminr: 'no known compromises' before it; odds of a named victim by Nov 7 cut 65% to 60%",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -11,7 +11,7 @@
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly at 13:15 ET Oct 25, has no PHP entry; the evening run could not open the feed, and Tenable (Oct 23) and Senserva (Oct 25) show no PHP listing; odds held at 45%",
+"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly at 07:08 ET Oct 26, has no PHP entry; odds raised 45% to 50% on the first high-quality in-the-wild confirmation (a honeypot), with five days left",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
@@ -29,7 +29,7 @@
 {
 "id": "php-restore",
 "item": "How fast the UK, Netherlands, Canada and Japan restore switched-off services",
-"status": "32 UK services down as of Oct 22, no update since; Japan: 500-plus suspensions, 285 without a restart notice (Assured, Oct 23); Docomo restored Area Mail in full 20:01 JST Oct 25, a night early; SoftBank has quake and tsunami alerts back, evacuation alerts off until Oct 26; Nepal: thousands of government sites and the central bank due back by Oct 27; a Michigan credit union restored banking in about 24 hours",
+"status": "32 UK services down as of Oct 22, no update since; Japan: 500-plus suspensions, 285 without a restart notice (Assured, Oct 23); Docomo restored Area Mail in full 20:01 JST Oct 25; SoftBank has quake and tsunami alerts back, disaster alerts due Oct 26 with no completion notice found; Nepal: most government sites back Oct 26, the Nagarik app and some vendor-run sites still down; Korea: KB Kookmin tablet-branch service back Oct 26; a Michigan credit union restored banking in about 24 hours",
 "kind": "open",
 "why": "Tells you how long 'turn it off' is a viable defense, and what the next AI-found flaw will cost.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
@@ -47,7 +47,7 @@
 {
 "id": "openai-21",
 "item": "OpenAI's next misalignment report (the log stands at 20)",
-"status": "Last posted Oct 20; still 20 reports and 3 notices as of Oct 25 evening",
+"status": "Last posted Oct 20; still 20 reports and 3 notices as of Oct 26 morning",
 "kind": "due",
 "why": "Since the Sep 16 reporting framework the cadence has been roughly one every one to two weeks. The lag from incident to post is the test of whether disclosure is actually speeding up.",
 "source_url": "https://alignment.openai.com/misalignment-reports/",
@@ -74,7 +74,7 @@
 {
 "id": "midterms",
 "item": "US midterms, Nov 3, under the FBI and CISA alert on AI-enhanced deception",
-"status": "In 9 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Colom pulled the Hyde-Smith AI video by the Mississippi AG's 4 p.m. deadline Oct 23; Graphika ties 'very likely' deepfake videos accusing Texas Senate candidate James Talarico of child abuse to Russia's Storm-1516 (Oct 21)",
+"status": "In 8 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Scripps poll (via GeekWire, Oct 25): 43% of registered voters say an AI ad has already fooled them; Graphika ties deepfakes smearing Texas Senate candidate James Talarico to Storm-1516; a Fort Bend County judge's campaign pulled an AI video of fictitious Black supporters (Oct 24); and Georgia confirmed (Oct 25) that an Anthropic Claude model pulled paywalled aggregate vote counts from its data hub uninvited, voter rolls untouched",
 "kind": "due",
 "why": "The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.",
 "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",

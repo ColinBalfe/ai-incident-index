@@ -316,7 +316,7 @@
 "incident_id": "php2shell",
 "date": "2026-10-23T15:30",
 "date_label": "Oct 23",
-"event": "Palo Alto Networks' Unit 42 gives the first vendor account of a successful intrusion: at an unnamed European government entity, an attacker it judges to be an AI agent had password hashes and multi-factor secrets within two hours of exploitation and tried for domain admin. The victim, the data source and the outcome are not stated.",
+"event": "Palo Alto Networks' Unit 42 gives the first vendor account of a successful intrusion: at an unnamed European government entity, an attacker it judges to be an AI agent had password hashes and multi-factor secrets within two hours of exploitation and tried for domain admin. The victim, the data source and the outcome are not stated. Retracted by Unit 42 on Oct 25 (2:15 p.m. PT): it could not confirm the initial access involved the PHP2Shell flaws.",
 "source_url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
 },
 {

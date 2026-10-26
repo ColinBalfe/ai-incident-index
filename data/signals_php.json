@@ -365,13 +365,13 @@
 },
 {
 "id": "php-s28",
-"date": "2026-10-23",
+"date": "2026-10-25",
 "org": "Palo Alto Networks Unit 42",
 "org_type": "security firm",
 "speaker": "",
 "channel": "Blog",
-"gist": "Observed attackers using agentic AI attack platforms for post-exploitation; in one case against a government entity in Europe they had password hashes and multi-factor authentication secrets within two hours of initial exploitation, set up an NTLM-relay tunnel into Active Directory and attempted Domain Admin escalation. 'The commands and behavioral markers used in the attack are strong indicators of an agentic attacker.' Cortex Xpanse counts over 22.6 million exposed instances potentially vulnerable.",
-"quote": "",
+"gist": "Retracts its Oct 23 update, which had reported attackers using agentic AI attack platforms for post-exploitation at a government entity in Europe (password hashes and multi-factor secrets within two hours, an attempted Domain Admin escalation). The Oct 25 update: 'What researchers saw was an attack against a European government agency executed in the context of a vulnerable PHP application. This led us to believe that it was exploitation of those vulnerabilities. We are unable to confirm that initial access is associated with the specific PHP2Shell CVEs. We have retracted our previous update from October 23.' Cortex Xpanse's count of over 22.6 million exposed instances stays.",
+"quote": "We have retracted our previous update from October 23.",
 "related_incident": "PHP2Shell",
 "significance": "medium",
 "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"

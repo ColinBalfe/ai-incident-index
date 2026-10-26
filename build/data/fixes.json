@@ -34,12 +34,12 @@
 {
 "stage": "current",
 "status": "ongoing",
-"date": "2026-10-24",
-"note": "Day four after the patch: the first vendor account of a successful intrusion. Unit 42 says an AI-driven attacker had password hashes and MFA secrets at an unnamed European government entity within two hours of exploitation; no named organization has confirmed a breach, CISA's catalog still has no PHP entry, a Mirai variant is still trying to recruit servers, a third PHP bug is unpatched by design and most exposed hosts run versions that will never be fixed.",
-"source_url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+"date": "2026-10-26",
+"note": "Day six after the patch. The one vendor account of a successful intrusion is gone: Unit 42 retracted its Oct 23 report on Oct 25, saying it could not confirm the initial access at the European government agency involved the PHP2Shell flaws. What replaced it on Oct 26 is narrower and firmer: a honeypot capture by Perplexity's Adel Karimi showing confirmed code execution against an unpatched Apache mod_php server, which Expel's Marcus Hutchins calls the highest-quality in-the-wild confirmation so far; Dataminr says activity before it showed 'no known compromises'. No named organization has confirmed a breach, CISA's catalog (version 2026.10.23, opened directly Oct 26) still has no PHP entry, a Mirai variant is still trying to recruit servers, a third PHP bug is unpatched by design and most exposed hosts run versions that will never be fixed.",
+"source_url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/"
 }
 ],
-"one_liner": "The fix exists for supported PHP versions and nobody has broken it yet, but the attack is still unfolding, most exposed servers will never get the patch, and no breach has been confirmed anywhere.",
+"one_liner": "The fix exists for supported PHP versions and nobody has broken it yet; the exploit is now confirmed to work against a real unpatched server (a honeypot), the one vendor report of a victim has been retracted, most exposed servers will never get the patch, and no organization has confirmed a breach by name.",
 "what_would_change_it": "A confirmed in-the-wild compromise (or a CISA KEV listing), or a public way around the Oct 21 patch, would turn precautionary disruption into real damage.",
 "confidence": "high"
 },

@@ -24,14 +24,14 @@
   "reported_to_php": "2026-08-24",
   "disclosure_date": "2026-10-21",
   "first_known_exploitation": "2026-10-17 (single probe against Amazon MadPot honeypot, during embargo)",
-  "status_as_of": "2026-10-24",
+  "status_as_of": "2026-10-26",
   "sources": [
    "https://www.wiz.io/blog/php2shell-php-rce",
    "https://thehackernews.com/2026/10/someone-tried-to-exploit-php2shell-4.html",
    "https://cybersecuritynews.com/critical-php-vulnerabilities/",
    "https://www.govinfosecurity.com/attackers-exploit-leaked-zero-day-flaws-in-widely-used-php-a-33161"
   ],
-  "cisa_kev": "Not listed as of catalog version 2026.10.23 (released Oct 23, 19:30 UTC; the feed was opened directly at 12:40 ET Oct 24: 1,756 entries, none of CVE-2026-109618, -109619 or -115560; the Oct 23 additions were Arista VeloCloud and Collabora Online). No emergency directive found; cisa.gov pages were not reachable to this run and no outlet reports one.",
+  "cisa_kev": "Not listed as of catalog version 2026.10.23 (released Oct 23, 19:30 UTC; the feed was opened directly at 07:08 ET Oct 26: 1,756 entries, none of CVE-2026-109618, -109619 or -115560; the newest additions are Arista VeloCloud and Collabora Online, dated Oct 23). No emergency directive found.",
   "threat_actors": [
    {
     "name": "Unidentified actor using commercial anonymization network",
@@ -747,7 +747,7 @@
    "country": "Japan",
    "status": "exposed/patching",
    "date": "2026-10-22 to 2026-10-26",
-   "what_happened": "Some web services paused. SoftBank halted emergency-alert mail for SoftBank, Y!mobile and LINEMO at 06:47 JST Oct 23 for PHP maintenance, resumed JMA earthquake and tsunami warnings at 09:25 JST Oct 25, and keeps government disaster and evacuation alerts off until the work finishes Oct 26. NTT Docomo suspended J-Alert, flood forecasts and municipal evacuation information from about 19:30 JST Oct 23 (earthquake and tsunami warnings never stopped) and restored Area Mail in full at 20:01 JST Oct 25, ahead of its planned early-Oct 26 restart, per Keitai Watch.",
+   "what_happened": "Some web services paused. SoftBank halted emergency-alert mail for SoftBank, Y!mobile and LINEMO at 06:47 JST Oct 23 for PHP maintenance, resumed JMA earthquake and tsunami warnings at 09:25 JST Oct 25, and keeps government disaster and evacuation alerts off until the work finishes Oct 26. NTT Docomo suspended J-Alert, flood forecasts and municipal evacuation information from about 19:30 JST Oct 23 (earthquake and tsunami warnings never stopped) and restored Area Mail in full at 20:01 JST Oct 25, ahead of its planned early-Oct 26 restart, per Keitai Watch. As of the morning of Oct 26 (JST) no completion notice for SoftBank's remaining disaster and evacuation alerts had been found by this run.",
    "damage": "none reported (precautionary outage; emergency-alert delivery partly suspended for about two days)",
    "source": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
    "source2": "https://k-tai.watch.impress.co.jp/docs/news/2150959.html"
@@ -890,11 +890,12 @@
    "name": "Nepal government websites (GIWIMS shared platform), Nepal Rastra Bank, Department of Revenue Investigation (VCTS)",
    "sector": "Government, central bank",
    "country": "Nepal",
-   "status": "exposed/patching",
-   "date": "2026-10-21 to 2026-10-25",
-   "what_happened": "Thousands of government sites on the shared GIWIMS platform taken offline centrally, with the central bank's website and web services and the freight-tracking system VCTS; restoration expected between Sunday evening Oct 25 and Tuesday Oct 27 after a central patch and audits. Systems not using PHP returned from Oct 22.",
+   "status": "restored (mostly)",
+   "date": "2026-10-21 to 2026-10-26",
+   "what_happened": "Thousands of government sites on the shared GIWIMS platform taken offline centrally, with the central bank's website and web services and the freight-tracking system VCTS; restoration expected between Sunday evening Oct 25 and Tuesday Oct 27 after a central patch and audits. Systems not using PHP returned from Oct 22. Oct 26: the SDOC says most government portals are back after a central patch and audits; the Medical Education Commission's website and the Nagarik app remain unavailable and some vendor-managed sites are still offline.",
    "damage": "none reported (precautionary outage; NCSC: no unauthorised access found)",
-   "source": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline"
+   "source": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline",
+   "source2": "https://kathmandupost.com/science-technology/2026/10/26/most-nepal-government-websites-back-online-after-php2shell-flaw"
   },
   {
    "name": "Nepali banks (Nabil Bank, Sanima Bank, Nepal Investment Mega Bank and others)",
@@ -925,6 +926,16 @@
    "what_happened": "Orbis inspected its online store from the night of Oct 21, resumed at midday Oct 22, then suspended it again the same day after the third bug surfaced, with no restart date as of Oct 23 evening; Bandai Namco is patching or replacing programs and has not identified the full scope.",
    "damage": "none reported (precautionary outage; lost sales)",
    "source": "https://en.fnnews.com/news/202610251125023293"
+  },
+  {
+   "name": "KB Kookmin Bank (KB Tablet Branch)",
+   "sector": "Financial services",
+   "country": "South Korea",
+   "status": "restored",
+   "date": "2026-10-21 to 2026-10-26",
+   "what_happened": "Suspended its KB Tablet Branch service, which relies on PHP, from about 18:00 KST Oct 21 on the Financial Supervisory Service's recommendation, telling branches the security work would run from Oct 22 and finish no later than Oct 26; the service resumed Oct 26, per SBS Biz.",
+   "damage": "none reported (precautionary outage)",
+   "source": "https://biz.sbs.co.kr/article/20000342170"
   }
  ],
  "timeline": [
@@ -1322,6 +1333,36 @@
    "date": "2026-10-25",
    "event": "Korea: Shinhan Financial extends its emergency PHP checks to subsidiaries outside its FIRST security-monitoring system, with a checklist covering PHP use, system impact, mitigation status and schedules; Broadcom lists three affected security products (Symantec Endpoint Protection Manager, Carbon Black App Control Server, Cloud SOC SpanVA); KB Kookmin and Woori have applied emergency patches, per eToday. The same report says financial authorities found security-management gaps at 130 of 555 firms checked, mainly unapplied patches and end-of-support systems, without tying that inspection to PHP2Shell. Financial News (Oct 25 and 26 KST) reports small web-shop operators who cannot tell whether they are affected and are waiting on hosting providers; KISA has no exploitation report.",
    "source": "https://www.etoday.co.kr/news/view/2639738"
+  },
+  {
+   "date": "2026-10-25",
+   "event": "Unit 42 retracts its Oct 23 update, the only vendor account of a successful PHP2Shell intrusion. Its brief now says the attack on a European government agency 'executed in the context of a vulnerable PHP application' led researchers to believe the flaws were exploited, but 'We are unable to confirm that initial access is associated with the specific PHP2Shell CVEs' (change log: 'Updated October 25, 2026, at 2:15 p.m. PT to retract our October 23 update'). The agentic-AI post-exploitation description and the hunting queries' PHP2Shell link go with it; Xpanse's 22.6 million exposed-instance figure stays.",
+   "source": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+  },
+  {
+   "date": "2026-10-25",
+   "event": "A researcher known as 'killa' wins the stealmybitcoin.com challenge, an unpatched PHP server holding a wallet key behind the flaws, at 15:47 UTC after 19.28 hours, for 0.02511679 BTC (about $2,021 at the time), and publishes a proof of concept on GitHub; the write-up notes the script was tested on a lab copy and worked in about seven of ten runs, per Cyber Security News.",
+   "source": "https://cybersecuritynews.com/php2shell-flaws-exploited/"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "BleepingComputer (05:19 ET) reports the flaws 'successfully exploited in the wild' on the strength of the honeypot capture by Adel Karimi, detection and response lead at Perplexity (confirmed code execution against Apache mod_php on PHP 8.4.26), which Expel threat researcher Marcus Hutchins calls 'by far the highest quality confirmation of in-the-wild php2shell exploitation I've seen so far'. The targets are honeypots; Dataminr's TRACE team is quoted that activity before this was 'limited to scanning, fingerprinting, and use of non-working exploits, with no known compromises'. VirusTotal estimates more than 5.1 million PHP hosts exposed, about 3.8 million with at least one attackable port open.",
+   "source": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "TU Delft's Threat Intelligence Lab publishes a live dashboard of exploitation seen by its honeypots and network telescope since Oct 20: 41,907 exploitation requests from 586 source IPs in 274 autonomous systems and 68 countries between 08:37 UTC Oct 21 and 11:04 UTC Oct 26; 171 source IPs sent code or a dropper; two IPs sent 49 requests before the fixed releases; the busiest hour was 21:00 UTC Oct 21 with 2,116 requests.",
+   "source": "https://php2shell.delftintellab.com/"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "Nepal: most government websites on the shared GIWMS platform are back after central patching, the Software Development and Operation Centre says; the Medical Education Commission's site and the Nagarik app remain down and some vendor-managed sites are still offline (Kathmandu Post). Korea: KB Kookmin Bank resumes its KB Tablet Branch service, suspended from the evening of Oct 21 on the Financial Supervisory Service's recommendation (SBS Biz, 16:07 KST). Korean security press (Dailysecu, 10:54 KST) carries the Unit 42 retraction.",
+   "source": "https://kathmandupost.com/science-technology/2026/10/26/most-nepal-government-websites-back-online-after-php2shell-flaw"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "CISA's catalog, opened directly at 07:08 ET: version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of CVE-2026-109618, -109619 or -115560; the newest additions are still dated Oct 23. php.net's archive, read the same morning: no entry after the Oct 23 informational advisory. Day six without a listing, a release or an organization confirmed breached by name.",
+   "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
   }
  ],
  "statements": [
@@ -2235,13 +2276,14 @@
    "x_post": "no"
   },
   {
-   "date": "2026-10-23",
+   "date": "2026-10-25",
    "organization": "Palo Alto Networks Unit 42",
    "speaker": null,
-   "channel": "Blog (threat brief, updated 12:30 p.m. PT)",
-   "paraphrase": "Observed attackers using agentic AI attack platforms for post-exploitation; in one case against a government entity in Europe they had password hashes and multi-factor authentication secrets within two hours of initial exploitation, set up an NTLM-relay tunnel into Active Directory and attempted Domain Admin escalation. 'The commands and behavioral markers used in the attack are strong indicators of an agentic attacker.' Cortex Xpanse counts over 22.6 million exposed instances potentially vulnerable.",
+   "channel": "Blog (threat brief, October 25 Update, 2:15 p.m. PT)",
+   "paraphrase": "Retracts its Oct 23 update, which had reported attackers using agentic AI attack platforms for post-exploitation at a government entity in Europe (password hashes and multi-factor secrets within two hours, an attempted Domain Admin escalation). The Oct 25 update: 'What researchers saw was an attack against a European government agency executed in the context of a vulnerable PHP application. This led us to believe that it was exploitation of those vulnerabilities. We are unable to confirm that initial access is associated with the specific PHP2Shell CVEs. We have retracted our previous update from October 23.' Cortex Xpanse's count of over 22.6 million exposed instances stays.",
    "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
-   "x_post": "no"
+   "x_post": "no",
+   "short_quote": "We have retracted our previous update from October 23."
   },
   {
    "date": "2026-10-22",
@@ -2439,6 +2481,42 @@
    "channel": "statement to press",
    "paraphrase": "Shinhan widens emergency PHP checks to subsidiaries outside its FIRST monitoring system; Broadcom lists Symantec Endpoint Protection Manager, Carbon Black App Control Server and Cloud SOC SpanVA as affected.",
    "url": "https://www.etoday.co.kr/news/view/2639738",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-26",
+   "organization": "Perplexity (Adel Karimi, detection and response lead), via BleepingComputer",
+   "speaker": "Adel Karimi",
+   "channel": "statement to press",
+   "paraphrase": "His honeypot capture is 'confirmed RCE with usable memory disclosure, not just a crash followed by a suspicious process': the shell command ran about 1.6 ms after the execution request's final byte.",
+   "url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-26",
+   "organization": "Expel (Marcus Hutchins, threat researcher), via BleepingComputer",
+   "speaker": "Marcus Hutchins",
+   "channel": "statement to press",
+   "paraphrase": "Calls Karimi's capture 'by far the highest quality confirmation of in-the-wild php2shell exploitation I've seen so far'.",
+   "url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-26",
+   "organization": "Dataminr TRACE team, via BleepingComputer",
+   "speaker": "Threat Research and Cyber Engineering team",
+   "channel": "statement to press",
+   "paraphrase": "Until Karimi's findings, malicious activity was 'limited to scanning, fingerprinting, and use of non-working exploits, with no known compromises'.",
+   "url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-26",
+   "organization": "Nepal Software Development and Operation Centre (SDOC)",
+   "speaker": "Kiran Timilsina, chief executive officer",
+   "channel": "statement to press",
+   "paraphrase": "'We have brought government websites back online'; thousands of sites on the shared GIWMS platform were patched centrally; some vendor-managed sites remain inaccessible.",
+   "url": "https://kathmandupost.com/science-technology/2026/10/26/most-nepal-government-websites-back-online-after-php2shell-flaw",
    "x_post": "no"
   }
  ],
@@ -2652,6 +2730,20 @@
    "metric": "internet-facing systems running PHP or PHP-related software",
    "value": "nearly 37 million, concentrated in the US, Germany, France, the Netherlands and Japan",
    "url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html"
+  },
+  {
+   "source_org": "Delft Threat Intelligence Lab (TU Delft)",
+   "date": "2026-10-26",
+   "metric": "exploitation requests seen by its honeypots and network telescope, Oct 21 08:37 to Oct 26 11:04 UTC",
+   "value": "41,907 requests from 586 source IPs in 274 autonomous systems and 68 countries; 171 IPs sent code or a dropper",
+   "url": "https://php2shell.delftintellab.com/"
+  },
+  {
+   "source_org": "VirusTotal (via BleepingComputer)",
+   "date": "2026-10-26",
+   "metric": "PHP hosts exposed online",
+   "value": "more than 5.1 million, about 3.8 million with at least one port open to attack",
+   "url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/"
   }
  ],
  "ai_angle": [

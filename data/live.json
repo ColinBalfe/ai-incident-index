@@ -3,17 +3,17 @@
 "key": "confirmed",
 "value": "0",
 "label": "organizations confirmed breached by name",
-"detail": "Still none by name. Palo Alto Networks' Unit 42 now describes one intrusion at an unnamed government entity in Europe: within two hours of exploitation an attacker it judges to be an AI agent had password hashes and multi-factor secrets and was trying for domain admin. The victim, the data source and the outcome are not stated; TechCrunch calls it a confirmed compromise. The Trail of Bits post TechCrunch also cites, read on Oct 25, describes the firm's own exploit reaching production grade, not a breach. Sophos retracted its one earlier claim. Separately, an independent honeypot report dated Oct 24 shows the full chain reaching code execution 35 times on three deliberately easy single-worker honeypots, from two hosting addresses: proof the public technique works in the wild, not a victim.",
-"source_url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
-"source_label": "Unit 42, updated Oct 23, 12:30 PT"
+"detail": "Still none by name, and the one vendor account of a victim is gone: Palo Alto Networks' Unit 42 retracted its Oct 23 report of an AI-agent-like intrusion at a European government agency on Oct 25 (2:15 p.m. PT), saying it 'is unable to confirm that initial access is associated with the specific PHP2Shell CVEs'. What stands instead, as of Oct 26, is narrower and firmer: a honeypot run by Perplexity's detection lead Adel Karimi recorded confirmed code execution against an unpatched Apache mod_php server, which Expel's Marcus Hutchins calls the highest-quality in-the-wild confirmation so far; Dataminr says activity before it showed 'no known compromises'. The earlier 0x4D31 honeypot report (35 shells, three decoys, Oct 24) is Karimi's. Sophos retracted its one earlier claim on Oct 22. Proof the technique works against real unpatched servers; still no victim.",
+"source_url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
+"source_label": "BleepingComputer, Oct 26, 05:19 ET"
 },
 {
 "key": "attempts",
 "value": "Millions",
 "label": "exploit attempts seen by Cloudflare",
-"detail": "Tens of thousands within 45 minutes of disclosure, millions by Oct 22. Some attempts try to enlist servers into a Mirai botnet variant (Potassium); no infection count has been published.",
+"detail": "Tens of thousands within 45 minutes of disclosure, millions by Oct 22. TU Delft's live dashboard counts 41,907 exploitation requests from 586 source IPs in 68 countries against its own honeypots and telescope between Oct 21 and 11:04 UTC Oct 26, 171 of them sending code or a dropper. Some attempts try to enlist servers into a Mirai botnet variant (Potassium); no infection count has been published.",
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-"source_label": "The Hacker News, Oct 23"
+"source_label": "The Hacker News, Oct 23; TU Delft, Oct 26"
 },
 {
 "key": "uk",
@@ -43,8 +43,8 @@
 "key": "kev",
 "value": "Not listed",
 "label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "The feed, last opened directly at 13:15 ET Oct 25: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs. The evening run could not open the feed; Tenable's FAQ (updated Oct 23) and Senserva's tracker (updated Oct 25, listing the week's additions as Collabora, Arista, EG Secure Solutions, Siemens and four Plex CVEs) both show no PHP entry. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real.",
+"detail": "The feed, opened directly at 07:08 ET Oct 26: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; the newest additions are still the Oct 23 Arista and Collabora entries. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real; the Oct 26 honeypot confirmation is the kind of evidence one rests on.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-"source_label": "CISA KEV catalog, version 2026.10.23"
+"source_label": "CISA KEV catalog, version 2026.10.23, checked Oct 26"
 }
 ]
