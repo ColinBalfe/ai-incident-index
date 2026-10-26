@@ -445,6 +445,31 @@ const wire = { topic: 'all', open: false };
 const ageShort = (n) => { if (!n.published) return ''; const d = new Date(n.published); if (isNaN(d)) return ''; if (n.time_known === false) return ETd.format(d); const ms = Date.now() - d; const h = ms / 3.6e6; if (h < 1) return 'just now'; if (h < 24) return Math.floor(h) + 'h ago'; if (h < 72) return Math.floor(h / 24) + 'd ago'; return ETd.format(d); };
 const SIREN_SVG = '<svg class="siren-ic" viewBox="0 0 34 34" aria-hidden="true"><path class="dome" d="M8 25a9 9 0 0 1 18 0z"/><ellipse class="glass" cx="13.5" cy="19" rx="2.6" ry="3.6" transform="rotate(-30 13.5 19)"/><rect class="base" x="5" y="25" width="24" height="4" rx="1.5"/><path class="ray" d="M17 4.5v4.5"/><path class="ray" d="M8.5 7.5l3 3.3"/><path class="ray" d="M25.5 7.5l-3 3.3"/><path class="ray" d="M3.5 17h4"/><path class="ray" d="M26.5 17h4"/></svg>';
 function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url).slice().sort((a, b) => String(b.published || '').localeCompare(String(a.published || ''))); }
+/* ---------- the headline wall: index-written lines on top of credible reporting (research/news.json: tag, wall, red, wall_rank).
+   Each line must be supportable by the story it links to; the outlet's own framing is in the tooltip and the small print. */
+function drawWall() {
+  const box = document.getElementById('wall'); if (!box) return;
+  const items = newsItems().filter((n) => n.tag && n.wall).sort((a, b) => (a.wall_rank ?? 999) - (b.wall_rank ?? 999));
+  const siren = items.find((n) => n.wall === 'siren');
+  if (!siren) { box.hidden = true; document.body.classList.remove('has-wall'); return; }
+  box.hidden = false; document.body.classList.add('has-wall');
+  const line = (n, cls) => {
+    const w = el('div', 'wl' + (n.red ? ' red' : '') + (cls ? ' ' + cls : ''));
+    const a = el('a', 'wl-a', n.tag); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = (n.outlet || '') + ': ' + n.title;
+    w.append(a, el('span', 'wl-o', (n.outlet || '') + ' · ' + ageShort(n)));
+    return w;
+  };
+  const top = el('div', 'wall-top'); items.filter((n) => n.wall === 'top').slice(0, 3).forEach((n) => top.append(line(n)));
+  const sb = el('div', 'wall-siren'); const ic = el('span', 'wall-ic'); ic.innerHTML = SIREN_SVG;
+  const sa = el('a', 'wall-sl' + (siren.red ? ' red' : ''), siren.tag); sa.href = siren.url; sa.target = '_blank'; sa.rel = 'noopener noreferrer'; sa.title = (siren.outlet || '') + ': ' + siren.title;
+  const sm = el('div', 'wall-sm'); sm.append(el('b', null, siren.outlet || ''), txt(' · ' + ageShort(siren) + ' · '), el('span', null, siren.title));
+  sb.append(ic, sa, sm);
+  const cols = el('div', 'wall-cols');
+  [1, 2, 3].forEach((c) => { const col = el('div', 'wall-col'); items.filter((n) => +n.wall === c).slice(0, 14).forEach((n) => col.append(line(n))); cols.append(col); });
+  const foot = el('p', 'wall-foot'); foot.append(txt('Every line here is written by Warning Shots and links straight to the original reporting; hover or tap through for the outlet’s own headline. '), (() => { const a = el('a', null, 'The full Wire, ' + newsItems().length + ' reports ↓'); a.href = '#wire'; return a; })());
+  const more = el('button', 'wall-more', 'More headlines'); more.type = 'button'; more.addEventListener('click', () => box.classList.add('open'));
+  box.replaceChildren(top, sb, cols, more, foot);
+}
 function drawWire() {
   const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');
   document.getElementById('wire-stamp').textContent = 'Updated ' + fmtET(D.meta.as_of) + (D.meta.next_check ? ', next check ' + fmtETsmart(D.meta.next_check).replace('today ', '') : '');
@@ -1522,7 +1547,7 @@ function mfApply(target) {
   [...main.children].forEach((c) => {
     if (keep.has(c.id)) { c.removeAttribute('data-mf'); return; }
     const sec = c.matches('section') ? c : c.querySelector('section'); const id = sec ? sec.id : c.id;
-    const show = target === 'front' ? (id === 'wire' || id === 'front' || id === 'why') : id === target;
+    const show = target === 'front' ? (id === 'wall' || id === 'wire' || id === 'front' || id === 'why') : id === target;
     if (show) c.removeAttribute('data-mf'); else c.setAttribute('data-mf', 'off');
   });
   front.hidden = target !== 'front';
@@ -1603,7 +1628,7 @@ function preDraw() {
 }
 function drawAll(first) {
   if (MF() && !mfCur) mfApply('front');
-  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawWire(); drawNow(); drawBrief();
+  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawWall(); drawWire(); drawNow(); drawBrief();
   if (MF()) { drawFront(); if (mfCur && mfCur !== 'front') drawSection(mfCur); }
   if (EMBED || !lazyIO) { drawEverything(); return; }
   if (first) {
