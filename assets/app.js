@@ -454,6 +454,23 @@ function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url
 // The reader's own clock: when they last loaded this page (this browser only). Read once, then stamped with now.
 const PREV_VISIT = (() => { let p = null; try { p = +localStorage.getItem('ws-last-visit') || null; localStorage.setItem('ws-last-visit', String(Date.now())); } catch (e) {} return p; })();
 const isNewToReader = (n) => !!(PREV_VISIT && n.published && Date.parse(n.published) > PREV_VISIT);
+const TIP = {
+  tried: 'Tried: attacks were attempted and logged. Nothing is confirmed broken into.',
+  proven: 'Proven: a test system was actually broken into. No real victim confirmed yet.',
+  hit: 'Hit: a real victim is confirmed by name.',
+  reported: 'Reported: one source so far. Not independently confirmed.',
+  retracted: 'Retracted: the source has withdrawn this claim.',
+  lab: 'Lab only: this happened in a test, not in real use.',
+  denied: 'Denied: the party named says it did not happen.',
+};
+// One small popover for every mark: hover on desktop, tap on phones. Each mark explains itself in one honest line.
+const tipBox = (() => { const t = document.createElement('div'); t.className = 'tipbox'; t.setAttribute('role', 'tooltip'); t.hidden = true; document.addEventListener('DOMContentLoaded', () => document.body.append(t)); return t; })();
+let tipAt = 0;
+function showTip(node) { tipAt = Date.now(); const txt0 = node.getAttribute('data-tip'); if (!txt0) return; if (!tipBox.isConnected) document.body.append(tipBox); tipBox.textContent = txt0; tipBox.hidden = false; const r = node.getBoundingClientRect(); const w = Math.min(320, window.innerWidth - 24); tipBox.style.maxWidth = w + 'px'; const left = Math.max(12, Math.min(r.left, window.innerWidth - w - 12)); tipBox.style.left = left + 'px'; tipBox.style.top = (r.bottom + scrollY + 8) + 'px'; }
+function hideTip() { tipBox.hidden = true; }
+document.addEventListener('mouseover', (e) => { const n = e.target.closest && e.target.closest('[data-tip]'); if (n) showTip(n); });
+document.addEventListener('mouseout', (e) => { const n = e.target.closest && e.target.closest('[data-tip]'); if (n) hideTip(); });
+document.addEventListener('click', (e) => { const n = e.target.closest && e.target.closest('[data-tip]'); if (n && n.tagName !== 'A') { e.preventDefault(); if (!tipBox.hidden && tipBox.textContent === n.getAttribute('data-tip') && Date.now() - tipAt > 500) hideTip(); else showTip(n); } else if (!tipBox.hidden && !(e.target.closest && e.target.closest('.tipbox'))) hideTip(); });
 const WALL_COLS = { 1: 'Broke out & broke in', 2: 'Got smarter, took over', 3: 'Fakes, scams & you' };
 const WALL_LABEL = { lab: 'Lab only', retracted: 'Retracted', reported: 'Reported', denied: 'Denied', tried: 'Tried', proven: 'Proven', hit: 'Hit' };
 function drawLevel() {
@@ -491,9 +508,10 @@ function drawWall() {
   box.hidden = false; lead.hidden = false;
   const ext = (a, n) => { a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = (n.outlet || '') + ': ' + n.title; return a; };
   const dots = (t) => /[.!?…]$/.test(t) ? t : t + '...';
-  const chip = (n) => WALL_LABEL[n.label] ? el('span', 'wl-lab ' + n.label, WALL_LABEL[n.label]) : null;
+  const chip = (n) => { if (!WALL_LABEL[n.label]) return null; const c = el('span', 'wl-lab ' + n.label, WALL_LABEL[n.label]); if (TIP[n.label]) { c.setAttribute('data-tip', TIP[n.label]); c.tabIndex = 0; } return c; };
+  const movedMark = (n) => { const m = n.moved; if (!m || !m.at) return null; const t = Date.parse(m.at); const recent = PREV_VISIT ? t > PREV_VISIT : (Date.parse(D.meta.as_of) - t) < 36 * 3.6e6; if (!recent) return null; const up = m.dir === 'up'; const k = el('span', 'mv ' + (up ? 'up' : 'down'), up ? '▲' : '▼'); k.setAttribute('data-tip', (up ? 'Moved up' : 'Moved down') + (PREV_VISIT ? ' since you last looked' : ' in the last day') + ': ' + (m.note || '') + ' (' + fmtET(m.at) + ').'); k.tabIndex = 0; k.setAttribute('aria-label', up ? 'Moved up' : 'Moved down'); return k; };
   const line = (n, withOutlet) => {
-    const w = el('div', 'wl'); if (isNewToReader(n)) { const d = el('i', 'newdot'); d.title = 'New since you last looked'; w.append(d); } const c = chip(n); if (c) w.append(c);
+    const w = el('div', 'wl'); if (isNewToReader(n)) { const d = el('i', 'newdot'); d.setAttribute('data-tip', 'New since you last looked (' + fmtET(new Date(PREV_VISIT).toISOString()) + ').'); w.append(d); } const mv = movedMark(n); if (mv) w.append(mv); const c = chip(n); if (c) w.append(c);
     w.append(ext(el('a', 'dl' + (n.red ? ' red' : ''), dots(n.tag)), n));
     if (withOutlet) w.append(el('span', 'wl-o', (n.outlet || '') + (ageShort(n).endsWith('h ago') || ageShort(n) === 'just now' ? ' · ' + ageShort(n).replace(' ago', '') : '')));
     return w;
@@ -524,14 +542,19 @@ function drawWall() {
       const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1;
       const box2 = el('div', 'serial' + (sr.state === 'closed' ? ' closed' : ''));
       const hd = el('div', 'serial-h'); hd.append(el('span', 'serial-n', sr.name), el('span', 'serial-d', sr.state === 'closed' ? 'Closed ' + fmtDate(new Date(sr.closed + 'T12:00:00Z')) : 'Day ' + day));
+      const inc0 = C.scored.find((r) => r.id === sr.incident_id); const caseNo = inc0 ? el('a', 'serial-c', 'Case ' + inc0.ws) : null; if (caseNo) { caseNo.href = '/i/' + inc0.id + '/'; caseNo.setAttribute('data-tip', 'Case ' + inc0.ws + ' in the index: scored ' + inc0.severity + '/100 (' + inc0.tier + ') by the published formula. Opens the case file.'); }
       const a = el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); a.href = sr.url || '#';
       const ft = el('div', 'serial-f'); const tr = el('a', null, (sr.tech_name ? sr.tech_name + ' ' : '') + 'live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
       if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
       const RUNGS = [['tried', 'Tried', 'attempts logged'], ['proven', 'Proven', 'a test system broken into'], ['hit', 'Hit', 'a real victim confirmed']];
       const at = RUNGS.findIndex(([k]) => k === sr.rung);
       const lad = el('div', 'rungs'); lad.setAttribute('aria-label', 'Proof so far: ' + (at >= 0 ? RUNGS[at][1] : 'none'));
-      RUNGS.forEach(([k, lbl, def], i) => { const r = (sr.rungs || {})[k] || {}; const st = el(r.source_url ? 'a' : 'span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); if (r.source_url) { st.href = r.source_url; st.target = '_blank'; st.rel = 'noopener noreferrer'; } st.title = lbl + ': ' + def + (r.note ? '. ' + r.note : ''); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
-      box2.append(hd, lad, a, ft); col.append(box2);
+      RUNGS.forEach(([k, lbl, def], i) => { const r = (sr.rungs || {})[k] || {}; const st = el('span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); st.tabIndex = 0; st.setAttribute('data-tip', (TIP[k] || lbl) + (r.note ? ' ' + r.note + '.' : '') + (i > at ? ' Not reached yet.' : '')); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
+      const rc = sr.state !== 'closed' && sr.recheck ? el('div', 'serial-r') : null;
+      if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources at the last refresh. A "no" is only news if someone just looked.'); }
+      const nt = sr.state !== 'closed' && sr.next_test && sr.next_test.date ? el('div', 'serial-t') : null;
+      if (nt) { nt.append(el('b', null, 'Next test ' + fmtDate(new Date(sr.next_test.date + 'T12:00:00Z')) + ': '), txt(sr.next_test.text)); nt.setAttribute('data-tip', 'A dated question the index committed to in advance; it is graded on that date, right or wrong, on the Record.'); }
+      box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft); col.append(box2);
     }
     items.filter((n) => +n.wall === c).slice(0, 15).forEach((n) => col.append(line(n, true)));
     if (c === 3) {
@@ -542,8 +565,11 @@ function drawWall() {
     cols.append(col);
   });
   const more = el('button', 'wall-more', 'More headlines'); more.type = 'button'; more.addEventListener('click', () => box.classList.add('open'));
+  const ed = el('p', 'wall-ed');
+  if (D.meta.quiet) ed.append(el('b', 'quiet', 'Rechecked ' + fmtET(D.meta.as_of) + ': nothing moved. '));
+  if (D.meta.edition) { const ea = el('a', null, 'Edition No. ' + D.meta.edition); ea.href = '/' + (D.meta.edition_path || 'archive/'); ea.setAttribute('data-tip', 'Edition No. ' + D.meta.edition + ', published ' + fmtET(D.meta.as_of) + '. Opens a frozen copy of this page exactly as published.'); const cl = el('a', null, 'what changed'); cl.href = '/index/#changelog'; const all = el('a', null, 'every edition'); all.href = '/archive/'; ed.append(ea, txt(' · ' + fmtET(D.meta.as_of) + ' · '), cl, txt(' · '), all); }
   const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it; retractions run as big as the claims they correct. '), (() => { const a = el('a', null, 'The full Wire, ' + newsItems().length + ' reports ↓'); a.href = '#wire'; return a; })());
-  box.replaceChildren(cols, more, foot);
+  box.replaceChildren(cols, more, ed, foot);
 }
 function drawWire() {
   const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');

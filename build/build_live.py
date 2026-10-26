@@ -1,5 +1,5 @@
 # Live panel, 14-day watchlist and site metadata. Refreshed by the scheduled task.
-import json, os
+import json, re, os
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 THN = 'https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html'
 KEV = 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog'
@@ -120,6 +120,8 @@ SERIAL = dict(
  rung='proven', rungs=dict(tried=dict(date='2026-10-21', note='Attack attempts logged from Oct 21', source_url=DELFT), proven=dict(date='2026-10-24', note='Decoy servers broken into, Oct 24', source_url=BC26), hit=dict(date='', note='No real victim confirmed', source_url='')),
  source_url='https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/', source_label='SecurityWeek, Oct 26',
  last_fact='2026-10-26', closed='', verdict='',
+ recheck="still no formal US government warning, still no real victim confirmed",
+ next_test=dict(date='2026-10-31', text="Will America's cyber agency formally warn about it?", call_id='php-kev-by-oct31'),
  end_states=['a fix ships for every open flaw', 'a victim is confirmed by name', 'an agency lists it as exploited', '7 days with no new fact'],
 )
 
@@ -137,6 +139,8 @@ META = dict(
  fieldnote_url='',
  changelog=CHANGELOG,
  serial=SERIAL,
+ quiet=False,
+ edition=sum(1 for c in CHANGELOG if re.match(r'^\d\d:\d\d ET', c['text'])), edition_path='archive/' + AS_OF[:16].replace('T', '-').replace(':', '') + '/',  # True on a refresh where nothing moved: the page says 'Rechecked, nothing moved' at full size
 )
 
 # ---- the Wire: research/news.json -> data/news.json (links to other outlets' reporting; see REFRESH.md)

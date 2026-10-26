@@ -75,6 +75,15 @@ The siren: one story, the most consequential as of this refresh; qualifies by co
 
 Before publishing, check every line: actor in the first three words; past-tense verb, no banned words; key fact stated; every number and name copied from the opened source; verb strength matches the label, temperature matches the level.
 
+### The marks (small, earned, each explains itself in one honest line; if a mark can't, it doesn't ship)
+
+- **Rung tags** (`label`: tried, proven, hit, plus reported, lab, retracted, denied): the word always rides with the mark, and the tap line states the negative half ("Proven: a test system was actually broken into. No real victim confirmed yet.").
+- **Moved** (`moved: {dir: up|down, at, note}` on a Wire item): set it when a story climbs or falls a rung, or a claim is withdrawn. It runs both ways; ▼ for withdrawals is as important as ▲.
+- **Running story**: keep `recheck` (what was just rechecked and is still true), `next_test` (the next dated call that tests it, in plain words) and the rungs current. Set `quiet=True` in META on a refresh where nothing moved; the page then says "Rechecked: nothing moved" at full size.
+- **Edition**: the edition number comes from the timed changelog entries; `snapshot.py` freezes each one. Never skip it.
+- **Not yet built, fill these fields as you go so they can ship:** `independent: {n, who, carried_by}` on Wire items, counting independent reporting, not outlets (14 sites running one Reuters story is one source); `receipt: {who, window, means_not}` for any load-bearing number; for "called it" marks, the call's `resolution` plus the running record; for the race bar on a running story, sourced dates for disclosed, exploit public, fix out, fix verified. First/most tags only for comparisons the index itself can prove, with sensor and window named.
+- **Never**: reader streaks, visit badges, view counts. The pull comes from the world changing, not from mechanics that punish readers for being away.
+
 - "What AI can now do" (the capability index): `research/capabilities.json`, one object per milestone with the five maturity stages (`demonstrated`, `reproduced`, `accessible`, `reliable`, `consequences`, each `{status: yes|partial|no|unknown, date, note, source_url}`), `everyday` (one sentence on what it means for real lives, jobs or families), `related_incident_ids` (ids from `data/incidents.json`), `metric_label`/`metric_value`, `source_url`, `source2_url`, `confidence`. Add a milestone only for a dated, sourced result that moved what AI can do (a benchmark, a time horizon, a scale, a success rate), never a product launch. Each refresh: add new milestones since `as_of`, and upgrade a stage only when a source shows it (a reproduction, a public release, production evidence, a documented consequence). `unknown` is the honest default. `build/build_live.py` validates and writes `data/capabilities.json`.
 - "Did they fix it?" (case statuses): `research/case_status.json`, one object per case with the chain `reported → response → claimed_fix → retest → current`. Each refresh: re-check every case for a new response, claimed fix, independent check or recurrence, and move `current.status` only on evidence: `fixed` needs an independent party confirming the fix under stated conditions; `unverified` is a claimed fix nobody independent has checked; `disputed`, `reopened` (recurred after a claimed fix), `unresolved` (no fix claimed), `ongoing` (still unfolding). Add a case when a new incident scores 55 or more in the wild. "No public response found" is a valid, important entry; never invent a response. Written to `data/fixes.json` by the build.
 
@@ -115,6 +124,7 @@ python3 build_tracker.py                                # the live-incident trac
 python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml
 cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)
 cd build && python3 build_brief.py && cd ..                                  # the daily brief script (briefs/<date>.md) and the forecast ledger (research/forecast_log.jsonl)
+python3 snapshot.py                                     # freezes this edition into archive/<date-time>/ (scripts stripped) for the Edition No. link
 node shot.mjs       http://127.0.0.1:8765/index.html
 ```
 

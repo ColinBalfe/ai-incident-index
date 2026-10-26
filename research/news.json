@@ -1070,7 +1070,12 @@
   "tag": "Palo Alto takes back its report of a government break-in",
   "red": false,
   "label": "retracted",
-  "wall_rank": 6
+  "wall_rank": 6,
+  "moved": {
+   "dir": "down",
+   "at": "2026-10-25T21:15:00Z",
+   "note": "Claim withdrawn: Palo Alto can no longer tie the break-in to this flaw"
+  }
  },
  {
   "id": "statescoop-virginia-ai-cyber-directive",
@@ -2342,7 +2347,12 @@
   "tag": "Hackers proved the flaw in most websites works",
   "red": true,
   "label": "proven",
-  "wall_rank": 1
+  "wall_rank": 1,
+  "moved": {
+   "dir": "up",
+   "at": "2026-10-26T09:19:00Z",
+   "note": "From Tried to Proven: decoy servers actually broken into"
+  }
  },
  {
   "id": "axios-anthropic-claude-georgia-vote-data",
