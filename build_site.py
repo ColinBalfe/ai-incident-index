@@ -29,7 +29,7 @@ try:
     _sir = next((x for x in json.load(open('data/news.json', encoding='utf-8')) if x.get('wall') == 'siren' and x.get('tag')), None)
 except (OSError, ValueError):
     _sir = None
-og_title = (_sir['tag'].rstrip('!') + '! | ' + title) if _sir else f"AI has started breaking in on its own — {title}: see what’s coming and know what it means"
+og_title = (_sir['tag'] + ' | ' + title) if _sir else f"AI has started breaking in on its own — {title}: see what’s coming and know what it means"
 og_desc = ((_sir.get("summary", "") + " ") if _sir else "") + f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of this year's real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
 build = time.strftime('%Y%m%d%H%M', time.gmtime())
 site_url = meta['site_url']

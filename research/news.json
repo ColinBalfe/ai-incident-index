@@ -17,14 +17,16 @@
     "url": "https://cybersecuritynews.com/anthropic-internal-system-breach/"
    }
   ],
-  "tag": "AI AGENTS GET INSIDE ANTHROPIC IN UNDER 12 HOURS",
-  "wall": "siren",
-  "red": true,
-  "wall_rank": 0,
   "img": "assets/img/server-rack-ache.jpg",
   "img_credit": "Photo: Kevin Ache / Unsplash",
   "img_alt": "Racks of servers and network equipment in a dark server room",
-  "img_credit_url": "https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0"
+  "img_credit_url": "https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0",
+  "wall": "siren",
+  "tag": "Startup's AI agents got into Anthropic's systems in under 12 hours",
+  "red": false,
+  "label": "confirmed",
+  "wall_rank": 0,
+  "standfirst": "Anthropic confirms the agents reached a limited set of its sales, HR and IT systems through outside business software. No customer chats, code or model weights. Access was cut the same day; Anthropic says the startup broke its bug-bounty rules."
  },
  {
   "id": "axios-anthropic-s1-risk-factors",
@@ -39,10 +41,11 @@
   "summary": "Over 90 pages of risk factors; Anthropic says it found no sign the models pursued goals beyond their assigned tasks.",
   "siren": false,
   "also": [],
-  "tag": "Anthropic's own IPO filing: AI could pose 'catastrophic or existential' risk",
-  "wall": 3,
-  "red": true,
-  "wall_rank": -3
+  "wall": 2,
+  "tag": "Anthropic's IPO filing: four models reached outside systems in tests",
+  "red": false,
+  "label": "confirmed",
+  "wall_rank": 13
  },
  {
   "id": "securityweek-php2shell-working-shells",
@@ -57,10 +60,11 @@
   "summary": "35 shells from two IPs on three decoys Oct 24, on a deliberately favorable setup; no second-stage download seen.",
   "siren": false,
   "also": [],
-  "tag": "No victim named; CISA still hasn't listed it",
   "wall": "lead",
+  "tag": "Day 6: no victim named, no CISA listing, third bug unpatched",
   "red": false,
-  "wall_rank": 3
+  "label": "confirmed",
+  "wall_rank": 4
  },
  {
   "id": "gulfnews-dubai-cafe-ai-refund-photo",
@@ -75,10 +79,11 @@
   "summary": "The café spotted the wrong drink, cups and branding, and asks delivery apps to protect small restaurants from faked claims.",
   "siren": false,
   "also": [],
-  "tag": "Café says a customer AI-faked a spilled order to get a refund",
-  "wall": 2,
+  "wall": 3,
+  "tag": "Dubai café claims customer AI-faked a spill for a refund",
   "red": false,
-  "wall_rank": 23
+  "label": "reported",
+  "wall_rank": 29
  },
  {
   "id": "npr-deepmind-hurricane-isaias",
@@ -93,10 +98,11 @@
   "summary": "AI beat physics-based models on the track but trailed the Hurricane Center's blend on intensity.",
   "siren": false,
   "also": [],
-  "tag": "Google's AI called the hurricane landfall the standard models missed",
-  "wall": 3,
+  "wall": 2,
+  "tag": "Google DeepMind's AI called the Isaias landfall standard models missed",
   "red": false,
-  "wall_rank": 32
+  "label": "confirmed",
+  "wall_rank": 18
  },
  {
   "id": "helpnet-arrakis-dormant-agents",
@@ -110,11 +116,7 @@
   "topic": "ai-attack",
   "summary": "Arrakis: 19% use keys that never expire; 82% had at least one exposure.",
   "siren": false,
-  "also": [],
-  "tag": "76% of company AI agents haven't run in two months; many still hold live keys",
-  "wall": 1,
-  "red": false,
-  "wall_rank": 10
+  "also": []
  },
  {
   "id": "ibtimes-star50-ai-selloff",
@@ -129,10 +131,11 @@
   "summary": "AI stocks make up 42% of Chinese market value; retail buyers are exposed.",
   "siren": false,
   "also": [],
-  "tag": "$480 BILLION GONE: China's AI stock index down 40%",
   "wall": 3,
-  "red": true,
-  "wall_rank": 28
+  "tag": "China's AI stock index lost 40%, about $480 billion, since July",
+  "red": false,
+  "label": "reported",
+  "wall_rank": 31
  },
  {
   "id": "volokh-ai-deepfakes-in-court-database",
@@ -147,10 +150,11 @@
   "summary": "Damien Charlotin's 'AI Deepfakes in Court' logs fabricated texts, records and correspondence submitted as evidence.",
   "siren": false,
   "also": [],
-  "tag": "26 court cases of alleged AI-faked evidence, and counting",
-  "wall": 2,
+  "wall": 3,
+  "tag": "Tracker logged 26 court cases of alleged AI-faked evidence",
   "red": false,
-  "wall_rank": 25
+  "label": "confirmed",
+  "wall_rank": 34
  },
  {
   "id": "tnw-openai-phone-checks-greenblatt",
@@ -174,10 +178,11 @@
     "url": "https://winbuzzer.com/2026/10/24/openai-probed-safety-researchers-signal-messaging-before-firings-xcxwbn/"
    }
   ],
-  "tag": "OpenAI checked fired safety researchers' phones for Signal chats, WSJ says",
-  "wall": 3,
+  "wall": 2,
+  "tag": "WSJ: OpenAI checked fired safety researchers' phones for Signal chats",
   "red": false,
-  "wall_rank": 27
+  "label": "reported",
+  "wall_rank": 16
  },
  {
   "id": "ktai-docomo-area-mail-restored",
@@ -211,10 +216,11 @@
     "url": "https://www.bloomberg.com/news/articles/2026-10-25/goldman-cuts-kospi-12-month-target-by-25-as-ai-trade-unravels"
    }
   ],
-  "tag": "Goldman slashes Korea target 25% as the AI trade unwinds",
   "wall": 3,
+  "tag": "Goldman cut its Korea target 25% as the AI trade unwound",
   "red": false,
-  "wall_rank": 29
+  "label": "confirmed",
+  "wall_rank": 32
  },
  {
   "id": "gizmodo-alpha-school-2x-claims",
@@ -234,10 +240,11 @@
     "url": "https://www.nytimes.com/2026/10/23/us/alpha-school-ai-education-parents.html"
    }
   ],
-  "tag": "AI school promised '2x learning'; fewer than half of pupils hit it",
-  "wall": 2,
+  "wall": 3,
+  "tag": "Alpha School promised '2x learning'; most K-8 pupils fell short",
   "red": false,
-  "wall_rank": 24
+  "label": "reported",
+  "wall_rank": 30
  },
  {
   "id": "runtimewire-avalon-m1-reporting",
@@ -257,10 +264,11 @@
     "url": "https://www.gr.inc/releases/avalon-m1"
    }
   ],
-  "tag": "Trained together, AI agents stopped alerting humans: 76.7% of runs to zero",
-  "wall": 3,
-  "red": true,
-  "wall_rank": 26
+  "wall": 2,
+  "tag": "General Reasoning's agents stopped alerting humans: 76.7% of runs to zero",
+  "red": false,
+  "label": "lab",
+  "wall_rank": 14
  },
  {
   "id": "topstar-kisa-115560-mitigation",
@@ -391,11 +399,7 @@
   "topic": "other",
   "summary": "Authentic Brands Group's suit, filed Friday, says Claude trained on the songs and still reproduces them 'for a modern audience'.",
   "siren": false,
-  "also": [],
-  "tag": "Elvis estate sues Anthropic for about $41M over 274 songs",
-  "wall": 3,
-  "red": false,
-  "wall_rank": 34
+  "also": []
  },
  {
   "id": "npr-pentagon-gao-responsible-ai",
@@ -1061,7 +1065,12 @@
     "outlet": "Dailysecu",
     "url": "https://www.dailysecu.com/news/articleView.html?idxno=209058"
    }
-  ]
+  ],
+  "wall": 1,
+  "tag": "Palo Alto takes it back: can't tie government break-in to PHP2Shell",
+  "red": false,
+  "label": "retracted",
+  "wall_rank": 6
  },
  {
   "id": "statescoop-virginia-ai-cyber-directive",
@@ -2240,9 +2249,10 @@
     "url": "https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html"
    }
   ],
-  "tag": "One file in a Downloads folder hijacked Codex 90% of the time",
   "wall": 1,
+  "tag": "Planted Downloads-folder file hijacked OpenAI's Codex in 90% of tests",
   "red": false,
+  "label": "reported",
   "wall_rank": 9
  },
  {
@@ -2263,10 +2273,11 @@
     "url": "https://www.jpost.com/israel-election-2026/article-912797"
    }
   ],
-  "tag": "Netanyahu posts AI image of a nuke hitting Tel Aviv before the vote",
-  "wall": 2,
-  "red": true,
-  "wall_rank": 18
+  "wall": 3,
+  "tag": "Netanyahu posted AI image of a nuke hitting Tel Aviv",
+  "red": false,
+  "label": "confirmed",
+  "wall_rank": 23
  },
  {
   "id": "etoday-korea-php-shinhan-broadcom",
@@ -2323,14 +2334,15 @@
   "summary": "Marcus Hutchins calls it the best in-the-wild confirmation yet; Dataminr saw 'no known compromises' before it; VirusTotal: 5.1M exposed hosts.",
   "siren": false,
   "also": [],
-  "tag": "PHP2Shell now works in the wild",
-  "wall": "lead",
-  "red": true,
-  "wall_rank": 0,
   "img": "assets/img/code-screen-malinowski.jpg",
   "img_credit": "Photo: Dominik Malinowski / Unsplash",
   "img_alt": "Lines of web code on a dark computer screen",
-  "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q"
+  "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q",
+  "wall": "lead",
+  "tag": "PHP2Shell confirmed working in the wild, on a decoy server",
+  "red": true,
+  "label": "confirmed",
+  "wall_rank": 1
  },
  {
   "id": "axios-anthropic-claude-georgia-vote-data",
@@ -2358,10 +2370,11 @@
     "url": "https://en.sedaily.com/international/2026/10/26/anthropics-claude-accessed-georgia-election-data-without"
    }
   ],
-  "tag": "Claude asked for an access token on its own, then pulled paywalled Georgia vote data",
-  "wall": 3,
+  "wall": 1,
+  "tag": "Claude asked for a token unprompted, pulled paywalled Georgia vote data",
   "red": false,
-  "wall_rank": -2
+  "label": "confirmed",
+  "wall_rank": 5
  },
  {
   "id": "kjd-seoul-police-genai-hacking-ring",
@@ -2376,10 +2389,11 @@
   "summary": "A self-taught coder led the group; 38 organizations were told to pay 360 million won; police say personal data was recovered.",
   "siren": false,
   "also": [],
-  "tag": "Seven arrested: used AI to hack 90 organizations, steal 8.2M records",
   "wall": 1,
-  "red": true,
-  "wall_rank": 8
+  "tag": "Seoul police arrested seven who used AI to hack 90 organizations",
+  "red": false,
+  "label": "confirmed",
+  "wall_rank": 7
  },
  {
   "id": "delft-php2shell-live-dashboard",
@@ -2394,10 +2408,11 @@
   "summary": "171 source IPs sent code or a dropper; two IPs probed before the fix shipped; busiest hour 21:00 UTC Oct 21.",
   "siren": false,
   "also": [],
-  "tag": "41,907 attack requests from 68 countries",
   "wall": "lead",
+  "tag": "TU Delft logged 41,907 attack requests from 68 countries",
   "red": false,
-  "wall_rank": 2
+  "label": "confirmed",
+  "wall_rank": 3
  },
  {
   "id": "kathmandu-nepal-gov-sites-back",
@@ -2412,10 +2427,11 @@
   "summary": "Thousands of sites on the shared GIWMS platform were patched centrally; vendor-managed sites are returning gradually, the SDOC says.",
   "siren": false,
   "also": [],
-  "tag": "Nepal's government websites crawl back after days offline",
   "wall": 1,
+  "tag": "Nepal brought most government websites back after PHP shutdown",
   "red": false,
-  "wall_rank": 13
+  "label": "confirmed",
+  "wall_rank": 11
  },
  {
   "id": "sbsbiz-kb-tablet-branch-resumes",
@@ -2430,10 +2446,11 @@
   "summary": "The service went off at about 18:00 on Oct 21 on the Financial Supervisory Service's recommendation and came back Oct 26.",
   "siren": false,
   "also": [],
-  "tag": "Korean bank's branch service back after a five-day PHP shutdown",
   "wall": 1,
+  "tag": "KB Kookmin reopened its tablet branch after a five-day PHP shutdown",
   "red": false,
-  "wall_rank": 14
+  "label": "confirmed",
+  "wall_rank": 12
  },
  {
   "id": "csn-stealmybitcoin-challenge-won",
@@ -2448,10 +2465,11 @@
   "summary": "The unpatched PHP server fell at 15:47 UTC Oct 25; the published script worked in about seven of ten lab runs.",
   "siren": false,
   "also": [],
-  "tag": "Unpatched server cracked in 19 hours; exploit now public",
   "wall": "lead",
+  "tag": "Hacker cracked an unpatched PHP server in 19 hours; code public",
   "red": false,
-  "wall_rank": 1
+  "label": "confirmed",
+  "wall_rank": 2
  },
  {
   "id": "itjungle-php2shell-ibm-i",
@@ -2494,10 +2512,11 @@
   "summary": "Hundreds of AI-generated images and 150-plus covert recordings found on seized devices, per NBC10; arrested Oct 21, out on bail.",
   "siren": false,
   "also": [],
-  "tag": "Police: Grok used to turn a teenage girl's photo into abuse images",
-  "wall": 2,
-  "red": true,
-  "wall_rank": 15
+  "wall": 3,
+  "tag": "Man charged with using Grok to fake abuse images of teen",
+  "red": false,
+  "label": "confirmed",
+  "wall_rank": 21
  },
  {
   "id": "chron-fort-bend-ai-endorsement-video",
@@ -2512,10 +2531,11 @@
   "summary": "Warped backgrounds and one voice for four speakers gave it away; the campaign has not said where the video came from.",
   "siren": false,
   "also": [],
-  "tag": "Judge's campaign pulls AI video of fake Black supporters",
-  "wall": 2,
+  "wall": 3,
+  "tag": "Texas judge's campaign pulled an AI video of fake Black supporters",
   "red": false,
-  "wall_rank": 21
+  "label": "confirmed",
+  "wall_rank": 27
  },
  {
   "id": "statesman-indian-army-kalia-deepfake",
@@ -2530,10 +2550,11 @@
   "summary": "Footage came from a 2023 Kashmir briefing; the Army calls it an attempt to spread military disinformation and create panic.",
   "siren": false,
   "also": [],
-  "tag": "Fake general 'admits' China took Indian territory; Army says deepfake",
-  "wall": 2,
+  "wall": 3,
+  "tag": "Indian Army: deepfake general 'admitted' China took territory",
   "red": false,
-  "wall_rank": 17
+  "label": "confirmed",
+  "wall_rank": 25
  },
  {
   "id": "alhurra-inss-iran-profiles-israel-election",
@@ -2548,10 +2569,11 @@
   "summary": "Golden Owl traced the accounts; Shin Bet removed several on Oct 22; INSS calls the post-poll count the riskiest period.",
   "siren": false,
   "also": [],
-  "tag": "157 Iran-linked fake 'Israelis' with stolen or AI faces",
-  "wall": 2,
+  "wall": 3,
+  "tag": "157 Iran-linked accounts posed as Israelis with stolen or AI faces",
   "red": false,
-  "wall_rank": 19
+  "label": "reported",
+  "wall_rank": 26
  },
  {
   "id": "toi-channel12-russian-accounts-thwarted",
@@ -2580,10 +2602,11 @@
   "summary": "Cloned voice over 2019 footage; Hive rates the audio 99.4% AI; the clip targets 'Cockroach Janta Party' leaders.",
   "siren": false,
   "also": [],
-  "tag": "Deepfaked security chief threatens activists; 380,000 views",
-  "wall": 2,
+  "wall": 3,
+  "tag": "Deepfake of India's security chief threatened activists; 380,000 views",
   "red": false,
-  "wall_rank": 16
+  "label": "confirmed",
+  "wall_rank": 24
  },
  {
   "id": "tnw-aisi-mythos5-run-details",
@@ -2598,10 +2621,11 @@
   "summary": "Nine of 43 runs took real-world actions, including a fake payment page serving malware; AISI filed an incident report Aug 4.",
   "siren": false,
   "also": [],
-  "tag": "Government test: once Mythos 5 started attacking, it kept going in 98% of replays",
   "wall": 1,
+  "tag": "Mythos 5 hijacked a real GitHub account in UK government tests",
   "red": false,
-  "wall_rank": -1
+  "label": "confirmed",
+  "wall_rank": 8
  },
  {
   "id": "geekwire-etzioni-midterm-ai-ads",
@@ -2616,10 +2640,11 @@
   "summary": "Only 29% of AI ads carried labels in states that require them; new unlabeled examples in Oklahoma, Minnesota and New York.",
   "siren": false,
   "also": [],
-  "tag": "43% of US voters say an AI ad has already fooled them",
-  "wall": 2,
-  "red": true,
-  "wall_rank": 20
+  "wall": 3,
+  "tag": "43% of US voters say an AI ad already fooled them",
+  "red": false,
+  "label": "reported",
+  "wall_rank": 22
  },
  {
   "id": "banner-hopkins-bayview-ai-upload",
@@ -2639,10 +2664,11 @@
     "url": "https://www.wmar2news.com/local/patients-data-sent-to-ai-tool-johns-hopkins-bayview-medical-center-oct-23-2026"
    }
   ],
-  "tag": "Hospital worker fed 3,182 patients' records into an unapproved AI",
   "wall": 1,
+  "tag": "Hospital worker put 3,182 patients' records into an unapproved AI",
   "red": false,
-  "wall_rank": 11
+  "label": "confirmed",
+  "wall_rank": 10
  },
  {
   "id": "thn-openai-vm-escapes",
@@ -2662,10 +2688,11 @@
     "url": "https://tomshardware.com/tech-industry/artificial-intelligence/openais-isolated-red-team-ai-agents-built-a-hidden-cpu-cache-channel-to-talk-with-no-network-or-shared-files-exploited-cpu-cache-timing-to-bypass-microvm-sandboxes"
    }
   ],
-  "tag": "OpenAI takes frontier training offline after its agents escaped their sandboxes",
-  "wall": 1,
+  "wall": 2,
+  "tag": "OpenAI's test agents broke out of their sandboxes; training now offline",
   "red": false,
-  "wall_rank": 12
+  "label": "lab",
+  "wall_rank": 15
  },
  {
   "id": "register-china-deepseek-export-licence",
@@ -2722,10 +2749,11 @@
   "summary": "Torsten Slok's note strips out the seven biggest tech firms and finds flat productivity measures for everyone else.",
   "siren": false,
   "also": [],
-  "tag": "Apollo economist: no AI payoff for the other 493",
-  "wall": 3,
+  "wall": 2,
+  "tag": "Apollo's economist found no AI payoff outside the seven tech giants",
   "red": false,
-  "wall_rank": 30
+  "label": "reported",
+  "wall_rank": 20
  },
  {
   "id": "nos-dutch-firms-chinese-ai",
@@ -2754,10 +2782,11 @@
   "summary": "Its health-IT chief says nobody loses a job and concedes the 90,000-hours-saved figure is an unconfirmed pilot forecast.",
   "siren": false,
   "also": [],
-  "tag": "AI now helps decide when patients leave 12 Virginia hospitals",
-  "wall": 3,
+  "wall": 2,
+  "tag": "Sentara rolled out an AI discharge tool across 12 Virginia hospitals",
   "red": false,
-  "wall_rank": 33
+  "label": "confirmed",
+  "wall_rank": 19
  },
  {
   "id": "koreaherald-ai-synthetic-shoppers",
@@ -2772,10 +2801,11 @@
   "summary": "Lotte Members began an AI Twin Consumer in July; one vendor claims 91.2% correlation with a 500-person survey.",
   "siren": false,
   "also": [],
-  "tag": "Korean retailers test products on AI 'shoppers' built from 45 million members' data",
   "wall": 3,
+  "tag": "Korean retailers built AI 'shoppers' from 45 million members' data",
   "red": false,
-  "wall_rank": 35
+  "label": "reported",
+  "wall_rank": 33
  },
  {
   "id": "sedaily-skt-ai-governance-report",
@@ -2809,10 +2839,11 @@
   "summary": "A National Geographic team followed the IP address; no arrest reported; the scam ran ten months.",
   "siren": false,
   "also": [],
+  "wall": 3,
   "tag": "Fake 'Bon Jovi' AI videos took $10,000 from a Louisiana woman",
-  "wall": 2,
   "red": false,
-  "wall_rank": 22
+  "label": "reported",
+  "wall_rank": 28
  },
  {
   "id": "sbs-agibot-110-humanoids-record",
@@ -2832,10 +2863,11 @@
     "url": "https://www.globaltimes.cn/page/202610/1372888.shtml"
    }
   ],
+  "wall": 2,
   "tag": "China built 40,000-plus humanoid robots in six months",
-  "wall": 3,
   "red": false,
-  "wall_rank": 31
+  "label": "confirmed",
+  "wall_rank": 17
  },
  {
   "id": "kjd-samsung-skhynix-ai-chip-profit",

@@ -447,31 +447,69 @@ const SIREN_SVG = '<svg class="siren-ic" viewBox="0 0 34 34" aria-hidden="true">
 function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url).slice().sort((a, b) => String(b.published || '').localeCompare(String(a.published || ''))); }
 /* ---------- the headline wall: index-written lines on top of credible reporting (research/news.json: tag, wall, red, wall_rank).
    Each line must be supportable by the story it links to; the outlet's own framing is in the tooltip and the small print. */
+const WALL_COLS = { 1: 'Broke out & broke in', 2: 'Got smarter, took over', 3: 'Fakes, scams & you' };
+const WALL_LABEL = { lab: 'Lab only', retracted: 'Retracted', reported: 'Reported', denied: 'Denied' };
+function drawLevel() {
+  const box = document.getElementById('level'); if (!box || !C.scored) return;
+  const asOf = Date.parse(D.meta.as_of);
+  const recent = C.scored.filter((r) => { const d = Date.parse(r.disclosed || r.date); return d && asOf - d <= 864e5 && d <= asOf + 864e5; });
+  const live = C.scored.find((r) => r.id === D.meta.live_incident);
+  const pool = recent.concat(live ? [live] : []); if (!pool.length) { box.hidden = true; return; }
+  const top = pool.slice().sort((a, b) => b.severity - a.severity)[0];
+  const n = +String(top.level).replace('WS-', '');
+  const seven = Date.parse(D.meta.as_of.slice(0, 10) + 'T07:00:00' + D.meta.as_of.slice(19));
+  const fresh = newsItems().filter((x) => x.tag && x.wall && Date.parse(x.published) >= seven).length;
+  const h = C.headline || {};
+  box.hidden = false; box.className = 'lvl lv' + n;
+  const a1 = el('a', 'lvl-l'); a1.href = '#i=' + top.id; a1.title = 'Highest level among incidents disclosed in the last 24 hours and the live incident: ' + top.title;
+  a1.append(el('span', 'k', 'Today’s level'), el('b', null, top.level + ' ' + String(top.tier).toUpperCase()));
+  const a2 = el('span', 'lvl-n'); a2.append(el('b', null, String(fresh)), txt(' new since 7:00 AM ET'));
+  const a3 = el('a', 'lvl-s'); a3.href = '#record'; a3.append(txt('Severe incidents, last 12 months: '), el('b', null, String(h.severe_last12 ?? '')), txt(' (was ' + (h.severe_prior12 ?? '') + ')'));
+  box.replaceChildren(a1, a2, a3);
+}
 function drawWall() {
   const lead = document.getElementById('wall-lead'), box = document.getElementById('wall'); if (!box || !lead) return;
+  drawLevel();
   const items = newsItems().filter((n) => n.tag && n.wall).sort((a, b) => (a.wall_rank ?? 999) - (b.wall_rank ?? 999));
   const siren = items.find((n) => n.wall === 'siren');
   if (!siren) { box.hidden = true; lead.hidden = true; return; }
   box.hidden = false; lead.hidden = false;
   const ext = (a, n) => { a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = (n.outlet || '') + ': ' + n.title; return a; };
   const dots = (t) => /[.!?…]$/.test(t) ? t : t + '...';
-  const line = (n) => { const a = ext(el('a', 'dl' + (n.red ? ' red' : ''), dots(n.tag)), n); return a; };
-  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; im.alt = n.img_alt || ''; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.referrerPolicy = 'no-referrer'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) { const fc = el('figcaption'); if (n.img_credit_url) { const c = el('a', null, n.img_credit); c.href = n.img_credit_url; c.target = '_blank'; c.rel = 'noopener noreferrer'; fc.append(c); } else fc.textContent = n.img_credit; f.append(fc); } return f; };
+  const chip = (n) => WALL_LABEL[n.label] ? el('span', 'wl-lab ' + n.label, WALL_LABEL[n.label]) : null;
+  const line = (n, withOutlet) => {
+    const w = el('div', 'wl'); const c = chip(n); if (c) w.append(c);
+    w.append(ext(el('a', 'dl' + (n.red ? ' red' : ''), dots(n.tag)), n));
+    if (withOutlet) w.append(el('span', 'wl-o', (n.outlet || '') + (ageShort(n).endsWith('h ago') || ageShort(n) === 'just now' ? ' · ' + ageShort(n).replace(' ago', '') : '')));
+    return w;
+  };
+  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; im.alt = n.img_alt || ''; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) { const fc = el('figcaption'); if (n.img_credit_url) { const c = el('a', null, n.img_credit); c.href = n.img_credit_url; c.target = '_blank'; c.rel = 'noopener noreferrer'; fc.append(c); } else fc.textContent = n.img_credit; f.append(fc); } return f; };
   // 1. the lead cluster: a picture, then four lines
   const cl = items.filter((n) => n.wall === 'lead').slice(0, 4);
   const cluster = el('div', 'dl-cluster');
   const withImg = cl.find((n) => n.img); if (withImg) cluster.append(pic(withImg, 'dl-pic'));
-  const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n))); cluster.append(ll);
-  // 2. the siren: a centred picture, then the headline (the masthead follows in the page)
+  const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n, false))); cluster.append(ll);
+  // 2. the siren: a centred picture, the headline, then what is confirmed (the masthead follows in the page)
   const sv = el('div', 'dl-siren');
   if (siren.img) sv.append(pic(siren, 'dl-hero'));
-  sv.append(ext(el('a', 'dl-head' + (siren.red ? ' red' : ''), siren.tag + (/[!?]$/.test(siren.tag) ? '' : '!')), siren));
+  sv.append(ext(el('a', 'dl-head' + (siren.red ? ' red' : ''), siren.tag), siren));
+  if (siren.standfirst) sv.append(el('p', 'dl-stand', siren.standfirst));
+  const so = el('div', 'dl-src'); so.append(txt(siren.outlet + ' · ' + ageShort(siren) + ' · '), ext(el('a', null, 'Read the original reporting →'), siren)); sv.append(so);
   lead.replaceChildren(...(cl.length ? [cluster] : []), sv);
   // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');
-  [1, 2, 3].forEach((c) => { const col = el('div', 'wall-col'); items.filter((n) => +n.wall === c).slice(0, 15).forEach((n) => col.append(line(n))); cols.append(col); });
+  [1, 2, 3].forEach((c) => {
+    const col = el('div', 'wall-col'); col.append(el('h2', 'wall-ch', WALL_COLS[c]));
+    items.filter((n) => +n.wall === c).slice(0, 15).forEach((n) => col.append(line(n, true)));
+    if (c === 3) {
+      const pr = el('div', 'protect'); pr.append(el('div', 'protect-h', 'Protect yourself'));
+      [['Set a family safe word (2 minutes)', '/shield/'], ['Check if your email was in a breach', 'https://haveibeenpwned.com/'], ['Keep your site out of AI training sets', '/scraped/']].forEach(([t, u]) => { const a = el('a', null, t + ' →'); a.href = u; if (/^https?:/.test(u)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } pr.append(a); });
+      col.append(pr);
+    }
+    cols.append(col);
+  });
   const more = el('button', 'wall-more', 'More headlines'); more.type = 'button'; more.addEventListener('click', () => box.classList.add('open'));
-  const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots and links straight to the original reporting; hover for the outlet’s own headline. '), (() => { const a = el('a', null, 'The full Wire, ' + newsItems().length + ' reports ↓'); a.href = '#wire'; return a; })());
+  const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it; retractions run as big as the claims they correct. '), (() => { const a = el('a', null, 'The full Wire, ' + newsItems().length + ' reports ↓'); a.href = '#wire'; return a; })());
   box.replaceChildren(cols, more, foot);
 }
 function drawWire() {

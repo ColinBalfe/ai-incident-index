@@ -12,7 +12,7 @@
    "source_label": "Axios"
   },
   {
-   "text": "PHP2Shell, day six: quiet since morning. Honeypot shells confirmed, still no organization named as breached, no PHP fix release for the three CVEs, and no CISA listing as of Monday morning.",
+   "text": "PHP2Shell, day six: quiet since morning. Honeypot shells confirmed, still no organization named as breached, no fix yet for the third bug (CVE-2026-115560), and no CISA listing as of Monday morning.",
    "url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
    "source_label": "SecurityWeek"
   }
