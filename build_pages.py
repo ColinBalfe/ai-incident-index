@@ -252,6 +252,10 @@ try:
 except (OSError, ValueError):
     pass
 
+# ---------- the live-incident tracker (build_tracker.py)
+if os.path.exists('php2shell/index.html') and site + 'php2shell/' not in urls:
+    urls.insert(0, site + 'php2shell/')
+
 # ---------- prune pages for records that no longer exist
 keep = {u.replace(site, '') for u in urls}
 for kind in ('i', 'c', 'm'):
@@ -267,5 +271,23 @@ for u in urls:
     sm.append(f'<url><loc>{esc(u)}</loc><lastmod>{lastmod}</lastmod></url>')
 sm.append('</urlset>')
 open('sitemap.xml', 'w', encoding='utf-8').write('\n'.join(sm))
-open('robots.txt', 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\nSitemap: {site}sitemap.xml\n')
+# ---------- Google News sitemap: pages for incidents disclosed in the last 48 hours, plus the live tracker
+_now = dt.datetime.fromisoformat(AS_OF)
+_news = []
+if os.path.exists('php2shell/index.html'):
+    _news.append((site + 'php2shell/', 'PHP2Shell live tracker: exploitation, victims, CISA KEV status'))
+for r in scored:
+    d = r.get('disclosed') or r['date']
+    try:
+        if len(d) >= 10 and (_now.date() - dt.date.fromisoformat(d[:10])).days <= 2:
+            _news.append((f'{site}i/{r["id"]}/', r['title']))
+    except ValueError:
+        pass
+ns = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">']
+for u, t in _news:
+    ns.append(f'<url><loc>{esc(u)}</loc><news:news><news:publication><news:name>Warning Shots</news:name><news:language>en</news:language></news:publication><news:publication_date>{AS_OF}</news:publication_date><news:title>{esc(t[:110])}</news:title></news:news></url>')
+ns.append('</urlset>')
+open('news-sitemap.xml', 'w', encoding='utf-8').write('\n'.join(ns))
+json.dump([u for u, _ in _news], open('data/fresh_urls.json', 'w'))
+open('robots.txt', 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\nSitemap: {site}sitemap.xml\nSitemap: {site}news-sitemap.xml\n')
 print('pages', len(urls), '(incidents', len(scored), 'cases', len(fixes), 'milestones', len(caps), '+ 3 indexes), sitemap written')

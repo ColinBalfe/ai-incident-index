@@ -383,8 +383,8 @@ function drawNow() {
   document.getElementById('now-title').textContent = live.name;
   document.getElementById('now-note').textContent = D.meta.live_note || live.now_text;
   document.getElementById('now-stamp').textContent = 'Checked ' + fmtET(D.meta.as_of) + (D.meta.next_check ? ', next check ' + fmtETsmart(D.meta.next_check) : '');
-  document.getElementById('now-link').href = '#d=' + live.incident_id;
-  document.getElementById('now-link').textContent = 'Full breakdown: every organization, the map, the timeline';
+  document.getElementById('now-link').href = live.incident_id === 'php2shell' ? '/php2shell/' : '#d=' + live.incident_id;
+  document.getElementById('now-link').textContent = live.incident_id === 'php2shell' ? 'The live tracker: am I affected, who was hit, what officials said' : 'Full breakdown: every organization, the map, the timeline';
   const grid = document.getElementById('live-grid');
   const since = D.meta.live_since ? Date.parse(D.meta.live_since) : null;
   const clock = since ? (() => { const c = el('div', 'live clock'); const v = el('div', 'v'); const upd = () => { const ms = Date.now() - since; const h = Math.floor(ms / 3.6e6), mn = Math.floor((ms % 3.6e6) / 6e4), sc = Math.floor((ms % 6e4) / 1000); v.textContent = h + 'h ' + String(mn).padStart(2, '0') + 'm ' + String(sc).padStart(2, '0') + 's'; }; upd(); clearInterval(window._liveClock); window._liveClock = setInterval(upd, 1000); c.append(v, el('div', 'l', D.meta.live_since_label || 'since the fix shipped')); c.append(el('div', 'd', 'Counting from the coordinated release. The gap between a patch and a working exploit is now measured in hours.')); return c; })() : null;

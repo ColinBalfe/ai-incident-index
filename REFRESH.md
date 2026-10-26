@@ -78,6 +78,7 @@ node prerender.mjs  http://127.0.0.1:8765/index.html   # bakes the first screen 
 node make_og.mjs    http://127.0.0.1:8765/index.html
 node make_cards.mjs http://127.0.0.1:8765/index.html   # share cards for every dispatch; re-renders only changed records
 python3 build_tools.py                                  # the two free tools (shield/, scraped/); refreshes the AI-crawler list from GitHub when reachable
+python3 build_tracker.py                                # the live-incident tracker page (php2shell/): status, am-I-affected, FAQ, timeline, victims
 python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml
 cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)
 cd build && python3 build_brief.py && cd ..                                  # the daily brief script (briefs/<date>.md) and the forecast ledger (research/forecast_log.jsonl)
@@ -97,6 +98,8 @@ git add -A && git commit -m "Refresh: <date> — <one line on what changed>"
 git pull --rebase origin main    # the editor may have pushed site changes while this run was working; never force-push
 git push
 ```
+
+After the push has deployed (about two minutes), run `python3 indexnow.py` so Bing, Yandex, Naver and Seznam recrawl the front page, the tracker and new incident pages at once (Bing also feeds DuckDuckGo and ChatGPT search). The share card (`assets/og.png`) is now the siren: its picture and headline, so every share of the front page shows the current lead.
 
 If the rebase reports a conflict, keep both sides' intent (your data rows and changelog entry, the site's code), run the build steps again from `python3 build_site.py` onward, `git add -A && git rebase --continue`, then push. GitHub Pages redeploys automatically within a couple of minutes. Confirm the live site shows the new `as_of` in the top bar.
 

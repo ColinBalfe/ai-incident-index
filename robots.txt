@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://warningshots.ai/sitemap.xml
+Sitemap: https://warningshots.ai/news-sitemap.xml
