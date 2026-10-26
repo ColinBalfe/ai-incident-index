@@ -25,6 +25,10 @@ A daily AI briefing of about 13 minutes, plus a 60-second cut for social. It bor
 
 On a quiet day, the segments get shorter, never padded. The clock may run 9–14 minutes; the order never changes.
 
+## What makes the show
+
+Widen the intake, never the lens. A story qualifies if AI is the actor and the consequence lands on ordinary life: your job, your kids, your money, your vote, your safety. Launches, funding, benchmark races, papers and lab politics with no real-world consequence stay out. The promise is "what AI did in the world today, and what it means for you", with the level as the signature and the graded record as the proof.
+
 ## Packaging
 
 - **One menu, written once a day.** The morning refresh writes the day's menu once (four signposted lines), and it feeds the episode's menu, the show notes, the site, the social post and, later, the email. That isn't just efficient; for a solo show it's the only way to keep up the cadence.
