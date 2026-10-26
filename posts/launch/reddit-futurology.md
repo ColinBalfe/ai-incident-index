@@ -1,10 +1,10 @@
-<!-- DRAFT. Nothing here posts itself. Numbers as of Oct 26, 2026, 15:25 ET; recheck them against https://warningshots.ai/index/ before posting. Licence line pending Colin's decision. -->
+<!-- DRAFT. Nothing here posts itself. Numbers as of Oct 26, 2026, 15:25 ET; recheck them against https://warningshots.ai/index/?utm_source=reddit&utm_medium=social&utm_campaign=launch&utm_content=r-futurology before posting. Licence line pending Colin's decision. -->
 
 # r/Futurology (requires a submission statement as the first comment)
 
 **Title:** In 42% of this year's real-world AI incidents, the AI itself did the acting, not a person using it as a tool
 
-**Link:** https://warningshots.ai/index/
+**Link:** https://warningshots.ai/index/?utm_source=reddit&utm_medium=social&utm_campaign=launch&utm_content=r-futurology
 
 **Submission statement:**
 

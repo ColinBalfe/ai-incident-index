@@ -16,7 +16,7 @@ as_of_label = dt.datetime.fromisoformat(AS_OF).astimezone(ZoneInfo('America/New_
 tpl = open(os.path.join(here, 'index.template.html'), encoding='utf-8').read()
 MARK = re.search(r'<a class="logo"[^>]*>\s*(<svg class="mark nf".*?</svg>)', tpl, re.S).group(1)
 NAV = '<nav aria-label="Sections"><a href="/wire/">The Wire</a><a href="/php2shell/">PHP2Shell tracker</a><a href="/index/#record" class="opt2">Record</a><a href="/index/#capabilities" class="opt">Capabilities</a><a href="/index/#fixes" class="opt">Did they fix it?</a><a href="/i/">All incidents</a></nav>'
-FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Scores are the index’s own, by a <a href="/index/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}.</span></div></footer>'
+FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Scores are the index’s own, by a <a href="/index/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}. <a href="/press/">Press</a> · <a href="/badge/">Embed the level</a></span></div></footer>'
 SCRIPT = """<script>
 document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { var t = b.getAttribute('data-copy'); var done = function () { var x = document.getElementById('toast'); x.textContent = 'Copied'; x.classList.add('on'); setTimeout(function () { x.classList.remove('on'); }, 1500); };
   if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function () { window.prompt('Copy this link', t); }); else window.prompt('Copy this link', t); }); });

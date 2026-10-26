@@ -9,7 +9,7 @@ size_categories: [n<1K]
 
 # Warning Shots — The AI Incident Index
 
-160 significant AI incidents since 2023, each scored 0–100 by a published formula and linked to its sources. Updated three times a day at https://warningshots.ai/.
+160 significant AI incidents since 2023, each scored 0–100 by a published formula and linked to its sources. Updated three times a day at https://warningshots.ai/.?utm_source=dataset&utm_medium=social&utm_campaign=launch&utm_content=card
 
 ## Fields
 `id`, `date`, `date_precision`, `disclosed`, `title`, `actors`, `category`, `setting` (wild or lab), `summary`, `harm`, `H` (harm 0–5), `R` (reach 0–5), `A` (autonomy 0–4), `N` (novelty 0–5), `I` (irreversibility 0–5), `source_url`, `source2_url`, `confidence`, `notes`.

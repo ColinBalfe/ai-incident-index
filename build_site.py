@@ -59,6 +59,13 @@ from analytics import tag as _analytics_tag   # visitor counter (Cloudflare Web 
 _an = _analytics_tag()
 if _an:
     out = out.replace('</body>', _an + '\n</body>', 1)
+try:   # search-engine ownership tags (Google Search Console, Bing Webmaster Tools); site_verify.json {"google": "...", "bing": "..."}
+    _sv = json.load(open('site_verify.json', encoding='utf-8'))
+except (OSError, ValueError):
+    _sv = {}
+_svm = ''.join(f'<meta name="{k}" content="{"".join(c for c in str(_sv.get(v, "")) if c.isalnum() or c in "-_")}">' for v, k in (('google', 'google-site-verification'), ('bing', 'msvalidate.01')) if _sv.get(v))
+if _svm:
+    out = out.replace('</head>', _svm + '\n</head>', 1)
 open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front'))
 # ---- the Record (/index/): the same template with the headline page hidden and the full index shown
 rec = out.replace('{{PAGE}}', 'record')

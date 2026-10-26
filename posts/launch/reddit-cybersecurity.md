@@ -1,4 +1,4 @@
-<!-- DRAFT. Nothing here posts itself. Numbers as of Oct 26, 2026, 15:25 ET; recheck them against https://warningshots.ai/index/ before posting. Licence line pending Colin's decision. -->
+<!-- DRAFT. Nothing here posts itself. Numbers as of Oct 26, 2026, 15:25 ET; recheck them against https://warningshots.ai/index/?utm_source=reddit&utm_medium=social&utm_campaign=launch&utm_content=r-cybersecurity before posting. Licence line pending Colin's decision. -->
 
 # r/cybersecurity
 
@@ -13,5 +13,5 @@ Six days in, most coverage blurs three different things, so the tracker keeps th
 
 It also lists the 77 organizations named in reporting, separating precautionary shutdowns from attacks, and records Unit 42's retracted intrusion report as a retraction.
 
-Tracker: https://warningshots.ai/php2shell/
-It's part of a broader open index of AI incidents (the flaws were found with AI): https://warningshots.ai/index/
+Tracker: https://warningshots.ai/php2shell/?utm_source=reddit&utm_medium=social&utm_campaign=launch&utm_content=r-cybersecurity
+It's part of a broader open index of AI incidents (the flaws were found with AI): https://warningshots.ai/index/?utm_source=reddit&utm_medium=social&utm_campaign=launch&utm_content=r-cybersecurity

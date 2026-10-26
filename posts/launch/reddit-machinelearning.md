@@ -1,4 +1,4 @@
-<!-- DRAFT. Nothing here posts itself. Numbers as of Oct 26, 2026, 15:25 ET; recheck them against https://warningshots.ai/index/ before posting. Licence line pending Colin's decision. -->
+<!-- DRAFT. Nothing here posts itself. Numbers as of Oct 26, 2026, 15:25 ET; recheck them against https://warningshots.ai/index/?utm_source=reddit&utm_medium=social&utm_campaign=launch&utm_content=r-machinelearning before posting. Licence line pending Colin's decision. -->
 
 # r/MachineLearning (use the [P] tag)
 
@@ -10,6 +10,6 @@ Each incident has five ratings (Harm 0–5, Reach 0–5, Autonomy 0–4, Novelty
 
 - JSON: https://warningshots.ai/data/incidents.json
 - CSV: https://warningshots.ai/data/incidents.csv
-- Rubric and formula: https://warningshots.ai/index/#about
+- Rubric and formula: https://warningshots.ai/index/#about?utm_source=reddit&utm_medium=social&utm_campaign=launch&utm_content=r-machinelearning
 
 One finding: in 42% of this year's real-world incidents the AI system did the acting (autonomy 3+), up from near zero in 2023–24. I'd especially like criticism of the autonomy and novelty scales.

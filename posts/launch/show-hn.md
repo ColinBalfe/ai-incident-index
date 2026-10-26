@@ -1,10 +1,10 @@
-<!-- DRAFT. Nothing here posts itself. Numbers as of Oct 26, 2026, 15:25 ET; recheck them against https://warningshots.ai/index/ before posting. Licence line pending Colin's decision. -->
+<!-- DRAFT. Nothing here posts itself. Numbers as of Oct 26, 2026, 15:25 ET; recheck them against https://warningshots.ai/index/?utm_source=hackernews&utm_medium=social&utm_campaign=launch&utm_content=show-hn before posting. Licence line pending Colin's decision. -->
 
 # Show HN
 
 **Title:** Show HN: An open, scored index of AI incidents, updated three times a day
 
-**URL:** https://warningshots.ai/
+**URL:** https://warningshots.ai/?utm_source=hackernews&utm_medium=social&utm_campaign=launch&utm_content=show-hn
 
 **First comment:**
 

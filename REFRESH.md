@@ -129,6 +129,7 @@ node make_og.mjs    http://127.0.0.1:8765/index.html
 node make_cards.mjs http://127.0.0.1:8765/index.html   # share cards for every dispatch; re-renders only changed records
 python3 build_tools.py                                  # the two free tools (shield/, scraped/); refreshes the AI-crawler list from GitHub when reachable
 python3 build_tracker.py                                # the live-incident tracker page (php2shell/): status, am-I-affected, FAQ, timeline, victims
+python3 build_press.py                                  # the embeddable level badge (assets/badge.svg, /badge/) and the press page (/press/); after the tools and tracker, before build_pages
 python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml
 cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)
 cd build && python3 build_brief.py && cd ..                                  # the daily brief script (briefs/<date>.md) and the forecast ledger (research/forecast_log.jsonl)
