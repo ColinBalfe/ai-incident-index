@@ -63,6 +63,10 @@ The formula: **named actor + strong past-tense verb + named object + consequence
 11. One story per line; no roundups.
 12. Write each line from the opened source page in the same step. Never from memory.
 
+The running story (`SERIAL` in `build/build_live.py`, shown pinned at the top of column one with a day counter): one serial only. It is live while the incident is unresolved and still developing. Each refresh, update `standing` (one line, every clause sourced; set `source_url`) and `last_fact`. Close it on the first end state: a fix ships for every open flaw, a victim is confirmed by name, an agency lists it as exploited, or 7 days pass with no new fact. To close: `state='closed'`, `closed=<date>`, `verdict=<one line saying how it ended>`; the page then shows the verdict instead of the counter. A new serial starts only when a new incident qualifies; other live incidents get counters on their Record pages.
+
+The action line (`action: {text, url}` on the siren): only when the source or an official statement gives a real, specific action for readers ('Run PHP? Check your version'), linked to that source or the tracker. Most days there is none; never pad it with generic advice.
+
 The siren: one story, the most consequential as of this refresh; qualifies by confirmed WS-4/5 harm, a confirmed break-in or escape with named organizations, an on-the-record lab or government admission that changes the picture, or large-scale named consumer harm. A lab-only finding can't be the siren unless a named real system was exposed. Give it `standfirst`: two or three plain sentences on what is confirmed and what isn't. The outgoing siren drops to the top of its column. A quiet day is said plainly.
 
 Before publishing, check every line: actor in the first three words; past-tense verb, no banned words; key fact stated; every number and name copied from the opened source; verb strength matches the label, temperature matches the level.

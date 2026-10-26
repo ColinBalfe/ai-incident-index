@@ -108,6 +108,20 @@ CHANGELOG = [
  dict(date='2026-10-22', text='Index launched: 132 incidents scored, 20 forecasts, catalyst calendar.'),
 ]
 
+
+# ---- the running story: ONE serial pinned at the top of column one, with a day counter and a one-line 'where it stands'.
+# Live = unresolved and still developing. It closes on its first end state: a fix ships for every open flaw, a victim is
+# confirmed by name, an agency lists it (e.g. CISA KEV), or 7 days pass with no new fact. On closing set state='closed',
+# closed=<date>, verdict=<one line>; the page then shows the verdict instead of the counter. Other live incidents get
+# counters on their Record pages only.
+SERIAL = dict(
+ incident_id='php2shell', name='PHP2Shell', day1='2026-10-21', state='live', url='/php2shell/',
+ standing="No victim named · not on CISA's exploited list · third bug unpatched · exploits confirmed on decoy servers",
+ source_url='https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/', source_label='SecurityWeek, Oct 26',
+ last_fact='2026-10-26', closed='', verdict='',
+ end_states=['a fix ships for every open flaw', 'a victim is confirmed by name', 'an agency lists it as exploited', '7 days with no new fact'],
+)
+
 META = dict(
  as_of=AS_OF, as_of_label=AS_OF_LABEL,
  next_check='2026-10-26T18:37:00-04:00', next_check_label='Monday, 18:37 ET',
@@ -121,6 +135,7 @@ META = dict(
  # Field-note intake: a form URL (Tally, Formspree, Google Form). Hidden until set.
  fieldnote_url='',
  changelog=CHANGELOG,
+ serial=SERIAL,
 )
 
 # ---- the Wire: research/news.json -> data/news.json (links to other outlets' reporting; see REFRESH.md)

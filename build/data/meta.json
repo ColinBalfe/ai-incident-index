@@ -76,5 +76,24 @@
    "date": "2026-10-22",
    "text": "Index launched: 132 incidents scored, 20 forecasts, catalyst calendar."
   }
- ]
+ ],
+ "serial": {
+  "incident_id": "php2shell",
+  "name": "PHP2Shell",
+  "day1": "2026-10-21",
+  "state": "live",
+  "url": "/php2shell/",
+  "standing": "No victim named · not on CISA's exploited list · third bug unpatched · exploits confirmed on decoy servers",
+  "source_url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
+  "source_label": "SecurityWeek, Oct 26",
+  "last_fact": "2026-10-26",
+  "closed": "",
+  "verdict": "",
+  "end_states": [
+   "a fix ships for every open flaw",
+   "a victim is confirmed by name",
+   "an agency lists it as exploited",
+   "7 days with no new fact"
+  ]
+ }
 }

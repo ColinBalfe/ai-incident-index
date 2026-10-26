@@ -5,7 +5,7 @@ const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AI
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
 const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls'];
 const EMBED = new URLSearchParams(location.search).get('embed');
-const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW;
+const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
 const FRONT_IDS = new Set(['wall', 'wall-lead', 'level', 'wire', 'why', 'front', 'now', 'brief', 'since', 'siren']);
 const RECORD_IDS = new Set(['record', 'capabilities', 'words', 'pattern', 'charts', 'next', 'dives', 'fixes', 'signals', 'all', 'about']);
@@ -451,6 +451,9 @@ const SIREN_SVG = '<svg class="siren-ic" viewBox="0 0 34 34" aria-hidden="true">
 function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url).slice().sort((a, b) => String(b.published || '').localeCompare(String(a.published || ''))); }
 /* ---------- the headline wall: index-written lines on top of credible reporting (research/news.json: tag, wall, red, wall_rank).
    Each line must be supportable by the story it links to; the outlet's own framing is in the tooltip and the small print. */
+// The reader's own clock: when they last loaded this page (this browser only). Read once, then stamped with now.
+const PREV_VISIT = (() => { let p = null; try { p = +localStorage.getItem('ws-last-visit') || null; localStorage.setItem('ws-last-visit', String(Date.now())); } catch (e) {} return p; })();
+const isNewToReader = (n) => !!(PREV_VISIT && n.published && Date.parse(n.published) > PREV_VISIT);
 const WALL_COLS = { 1: 'Broke out & broke in', 2: 'Got smarter, took over', 3: 'Fakes, scams & you' };
 const WALL_LABEL = { lab: 'Lab only', retracted: 'Retracted', reported: 'Reported', denied: 'Denied' };
 function drawLevel() {
@@ -461,15 +464,23 @@ function drawLevel() {
   const pool = recent.concat(live ? [live] : []); if (!pool.length) { box.hidden = true; return; }
   const top = pool.slice().sort((a, b) => b.severity - a.severity)[0];
   const n = +String(top.level).replace('WS-', '');
-  const seven = Date.parse(D.meta.as_of.slice(0, 10) + 'T07:00:00' + D.meta.as_of.slice(19));
-  const fresh = newsItems().filter((x) => x.tag && x.wall && Date.parse(x.published) >= seven).length;
   const h = C.headline || {};
   box.hidden = false; box.className = 'lvl lv' + n;
-  const a1 = el('a', 'lvl-l'); a1.href = '#i=' + top.id; a1.title = 'Highest level among incidents disclosed in the last 24 hours and the live incident: ' + top.title;
-  a1.append(el('span', 'k', 'Today’s level'), el('b', null, top.level + ' ' + String(top.tier).toUpperCase()));
-  const a2 = el('span', 'lvl-n'); a2.append(el('b', null, String(fresh)), txt(' new since 7:00 AM ET'));
+  document.body.dataset.level = String(n);
+  const a1 = el('span', 'lvl-l'); a1.append(el('span', 'k', 'Today’s level'), el('b', null, top.level + ' ' + String(top.tier).toUpperCase()));
+  const why = el('button', 'lvl-why', 'Why ' + top.level + ' today?'); why.type = 'button'; why.setAttribute('aria-expanded', 'false');
+  const wall = newsItems().filter((x) => x.tag && x.wall);
+  const a2 = el('span', 'lvl-n');
+  if (PREV_VISIT) { const k = wall.filter(isNewToReader).length; a2.append(el('i', 'newdot'), el('b', null, String(k)), txt(k === 1 ? ' new since you last looked' : ' new since you last looked')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
+  else { a2.append(el('b', null, String(wall.length)), txt(' headlines from the last 3 days')); }
   const a3 = el('a', 'lvl-s'); a3.href = '#record'; a3.append(txt('Severe incidents, last 12 months: '), el('b', null, String(h.severe_last12 ?? '')), txt(' (was ' + (h.severe_prior12 ?? '') + ')'));
-  box.replaceChildren(a1, a2, a3);
+  const det = el('div', 'lvl-det'); det.hidden = true;
+  det.append(el('p', null, 'The level is the highest score among incidents disclosed in the last 24 hours and the live incident, by the index’s published formula. Today it is set by:'));
+  const ul = el('ul'); pool.slice().sort((a, b) => b.severity - a.severity).filter((r, i, arr) => arr.findIndex((x) => x.id === r.id) === i).slice(0, 4).forEach((r) => { const li = el('li'); const a = el('a', null, r.title); a.href = '#i=' + r.id; li.append(el('b', null, r.level + ' · ' + r.severity + '/100'), txt(' '), a); ul.append(li); });
+  const how = el('a', null, 'How the scores work →'); how.href = '/index/#about';
+  det.append(ul, how);
+  why.addEventListener('click', () => { det.hidden = !det.hidden; why.setAttribute('aria-expanded', String(!det.hidden)); });
+  box.replaceChildren(a1, why, a2, a3, det);
 }
 function drawWall() {
   const lead = document.getElementById('wall-lead'), box = document.getElementById('wall'); if (!box || !lead) return;
@@ -482,7 +493,7 @@ function drawWall() {
   const dots = (t) => /[.!?…]$/.test(t) ? t : t + '...';
   const chip = (n) => WALL_LABEL[n.label] ? el('span', 'wl-lab ' + n.label, WALL_LABEL[n.label]) : null;
   const line = (n, withOutlet) => {
-    const w = el('div', 'wl'); const c = chip(n); if (c) w.append(c);
+    const w = el('div', 'wl'); if (isNewToReader(n)) { const d = el('i', 'newdot'); d.title = 'New since you last looked'; w.append(d); } const c = chip(n); if (c) w.append(c);
     w.append(ext(el('a', 'dl' + (n.red ? ' red' : ''), dots(n.tag)), n));
     if (withOutlet) w.append(el('span', 'wl-o', (n.outlet || '') + (ageShort(n).endsWith('h ago') || ageShort(n) === 'just now' ? ' · ' + ageShort(n).replace(' ago', '') : '')));
     return w;
@@ -501,12 +512,23 @@ function drawWall() {
   const body = el('div', 'dl-body'); body.append(kick, ext(el('a', 'dl-head' + (siren.red ? ' red' : ''), siren.tag), siren));
   sv.append(body);
   if (siren.standfirst) body.append(el('p', 'dl-stand', siren.standfirst));
+  if (siren.action && siren.action.text && siren.action.url) { const ac = el('a', 'dl-act', siren.action.text + ' →'); ac.href = siren.action.url; if (/^https?:/.test(siren.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } body.append(ac); }
   const so = el('div', 'dl-src'); so.append(txt(siren.outlet + ' · ' + ageShort(siren) + ' · '), ext(el('a', null, 'Read the original reporting →'), siren)); body.append(so);
   lead.replaceChildren(...(cl.length ? [cluster] : []), sv);
   // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');
   [1, 2, 3].forEach((c) => {
     const col = el('div', 'wall-col'); col.append(el('h2', 'wall-ch', WALL_COLS[c]));
+    const sr = D.meta && D.meta.serial;
+    if (c === 1 && sr && sr.name) {
+      const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1;
+      const box2 = el('div', 'serial' + (sr.state === 'closed' ? ' closed' : ''));
+      const hd = el('div', 'serial-h'); hd.append(el('span', 'serial-n', sr.name), el('span', 'serial-d', sr.state === 'closed' ? 'Closed ' + fmtDate(new Date(sr.closed + 'T12:00:00Z')) : 'Day ' + day));
+      const a = el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); a.href = sr.url || '#';
+      const ft = el('div', 'serial-f'); const tr = el('a', null, 'The live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
+      if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
+      box2.append(hd, a, ft); col.append(box2);
+    }
     items.filter((n) => +n.wall === c).slice(0, 15).forEach((n) => col.append(line(n, true)));
     if (c === 3) {
       const pr = el('div', 'protect'); pr.append(el('div', 'protect-h', 'Protect yourself'));

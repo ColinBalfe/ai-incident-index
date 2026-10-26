@@ -11,13 +11,13 @@
 <meta property="og:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta property="og:description" content="Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights; access cut the same day. Severe AI incidents went from 3 to 13 in a year. In 42% of this year's real-world cases the AI itself did the acting. 160 incidents since 2023, scored 0–100 and sourced. Live tracking of PHP2Shell, 20 dated forecasts, and what officials have said. Updated Oct 26, 1:20 PM ET.">
 <meta property="og:url" content="https://warningshots.ai/index/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610261837">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610261846">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta name="twitter:description" content="Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights; access cut the same day. Severe AI incidents went from 3 to 13 in a year. In 42% of this year's real-world cases the AI itself did the acting. 160 incidents since 2023, scored 0–100 and sourced. Live tracking of PHP2Shell, 20 dated forecasts, and what officials have said. Updated Oct 26, 1:20 PM ET.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610261837">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610261846">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -29,11 +29,11 @@
 <link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/data/bundle.json?v=202610261837" as="fetch" crossorigin>
-<script>window.AII_BUILD = "202610261837"; window.AII_SITE = "https://warningshots.ai/";</script>
+<link rel="preload" href="/data/bundle.json?v=202610261846" as="fetch" crossorigin>
+<script>window.AII_BUILD = "202610261846"; window.AII_SITE = "https://warningshots.ai/";</script>
 <script src="/assets/vendor/d3-lite.min.js" defer></script>
 <script src="/assets/vendor/topojson-client.min.js" defer></script>
-<script src="/assets/app.js?v=202610261837" defer></script>
+<script src="/assets/app.js?v=202610261846" defer></script>
 <style>
 @font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
@@ -931,6 +931,28 @@ body[data-lead="c"] .dl-head { color: #fff; text-decoration: none; font-family: 
 body[data-lead="c"] .dl-stand { color: rgba(255,255,255,.9); text-align: left; margin: 10px 0 0; max-width: 70ch; }
 body[data-lead="c"] .dl-src { color: rgba(255,255,255,.75); text-align: left; } body[data-lead="c"] .dl-src a { color: #fff; }
 
+
+/* ----- level colour, reader's new-dots, the serial, the action line, Plex Mono lines */
+body { --lvc: var(--alarm); }
+body[data-level="1"], body[data-level="2"] { --lvc: #6B7A6E; } body[data-level="3"] { --lvc: #B5751A; } body[data-level="4"] { --lvc: #C0391B; } body[data-level="5"] { --lvc: #FF3300; }
+.lvl-l b { background: var(--lvc) !important; }
+body[data-lead="a"] .dl-siren { border-top-color: var(--lvc); }
+body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--lvc); } body[data-lead="a"] .dl-kick .dot { background: var(--lvc); }
+.lvl-why { font: inherit; font-size: 12.5px; background: none; border: 0; padding: 0; color: var(--ink); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.lvl-det { flex-basis: 100%; max-width: 760px; margin: 4px auto 6px; font-size: 13px; text-align: left; color: var(--ink-2); }
+.lvl-det p { margin: 0 0 6px; } .lvl-det ul { margin: 0 0 6px; padding-left: 18px; } .lvl-det li { margin: 3px 0; } .lvl-det li b { color: var(--ink); margin-right: 4px; } .lvl-det a { color: var(--ink); }
+.newdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--alarm); margin-right: 7px; vertical-align: 2px; }
+.dl-act { display: inline-block; margin-top: 10px; font-weight: 700; color: var(--lvc); }
+.serial { border: 2px solid var(--ink); border-top: 6px solid var(--lvc); padding: 10px 12px 9px; margin: 8px 0 6px; background: var(--panel); }
+.serial-h { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-family: Arial, 'Helvetica Neue', Helvetica, var(--sans); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.serial-n { font-size: 15px; } .serial-d { font-size: 22px; color: var(--lvc); letter-spacing: .02em; }
+.serial-s { display: block; margin-top: 6px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 700; font-size: 14px; line-height: 1.4; color: var(--ink); text-decoration: none; }
+.serial-s:hover { text-decoration: underline; }
+.serial-f { display: flex; gap: 14px; margin-top: 8px; font-size: 12px; } .serial-f a { color: var(--ink-2); } .serial-f a:first-child { color: var(--ink); font-weight: 700; }
+.serial.closed .serial-d { color: var(--ink-2); }
+.dl, .dl-lines a { font-family: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace !important; letter-spacing: -0.01em; }
+.wall-col .dl { font-size: 15px !important; }
+
 /* ----- what it means for you */
 .foryou { padding-top: clamp(34px, 5vw, 64px); }
 .fy-head { border-top: 3px solid var(--ink); padding-top: 18px; display: grid; gap: 8px 40px; }
@@ -976,7 +998,7 @@ body[data-lead="c"] .dl-src { color: rgba(255,255,255,.75); text-align: left; } 
 .sk { color: transparent; background: var(--line); border-radius: 1px; }
 </style>
 </head>
-<body data-page="record">
+<body data-page="record" data-lead="a">
 <a class="skip" href="#record">Skip to the Record</a>
 <div class="lvl" id="level" hidden></div>
 <section class="dl-lead" id="wall-lead" aria-label="Top story" hidden></section>
