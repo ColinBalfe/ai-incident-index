@@ -79,11 +79,30 @@
  ],
  "serial": {
   "incident_id": "php2shell",
-  "name": "PHP2Shell",
+  "name": "The flaw under most websites",
+  "tech_name": "PHP2Shell",
   "day1": "2026-10-21",
   "state": "live",
   "url": "/php2shell/",
-  "standing": "No victim named · not on CISA's exploited list · third bug unpatched · exploits confirmed on decoy servers",
+  "standing": "Hackers broke into decoy servers. No real victim confirmed. No formal US government warning. A third flaw is still unfixed.",
+  "rung": "proven",
+  "rungs": {
+   "tried": {
+    "date": "2026-10-21",
+    "note": "Attack attempts logged from Oct 21",
+    "source_url": "https://php2shell.delftintellab.com/"
+   },
+   "proven": {
+    "date": "2026-10-24",
+    "note": "Decoy servers broken into, Oct 24",
+    "source_url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/"
+   },
+   "hit": {
+    "date": "",
+    "note": "No real victim confirmed",
+    "source_url": ""
+   }
+  },
   "source_url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
   "source_label": "SecurityWeek, Oct 26",
   "last_fact": "2026-10-26",

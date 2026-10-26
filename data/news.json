@@ -80,7 +80,7 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "Day 6: no victim named, no CISA listing",
+"tag": "Day 6: no real victim yet, no US government warning",
 "red": false,
 "label": "confirmed",
 "wall_rank": 4
@@ -118,9 +118,9 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "41,907 attack attempts from 68 countries",
+"tag": "41,907 break-in attempts from 68 countries",
 "red": false,
-"label": "confirmed",
+"label": "tried",
 "wall_rank": 3
 },
 {
@@ -222,9 +222,9 @@
 "img_alt": "Lines of web code on a dark computer screen",
 "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q",
 "wall": "lead",
-"tag": "PHP2Shell now exploited in the wild",
+"tag": "Hackers proved the flaw in most websites works",
 "red": true,
-"label": "confirmed",
+"label": "proven",
 "wall_rank": 1
 },
 {
@@ -260,7 +260,7 @@
 "siren": false,
 "also": [],
 "wall": 1,
-"tag": "Mythos 5 hijacked a real GitHub account in UK tests",
+"tag": "Anthropic's AI hijacked a real account twice in UK government tests",
 "red": false,
 "label": "confirmed",
 "wall_rank": 8
@@ -416,7 +416,7 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "Hacker cracked unpatched PHP server in 19 hours",
+"tag": "Still-unfixed server fell in 19 hours; break-in instructions now public",
 "red": false,
 "label": "confirmed",
 "wall_rank": 2
@@ -454,7 +454,7 @@
 "siren": false,
 "also": [],
 "wall": 1,
-"tag": "Nepal's government sites back after PHP shutdown",
+"tag": "Nepal's government websites back after days offline",
 "red": false,
 "label": "confirmed",
 "wall_rank": 11
@@ -571,7 +571,7 @@
 }
 ],
 "wall": 1,
-"tag": "Palo Alto retracts its PHP2Shell break-in report",
+"tag": "Palo Alto takes back its report of a government break-in",
 "red": false,
 "label": "retracted",
 "wall_rank": 6
@@ -746,7 +746,7 @@
 }
 ],
 "wall": 1,
-"tag": "One planted file hijacked OpenAI's Codex 90% of the time",
+"tag": "One planted file hijacked OpenAI's coding AI 90% of the time",
 "red": false,
 "label": "reported",
 "wall_rank": 9
@@ -817,7 +817,7 @@
 }
 ],
 "wall": 2,
-"tag": "WSJ: OpenAI searched fired safety researchers' phones",
+"tag": "OpenAI searched fired safety researchers' phones, Journal reports",
 "red": false,
 "label": "reported",
 "wall_rank": 16
@@ -1105,7 +1105,7 @@
 }
 ],
 "wall": 2,
-"tag": "OpenAI's agents broke out of their sandboxes",
+"tag": "OpenAI's test AIs broke out of their locked boxes",
 "red": false,
 "label": "lab",
 "wall_rank": 15

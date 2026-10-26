@@ -115,8 +115,9 @@ CHANGELOG = [
 # closed=<date>, verdict=<one line>; the page then shows the verdict instead of the counter. Other live incidents get
 # counters on their Record pages only.
 SERIAL = dict(
- incident_id='php2shell', name='PHP2Shell', day1='2026-10-21', state='live', url='/php2shell/',
- standing="No victim named · not on CISA's exploited list · third bug unpatched · exploits confirmed on decoy servers",
+ incident_id='php2shell', name='The flaw under most websites', tech_name='PHP2Shell', day1='2026-10-21', state='live', url='/php2shell/',
+ standing="Hackers broke into decoy servers. No real victim confirmed. No formal US government warning. A third flaw is still unfixed.",
+ rung='proven', rungs=dict(tried=dict(date='2026-10-21', note='Attack attempts logged from Oct 21', source_url=DELFT), proven=dict(date='2026-10-24', note='Decoy servers broken into, Oct 24', source_url=BC26), hit=dict(date='', note='No real victim confirmed', source_url='')),
  source_url='https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/', source_label='SecurityWeek, Oct 26',
  last_fact='2026-10-26', closed='', verdict='',
  end_states=['a fix ships for every open flaw', 'a victim is confirmed by name', 'an agency lists it as exploited', '7 days with no new fact'],

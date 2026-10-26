@@ -455,7 +455,7 @@ function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url
 const PREV_VISIT = (() => { let p = null; try { p = +localStorage.getItem('ws-last-visit') || null; localStorage.setItem('ws-last-visit', String(Date.now())); } catch (e) {} return p; })();
 const isNewToReader = (n) => !!(PREV_VISIT && n.published && Date.parse(n.published) > PREV_VISIT);
 const WALL_COLS = { 1: 'Broke out & broke in', 2: 'Got smarter, took over', 3: 'Fakes, scams & you' };
-const WALL_LABEL = { lab: 'Lab only', retracted: 'Retracted', reported: 'Reported', denied: 'Denied' };
+const WALL_LABEL = { lab: 'Lab only', retracted: 'Retracted', reported: 'Reported', denied: 'Denied', tried: 'Tried', proven: 'Proven', hit: 'Hit' };
 function drawLevel() {
   const box = document.getElementById('level'); if (!box || !C.scored) return;
   const asOf = Date.parse(D.meta.as_of);
@@ -525,9 +525,13 @@ function drawWall() {
       const box2 = el('div', 'serial' + (sr.state === 'closed' ? ' closed' : ''));
       const hd = el('div', 'serial-h'); hd.append(el('span', 'serial-n', sr.name), el('span', 'serial-d', sr.state === 'closed' ? 'Closed ' + fmtDate(new Date(sr.closed + 'T12:00:00Z')) : 'Day ' + day));
       const a = el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); a.href = sr.url || '#';
-      const ft = el('div', 'serial-f'); const tr = el('a', null, 'The live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
+      const ft = el('div', 'serial-f'); const tr = el('a', null, (sr.tech_name ? sr.tech_name + ' ' : '') + 'live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
       if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
-      box2.append(hd, a, ft); col.append(box2);
+      const RUNGS = [['tried', 'Tried', 'attempts logged'], ['proven', 'Proven', 'a test system broken into'], ['hit', 'Hit', 'a real victim confirmed']];
+      const at = RUNGS.findIndex(([k]) => k === sr.rung);
+      const lad = el('div', 'rungs'); lad.setAttribute('aria-label', 'Proof so far: ' + (at >= 0 ? RUNGS[at][1] : 'none'));
+      RUNGS.forEach(([k, lbl, def], i) => { const r = (sr.rungs || {})[k] || {}; const st = el(r.source_url ? 'a' : 'span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); if (r.source_url) { st.href = r.source_url; st.target = '_blank'; st.rel = 'noopener noreferrer'; } st.title = lbl + ': ' + def + (r.note ? '. ' + r.note : ''); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
+      box2.append(hd, lad, a, ft); col.append(box2);
     }
     items.filter((n) => +n.wall === c).slice(0, 15).forEach((n) => col.append(line(n, true)));
     if (c === 3) {
