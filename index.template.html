@@ -103,25 +103,26 @@ b, strong { font-weight: 600; }
 
 /* ----- masthead */
 .masthead { background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line); position: relative; }
-.mh-grid { display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 10px; padding-top: clamp(20px, 3vw, 34px); padding-bottom: clamp(16px, 2.4vw, 26px); }
+.mh-grid { display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 4px; padding-top: clamp(12px, 1.8vw, 20px); padding-bottom: clamp(10px, 1.4vw, 14px); }
 .logo { display: inline-flex; align-items: center; gap: clamp(10px, 1.4vw, 18px); text-decoration: none; color: inherit; }
-.logo .mark { width: clamp(58px, 7.8vw, 98px); height: auto; display: block; flex: none; margin: -10px 0; }
-.wordmark { margin: 0; font-size: clamp(1.25rem, 3.3vw, 2.35rem); font-weight: 800; letter-spacing: .07em; text-transform: uppercase; font-variation-settings: 'wdth' 100; color: var(--ink); white-space: nowrap; line-height: 1; padding-top: .08em; }
-.mh-tag { margin: 10px 0 0; color: var(--ink-2); font-size: clamp(1rem, 1.35vw, 1.15rem); max-width: 52ch; line-height: 1.4; text-wrap: balance; letter-spacing: -0.005em; }
-.mh-right { display: grid; gap: 10px; justify-items: center; margin-top: 6px; }
-@media (min-width: 1000px) { .mh-right { position: absolute; right: clamp(16px, 4vw, 40px); top: clamp(22px, 3.4vw, 40px); justify-items: end; text-align: right; margin: 0; } }
+.logo .mark { width: clamp(46px, 5.6vw, 72px); height: auto; display: block; flex: none; margin: -16px 0; }
+.wordmark { margin: 0; font-size: clamp(1.2rem, 2.8vw, 2rem); font-weight: 800; letter-spacing: .07em; text-transform: uppercase; font-variation-settings: 'wdth' 100; color: var(--ink); white-space: nowrap; line-height: 1; padding-top: .08em; }
+.mh-tag { margin: -8px 0 0; color: var(--ink-2); font-size: clamp(.95rem, 1.2vw, 1.05rem); max-width: 52ch; line-height: 1.4; text-wrap: balance; letter-spacing: -0.005em; }
+.mh-right { display: flex; flex-wrap: wrap; gap: 4px 14px; justify-content: center; align-items: center; margin-top: 2px; }
+
+@media (max-width: 759px) { .edition { display: none; } }
 .edition { font-size: 12.5px; color: var(--ink-3); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
-.mh-updated { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mh-updated { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
 /* ----- signal ribbon */
 .ribbon { background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line); }
-.ribbon-in { display: flex; align-items: stretch; gap: 0; overflow-x: auto; scrollbar-width: none; min-height: 44px; }
+.ribbon-in { display: flex; align-items: stretch; justify-content: safe center; gap: 0; overflow-x: auto; scrollbar-width: none; min-height: 36px; }
 .ribbon-in::-webkit-scrollbar { display: none; }
 .rb { display: inline-flex; align-items: baseline; gap: 8px; padding: 0 18px; border-right: 1px solid var(--line); text-decoration: none; white-space: nowrap; font-size: 12.5px; color: var(--ink-2); align-self: stretch; align-items: center; }
 .rb:first-child { padding-left: 0; }
 .rb b { font-size: 1.15rem; font-weight: 500; letter-spacing: -0.02em; font-variation-settings: 'wdth' 80; font-variant-numeric: tabular-nums; color: var(--ink); }
 .rb.hot b { color: var(--signal); }
 .rb:hover span { color: var(--ink); }
-.rb-upd { margin-left: auto; padding-left: 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rb-upd { display: none !important; margin-left: auto; padding-left: 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .rb-upd i { width: 7px; height: 7px; background: var(--signal); display: inline-block; }
 @media (max-width: 760px) { .rb { padding: 0 12px; font-size: 12px; } .rb b { font-size: 1rem; } .rb-upd { display: none; } }
 .signup { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 8px; width: min(100%, 380px); }
@@ -135,7 +136,7 @@ b, strong { font-weight: 600; }
 
 /* ----- sticky nav */
 .navbar { position: sticky; top: 0; z-index: 30; background: color-mix(in oklab, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); color: var(--ink); }
-.navbar .wrap { display: flex; align-items: center; gap: 14px; height: 46px; }
+.navbar .wrap { display: flex; align-items: center; gap: 14px; height: 40px; }
 .navbar .mini { display: none; align-items: center; gap: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; text-decoration: none; font-size: 12px; color: var(--ink); }
 .navbar .mini .mark { width: 26px; height: 26px; }
 @media (max-width: 1359px) { .navbar .mini { font-size: 0; gap: 0; } }
@@ -154,7 +155,9 @@ b, strong { font-weight: 600; }
 @keyframes ring { 0% { transform: scale(.5); opacity: .8; } 100% { transform: scale(1.5); opacity: 0; } }
 .mode { display: inline-flex; align-items: stretch; border: 1px solid var(--line-2); height: 26px; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; flex: none; }
 .mode .mode-l { display: none; padding: 0 8px; align-items: center; color: var(--ink-3); border-right: 1px solid var(--line-2); }
-@media (min-width: 1100px) { .mode .mode-l { display: inline-flex; } }
+.mode button[aria-pressed="true"] { display: none; }
+.mode button + button { border-left: 0; }
+.mode button::before { display: none !important; }
 .mode button { border: 0; background: transparent; color: var(--ink-3); padding: 0 9px; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; }
 .mode button + button { border-left: 1px solid var(--line-2); }
 .mode button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
@@ -533,7 +536,7 @@ details.fold > :not(summary) { margin-top: 10px; }
 .next-grid .watch-row .item { font-size: 14.5px; }
 .hero-count { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
 /* ----- ticker */
-.ticker { display: flex; align-items: center; border-bottom: 1px solid var(--line); background: var(--paper); font-size: 13.5px; overflow: hidden; height: 40px; }
+.ticker { display: flex; align-items: center; border-bottom: 1px solid var(--line); background: var(--paper); font-size: 13px; overflow: hidden; height: 34px; }
 .ticker-label { display: flex; align-items: center; gap: 8px; padding: 0 14px 0 clamp(16px, 4vw, 40px); font-weight: 600; color: var(--alarm); white-space: nowrap; flex: none; border-right: 1px solid var(--line); height: 100%; }
 .ticker-track { flex: 1; overflow: hidden; height: 100%; position: relative; mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent); }
 .ticker-run { display: inline-flex; gap: 40px; align-items: center; white-space: nowrap; height: 100%; padding-left: 16px; will-change: transform; }
@@ -927,12 +930,12 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
   <div class="wrap">
     <a class="mini" href="#top"><svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>Warning Shots</a>
     <div class="nav-scroll" id="nav-scroll">
-      <a href="#front" class="mf-only">Front</a><a href="#wire">The Wire</a><a href="/php2shell/">PHP2Shell tracker</a><a href="#why">For you</a><a href="#record">Record</a><a href="#capabilities">Capabilities</a><a href="#words">Quotes</a><a href="#charts">Charts</a><a href="#next">Forecast</a><a href="#dives">Incidents</a><a href="#fixes">Did they fix it?</a><a href="#all">All</a><a href="#about">About</a>
+      <a href="#front" class="mf-only">Front</a><a href="#wire">The Wire</a><a href="/php2shell/">PHP2Shell tracker</a><a href="#why">For you</a><a href="#record">Record</a><a href="#capabilities">Capabilities</a><a href="#next">Forecast</a><a href="#dives">Incidents</a><a href="#fixes">Did they fix it?</a><a href="#about">About</a>
     </div>
     <div class="nav-right">
       <span class="nav-updated" id="nav-updated"></span>
       <button type="button" class="nav-search" id="nav-search" title="Search the index (press /)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd aria-hidden="true">/</kbd></button>
-      <div class="mode" role="group" aria-label="Appearance"><span class="mode-l" aria-hidden="true">Mode</span><button type="button" id="mode-dark" aria-pressed="false" title="Night_Ops: dark appearance">Night_Ops</button><button type="button" id="mode-light" aria-pressed="true" title="Newsprint: light appearance">Newsprint</button></div>
+      <div class="mode" role="group" aria-label="Appearance"><span class="mode-l" aria-hidden="true">Mode</span><button type="button" id="mode-dark" aria-pressed="false" title="Switch to dark">Dark</button><button type="button" id="mode-light" aria-pressed="true" title="Switch to light">Light</button></div>
     </div>
   </div>
 </nav>
