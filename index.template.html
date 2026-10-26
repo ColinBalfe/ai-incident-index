@@ -103,12 +103,12 @@ b, strong { font-weight: 600; }
 
 /* ----- masthead */
 .masthead { background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line); position: relative; }
-.mh-grid { display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 4px; padding-top: clamp(12px, 1.8vw, 20px); padding-bottom: clamp(10px, 1.4vw, 14px); }
-.logo { display: inline-flex; align-items: center; gap: clamp(10px, 1.4vw, 18px); text-decoration: none; color: inherit; }
-.logo .mark { width: clamp(46px, 5.6vw, 72px); height: auto; display: block; flex: none; margin: -16px 0; }
-.wordmark { margin: 0; font-size: clamp(1.2rem, 2.8vw, 2rem); font-weight: 800; letter-spacing: .07em; text-transform: uppercase; font-variation-settings: 'wdth' 100; color: var(--ink); white-space: nowrap; line-height: 1; padding-top: .08em; }
-.mh-tag { margin: -8px 0 0; color: var(--ink-2); font-size: clamp(.95rem, 1.2vw, 1.05rem); max-width: 52ch; line-height: 1.4; text-wrap: balance; letter-spacing: -0.005em; }
-.mh-right { display: flex; flex-wrap: wrap; gap: 4px 14px; justify-content: center; align-items: center; margin-top: 2px; }
+.mh-grid { display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 0; padding-top: clamp(30px, 5.2vw, 70px); padding-bottom: clamp(26px, 4.4vw, 60px); }
+.logo { display: inline-flex; align-items: center; gap: clamp(14px, 2.4vw, 36px); text-decoration: none; color: inherit; }
+.logo .mark { width: clamp(68px, 10vw, 150px); height: auto; display: block; flex: none; margin: -18px 0; }
+.wordmark { margin: 0; font-size: clamp(1.7rem, 5vw, 3.9rem); font-weight: 800; letter-spacing: .07em; text-transform: uppercase; font-variation-settings: 'wdth' 100; color: var(--ink); white-space: nowrap; line-height: 1; padding-top: .08em; }
+.mh-tag { margin: clamp(18px, 2.6vw, 34px) 0 0; color: var(--ink-2); font-size: clamp(1.05rem, 2vw, 1.75rem); max-width: 52ch; line-height: 1.4; text-wrap: balance; letter-spacing: -0.005em; }
+.mh-right { display: none; }
 
 @media (max-width: 759px) { .edition { display: none; } }
 .edition { font-size: 12.5px; color: var(--ink-3); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
@@ -1250,7 +1250,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
         <div class="changelog" id="changelog"></div>
       </details>
     </div>
-    <p class="foot">Warning Shots, the AI Incident Index, is maintained by Colin Balfe with Claude. The name is OpenAI’s own phrase for the Hugging Face breach: “a warning shot for the company and the world.” Research, scoring and forecasts are the index's own; every incident links to its primary source. Last refresh <span id="foot-updated">—</span> <a href="{{REPO_URL}}">Source</a>.</p>
+    <p class="foot">Warning Shots is the AI Incident Index. The name is OpenAI’s own phrase for the Hugging Face breach: “a warning shot for the company and the world.” Research, scoring and forecasts are the index's own; every incident links to its primary source. Last refresh <span id="foot-updated">—</span> <a href="{{REPO_URL}}">Source</a>.</p>
   </section>
 </main>
 <nav class="tabbar" id="tabbar" aria-label="Front page, Wire, record, cases, next" hidden>
