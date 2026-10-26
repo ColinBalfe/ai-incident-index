@@ -2,22 +2,27 @@
 
 # Warning Shots: the show
 
-A daily 4-minute AI briefing. It borrows the structure of The President's Daily Brief, the daily intelligence podcast hosted by former CIA officer Mike Baker: a fixed ritual, named segments, sourced facts and spoken confidence. It cuts the length to a fifth and points everything at one question: what does this mean for you?
+A daily AI briefing of about 13 minutes, plus a 60-second cut for social. It borrows the structure of The President's Daily Brief, the daily intelligence podcast hosted by former CIA officer Mike Baker. That show runs about 21–26 minutes each morning and 10–18 each afternoon, with four stories in a fixed order. We keep its ritual, named segments, sourced facts and spoken confidence, and point every segment at one question: what does this mean for you?
 
-## The clock (about 600 words at about 150 words a minute)
+## The clock (about 1,900 words at about 150 words a minute)
 
 | Time | Segment | What it does |
 |---|---|---|
 | 0:00 | **Cold open** | Music sting. The date, then the headline in one breath, then the hook question. |
 | 0:15 | **Ident** (word for word, every day) | "I'm Colin Balfe, and this… is Warning Shots." Music hits. |
-| 0:22 | **The menu** | One sentence per item: "First, … Then, day six of … And in the Last Shot, …" |
-| 0:40 | **The Warning** (about 90 s) | The lead story, told in five beats (below). |
-| 2:10 | **What it means for you** (about 30 s) | Does it touch the listener, honestly, and **one thing to do today**. |
-| 2:40 | **Day N** (about 45 s) | The running story: where it sits on the ladder (Tried, Proven, Hit), what changed, the next dated test. |
-| 3:25 | **The Last Shot** (about 25 s) | One strange, striking or darkly funny item to end on. |
-| 3:50 | **Sign-off** (word for word) | "That's your Warning Shots for [day, date]. Back tomorrow at 6:37. See what's coming. Know what it means." |
+| 0:25 | **The menu** | One sentence per segment, with a hook in each. |
+| 1:00 | **The Warning** (about 3 min) | The day's biggest risk story in five beats, ending with **What it means for you** and one thing to do today. |
+| 4:00 | **Day N** (about 1.5 min) | The running story: its rung (Tried, Proven or Hit), what changed, the next dated test. |
+| 5:30 | *(the one ad slot, if there is ever an ad)* | One host-read spot, never before the Warning. |
+| 5:45 | **The Breakthrough** (about 2 min) | What AI can newly do, with a number attached, and what's real versus claimed. Not product launches. |
+| 7:45 | **Your Life** (about 3 min) | Three quick hits: **your job**, **your money** (usually scams), **your kids**. Each one ends with a takeaway. |
+| 10:45 | **The Watch List** (about 1 min) | The dated tests and events coming up, and what each one would mean. |
+| 11:45 | **The Last Shot** (about 45 s) | One strange, striking or darkly funny item to end on. |
+| 12:30 | **Sign-off** (word for word) | "That's your Warning Shots for [day, date]. Back tomorrow at 6:37. See what's coming. Know what it means." |
 
-There is no ad before the host speaks. If ads ever come, there is one host-read spot, placed after "What it means for you" and never before the Warning.
+**The 60-second cut:** the cold open, the Warning's headline and its "what it means for you", then the sign-off. It's vertical video with the headline card on screen, for TikTok, Reels and Shorts.
+
+On a quiet day, the segments get shorter, never padded. The clock may run 9–14 minutes; the order never changes.
 
 ## The five beats of every story
 
@@ -58,5 +63,5 @@ Every claim carries its grade, in words people understand. These lines are the b
 - Fear without a next step.
 - A risk the reporting doesn't support.
 - Blurring Tried, Proven and Hit.
-- Running past 5 minutes.
+- Running past 15 minutes, or padding a quiet day to hit the clock.
 - A guest on a weekday.
