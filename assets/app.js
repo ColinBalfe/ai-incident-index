@@ -5,6 +5,9 @@ const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AI
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
 const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls'];
 const EMBED = new URLSearchParams(location.search).get('embed');
+const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
+const FRONT_IDS = new Set(['wall', 'wall-lead', 'level', 'wire', 'why', 'front', 'now', 'brief', 'since', 'siren']);
+const RECORD_IDS = new Set(['record', 'capabilities', 'words', 'pattern', 'charts', 'next', 'dives', 'fixes', 'signals', 'all', 'about']);
 const D = {};
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const PRE = document.documentElement.dataset.prerendered === '1'; // first screen was baked into the HTML at build time; redraws of it should not animate
@@ -133,7 +136,7 @@ const cardForNews = (n) => ({ name: 'wire-' + (n.id || 'story'), kicker: 'THE WI
 let fontB64 = null;
 async function fontData() {
   if (fontB64 !== null) return fontB64;
-  try { const b = await (await fetch('assets/fonts/archivo-latin-standard-normal.woff2')).arrayBuffer(); let s = ''; const u = new Uint8Array(b); for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); fontB64 = btoa(s); }
+  try { const b = await (await fetch('/assets/fonts/archivo-latin-standard-normal.woff2')).arrayBuffer(); let s = ''; const u = new Uint8Array(b); for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); fontB64 = btoa(s); }
   catch (e) { fontB64 = ''; }
   return fontB64;
 }
@@ -407,7 +410,7 @@ async function drawMap(live) {
   wrap.hidden = !show; mid.classList.toggle('has-map', show);
   if (!show) { box.replaceChildren(); cap.replaceChildren(); document.getElementById('map-bars').replaceChildren(); return; }
   if (!box.clientWidth) return;
-  if (!world) { try { world = await (await fetch('assets/vendor/countries-110m.json')).json(); } catch (e) { fail(box); return; } }
+  if (!world) { try { world = await (await fetch('/assets/vendor/countries-110m.json')).json(); } catch (e) { fail(box); return; } }
   const W = box.clientWidth, narrowMap = W < 420, H = Math.max(200, Math.round(W * 0.5));
   const countries = topojson.feature(world, world.objects.countries).features.filter((f) => f.id !== '010');
   const proj = d3.geoNaturalEarth1().fitExtent([[0, 0], [W, H]], { type: 'FeatureCollection', features: countries });
@@ -1536,11 +1539,24 @@ const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', meth
 
 /* ---------- routing */
 function go(hash) { location.hash = hash; route(); }
+// Which page a hash belongs on. Old links to record sections on the front page forward to /index/, and the other way round.
+function pageFor(h) {
+  if (!h || h === 'top' || h.startsWith('i=')) return null;
+  if (/^(d|c|m|q)=/.test(h) || /^(fc-|fix-|cap-|q-|row-|dd-|card-)/.test(h) || CHART_DRAW[h]) return 'record';
+  if (RECORD_IDS.has(h)) return 'record';
+  if (FRONT_IDS.has(h)) return 'front';
+  const n = document.getElementById(h); if (!n) return null;
+  const host = n.closest('main > *'); const sec = host && (host.matches('section') ? host : host.querySelector('section'));
+  if (sec && RECORD_IDS.has(sec.id)) return 'record';
+  if (sec && FRONT_IDS.has(sec.id)) return 'front';
+  return null;
+}
 const PREFIX_SEC = [['fc-', 'next'], ['fix-', 'fixes'], ['cap-', 'capabilities'], ['q-', 'words'], ['row-', 'all'], ['dd-', 'dives'], ['card-', 'charts']];
 function sectionOf(node) { const hit = LAZY.find(([sid]) => { const s = document.getElementById(sid); return s && s.contains(node); }); return hit ? hit[0] : null; }
 function route() {
   let h = location.hash.slice(1);
   if (ALIAS[h]) h = ALIAS[h];
+  if (!EMBED) { const want = pageFor(h); if (want && want !== PAGE) { location.replace((want === 'record' ? '/index/' : '/') + '#' + h); return; } }
   if (!C.scored) { const n0 = h && !h.includes('=') && document.getElementById(h); if (n0) n0.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
   if (MF()) { const t = mfTarget(h); if (t === 'front') { showFront(); return; } if (t) showSection(t); }
   if (CHART_DRAW[h]) { drawThrough('charts'); showChart(h); document.getElementById('charts').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); return; }
@@ -1565,7 +1581,7 @@ document.addEventListener('click', (e) => {
 });
 /* ---------- phones: a front page and section views (body.mf). Desktop and the one-page mode are untouched. */
 const MF_PREF = () => { try { return localStorage.getItem('ws-mf'); } catch (e) { return null; } };
-const MF = () => !EMBED && window.innerWidth < 760 && MF_PREF() !== 'off';
+const MF = () => PAGE === 'front' && !EMBED && window.innerWidth < 760 && MF_PREF() !== 'off';
 const MF_SECTIONS = [['wire', 'The Wire'], ['why', 'What it means for you'], ['record', 'The record'], ['capabilities', 'What AI can now do'], ['words', 'In their words'], ['pattern', 'The pattern of 2026'], ['charts', 'The escalation, five ways'], ['next', 'Where this goes next'], ['dives', 'Inside the incidents'], ['fixes', 'Did they fix it?'], ['signals', 'Official signals'], ['all', 'All incidents'], ['about', 'About the data']];
 let mfCur = null; // null = not in phone mode; 'front' or a section id
 function mfTarget(h) {
@@ -1635,7 +1651,7 @@ document.getElementById('mf-off')?.addEventListener('click', () => { try { local
    The first screen (masthead, ribbon, ticker, the Wire, the brief) is drawn as soon as the data arrives. Everything below is drawn
    when it comes within a screen of the viewport, and pre-drawn in idle time after that, so a phone is not asked to lay out
    thirty sections of charts before it can show the headline. */
-const LAZY = [
+const LAZY_ALL = [
   ['why', [() => drawWhy()]],
   ['record', [(first) => drawTimeline(first && !EMBED)]],
   ['capabilities', [() => drawEdges(), () => drawTNS(), () => drawCapGrid()]],
@@ -1649,6 +1665,7 @@ const LAZY = [
   ['all', [() => drawList()]],
   ['about', [() => drawContext()]],
 ];
+const LAZY = EMBED ? LAZY_ALL : LAZY_ALL.filter(([sid]) => (sid === 'why') === (PAGE === 'front'));
 const drawn = new Set();
 // A section that comes within a screen of the viewport is drawn together with everything still undrawn above it, so nothing above the reader ever changes height under them (Safari has no scroll anchoring).
 const lazyIO = ('IntersectionObserver' in window) ? new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { if (MF()) drawSection(e.target.id); else drawThrough(e.target.id); } }); }, { rootMargin: '900px 0px' }) : null;
@@ -1687,14 +1704,14 @@ async function loadBundle(url, opts) {
   DATA_ALL.forEach((f) => { D[f] = b[f] || null; });
 }
 async function loadFiles(suffix, opts) {
-  await Promise.all(FILES.map((f) => fetch('data/' + f + '.json' + suffix, opts).then((r) => { if (!r.ok) throw new Error(f); return r.json(); }).then((j) => { D[f] = j; }))
-    .concat(OPTIONAL.map((f) => fetch('data/' + f + '.json' + suffix, opts).then((r) => r.ok ? r.json() : null).then((j) => { D[f] = j; }).catch(() => { D[f] = null; }))));
+  await Promise.all(FILES.map((f) => fetch('/data/' + f + '.json' + suffix, opts).then((r) => { if (!r.ok) throw new Error(f); return r.json(); }).then((j) => { D[f] = j; }))
+    .concat(OPTIONAL.map((f) => fetch('/data/' + f + '.json' + suffix, opts).then((r) => r.ok ? r.json() : null).then((j) => { D[f] = j; }).catch(() => { D[f] = null; }))));
 }
 async function checkForUpdate() {
   try {
-    const m = await (await fetch('data/meta.json?t=' + Date.now(), { cache: 'no-store' })).json();
+    const m = await (await fetch('/data/meta.json?t=' + Date.now(), { cache: 'no-store' })).json();
     if (!D.meta || m.as_of === D.meta.as_of) return;
-    try { await loadBundle('data/bundle.json?t=' + Date.now(), { cache: 'no-store' }); } catch (e) { await loadFiles('?t=' + Date.now(), { cache: 'no-store' }); }
+    try { await loadBundle('/data/bundle.json?t=' + Date.now(), { cache: 'no-store' }); } catch (e) { await loadFiles('?t=' + Date.now(), { cache: 'no-store' }); }
     compute(); SIDX = null; drawAll(false);
     const what = (m.changelog && m.changelog[0] && m.changelog[0].text) || 'new data';
     toastEl.classList.add('wide'); toast('Updated just now: ' + (what.length > 160 ? what.slice(0, 158) + '…' : what)); clearTimeout(toastT); toastT = setTimeout(() => { toastEl.classList.remove('on'); setTimeout(() => toastEl.classList.remove('wide'), 300); }, 9000);
@@ -1703,7 +1720,7 @@ async function checkForUpdate() {
 setInterval(checkForUpdate, 5 * 60 * 1000);
 (async () => {
   try {
-    try { await loadBundle('data/bundle.json?v=' + (window.AII_BUILD || '')); } catch (e) { await loadFiles('?v=' + (window.AII_BUILD || '')); }
+    try { await loadBundle('/data/bundle.json?v=' + (window.AII_BUILD || '')); } catch (e) { await loadFiles('?v=' + (window.AII_BUILD || '')); }
     compute(); window.__ready = true;
     if (EMBED) { embedMode(); } else { drawAll(true); route(); }
   } catch (e) { console.error(e); document.getElementById('headline').textContent = 'The data could not be loaded. Reload the page or try again shortly.'; }

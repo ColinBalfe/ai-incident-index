@@ -18,28 +18,28 @@
 <meta name="twitter:title" content="{{OG_TITLE}}">
 <meta name="twitter:description" content="{{OG_DESC}}">
 <meta name="twitter:image" content="{{SITE_URL}}assets/og.png?v={{BUILD}}">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/icon-180.png">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="manifest" href="/manifest.webmanifest">
 <script type="application/ld+json">{{JSONLD}}</script>
-<link rel="alternate" type="application/rss+xml" title="Warning Shots: the Wire and the daily brief" href="feed.xml">
-<link rel="alternate" type="application/rss+xml" title="Warning Shots: dispatches (incidents, cases, milestones)" href="feed-dispatches.xml">
+<link rel="alternate" type="application/rss+xml" title="Warning Shots: the Wire and the daily brief" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Warning Shots: dispatches (incidents, cases, milestones)" href="/feed-dispatches.xml">
 <meta name="theme-color" content="#F4F3EF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A111E" media="(prefers-color-scheme: dark)">
-<link rel="preload" href="assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="data/bundle.json?v={{BUILD}}" as="fetch" crossorigin>
+<link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/data/bundle.json?v={{BUILD}}" as="fetch" crossorigin>
 <script>window.AII_BUILD = "{{BUILD}}"; window.AII_SITE = "{{SITE_URL}}";</script>
-<script src="assets/vendor/d3-lite.min.js" defer></script>
-<script src="assets/vendor/topojson-client.min.js" defer></script>
-<script src="assets/app.js?v={{BUILD}}" defer></script>
+<script src="/assets/vendor/d3-lite.min.js" defer></script>
+<script src="/assets/vendor/topojson-client.min.js" defer></script>
+<script src="/assets/app.js?v={{BUILD}}" defer></script>
 <style>
-@font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
-@font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Playfair'; font-style: italic; font-display: swap; font-weight: 400; src: url(assets/fonts/playfair-display-latin-400-italic.woff2) format('woff2'); }
-@font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 700; src: url(assets/fonts/playfair-display-latin-700-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 900; src: url(assets/fonts/playfair-display-latin-900-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
+@font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Playfair'; font-style: italic; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 700; src: url(/assets/fonts/playfair-display-latin-700-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 900; src: url(/assets/fonts/playfair-display-latin-900-normal.woff2) format('woff2'); }
 /* Metric-matched stand-ins so text set in the system font before the webfonts arrive occupies the same lines (no layout shift on swap). Measured against the real files. */
 @font-face { font-family: 'Archivo Fallback'; src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Roboto'), local('Liberation Sans'); size-adjust: 99%; ascent-override: 88.7%; descent-override: 21.2%; line-gap-override: 0%; }
 @font-face { font-family: 'Playfair Fallback'; font-weight: 400; src: local('Times New Roman'), local('Times'), local('Liberation Serif'); size-adjust: 110%; ascent-override: 98.4%; descent-override: 22.8%; line-gap-override: 0%; }
@@ -881,6 +881,19 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 .protect-h { font-family: Arial, sans-serif; font-weight: 800; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--alarm); }
 .protect a { color: var(--ink); font-weight: 600; font-size: 14.5px; }
 
+
+/* ----- two pages from one template: the headline page (/) and the record (/index/) */
+body[data-page="front"] .hero-band, body[data-page="front"] #capabilities, body[data-page="front"] #words, body[data-page="front"] #pattern, body[data-page="front"] #charts, body[data-page="front"] #next, body[data-page="front"] #dives, body[data-page="front"] #fixes, body[data-page="front"] #signals, body[data-page="front"] #all, body[data-page="front"] #about { display: none !important; }
+body[data-page="record"] #level, body[data-page="record"] #wall-lead, body[data-page="record"] #wall, body[data-page="record"] #wire, body[data-page="record"] #why, body[data-page="record"] #front, body[data-page="record"] #recfoot { display: none !important; }
+body[data-page="record"] .hero-band { margin-top: 0 !important; }
+.recfoot { margin-top: clamp(40px, 6vw, 72px); padding: 22px 0 40px; border-top: 3px solid var(--ink); }
+.recfoot h2 { font-family: Arial, 'Helvetica Neue', Helvetica, var(--sans); font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: 16px; margin: 0; }
+.recfoot h2 a { color: var(--ink); }
+.recfoot p { margin: 8px 0 0; font-size: 14.5px; color: var(--ink-2); max-width: 78ch; line-height: 1.5; }
+.recfoot .rf-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; font-size: 14px; font-weight: 600; }
+.recfoot .rf-links a { color: var(--ink); }
+.recfoot .cite { font-family: 'Courier New', Courier, monospace; font-size: 13px; background: var(--panel); border: 1px solid var(--line-2); padding: 8px 10px; margin-top: 12px; }
+
 /* ----- what it means for you */
 .foryou { padding-top: clamp(34px, 5vw, 64px); }
 .fy-head { border-top: 3px solid var(--ink); padding-top: 18px; display: grid; gap: 8px 40px; }
@@ -926,7 +939,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 .sk { color: transparent; background: var(--line); border-radius: 1px; }
 </style>
 </head>
-<body>
+<body data-page="{{PAGE}}">
 <a class="skip" href="#wire">Skip to the Wire</a>
 <div class="lvl" id="level" hidden></div>
 <section class="dl-lead" id="wall-lead" aria-label="Top story" hidden></section>
@@ -1009,6 +1022,13 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
     </div>
     <div class="fy-tabs" id="fy-tabs" role="tablist" aria-label="Topics"></div>
     <div class="fy-body" id="why-grid"></div>
+  </section>
+
+  <section class="wrap recfoot" id="recfoot" aria-labelledby="rf-h">
+    <h2 id="rf-h"><a href="/index/">The Record →</a></h2>
+    <p>Every AI incident since 2023, scored 0–100 by a published formula, with its sources: the charts, what AI can now do, the forecasts and their track record, who said what, and whether the fixes held. This page is the news; the Record is the proof.</p>
+    <div class="rf-links"><a href="/index/">The full scored index</a><a href="/index/#all">All incidents, ranked</a><a href="/data/incidents.json">Download the data (JSON)</a><a href="/data/incidents.csv">CSV</a><a href="/feed.xml">RSS</a><a href="/index/#about">How the scores work</a><a href="{{REPO_URL}}">Source and corrections</a></div>
+    <p class="cite">Cite: Warning Shots, The AI Incident Index, warningshots.ai.</p>
   </section>
 
   <section class="wrap front" id="front" aria-label="The rest of the index" hidden>
@@ -1264,7 +1284,7 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
       </details>
       <details class="fold" id="fold-data">
         <summary>Data, downloads and corrections<span class="k">everything is open</span></summary>
-        <p>Everything on this page is open: <a href="data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="data/victims.json">organizations affected</a>, <a href="data/signals.json">official statements</a>, <a href="data/quotes.json">quotes</a>, <a href="data/forecasts.json">forecasts</a>, <a href="data/news.json">the Wire</a>. RSS: <a href="feed.xml">the Wire and the brief</a>, <a href="feed-dispatches.xml">dispatches</a>. Cite as "Warning Shots (The AI Incident Index)" with a link. Corrections and additions: open an issue on <a href="{{REPO_URL}}">GitHub</a>.</p>
+        <p>Everything on this page is open: <a href="/data/incidents.json">incidents (JSON)</a>, <a href="#" id="dl-csv">incidents (CSV)</a>, <a href="/data/victims.json">organizations affected</a>, <a href="/data/signals.json">official statements</a>, <a href="/data/quotes.json">quotes</a>, <a href="/data/forecasts.json">forecasts</a>, <a href="/data/news.json">the Wire</a>. RSS: <a href="/feed.xml">the Wire and the brief</a>, <a href="/feed-dispatches.xml">dispatches</a>. Cite as "Warning Shots (The AI Incident Index)" with a link. Corrections and additions: open an issue on <a href="{{REPO_URL}}">GitHub</a>.</p>
       </details>
       <div class="fieldnote" id="fieldnote" hidden>
         <div><h3>Seeing a failure, or a breakthrough, from the inside?</h3><p>Tell us what happened: a short description, the dates, public links that support it, and how to reach you if you want a reply. Submissions go to the editor, are treated as unverified until checked, and are never published without review.</p></div>

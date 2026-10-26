@@ -3,10 +3,10 @@
  "posts": [
   {
    "kind": "siren",
-   "text": "Startup's AI agents reached Anthropic's sales, HR and IT systems in under 12 hours; Anthropic disputes the rules were fo. Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights;",
+   "text": "A startup's AI agents reached Anthropic's internal sales, HR and IT systems in under 12 hours. Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights; access cut the same day.",
    "link": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
    "image": "cards/n-gizmodo-cathedral-agents-anthropic.jpg",
-   "chars": 269,
+   "chars": 267,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
@@ -27,10 +27,10 @@
   },
   {
    "kind": "brief",
-   "text": "PHP2Shell, day six: quiet since morning. Honeypot shells confirmed, still no organization named as breached, no PHP fix release for the three CVEs, and no CISA listing as of Monday morning.",
+   "text": "PHP2Shell, day six: quiet since morning. Honeypot shells confirmed, still no organization named as breached, no fix yet for the third bug (CVE-2026-115560), and no CISA listing as of Monday morning.",
    "link": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
    "image": "cards/i-php2shell.jpg",
-   "chars": 213,
+   "chars": 222,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {

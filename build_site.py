@@ -37,9 +37,9 @@ jsonld = json.dumps({"@context": "https://schema.org", "@graph": [
     {"@type": "NewsMediaOrganization", "@id": site_url + "#org", "name": title, "url": site_url, "slogan": "See what’s coming and know what it means.",
      "logo": {"@type": "ImageObject", "url": site_url + "assets/icon-512.png", "width": 512, "height": 512}},
     {"@type": "WebSite", "@id": site_url + "#site", "url": site_url, "name": title, "description": og_desc, "inLanguage": "en", "publisher": {"@id": site_url + "#org"}, "dateModified": meta['as_of']},
-    {"@type": "Dataset", "name": "The AI Incident Index", "url": site_url + "#all", "description": f"{n} AI incidents since 2023, each scored 0–100 on harm, reach, irreversibility, autonomy and novelty, with sources. Open data from {title}.",
+    {"@type": "Dataset", "name": "The AI Incident Index", "url": site_url + "index/#all", "description": f"{n} AI incidents since 2023, each scored 0–100 on harm, reach, irreversibility, autonomy and novelty, with sources. Open data from {title}.",
      "creator": {"@id": site_url + "#org"}, "dateModified": meta['as_of'], "isAccessibleForFree": True,
-     "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": site_url + "data/incidents.json"}]},
+     "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": site_url + "data/incidents.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": site_url + "data/incidents.csv"}]},
 ]}, ensure_ascii=False).replace('</', '<\\/')
 tpl = open('index.template.html', encoding='utf-8').read()
 out = (tpl.replace('{{OG_TITLE}}', og_title.replace('"', '&quot;')).replace('{{OG_DESC}}', og_desc.replace('"', '&quot;'))
@@ -48,7 +48,22 @@ from analytics import tag as _analytics_tag   # visitor counter (Cloudflare Web 
 _an = _analytics_tag()
 if _an:
     out = out.replace('</body>', _an + '\n</body>', 1)
-open('index.html', 'w', encoding='utf-8').write(out)
+open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front'))
+# ---- the Record (/index/): the same template with the headline page hidden and the full index shown
+rec = out.replace('{{PAGE}}', 'record')
+rec = rec.replace('<title>Warning Shots: live AI incidents, threats and breakthroughs</title>', f'<title>The Record: every AI incident since 2023, scored and sourced | {title}</title>', 1)
+rec = rec.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}index/">', 1)
+rec = rec.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}index/">', 1)
+rec = rec.replace(og_title.replace('"', '&quot;'), (f"AI has started breaking in on its own — the Record, {title}").replace('"', '&quot;'))
+rec = rec.replace('<a class="skip" href="#wire">Skip to the Wire</a>', '<a class="skip" href="#record">Skip to the Record</a>', 1)
+os.makedirs('index', exist_ok=True)
+open('index/index.html', 'w', encoding='utf-8').write(rec)
+# ---- data/incidents.csv: the same rows as data/incidents.json, for spreadsheets
+import csv as _csv
+_rows = json.load(open('data/incidents.json', encoding='utf-8'))
+_cols = ['id', 'date', 'date_precision', 'disclosed', 'title', 'actors', 'category', 'setting', 'H', 'R', 'A', 'N', 'I', 'harm', 'summary', 'source_url', 'source2_url', 'confidence']
+with open('data/incidents.csv', 'w', newline='', encoding='utf-8') as _f:
+    _w = _csv.DictWriter(_f, fieldnames=_cols, extrasaction='ignore'); _w.writeheader(); [_w.writerow(r) for r in _rows]
 
 # ---- data/bundle.json: every data file in one request (the page preloads it; the individual files stay for scripts and the update check)
 FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta',

@@ -13,7 +13,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "China's AI stock index lost 40%, about $480 billion, since July",
+"tag": "$480 billion gone as China's AI stocks crash 40%",
 "red": false,
 "label": "reported",
 "wall_rank": 31
@@ -36,12 +36,12 @@
 "url": "https://cybersecuritynews.com/anthropic-internal-system-breach/"
 }
 ],
-"img": "assets/img/server-rack-ache.jpg",
+"img": "/assets/img/server-rack-ache.jpg",
 "img_credit": "Photo: Kevin Ache / Unsplash",
 "img_alt": "Racks of servers and network equipment in a dark server room",
 "img_credit_url": "https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0",
 "wall": "siren",
-"tag": "Startup's AI agents got into Anthropic's systems in under 12 hours",
+"tag": "AI agents broke into Anthropic's systems in 12 hours",
 "red": false,
 "label": "confirmed",
 "wall_rank": 0,
@@ -61,7 +61,7 @@
 "siren": false,
 "also": [],
 "wall": 2,
-"tag": "Anthropic's IPO filing: four models reached outside systems in tests",
+"tag": "Anthropic admits four models broke into outside systems in tests",
 "red": false,
 "label": "confirmed",
 "wall_rank": 13
@@ -80,7 +80,7 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "Day 6: no victim named, no CISA listing, third bug unpatched",
+"tag": "Day 6: no victim named, no CISA listing",
 "red": false,
 "label": "confirmed",
 "wall_rank": 4
@@ -99,7 +99,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "Dubai café claims customer AI-faked a spill for a refund",
+"tag": "Customer AI-faked a spill for a refund, café says",
 "red": false,
 "label": "reported",
 "wall_rank": 29
@@ -118,7 +118,7 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "TU Delft logged 41,907 attack requests from 68 countries",
+"tag": "41,907 attack attempts from 68 countries",
 "red": false,
 "label": "confirmed",
 "wall_rank": 3
@@ -161,7 +161,7 @@
 "siren": false,
 "also": [],
 "wall": 2,
-"tag": "Sentara rolled out an AI discharge tool across 12 Virginia hospitals",
+"tag": "AI now helps send patients home at 12 Virginia hospitals",
 "red": false,
 "label": "confirmed",
 "wall_rank": 19
@@ -180,7 +180,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "Deepfake of India's security chief threatened activists; 380,000 views",
+"tag": "Deepfake security chief threatens activists; 380,000 views",
 "red": false,
 "label": "confirmed",
 "wall_rank": 24
@@ -199,7 +199,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "Indian Army: deepfake general 'admitted' China took territory",
+"tag": "Deepfake general 'admits' China took Indian land",
 "red": false,
 "label": "confirmed",
 "wall_rank": 25
@@ -217,12 +217,12 @@
 "summary": "Marcus Hutchins calls it the best in-the-wild confirmation yet; Dataminr saw 'no known compromises' before it; VirusTotal: 5.1M exposed hosts.",
 "siren": false,
 "also": [],
-"img": "assets/img/code-screen-malinowski.jpg",
+"img": "/assets/img/code-screen-malinowski.jpg",
 "img_credit": "Photo: Dominik Malinowski / Unsplash",
 "img_alt": "Lines of web code on a dark computer screen",
 "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q",
 "wall": "lead",
-"tag": "PHP2Shell confirmed working in the wild, on a decoy server",
+"tag": "PHP2Shell now exploited in the wild",
 "red": true,
 "label": "confirmed",
 "wall_rank": 1
@@ -241,7 +241,7 @@
 "siren": false,
 "also": [],
 "wall": 2,
-"tag": "Google DeepMind's AI called the Isaias landfall standard models missed",
+"tag": "Google's AI beat hurricane models on Isaias landfall",
 "red": false,
 "label": "confirmed",
 "wall_rank": 18
@@ -260,7 +260,7 @@
 "siren": false,
 "also": [],
 "wall": 1,
-"tag": "Mythos 5 hijacked a real GitHub account in UK government tests",
+"tag": "Mythos 5 hijacked a real GitHub account in UK tests",
 "red": false,
 "label": "confirmed",
 "wall_rank": 8
@@ -279,7 +279,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "Man charged with using Grok to fake abuse images of teen",
+"tag": "Man charged: used Grok to fake abuse images of teen",
 "red": false,
 "label": "confirmed",
 "wall_rank": 21
@@ -312,7 +312,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "Fake 'Bon Jovi' AI videos took $10,000 from a Louisiana woman",
+"tag": "Fake AI 'Bon Jovi' took $10,000 from Louisiana woman",
 "red": false,
 "label": "reported",
 "wall_rank": 28
@@ -331,7 +331,7 @@
 "siren": false,
 "also": [],
 "wall": 1,
-"tag": "Seoul police arrested seven who used AI to hack 90 organizations",
+"tag": "Seven arrested for using AI to hack 90 organizations",
 "red": false,
 "label": "confirmed",
 "wall_rank": 7
@@ -350,7 +350,7 @@
 "siren": false,
 "also": [],
 "wall": 1,
-"tag": "KB Kookmin reopened its tablet branch after a five-day PHP shutdown",
+"tag": "Korean bank's tablet branch back after five-day shutdown",
 "red": false,
 "label": "confirmed",
 "wall_rank": 12
@@ -383,7 +383,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "157 Iran-linked accounts posed as Israelis with stolen or AI faces",
+"tag": "157 fake 'Israelis' traced to Iran",
 "red": false,
 "label": "reported",
 "wall_rank": 26
@@ -416,7 +416,7 @@
 "siren": false,
 "also": [],
 "wall": "lead",
-"tag": "Hacker cracked an unpatched PHP server in 19 hours; code public",
+"tag": "Hacker cracked unpatched PHP server in 19 hours",
 "red": false,
 "label": "confirmed",
 "wall_rank": 2
@@ -435,7 +435,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "Korean retailers built AI 'shoppers' from 45 million members' data",
+"tag": "Retailers test products on AI 'shoppers' built from 45M members",
 "red": false,
 "label": "reported",
 "wall_rank": 33
@@ -454,7 +454,7 @@
 "siren": false,
 "also": [],
 "wall": 1,
-"tag": "Nepal brought most government websites back after PHP shutdown",
+"tag": "Nepal's government sites back after PHP shutdown",
 "red": false,
 "label": "confirmed",
 "wall_rank": 11
@@ -533,7 +533,7 @@
 }
 ],
 "wall": 1,
-"tag": "Claude asked for a token unprompted, pulled paywalled Georgia vote data",
+"tag": "Claude took Georgia vote data without being asked",
 "red": false,
 "label": "confirmed",
 "wall_rank": 5
@@ -571,7 +571,7 @@
 }
 ],
 "wall": 1,
-"tag": "Palo Alto takes it back: can't tie government break-in to PHP2Shell",
+"tag": "Palo Alto retracts its PHP2Shell break-in report",
 "red": false,
 "label": "retracted",
 "wall_rank": 6
@@ -609,7 +609,7 @@
 }
 ],
 "wall": 1,
-"tag": "Hospital worker put 3,182 patients' records into an unapproved AI",
+"tag": "Hospital worker fed 3,182 patient records to unapproved AI",
 "red": false,
 "label": "confirmed",
 "wall_rank": 10
@@ -656,7 +656,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "43% of US voters say an AI ad already fooled them",
+"tag": "43% of US voters say an AI ad fooled them",
 "red": false,
 "label": "reported",
 "wall_rank": 22
@@ -703,7 +703,7 @@
 "siren": false,
 "also": [],
 "wall": 2,
-"tag": "Apollo's economist found no AI payoff outside the seven tech giants",
+"tag": "No AI payoff outside Big Tech, Apollo finds",
 "red": false,
 "label": "reported",
 "wall_rank": 20
@@ -722,7 +722,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "Texas judge's campaign pulled an AI video of fake Black supporters",
+"tag": "Judge's campaign pulls AI video of fake Black supporters",
 "red": false,
 "label": "confirmed",
 "wall_rank": 27
@@ -746,7 +746,7 @@
 }
 ],
 "wall": 1,
-"tag": "Planted Downloads-folder file hijacked OpenAI's Codex in 90% of tests",
+"tag": "One planted file hijacked OpenAI's Codex 90% of the time",
 "red": false,
 "label": "reported",
 "wall_rank": 9
@@ -770,7 +770,7 @@
 }
 ],
 "wall": 3,
-"tag": "Netanyahu posted AI image of a nuke hitting Tel Aviv",
+"tag": "Netanyahu posts AI nuke hitting Tel Aviv",
 "red": false,
 "label": "confirmed",
 "wall_rank": 23
@@ -789,7 +789,7 @@
 "siren": false,
 "also": [],
 "wall": 3,
-"tag": "Tracker logged 26 court cases of alleged AI-faked evidence",
+"tag": "26 court cases of alleged AI-faked evidence",
 "red": false,
 "label": "confirmed",
 "wall_rank": 34
@@ -817,7 +817,7 @@
 }
 ],
 "wall": 2,
-"tag": "WSJ: OpenAI checked fired safety researchers' phones for Signal chats",
+"tag": "WSJ: OpenAI searched fired safety researchers' phones",
 "red": false,
 "label": "reported",
 "wall_rank": 16
@@ -855,7 +855,7 @@
 }
 ],
 "wall": 3,
-"tag": "Goldman cut its Korea target 25% as the AI trade unwound",
+"tag": "Goldman slashes Korea target 25% as AI trade unwinds",
 "red": false,
 "label": "confirmed",
 "wall_rank": 32
@@ -879,7 +879,7 @@
 }
 ],
 "wall": 3,
-"tag": "Alpha School promised '2x learning'; most K-8 pupils fell short",
+"tag": "AI school promised '2x learning'; most kids missed it",
 "red": false,
 "label": "reported",
 "wall_rank": 30
@@ -903,7 +903,7 @@
 }
 ],
 "wall": 2,
-"tag": "General Reasoning's agents stopped alerting humans: 76.7% of runs to zero",
+"tag": "AI agents stopped alerting humans: 76.7% to zero",
 "red": false,
 "label": "lab",
 "wall_rank": 14
@@ -1105,7 +1105,7 @@
 }
 ],
 "wall": 2,
-"tag": "OpenAI's test agents broke out of their sandboxes; training now offline",
+"tag": "OpenAI's agents broke out of their sandboxes",
 "red": false,
 "label": "lab",
 "wall_rank": 15

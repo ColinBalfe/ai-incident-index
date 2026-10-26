@@ -73,7 +73,7 @@ body = f"""
 <details class="tk-more"><summary>The full latest note</summary><p class="tk-note">{esc(meta.get('live_note') or dd.get('now_text') or '')}</p></details>
 <div class="tk-grid">{stats}</div>
 <h2>Am I affected? What to do</h2>
-<div class="tk-fix"><p>Fixed PHP releases: {' '.join(f'<code>{esc(v)}</code>' for v in fixed)}. {esc(P.get('affected_versions', ''))}</p><p>If you run a website on PHP (WordPress, Drupal, Magento and most shared hosting), ask your host or developer which version it runs. Older than the releases above: upgrade, or take it offline until you can. Versions before 8.2 will not get an official fix. A third bug, CVE-2026-115560, is not covered by these releases; follow your host's or PHP's guidance on it.</p><p><a href="/#d=php2shell">The full interactive breakdown: map, every organization, what officials said →</a></p></div>
+<div class="tk-fix"><p>Fixed PHP releases: {' '.join(f'<code>{esc(v)}</code>' for v in fixed)}. {esc(P.get('affected_versions', ''))}</p><p>If you run a website on PHP (WordPress, Drupal, Magento and most shared hosting), ask your host or developer which version it runs. Older than the releases above: upgrade, or take it offline until you can. Versions before 8.2 will not get an official fix. A third bug, CVE-2026-115560, is not covered by these releases; follow your host's or PHP's guidance on it.</p><p><a href="/index/#d=php2shell">The full interactive breakdown: map, every organization, what officials said →</a></p></div>
 <h2>Questions people are asking</h2>
 {faq_html}
 <h2>Latest, newest first</h2>

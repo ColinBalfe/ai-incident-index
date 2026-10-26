@@ -125,7 +125,7 @@ def incident_page(r, prev, nxt):
     kick = f'<div class="kicker"><span>Incident</span><span class="dot">·</span><b>{r["ws"]}</b><span class="dot">·</span><span>{esc(fdate(r["date"], r.get("date_precision")))}</span>{disclosed}<span class="dot">·</span><span>{"in the wild" if r["setting"] == "wild" else "in the lab"}</span><span class="dot">·</span><span>{esc(r.get("category_label") or "")}</span></div>'
     aut = AUTONOMY[int(r['A'])]
     factors = ''.join(f'<div class="factor">{lab} <span class="fv">{r[k]}</span>/{mx}<div class="ft"><i style="width:{int(r[k]) / mx * 100:.0f}%"></i></div><div class="fd">{d}</div></div>' for k, lab, mx, d in FACT)
-    scorebox = f'<div class="score"><div class="big">{r["severity"]}<small>/100</small></div><span class="pill"><i style="background:{tier_dot}"></i>{r["level"]} {r["tier"]}</span><div class="sub">Harm score <b>{r["harm_score"]}</b>, signal score <b>{r["signal_score"]}</b>. Autonomy: <b>{aut[0].lower()}</b> ({aut[1]}). <a href="/#about">How the scores work</a>.</div><div class="factors" style="flex-basis:100%">{factors}</div></div>'
+    scorebox = f'<div class="score"><div class="big">{r["severity"]}<small>/100</small></div><span class="pill"><i style="background:{tier_dot}"></i>{r["level"]} {r["tier"]}</span><div class="sub">Harm score <b>{r["harm_score"]}</b>, signal score <b>{r["signal_score"]}</b>. Autonomy: <b>{aut[0].lower()}</b> ({aut[1]}). <a href="/index/#about">How the scores work</a>.</div><div class="factors" style="flex-basis:100%">{factors}</div></div>'
     body = [kick, f'<h1>{esc(r["title"])}</h1>']
     if r.get('actors'): body.append(f'<p class="meta">{esc(r["actors"])}</p>')
     body.append(scorebox)
@@ -134,7 +134,7 @@ def incident_page(r, prev, nxt):
     dd = dd_by_inc.get(r['id'])
     if dd:
         paras = [(dd.get('how'), 'How it happened'), (dd.get('ai_role'), 'The AI’s role'), (dd.get('damage'), 'Damage so far'), (dd.get('why'), 'Why it matters')]
-        body.append('<section><h2>Inside the incident</h2>' + ''.join(f'<h3 style="margin-top:14px">{esc(h)}</h3><p>{esc(t)}</p>' for t, h in paras if t) + f'<p class="k" style="margin-top:12px"><a href="/#d={esc(r["id"])}">Every organization named, the map and the full timeline on the index →</a></p></section>')
+        body.append('<section><h2>Inside the incident</h2>' + ''.join(f'<h3 style="margin-top:14px">{esc(h)}</h3><p>{esc(t)}</p>' for t, h in paras if t) + f'<p class="k" style="margin-top:12px"><a href="/index/#d={esc(r["id"])}">Every organization named, the map and the full timeline on the index →</a></p></section>')
         vs = vic_by_inc.get(r['id'], [])
         if vs:
             def n(v): c = v.get('count'); return 1 if c in ('', None) or not str(c).replace('.', '').isdigit() else int(float(c))
@@ -143,10 +143,10 @@ def incident_page(r, prev, nxt):
             order = {g: i for i, (g, _) in enumerate(VGROUP)}
             top = sorted([v for v in vs if v['status_group'] != 'unnamed'], key=lambda v: (order.get(v['status_group'], 9), v.get('date') or ''))[:8]
             rows = ''.join(f'<li><span class="t">{esc(v["organization"])}<small>{esc(", ".join(x for x in [v.get("sector"), v.get("country"), v.get("status")] if x))}{(" · " + clip(v.get("extent"), 140)) if v.get("extent") else ""}</small></span></li>' for v in top)
-            body.append(f'<section><h2>Organizations affected</h2><p class="meta">{esc("; ".join(f"{c} {lab}" for lab, c in counts))}. “Reported” means an outlet or researcher says so and the organization has not confirmed.</p><ul class="rows">{rows}</ul><p class="k" style="margin-top:10px"><a href="/#d={esc(r["id"])}">All {len(vs)} entries, filterable, on the index →</a></p></section>')
+            body.append(f'<section><h2>Organizations affected</h2><p class="meta">{esc("; ".join(f"{c} {lab}" for lab, c in counts))}. “Reported” means an outlet or researcher says so and the organization has not confirmed.</p><ul class="rows">{rows}</ul><p class="k" style="margin-top:10px"><a href="/index/#d={esc(r["id"])}">All {len(vs)} entries, filterable, on the index →</a></p></section>')
         tl = sorted(tl_by_inc.get(r['id'], []), key=lambda t: t['date'], reverse=True)[:10]
         if tl:
-            body.append('<section><h2>Timeline</h2><ol class="tl">' + ''.join(f'<li><span class="d">{esc(t.get("date_label") or fdate(t["date"]))}</span><span>{esc(t["event"])}{(link(t["source_url"], "source", "s")) if t.get("source_url") else ""}</span></li>' for t in tl) + '</ol>' + (f'<p class="k" style="margin-top:10px">Latest {len(tl)} of {len(tl_by_inc[r["id"]])} events; <a href="/#d={esc(r["id"])}">the full timeline is on the index</a>.</p>' if len(tl_by_inc[r['id']]) > len(tl) else '') + '</section>')
+            body.append('<section><h2>Timeline</h2><ol class="tl">' + ''.join(f'<li><span class="d">{esc(t.get("date_label") or fdate(t["date"]))}</span><span>{esc(t["event"])}{(link(t["source_url"], "source", "s")) if t.get("source_url") else ""}</span></li>' for t in tl) + '</ol>' + (f'<p class="k" style="margin-top:10px">Latest {len(tl)} of {len(tl_by_inc[r["id"]])} events; <a href="/index/#d={esc(r["id"])}">the full timeline is on the index</a>.</p>' if len(tl_by_inc[r['id']]) > len(tl) else '') + '</section>')
         sigs = sorted(signals_by_tag.get(dd.get('signal_tag') or '', []), key=lambda s: s['date'], reverse=True)[:6]
         if sigs:
             body.append('<section><h2>What officials said</h2>' + ''.join(f'<div class="sig"><div class="av" style="background:{av_color(s.get("org_type"))}">{esc(initials(s["org"]))}</div><div><b>{esc(s["org"])}</b>{(" " + esc(s["speaker"])) if s.get("speaker") else ""}<div>{esc(s["gist"])}</div><div class="sm">{esc(fdate(s["date"]))}{(" · <b>" + esc(s["channel"]) + "</b>") if s.get("channel") else ""}{(" · " + link(s["url"], "Source")) if s.get("url") else ""}</div></div></div>' for s in sigs) + '</section>')
@@ -190,7 +190,7 @@ def case_page(f, prev, nxt):
     if f.get('what_would_change_it'): body.append(f'<section><h2>What would change the verdict</h2><p>{esc(f["what_would_change_it"])}</p></section>')
     body.append(f'<section class="src"><h2>Method</h2><p>Statuses move only on evidence: <b>fixed</b> needs an independent party confirming the fix under stated conditions; <b>unverified</b> is a claimed fix nobody independent has checked; <b>disputed</b>, <b>reopened</b> (recurred after a claimed fix), <b>unresolved</b> (no fix claimed), <b>ongoing</b> (still unfolding). “No public response found” is a valid entry; nothing here is invented.{(" Evidence confidence: " + esc(f["confidence"]) + ".") if f.get("confidence") and f["confidence"] != "high" else ""}</p></section>')
     share_text = f'Did they fix it? {f["name"]}: {f.get("one_liner") or cur.get("note") or ""} Warning Shots:'
-    body.append(share_html(url, share_text, f'/cards/c-{f["incident_id"]}.jpg' if os.path.exists(f'cards/c-{f["incident_id"]}.jpg') else '', f'/#c={f["incident_id"]}', 'Open on the index'))
+    body.append(share_html(url, share_text, f'/cards/c-{f["incident_id"]}.jpg' if os.path.exists(f'cards/c-{f["incident_id"]}.jpg') else '', f'/index/#c={f["incident_id"]}', 'Open on the index'))
     body.append(prevnext(prev, nxt, 'c', lambda x: x['name'], lambda x: 'Status: ' + cur_status(x).replace('_', ' ')) if (prev or nxt) else '')
     desc = ('Did they fix it? ' + (f.get('one_liner') or cur.get('note') or ''))[:300]
     rid = r['date'] if r else AS_OF_DATE
@@ -222,7 +222,7 @@ def milestone_page(c, prev, nxt):
     src = ', '.join(link(u, l) for u, l in [(c.get('source_url'), 'primary source'), (c.get('source2_url'), 'second source')] if u)
     body.append(f'<section class="src"><h2>Sources</h2><p>{src}.{(" Evidence confidence: " + esc(c["confidence"]) + ".") if c.get("confidence") and c["confidence"] != "high" else ""}</p><p class="k">A milestone is a dated, sourced result that moved what AI can do; a stage is upgraded only when a source shows it (a reproduction, a public release, production evidence, a documented consequence). “Unknown” is the honest default.</p></section>')
     share_text = f'What AI can now do: {c["title"]}. {first_sentence(c.get("what"))} Warning Shots:'
-    body.append(share_html(url, share_text, f'/cards/m-{c["id"]}.jpg' if os.path.exists(f'cards/m-{c["id"]}.jpg') else '', f'/#m={c["id"]}', 'Open on the index'))
+    body.append(share_html(url, share_text, f'/cards/m-{c["id"]}.jpg' if os.path.exists(f'cards/m-{c["id"]}.jpg') else '', f'/index/#m={c["id"]}', 'Open on the index'))
     body.append(prevnext(prev, nxt, 'm', lambda x: x['title'], lambda x: fdate(x['date'], x.get('date_precision')) + ' · ' + (x.get('org') or '')))
     desc = ((c.get('what') or '') + ' Graded from demonstration to real consequences by Warning Shots.')[:300]
     write(f'm/{c["id"]}/index.html', shell(title=c['title'], desc=desc, url=url, img=img, body='\n'.join(body), jsonld=article_ld(c['title'], desc, url, img, c['date'][:10], 'What AI can now do'), kind='milestone'))
@@ -240,7 +240,7 @@ def index_page(kind, title, lede, rows_html, desc):
     return url
 
 inc_rows = [f'<li><span class="n" style="color:{TIER_TEXT[x["tier"]]}">{x["severity"]}</span><span class="t"><a href="/i/{esc(x["id"])}/">{esc(x["title"])}</a><small>{x["ws"]} · {esc(fdate(x["date"], x.get("date_precision")))} · {x["level"]} {x["tier"]} · {"real-world" if x["setting"] == "wild" else "lab or test"}</small></span></li>' for x in sorted(scored, key=lambda x: (x['date'], x['id']), reverse=True)]
-urls.append(index_page('i', 'All incidents', f'Every incident on the index, newest first: {len(scored)} since 2023, each scored 0–100 by a <a href="/#about">published formula</a> and linked to its sources. <a href="/#all">Sort, filter and search them on the front page</a>.', inc_rows, f'{len(scored)} AI incidents since 2023, scored 0–100 and sourced, newest first. Warning Shots.'))
+urls.append(index_page('i', 'All incidents', f'Every incident on the index, newest first: {len(scored)} since 2023, each scored 0–100 by a <a href="/index/#about">published formula</a> and linked to its sources. <a href="/index/#all">Sort, filter and search them on the front page</a>.', inc_rows, f'{len(scored)} AI incidents since 2023, scored 0–100 and sourced, newest first. Warning Shots.'))
 case_rows = [f'<li><span class="t"><a href="/c/{esc(f["incident_id"])}/">{esc(f["name"])}</a><small><span class="stt {esc(cur_status(f))}">{esc(cur_status(f).replace("_", " "))}</span> {esc(clip(f.get("one_liner") or "", 160))}</small></span></li>' for f in fixes]
 urls.append(index_page('c', 'Did they fix it?', 'What happened after the headline, for each major incident: the report, the response, the claimed fix, whether anyone independent checked, and where it stands. Re-checked every refresh.', case_rows, 'For each major AI incident: the report, the response, the claimed fix, whether anyone independent checked, and where it stands today. Warning Shots.'))
 cap_rows = [f'<li><span class="t"><a href="/m/{esc(c["id"])}/">{esc(c["title"])}</a><small>{esc(fdate(c["date"], c.get("date_precision")))} · {esc(c.get("org") or "")} · {esc((c.get("domain") or "").capitalize())} · reliable: {esc(((c.get("stages") or {}).get("reliable") or {}).get("status") or "unknown")}</small></span></li>' for c in sorted(caps, key=lambda c: c['date'], reverse=True)]
@@ -255,6 +255,8 @@ except (OSError, ValueError):
 # ---------- the live-incident tracker (build_tracker.py)
 if os.path.exists('php2shell/index.html') and site + 'php2shell/' not in urls:
     urls.insert(0, site + 'php2shell/')
+if os.path.exists('index/index.html') and site + 'index/' not in urls:
+    urls.insert(0, site + 'index/')
 
 # ---------- prune pages for records that no longer exist
 keep = {u.replace(site, '') for u in urls}
