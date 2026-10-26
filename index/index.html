@@ -12,13 +12,13 @@
 <meta property="og:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta property="og:description" content="The Record: all 160 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 13 in a year; in 42% of this year's real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
 <meta property="og:url" content="https://warningshots.ai/index/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610262020">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610262022">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta name="twitter:description" content="The Record: all 160 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 13 in a year; in 42% of this year's real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610262020">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610262022">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -30,11 +30,11 @@
 <link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/data/bundle.json?v=202610262020" as="fetch" crossorigin>
-<script>window.AII_BUILD = "202610262020"; window.AII_SITE = "https://warningshots.ai/";</script>
+<link rel="preload" href="/data/bundle.json?v=202610262022" as="fetch" crossorigin>
+<script>window.AII_BUILD = "202610262022"; window.AII_SITE = "https://warningshots.ai/";</script>
 <script src="/assets/vendor/d3-lite.min.js" defer></script>
 <script src="/assets/vendor/topojson-client.min.js" defer></script>
-<script src="/assets/app.js?v=202610262020" defer></script>
+<script src="/assets/app.js?v=202610262022" defer></script>
 <style>
 @font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
@@ -991,6 +991,10 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 .comingup { margin: 22px 0 0; border-top: 3px solid var(--ink); padding-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: baseline; font-size: 14px; }
 .cu-h { font-family: Arial, sans-serif; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; }
 .cu-i { color: var(--ink-2); text-decoration: none; } .cu-i b { color: var(--ink); margin-right: 3px; } .cu-i:hover { text-decoration: underline; }
+.graded { flex-basis: 100%; display: flex; flex-direction: column; gap: 4px; padding-bottom: 8px; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+.gr-i { color: var(--ink); text-decoration: none; font-size: 15px; } .gr-i:hover { text-decoration: underline; }
+.gr-i.hit b { color: #2e6b34; } .gr-i.miss b { color: var(--alarm); }
+.gr-rec { font-size: 12.5px; color: var(--ink-3); }
 .wall-cu { margin: 16px 0 0; text-align: center; font-size: 15px; color: var(--ink-2); } .wall-cu b { color: var(--ink); }
 .serial-share { margin-top: 8px; font-size: 12px; }
 .wall-ed { margin: 18px 0 0; text-align: center; font: 600 12px/1.4 'IBM Plex Mono', ui-monospace, monospace; color: var(--ink-3); letter-spacing: .02em; }
@@ -1279,7 +1283,7 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
       </div>
       <div class="panel" id="card-forecast">
         <div class="panel-title">What the index expects, and how it has done</div>
-        <div class="panel-note">Dated questions this index has committed to in advance, so its judgment can be checked. Each is graded when its date passes; a question is never edited after it resolves, and misses stay on the page. Open a line for the reasoning and what would change it.</div>
+        <div class="panel-note">Dated questions this index has committed to in advance, so its judgment can be checked. Each is graded when its date passes; a question is never edited after it resolves, and misses stay on the page. A question the index put at 50% counts as neither right nor wrong. Open a line for the reasoning and what would change it.</div>
         <div class="call-record" id="call-record"></div>
         <div id="forecast-list"></div>
         <div id="forecast-more"></div>

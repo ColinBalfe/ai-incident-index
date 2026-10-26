@@ -592,10 +592,18 @@ function drawWall() {
   const open = (D.calls || []).filter((c) => c && !c.resolution && c.resolve_by >= asOfD).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by));
   const firstDay = open.length ? open[0].resolve_by : null; const nDay = open.filter((c) => c.resolve_by === firstDay).length;
   const graded = (D.calls || []).some((c) => c && c.resolution);
-  if (firstDay) { const r1 = el('a', 'cu-i'); r1.href = '/index/#next'; const nt = (srN0 => srN0 && srN0.next_test && srN0.next_test.date === firstDay ? srN0.next_test.text + ' ' : '')(D.meta.serial);
+  if (firstDay) { const r1 = el('a', 'cu-i'); r1.href = '/index/#next'; const nt = (srN0 => srN0 && srN0.next_test && srN0.next_test.date === firstDay && open.some((c) => c.id === srN0.next_test.call_id) ? srN0.next_test.text + ' ' : '')(D.meta.serial);
     r1.append(el('b', null, fmtDate(new Date(firstDay + 'T12:00:00Z')) + (graded ? '' : ': the index’s first graded day.')), txt(' ' + nt + nDay + ' of its dated forecasts resolve, right or wrong, in public →')); up.append(r1); }
   (D.catalysts || []).filter((c) => c.date > asOfD && c.date !== firstDay).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 2).forEach((c) => { const r = el('a', 'cu-i'); r.href = '/index/#next'; r.append(el('b', null, c.date_label + ':'), txt(' ' + c.event)); up.append(r); });
-  if (up.childNodes.length) up.prepend(el('div', 'cu-h', 'Coming up'));
+  // The payoff: forecasts graded in the last day lead the strip, misses as prominent as hits, with the running record
+  const asOfT = Date.parse(D.meta.as_of);
+  const fresh = (D.calls || []).filter((c) => c && c.resolution && c.resolution.outcome !== 'void' && asOfT - Date.parse(c.resolution.date + 'T23:59:00-04:00') < 36 * 3.6e6);
+  if (fresh.length) { const hr0 = houseRecord(); const gb = el('div', 'graded');
+    gb.append(el('div', 'cu-h', 'Graded'));
+    fresh.slice(0, 3).forEach((c) => { const toss = Math.abs(+c.odds - 0.5) < 1e-9; const hit = houseHit(c); const g = el('a', 'gr-i ' + (toss ? 'toss' : hit ? 'hit' : 'miss')); g.href = '/index/#fc-' + c.id; g.append(el('b', null, toss ? '◦ Called it a toss-up' : hit ? '✓ Called it' : '✗ Missed'), txt(' ' + (c.plain || c.question) + ' Answer: ' + (c.resolution.outcome === 'yes' ? 'yes' : 'no') + '. The index expected: ' + likelyWord(c.odds).toLowerCase() + '.')); gb.append(g); });
+    gb.append(el('span', 'gr-rec', 'Track record so far: ' + hr0.w + ' right, ' + hr0.l + ' wrong. Misses stay on the page.'));
+    up.prepend(gb); }
+  if (up.childNodes.length && !fresh.length) up.prepend(el('div', 'cu-h', 'Coming up')); else if (fresh.length) up.insertBefore(el('div', 'cu-h', 'Coming up'), up.children[1] || null);
   box.replaceChildren(cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, foot);
 }
 function drawWire() {
@@ -832,13 +840,14 @@ const callOpen = (c) => !c.resolution;
 const callDays = (c) => Math.ceil((Date.parse(c.resolve_by + 'T00:00:00-04:00') - Date.now()) / 864e5); // whole days until the resolution date, Eastern
 const callLean = (c) => +c.odds >= 0.5;
 const likelyWord = (p) => (p = +p, p >= 0.85 ? 'Very likely' : p >= 0.6 ? 'Likely' : p > 0.4 ? 'Could go either way' : p > 0.15 ? 'Unlikely' : 'Very unlikely');
-const houseHit = (c) => !!(c.resolution && c.resolution.outcome !== 'void' && (callLean(c) === (c.resolution.outcome === 'yes')));
+const houseHit = (c) => !!(c.resolution && c.resolution.outcome !== 'void' && Math.abs(+c.odds - 0.5) > 1e-9 && (callLean(c) === (c.resolution.outcome === 'yes')));
 const PICKS = (() => { try { return JSON.parse(localStorage.getItem('ws-calls') || '{}'); } catch (e) { return {}; } })();
 function setPick(id, pick) { if (PICKS[id] && PICKS[id].pick === pick) delete PICKS[id]; else PICKS[id] = { pick, at: new Date().toISOString() }; try { localStorage.setItem('ws-calls', JSON.stringify(PICKS)); } catch (e) {} drawCallStrip(); drawForecast(); drawRibbon(); }
 function houseRecord() {
   const g = callRows().filter((c) => c.resolution && c.resolution.outcome !== 'void');
-  const w = g.filter(houseHit).length;
-  return { w, l: g.length - w, n: g.length, brier: g.length ? g.reduce((a, c) => a + Math.pow(+c.odds - (c.resolution.outcome === 'yes' ? 1 : 0), 2), 0) / g.length : null, open: callRows().filter(callOpen).length };
+  const toss = (c) => Math.abs(+c.odds - 0.5) < 1e-9; const g2 = g.filter((c) => !toss(c)); // a 50% call counts as neither right nor wrong
+  const w = g2.filter(houseHit).length;
+  return { w, l: g2.length - w, n: g2.length, tossups: g.length - g2.length, brier: g.length ? g.reduce((a, c) => a + Math.pow(+c.odds - (c.resolution.outcome === 'yes' ? 1 : 0), 2), 0) / g.length : null, open: callRows().filter(callOpen).length };
 }
 function myRecord() {
   const made = Object.keys(PICKS).filter((id) => callRows().some((c) => c.id === id));
