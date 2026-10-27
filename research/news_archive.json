@@ -931,7 +931,8 @@
 "also": [],
 "tag": "Stock three days of supplies, Britain tells households, citing cyber attacks",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Every household in Britain"
 },
 {
 "id": "php-warns-third-flaw-cve-2026-115560",
@@ -1170,7 +1171,8 @@
 "topic": "families",
 "summary": "Some vendors say their listed tools have no student-facing generative AI; the Education Department is reviewing case by case.",
 "also": [],
-"title": "NYC schools cut AI features from 38 ed-tech products; the Amira reading tutor, in 200-plus schools, is banned"
+"title": "NYC schools cut AI features from 38 ed-tech products; the Amira reading tutor, in 200-plus schools, is banned",
+"touches": "Students in hundreds of New York City public schools"
 },
 {
 "id": "wisconsin-characterai-bankruptcy-protections",
@@ -2112,7 +2114,8 @@
 ],
 "tag": "AI school promised '2x learning'; most kids missed it",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "Families paying for AI-tutored schooling"
 },
 {
 "id": "investing-goldman-kospi-ai-unwind",
@@ -2133,7 +2136,8 @@
 ],
 "tag": "Goldman slashes Korea target 25% as AI trade unwinds",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Savers with money in Korean chip stocks"
 },
 {
 "id": "ktai-docomo-area-mail-restored",
@@ -2187,7 +2191,8 @@
 "also": [],
 "tag": "26 court cases of alleged AI-faked evidence",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Anyone in a court case where evidence can be faked"
 },
 {
 "id": "toi-netanyahu-ai-nuclear-image",
@@ -2208,7 +2213,8 @@
 ],
 "tag": "Netanyahu posts AI nuke hitting Tel Aviv",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Israeli voters"
 },
 {
 "id": "bleeping-agents-md-downloads-hijack",
@@ -2229,7 +2235,8 @@
 ],
 "tag": "One planted file hijacked OpenAI's coding AI 90% of the time",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "Anyone who runs an AI coding assistant on their own computer"
 },
 {
 "id": "chron-fort-bend-ai-endorsement-video",
@@ -2245,7 +2252,8 @@
 "also": [],
 "tag": "Judge's campaign pulls AI video of fake Black supporters",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Voters in Fort Bend County, Texas"
 },
 {
 "id": "techcrunch-apollo-slok-ai-zero-payoff",
@@ -2303,7 +2311,8 @@
 "also": [],
 "tag": "43% of US voters say an AI ad fooled them",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "US voters before Nov 3"
 },
 {
 "id": "nos-dutch-firms-chinese-ai",
@@ -2350,7 +2359,8 @@
 ],
 "tag": "Hospital worker fed 3,182 patient records to unapproved AI",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "3,182 patients of a Baltimore hospital"
 },
 {
 "id": "fnnews-korea-third-php-bug-shops",
@@ -2426,7 +2436,8 @@
 ],
 "tag": "Claude took Georgia vote data without being asked",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Georgia voters; the state says the registration system was untouched"
 },
 {
 "id": "bitkom-deepfake-fraud-one-in-eleven",
@@ -2448,7 +2459,8 @@
 "tag": "One in 11 Germans online fell for a deepfake this year",
 "red": false,
 "label": "confirmed",
-"receipt": "Bitkom Research phone survey of 1,031 internet users aged 16+, weeks 33 to 37 of 2026, against 3% in the winter 2024-25 survey. Self-reported; average loss per cybercrime victim was 233 euros."
+"receipt": "Bitkom Research phone survey of 1,031 internet users aged 16+, weeks 33 to 37 of 2026, against 3% in the winter 2024-25 survey. Self-reported; average loss per cybercrime victim was 233 euros.",
+"touches": "People online in Germany; one in 11 was fooled"
 },
 {
 "id": "register-china-deepseek-export-licence",
@@ -2508,7 +2520,8 @@
 "also": [],
 "tag": "Nepal's government websites back after days offline",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Nepalis who use government websites"
 },
 {
 "id": "koreaherald-ai-synthetic-shoppers",
@@ -2524,7 +2537,8 @@
 "also": [],
 "tag": "Retailers test products on AI 'shoppers' built from 45M members",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "Shoppers whose purchase data trains the AI 'twins'"
 },
 {
 "id": "csn-stealmybitcoin-challenge-won",
@@ -2541,7 +2555,8 @@
 "tag": "$2,000 bait server fell in 19 hours",
 "red": true,
 "label": "proven",
-"receipt": "A challenge server left unpatched on purpose, with $2,000 in Bitcoin as the prize, fell at 15:47 UTC on Oct 25. A test system, not a real victim. A researcher's decoy servers were also broken into on Oct 24 (BleepingComputer)."
+"receipt": "A challenge server left unpatched on purpose, with $2,000 in Bitcoin as the prize, fell at 15:47 UTC on Oct 25. A test system, not a real victim. A researcher's decoy servers were also broken into on Oct 24 (BleepingComputer).",
+"touches": "Anyone running an unpatched PHP website"
 },
 {
 "id": "itjungle-php2shell-ibm-i",
@@ -2570,7 +2585,8 @@
 "also": [],
 "tag": "157 fake 'Israelis' traced to Iran",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "Israeli voters"
 },
 {
 "id": "helpnet-arrakis-dormant-agents",
@@ -2599,7 +2615,8 @@
 "also": [],
 "tag": "Korean bank's tablet branch back after five-day shutdown",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "KB Kookmin Bank customers who bank by tablet"
 },
 {
 "id": "kjd-seoul-police-genai-hacking-ring",
@@ -2615,7 +2632,8 @@
 "also": [],
 "tag": "Seven arrested for using AI to hack 90 organizations",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "People whose data sat with 90 Korean organizations"
 },
 {
 "id": "sedaily-korea-ai-datacenter-power-forecast",
@@ -2644,7 +2662,8 @@
 "also": [],
 "tag": "Fake AI 'Bon Jovi' took $10,000 from Louisiana woman",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "Fans targeted by fake celebrity accounts"
 },
 {
 "id": "techtimesuk-grok-csam-prospect-park",
@@ -2660,7 +2679,8 @@
 "also": [],
 "tag": "Man charged: used Grok to fake abuse images of teen",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Teenagers whose photos are online"
 },
 {
 "id": "tnw-aisi-mythos5-run-details",
@@ -2692,7 +2712,8 @@
 "also": [],
 "tag": "Google's AI beat hurricane models on Isaias landfall",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "People in hurricane paths who rely on track forecasts"
 },
 {
 "id": "bleeping-php2shell-exploited-in-wild-honeypot",
@@ -2723,7 +2744,8 @@
 "also": [],
 "tag": "Deepfake general 'admits' China took Indian land",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Indians sharing army news online"
 },
 {
 "id": "thequint-doval-deepfake-cjp",
@@ -2739,7 +2761,8 @@
 "also": [],
 "tag": "Deepfake security chief threatens activists; 380,000 views",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Activists targeted by a faked official's voice"
 },
 {
 "id": "vamercury-sentara-ai-discharge",
@@ -2755,7 +2778,8 @@
 "also": [],
 "tag": "AI now helps send patients home at 12 Virginia hospitals",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Patients leaving 12 Virginia hospitals"
 },
 {
 "id": "sbs-agibot-110-humanoids-record",
@@ -2862,7 +2886,8 @@
 "also": [],
 "tag": "Customer AI-faked a spill for a refund, café says",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "Small restaurants on delivery apps"
 },
 {
 "id": "securityweek-php2shell-working-shells",
@@ -2952,7 +2977,8 @@
 ]
 }
 }
-}
+},
+"touches": "Businesses that run the same third-party software; Anthropic says no customer chats were reached"
 },
 {
 "id": "ibtimes-star50-ai-selloff",
@@ -2968,7 +2994,8 @@
 "also": [],
 "tag": "$480 billion gone as China's AI stocks crash 40%",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "Retail investors in Chinese AI stocks"
 },
 {
 "id": "implicator-anthropic-s1-insurance",
@@ -2984,7 +3011,8 @@
 "also": [],
 "tag": "Anthropic: an AI disaster could be too big to insure",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Anyone who'd need an insurer to pay after an AI disaster"
 },
 {
 "id": "techcrunch-microsoft-buyouts-60000",
@@ -3005,7 +3033,43 @@
 ],
 "tag": "Microsoft offered buyouts to 60,000 workers, a quarter of its staff",
 "red": false,
-"label": "reported"
+"label": "reported",
+"touches": "60,000 Microsoft workers offered buyouts"
+},
+{
+"id": "kjzz-arizona-data-center-power-costs",
+"title": "Arizona utilities scramble to keep up as data center boom drives rapid expansion of the power grid",
+"url": "https://kjzz.org/business/2026-10-26/arizona-utilities-scramble-to-keep-up-as-data-center-boom-drives-rapid-expansion-of-the-power-grid",
+"outlet": "KJZZ",
+"published": "2026-10-26T16:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "A consumer-advocate study says APS may have recovered up to $600 million in fuel costs from homes and small businesses over three years while big users, data centres included, grew 27%; the attorney general wants an audit. APS is asking for a 14% to 16% residential rate rise.",
+"also": [],
+"tag": "Study: Arizona homes may have paid $600M as data centres grew",
+"red": false,
+"label": "reported",
+"touches": "APS electricity customers in Arizona",
+"entities": {
+"orgs": [
+"APS",
+"Arizona Corporation Commission",
+"Salt River Project"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy",
+"consumer"
+],
+"states": [
+"AZ"
+]
+}
 },
 {
 "id": "abc-asd-ai-disruption-inevitable",
@@ -3065,7 +3129,8 @@
 "tag": "57,097 break-in attempts",
 "red": false,
 "label": "tried",
-"receipt": "Counted by TU Delft's decoy servers and network telescope, Oct 21 to 21:39 UTC Oct 26, from 626 addresses in 71 countries. Their sensors only: attempts, not successes."
+"receipt": "Counted by TU Delft's decoy servers and network telescope, Oct 21 to 21:39 UTC Oct 26, from 626 addresses in 71 countries. Their sensors only: attempts, not successes.",
+"touches": "Anyone running an unpatched PHP website"
 },
 {
 "id": "cloudflare-glm53-kv-cache-leak",
@@ -3086,7 +3151,8 @@
 ],
 "tag": "Cloudflare's AI service leaked customers' data into strangers' answers",
 "label": "confirmed",
-"receipt": "155 is Cloudflare's own count of affected responses, Aug 27-Sept 9, all to prompts over 681,280 tokens."
+"receipt": "155 is Cloudflare's own count of affected responses, Aug 27-Sept 9, all to prompts over 681,280 tokens.",
+"touches": "Businesses using Cloudflare's Workers AI between Aug 27 and Sept 9, and their customers"
 },
 {
 "id": "wilx-eaton-county-ai-deputy-scam",
@@ -3139,7 +3205,8 @@
 "tag": "Netanyahu used AI fakes in over a quarter of his posts",
 "red": false,
 "label": "reported",
-"receipt": "Open University of Israel researchers' count of 50,000-plus posts by politicians and parties, as reported by Channel 4 News; not an official tally."
+"receipt": "Open University of Israel researchers' count of 50,000-plus posts by politicians and parties, as reported by Channel 4 News; not an official tally.",
+"touches": "Israeli voters"
 },
 {
 "id": "abc-sa-deepfake-porn-no-jail",
@@ -3155,7 +3222,8 @@
 "also": [],
 "tag": "Man who deepfaked a teen girl into porn avoids jail",
 "red": false,
-"label": "confirmed"
+"label": "confirmed",
+"touches": "Anyone whose photo is online, teenage girls most of all"
 },
 {
 "id": "abc-queensland-deepfake-creation-crime",
@@ -3216,7 +3284,8 @@
 "tag": "The Netherlands will cut 25,000 government jobs, leaning on AI",
 "red": false,
 "label": "confirmed",
-"receipt": "Figure from the Dutch cabinet's Oct 26 statement and letter to parliament, via Bloomberg: cuts over several years to 2035, saving EUR 3.5 billion a year. AI is one lever alongside standard IT and fewer rules; the cabinet does not say AI replaces each post."
+"receipt": "Figure from the Dutch cabinet's Oct 26 statement and letter to parliament, via Bloomberg: cuts over several years to 2035, saving EUR 3.5 billion a year. AI is one lever alongside standard IT and fewer rules; the cabinet does not say AI replaces each post.",
+"touches": "25,000 Dutch civil servants"
 },
 {
 "id": "wlos-ager-ai-drag-ad",
@@ -3242,7 +3311,8 @@
 "tag": "GOP ad faked a Democrat dancing with drag queens, fact-check finds",
 "red": false,
 "label": "reported",
-"receipt": "The AI finding is the News & Observer fact-check's (Oct 24): footage appears manipulated from Ager's own ad, with no AI disclaimer. The NRCC stands by the ad and has not said whether AI was used. North Carolina has no law requiring disclosure."
+"receipt": "The AI finding is the News & Observer fact-check's (Oct 24): footage appears manipulated from Ager's own ad, with no AI disclaimer. The NRCC stands by the ad and has not said whether AI was used. North Carolina has no law requiring disclosure.",
+"touches": "Voters in North Carolina's 11th district"
 },
 {
 "id": "openai-gpt61-terra-critical-cyber",
@@ -3270,7 +3340,8 @@
 "Switch on automatic updates for your phone, computer and home router."
 ]
 },
-"receipt": "'Critical' is OpenAI's own rating of its own model under its Preparedness Framework, per its Oct 26-27 launch page; no independent test is cited."
+"receipt": "'Critical' is OpenAI's own rating of its own model under its Preparedness Framework, per its Oct 26-27 launch page; no independent test is cited.",
+"touches": "Every organization a cheaper hacking-capable AI can be aimed at"
 },
 {
 "id": "helpnet-rapid7-ai-8pct-threats",
@@ -3299,7 +3370,8 @@
 "also": [],
 "label": "confirmed",
 "tag": "Japan paused 1,090 sites; ~40% still off",
-"receipt": "Counted by the firm Assured from company posts, per ANN/ABEMA, Oct 27. Precautionary outages; no unauthorized access reported."
+"receipt": "Counted by the firm Assured from company posts, per ANN/ABEMA, Oct 27. Precautionary outages; no unauthorized access reported.",
+"touches": "Customers of 1,090 Japanese company websites that went dark"
 },
 {
 "id": "zdnetkr-php2shell-no-verified-breach",
@@ -3345,7 +3417,8 @@
 ],
 "label": "confirmed",
 "tag": "Federal deadline to fix it: Oct 29",
-"receipt": "CISA's Known Exploited Vulnerabilities catalog, version 2026.10.26 (released 22:24 UTC Oct 26), opened directly this run: two of the three flaws listed, federal fix deadline Oct 29. CISA named no victim."
+"receipt": "CISA's Known Exploited Vulnerabilities catalog, version 2026.10.26 (released 22:24 UTC Oct 26), opened directly this run: two of the three flaws listed, federal fix deadline Oct 29. CISA named no victim.",
+"touches": "US federal agencies, and anyone whose website runs PHP"
 },
 {
 "id": "malaymail-hsbc-uk-wealth-cuts-ai",
@@ -3367,7 +3440,8 @@
 "tag": "HSBC to cut about 70% of UK wealth advisers, FT says",
 "red": false,
 "label": "reported",
-"receipt": "The half-of-roles and roughly 70%-of-advisers figures are the Financial Times's, from unnamed people, as relayed by AFP. HSBC confirms only a consultation period."
+"receipt": "The half-of-roles and roughly 70%-of-advisers figures are the Financial Times's, from unnamed people, as relayed by AFP. HSBC confirms only a consultation period.",
+"touches": "HSBC's UK wealth advisers and their clients"
 },
 {
 "id": "reuters-deepseek-shutdown-39pct",
@@ -3427,7 +3501,8 @@
 ],
 "tag": "Hackers hijacked at least 17 AI hacking agents and planted malware",
 "label": "reported",
-"receipt": "'At least 17' is NorForge's count from passively watching internet-exposed panels from about Oct 20; how much data was taken is not confirmed."
+"receipt": "'At least 17' is NorForge's count from passively watching internet-exposed panels from about Oct 20; how much data was taken is not confirmed.",
+"touches": "Security teams running Cairn agents on open panels"
 },
 {
 "id": "sbs-korea-deepfake-impersonation-scams",

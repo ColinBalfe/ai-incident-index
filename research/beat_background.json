@@ -1,0 +1,13 @@
+{
+ "decided": [
+  {"title": "Job applicants v. Workday: did its AI screen people out by race, sex, age or disability?",
+   "status": "Class certification sought Sept 14, 2026; hearing set for March 9, 2027. A separate age claim for applicants 40 and over was conditionally certified in May 2025. Workday denies its tools discriminate, and no court has found that they do.",
+   "touches": "Job seekers who applied through employers using Workday; the company says 356 million applications passed through its recruiting software in 2024",
+   "next": "2027-03-09", "next_what": "class certification hearing",
+   "url": "https://www.lawyer-monthly.com/2026/09/workday-faces-class-bid-over-ai-hiring-bias-claims/", "outlet": "Lawyer Monthly", "date": "2026-09-21"},
+  {"title": "Families v. UnitedHealth: did an algorithm cut off older patients' rehab care?",
+   "status": "Families allege UnitedHealth used the nH Predict tool to deny post-acute care claims without real human review. In March 2026 a Minnesota federal court ordered UnitedHealth to hand over documents on how the tool works. These are allegations; nothing has been decided on the merits.",
+   "touches": "Medicare Advantage patients sent home from hospital who need nursing or rehab care",
+   "url": "https://www.hunton.com/hunton-insurance-recovery-blog/court-allows-discovery-into-insurers-use-of-ai-to-deny-claims", "outlet": "Hunton Andrews Kurth", "date": "2026-03-23"}
+ ]
+}

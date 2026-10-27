@@ -12,13 +12,13 @@
 <meta property="og:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta property="og:description" content="The Record: all 164 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 13 in a year; in 41% of this year's real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
 <meta property="og:url" content="https://warningshots.ai/index/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610272040">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610272112">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta name="twitter:description" content="The Record: all 164 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 13 in a year; in 41% of this year's real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610272040">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610272112">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -30,11 +30,11 @@
 <link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/data/bundle.json?v=202610272040" as="fetch" crossorigin>
-<script>window.AII_BUILD = "202610272040"; window.AII_SITE = "https://warningshots.ai/";</script>
+<link rel="preload" href="/data/bundle.json?v=202610272112" as="fetch" crossorigin>
+<script>window.AII_BUILD = "202610272112"; window.AII_SITE = "https://warningshots.ai/";</script>
 <script src="/assets/vendor/d3-lite.min.js" defer></script>
 <script src="/assets/vendor/topojson-client.min.js" defer></script>
-<script src="/assets/app.js?v=202610272040" defer></script>
+<script src="/assets/app.js?v=202610272112" defer></script>
 <style>
 @font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 400 900; font-stretch: 78% 100%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
@@ -377,6 +377,7 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: clamp(40px, 6vw,
 .kind { font-size: 11px; font-weight: 600; border-radius: 3px; padding: 0 5px; border: 1px solid var(--line-2); color: var(--ink-2); line-height: 1.5; }
 .kind.breaking { color: #FFFFFF; background: #D92D00; border-color: #D92D00; }
 .kind.official { color: var(--indigo); border-color: color-mix(in oklab, var(--indigo) 50%, var(--line-2)); }
+.wi-w { font-size: 12px; color: var(--ink-3, var(--ink-2)); line-height: 1.35; margin-top: 2px; }
 .wi-s { font-size: 13px; color: var(--ink-2); line-height: 1.4; margin-top: 3px; display: none; }
 .wire-board.verbose .wi-s { display: block; }
 .wire-foot { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-top: 14px; }
@@ -993,6 +994,11 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 .comingup { margin: 22px 0 0; border-top: 3px solid var(--ink); padding-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: baseline; font-size: 14px; }
 .cu-h { font-family: Arial, sans-serif; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; }
 .cu-i { color: var(--ink-2); text-decoration: none; } .cu-i b { color: var(--ink); margin-right: 3px; } .cu-i:hover { text-decoration: underline; }
+.resday { flex-basis: 100%; border: 1px solid var(--line); border-left: 4px solid var(--alarm); background: var(--panel); padding: 10px 12px; margin: 4px 0 6px; }
+.rd-h { font-size: 15px; } .rd-h b { text-transform: uppercase; letter-spacing: .06em; font-size: 13px; } .rd-n { font-weight: 700; color: var(--alarm); }
+.rd-l { margin: 6px 0 4px; padding-left: 18px; } .rd-l li { margin: 3px 0; line-height: 1.35; } .rd-l a { color: var(--ink); } .rd-o { color: var(--ink-3); font-size: 13px; white-space: nowrap; }
+.rd-f { margin: 4px 0 0; font-size: 13px; color: var(--ink-2); } .rd-f a { color: var(--ink); }
+.sy-lv.moved { font-weight: 700; color: var(--alarm); } .sy-gr { color: inherit; }
 .graded { flex-basis: 100%; display: flex; flex-direction: column; gap: 4px; padding-bottom: 8px; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
 .gr-i { color: var(--ink); text-decoration: none; font-size: 15px; } .gr-i:hover { text-decoration: underline; }
 .gr-i.hit b { color: #2e6b34; } .gr-i.miss b { color: var(--alarm); }

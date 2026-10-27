@@ -454,6 +454,8 @@ function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url
    Each line must be supportable by the story it links to; the outlet's own framing is in the tooltip and the small print. */
 // The reader's own clock: when they last loaded this page (this browser only). Read once, then stamped with now.
 const PREV_VISIT = (() => { let p = null; try { const now = Date.now(), last = +localStorage.getItem('ws-last-visit') || 0; p = +localStorage.getItem('ws-prev-session') || null; if (last && now - last > 30 * 6e4) { p = last; localStorage.setItem('ws-prev-session', String(last)); } localStorage.setItem('ws-last-visit', String(now)); } catch (e) {} return p; })(); // the start of the reader's previous visit (a visit ends after 30 quiet minutes)
+const PREV_STATE = (() => { try { return JSON.parse(localStorage.getItem('ws-last-state') || 'null'); } catch (e) { return null; } })(); // the level and rung as the reader last saw them
+let NOW_LEVEL = null;
 const isNewToReader = (n) => !!(PREV_VISIT && n.published && Date.parse(n.published) > PREV_VISIT);
 const TIP = {
   tried: 'Tried: attacks were attempted and logged. Nothing is confirmed broken into.',
@@ -489,8 +491,8 @@ function drawLevel() {
   const why = el('button', 'lvl-why', 'Why ' + top.level + ' today?'); why.type = 'button'; why.setAttribute('aria-expanded', 'false');
   const wall = newsItems().filter((x) => x.tag && x.wall);
   const a2 = el('span', 'lvl-n');
-  let lastState = null; try { lastState = JSON.parse(localStorage.getItem('ws-last-state') || 'null'); } catch (e) {}
-  const srN = D.meta.serial || {}; const nowState = { level: top.level, rung: srN.rung || '', serial: srN.incident_id || '' };
+  const lastState = PREV_STATE;
+  const srN = D.meta.serial || {}; const nowState = { level: top.level, rung: srN.rung || '', serial: srN.incident_id || '' }; NOW_LEVEL = top.level;
   if (PREV_VISIT) { const k = wall.filter(isNewToReader).length; const bits = [];
     if (lastState && lastState.level && lastState.level !== nowState.level) bits.push('level moved ' + lastState.level + ' → ' + nowState.level);
     if (lastState && lastState.serial === nowState.serial && lastState.rung && lastState.rung !== nowState.rung) bits.push('the running story moved up to ' + nowState.rung.charAt(0).toUpperCase() + nowState.rung.slice(1));
@@ -503,7 +505,10 @@ function drawLevel() {
   det.append(el('p', null, 'The level is the highest score among incidents disclosed in the last 24 hours and the live incident, by the index’s published formula. Today it is set by:'));
   const ul = el('ul'); pool.slice().sort((a, b) => b.severity - a.severity).filter((r, i, arr) => arr.findIndex((x) => x.id === r.id) === i).slice(0, 4).forEach((r) => { const li = el('li'); const a = el('a', null, r.title); a.href = '#i=' + r.id; li.append(el('b', null, r.level + ' · ' + r.severity + '/100'), txt(' '), a); ul.append(li); });
   const how = el('a', null, 'How the scores work →'); how.href = '/index/#about';
-  det.append(ul, how);
+  const lsh = el('div', 'share lvl-share');
+  shareRow(lsh, { anchor: '', text: `Today's AI danger level: ${top.level} ${String(top.tier).toUpperCase()}, set by "${top.title}" (${top.severity}/100). Warning Shots:`,
+    card: { name: 'level-' + D.meta.as_of.slice(0, 10), kicker: 'TODAY’S LEVEL  ·  ' + fmtDate(new Date(D.meta.as_of)), headline: top.level + ' ' + String(top.tier).toUpperCase() + ': ' + top.title, finding: (top.summary || '').split('. ').slice(0, 2).join('. ').replace(/\.?$/, '.'), impact: top.severity + '/100 · the highest score among incidents disclosed in the last 24 hours and the live incident', evidence: 'Scored by the index’s published formula; every incident links to its source.', stamp: 'Level as of ' + fmtET(D.meta.as_of) } });
+  det.append(ul, how, lsh);
   why.addEventListener('click', () => { det.hidden = !det.hidden; why.setAttribute('aria-expanded', String(!det.hidden)); });
   const brand = el('a', 'lvl-brand'); brand.href = '#top'; brand.setAttribute('aria-label', 'Warning Shots: the masthead'); const mk = document.querySelector('.masthead .logo .mark'); if (mk) { const c = mk.cloneNode(true); c.setAttribute('class', 'lvl-mark'); c.setAttribute('aria-hidden', 'true'); brand.append(c); } brand.append(el('b', null, 'Warning Shots'), el('span', 'lvl-desc', '· AI’s dangers and breakthroughs'));
   box.replaceChildren(brand, a1, why, a2, a3, det);
@@ -536,7 +541,7 @@ function drawWall() {
       const inc0 = C.scored.find((r) => r.id === sr.incident_id); const caseNo = inc0 ? el('a', 'serial-c', 'Case ' + inc0.ws) : null; if (caseNo) { caseNo.href = '/i/' + inc0.id + '/'; caseNo.setAttribute('data-tip', 'Case ' + inc0.ws + ' in the index: scored ' + inc0.severity + '/100 (' + inc0.tier + ') by the published formula. Opens the case file.'); }
       const a = leadLines && leadLines.childNodes.length && sr.state !== 'closed' ? leadLines : el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); if (a.tagName === 'A') a.href = sr.url || '#';
       const ft = el('div', 'serial-f'); const tr = el('a', null, (sr.tech_name ? sr.tech_name + ' ' : '') + 'live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
-      if (sr.state !== 'closed') { const shr = el('div', 'share serial-share'); shareRow(shr, { anchor: 'wall-lead', text: sr.name + ', day ' + day + ' since ' + (sr.day1_note || 'it went public') + ': ' + (sr.standing || '') + ' Via Warning Shots:' }); box2.shareRow = shr; }
+      if (sr.state !== 'closed') { const shr = el('div', 'share serial-share'); shareRow(shr, { anchor: 'wall-lead', text: sr.name + ', day ' + day + ' since ' + (sr.day1_note || 'it went public') + ': ' + (sr.standing || '') + ' Via Warning Shots:', card: { name: 'ladder-' + (sr.incident_id || 'story') + '-day' + day, kicker: 'THE RUNNING STORY  ·  DAY ' + day + '  ·  ' + fmtDate(new Date(D.meta.as_of)), headline: sr.name + ': ' + ({ tried: 'TRIED', proven: 'PROVEN', hit: 'HIT' }[sr.rung] || '') + (sr.rung === 'hit' ? ', a real victim confirmed' : sr.rung === 'proven' ? ', a test system broken into; no real victim confirmed' : sr.rung === 'tried' ? ', attempts logged; nothing broken into yet' : ''), finding: sr.standing || '', impact: 'Tried → Proven → Hit: the proof ladder. A rung is climbed only on a named, linked source.', evidence: 'Source: ' + (sr.source_label || 'linked on the tracker') + '.', stamp: 'As of ' + fmtET(D.meta.as_of) } }); box2.shareRow = shr; }
       if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
       const RUNGS = [['tried', 'Tried', 'attempts logged'], ['proven', 'Proven', 'a test system broken into'], ['hit', 'Hit', 'a real victim confirmed']];
       const at = RUNGS.findIndex(([k]) => k === sr.rung);
@@ -620,8 +625,11 @@ function drawWall() {
     if (fresh.length) { const a = el('a', 'sy-new', fresh.length + (fresh.length === 1 ? ' new headline' : ' new headlines')); a.href = '#wall'; a.addEventListener('click', (e) => { const d = document.querySelector('#wall .newdot'); if (d) { e.preventDefault(); d.closest('.wl').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } }); parts.push(a); }
     if (moved.length) parts.push(txt(moved.length + (moved.length === 1 ? ' story moved' : ' stories moved')));
     if (bts.length) parts.push(txt(bts.length + (bts.length === 1 ? ' new breakthrough' : ' new breakthroughs')));
-    if (graded.length) parts.push(txt(graded.length + (graded.length === 1 ? ' forecast graded' : ' forecasts graded')));
-    if (!parts.length) { bar.append(txt(': nothing new yet.' + (D.meta.next_check ? ' Next edition ' + fmtET(D.meta.next_check).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.' : ''))); bar.classList.add('quiet'); return bar; }
+    if (graded.length) { const g = el('a', 'sy-gr'); g.href = '/forecast/'; const w = graded.filter((c) => c.resolution.outcome !== 'void' && Math.abs(+c.odds - 0.5) > 1e-9 && houseHit(c)).length, l = graded.filter((c) => c.resolution.outcome !== 'void' && Math.abs(+c.odds - 0.5) > 1e-9 && !houseHit(c)).length, t = graded.length - w - l;
+      g.append(txt(graded.length + (graded.length === 1 ? ' forecast graded' : ' forecasts graded') + ' (' + [w ? w + ' right' : '', l ? l + ' wrong' : '', t ? t + ' toss-up' : ''].filter(Boolean).join(', ') + ')')); parts.push(g); }
+    const srv = D.meta.serial || {}; if (srv.state === 'live' && after(srv.recheck_at || (srv.last_fact ? srv.last_fact + 'T12:00:00Z' : ''))) { const a = el('a', null, srv.name + ' checked again'); a.href = srv.url || '/php2shell/'; a.title = srv.recheck ? 'Latest check: ' + srv.recheck : ''; parts.push(a); }
+    if (PREV_STATE && PREV_STATE.level) { const lv = el('span', 'sy-lv'); parts.unshift(lv); setTimeout(() => { if (!NOW_LEVEL) { lv.remove(); return; } lv.textContent = NOW_LEVEL === PREV_STATE.level ? 'level held at ' + NOW_LEVEL : 'level moved ' + PREV_STATE.level + ' → ' + NOW_LEVEL; if (NOW_LEVEL !== PREV_STATE.level) lv.classList.add('moved'); }, 0); }
+    if (!parts.some((p) => p.className !== 'sy-lv')) { bar.append(txt(': '), ...parts, txt((parts.length ? '; ' : '') + 'nothing new yet.' + (D.meta.next_check ? ' Next edition ' + fmtET(D.meta.next_check).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.' : ''))); bar.classList.add('quiet'); return bar; }
     bar.append(txt(': ')); parts.forEach((p, i) => bar.append(...(i ? [txt(' · ')] : []), p)); return bar; })();
   lead.replaceChildren(...(sinceBar ? [sinceBar] : []), ...(bbar ? [bbar] : []), dl, sv, ...(youBox ? [youBox] : []), ...(strip ? [strip] : []));
   // 3. the columns, below the masthead
@@ -702,8 +710,12 @@ function drawWall() {
   const open = (D.calls || []).filter((c) => c && !c.resolution && c.resolve_by >= asOfD).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by));
   const firstDay = open.length ? open[0].resolve_by : null; const nDay = open.filter((c) => c.resolve_by === firstDay).length;
   const graded = (D.calls || []).some((c) => c && c.resolution);
-  if (firstDay) { const r1 = el('a', 'cu-i'); r1.href = '/index/#next'; const nt = (srN0 => srN0 && srN0.next_test && srN0.next_test.date === firstDay && open.some((c) => c.id === srN0.next_test.call_id) ? srN0.next_test.text + ' ' : '')(D.meta.serial);
-    r1.append(el('b', null, fmtDate(new Date(firstDay + 'T12:00:00Z')) + (graded ? '' : ': the index’s first graded day.')), txt(' ' + nt + nDay + ' of its dated forecasts resolve, right or wrong, in public →')); up.append(r1); }
+  if (firstDay) { // Resolution Day: the next date the index's calls are graded, with a countdown and each call's odds in words
+    const rd = el('div', 'resday'); const dLeft = Math.max(0, Math.ceil((Date.parse(firstDay + 'T00:00:00-04:00') - Date.now()) / 864e5));
+    const h = el('div', 'rd-h'); h.append(el('b', null, 'Resolution Day'), txt(' · ' + d3.utcFormat('%A, %b %-d')(new Date(firstDay + 'T12:00:00Z')) + ' · '), el('span', 'rd-n', dLeft === 0 ? 'today' : dLeft === 1 ? 'tomorrow' : 'in ' + dLeft + ' days'));
+    const ul = el('ul', 'rd-l'); open.filter((c) => c.resolve_by === firstDay).forEach((c) => { const li = el('li'); const a = el('a', null, c.plain || c.question); a.href = '/forecast/' + c.id + '/'; li.append(a, el('span', 'rd-o', ' Our odds: ' + likelyWord(c.odds).toLowerCase())); ul.append(li); });
+    const hr1 = houseRecord(); const ft = el('p', 'rd-f'); ft.append(txt(nDay + (nDay === 1 ? ' call is' : ' calls are') + ' graded that day, right or wrong, in public. ' + (hr1.n ? 'Record so far: ' + hr1.w + ' right, ' + hr1.l + ' wrong. ' : 'Misses stay on the page. ')), (() => { const a = el('a', null, 'Every forecast →'); a.href = '/forecast/'; return a; })());
+    rd.append(h, ul, ft); up.append(rd); }
   (D.catalysts || []).filter((c) => c.date > asOfD && c.date !== firstDay).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 2).forEach((c) => { const r = el('a', 'cu-i'); r.href = '/index/#next'; r.append(el('b', null, c.date_label + ':'), txt(' ' + c.event)); up.append(r); });
   // The payoff: forecasts graded in the last day lead the strip, misses as prominent as hits, with the running record
   const asOfT = Date.parse(D.meta.as_of);
@@ -764,7 +776,7 @@ function drawWire() {
     const a = el('a', 'wi-t'); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; if (fresh(n)) a.append(el('i', 'nd')); a.append(txt(n.title));
     const m = el('div', 'wi-m'); const hours = n.published ? (Date.now() - Date.parse(n.published)) / 3.6e6 : 99; const k = n.kind === 'breaking' && hours >= 24 ? null : KIND[n.kind]; if (k) m.append(el('span', 'kind ' + n.kind, k)); m.append(el('b', null, n.outlet || ''), el('span', 'ag', ageShort(n)));
     if ((n.also || []).length) { const also = el('span', 'also'); also.append(txt('also ')); n.also.slice(0, 2).forEach((x, i) => { const l = el('a', null, x.outlet); l.href = x.url; l.target = '_blank'; l.rel = 'noopener noreferrer'; if (i) also.append(txt(', ')); also.append(l); }); m.append(also); }
-    it.append(a, m); if (n.summary) it.append(el('div', 'wi-s', n.summary)); it.title = n.summary || ''; it.tabIndex = 0; it.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target === it) a.click(); }); return it;
+    it.append(a, m); if (n.touches) it.append(el('div', 'wi-w', 'Who this touches: ' + n.touches)); if (n.summary) it.append(el('div', 'wi-s', n.summary)); it.title = n.summary || ''; it.tabIndex = 0; it.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target === it) a.click(); }); return it;
   }));
   const span = d3.extent(items, (n) => n.published);
   const hours = span[0] && span[1] ? Math.round((Date.parse(span[1]) - Date.parse(span[0])) / 3.6e6) : 0;

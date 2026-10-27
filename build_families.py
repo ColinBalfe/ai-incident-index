@@ -9,6 +9,7 @@ Quality gate for exposed/: an organisation gets an indexable page only when the 
 (a confirmed compromise, an attack on it, or appearances in two or more incidents). Every other organisation is listed and
 searchable on the hub, and its page stays noindex, so we never publish hundreds of near-identical thin pages.
 Run after build_learn.py, before build_pages.py."""
+import urllib.parse
 import json, os, collections
 here = os.path.dirname(os.path.abspath(__file__)); os.chdir(here)
 from pagekit import *
@@ -320,7 +321,7 @@ for c in CALLS:
     body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/forecast/">Forecasts</a> · {kind}</nav>
 <h1>{esc(q)}</h1><div class="meta">{kind} opened {esc(fdate(c['opened']))} · {'days to weeks' if kind == 'Call' else 'months to years'} · the question's wording never changes after it is published</div>
 {res}
-<div class="share"><button type="button" data-copy="{esc(q + ' ' + url)}">Copy link</button></div>
+<div class="share"><a class="button" href="https://x.com/intent/post?{esc(urllib.parse.urlencode({'text': (q + ' Graded: ' + r['outcome'] + '. Warning Shots had said ' + likely(c['odds']).lower() + '.') if r else ('Warning Shots says ' + likely(c['odds']).lower() + ': ' + q + ' Graded ' + fdate(c['resolve_by']) + ', right or wrong.'), 'url': url}))}" target="_blank" rel="noopener">Post on X</a><button type="button" class="alt" data-copy="{esc(q + ' ' + url)}">Copy link</button>{(f'<a class="button alt" href="/assets/forecast/{esc(c["id"])}.png" download>Download the card</a>') if os.path.exists(f"assets/forecast/{c['id']}.png") else ''}</div>
 <h2>Why the index thinks so</h2><p>{esc(c.get('basis') or '')}</p>
 {('<h2>What would move it</h2><p>' + esc(c['signposts']) + '</p>') if c.get('signposts') else ''}
 <p class="meta">The exact question: {esc(c['question'])}</p>

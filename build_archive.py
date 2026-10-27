@@ -45,7 +45,7 @@ for i, d in enumerate(days):
             f'<li>' + (f'<span class="st">{esc(LBL[n["label"]])}</span> ' if n.get('label') in LBL else '') +
             f'<a href="{esc(n["url"])}" target="_blank" rel="noopener noreferrer"><b>{esc(n.get("tag") or n["title"])}</b></a>'
             f'<br><small>{esc(n.get("outlet") or "")}' + (f' · {esc(n["published"][11:16])} UTC' if n.get('time_known', True) else '') + f'</small>'
-            + (f'<br>{esc(n["summary"])}' if n.get('summary') else '') + '</li>' for n in ns) + '</ul>'
+            + (f'<br>{esc(n["summary"])}' if n.get('summary') else '') + (f'<br><small class="tch">Who this touches: {esc(n["touches"])}</small>' if n.get('touches') else '') + '</li>' for n in ns) + '</ul>'
     ed = ''.join(f'<li><a href="/archive/{esc(s)}/">Front page as published, {esc(s[11:13])}:{esc(s[13:15])} ET</a></li>' for s in snaps.get(d, []))
     prev_d = days[i + 1] if i + 1 < len(days) else None; next_d = days[i - 1] if i > 0 else None
     nav = ('<p class="share">' + (f'<a href="/wire/{prev_d}/">← {esc(dt.date.fromisoformat(prev_d).strftime("%b %-d"))}</a>' if prev_d else '') +
@@ -83,20 +83,30 @@ BEATS = [
  ('decided', 'AI decided', 'When AI makes a decision about you: credit, insurance, hiring, benefits, policing and facial recognition.', r'credit score|loan (decision|denial)|insurance claim|claims? (were |was )?denied|denied coverage|hiring (tool|algorithm|screen)|job applicants?|r[eé]sum[eé] screen|benefits (claim|decision|denied)|facial recognition|wrongful(ly)? arrest|algorithm(ic)? (decision|denial)'),
 ]
 beat_urls = []
+try: BG = json.load(open('research/beat_background.json', encoding='utf-8'))
+except (OSError, ValueError): BG = {}
+def bg_html(slug):
+    rows = BG.get(slug) or []
+    if not rows: return ''
+    li = ''.join(f'<li><time>{esc(b["date"])}</time> <a href="{esc(b["url"])}" target="_blank" rel="noopener noreferrer"><b>{esc(b["title"])}</b></a> <small>{esc(b["outlet"])}</small><br>{esc(b["status"])}'
+                 + (f'<br><small class="tch">Who this touches: {esc(b["touches"])}</small>' if b.get('touches') else '')
+                 + (f'<br><small class="nxt">Next: {esc(b["next_what"])}, {esc(fdate(b["next"]))}</small>' if b.get('next') else '') + '</li>' for b in rows)
+    return f'<h2>Cases still open</h2><p class="meta">The slow stories behind the headlines: where each one stands and what decides it next.</p><ul class="rec">{li}</ul>'
 for slug, name, blurb, rx in BEATS:
     hits = [n for n in rows if n.get('beat') == slug or (n.get('topic') != 'php2shell' and _re.search(rx, n.get('title', '') + ' ' + (n.get('tag') or ''), _re.I))]
     hits.sort(key=lambda n: n.get('published') or '', reverse=True)
     items = ''.join(f'<li><time>{esc(n["published"][:10])}</time> ' + (f'<span class="st">{esc(LBL[n["label"]])}</span> ' if n.get('label') in LBL else '') +
                     f'<a href="{esc(n["url"])}" target="_blank" rel="noopener noreferrer"><b>{esc(n.get("tag") or n["title"])}</b></a> <small>{esc(n.get("outlet") or "")}</small>'
-                    + (f'<br>{esc(n["summary"])}' if n.get('summary') else '') + '</li>' for n in hits)
+                    + (f'<br>{esc(n["summary"])}' if n.get('summary') else '') + (f'<br><small class="tch">Who this touches: {esc(n["touches"])}</small>' if n.get('touches') else '') + '</li>' for n in hits)
     url = SITE + f'wire/{slug}/'
     body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/wire/">The Wire</a> · A beat</nav><h1>{esc(name)}</h1>
-<p class="aka">{esc(blurb)}</p><div class="meta">{len(hits)} stories so far, newest first · added to on every refresh · each headline links to the original reporting</div>
-{('<ul class="rec">' + items + '</ul>') if hits else '<p>Nothing on this beat yet that meets our bar: AI as the actor, a real consequence, a source we could open. It fills as the stories come.</p>'}
+<p class="aka">{esc(blurb)}</p><div class="meta">{(str(len(hits)) + ' stories so far, newest first · ') if hits else ''}added to on every refresh · each headline links to the original reporting</div>
+{('<ul class="rec">' + items + '</ul>') if hits else '<p>No fresh story on this beat yet that meets our bar: AI as the actor, a real consequence, a source we could open. It fills as the stories come.</p>'}
+{bg_html(slug)}
 <p class="share"><a href="/wire/archive/">Every day on the Wire</a> · <a href="/exposed/">What it means for you</a></p></article>"""
-    write(f'wire/{slug}/index.html', url=url, title=f'{name}: AI news, tracked', desc=f'{blurb} Every story Warning Shots has reported on it, newest first, with sources.', body=body, draft=not hits,
+    write(f'wire/{slug}/index.html', url=url, title=f'{name}: AI news, tracked', desc=f'{blurb} Every story Warning Shots has reported on it, newest first, with sources.', body=body, draft=not (hits or BG.get(slug)),
           crumbs=[('The Wire', '/wire/'), (name, '')], graph=[{"@type": "CollectionPage", "name": name, "url": url, "about": blurb}])
-    if hits: beat_urls.append(url)
+    if hits or BG.get(slug): beat_urls.append(url)
 
 # ======================================================== the AI layoffs ledger (jobs/layoffs/)
 J = json.load(open('research/jobs.json', encoding='utf-8'))

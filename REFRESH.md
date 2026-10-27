@@ -154,6 +154,16 @@ Every story is about what happened to people, good and bad. Three standing rules
 - **One human story a day,** alternating harm and help: a Wire item whose `tag` leads with the person ("Laid-off support agent trains the AI that replaced her" style), flagged `human: true`.
 - **Count the people.** When an incident record has a sourced count of people harmed or helped, put it in the record's `people_count` with its source, so the index can one day say how many people AI incidents touched.
 
+## 2h. Who this touches, and the balance of the page (every refresh)
+
+- **`touches` on every new Wire item:** one plain line naming who the story reaches, from the reporting ("3,182 patients of a Baltimore hospital", "APS electricity customers in Arizona", "Anyone running an unpatched PHP website"). It shows as "Who this touches:" on the Wire board, the day pages and the beat pages. Concrete groups, never "everyone"; never wider than the source supports; no private person named. If the story touches no identifiable group, leave it out.
+- **Ordinary life on the wall.** At least four of the column headlines on every edition are everyday-life stories: AI deciding things about people (hiring, insurance, credit, benefits, housing), power bills and data centres, schools, jobs, scams on ordinary people. Look for them first in research, not last. Set `beat` (`near-you`, `school`, `decided`) when a story clearly belongs to one; the beat pages fill from it.
+- **Cases still open:** slow stories that decide things about people (a hiring-bias case, an insurer's algorithm in court) live in `research/beat_background.json` under their beat, with `status`, `touches`, and `next` / `next_what` when a dated hearing or ruling is known. Update the status when the case moves; never drop a case because it went quiet.
+
+### The guardrail on engagement
+
+Loops that close are honest; manufactured urgency is not. No fake countdowns (a countdown only ever points at a real, dated resolution, hearing or deadline), no streaks or streak threats, no "you'll miss out", no fear-bait headlines the facts don't carry, no notifications for their own sake. The since-you-were-here line reports what changed, including "nothing new yet". Resolution Day shows misses as prominently as hits.
+
 ## 2f. Entity tags (every refresh, from now on)
 
 Every new Wire item, incident record and breakthrough gets an `entities` object naming who and what is involved, so readers can later follow an organization, a product or a sector and be told when it appears:
