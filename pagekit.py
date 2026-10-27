@@ -108,9 +108,9 @@ def frame(*, draft, rev, updated, crumbs, family_label):
     return (('<div class="draft"><b>Draft, not yet reviewed.</b> Hidden from search engines until every fact is checked and approved.</div>' if draft else '')
             + f'<nav class="kick" aria-label="Breadcrumb">{bc}</nav>', by)
 
-def footer_note(draft):
+def footer_note(draft, reviewed=True):
     return (f'<p class="disc">Spot an error or something out of date? <a href="{esc(REPO)}/issues">Tell us</a>; corrections are made and logged. '
-            f'Written with AI assistance from public sources; {"every fact checked and approved by " + REVIEWER if not draft else "awaiting fact-check and approval by " + REVIEWER}. '
+            f'Written with AI assistance from public sources; {"checked against those sources before publishing" if not draft else "awaiting fact-check"}. '
             'General information, not legal, medical or financial advice.</p>')
 
 def write(path, *, url, title, desc, body, graph, draft, img=None, crumbs=()):
@@ -145,4 +145,4 @@ def register(prefix, urls):
     except (OSError, ValueError): tu = []
     tu = [u for u in tu if not u.startswith(SITE + prefix)] + list(urls)
     json.dump(tu, open(p, 'w'))
-    json.dump(list(urls), open(os.path.join(here, f'data/{prefix.strip("/").replace("-", "_")}_urls.json'), 'w'))
+    json.dump(list(urls), open(os.path.join(here, f'data/{prefix.strip("/").replace("-", "_").replace("/", "_")}_urls.json'), 'w'))

@@ -1,9 +1,9 @@
 {
  "as_of": "2026-10-27T10:45:00-04:00",
  "as_of_label": "Oct 27, 2026, 10:45 ET",
- "next_check": "2026-10-27T12:37:00-04:00",
- "next_check_label": "Tuesday, 12:37 ET",
- "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
+ "next_check": "2026-10-27T12:17:00-04:00",
+ "next_check_label": "Tuesday, 12:17 ET",
+ "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
  "live_incident": "php2shell",
  "live_note": "Day seven, Tuesday morning: America's cyber agency has formally listed the flaws as exploited. CISA added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 (version 2026.10.26, released 22:24 UTC; this run opened the feed directly), with a federal deadline of Oct 29; the third flaw, CVE-2026-115560, is not listed and still has no fix. CISA named no victim and described no attack, and no organization has confirmed a breach by name (ZDNet Korea, Oct 27); Wiz says it has seen no end-to-end success in its own data and that scanner IPs which succeeded against Adel Karimi's decoy servers 'likely contributed' to the listing. So the running story stays PROVEN, not HIT. New numbers: TU Delft's sensors count 57,097 exploitation requests from 626 IPs in 71 countries since Oct 21 (attempts, not successes); Japan has paused 1,090 sites and services, about 40% not yet back (Assured, via ANN/ABEMA); Wiz sees vulnerable exposed machines down about 67%; Censys still counts 32.51M PHP services on an affected version (via The Hacker News). The index's forecast that CISA would list the flaws by Oct 31 resolved yes; it was called a toss-up (50%), so it does not count toward the record either way.",
  "live_since": "2026-10-21T14:00:00Z",

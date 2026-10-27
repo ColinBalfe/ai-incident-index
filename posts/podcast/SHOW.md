@@ -19,7 +19,7 @@ A daily AI briefing of about 13 minutes, plus a 60-second cut for social. It bor
 | 10:30 | **The Scoreboard** (about 15 s) | One forecast graded on air, with its original date quoted. Misses read in the same tone as hits. If none came due, say so in one line. |
 | 10:45 | **The Watch List** (about 1 min) | The dated tests and events coming up, and what each one would mean. |
 | 11:45 | **The Last Shot** (about 45 s) | The reward for finishing: the smaller, odder story, picked for interest, not importance. It is never in the episode title. On a thin day, run a classic from the index ("From the index: case WS-0041, 2024") rather than inflate a weak story. |
-| 12:30 | **Sign-off** (word for word) | "That's your Warning Shots for [day, date]. Back tomorrow at 6:37. See what's coming. Know what it means." |
+| 12:30 | **Sign-off** (word for word) | "That's your Warning Shots for [day, date]. Back tomorrow morning. See what's coming. Know what it means." |
 
 **The 60-second cut:** the cold open, the Warning's headline and its "what it means for you", then the sign-off. It's vertical video with the headline card on screen, for TikTok, Reels and Shorts.
 
@@ -71,7 +71,7 @@ The same one-sentence explanation every time a term comes up, kept in `posts/pod
 
 ## The loop that brings people back
 
-- The same time every day (6:37 AM ET), the same open, the same segment names and the same sign-off.
+- The same time every day (published by 6:30 AM ET), the same open, the same segment names and the same sign-off.
 - **Callbacks:** "As we flagged Friday…" Name the running story's day number every episode.
 - **Dated tests:** "On Friday we find out whether…" The answer comes on air, right or wrong.
 - **Flash episodes** only for real escalations, such as a confirmed victim or a formal government warning, so the feed is where people check first.

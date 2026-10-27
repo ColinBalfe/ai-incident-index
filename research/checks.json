@@ -185,7 +185,9 @@
    "romance-crypto-investment-scam",
    "voice-clone-scam-call",
    "ai-scam-texts"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "boss-gift-card-wire-transfer-scam",
@@ -355,7 +357,9 @@
    "voice-clone-scam-call",
    "deepfake-celebrity-investment-scam",
    "ai-scam-texts"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "romance-crypto-investment-scam",
@@ -557,7 +561,9 @@
    "deepfake-celebrity-investment-scam",
    "task-job-scam",
    "ai-scam-texts"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "qr-code-scam",
@@ -734,7 +740,9 @@
   "related": [
    "ai-scam-texts",
    "fake-reviews-fake-online-store"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "task-job-scam",
@@ -910,7 +918,9 @@
   "related": [
    "ai-scam-texts",
    "romance-crypto-investment-scam"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "fake-bank-fraud-call",
@@ -1104,7 +1114,9 @@
    "voice-clone-scam-call",
    "ai-scam-texts",
    "boss-gift-card-wire-transfer-scam"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "ai-sextortion-scam",
@@ -1278,7 +1290,9 @@
   "related": [
    "ai-fake-nude-image-what-to-do",
    "romance-crypto-investment-scam"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "fake-reviews-fake-online-store",
@@ -1459,7 +1473,9 @@
   "related": [
    "qr-code-scam",
    "ai-scam-texts"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "fake-customer-service-number",
@@ -1655,7 +1671,9 @@
    "fake-bank-fraud-call",
    "fake-reviews-fake-online-store",
    "ai-scam-texts"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "government-impersonator-scam",
@@ -1875,7 +1893,9 @@
    "voice-clone-scam-call",
    "scam-recovery-service",
    "ai-scam-texts"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "scam-recovery-service",
@@ -2064,7 +2084,9 @@
    "deepfake-celebrity-investment-scam",
    "government-impersonator-scam",
    "ai-trading-bot-scam"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "fake-disaster-charity",
@@ -2252,7 +2274,9 @@
    "is-this-video-real",
    "ai-scam-texts",
    "fake-reviews-fake-online-store"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "deepfake-doctor-health-ad",
@@ -2440,7 +2464,9 @@
    "is-this-video-real",
    "deepfake-celebrity-investment-scam",
    "fake-reviews-fake-online-store"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "ai-trading-bot-scam",
@@ -2635,6 +2661,8 @@
    "romance-crypto-investment-scam",
    "scam-recovery-service",
    "task-job-scam"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  }
 ]

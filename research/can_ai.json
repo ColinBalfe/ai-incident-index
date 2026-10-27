@@ -152,7 +152,9 @@
    "/help/voice-clone-scam-call/",
    "/learn/ai-helper-for-older-parent/",
    "/help/ai-scam-texts/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "fake-a-live-video-call",
@@ -283,7 +285,9 @@
   "related": [
    "/help/voice-clone-scam-call/",
    "/help/ai-scam-texts/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "get-hired-under-a-fake-identity",
@@ -407,7 +411,9 @@
   ],
   "related": [
    "/help/ai-scam-texts/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "fool-bank-identity-checks",
@@ -548,7 +554,9 @@
    "/help/voice-clone-scam-call/",
    "/help/ai-scam-texts/",
    "/learn/ai-helper-for-older-parent/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "detect-ai-written-text",
@@ -683,7 +691,9 @@
   ],
   "related": [
    "/learn/why-chatbots-make-things-up/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "diagnose-illness-or-read-scans",
@@ -823,7 +833,9 @@
   "related": [
    "/learn/why-chatbots-make-things-up/",
    "/learn/ai-helper-for-older-parent/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "drive-a-car-without-a-human",
@@ -972,7 +984,9 @@
     "https://www.sfgate.com/news/bayarea/article/vallejo-man-killed-by-tesla-in-full-22492074.php"
    ]
   ],
-  "related": []
+  "related": [],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "deceive-its-testers",
@@ -1128,7 +1142,9 @@
   "related": [
    "/learn/treacherous-turn/",
    "/learn/why-chatbots-make-things-up/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "write-a-convincing-scam-message",
@@ -1294,7 +1310,9 @@
    "/checks/boss-gift-card-wire-transfer-scam/",
    "/checks/fake-bank-fraud-call/",
    "/learn/ai-helper-for-older-parent/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "fake-an-id-document",
@@ -1453,7 +1471,9 @@
    "/help/ai-scam-texts/",
    "/checks/task-job-scam/",
    "/checks/romance-crypto-investment-scam/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "change-peoples-minds",
@@ -1612,7 +1632,9 @@
    "/learn/why-chatbots-make-things-up/",
    "/help/is-this-video-real/",
    "/learn/ai-companions-parents-guide/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "solve-olympiad-and-research-math",
@@ -1773,7 +1795,9 @@
   ],
   "related": [
    "/learn/why-chatbots-make-things-up/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "replace-customer-service-agents",
@@ -1940,7 +1964,9 @@
    "/learn/why-chatbots-make-things-up/",
    "/learn/ai-helper-for-older-parent/",
    "/checks/fake-bank-fraud-call/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "find-software-security-flaws",
@@ -2070,7 +2096,9 @@
   ],
   "related": [
    "/help/ai-scam-texts/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  },
  {
   "slug": "hack-on-its-own",
@@ -2212,6 +2240,8 @@
   ],
   "related": [
    "/help/ai-scam-texts/"
-  ]
+  ],
+  "reviewed": "2026-10-27",
+  "updated": "2026-10-27"
  }
 ]

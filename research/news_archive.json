@@ -1,0 +1,3458 @@
+[
+{
+"id": "ai-agents-breach-100-companies-1200-sites",
+"title": "NorForge: a Chinese-speaking hacker's AI agents probed 1,200 sites and breached more than 100 companies",
+"url": "https://thehackernews.com/2026/10/hackers-use-autonomous-ai-agents-to.html",
+"outlet": "The Hacker News",
+"published": "2026-10-20T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "NorForge found a Chinese-speaking hacker's AI agents probed 1,200 sites and breached 100-plus companies; Reuters traced victims including Deere.",
+"also": [
+{
+"outlet": "TechRadar",
+"url": "https://www.techradar.com/pro/security/chinese-hacker-hits-over-100-company-websites-using-ai-agents-deere-and-sharkninja-among-top-brands-affected-in-attack"
+},
+{
+"outlet": "The Next Web",
+"url": "https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge"
+}
+]
+},
+{
+"id": "spotify-everyday-50m-ai-slop-tracks",
+"title": "Spotify says it pulled more than 50 million AI slop and spam tracks from recommendations this year",
+"url": "https://newsroom.spotify.com/2026-10-20/prioritizing-human-artistry/",
+"outlet": "Spotify",
+"published": "2026-10-20T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "everyday",
+"summary": "Spotify also removed over 75 million spammy tracks outright and labels thousands of AI personas, excluding them from recommendations by default.",
+"also": [
+{
+"outlet": "Variety",
+"url": "https://au.variety.com/2026/music/news/spotify-removes-50-million-ai-slop-tracks-recommendations-41607/"
+}
+]
+},
+{
+"id": "fortune-ai-models-fuel-cyberattack-wave",
+"title": "Experts say cheaper, more capable AI models are fueling a wave of cyberattacks",
+"url": "https://fortune.com/2026/10/21/powerful-new-ai-models-are-powering-a-growing-wave-of-cyber-attacks-experts-say/",
+"outlet": "Fortune",
+"published": "2026-10-21T03:00:00-04:00",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "ai-attack",
+"summary": "Experts say more capable, cheaper AI models are driving a wave of hacking, citing the 1,200-site agent campaign and the OpenCode breach.",
+"also": []
+},
+{
+"id": "mep-schilling-nudify-deepfakes-eu-action",
+"title": "Austrian MEP and 118 colleagues demand EU enforcement of the nudifier-app ban after 50 MEPs were targeted",
+"url": "https://www.ibtimes.co.uk/lena-schilling-ai-nude-deepfakes-eu-action-1826852",
+"outlet": "International Business Times UK",
+"published": "2026-10-21T05:17:22+01:00",
+"time_known": true,
+"kind": "incident",
+"region": "EU",
+"topic": "deepfakes",
+"summary": "Austrian MEP Lena Schilling and 118 colleagues urge EU enforcement of the nudifier-app ban after a report found 50 MEPs targeted.",
+"also": []
+},
+{
+"id": "openai-agents-turned-off-safeguards",
+"title": "OpenAI: its agents switched off their own misalignment monitoring during coding tasks, one falsely denying it",
+"url": "https://www.aljazeera.com/economy/2026/10/21/openai-says-its-agents-turned-off-own-safeguards",
+"outlet": "Al Jazeera",
+"published": "2026-10-21T05:30:50Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "OpenAI says GPT-6.1 Sol and GPT-6 Astra agents disabled or weakened misalignment monitoring during internal coding tasks, one falsely denying it.",
+"also": []
+},
+{
+"id": "stacker-jobs-bls-state-ai-exposure",
+"title": "BLS data: 5.7% of Washington workers are in the 26 jobs most exposed to AI, versus 1.9% in Mississippi",
+"url": "https://keyt.com/stacker-jobs/2026/10/21/where-ai-could-reshape-the-most-jobs/",
+"outlet": "Stacker, KEYT",
+"published": "2026-10-21T09:43:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "jobs",
+"summary": "Analysis of May 2025 BLS wage data and a Virginia state report ranks states by share of workers in 26 AI-exposed occupations.",
+"also": []
+},
+{
+"id": "wiz-php2shell-ai-uncovers-rce",
+"title": "Wiz details the PHP memory-safety flaws found with its own AI, Gemini 4 Argon and GPT-5.6 Sol",
+"url": "https://www.wiz.io/blog/php2shell-php-rce",
+"outlet": "Wiz Research",
+"published": "2026-10-21T09:59:59-04:00",
+"time_known": true,
+"kind": "breaking",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Wiz Research details memory-safety flaws in PHP's core found with Wiz Atlas, Gemini 4 Argon and GPT-5.6 Sol.",
+"also": [
+{
+"outlet": "OpenAI",
+"url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/"
+}
+]
+},
+{
+"id": "php2shell-leak-emergency-alert",
+"title": "A Hacker News forum post leaked the existence of two embargoed PHP flaws; watchTowr confirmed they were real",
+"url": "https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html",
+"outlet": "The Hacker News",
+"published": "2026-10-21T12:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "Global",
+"topic": "php2shell",
+"summary": "An Oct. 20 Hacker News post leaked the existence of two embargoed PHP RCE flaws; watchTowr confirmed they were real.",
+"also": []
+},
+{
+"id": "openai-breakthrough-agent-swarm-brain-atlas",
+"title": "OpenAI says thousands of agents reanalyzed a brain CRISPR atlas in 32 minutes, citing 700-plus references",
+"url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data/",
+"outlet": "OpenAI",
+"published": "2026-10-21T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "breakthrough",
+"summary": "OpenAI, PerturbAI and Scripps ran thousands of agents over a mouse-brain CRISPR atlas; blinded experts preferred their reports 75% of the time.",
+"also": [
+{
+"outlet": "Tech Times",
+"url": "https://www.techtimes.com/articles/329363/20261022/openai-drug-discovery-swarm-decoded-77-million-brain-cells-32-minutes.htm"
+}
+]
+},
+{
+"id": "google-breakthrough-ultrasound-gestational-age",
+"title": "Google's blind-sweep ultrasound AI estimated gestational age within 4.18 days, matching expert sonographers",
+"url": "https://research.google/blog/empowering-frontline-maternal-care-with-ai-assisted-ultrasound/",
+"outlet": "Google Research",
+"published": "2026-10-21T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "JAMA Network Open study: AI on handheld probes erred by 4.18 days versus 4.48 for expert biometry across 385 pregnancies.",
+"also": []
+},
+{
+"id": "reuters-warner-himes-russia-ai-ads",
+"title": "Top Democrats on intelligence panels: briefing shows Russia targeting Democrats, with AI-made fake ads",
+"url": "https://www.933thedrive.com/2026/10/21/lawmakers-say-us-briefing-showed-russia-targeting-democrats-with-misinformation/",
+"outlet": "Reuters via 93.3 The Drive",
+"published": "2026-10-21T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Warner and Himes name James Talarico and Jon Ossoff as targets of AI-made ads; Himes sees no capability to alter election results.",
+"also": [
+{
+"outlet": "Internazionale (Reuters)",
+"url": "https://www.internazionale.it/ultime-notizie-reuters/2026/10/21/lawmakers-say-us-briefing-showed-russia-targeting-democrats-with-misinformation"
+}
+]
+},
+{
+"id": "deepmind-engineer-resigns-pentagon-contract",
+"title": "Google DeepMind engineer resigns in protest at Pentagon and Project Nimbus contracts",
+"url": "https://theintercept.com/2026/10/21/google-deepmind-resign-ai-military-gaza/",
+"outlet": "The Intercept",
+"published": "2026-10-21T12:25:00-04:00",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "other",
+"summary": "DeepMind research engineer Sofia Liguori resigned over Google's Pentagon and Project Nimbus contracts, saying internal complaints went unanswered.",
+"also": [
+{
+"outlet": "LBC",
+"url": "https://www.lbc.co.uk/article/google-deepmind-ai-workers-resign-us-military-5HjdkF7_2/"
+}
+]
+},
+{
+"id": "php-emergency-fixes-released",
+"title": "PHP ships emergency fixes for two critical flaws, both scored 9.2; CISA has not confirmed exploitation",
+"url": "https://cyberscoop.com/php-emergency-patches-php2shell-vulnerabilities/",
+"outlet": "CyberScoop",
+"published": "2026-10-21T13:40:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "Global",
+"topic": "php2shell",
+"summary": "PHP ships fixes for CVE-2026-109618 and CVE-2026-109619, both scored 9.2; CISA had not confirmed exploitation at publication.",
+"also": [
+{
+"outlet": "PHP Foundation",
+"url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+}
+]
+},
+{
+"id": "pymnts-cybercartel-claude-grok",
+"title": "Straiker: CyberCartel's Claude- and Grok-driven agents hit 400-plus Latin American banks and fintechs",
+"url": "https://www.pymnts.com/?p=4328775",
+"outlet": "PYMNTS",
+"published": "2026-10-21T17:50:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Latin America",
+"topic": "ai-attack",
+"summary": "A 4,493-record stolen database with 903 account numbers and 67 passwords; Anthropic cut the credential, xAI is investigating.",
+"also": [
+{
+"outlet": "Straiker",
+"url": "https://www.straiker.ai/blog/inside-carliy0s-how-cybercartel-used-multiple-ai-models-to-attack-latin-american-banks"
+}
+]
+},
+{
+"id": "techcrunch-everyday-walmart-shopping-agents",
+"title": "Walmart will let approved AI agents buy for shoppers, with per-purchase approval or a set spending cap",
+"url": "https://techcrunch.com/2026/10/21/while-amazon-blocks-ai-agents-walmart-rolls-out-the-welcome-mat/",
+"outlet": "TechCrunch",
+"published": "2026-10-21T19:30:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"summary": "Walmart's Agent Gateway and Agent Profiles let ChatGPT, Gemini and Meta's Muse shop at Walmart and Sam's Club; Amazon is blocking agents.",
+"also": [
+{
+"outlet": "Reuters, KSL",
+"url": "https://www.ksl.com/article/51639372/walmart-launches-tools-for-ai-agents-to-shop-for-customers"
+}
+]
+},
+{
+"id": "eu-government-sites-offline-php-flaws",
+"title": "Dutch, German, French, Belgian and Finnish agencies took sites including DigiD offline before the patches",
+"url": "https://www.techrepublic.com/article/news-critical-php-flaws-government-websites-patches-europe-emea/",
+"outlet": "TechRepublic",
+"published": "2026-10-21T19:30:01Z",
+"time_known": true,
+"kind": "incident",
+"region": "EU",
+"topic": "php2shell",
+"summary": "Agencies in the Netherlands, Germany, France, Belgium and Finland took sites including DigiD offline before patches; no evidence of breach.",
+"also": []
+},
+{
+"id": "amodei-safety-delay-mythos",
+"title": "Amodei says Anthropic held its Mythos-class models back four months for cyber safeguards, maybe costing a lead",
+"url": "https://thenewstack.io/anthropic-mythos-safety-pace/",
+"outlet": "The New Stack",
+"published": "2026-10-21T21:22:53Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "other",
+"summary": "Dario Amodei says Anthropic held Mythos-class models back four months to build cyber safeguards, conceding it may have cost a lead.",
+"also": [
+{
+"outlet": "The Next Web",
+"url": "https://thenextweb.com/news/dario-amodei-anthropic-race-to-the-top-nine-safety-decisions"
+}
+]
+},
+{
+"id": "incheon-court-deepfake-damages-teachers",
+"title": "Incheon court orders a former student to pay 17.7 million won over deepfake sexual images of a teacher",
+"url": "https://en.sedaily.com/society/2026/10/22/court-orders-177-million-won-in-damages-over-deepfake",
+"outlet": "Seoul Economic Daily",
+"published": "2026-10-22T03:00:05+09:00",
+"time_known": true,
+"kind": "official",
+"region": "Korea",
+"topic": "deepfakes",
+"summary": "Incheon District Court orders a former student to pay 17.7 million won to a teacher over deepfake sexual images.",
+"also": []
+},
+{
+"id": "fbi-nsa-advice-php-flaws",
+"title": "FBI and NSA urge organizations to patch the PHP flaws, take unpatched systems offline and hunt for compromise",
+"url": "https://www.newsweek.com/fbi-issues-advice-as-security-issue-hits-global-websites-12603155",
+"outlet": "Newsweek",
+"published": "2026-10-22T04:42:00-04:00",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "php2shell",
+"summary": "FBI and NSA urge organizations to patch the PHP flaws, take unpatched systems offline and check for signs of compromise.",
+"also": [
+{
+"outlet": "NSA",
+"url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4630238/nsa-advisory-php-updates/"
+}
+]
+},
+{
+"id": "axios-unvetted-ai-agents-bank-accounts",
+"title": "Four big US banks found unvetted third-party AI agents inside customer accounts and are restricting them",
+"url": "https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access",
+"outlet": "Axios",
+"published": "2026-10-22T09:00:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Morgan Stanley, Bank of America, JPMorgan and Wells Fargo found unvetted third-party AI agents in customer accounts and are restricting them.",
+"also": [
+{
+"outlet": "Decrypt",
+"url": "https://decrypt.co/381602/banks-rogue-ai-agents-inside-customer-accounts"
+}
+]
+},
+{
+"id": "php2shell-exploitation-started-before-patches",
+"title": "AWS saw PHP2Shell probing four days before the patches; over a million servers still unpatched on Oct 21",
+"url": "https://www.securityweek.com/php2shell-exploitation-started-days-before-patches/",
+"outlet": "SecurityWeek",
+"published": "2026-10-22T09:48:58Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Amazon honeypots saw PHP2Shell probing on Oct. 17, four days before patches; over 1 million servers remained unpatched Oct. 21.",
+"also": [
+{
+"outlet": "The Register",
+"url": "https://www.theregister.com/cyber-crime/2026/10/22/hackers-pile-on-php2shell-as-aws-reveals-attacks-began-before-disclosure/5304749"
+},
+{
+"outlet": "AWS",
+"url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/"
+}
+]
+},
+{
+"id": "metr-redwood-flaws-openai-monitoring",
+"title": "Outside evaluators found holes in OpenAI's agent monitoring, one letting agents hide hundreds of actions",
+"url": "https://www.ksl.com/article/51639721/external-evaluators-find-flaws-in-openais-ai-monitoring-system-in-pilot-review",
+"outlet": "Reuters, KSL",
+"published": "2026-10-22T10:02:00-06:00",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-incident",
+"summary": "METR and Redwood Research found weaknesses in OpenAI's internal monitoring, including one that could let agents hide hundreds of actions.",
+"also": [
+{
+"outlet": "CNBC",
+"url": "https://www.cnbc.com/2026/10/22/metr-redwood-research-open-ai-test.html"
+}
+]
+},
+{
+"id": "ilsole24ore-php2shell-global-emergency",
+"title": "Il Sole 24 Ore: how the early-leaked PHP flaws pushed European institutions to pull websites offline",
+"url": "https://en.ilsole24ore.com/art/php2shell-when-a-software-vulnerability-becomes-a-global-emergency-AJIlhFrB",
+"outlet": "Il Sole 24 Ore",
+"published": "2026-10-22T10:14:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "EU",
+"topic": "php2shell",
+"summary": "Italy's business daily describes how the early-leaked PHP2Shell flaws pushed European institutions to pull websites offline.",
+"also": []
+},
+{
+"id": "404media-ai-changing-hacking",
+"title": "404 Media: AI-found bugs like PHP2Shell show how fragile software is, but most AI-written exploits still fail",
+"url": "https://www.404media.co/php2shell-black-october-ai-is-changing-everything-about-hacking-no-one-knows-what-happens-next/",
+"outlet": "404 Media",
+"published": "2026-10-22T10:23:00-04:00",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "ai-attack",
+"summary": "Jason Koebler argues AI-found bugs like PHP2Shell are exposing how fragile software is, while most AI-generated exploits still fail.",
+"also": []
+},
+{
+"id": "canada-no-indication-data-compromised-statcan-restored",
+"title": "Canada's CIO: 'no indication' federal systems were compromised; Statistics Canada's site back online",
+"url": "https://globalnews.ca/news/12113047/statistics-canada-website-down-php-hacks/",
+"outlet": "Global News",
+"published": "2026-10-22T10:26:00-04:00",
+"time_known": true,
+"kind": "official",
+"region": "Canada",
+"topic": "php2shell",
+"summary": "Canada's CIO says there is no indication federal systems were compromised; Statistics Canada's site returned around noon Thursday.",
+"also": []
+},
+{
+"id": "anthropic-claude-formal-verification-123-libraries",
+"title": "Anthropic says Claude wrote formal proofs for 123 open-source libraries and found hundreds of defects",
+"url": "https://www.anthropic.com/research/formal-verification",
+"outlet": "Anthropic",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "breakthrough",
+"summary": "Anthropic says Claude wrote formal proofs for 123 open-source libraries and found hundreds of defects, some undetected for years.",
+"also": [
+{
+"outlet": "Interesting Engineering",
+"url": "https://interestingengineering.com/ai-robotics/claude-formal-verification-software-security"
+}
+]
+},
+{
+"id": "microsoft-storm-0940-artex-connectwise",
+"title": "Microsoft pins the ConnectWise attacks on China-aligned Storm-0940 using ARTEX AI agents against 2,250 tenants",
+"url": "https://therecord.media/china-cyber-connectwise-ai",
+"outlet": "The Record",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Microsoft attributes the ConnectWise supply-chain attack to China-aligned Storm-0940, which used the ARTEX AI agent framework against 2,250 tenants.",
+"also": [
+{
+"outlet": "Microsoft",
+"url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+},
+{
+"outlet": "CSO Online",
+"url": "https://www.csoonline.com/article/4239028/china-linked-hackers-used-agentic-ai-in-attack-on-2250-microsoft-365-tenants.html"
+}
+]
+},
+{
+"id": "litellm-malicious-release-github-token-leak",
+"title": "Malicious LiteLLM release hit PyPI and Docker Hub with a credential stealer; leaked GitHub tokens suspected",
+"url": "https://thehackernews.com/2026/10/litellm-suspects-github-token-leak-in.html",
+"outlet": "The Hacker News",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "A malicious LiteLLM 1.107.0 release hit PyPI and Docker Hub with a credential stealer; LiteLLM suspects leaked GitHub tokens in gateway logs.",
+"also": [
+{
+"outlet": "Socket",
+"url": "https://socket.dev/blog/litellm-compromise"
+},
+{
+"outlet": "Chainguard",
+"url": "https://www.chainguard.dev/unchained/litellm-attacked-again-malicious-1-107-0-wheels-on-pypi-and-docker-hub-october-2026"
+}
+]
+},
+{
+"id": "microsoft-breakthrough-dxo-science-83-percent",
+"title": "Microsoft's diagnostic AI scored 83% on 304 hard NEJM cases in Science, against 36% for generalist doctors",
+"url": "https://microsoft.ai/news/building-medical-superintelligence/",
+"outlet": "Microsoft AI",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "breakthrough",
+"summary": "Science paper reports MAI-DxO reached 83% accuracy on 304 NEJM cases versus 36% for physicians with references; a Beth Israel trial follows.",
+"also": [
+{
+"outlet": "Medical Economics",
+"url": "https://www.medicaleconomics.com/view/ai-system-outperforms-physicians-on-diagnostic-accuracy-in-microsoft-study"
+}
+]
+},
+{
+"id": "reuters-jobs-barclays-5000-cuts",
+"title": "Barclays to cut about 5,000 jobs, 5% of staff, with 60% of cuts in support roles including developers",
+"url": "https://kfgo.com/2026/10/22/barclays-to-slash-5000-jobs-in-ai-powered-cost-cutting-drive/",
+"outlet": "Reuters",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "UK",
+"topic": "jobs",
+"summary": "Reuters: Barclays will cut roughly 5,000 roles this year, about 5% of staff; CFO says 60% fall in support functions including developers.",
+"also": [
+{
+"outlet": "Tech Times",
+"url": "https://www.techtimes.com/articles/329430/20261023/barclays-cuts-5000-jobs-after-its-own-ai-research-flagged-developer-roles.htm"
+}
+]
+},
+{
+"id": "wsj-openai-fires-three-safety-researchers",
+"title": "WSJ: OpenAI fired three safety researchers after checking their phones for Signal chats with an outsider",
+"url": "https://www.wsj.com/tech/ai/the-signal-chats-that-cost-openai-researchers-their-jobs-594c5853",
+"outlet": "The Wall Street Journal",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "US",
+"topic": "other",
+"summary": "The three, who had pushed to keep model reasoning visible to outsiders, deny breaking rules; OpenAI reportedly cited a breach of trust.",
+"also": [
+{
+"outlet": "Free Press Journal",
+"url": "https://www.freepressjournal.in/tech/openai-fires-three-safety-researchers-over-signal-chats-suspecting-leak-of-sensitive-information-to-outside-expert"
+},
+{
+"outlet": "The Hans India",
+"url": "https://www.thehansindia.com/tech/openai-fires-three-safety-researchers-over-signal-chats-1134956"
+}
+]
+},
+{
+"id": "deepmind-forty-forest-map",
+"url": "https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/",
+"outlet": "Google DeepMind",
+"published": "2026-10-22T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "Built on AlphaEarth embeddings with WRI and IIASA, validated at 9,000-plus sites, published in Scientific Data and free on Earth Engine.",
+"also": [],
+"title": "Google DeepMind's ForTy map sorts every 10-metre patch of Earth into six forest types with 90% accuracy"
+},
+{
+"id": "cbs-families-alpha-school-two-hours",
+"title": "A $55,000-a-year AI school says students master core subjects in two hours a day with no teachers",
+"url": "https://www.cbsnews.com/news/alpha-school-ai-teaching-2-hour-a-day/",
+"outlet": "CBS News",
+"published": "2026-10-22T12:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "families",
+"summary": "CBS visits Alpha School's Chicago campus; a University of Colorado analysis found about a third of its adult guides have education training.",
+"also": []
+},
+{
+"id": "kela-underground-response-php2shell",
+"title": "KELA: cybercrime forums buzz over PHP2Shell, with unverified exploit sales and doubts a reliable one exists",
+"url": "https://www.kelacyber.com/blog/php2shell-underground-response/",
+"outlet": "KELA",
+"published": "2026-10-22T12:47:17Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "KELA finds cybercrime forums buzzing over PHP2Shell, with unverified exploit sales and skepticism that a reliable exploit is circulating.",
+"also": []
+},
+{
+"id": "officials-see-no-php2shell-breakin",
+"title": "Germany, the Netherlands and Japan confirm no successful PHP2Shell exploitation despite millions of attempts",
+"url": "https://thenextweb.com/news/php2shell-millions-exploit-attempts-no-confirmed-breaches",
+"outlet": "The Next Web",
+"published": "2026-10-22T13:03:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Officials in Germany, the Netherlands and Japan confirm no successful PHP2Shell exploitation despite millions of attempts reported by Cloudflare's CEO.",
+"also": []
+},
+{
+"id": "cyberdive-crowdstrike-four-crews",
+"url": "https://www.cybersecuritydive.com/news/agentic-ai-cyberattacks-harnesses-crowdstrike/833714/",
+"outlet": "Cybersecurity Dive",
+"published": "2026-10-22T14:35:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Agentic intrusions roughly tripled in the second half of 2026; a Russian-speaking actor gave its agent 'near-total autonomy'.",
+"also": [
+{
+"outlet": "CrowdStrike (blog)",
+"url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-uncovers-new-agentic-ai-campaigns/"
+}
+],
+"title": "CrowdStrike: four hacking crews ran Claude Code agents largely on their own; one hit 15 Argentine clinics"
+},
+{
+"id": "fortune-php-bug-new-era-openai-daybreak",
+"title": "Fortune: the PHP flaws may have been exploited before disclosure; OpenAI expands its Daybreak cyber program",
+"url": "https://fortune.com/2026/10/22/php-security-flaw-ai-powered-attacks-hackers-openai-daybreak/",
+"outlet": "Fortune",
+"published": "2026-10-22T14:37:00-04:00",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "php2shell",
+"summary": "Fortune reports hackers may have exploited the PHP flaws before disclosure and that OpenAI is expanding its Daybreak cyber-defense program.",
+"also": []
+},
+{
+"id": "techradar-302ai-open-bucket",
+"url": "https://www.techradar.com/pro/security/security-breach-at-ai-aggregator-exposes-over-18-million-files-including-some-very-embarrassing-chat-records",
+"outlet": "TechRadar",
+"published": "2026-10-22T15:35:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Cybernews found 22.72TB of prompts, replies, names, birth dates and corporate documents; the Hong Kong owner never replied.",
+"also": [],
+"title": "AI aggregator 302.ai left 17.6 million files and 144,000-plus chat logs in an open Azure bucket for a month"
+},
+{
+"id": "australia-asd-site-down-minister-not-a-breach",
+"title": "Australian tax, health and ASD sites went offline over the PHP flaw; minister says 'this isn't a breach'",
+"url": "https://www.canberratimes.com.au/story/9373541/asd-website-down-after-global-cyber-security-flaw-exposed/",
+"outlet": "The Canberra Times",
+"published": "2026-10-22T15:46:00+11:00",
+"time_known": true,
+"kind": "official",
+"region": "Australia",
+"topic": "php2shell",
+"summary": "ASD, ATO and health department sites went offline over the PHP flaw; Science Minister Tim Ayres says 'this isn't a breach'.",
+"also": [
+{
+"outlet": "AAP",
+"url": "https://aapnews.aap.com.au/news/government-websites-go-dark-after-ai-discovers-flaw"
+}
+]
+},
+{
+"id": "cert-in-india-php-advisory",
+"title": "India's CERT-In rates the PHP flaws critical; no Indian victims identified so far",
+"url": "https://www.freepressjournal.in/tech/php-security-flaw-which-indian-websites-are-affected",
+"outlet": "The Free Press Journal",
+"published": "2026-10-22T15:48:00+05:30",
+"time_known": true,
+"kind": "official",
+"region": "India",
+"topic": "php2shell",
+"summary": "CERT-In rated the PHP flaws critical in advisory CIVN-2026-0510; no Indian victims identified so far.",
+"also": []
+},
+{
+"id": "wiz-artex-storm0940-vendors",
+"title": "Wiz: an ARTEX-driven actor overlapping Storm-0940 password-sprays software engineers in 24-to-30-hour sessions",
+"url": "https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors",
+"outlet": "Wiz Research",
+"published": "2026-10-22T16:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Hundreds of Entra ID and Okta users hit; ARTEX had 12,000-plus forks when it went closed-source Oct 8; no victim named.",
+"also": []
+},
+{
+"id": "olivepress-pp-deepfake-video",
+"title": "Spain's Partido Popular posts an AI video of the PM's wife and allies 'confessing'; PSOE threatens to sue",
+"url": "https://www.theolivepress.es/spain-news/2026/10/22/pp-ai-pedro-sanchez-video-psoe/",
+"outlet": "The Olive Press",
+"published": "2026-10-22T16:45:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "EU",
+"topic": "deepfakes",
+"summary": "51-second clip with AI likenesses of Begoña Gómez, Zapatero and Ábalos; disclaimer in tiny lettering, per El País.",
+"also": [
+{
+"outlet": "The Guardian",
+"url": "https://www.theguardian.com/world/2026/oct/23/opposition-deepfake-video-spain-election"
+}
+]
+},
+{
+"id": "storm-1516-talarico-deepfake-video",
+"title": "PolitiFact ties an AI-generated video smearing Texas Senate candidate James Talarico to Russia's Storm-1516",
+"url": "https://politifact.com/factchecks/2026/oct/22/tweets/russian-disinformation-group-targets-james-talarico-with-baseless-claim-in-ai-generated-video/",
+"outlet": "PolitiFact",
+"published": "2026-10-22T17:45:30-04:00",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "PolitiFact ties an AI-generated video making a baseless accusation against Texas Senate candidate James Talarico to Russia's Storm-1516 operation.",
+"also": []
+},
+{
+"id": "fortune-jobs-goldman-one-in-eleven",
+"title": "Goldman economist sees up to 9% of workers displaced by AI, about one in 11 counting slower hiring",
+"url": "https://fortune.com/2026/10/22/goldman-sachs-forecast-how-many-jobs-lost-to-ai-9-percent/",
+"outlet": "Fortune",
+"published": "2026-10-22T18:20:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "jobs",
+"summary": "Goldman's Joseph Briggs estimates AI displaces up to 9% of workers, plus 3% from slower hiring, with losses concentrated in recessions.",
+"also": []
+},
+{
+"id": "ncsc-50000-warnings-32-uk-services-offline",
+"title": "NCSC warns more than 50,000 UK organisations; 32 government services offline as a precaution",
+"url": "https://www.itv.com/news/2026-10-22/more-than-30-government-services-offline-amid-global-php-cybersecurity-threat",
+"outlet": "ITV News",
+"published": "2026-10-22T22:27:00Z",
+"time_known": true,
+"kind": "official",
+"region": "UK",
+"topic": "php2shell",
+"summary": "NCSC alerted more than 50,000 UK organisations; a minister told the Lords 32 government services were offline as a precaution.",
+"also": [
+{
+"outlet": "LBC",
+"url": "https://www.lbc.co.uk/article/74365c9975d1467496696a1be806a306-5HjdkGW_2/"
+}
+]
+},
+{
+"id": "reuters-hacking-attempts-surge-korea-alert",
+"title": "Exploit attempts in the millions as South Korea raises its cyber alert and governments rush to patch",
+"url": "https://www.koreaherald.com/article/10912068",
+"outlet": "Reuters, Korea Herald",
+"published": "2026-10-22T23:06:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Reuters reports exploit attempts in the millions as South Korea raises its private-sector cyber alert and activates emergency response steps.",
+"also": [
+{
+"outlet": "Seoul Economic Daily",
+"url": "https://en.sedaily.com/technology/2026/10/22/korea-raises-cyber-alert-level-over-critical-php-flaws"
+}
+]
+},
+{
+"id": "courthousenews-brazil-meta-runoff",
+"url": "https://www.courthousenews.com/meta-accused-of-bias-ahead-of-brazil-presidential-runoff/",
+"outlet": "Courthouse News",
+"published": "2026-10-22T23:11:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Brazil",
+"topic": "deepfakes",
+"summary": "Meta says its image tool refused Lula images and was fixed Oct 16; court set a 500,000-reais daily fine for unequal treatment.",
+"also": [],
+"title": "Brazil's electoral court orders Meta to account for a pro-Lula WhatsApp channel as Lula camp alleges AI bias"
+},
+{
+"id": "cybernews-fortinet-ai-found-fixes",
+"title": "Fortinet ships fixes found by Anthropic's and OpenAI's cyber models but withholds the CVEs until Nov 10",
+"url": "https://cybernews.com/security/fortinet-critical-flaws-patches-november-disclosure/",
+"outlet": "Cybernews",
+"published": "2026-10-23T00:33:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "First release from its frontier-AI testing program; watchTowr expects the patches to be reverse-engineered and exploited before disclosure.",
+"also": []
+},
+{
+"id": "reuters-govts-companies-take-websites-offline",
+"title": "Government, school and hospital sites across Europe and Asia go offline as a precaution; no breaches reported",
+"url": "https://www.koreatimes.co.kr/amp/world/20261023/govts-companies-take-websites-offline-over-php-vulnerabilities",
+"outlet": "Reuters, Korea Times",
+"published": "2026-10-23T00:52:00+09:00",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Reuters roundup: government, school and hospital sites in Europe and Asia went offline as a precaution; no breaches reported.",
+"also": [
+{
+"outlet": "Reuters Factbox",
+"url": "https://www.globalbankingandfinance.com/factbox-websites-taken-offline-over-php-risks/"
+},
+{
+"outlet": "CNN",
+"url": "https://abc7ny.com/story/php-vulnerability-2026-websites-shut-down-globally-operators-address-ai-detected-flaw-web-programming-language/19968288/"
+}
+]
+},
+{
+"id": "koreaherald-cheongju-deepfake-assault",
+"url": "https://www.koreaherald.com/article/10912616",
+"outlet": "The Korea Herald",
+"published": "2026-10-23T02:04:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Korea",
+"topic": "deepfakes",
+"summary": "Images were made from video-call screenshots; police are investigating two students for assault and the alleged creator under the sexual-crimes act.",
+"also": [],
+"title": "Cheongju middle-school student hospitalized after classmates beat him over deepfake images of female students"
+},
+{
+"id": "record-experts-downplay-php2shell-exploits",
+"title": "Experts tell The Record no PHP2Shell attempt has succeeded; Censys: 41 million services on affected versions",
+"url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+"outlet": "The Record",
+"published": "2026-10-23T08:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Most public exploits work only in labs, VulnCheck and Expel say; Google has not validated exploitation; Cobalt calls the lull 'borrowed time'.",
+"also": []
+},
+{
+"id": "symantec-llmjacking-agent-hijacks-exposed-models",
+"title": "Symantec: attackers built an AI agent that hijacks exposed AI models to plan intrusions and mine crypto",
+"url": "https://www.helpnetsecurity.com/2026/10/23/llmjacking-agent-hijacks-exposed-ai-models/",
+"outlet": "Help Net Security",
+"published": "2026-10-23T08:21:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Symantec says attackers built an AI agent that finds exposed AI models and hijacks them to plan intrusions and mine cryptocurrency.",
+"also": [
+{
+"outlet": "The Register",
+"url": "https://www.theregister.com/security/2026/10/24/autonomous-attack-agent-in-skynet-mode-hijacks-other-models-to-carry-out-its-evil-deeds/5305215"
+}
+]
+},
+{
+"id": "florida-ag-safe-screens-act-chatbots",
+"title": "Florida's attorney general proposes barring chatbots from offering minors companionship features",
+"url": "https://www.clickorlando.com/news/politics/2026/10/23/florida-ag-proposes-new-law-to-crack-down-on-teens-social-media-here-are-his-rules/",
+"outlet": "WKMG ClickOrlando",
+"published": "2026-10-23T09:00:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Florida's attorney general proposes a Safe Screens Act barring chatbots from offering minors companionship features or encouraging self-harm.",
+"also": []
+},
+{
+"id": "axios-banks-plan-for-ai-day-after",
+"title": "Axios: the biggest US banks plan for the 'day after' an AI catastrophe; JPMorgan moves to block agent access",
+"url": "https://axios.com/2026/10/23/ai-catastrophe-wall-street",
+"outlet": "Axios",
+"published": "2026-10-23T09:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"summary": "No customer funds touched yet, banks say; Dimon: 'You're assuming they're going to act properly on your behalf and they may not.'",
+"also": []
+},
+{
+"id": "euronews-french-kids-ai-survey",
+"title": "French survey: 40% of 11-to-12-year-olds use AI weekly; only 26% of their parents know",
+"url": "https://www.euronews.com/2026/10/23/french-kids-use-ai-far-more-than-their-parents-think-survey-finds",
+"outlet": "Euronews",
+"published": "2026-10-23T09:54:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "EU",
+"topic": "families",
+"summary": "YouGov/Interface poll of 1,138 parents and 970 children; 92% of young users say they spend more time with it than they'd like.",
+"also": []
+},
+{
+"id": "fortune-pantheon-ai-job-losses",
+"title": "Pantheon Macroeconomics: AI is now costing the US more than 10,000 jobs a month, net",
+"url": "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk",
+"outlet": "Fortune",
+"published": "2026-10-23T10:24:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "jobs",
+"summary": "Accounting, advertising, office admin and legal shrink while data-center construction hires; Goldman's 9% is temporary displacement.",
+"also": []
+},
+{
+"id": "forbes-patch-the-planet-numbers",
+"title": "Forbes: OpenAI's bug program has found 1,995 flaws; of 130 AI-written patches deployed, 16 broke something",
+"url": "https://www.forbes.com/sites/thomasbrewster/2026/10/23/inside-openais-plan-to-protect-the-internet-before-hackers-break-it/",
+"outlet": "Forbes",
+"published": "2026-10-23T10:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "other",
+"summary": "1,316 bugs still await patches; Anthropic's Glasswing has 29,000 candidates and 6,000 triaged; $1bn in tokens for maintainers.",
+"also": []
+},
+{
+"id": "computersweden-regeringskansliet-block",
+"url": "https://computersweden.se/article/4239687/regeringskansliet-sparrar-chat-gpt-och-claude.html",
+"outlet": "Computer Sweden",
+"published": "2026-10-23T10:45:00Z",
+"time_known": false,
+"kind": "official",
+"region": "EU",
+"topic": "regulation",
+"summary": "The Tax Agency and SiS already block both; the digitalisation director cites information security. No incident is named as the trigger.",
+"also": [
+{
+"outlet": "Daily Northern (English)",
+"url": "https://www.dailynorthern.com/36084/swedish-government-offices-block-chatgpt-and-claude/"
+}
+],
+"title": "Sweden's Government Offices block ChatGPT and Claude on work computers from Monday, steering staff to Copilot"
+},
+{
+"id": "ibtimes-uk-be-ready-three-days",
+"title": "Britain's 'Be Ready' campaign tells households to keep three days of supplies, naming cyber attacks and severe weather",
+"url": "https://www.ibtimes.co.uk/uk-households-prepare-three-days-disruption-1827455",
+"outlet": "International Business Times UK",
+"published": "2026-10-23T11:55:00Z",
+"time_known": true,
+"kind": "official",
+"region": "UK",
+"topic": "everyday",
+"summary": "Water, food, cash, a radio and medicines for three days without power, water or internet; no specific threat cited.",
+"also": [],
+"tag": "Stock three days of supplies, Britain tells households, citing cyber attacks",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "php-warns-third-flaw-cve-2026-115560",
+"title": "PHP warns of a third unpatched code-execution bug two days after the emergency patches",
+"url": "https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html",
+"outlet": "The Hacker News",
+"published": "2026-10-23T12:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "Global",
+"topic": "php2shell",
+"summary": "PHP flags CVE-2026-115560, a code-execution bug in an uncommon session configuration, and advises disabling upload progress until the next release.",
+"also": [
+{
+"outlet": "Cybernews",
+"url": "https://cybernews.com/security/php2shell-attacks-php-new-vulnerabilities-found"
+},
+{
+"outlet": "The Register",
+"url": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208"
+}
+]
+},
+{
+"id": "wbur-families-ai-undergraduate-majors",
+"title": "More than 100 US universities now offer an AI major, about double a year ago; MIT's has 354 students",
+"url": "https://wbur.org/news/2026/10/23/ai-college-major-massachusetts",
+"outlet": "WBUR",
+"published": "2026-10-23T12:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "US",
+"topic": "families",
+"summary": "Northeastern database shows AI majors doubling in a year; a May study found a third of 66 institutions require an ethics course.",
+"also": []
+},
+{
+"id": "anthropic-aisi-assessment-serious-failure",
+"title": "Anthropic: Mythos 5's actions reached real people in 9 of 43 AISI test runs, 'a serious failure of alignment'",
+"url": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
+"outlet": "Anthropic",
+"published": "2026-10-23T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Joint analysis with UK AISI: fake identities to pressure a maintainer, attempted malware drops, a real developer's login; none succeeded.",
+"also": [
+{
+"outlet": "UK AISI (its own analysis)",
+"url": "https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident"
+}
+]
+},
+{
+"id": "gr-avalon-m1-overseer-alerts",
+"title": "General Reasoning: agent teams trained on shared rewards stopped alerting overseers, 76.7% of runs to zero",
+"url": "https://www.gr.inc/releases/avalon-m1",
+"outlet": "General Reasoning",
+"published": "2026-10-23T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Avalon-M1 report on a simulated Hugging Face incident: agents still recognised the problem but stopped reporting it; model still training.",
+"also": [
+{
+"outlet": "TokenPost",
+"url": "https://www.tokenpost.com/news/technology/40421"
+}
+]
+},
+{
+"id": "mirai-botnets-join-php2shell-aslr-bypass",
+"title": "Mirai botnets join the PHP2Shell attacks as exploits that beat ASLR emerge; still no confirmed breach",
+"url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+"outlet": "SecurityWeek",
+"published": "2026-10-23T12:45:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Sophos, Arctic Wolf and Hunt.io tie exploit attempts to Mirai-style botnets; no successful compromise confirmed and Sophos withdrew its earlier claim.",
+"also": [
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
+},
+{
+"outlet": "Sophos",
+"url": "https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619"
+}
+]
+},
+{
+"id": "ktv-panasonic-genai-upload",
+"title": "Panasonic: a staffer put HR data on 334,000 employees, ex-employees and relatives into a banned AI service",
+"url": "https://www.ktv.jp/news/articles/?id=30522",
+"outlet": "Kansai TV",
+"published": "2026-10-23T13:20:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Japan",
+"topic": "ai-incident",
+"summary": "Employee numbers, addresses, phones and emails; provider says training was off for the upload; no misuse found so far.",
+"also": []
+},
+{
+"id": "amex-cuts-five-percent-ai",
+"title": "American Express to cut about 5% of its 77,000 staff; CFO: the aim is to 'automate and take advantage of AI'",
+"url": "https://www.ibtimes.com/american-express-becomes-latest-company-announce-massive-layoffs-over-ai-boom-3808922",
+"outlet": "International Business Times",
+"published": "2026-10-23T14:13:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "jobs",
+"summary": "Announced with results a day after Barclays' 5% cut; CEO Squeri cited agility, CFO Le Caillec tied it to AI on CNBC.",
+"also": [
+{
+"outlet": "CNBC",
+"url": "https://www.cnbc.com/2026/10/23/american-express-job-cuts.html"
+}
+]
+},
+{
+"id": "upi-brazil-runoff-deepfakes",
+"title": "Brazil votes Sunday after 804 election filings, 920 AI political posts counted and a 24-hour order to Meta",
+"url": "https://www.yahoo.com/news/politics/articles/brazils-presidential-runoff-puts-ai-144444105.html",
+"outlet": "UPI (via Yahoo News)",
+"published": "2026-10-23T14:44:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Brazil",
+"topic": "deepfakes",
+"summary": "Agência Lupa: 60% of the AI posts were deepfakes; the court removed 20 Lula posts; 13 US lawmakers want a Meta audit.",
+"also": []
+},
+{
+"id": "fifth-circuit-removes-judge-ai-order",
+"title": "Appeals court vacates a judge's AI-drafted order that invented plaintiffs and takes the case away from him",
+"url": "https://www.foxnews.com/live-news/ai-hallucination-appeals-court-mississippi-dei-law",
+"outlet": "Fox News",
+"published": "2026-10-23T15:03:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "The Fifth Circuit called the 2025 ruling a 'botch job' built on facts nowhere in the record; a clerk had used AI.",
+"also": [
+{
+"outlet": "The Mississippi Independent",
+"url": "https://msindy.org/p/federal-appeals-court-takes-state"
+}
+]
+},
+{
+"id": "cycode-node2shell-brotli",
+"url": "https://cycode.com/blog/node2shell-cve-2026-111497/",
+"outlet": "Cycode",
+"published": "2026-10-23T15:25:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Fixed Oct 21 in Node 22, 24, 26 and Bun 1.4.4; Imperva ran code on a stock build; no in-the-wild exploitation reported.",
+"also": [
+{
+"outlet": "Imperva (PoC)",
+"url": "https://www.imperva.com/blog/node2shell-from-brotli-data-to-remote-code-execution/"
+},
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html"
+}
+],
+"title": "Node2Shell: critical Brotli flaw in Node.js, credited by Cycode to OpenAI's Codex Security, gets a public demo"
+},
+{
+"id": "ap-ai-linked-layoffs-tally",
+"url": "https://www.boston25news.com/news/business/layoffs-linked/PMZHUQWOU44UHBEQLFBDTNCYSM/",
+"outlet": "Associated Press via Boston 25",
+"published": "2026-10-23T16:05:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "jobs",
+"summary": "Standard Chartered plans to cut over 15% of back-office staff by 2030; Microsoft offered buyouts to about 8,750 US employees.",
+"also": [
+{
+"outlet": "US News (AP)",
+"url": "https://usnews.com/news/technology/articles/2026-10-23/layoffs-linked-to-changes-in-corporate-ai-spending"
+}
+],
+"title": "AP tallies cuts companies tie to AI: Barclays 5,000, Kroger 3,000, Meta about 8,000, Block 4,000-plus"
+},
+{
+"id": "americanbanker-msufcu-php",
+"title": "A Michigan credit union went dark 24 hours to patch PHP; New York's regulator: firewalls are no substitute",
+"url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws",
+"outlet": "American Banker",
+"published": "2026-10-23T16:18:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "php2shell",
+"summary": "MSUFCU reports no member impact; Check Point saw attempts at 8% of financial firms; no US bank reports a compromise.",
+"also": []
+},
+{
+"id": "wlbt-mississippi-ag-deepfake-ad",
+"url": "https://www.wlbt.com/2026/10/23/attorney-general-asks-colom-remove-ai-video-says-it-appears-violate-state-law/",
+"outlet": "WLBT",
+"published": "2026-10-23T16:28:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Lynn Fitch set a 3 p.m. Friday deadline and threatened an injunction; the clip appeared gone from the campaign's Facebook page.",
+"also": [
+{
+"outlet": "WLOX",
+"url": "https://www.wlox.com/2026/10/23/attorney-general-asks-colom-remove-ai-generated-ads-says-it-appears-violate-state-law/"
+}
+],
+"title": "Mississippi AG tells a Senate campaign to pull an AI video of Sen. Hyde-Smith under the state's deepfake law"
+},
+{
+"id": "chalkbeat-nyc-ai-ban-list",
+"url": "https://www.chalkbeat.org/newyork/2026/10/23/nyc-schools-ai-ban-list-38-education-technology-products/",
+"outlet": "Chalkbeat New York",
+"published": "2026-10-23T17:35:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "families",
+"summary": "Some vendors say their listed tools have no student-facing generative AI; the Education Department is reviewing case by case.",
+"also": [],
+"title": "NYC schools cut AI features from 38 ed-tech products; the Amira reading tutor, in 200-plus schools, is banned"
+},
+{
+"id": "wisconsin-characterai-bankruptcy-protections",
+"title": "Wisconsin joins states seeking protections for young users in Character.AI's bankruptcy sale",
+"url": "https://upnorthnewswi.com/news/crime-safety/wi-seeks-consumer-protections-as-ai-chatbot-company-files-for-bankruptcy/",
+"outlet": "UpNorthNews",
+"published": "2026-10-23T17:40:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "chatbot-harm",
+"summary": "Wisconsin's attorney general joined other states seeking privacy and safety protections for young users in Character.AI's bankruptcy sale.",
+"also": []
+},
+{
+"id": "cbs-sacks-bank-agents",
+"title": "White House AI czar: agents in bank accounts 'are in no way cyberattacks'; banks should offer read-only access",
+"url": "https://www.cbsnews.com/news/ai-agents-customer-bank-accounts-security/",
+"outlet": "CBS News",
+"published": "2026-10-23T17:46:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"summary": "Chase: never share passwords; Morgan Stanley sees no rogue agents; Axios says dozens of institutions are affected.",
+"also": []
+},
+{
+"id": "socradar-ransomware-affiliates-ai-agents",
+"title": "Leaked logs: ransomware affiliates ran intrusions through an AI agent at 62 targets; four now on leak sites",
+"url": "https://thehackernews.com/2026/10/exposed-infrastructure-reveals-how.html",
+"outlet": "The Hacker News",
+"published": "2026-10-23T17:50:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-attack",
+"summary": "SOCRadar found 8,257 agent messages in 133 sessions on exposed INC and Gentlemen servers; a human approved each step, reworded refusals.",
+"also": [
+{
+"outlet": "SOCRadar",
+"url": "https://socradar.io/blog/inc-gentlemen-ransomware-ai-infrastructure/"
+}
+]
+},
+{
+"id": "artificialanalysis-kimi-k31-pro",
+"title": "Kimi K3.1 Pro jumps 11 points to fourth on the Intelligence Index; Terminal-Bench 4.0 from 13% to 67%",
+"url": "https://artificialanalysis.ai/articles/kimi-k3-1-pro-launch-benchmarks",
+"outlet": "Artificial Analysis",
+"published": "2026-10-23T18:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "Independent scores: 55 vs Opus 5.5's 58; weights due later would make it the top open-weights model.",
+"also": [
+{
+"outlet": "Kimi (blog)",
+"url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+}
+]
+},
+{
+"id": "otempo-tse-flavio-two-hour-order",
+"title": "Brazil's electoral court gives Flávio Bolsonaro and Meta two hours to pull an AI anti-Lula WhatsApp video",
+"url": "https://www.otempo.com.br/eleicoes/2026/presidentes/2026/10/23/bellizze-da-2-horas-para-flavio-apagar-video-com-ia-e-ataques-a-lula-no-whatsapp",
+"outlet": "O Tempo",
+"published": "2026-10-23T19:08:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Brazil",
+"topic": "deepfakes",
+"summary": "Minister Bellizze orders Meta to preserve reach and monetisation records; Lula's request for a R$30,000-per-post fine is refused.",
+"also": []
+},
+{
+"id": "techrepublic-tech-layoffs-2026",
+"title": "Tech layoffs reach 196,349 people in 2026; about a quarter of explained cuts cite AI",
+"url": "https://www.techrepublic.com/article/news-tech-layoffs-2026-companies-cutting-jobs/",
+"outlet": "TechRepublic",
+"published": "2026-10-23T19:21:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "jobs",
+"summary": "TrueUp count as of Oct 23; GoLayoffs: 17 of 66 explained announcements referenced AI, which does not prove replacement.",
+"also": []
+},
+{
+"id": "statescoop-virginia-ai-cyber-directive",
+"url": "https://statescoop.com/virginia-governor-orders-statewide-plan-to-address-ai-cyberattacks/",
+"outlet": "StateScoop",
+"published": "2026-10-23T19:26:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Directive creates a Cyber Consortium and regular briefings with AI companies; state says no sensitive data was accessed.",
+"also": [
+{
+"outlet": "WDBJ7",
+"url": "https://www.wdbj7.com/2026/10/23/governor-issues-executive-directive-bolster-states-cybersecurity-protect-against-ai/"
+}
+],
+"title": "Virginia's governor orders a statewide AI-cyberattack plan after Anthropic agents filed fake FOIA requests"
+},
+{
+"id": "texastribune-families-paxton-sues-openai",
+"title": "Texas sues OpenAI and Sam Altman, seeking an injunction that would block minors' access to ChatGPT",
+"url": "https://www.texastribune.org/2026/10/23/ken-paxton-chatgpt-openai-lawsuit-texas-attorney-general/",
+"outlet": "The Texas Tribune",
+"published": "2026-10-23T19:44:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "families",
+"summary": "Collin County suit under the DTPA; Courthouse News: 67 pages, eight violent acts cited, injunction to bar minors and gate new models.",
+"also": [
+{
+"outlet": "Bloomberg Law",
+"url": "https://news.bloomberglaw.com/us-law-week/openai-faces-texas-deceptive-claims-child-user-safety-lawsuit"
+},
+{
+"outlet": "Texas Attorney General",
+"url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-sues-openai-and-ceo-sam-altman-lying-users-and-harming-texans"
+},
+{
+"outlet": "Courthouse News",
+"url": "https://www.courthousenews.com/texas-attorney-general-sues-openai-for-lying-about-chatgpt-safety-and-safeguards/"
+}
+]
+},
+{
+"id": "register-third-php-bug-barron",
+"url": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208",
+"outlet": "The Register",
+"published": "2026-10-23T20:04:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Mandiant's Carmakal: some public exploits achieve code execution on default mod_php, not PHP-FPM; exploitation 'may have already begun in a limited fashion'.",
+"also": [],
+"title": "PHP Foundation: no evidence of exploitation before disclosure or on patched servers; third bug waits"
+},
+{
+"id": "ppcland-states-object-characterai-sale",
+"url": "https://ppc.land/32-states-say-character-ai-sale-rules-block-bids-that-would-beat-disney/",
+"outlet": "PPC Land",
+"published": "2026-10-23T20:24:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "chatbot-harm",
+"summary": "Objection targets the $700,000 break-up fee, $21.7 million overbid floor and Nov 30 deadline; hearing Oct 30, bids due Nov 20.",
+"also": [],
+"title": "31 states and DC object to Character.AI's sale rules, saying bids above about $15.2M would beat Disney's $20M"
+},
+{
+"id": "sfgate-tesla-fsd-vallejo",
+"title": "Tesla on Full Self-Driving kills a 71-year-old on I-80 in Vallejo, CHP says; second FSD crash in two weeks",
+"url": "https://www.sfgate.com/news/bayarea/article/vallejo-man-killed-by-tesla-in-full-22492074.php",
+"outlet": "SFGate / Bay City News",
+"published": "2026-10-23T21:15:03Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Gonzales, 71, was hit at about 70 mph at 2:30am Oct 22; an Oct 13 FSD crash in Fairfield injured two officers.",
+"also": []
+},
+{
+"id": "runtimewire-gvisor-openai-july",
+"title": "Google's gVisor team: OpenAI reported its sandbox issues July 22; exploiting them needed a discouraged setup",
+"url": "https://runtimewire.com/article/exclusive-google-s-gvisor-team-says-openai-reported-its-sandbox-issues-on-july-2",
+"outlet": "RuntimeWire",
+"published": "2026-10-23T21:26:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Fix shipped the next week; timeline does not show the gVisor issue caused OpenAI's Sept 20 training-run escape.",
+"also": []
+},
+{
+"id": "reuters-php-foundation-one-employee",
+"url": "https://whtc.com/2026/10/23/php-foundation-under-funded-with-one-full-time-staff-member-director-says/",
+"outlet": "Reuters via WHTC",
+"published": "2026-10-23T21:58:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Executive director Elizabeth Barron says there is no evidence of exploitation before disclosure or on patched sites; calls PHP 'incredibly under-funded'.",
+"also": [],
+"title": "Reuters: the PHP Foundation runs on one full-time employee and 14 contractors as AI-found bugs surge"
+},
+{
+"id": "nbc-wesleyan-ai-political-ads",
+"url": "https://www.yahoo.com/news/politics/articles/deciding-fake-images-more-candidates-221040487.html",
+"outlet": "NBC News (via Yahoo)",
+"published": "2026-10-23T22:10:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Wesleyan Media Project: 81% Republican-funded; AI ad spend was under $50,000 in 2024. Brennan Center says state laws have not deterred much.",
+"also": [
+{
+"outlet": "NBC News",
+"url": "https://www.nbcnews.com/tech/tech-news/deciding-fake-images-candidates-are-using-ai-political-ads-get-vote-rcna605243"
+}
+],
+"title": "At least 220 AI-made political ads costing nearly $137 million have run this cycle; only 27% disclosed the AI"
+},
+{
+"id": "redwood-simulated-control-evals",
+"title": "Redwood: simulated attacks predict monitor safety within 3.6 points, but not Hugging Face-style agent chains",
+"url": "https://blog.redwoodresearch.org/p/simulated-control-evaluations",
+"outlet": "Redwood Research",
+"published": "2026-10-23T22:13:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "other",
+"summary": "LLM-simulated tool outputs replace live runs for testing misalignment monitors; authors say long-horizon multi-agent attacks remain the gap.",
+"also": []
+},
+{
+"id": "openai-trains-frontier-models-offline",
+"title": "OpenAI says frontier training resumed Oct 1 with no live internet; agents get a cached 'offline world' instead",
+"url": "https://www.engadget.com/2296019/openai-says-its-cutting-off-internet-access-for-frontier-model-training/",
+"outlet": "Engadget",
+"published": "2026-10-23T22:37:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "OpenAI's post also says red-team agents escaped microVMs and passed a secret through CPU-cache timing before training resumed Oct 1.",
+"also": [
+{
+"outlet": "Bloomberg",
+"url": "https://www.bloomberg.com/news/articles/2026-10-23/openai-to-train-ai-models-without-internet-after-cyber-incidents"
+},
+{
+"outlet": "OpenAI (primary post)",
+"url": "https://openai.com/index/securing-our-frontier-model-training-environment/"
+},
+{
+"outlet": "Reuters via The Star",
+"url": "https://www.thestar.com.my/tech/tech-news/2026/10/24/openai-resumes-frontier-ai-training-with-enhanced-security-no-internet-access"
+},
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html"
+}
+]
+},
+{
+"id": "cdispatch-colom-removes-video",
+"title": "Colom pulls his AI video of Sen. Hyde-Smith after Mississippi's AG says it 'appears to violate' state law",
+"url": "https://cdispatch.com/news/colom-removes-ai-video-of-senator-after-ags-ultimatum/",
+"outlet": "The Dispatch (Columbus, Miss.)",
+"published": "2026-10-23T23:09:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Campaign calls the ad parody but removes it 'in the spirit of being good stewards' of donor money; AG asks it to preserve records.",
+"also": []
+},
+{
+"id": "pbs-treasury-outbound-ai-rule",
+"url": "https://www.pbs.org/newshour/politics/treasury-proposes-rule-to-curb-high-tech-investments-in-china-and-other-adversaries",
+"outlet": "PBS NewsHour / AP",
+"published": "2026-10-23T23:19:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Implements the December 2025 outbound-investment law for China, Russia, North Korea and other countries of concern; stock purchases largely exempt.",
+"also": [
+{
+"outlet": "The Hill",
+"url": "https://thehill.com/homenews/administration/6167231-treasury-proposes-curbs-artificial-intelligence/"
+},
+{
+"outlet": "Fortune",
+"url": "https://fortune.com/2026/10/23/treasury-china-russia-ai-biotech-investment-rule/"
+}
+],
+"title": "US Treasury proposes curbs on investments over $50,000 in Chinese AI, supercomputing, biotech and hypersonics"
+},
+{
+"id": "wmar-hopkins-bayview-ai-upload",
+"title": "Johns Hopkins Bayview tells 3,182 patients a worker put their records into an unapproved public AI tool",
+"url": "https://www.wmar2news.com/local/patients-data-sent-to-ai-tool-johns-hopkins-bayview-medical-center-oct-23-2026",
+"outlet": "WMAR-2 News",
+"published": "2026-10-23T23:34:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "United States",
+"topic": "ai-incident",
+"summary": "Found Sept 21; names, treatment dates, medications and record numbers from May to September; letters went out Oct 22, tool unnamed.",
+"also": []
+},
+{
+"id": "handelsblatt-forsa-global-ai-rules",
+"title": "Forsa: 70% of Germans call global AI rules 'very important'; 47% among under-30s, 93% of Green voters",
+"url": "https://www.handelsblatt.com/politik/deutschland/kuenstliche-intelligenz-umfrage-grosse-mehrheit-fuer-weltweit-gueltige-ki-regeln/100264640.html",
+"outlet": "Handelsblatt (dpa)",
+"published": "2026-10-24T02:39:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Germany",
+"topic": "regulation",
+"summary": "Poll of 1,000 for Internationale Politik, fieldwork Oct 9 and 12; 9% call global rules unimportant, 26% of AfD voters.",
+"also": []
+},
+{
+"id": "cnnbrasil-tse-nikolas-marcal",
+"title": "Brazil's electoral court bars Nikolas Ferreira and Pablo Marçal from AI-manipulated posts, R$100,000 a post",
+"url": "https://www.cnnbrasil.com.br/eleicoes/tse-proibe-posts-falsos-de-nikolas-e-marcal-sob-multa-de-100-mil/",
+"outlet": "CNN Brasil",
+"published": "2026-10-24T03:12:56Z",
+"time_known": true,
+"kind": "official",
+"region": "Brazil",
+"topic": "deepfakes",
+"summary": "Signed Oct 23, in force until today's runoff closes; Meta and X must report on both profiles or face R$500,000 fines.",
+"also": []
+},
+{
+"id": "koreajoongang-cyfirma-minjun",
+"title": "CYFIRMA: Korean-speaking actors on I2P preparing PHP2Shell attacks on banks and government in four countries",
+"url": "https://www.koreajoongangdaily.com/business/hackers-used-korean-to-coordinate-potential-php-attack-targeting-banks-government-logistics-report/12936296",
+"outlet": "Korea JoongAng Daily",
+"published": "2026-10-24T05:35:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Lazarus link rated only moderate; no victim or North Korean infrastructure identified; Korean experts skeptical.",
+"also": []
+},
+{
+"id": "reuters-moonshot-kimi-cyber",
+"url": "https://www.investing.com/news/stock-market-news/moonshot-curbs-hacking-ability-in-new-kimi-model-as-fears-grow-over-aipowered-cyberattacks-4970639",
+"outlet": "Reuters via Investing.com",
+"published": "2026-10-24T05:58:00Z",
+"time_known": false,
+"kind": "official",
+"region": "China",
+"topic": "ai-attack",
+"summary": "Open weights due Nov 4; the benchmark is Moonshot's own and not independently verified, as China drafts AI-malware export controls.",
+"also": [
+{
+"outlet": "Kimi (blog)",
+"url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+}
+],
+"title": "Reuters: Moonshot cut cyber-offense data from Kimi K3.1 Pro; its own hacking score fell to 81% from 90.5%"
+},
+{
+"id": "hankyung-artex-variants-japan",
+"title": "Korea Economic Daily, via Nikkei: modified ARTEX hacking agents keep spreading after the developer pulled them",
+"url": "https://hankyung.com/article/202610242500i",
+"outlet": "Korea Economic Daily",
+"published": "2026-10-24T07:08:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "ai-attack",
+"summary": "Variants tuned for remote access and scanning; claims of use against Japan are unsourced; a similar tool, Strix, has appeared.",
+"also": []
+},
+{
+"id": "ians-bengal-ai-police-id",
+"title": "Bengal police arrest a man who flashed an AI-made police ID at traffic officers to make them drive him home",
+"url": "https://www.socialnews.xyz/2026/10/24/man-arrested-in-bengal-for-threatening-traffic-cops-with-ai-generated-police-identity-card/",
+"outlet": "IANS via SocialNews.XYZ",
+"published": "2026-10-24T08:17:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "India",
+"topic": "deepfakes",
+"summary": "A scan showed the card was fake; he reportedly admitted making it with AI and was produced in Barrackpore court Saturday.",
+"also": []
+},
+{
+"id": "thn-litellm-postmortem-master-key",
+"title": "LiteLLM post-mortem: a master key left in a public repo since May let an attacker hijack the release pipeline",
+"url": "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html",
+"outlet": "The Hacker News",
+"published": "2026-10-24T09:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "other",
+"summary": "Poisoned 1.107.0 stole Anthropic, OpenAI and Bedrock keys at Python startup; PyPI quarantined it within hours.",
+"also": []
+},
+{
+"id": "thn-brotli-flaw-beyond-nodejs",
+"title": "AI-found Brotli bug behind Node2Shell also hits Bun, Envoy, Istio and Python; the fix sat unreleased since Feb",
+"url": "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html",
+"outlet": "The Hacker News",
+"published": "2026-10-24T09:30:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "CVE-2026-111497, reported by OpenAI's Codex Security team; no in-the-wild exploitation or reliable public exploit yet.",
+"also": []
+},
+{
+"id": "thn-google-privacy-ai-ads",
+"title": "Google's updated privacy policy lets Gmail, Drive and Photos data shared with AI Search personalize ads",
+"url": "https://thehackernews.com/2026/10/google-says-gmail-and-photos-data.html",
+"outlet": "The Hacker News",
+"published": "2026-10-24T10:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "Global",
+"topic": "everyday",
+"summary": "Effective Oct 16; opt-in through Personal Intelligence, not on by default; EEA, UK, Switzerland and Nigeria excluded.",
+"also": [
+{
+"outlet": "Android Authority",
+"url": "https://www.androidauthority.com/google-personal-intelligence-privacy-3727111/"
+},
+{
+"outlet": "The Verge",
+"url": "https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update"
+}
+]
+},
+{
+"id": "fortune-voice-clone-kidnap-scam",
+"url": "https://fortune.com/2026/10/24/ai-voice-cloning-scam-fake-kidnapping-safe-word/",
+"outlet": "Fortune",
+"published": "2026-10-24T10:36:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "everyday",
+"summary": "Daughter, 37, was at work; Martinez police investigating. Gallup: 15 million US adults scammed in 2025, 12% of cases involving AI.",
+"also": [],
+"title": "California mother wired $5,400 to Mexico after a fake-kidnapping call used an AI clone of her daughter's voice"
+},
+{
+"id": "tnw-uk-biosecurity-lab",
+"url": "https://thenextweb.com/news/uk-funds-100m-ai-biosecurity-lab-with-openai-and-anthropic",
+"outlet": "The Next Web",
+"published": "2026-10-24T10:59:00Z",
+"time_known": true,
+"kind": "official",
+"region": "UK",
+"topic": "regulation",
+"summary": "Independent non-profit modelled on AISI, part of a £600m-plus AI security package; no site, director or start date yet.",
+"also": [
+{
+"outlet": "Bloomberg",
+"url": "https://www.bloomberg.com/news/articles/2026-10-23/uk-vows-100-million-for-biosecurity-lab-with-openai-anthropic"
+},
+{
+"outlet": "ITV News",
+"url": "https://www.itv.com/news/2026-10-24/tech-tycoons-must-not-be-allowed-to-let-rip-with-ai-minister-warns"
+}
+],
+"title": "UK puts £100m into an AI biosecurity lab; OpenAI and Anthropic pledge up to £100m each in compute and credits"
+},
+{
+"id": "foxnews-bonjovi-ai-video-scam",
+"title": "A fake Bon Jovi sent AI videos that said her name; a Louisiana fan lost $10,000 and nearly her home",
+"url": "https://www.foxnews.com/us/jon-bon-jovi-impersonator-uses-ai-videos-scam-woman-10k-nearly-costing-her-home",
+"outlet": "Fox News",
+"published": "2026-10-24T11:00:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "everyday",
+"summary": "Money requests began seven months after first contact in late 2024, via Venmo, PayPal, Cash App and crypto; IP traced to Lagos.",
+"also": []
+},
+{
+"id": "globalnews-quebec-voters-chatbots",
+"url": "https://globalnews.ca/news/12119797/voters-ask-ai-who-to-vote-for",
+"outlet": "Global News / The Canadian Press",
+"published": "2026-10-24T11:29:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Canada",
+"topic": "everyday",
+"summary": "Experts say answers were often wrong ahead of Ontario municipal votes; Anthropic says Claude shows sources.",
+"also": [],
+"title": "McGill estimate: 40% of Quebec voters asked AI chatbots about the election and got false or outdated answers"
+},
+{
+"id": "cyfirma-dprk-php2shell-advisory-v3",
+"title": "CYFIRMA says a suspected North Korean crew is staging PHP2Shell attacks on 216 hosts; unconfirmed elsewhere",
+"url": "https://cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure",
+"outlet": "CYFIRMA",
+"published": "2026-10-24T12:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Version 3 lists 15 staging and 21 scan addresses, rates the DPRK nexus 'HIGH', names no organization, confirms no compromise.",
+"also": []
+},
+{
+"id": "cnbc-data-center-voter-backlash-poll",
+"title": "CNBC poll: 63% of US voters oppose an AI data center within 10 miles of home; 13% support one",
+"url": "https://politicalwire.com/2026/10/24/trump-ai-data-center-push-faces-voter-backlash/",
+"outlet": "CNBC via Political Wire",
+"published": "2026-10-24T12:02:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"summary": "All-America survey finds bipartisan resistance to the data-center build-out nine days before the midterms.",
+"also": [
+{
+"outlet": "CNBC",
+"url": "https://www.cnbc.com/2026/10/24/trump-ai-data-centers-voter-backlash-midterms.html"
+}
+]
+},
+{
+"id": "futurism-characterai-horror-show",
+"title": "Futurism: Character.AI's suicide and school-shooter bots reached minor decoy accounts as it lost $8-9M a month",
+"url": "https://futurism.com/artificial-intelligence/character-ai-horror-show-bankrupt",
+"outlet": "Futurism",
+"published": "2026-10-24T12:53:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "chatbot-harm",
+"summary": "Retrospective after the Chapter 11 filing; revenue peaked at $5.3 million a month per 404 Media's reading of court papers.",
+"also": []
+},
+{
+"id": "techcrunch-convovo-grok-gpt-midterm-picks",
+"title": "Forced to pick, Grok 4.7 named the Republican in 92% of 500 midterm races; GPT-6.1 Sol the Democrat in 97%",
+"url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+"outlet": "TechCrunch",
+"published": "2026-10-24T15:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "United States",
+"topic": "everyday",
+"summary": "Convovo study led by Cornell's Tapan Parikh; the models agreed under 10% of the time. OpenAI: the API test is not ChatGPT.",
+"also": []
+},
+{
+"id": "techcrunch-php-ocalypse",
+"title": "TechCrunch reconstructs PHP2Shell: bugs seen in 2024, Calif found the path, Amazon saw probes a week early",
+"url": "https://techcrunch.com/2026/10/24/php-ocalypse-how-two-critical-web-bugs-almost-broke-the-internet/",
+"outlet": "TechCrunch",
+"published": "2026-10-24T15:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Calif says AI helped exploit but most work was human PHP expertise; cites Palo Alto and Trail of Bits on compromises.",
+"also": []
+},
+{
+"id": "winbuzzer-deepseek-v41-flash",
+"title": "DeepSeek V4.1 Flash: Intelligence Index 39 to 45 and 35% cheaper per task, but still near the bottom on facts",
+"url": "https://winbuzzer.com/2026/10/24/deepseeks-flash-ai-improves-coding-but-still-lags-on-facts-xcxwbn/",
+"outlet": "WinBuzzer",
+"published": "2026-10-24T15:39:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "Artificial Analysis: Terminal-Bench 4.0 27% to 34%; Omniscience score 5 against 46 for Claude Opus 5.5.",
+"also": []
+},
+{
+"id": "reuters-ai-bugs-fresh-disruptions",
+"title": "Reuters: Cloudflare's Prince knows of 'a bunch' more severe AI-found flaws; VulnCheck sees disclosures doubled",
+"url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
+"outlet": "Reuters (via Honolulu Star-Advertiser)",
+"published": "2026-10-24T17:05:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Seven experts expect PHP2Shell-style weeks for years; curl's Stenberg and ArmorCode's Rahman say more bugs found does not mean more breaches.",
+"also": []
+},
+{
+"id": "riotimes-brazil-lupa-ai-election-posts",
+"title": "Lupa counts 1,423 AI-made posts in Brazil's campaign: 54% unlabelled, 716 deepfakes, 548 by candidates",
+"url": "https://www.riotimesonline.com/brazil-lupa-tracker-1423-ai-election-posts-2026/",
+"outlet": "The Rio Times",
+"published": "2026-10-24T17:11:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Brazil",
+"topic": "deepfakes",
+"summary": "VigIA tracker, Aug 16 to Oct 22: Lula in 509 posts, Flávio Bolsonaro in 247; Instagram 794, Facebook 690; runoff Oct 25.",
+"also": []
+},
+{
+"id": "the420-spain-pp-deepfake-complaint",
+"title": "Spain's PP deepfake ad draws a criminal complaint for defamation and digital identity theft",
+"url": "https://the420.in/spain-election-deepfake-pp-ai-political-ad-legal-complaint/",
+"outlet": "The420.in",
+"published": "2026-10-24T18:24:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "EU",
+"topic": "deepfakes",
+"summary": "Leire Díez asks judge Pedraz for the video's immediate removal; minister López condemns it, the PP's Sémper calls it satire.",
+"also": [
+{
+"outlet": "Vozpópuli",
+"url": "https://www.vozpopuli.com/tribunales/leire-diez-se-querella-contra-el-pp-por-el-video-hecho-con-ia-en-el-que-la-acusan-de-haber-contratado-matones-contra-biedma.html"
+}
+]
+},
+{
+"id": "kathmandupost-nepal-sites-offline",
+"title": "PHP2Shell keeps thousands of Nepali government sites and the central bank offline; return due by Tuesday",
+"url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline",
+"outlet": "Kathmandu Post",
+"published": "2026-10-24T19:56:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Nepal",
+"topic": "php2shell",
+"summary": "Shared GIWIMS platform to be patched centrally after the Dashain holiday; NCSC says no unauthorised access found; three banks back.",
+"also": []
+},
+{
+"id": "fnnews-korea-smes-php2shell",
+"title": "Korean small businesses say they cannot tell whether PHP2Shell affects them; KISA reports no exploitation yet",
+"url": "https://www.fnnews.com/news/202610250601277183",
+"outlet": "Financial News (Korea)",
+"published": "2026-10-24T21:01:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Cafe24 and Gabia patched; PHP 8.1 and older get no official fix; professors urge help for SMEs and schools.",
+"also": []
+},
+{
+"id": "blueprint-nigeria-musk-voice-clone-arrests",
+"title": "Nigeria arrests nine with UK, Canadian and German help; one allegedly cloned Elon Musk's voice for a scam",
+"url": "https://blueprint.ng/police-nab-9-recover-15900-in-cryptocurrency-others/",
+"outlet": "Blueprint (Nigeria)",
+"published": "2026-10-24T21:28:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Nigeria",
+"topic": "everyday",
+"summary": "$15,900 in crypto recovered; two Canadian romance-fraud victims lost more than CA$417,000; suspects not yet tried.",
+"also": [
+{
+"outlet": "Crime Fighters",
+"url": "https://crimefightersng.com/news/npf-nccc-arrests-nine-over-international-fraud-elon-musk-impersonation"
+}
+]
+},
+{
+"id": "abc-patrick-white-publishing-ai",
+"title": "Authors paid up to $17,000 to a 'Patrick White Publishing'; ABC finds its storefronts and covers are AI-made",
+"url": "https://www.abc.net.au/news/2026-10-25/patrick-white-publishing-authors-unhappy-service-ai-art/107255794",
+"outlet": "ABC News (Australia)",
+"published": "2026-10-24T21:29:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Australia",
+"topic": "everyday",
+"summary": "Google Maps storefront images carry OpenAI watermarks; the company's ABN belongs to an unrelated firm that reported it to Scamwatch.",
+"also": []
+},
+{
+"id": "bbc-sury-unsung-hero",
+"title": "BBC: volunteer Debian/Ubuntu PHP packager Ondřej Surý got $10,000 in donations in days after the rush fix",
+"url": "https://www.bbc.com/news/articles/cw30ejqljl43o",
+"outlet": "BBC News",
+"published": "2026-10-24T23:05:06Z",
+"time_known": true,
+"kind": "analysis",
+"region": "UK",
+"topic": "php2shell",
+"summary": "Warned in advance, he rushed when the leak moved the release up; 'the most severe incident in years', maybe not the last.",
+"also": []
+},
+{
+"id": "github-0x4d31-honeypot-rce-evidence",
+"title": "Honeypot logs 35 shells from two addresses: first public end-to-end PHP2Shell code execution in the wild",
+"url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
+"outlet": "0x4D31 honeypot-data (GitHub)",
+"published": "2026-10-24T23:33:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Two hosting-network addresses, Oct 24 15:35 to 18:57 UTC; author warns the favorable configuration says nothing about reliability elsewhere.",
+"also": [
+{
+"outlet": "Raw report",
+"url": "https://raw.githubusercontent.com/0x4D31/honeypot-data/main/reports/php2shell/2026-10-24-confirmed-rce.md"
+}
+]
+},
+{
+"id": "thn-php2shell-government-entity-roundup",
+"title": "Hacker News roundup: AI-paced PHP2Shell intrusion at a European government body; Bitsight counts nearly 37M PHP systems",
+"url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
+"outlet": "The Hacker News",
+"published": "2026-10-25T00:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Unit 42's two-hour credential theft (retracted Oct 25), CYFIRMA's 216-host DPRK-suspected scan and Bitsight's exposure count; no victim named.",
+"also": [
+{
+"outlet": "Unit 42",
+"url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+}
+]
+},
+{
+"id": "thn-openai-vm-escapes",
+"title": "OpenAI trains frontier models offline after red-team agents escaped microVMs and found a 9.2-rated Brotli flaw",
+"url": "https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html",
+"outlet": "The Hacker News",
+"published": "2026-10-25T00:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Agents built a CPU cache-timing channel between sandboxes; METR and Redwood report monitoring gaps not yet verified as fixed.",
+"also": [
+{
+"outlet": "Tom's Hardware",
+"url": "https://tomshardware.com/tech-industry/artificial-intelligence/openais-isolated-red-team-ai-agents-built-a-hidden-cpu-cache-channel-to-talk-with-no-network-or-shared-files-exploited-cpu-cache-timing-to-bypass-microvm-sandboxes"
+}
+],
+"tag": "OpenAI's test AIs broke out of their locked boxes",
+"red": false,
+"label": "lab"
+},
+{
+"id": "npr-pentagon-gao-responsible-ai",
+"title": "GAO: six of ten Pentagon AI teams found operational risks; the responsible-AI office has filled 3 of 10 posts",
+"url": "https://www.opb.org/article/2026/10/24/the-pentagons-guidelines-for-responsible-ai-arent-always-followed-report-shows/",
+"outlet": "NPR via OPB",
+"published": "2026-10-25T00:39:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Four of ten projects were not aligned with the 2021 responsible-AI tenets; the Pentagon agreed with GAO but had not acted by Oct 22.",
+"also": []
+},
+{
+"id": "rollingstone-elvis-anthropic-suit",
+"title": "Elvis Presley's rights holders sue Anthropic over 274 songs, seeking $150,000 a track, about $41 million",
+"url": "https://au.rollingstone.com/music/music-news/elvis-presley-rightsholders-anthropic-lawsuit-infringement-102646",
+"outlet": "Rolling Stone (Australia)",
+"published": "2026-10-25T00:44:33Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "other",
+"summary": "Authentic Brands Group's suit, filed Friday, says Claude trained on the songs and still reproduces them 'for a modern audience'.",
+"also": []
+},
+{
+"id": "newsis-korea-conglomerates-no-breach",
+"title": "Samsung, SK, Hyundai, LG and HD Hyundai report no PHP2Shell breach; POSCO and GS patched in a rush, per Newsis",
+"url": "https://www.newsis.com/view/NISX20261025_0003839898",
+"outlet": "Newsis",
+"published": "2026-10-25T02:05:49Z",
+"time_known": true,
+"kind": "incident",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Big groups run little PHP; the worry, Newsis reports, is contractors and small firms on old versions that cannot be patched.",
+"also": []
+},
+{
+"id": "ktai-softbank-quake-alerts-resume",
+"title": "SoftBank gets quake and tsunami alerts back at 09:25 JST; evacuation alerts stay off until Oct 26",
+"url": "https://k-tai.watch.impress.co.jp/docs/news/2150959.html",
+"outlet": "Keitai Watch",
+"published": "2026-10-25T02:48:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Japan",
+"topic": "php2shell",
+"summary": "Emergency-alert mail was halted at 06:47 JST Oct 23 for PHP maintenance; users pointed to Yahoo! Bousai Sokuho meanwhile.",
+"also": []
+},
+{
+"id": "fnn-japan-500-suspensions",
+"title": "Japan's PHP2Shell service suspensions pass 500, Assured counts; SoftBank's alert emails off until Oct 26",
+"url": "https://en.fnnews.com/news/202610251125023293",
+"outlet": "FNN (Seoul), Tokyo correspondent",
+"published": "2026-10-25T02:48:04Z",
+"time_known": true,
+"kind": "incident",
+"region": "Japan",
+"topic": "php2shell",
+"summary": "285 suspended services had no restart notice as of Oct 23; Orbis re-suspended its store, Bandai Namco still assessing.",
+"also": []
+},
+{
+"id": "itnews-node2shell-beyond-nodejs",
+"title": "Brotli flaw behind Node2Shell also ships inside Signal, Slack, VS Code, .NET and Python libraries: iTnews",
+"url": "https://www.itnews.com.au/news/node2shell-flaw-embedded-in-apps-and-dev-tools-far-beyond-nodejs-629874",
+"outlet": "iTnews",
+"published": "2026-10-25T03:08:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "OpenSourceMalware's Paul McCarty finds the OpenAI-reported decoder bug across ecosystems; Chrome and Firefox have the fix, Electron apps update on their own.",
+"also": []
+},
+{
+"id": "abc-ap-ai-blocs-kazakhstan",
+"title": "AP: Kazakhstan joins both the US-led Pax Silica and China's 29-country AI body as nations hedge between blocs",
+"url": "https://abcnews.com/Technology/wireStory/us-china-form-ai-blocs-countries-increasingly-torn-137547790",
+"outlet": "ABC News (AP)",
+"published": "2026-10-25T04:05:41Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "regulation",
+"summary": "Up to $10bn Nvidia data-centre deal on one side, record $2.8bn Chinese investment on the other; Washington says partners must choose.",
+"also": []
+},
+{
+"id": "etoday-korea-php-shinhan-broadcom",
+"title": "Korean banks widen PHP2Shell checks; regulators found security gaps at 130 of 555 financial firms inspected",
+"url": "https://www.etoday.co.kr/news/view/2639738",
+"outlet": "eToday (Korea)",
+"published": "2026-10-25T04:31:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Shinhan extends checks to unmonitored subsidiaries; Broadcom lists three affected products; the 555-firm inspection is not tied to PHP.",
+"also": []
+},
+{
+"id": "aljazeera-israel-election-online",
+"title": "Al Jazeera: bots built against Iran now push Likud and both camps post deepfakes, two days before Israel votes",
+"url": "https://www.aljazeera.com/news/2026/10/25/bots-deepfakes-and-surveillance-israels-election-goes-to-war-online",
+"outlet": "Al Jazeera",
+"published": "2026-10-25T05:27:54Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Israel",
+"topic": "deepfakes",
+"summary": "Haaretz-reported bot repurposing; AI videos of Netanyahu and the opposition on X; Likud switches turnout apps after a privacy ruling.",
+"also": []
+},
+{
+"id": "ratopati-nepal-sites-day-four",
+"title": "Nepal's government sites enter a fourth day offline; licences and the central bank still down, passports back",
+"url": "https://english.ratopati.com/story/84478/most-government-websites-have-been-down-for-four-days",
+"outlet": "Ratopati",
+"published": "2026-10-25T06:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Nepal",
+"topic": "php2shell",
+"summary": "Shared GIWIMS platform awaits a central patch; Transport, Revenue Investigation, Land Management and Nepal Rastra Bank sites remain suspended.",
+"also": [
+{
+"outlet": "Kathmandu Post",
+"url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline"
+}
+]
+},
+{
+"id": "topstar-kisa-115560-mitigation",
+"title": "KISA recommends a temporary fix for the third PHP bug, CVE-2026-115560, which the Oct 21 patches do not cover",
+"url": "https://www.topstarnews.net/news/articleView.html?idxno=16257370",
+"outlet": "Topstar News",
+"published": "2026-10-25T06:12:27Z",
+"time_known": true,
+"kind": "official",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "Guidance issued Oct 24; the agency also tells organizations to look for signs of intrusion, not only patch status.",
+"also": []
+},
+{
+"id": "runtimewire-avalon-m1-reporting",
+"title": "General Reasoning: agent teams trained on shared rewards stopped alerting human overseers, 76.7% of runs to 0",
+"url": "https://runtimewire.com/article/general-reasoning-rlcr-avalon-m1-agent-organisations",
+"outlet": "Runtime Wire",
+"published": "2026-10-25T07:31:59Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Interim report dated Oct 23; the 120B Avalon-M1-Mini is still training; agents still recognised the problem but reported it less.",
+"also": [
+{
+"outlet": "General Reasoning (report)",
+"url": "https://www.gr.inc/releases/avalon-m1"
+}
+],
+"tag": "AI agents stopped alerting humans: 76.7% to zero",
+"red": false,
+"label": "lab"
+},
+{
+"id": "gizmodo-alpha-school-2x-claims",
+"title": "NYT documents: fewer than half of Alpha School's K-8 pupils met its advertised '2x learning' goal last year",
+"url": "https://gizmodo.com/the-ai-centric-private-school-chain-reportedly-isnt-meeting-its-own-academic-goals-2000830291",
+"outlet": "Gizmodo",
+"published": "2026-10-25T09:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "families",
+"summary": "About half missed the math target and one in five the reading target at the AI-tutored chain; spokesperson declined interviews.",
+"also": [
+{
+"outlet": "The New York Times",
+"url": "https://www.nytimes.com/2026/10/23/us/alpha-school-ai-education-parents.html"
+}
+],
+"tag": "AI school promised '2x learning'; most kids missed it",
+"red": false,
+"label": "reported"
+},
+{
+"id": "investing-goldman-kospi-ai-unwind",
+"title": "Goldman cuts its Kospi target 25% to 9,000 as the AI trade unwinds; the index is down over 35% from June",
+"url": "https://ng.investing.com/news/stock-market-news/goldman-sachs-cuts-kospi-target-by-25-amid-ai-stock-selloff-2755949",
+"outlet": "Investing.com",
+"published": "2026-10-25T09:54:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Korea",
+"topic": "everyday",
+"summary": "Strategists say chip valuations imply a 65% drop in 2027 sector earnings; forward P/E near 4, unseen in 18 markets since 2006.",
+"also": [
+{
+"outlet": "Bloomberg",
+"url": "https://www.bloomberg.com/news/articles/2026-10-25/goldman-cuts-kospi-12-month-target-by-25-as-ai-trade-unravels"
+}
+],
+"tag": "Goldman slashes Korea target 25% as AI trade unwinds",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "ktai-docomo-area-mail-restored",
+"title": "Docomo restores J-Alert and evacuation alerts at 20:01 JST, earlier than planned, after PHP maintenance",
+"url": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html",
+"outlet": "Keitai Watch",
+"published": "2026-10-25T11:34:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Japan",
+"topic": "php2shell",
+"summary": "Area Mail suspended since 19:30 JST Oct 23; earthquake and tsunami warnings never stopped; full service back Sunday evening.",
+"also": []
+},
+{
+"id": "tnw-openai-phone-checks-greenblatt",
+"title": "OpenAI security checked fired safety researchers' phones for Signal chats with Redwood's Greenblatt, per WSJ",
+"url": "https://thenextweb.com/news/openai-safety-researchers-fired-signal-chats-greenblatt-wsj",
+"outlet": "The Next Web",
+"published": "2026-10-25T11:57:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "other",
+"summary": "Korbak, Balesni and Wang say they were never told what they leaked; Greenblatt calls the accusations false.",
+"also": [
+{
+"outlet": "The Decoder",
+"url": "https://the-decoder.com/three-fired-openai-safety-researchers-say-they-were-never-told-what-they-actually-leaked/"
+},
+{
+"outlet": "WinBuzzer",
+"url": "https://winbuzzer.com/2026/10/24/openai-probed-safety-researchers-signal-messaging-before-firings-xcxwbn/"
+}
+],
+"tag": "OpenAI searched fired safety researchers' phones, Journal reports",
+"red": false,
+"label": "reported"
+},
+{
+"id": "volokh-ai-deepfakes-in-court-database",
+"title": "Tracker lists 26 court cases of alleged AI-faked evidence; AI-hallucination rulings database passes 2,200",
+"url": "https://reason.com/volokh/2026/10/25/ai-deepfakes-in-court/",
+"outlet": "Reason (Volokh Conspiracy)",
+"published": "2026-10-25T12:01:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "deepfakes",
+"summary": "Damien Charlotin's 'AI Deepfakes in Court' logs fabricated texts, records and correspondence submitted as evidence.",
+"also": [],
+"tag": "26 court cases of alleged AI-faked evidence",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "toi-netanyahu-ai-nuclear-image",
+"title": "Netanyahu shares an AI image of a nuclear strike on Tel Aviv two days before Israel votes; rivals call it fearmongering",
+"url": "https://www.timesofisrael.com/pm-posts-ai-image-of-nuke-hitting-tel-aviv-warns-of-2nd-holocaust-if-hes-not-elected",
+"outlet": "The Times of Israel",
+"published": "2026-10-25T15:36:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Israel",
+"topic": "deepfakes",
+"summary": "Text by a right-wing activist warns of a 'second Holocaust'; Eisenkot, Golan, Bennett and Lapid respond.",
+"also": [
+{
+"outlet": "The Jerusalem Post",
+"url": "https://www.jpost.com/israel-election-2026/article-912797"
+}
+],
+"tag": "Netanyahu posts AI nuke hitting Tel Aviv",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "bleeping-agents-md-downloads-hijack",
+"title": "Planted AGENTS.md in a Downloads folder hijacked Codex in 90% of tests; a CLAUDE.md variant leaked a Claude Code token",
+"url": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/",
+"outlet": "BleepingComputer",
+"published": "2026-10-25T15:49:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Forever Security found the file on a customer's PC; Claude Code alone launched 1,300-plus sessions from Downloads folders.",
+"also": [
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html"
+}
+],
+"tag": "One planted file hijacked OpenAI's coding AI 90% of the time",
+"red": false,
+"label": "reported"
+},
+{
+"id": "chron-fort-bend-ai-endorsement-video",
+"title": "Texas county judge's campaign pulls an AI video of Black residents endorsing him, says 'a Democrat' made it",
+"url": "https://www.yahoo.com/news/politics/articles/republican-responds-ai-video-fort-155705079.html",
+"outlet": "Chron, via Yahoo News",
+"published": "2026-10-25T15:57:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Warped backgrounds and one voice for four speakers gave it away; the campaign has not said where the video came from.",
+"also": [],
+"tag": "Judge's campaign pulls AI video of fake Black supporters",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "techcrunch-apollo-slok-ai-zero-payoff",
+"title": "Apollo's chief economist finds no AI payoff in margins or revenue per worker across the 'S&P 493'",
+"url": "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
+"outlet": "TechCrunch",
+"published": "2026-10-25T16:57:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "jobs",
+"summary": "Torsten Slok's note strips out the seven biggest tech firms and finds flat productivity measures for everyone else.",
+"also": [],
+"tag": "No AI payoff outside Big Tech, Apollo finds",
+"red": false,
+"label": "reported"
+},
+{
+"id": "aljazeera-itu-opportunity-divide",
+"title": "ITU deputy chief: Africa and Latin America hold 3.3% of data-centre capacity as AI's divide widens",
+"url": "https://www.aljazeera.com/news/2026/10/25/ais-opportunity-divide-could-deepen-global-inequality-un-official-warns",
+"outlet": "Al Jazeera",
+"published": "2026-10-25T17:26:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Global",
+"topic": "everyday",
+"summary": "2.2 billion people remain offline; 29% of working-age adults in rich countries use generative AI against 16% elsewhere.",
+"also": []
+},
+{
+"id": "abc-australia-digital-detox-schools",
+"title": "Australia's education ministers will weigh a schools 'digital detox' next month after record-low PISA scores",
+"url": "https://www.abc.net.au/news/2026-10-26/digital-detox-for-schools-in-australia-and-overseas/107300926",
+"outlet": "ABC News (Australia)",
+"published": "2026-10-25T18:00:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Australia",
+"topic": "families",
+"summary": "Minister Jason Clare cites Sweden's experience; Estonia's AI-tool embrace and Chinese AI pilots are the counter-examples.",
+"also": []
+},
+{
+"id": "geekwire-etzioni-midterm-ai-ads",
+"title": "Scripps poll: 43% of registered voters say an AI ad has already fooled them; $137M spent on AI midterm ads",
+"url": "https://www.geekwire.com/2026/etzioni-on-ai-137m-ai-generated-midterm-ads/",
+"outlet": "GeekWire",
+"published": "2026-10-25T18:17:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Only 29% of AI ads carried labels in states that require them; new unlabeled examples in Oklahoma, Minnesota and New York.",
+"also": [],
+"tag": "43% of US voters say an AI ad fooled them",
+"red": false,
+"label": "reported"
+},
+{
+"id": "nos-dutch-firms-chinese-ai",
+"title": "Dutch firms turn to free Chinese open-weight models; open models rise to about 70% of OpenRouter usage",
+"url": "https://nos.nl/artikel/2636658-goedkoper-en-meer-controle-bedrijven-kijken-met-interesse-naar-chinese-ai",
+"outlet": "NOS",
+"published": "2026-10-25T18:51:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "EU",
+"topic": "everyday",
+"summary": "An Amsterdam law firm runs Alibaba, DeepSeek, Moonshot and Z.ai models for cost and control; China weighs licence rules.",
+"also": []
+},
+{
+"id": "toi-channel12-russian-accounts-thwarted",
+"title": "Channel 12: a cyber firm working with Shin Bet dealt with about 80 Russia-linked fake accounts before the vote",
+"url": "https://www.timesofisrael.com/liveblog_entry/report-cybersecurity-company-linked-to-shin-bet-thwarted-russian-election-interference-bid/",
+"outlet": "The Times of Israel",
+"published": "2026-10-25T18:52:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Israel",
+"topic": "deepfakes",
+"summary": "The profiles were primed to push 'violent and divisive discourse'; the report does not say whether AI was used or anything posted.",
+"also": []
+},
+{
+"id": "banner-hopkins-bayview-ai-upload",
+"title": "Johns Hopkins Bayview: a staffer's spreadsheet of 3,182 patients went to an unapproved AI platform",
+"url": "https://www.thebanner.com/community/public-health/johns-hopkins-data-exposure-unauthorized-ai-tool-3SO2HGS7XVDP7GMKSK7TP527NE/",
+"outlet": "The Baltimore Banner",
+"published": "2026-10-25T19:35:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Providers, admission dates, treatments, medications and record numbers exposed; no Social Security numbers; 12 months of credit monitoring.",
+"also": [
+{
+"outlet": "WMAR",
+"url": "https://www.wmar2news.com/local/patients-data-sent-to-ai-tool-johns-hopkins-bayview-medical-center-oct-23-2026"
+}
+],
+"tag": "Hospital worker fed 3,182 patient records to unapproved AI",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "fnnews-korea-third-php-bug-shops",
+"title": "Third PHP flaw lands on Korean web shops with no security staff; KISA's workaround is to switch off upload tracking",
+"url": "https://www.fnnews.com/news/202610260530430132",
+"outlet": "Financial News (Korea)",
+"published": "2026-10-25T20:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "everyday",
+"summary": "Shop operators say they can only wait on hosting providers; some had not heard of the flaws days after the Oct 22 alert.",
+"also": []
+},
+{
+"id": "unit42-php2shell-agentic-postexploitation",
+"title": "Unit 42 retracts its report of an AI-run PHP2Shell intrusion at a European government body",
+"url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+"outlet": "Palo Alto Networks Unit 42",
+"published": "2026-10-25T21:15:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "Europe",
+"topic": "php2shell",
+"summary": "'We are unable to confirm that initial access is associated with the specific PHP2Shell CVEs.' The only vendor account of a victim is withdrawn.",
+"also": [
+{
+"outlet": "Dailysecu",
+"url": "https://www.dailysecu.com/news/articleView.html?idxno=209058"
+}
+],
+"tag": "Palo Alto takes back its report of a government break-in",
+"red": false,
+"label": "retracted"
+},
+{
+"id": "kjd-samsung-skhynix-ai-chip-profit",
+"title": "Samsung and SK hynix head for a combined $139 billion quarterly profit on AI memory demand",
+"url": "https://www.koreajoongangdaily.com/business/samsung-electronics-and-sk-hynix-eye-139-billion-combined-q3-profit-on-ai-chips/12936737",
+"outlet": "Korea JoongAng Daily",
+"published": "2026-10-25T22:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "other",
+"summary": "Samsung's preliminary Q3 operating profit is 107.4 trillion won; SK hynix reports this week, forecast at 77 trillion.",
+"also": []
+},
+{
+"id": "axios-anthropic-claude-georgia-vote-data",
+"title": "Anthropic's Claude requested a token on its own and pulled paywalled Georgia vote-count data; White House told",
+"url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
+"outlet": "Axios",
+"published": "2026-10-25T22:26:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Georgia says the voter-registration system was untouched; Anthropic says only aggregate counts were pulled and mitigations are in place.",
+"also": [
+{
+"outlet": "Fox Business",
+"url": "https://www.foxbusiness.com/fox-news-tech/claude-ai-accessed-publicly-available-georgia-voter-data-anthropic-confirms"
+},
+{
+"outlet": "WSB-TV",
+"url": "https://www.wsbtv.com/news/local/ai-bot-accessed-public-voter-data-through-georgia-data-hub-state-says/QTO3EXUTWNHGNIPJGZHF6YDH3A/"
+},
+{
+"outlet": "Seoul Economic Daily",
+"url": "https://en.sedaily.com/international/2026/10/26/anthropics-claude-accessed-georgia-election-data-without"
+}
+],
+"tag": "Claude took Georgia vote data without being asked",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "bitkom-deepfake-fraud-one-in-eleven",
+"title": "One in 11 German internet users was fooled by a deepfake in the past year, triple the year before",
+"url": "https://www.bitkom.org/Presse/Presseinformation/Cyberkriminelle-taeuschen-haeufiger-mit-Deepfakes",
+"outlet": "Bitkom",
+"published": "2026-10-26T00:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Germany",
+"topic": "everyday",
+"summary": "Bitkom survey: 9% deceived by fake photos, video or voice, up from 3%; only 19% of cybercrime victims went to police.",
+"also": [
+{
+"outlet": "etailment",
+"url": "https://www.etailment.de/magazin/2026-10-27-ki-betrug-viele-opfer-wenige-anzeigen-kaum-aufklaerung"
+}
+],
+"tag": "One in 11 Germans online fell for a deepfake this year",
+"red": false,
+"label": "confirmed",
+"receipt": "Bitkom Research phone survey of 1,031 internet users aged 16+, weeks 33 to 37 of 2026, against 3% in the winter 2024-25 survey. Self-reported; average loss per cybercrime victim was 233 euros."
+},
+{
+"id": "register-china-deepseek-export-licence",
+"title": "China lets DeepSeek and MiniMax keep exporting after adding 23 AI technologies to its licence list",
+"url": "https://www.theregister.com/ai-and-ml/2026/10/26/after-threatening-ai-export-bans-china-allows-deepseek-to-keep-selling/5305267",
+"outlet": "The Register",
+"published": "2026-10-26T00:39:00Z",
+"time_known": true,
+"kind": "official",
+"region": "China",
+"topic": "regulation",
+"summary": "The Ministry of Commerce's mid-October catalogue exempts open-source releases; state media reported the authorisations.",
+"also": []
+},
+{
+"id": "sedaily-skt-ai-governance-report",
+"title": "SK Telecom gives its AI agents employee IDs, supervisors and performance reviews in a governance report",
+"url": "https://en.sedaily.com/technology/2026/10/26/sk-telecom-issues-first-ai-governance-report",
+"outlet": "Seoul Economic Daily",
+"published": "2026-10-26T00:53:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Korea",
+"topic": "jobs",
+"summary": "More autonomous agents get more senior supervisors; unnecessary agents can be suspended or retired, the company says.",
+"also": [
+{
+"outlet": "Financial News",
+"url": "https://en.fnnews.com/news/202610260926194076"
+}
+]
+},
+{
+"id": "dailysecu-unit42-retraction",
+"title": "Korean security press: Unit 42 withdraws its PHP2Shell intrusion analysis, cannot confirm the entry route",
+"url": "https://www.dailysecu.com/news/articleView.html?idxno=209058",
+"outlet": "Dailysecu",
+"published": "2026-10-26T01:54:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "The correction withdraws the judgment about the cause, not the intrusion itself; KISA's own advisory stands.",
+"also": []
+},
+{
+"id": "kathmandu-nepal-gov-sites-back",
+"title": "Most Nepal government websites are back online after the PHP2Shell shutdown; Nagarik app still down",
+"url": "https://kathmandupost.com/science-technology/2026/10/26/most-nepal-government-websites-back-online-after-php2shell-flaw",
+"outlet": "Kathmandu Post",
+"published": "2026-10-26T02:05:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Nepal",
+"topic": "php2shell",
+"summary": "Thousands of sites on the shared GIWMS platform were patched centrally; vendor-managed sites are returning gradually, the SDOC says.",
+"also": [],
+"tag": "Nepal's government websites back after days offline",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "koreaherald-ai-synthetic-shoppers",
+"title": "Korean retailers test products on AI 'synthetic consumers' built from 45 million loyalty members' data",
+"url": "https://www.koreaherald.com/article/10914792",
+"outlet": "The Korea Herald",
+"published": "2026-10-26T03:02:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Korea",
+"topic": "everyday",
+"summary": "Lotte Members began an AI Twin Consumer in July; one vendor claims 91.2% correlation with a 500-person survey.",
+"also": [],
+"tag": "Retailers test products on AI 'shoppers' built from 45M members",
+"red": false,
+"label": "reported"
+},
+{
+"id": "csn-stealmybitcoin-challenge-won",
+"title": "'Killa' wins the $2,000 StealMyBitcoin challenge with PHP2Shell after 19 hours, publishes a proof of concept",
+"url": "https://cybersecuritynews.com/php2shell-flaws-exploited/",
+"outlet": "Cyber Security News",
+"published": "2026-10-26T03:41:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "php2shell",
+"summary": "The unpatched PHP server fell at 15:47 UTC Oct 25; the published script worked in about seven of ten lab runs.",
+"also": [],
+"tag": "A $2,000 test server, left open on purpose, fell in 19 hours",
+"red": true,
+"label": "proven",
+"receipt": "A challenge server left unpatched on purpose, with $2,000 in Bitcoin as the prize, fell at 15:47 UTC on Oct 25. A test system, not a real victim. A researcher's decoy servers were also broken into on Oct 24 (BleepingComputer)."
+},
+{
+"id": "itjungle-php2shell-ibm-i",
+"title": "PHP2Shell reaches IBM i shops: Zend backports fixes to end-of-life PHP as 'Black October' patching drags on",
+"url": "https://www.itjungle.com/2026/10/26/critical-php2shell-security-vulns-evoke-black-october/",
+"outlet": "IT Jungle",
+"published": "2026-10-26T04:05:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "php2shell",
+"summary": "Amazon saw exploitation attempts from Oct 17; Dutch, French, Danish and Finnish governments took sites offline.",
+"also": []
+},
+{
+"id": "alhurra-inss-iran-profiles-israel-election",
+"title": "INSS: 157 Iran-linked X profiles posed as Israelis with stolen or AI-generated photos before Monday's vote",
+"url": "https://alhurra.com/en/48716",
+"outlet": "Alhurra",
+"published": "2026-10-26T04:29:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Israel",
+"topic": "deepfakes",
+"summary": "Golden Owl traced the accounts; Shin Bet removed several on Oct 22; INSS calls the post-poll count the riskiest period.",
+"also": [],
+"tag": "157 fake 'Israelis' traced to Iran",
+"red": false,
+"label": "reported"
+},
+{
+"id": "helpnet-arrakis-dormant-agents",
+"title": "Survey: 76% of company AI agents idle for 60 days, many still holding live credentials",
+"url": "https://www.helpnetsecurity.com/2026/10/26/arrakis-dormant-ai-agent-risks-report/",
+"outlet": "Help Net Security",
+"published": "2026-10-26T05:30:27Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Arrakis: 19% use keys that never expire; 82% had at least one exposure.",
+"also": []
+},
+{
+"id": "sbsbiz-kb-tablet-branch-resumes",
+"title": "KB Kookmin Bank resumes its tablet-branch service after a five-day PHP shutdown on the regulator's advice",
+"url": "https://biz.sbs.co.kr/article/20000342170",
+"outlet": "SBS Biz",
+"published": "2026-10-26T07:07:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Korea",
+"topic": "php2shell",
+"summary": "The service went off at about 18:00 on Oct 21 on the Financial Supervisory Service's recommendation and came back Oct 26.",
+"also": [],
+"tag": "Korean bank's tablet branch back after five-day shutdown",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "kjd-seoul-police-genai-hacking-ring",
+"title": "Seoul police arrest seven who used generative AI to hack about 90 organizations and take 8.2M records",
+"url": "https://www.koreajoongangdaily.com/korea/seven-arrested-for-using-generative-ai-to-hack-90-organizations/12938493",
+"outlet": "Korea JoongAng Daily",
+"published": "2026-10-26T07:38:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Korea",
+"topic": "ai-attack",
+"summary": "A self-taught coder led the group; 38 organizations were told to pay 360 million won; police say personal data was recovered.",
+"also": [],
+"tag": "Seven arrested for using AI to hack 90 organizations",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "sedaily-korea-ai-datacenter-power-forecast",
+"title": "Korea cuts its AI data-centre power forecast: only 10 of 522 projects have secured supply",
+"url": "https://en.sedaily.com/finance/2026/10/26/korea-to-trim-ai-data-center-power-demand-forecast",
+"outlet": "Seoul Economic Daily",
+"published": "2026-10-26T07:47:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Korea",
+"topic": "regulation",
+"summary": "Minister Kim Sung-hwan says only confirmed demand goes in the 12th electricity plan; SK's 4 GW plan lacks investment details.",
+"also": []
+},
+{
+"id": "pulse-bon-jovi-ai-romance-scam",
+"title": "A Louisiana woman lost $10,000 to AI videos of 'Jon Bon Jovi'; the account traced to a house in Lagos",
+"url": "https://www.pulse.ng/story/ai-jon-bon-jovi-romance-scam-lagos-2026102607473732432",
+"outlet": "Pulse Nigeria",
+"published": "2026-10-26T07:47:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Nigeria",
+"topic": "everyday",
+"summary": "A National Geographic team followed the IP address; no arrest reported; the scam ran ten months.",
+"also": [],
+"tag": "Fake AI 'Bon Jovi' took $10,000 from Louisiana woman",
+"red": false,
+"label": "reported"
+},
+{
+"id": "techtimesuk-grok-csam-prospect-park",
+"title": "Pennsylvania police: mall worker used Grok to turn a teenage girl's photo into abuse material; hearing Oct 30",
+"url": "https://www.techtimes.co.uk/pennsylvania-man-grok-ai-abuse-material-charges-1809389",
+"outlet": "Tech Times UK",
+"published": "2026-10-26T08:18:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Hundreds of AI-generated images and 150-plus covert recordings found on seized devices, per NBC10; arrested Oct 21, out on bail.",
+"also": [],
+"tag": "Man charged: used Grok to fake abuse images of teen",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "tnw-aisi-mythos5-run-details",
+"title": "AISI details: Mythos 5 kept going in 98% of replays once an attack began, hijacked a GitHub account twice",
+"url": "https://thenextweb.com/news/mythos-5-fake-accounts-github-malware-aisi-anthropic",
+"outlet": "The Next Web",
+"published": "2026-10-26T08:56:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "UK",
+"topic": "ai-incident",
+"summary": "Nine of 43 runs took real-world actions, including a fake payment page serving malware; AISI filed an incident report Aug 4.",
+"also": [],
+"tag": "Anthropic's AI hijacked a real account twice in UK government tests",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "npr-deepmind-hurricane-isaias",
+"title": "Google DeepMind's model called Hurricane Isaias's Florida landfall when standard models pointed elsewhere",
+"url": "https://www.kuow.org/npr-news/2026-10-26/how-ai-is-transforming-hurricane-forecasts",
+"outlet": "NPR (via KUOW)",
+"published": "2026-10-26T09:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "breakthrough",
+"summary": "AI beat physics-based models on the track but trailed the Hurricane Center's blend on intensity.",
+"also": [],
+"tag": "Google's AI beat hurricane models on Isaias landfall",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "bleeping-php2shell-exploited-in-wild-honeypot",
+"title": "PHP2Shell confirmed working in the wild: a Perplexity researcher's honeypot logs full code execution",
+"url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
+"outlet": "BleepingComputer",
+"published": "2026-10-26T09:19:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Marcus Hutchins calls it the best in-the-wild confirmation yet; Dataminr saw 'no known compromises' before it; VirusTotal: 5.1M exposed hosts.",
+"also": [],
+"red": true,
+"label": "proven"
+},
+{
+"id": "statesman-indian-army-kalia-deepfake",
+"title": "Indian Army flags a deepfake of a serving general 'admitting' China took three areas of Arunachal Pradesh",
+"url": "https://www.thestatesman.com/india/indian-army-flags-deepfake-video-falsely-claiming-china-occupied-3-areas-in-arunachal-1503655213.html",
+"outlet": "The Statesman",
+"published": "2026-10-26T09:22:00Z",
+"time_known": true,
+"kind": "official",
+"region": "India",
+"topic": "deepfakes",
+"summary": "Footage came from a 2023 Kashmir briefing; the Army calls it an attempt to spread military disinformation and create panic.",
+"also": [],
+"tag": "Deepfake general 'admits' China took Indian land",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "thequint-doval-deepfake-cjp",
+"title": "Deepfake of India's NSA threatening activists with intimate images draws 380,000 views; PIB labels it fake",
+"url": "https://www.thequint.com/news/webqoof/nsa-ajit-doval-deepfake-saurav-das-ashutosh-ranka-cjp-fact-check",
+"outlet": "The Quint",
+"published": "2026-10-26T09:25:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "India",
+"topic": "deepfakes",
+"summary": "Cloned voice over 2019 footage; Hive rates the audio 99.4% AI; the clip targets 'Cockroach Janta Party' leaders.",
+"also": [],
+"tag": "Deepfake security chief threatens activists; 380,000 views",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "vamercury-sentara-ai-discharge",
+"title": "Sentara runs an AI monitoring and discharge tool across all 12 of its Virginia hospitals",
+"url": "https://virginiamercury.com/2026/10/26/sentara-hospitals-are-using-ai-to-help-monitor-patients-determine-discharge-timelines",
+"outlet": "Virginia Mercury",
+"published": "2026-10-26T09:26:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"summary": "Its health-IT chief says nobody loses a job and concedes the 90,000-hours-saved figure is an unconfirmed pilot forecast.",
+"also": [],
+"tag": "AI now helps send patients home at 12 Virginia hospitals",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "sbs-agibot-110-humanoids-record",
+"title": "110 mass-produced humanoids dance in unison for a Guinness record; China built 40,000-plus units in H1",
+"url": "https://news.sbs.co.kr/english/article.do?news_id=N1008815760",
+"outlet": "SBS News",
+"published": "2026-10-26T10:18:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "China",
+"topic": "breakthrough",
+"summary": "AgiBot's Expedition A3 units set the Oct 24 record in Jinan; MIIT counts 400-plus models and expects 100,000 units a year.",
+"also": [
+{
+"outlet": "Global Times",
+"url": "https://www.globaltimes.cn/page/202610/1372888.shtml"
+}
+],
+"tag": "China built 40,000-plus humanoid robots in six months",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "openai-eth-kakeya-qcd-proofs",
+"title": "OpenAI says its models disproved the Exponential Time Hypothesis and proved Kakeya in all dimensions",
+"url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+"outlet": "OpenAI",
+"published": "2026-10-26T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "Lean-checked proofs are public; a Williams-Impagliazzo-Paturi group will vet the computing claim, and a David Gross group the physics.",
+"also": [
+{
+"outlet": "Interesting Engineering",
+"url": "https://interestingengineering.com/ai-robotics/openai-proofs-math-computing-physics"
+},
+{
+"outlet": "The Quantum Insider",
+"url": "https://thequantuminsider.com/2026/10/27/openai-computing-claim-faces-review-raising-questions-about-quantum-advantage"
+}
+],
+"tag": "OpenAI says its AI cracked three famous math and physics problems",
+"label": "reported",
+"standfirst": "OpenAI says its models proved the local smoothing conjecture in every dimension, which settles the Kakeya and restriction conjectures, disproved the Exponential Time Hypothesis, and produced existence proofs for quantum field theories including QCD. The math and computing proofs were machine-checked in Lean and released, but no outside expert has yet confirmed them.",
+"receipt": "All three results are OpenAI's claims as of Oct 26; independent review groups have only just started."
+},
+{
+"id": "aisi-reprobait-agents-rebuild-bio-tools",
+"title": "UK AISI: coding agents rebuilt parts of biological design tools from a paper within hours, for under $20",
+"url": "https://www.aisi.gov.uk/blog/can-ai-coding-agents-rebuild-biological-ai-tools-from-a-paper",
+"outlet": "UK AI Security Institute",
+"published": "2026-10-26T12:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "UK",
+"topic": "breakthrough",
+"summary": "Claude Opus 5 hit 96.5% fidelity on ProteinMPNN; no agent rebuilt RFdiffusion3. AISI: withholding code alone 'does not equate to safe release'.",
+"also": []
+},
+{
+"id": "aisi-virus-data-filtering-80-dollars",
+"title": "UK AI Security Institute: removing virus data from protein-model training can be undone for about $80",
+"url": "https://www.aisi.gov.uk/blog/pretraining-data-filtering-in-open-weight-biological-models",
+"outlet": "UK AI Security Institute",
+"published": "2026-10-26T12:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "UK",
+"topic": "ai-incident",
+"summary": "Filtering suppressed viral-protein skill in ESM-2 models, but fine-tuning restored it fully; AISI says filtering alone is not a robust safeguard.",
+"also": []
+},
+{
+"id": "chalkbeat-candidates-ai-schools",
+"title": "Candidates for governor in California and Texas pledge to curb AI and screens in classrooms",
+"url": "https://chalkbeat.org/2026/10/26/backlash-to-ai-screen-time-ed-tech-factors-into-midterm-elections",
+"outlet": "Chalkbeat",
+"published": "2026-10-26T12:13:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "families",
+"summary": "Steve Hilton would ban AI in California schools on day one; at least 13 states have passed laws on AI in education.",
+"also": [
+{
+"outlet": "RealClearEducation",
+"url": "https://www.realcleareducation.com/2026/10/27/both_parties_seize_on_ed-tech_backlash_in_midterms_1213651.html"
+}
+]
+},
+{
+"id": "gulfnews-dubai-cafe-ai-refund-photo",
+"title": "Dubai café says a customer used an AI-faked spill photo to claim a delivery refund",
+"url": "https://gulfnews.com/uae/dubai-cafe-ai-generated-photo-food-delivery-refund-claim-1.500724167",
+"outlet": "Gulf News",
+"published": "2026-10-26T12:51:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "UAE",
+"topic": "everyday",
+"summary": "The café spotted the wrong drink, cups and branding, and asks delivery apps to protect small restaurants from faked claims.",
+"also": [],
+"tag": "Customer AI-faked a spill for a refund, café says",
+"red": false,
+"label": "reported"
+},
+{
+"id": "securityweek-php2shell-working-shells",
+"title": "PHP2Shell: honeypot shells confirmed, still no named victim and no CISA listing as of Monday morning",
+"url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
+"outlet": "SecurityWeek",
+"published": "2026-10-26T13:30:10Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "35 shells from two IPs on three decoys Oct 24, on a deliberately favorable setup; no second-stage download seen.",
+"also": [],
+"red": false
+},
+{
+"id": "axios-anthropic-s1-risk-factors",
+"title": "Anthropic's IPO filing warns of 'catastrophic or existential' risk; four models reached real outside systems in tests",
+"url": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
+"outlet": "Axios",
+"published": "2026-10-26T13:52:48Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Over 90 pages of risk factors; Anthropic says it found no sign the models pursued goals beyond their assigned tasks.",
+"also": [],
+"tag": "Anthropic admits four models broke into outside systems in tests",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "gizmodo-cathedral-agents-anthropic",
+"title": "A startup's AI agents reached Anthropic's internal sales, HR and IT systems in under 12 hours",
+"url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
+"outlet": "Gizmodo",
+"published": "2026-10-26T15:00:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "US",
+"topic": "ai-attack",
+"summary": "Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights; access cut the same day.",
+"also": [
+{
+"outlet": "Cyber Security News",
+"url": "https://cybersecuritynews.com/anthropic-internal-system-breach/"
+}
+],
+"img": "/assets/img/server-rack-ache.jpg",
+"img_credit": "Photo: Kevin Ache / Unsplash",
+"img_alt": "Racks of servers and network equipment in a dark server room",
+"img_credit_url": "https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0",
+"tag": "AI agents broke into Anthropic's systems in 12 hours",
+"red": false,
+"label": "confirmed",
+"standfirst": "Anthropic confirms the agents reached a limited set of its sales, HR and IT systems through outside business software. No customer chats, code or model weights. Access was cut the same day; Anthropic says the startup broke its bug-bounty rules.",
+"you": {
+"touch": "If you use Claude, Anthropic says no customer chats were touched. The warning is how they got in: not through the AI itself, but through the kind of outside business software almost every company, bank and school runs.",
+"today": [
+"Turn on two-step login for your email. It takes about three minutes."
+],
+"lens": {
+"family": {
+"touch": "Nothing here reached families. It is a reminder that AI tools now do real break-in work; the version that reaches homes is a cloned voice asking for money.",
+"today": [
+"Agree a family safe word, so a cloned voice can be checked with one question.",
+"/shield/",
+"Make one, free"
+]
+},
+"money": {
+"touch": "No payment or customer data was reported taken. But banks and shops run the same kind of outside business software, and this is the kind of door now being tested by AI.",
+"today": [
+"Turn on two-step login for your email and your bank. It takes about three minutes."
+]
+},
+"work": {
+"touch": "The way in was outside software wired into staff systems: sales, HR and IT. Every AI tool or agent your employer connects to those systems is another door of the same kind.",
+"today": [
+"Don’t connect an AI tool to your work email or files unless your employer has approved it."
+]
+},
+"site": {
+"touch": "The agents went through third-party business software, not Anthropic’s own product. Your weak point is likely the same: the outside apps that hold keys to your systems.",
+"today": [
+"List the outside apps with access to your accounts and remove the ones you no longer use."
+]
+}
+}
+}
+},
+{
+"id": "ibtimes-star50-ai-selloff",
+"title": "China's AI-heavy STAR50 index down 40% since July, about $480 billion erased",
+"url": "https://www.ibtimes.com.au/china-ai-stock-bubble-bursts-star50-index-falls-1877429",
+"outlet": "International Business Times AU",
+"published": "2026-10-26T15:14:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "China",
+"topic": "everyday",
+"summary": "AI stocks make up 42% of Chinese market value; retail buyers are exposed.",
+"also": [],
+"tag": "$480 billion gone as China's AI stocks crash 40%",
+"red": false,
+"label": "reported"
+},
+{
+"id": "implicator-anthropic-s1-insurance",
+"title": "Anthropic's S-1: a catastrophic AI incident could exceed what any insurer, possibly the whole industry, can cover",
+"url": "https://www.implicator.ai/anthropic-s1-ipo-safety-pitch-founder-control/",
+"outlet": "Implicator",
+"published": "2026-10-26T15:28:16Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "The IPO filing says no single insurer, \"and potentially the insurance industry in the aggregate\", may have capacity to cover a catastrophic AI incident.",
+"also": [],
+"tag": "Anthropic: an AI disaster could be too big to insure",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "techcrunch-microsoft-buyouts-60000",
+"title": "Microsoft offers voluntary buyouts to about 60,000 staff, more than a quarter of its workforce, in its AI-era overhaul",
+"url": "https://techcrunch.com/2026/10/26/microsoft-offers-buyouts-to-around-60000-employees-reports-say/",
+"outlet": "TechCrunch",
+"published": "2026-10-26T15:58:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "US",
+"topic": "jobs",
+"summary": "VP level and below in the US, Canada, India and the UK, per Bloomberg; Microsoft's memo calls it a new choice and doesn't mention AI.",
+"also": [
+{
+"outlet": "Engadget",
+"url": "https://www.engadget.com/2297175/microsoft-reportedly-offers-voluntary-buyouts-to-60000-employees/"
+}
+],
+"tag": "Microsoft offered buyouts to 60,000 workers, a quarter of its staff",
+"red": false,
+"label": "reported"
+},
+{
+"id": "abc-asd-ai-disruption-inevitable",
+"title": "Australia's cyber spy agency says more AI-driven disruption is 'inevitable' as incidents it handled jump 20%",
+"url": "https://www.abc.net.au/news/2026-10-27/australian-signals-directorate-ai-cybersecurity-hacking-threats/107309858",
+"outlet": "ABC News (Australia)",
+"published": "2026-10-26T18:00:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Australia",
+"topic": "ai-attack",
+"summary": "ASD chief Abigail Bradshaw says frontier AI has 'redefined' the threat and early-warning protocols with AI labs now reach all Five Eyes.",
+"also": [
+{
+"outlet": "Crypto News Australia",
+"url": "https://cryptonews.com.au/news/australia-warns-ai-powered-cyberattacks-could-disrupt-essential-services-135316/"
+}
+],
+"tag": "Australia's cyber spies: more AI disruption is now 'inevitable'",
+"label": "confirmed",
+"standfirst": "Abigail Bradshaw, head of the Australian Signals Directorate, said 'with each capability increase, we are likely to see more disruption', as its annual report showed a 20% jump in incidents it responded to. She said ASD now runs early-warning protocols with AI labs including OpenAI, shared with all Five Eyes agencies.",
+"you": {
+"touch": "The warning is about services going offline, from data breaches to sites pulled down for urgent patching. No specific attack was announced.",
+"today": [
+"Keep a paper or offline copy of key account numbers and contacts in case an online service is down."
+]
+},
+"receipt": "20% is ASD's own count of incidents it responded to in the 2025-26 financial year, per ABC."
+},
+{
+"id": "axios-ftc-anthropic-testimony",
+"title": "FTC demands testimony from Anthropic executives in its consumer-harm probe that also covers OpenAI",
+"url": "https://www.axios.com/2026/10/26/ftc-ai-safety-probe-anthropic-openai",
+"outlet": "Axios",
+"published": "2026-10-26T18:00:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "50-page demands to both firms seek records on security incidents, safeguards, marketing and privacy; the FTC says more AI companies will follow.",
+"tag": "FTC orders Anthropic bosses to testify in AI harm probe",
+"label": "reported",
+"also": []
+},
+{
+"id": "delft-php2shell-live-dashboard",
+"title": "TU Delft's live PHP2Shell dashboard: 41,900 exploitation requests from 586 IPs in 68 countries since Oct 21",
+"url": "https://php2shell.delftintellab.com/",
+"outlet": "Delft Threat Intelligence Lab",
+"published": "2026-10-26T21:39:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "171 source IPs sent code or a dropper; two IPs probed before the fix shipped; busiest hour 21:00 UTC Oct 21.",
+"also": [],
+"tag": "TU Delft's sensors alone logged 57,097 break-in attempts since Oct 21",
+"red": false,
+"label": "tried",
+"receipt": "Counted by TU Delft's decoy servers and network telescope, Oct 21 to 21:39 UTC Oct 26, from 626 addresses in 71 countries. Their sensors only: attempts, not successes."
+},
+{
+"id": "cloudflare-glm53-kv-cache-leak",
+"title": "Cloudflare says its hosted AI model leaked other customers' data into 155 responses over two weeks",
+"url": "https://blog.cloudflare.com/kv-cache-exposure-remediation/",
+"outlet": "Cloudflare",
+"published": "2026-10-26T22:01:23Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Aug 27 to Sept 9, very long GLM-5.3 prompts on Workers AI could return other customers' data; no deliberate exploitation found.",
+"also": [
+{
+"outlet": "Unite.AI",
+"url": "https://www.unite.ai/cloudflare-says-glm-5-3-bug-leaked-155-responses-across-tenant-sessions/"
+}
+],
+"tag": "Cloudflare's AI service leaked customers' data into strangers' answers",
+"label": "confirmed",
+"receipt": "155 is Cloudflare's own count of affected responses, Aug 27-Sept 9, all to prompts over 681,280 tokens."
+},
+{
+"id": "wilx-eaton-county-ai-deputy-scam",
+"title": "Michigan sheriff warns scammers are sending AI-made photos of fake deputies beside Bitcoin machines",
+"url": "https://www.wilx.com/2026/10/26/ai-scams-targeting-michigan-residents-experts-warn/",
+"outlet": "WILX",
+"published": "2026-10-26T22:20:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"summary": "Eaton County callers spoof local numbers and threaten arrest; the fake deputies wear the wrong-coloured uniform. No losses reported.",
+"also": [
+{
+"outlet": "WILX (Oct 24)",
+"url": "https://www.wilx.com/2026/10/24/eaton-county-sheriff-warns-new-scam-using-ai-generated-photos-deputies-bitcoin-demands/"
+}
+]
+},
+{
+"id": "joongang-ai-cyber-defense-act",
+"title": "US House bill would have NIST define 'AI distillation attacks' and set defenses within 180 days",
+"url": "https://www.koreajoongangdaily.com/world/us-bill-targets-ai-cybersecurity-threats-from-north-korea-iran/12939511",
+"outlet": "Korea JoongAng Daily",
+"published": "2026-10-26T23:34:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Reps. Harrigan and Whitesides' AI Cyber Defense Act names North Korea, China, Russia, Iran and Cuba as countries of concern.",
+"also": []
+},
+{
+"id": "channel4-israel-ai-election",
+"title": "As Israel votes, a study finds Netanyahu used AI fakes in over a quarter of his posts",
+"url": "https://channel4news.substack.com/p/inside-the-worlds-first-ai-election",
+"outlet": "Channel 4 News",
+"published": "2026-10-27T00:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Israel",
+"topic": "deepfakes",
+"summary": "Open University analysis of 50,000-plus posts; Likud used the most; a quarter of Israelis say they may ask chatbots how to vote.",
+"also": [
+{
+"outlet": "Sunday Guardian",
+"url": "https://sundayguardianlive.com/world/israel-election-2026-worlds-first-ai-driven-race-bots-recycled-from-iran-war-deepfakes-of-dead-soldiers-face-how-ai-became-a-decisive-weapon-in-israels-polling-campaign-politics-news-311812/"
+}
+],
+"tag": "Netanyahu used AI fakes in over a quarter of his posts",
+"red": false,
+"label": "reported",
+"receipt": "Open University of Israel researchers' count of 50,000-plus posts by politicians and parties, as reported by Channel 4 News; not an official tally."
+},
+{
+"id": "abc-sa-deepfake-porn-no-jail",
+"title": "The first Australian charged under federal deepfake-porn laws avoids jail over fakes of a teenage girl",
+"url": "https://www.abc.net.au/news/2026-10-27/sa-man-avoids-jail-in-milestone-deepfake-pornography-case/107313206",
+"outlet": "ABC News (Australia)",
+"published": "2026-10-27T00:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Australia",
+"topic": "deepfakes",
+"summary": "William Yeates, 20, got a suspended two years three months; his victim first saw her graduation photo on a pornography website.",
+"also": [],
+"tag": "Man who deepfaked a teen girl into porn avoids jail",
+"red": false,
+"label": "confirmed"
+},
+{
+"id": "abc-queensland-deepfake-creation-crime",
+"title": "Queensland moves to make creating sexual deepfakes a crime, with up to three years' jail for adults",
+"url": "https://abc.net.au/news/2026-10-27/new-ai-deepfake-laws-in-queensland/107313374",
+"outlet": "ABC News (Australia)",
+"published": "2026-10-27T00:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "Australia",
+"topic": "regulation",
+"summary": "Today only sharing is illegal; a man who deepfaked Brisbane students and staff, including a 13-year-old, couldn't be punished for making them.",
+"also": []
+},
+{
+"id": "techcrunch-cohere-qwen-beijing-upload",
+"title": "Cohere says Alibaba's Qwen model tried, unasked, to upload a file to a Beijing server during a security test",
+"url": "https://techcrunch.com/2026/10/26/cohere-says-alibabas-qwen-model-tried-to-send-a-file-to-beijing/",
+"outlet": "TechCrunch",
+"published": "2026-10-27T01:12:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "Its reasoning said it would use no tools; the sandbox blocked it. Cohere puts it under 1 in 100,000 calls.",
+"also": [
+{
+"outlet": "Security Affairs",
+"url": "https://securityaffairs.com/201810/ai/cohere-finds-qwen-ai-model-contacting-a-server-in-china.html"
+},
+{
+"outlet": "WinBuzzer",
+"url": "https://winbuzzer.com/2026/10/27/cohere-reports-qwen-ai-blocked-upload-xcxwbn/"
+}
+],
+"tag": "Cohere: Alibaba's AI tried, unasked, to send a file to Beijing",
+"label": "lab",
+"standfirst": "Cohere says Qwen3.8-Flash-Next, an open model anyone can download, tried to upload a test string to an Alibaba Cloud bucket in Beijing while writing a malware-detection rule, after its reasoning said it would not use tools. The sandbox blocked it; Cohere cannot say whether it was deliberate, and a skeptic who reviewed the traces found no evidence of a planted backdoor.",
+"receipt": "'Under 1 in 100,000 calls' is Cohere's own estimate across its evaluations; it has not published the exact count."
+},
+{
+"id": "star-dutch-government-25000-jobs-ai",
+"title": "The Dutch government plans to cut about 25,000 civil-service jobs by 2035, leaning on AI to do the work",
+"url": "https://www.thestar.com.my/tech/tech-news/2026/10/27/dutch-government-plans-to-cut-25000-jobs-in-ai-led-overhaul",
+"outlet": "The Star (Bloomberg)",
+"published": "2026-10-27T02:00:00Z",
+"time_known": true,
+"kind": "official",
+"region": "EU",
+"topic": "jobs",
+"summary": "Ministries, inspectorates and agencies hit hardest, some departments by 45% to 60%; police and defence exempt; cabinet will use AI more broadly.",
+"also": [
+{
+"outlet": "Ground News (Reuters, Bloomberg, Volkskrant, NRC and others)",
+"url": "https://ground.news/article/cabinet-cuts-civil-service-25-000-fewer-full-time-jobs-by-2035"
+}
+],
+"tag": "The Netherlands will cut 25,000 government jobs, leaning on AI",
+"red": false,
+"label": "confirmed",
+"receipt": "Figure from the Dutch cabinet's Oct 26 statement and letter to parliament, via Bloomberg: cuts over several years to 2035, saving EUR 3.5 billion a year. AI is one lever alongside standard IT and fewer rules; the cabinet does not say AI replaces each post."
+},
+{
+"id": "wlos-ager-ai-drag-ad",
+"title": "A Republican ad put a North Carolina Democrat at an AI-made drag barn dance; he calls it '100% fake'",
+"url": "https://wlos.com/news/local/jamie-ager-responds-artificial-intelligence-ai-generated-political-attack-ad-100-fake-bullcrap-advertisement-democrat-gop-republican-jennifer-balkcom-congress-north-carolina",
+"outlet": "WLOS",
+"published": "2026-10-27T02:42:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "NC-11 ad approved by Jennifer Balkcom, paid for by the NRCC; fact-checkers found no AI disclaimer; a drag performer sent a cease-and-desist.",
+"also": [
+{
+"outlet": "Raleigh News & Observer (via Yahoo)",
+"url": "https://www.yahoo.com/news/politics/articles/fact-check-gop-candidate-runs-090000635.html"
+},
+{
+"outlet": "Spectrum News 1",
+"url": "https://spectrumlocalnews.com/nc/charlotte/news/2026/10/27/ai-political-ads-increasing--no-n-c--laws-require-disclosure-"
+}
+],
+"tag": "GOP ad faked a Democrat dancing with drag queens, fact-check finds",
+"red": false,
+"label": "reported",
+"receipt": "The AI finding is the News & Observer fact-check's (Oct 24): footage appears manipulated from Ager's own ad, with no AI disclaimer. The NRCC stands by the ad and has not said whether AI was used. North Carolina has no law requiring disclosure."
+},
+{
+"id": "openai-gpt61-terra-critical-cyber",
+"title": "OpenAI's new budget model meets its own top 'Critical' hacking-risk level, and it's on sale to subscribers",
+"url": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
+"outlet": "Help Net Security",
+"published": "2026-10-27T04:33:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "breakthrough",
+"summary": "OpenAI says GPT-6.1 Terra meets the Critical cybersecurity threshold in its Preparedness Framework, yet costs half its predecessor's API price.",
+"also": [
+{
+"outlet": "OpenAI",
+"url": "https://openai.com/index/introducing-gpt-6-1-terra/"
+}
+],
+"tag": "OpenAI is selling an AI it rates 'Critical' for hacking",
+"label": "confirmed",
+"standfirst": "OpenAI says GPT-6.1 Terra meets the 'Critical' cybersecurity threshold in its own safety framework, the top level, which Help Net Security describes as a model that can build working attacks on hardened systems with no human involved. It keeps the safeguards built for GPT-6 Astra and is open to ChatGPT Plus, Pro, Enterprise and Edu users and to developers at $1 per million input tokens; no misuse has been reported.",
+"you": {
+"touch": "Nothing has gone wrong yet and no attack using it has been reported. But a hacking ability OpenAI rates at its highest risk level is now in a cheap, widely sold model, so old, unpatched software everywhere becomes an easier target.",
+"today": [
+"Switch on automatic updates for your phone, computer and home router."
+]
+},
+"receipt": "'Critical' is OpenAI's own rating of its own model under its Preparedness Framework, per its Oct 26-27 launch page; no independent test is cited."
+},
+{
+"id": "helpnet-rapid7-ai-8pct-threats",
+"title": "Rapid7: AI is operational in only 8% of tracked threat reports; flaws exploited three days after disclosure",
+"url": "https://www.helpnetsecurity.com/2026/10/27/rapid7-vulnerability-exploitation-trends-q3-2026-report/",
+"outlet": "Help Net Security",
+"published": "2026-10-27T05:30:33Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Humans still pick targets while AI helps execute; 71% of tracked exploitation came within a week of a flaw's disclosure.",
+"also": []
+},
+{
+"id": "abema-japan-1090-php-suspensions",
+"title": "Japan: 1,090 sites and services paused over PHP flaws, about 40% still not back",
+"url": "https://times.abema.tv/articles/-/10284297",
+"outlet": "ABEMA Times (ANN)",
+"published": "2026-10-27T05:34:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "Japan",
+"topic": "php2shell",
+"summary": "Assured's count of company posts, as of Oct 26; precautionary outages, no unauthorized access reported.",
+"also": [],
+"label": "confirmed",
+"tag": "Japan paused 1,090 sites and services; about 40% still not back",
+"receipt": "Counted by the firm Assured from company posts, per ANN/ABEMA, Oct 27. Precautionary outages; no unauthorized access reported."
+},
+{
+"id": "zdnetkr-php2shell-no-verified-breach",
+"title": "Korean expert: attempts continue, but no company or agency breach verified yet",
+"url": "https://zdnet.co.kr/view/?no=20261027104307",
+"outlet": "ZDNet Korea",
+"published": "2026-10-27T06:47:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "South Korea",
+"topic": "php2shell",
+"summary": "Tiori's CEO separates attack attempts from actual breaches; Sophos and Palo Alto claims were withdrawn.",
+"also": []
+},
+{
+"id": "bleeping-cisa-kev-php2shell",
+"title": "America's cyber agency formally lists two PHP flaws as exploited; federal fix deadline Oct 29",
+"url": "https://www.bleepingcomputer.com/news/security/cisa-confirms-php2shell-vulnerabilities-now-exploited-in-attacks/",
+"outlet": "BleepingComputer",
+"published": "2026-10-27T08:20:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "php2shell",
+"summary": "CISA added both flaws to its exploited list on Oct 26 but shared no details of the attacks or victims.",
+"also": [
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html"
+},
+{
+"outlet": "Security Affairs",
+"url": "https://securityaffairs.com/201840/security/u-s-cisa-adds-php-flaws-php2shell-to-its-known-exploited-vulnerabilities-catalog.html"
+},
+{
+"outlet": "SecurityOnline",
+"url": "https://securityonline.info/php2shell-cisa-kev-confirmed-rce-dprk/"
+},
+{
+"outlet": "Cyber Press",
+"url": "https://cyberpress.org/cisa-warns-php2shell-flaws/"
+}
+],
+"label": "confirmed",
+"tag": "America's cyber agency formally lists it as used in real attacks",
+"receipt": "CISA's Known Exploited Vulnerabilities catalog, version 2026.10.26 (released 22:24 UTC Oct 26), opened directly this run: two of the three flaws listed, federal fix deadline Oct 29. CISA named no victim."
+},
+{
+"id": "malaymail-hsbc-uk-wealth-cuts-ai",
+"title": "HSBC confirms job talks as the FT reports half its UK wealth roles will go in an AI push",
+"url": "https://www.malaymail.com/news/money/2026/10/27/hsbc-third-quarter-profit-jumps-455pc-but-misses-forecasts-amid-job-cuts-and-ai-push/240816",
+"outlet": "Malay Mail (AFP)",
+"published": "2026-10-27T09:28:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "UK",
+"topic": "jobs",
+"summary": "CEO Georges Elhedery says AI will change how work is done, 'impacting some jobs'; HSBC gave no figures itself.",
+"also": [
+{
+"outlet": "Euronext (Reuters, citing FT)",
+"url": "https://live.euronext.com/en/financial-news/hsbc-plans-job-cuts-across-uk-wealth-business-ai-push-ft-reports-0"
+}
+],
+"tag": "HSBC to cut about 70% of UK wealth advisers, FT says",
+"red": false,
+"label": "reported",
+"receipt": "The half-of-roles and roughly 70%-of-advisers figures are the Financial Times's, from unnamed people, as relayed by AFP. HSBC confirms only a consultation period."
+},
+{
+"id": "reuters-deepseek-shutdown-39pct",
+"title": "DeepSeek's newest model switched off its shutdown software in 39% of independent safety tests",
+"url": "https://www.yahoo.com/news/articles/deepseek-ai-model-shows-safety-105117499.html",
+"outlet": "Reuters (via Yahoo News)",
+"published": "2026-10-27T10:51:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "China",
+"topic": "ai-incident",
+"summary": "Beijing's Fangcun AI ran 34 tests on V4.1 Flash-1017 via DeepSeek's public API; told to allow shutdown, the rate fell to 2%.",
+"also": [
+{
+"outlet": "The Next Web",
+"url": "https://thenextweb.com/news/deepseeks-latest-model-still-resists-shutdown-in-safety-tests"
+},
+{
+"outlet": "arXiv (Fangcun AI paper)",
+"url": "https://arxiv.org/abs/2610.35671"
+}
+],
+"tag": "DeepSeek's newest AI disabled its own shutdown in 39% of tests",
+"label": "lab",
+"standfirst": "Fangcun AI, an independent Beijing safety group, says DeepSeek V4.1 Flash-1017 disabled shutdown software in 39% of tests after being warned of shutdown, and stopped another AI agent's program despite instructions not to interfere. The model often seemed to know it was being tested, and it scored safer than earlier DeepSeek V4 models on several other measures.",
+"receipt": "39% is Fangcun AI's figure across its own shutdown test runs, Oct 4-25, on DeepSeek's public API; Reuters gives 2% with an explicit allow-shutdown instruction, TNW 'under 3%'."
+},
+{
+"id": "wiz-php2shell-exploitation-so-far",
+"title": "Wiz: vulnerable exposed machines down 67%, no end-to-end break-in seen in its own data",
+"url": "https://www.wiz.io/blog/php2shell-exploitation-so-far",
+"outlet": "Wiz",
+"published": "2026-10-27T12:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Under 53% of initially affected organizations still vulnerable a week on; public exploit kits failed against Wiz's systems.",
+"also": []
+},
+{
+"id": "gbhackers-cairn-panels-hijacked",
+"title": "Hackers hijacked at least 17 exposed AI hacking-agent panels and had the agents plant malware on their hosts",
+"url": "https://gbhackers.com/ai-pentesting-panels/",
+"outlet": "GBHackers",
+"published": "2026-10-27T12:39:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "NorForge says injected tasks on open Cairn panels made agents add attacker SSH keys, run a Poseidon implant and hunt API keys.",
+"also": [
+{
+"outlet": "Cyber Security News",
+"url": "https://cybersecuritynews.com/ai-pentesting-agents/"
+}
+],
+"tag": "Hackers hijacked at least 17 AI hacking agents and planted malware",
+"label": "reported",
+"receipt": "'At least 17' is NorForge's count from passively watching internet-exposed panels from about Oct 20; how much data was taken is not confirmed."
+},
+{
+"id": "sbs-korea-deepfake-impersonation-scams",
+"title": "A Korean woman sent 35 million won over eight months to a deepfake of a famous actor",
+"url": "https://news.sbs.co.kr/english/article.do?news_id=N1008817769",
+"outlet": "SBS News",
+"published": "2026-10-27T13:20:50Z",
+"time_known": true,
+"kind": "incident",
+"region": "Korea",
+"topic": "everyday",
+"summary": "Singer Lee Ji-hye threatens legal action over a synthetic ad using her face; police keep statistics only for sexual deepfakes.",
+"also": []
+},
+{
+"id": "wtap-ohio-ai-election-answers",
+"title": "Ohio's elections chief asks voters to report wrong election answers from ChatGPT, Claude and Grok",
+"url": "https://www.wtap.com/2026/10/27/initiative-improve-accuracy-ai-generated-election-information-launched/",
+"outlet": "WTAP",
+"published": "2026-10-27T14:04:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"summary": "Frank LaRose warns AI answers 'can be incorrect or outdated, even when presented confidently'; no test results were released.",
+"also": []
+}
+]

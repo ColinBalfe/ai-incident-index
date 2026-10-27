@@ -337,7 +337,7 @@ _sev = sorted(scored, key=lambda r: -r['severity'])
 _live = by_id.get(meta.get('live_incident') or '')
 llms = f'''# Warning Shots: The AI Incident Index
 
-> A live index of AI's dangers and breakthroughs as they land on real lives: every significant AI incident since 2023, scored 0-100 by a published formula and linked to its sources, with a headline page refreshed three times a day (6:37, 12:37 and 18:37 US Eastern).
+> A live index of AI's dangers and breakthroughs as they land on real lives: every significant AI incident since 2023, scored 0-100 by a published formula and linked to its sources, with a headline page refreshed three times a day (5:17, 12:17 and 18:17 US Eastern).
 
 Last refresh: {as_of_label}. {len(scored)} incidents scored. Corrections and retractions are logged publicly; retracted claims are labelled as such on every page.
 

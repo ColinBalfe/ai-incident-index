@@ -121,7 +121,7 @@ for p in P:
 <h2>Sources</h2>
 <ul class="src">{srcs}</ul>
 {nxt}
-<p class="disc">Spot an error? <a href="{esc(REPO)}/issues">Tell us</a>; corrections are made and logged. Written with AI assistance from public sources; {'every fact checked and approved by ' + REVIEWER if not draft else 'awaiting fact-check and approval by ' + REVIEWER}. General information, not medical, legal or financial advice.</p>
+<p class="disc">Spot an error? <a href="{esc(REPO)}/issues">Tell us</a>; corrections are made and logged. Written with AI assistance from public sources; {('every fact checked and approved by ' + REVIEWER) if (not draft and rev) else ('checked against those sources before publishing' if not draft else 'awaiting fact-check')}. General information, not medical, legal or financial advice.</p>
 </article>"""
     img = site + (f"assets/learn/{p['slug']}.png" if os.path.exists(f"assets/learn/{p['slug']}.png") else 'assets/og.png')
     art = {"@type": "Article", "headline": p['title'][:110], "description": p['desc'], "url": url, "mainEntityOfPage": url, "image": [img],

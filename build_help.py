@@ -132,7 +132,7 @@ for p in PAGES:
 {f'<h2>Related</h2><ul class="rel">{rel}<li><a href="/">Today’s AI threats and what they mean for you →</a></li></ul>' if rel else ''}
 <h2>Sources</h2>
 <ul class="src">{srcs}</ul>
-<p class="disc">Spot an error or out-of-date advice? <a href="{esc(REPO)}/issues">Tell us</a>; corrections are made and logged. Written with AI assistance from public sources; {'every fact checked and approved by ' + REVIEWER if not draft else 'awaiting fact-check and approval by ' + REVIEWER}. This page is general guidance, not legal or financial advice. In an emergency, call 911.</p>
+<p class="disc">Spot an error or out-of-date advice? <a href="{esc(REPO)}/issues">Tell us</a>; corrections are made and logged. Written with AI assistance from public sources; {('every fact checked and approved by ' + REVIEWER) if (not draft and rev) else ('checked against those sources before publishing' if not draft else 'awaiting fact-check')}. This page is general guidance, not legal or financial advice. In an emergency, call 911.</p>
 </article>"""
     howto = {"@type": "HowTo", "name": p['h1'], "description": p['now'],
              "step": [{"@type": "HowToStep", "position": i + 1, "name": t, "text": d} for i, (t, d) in enumerate(p['steps'])]}

@@ -13,7 +13,7 @@ import json, os, collections
 here = os.path.dirname(os.path.abspath(__file__)); os.chdir(here)
 from pagekit import *
 
-TODAY = '2026-10-27'
+TODAY = json.load(open('data/meta.json'))['as_of'][:10]
 L = lambda f: json.load(open(f, encoding='utf-8'))
 
 def stats_html(stats):
@@ -41,7 +41,7 @@ for c in CH: TITLES[f"/checks/{c['slug']}/"] = c['title']
 urls = []
 for c in CH:
     url = SITE + f"checks/{c['slug']}/"
-    top, by = frame(draft=not ok, rev=rev, updated=TODAY, crumbs=[('Is this a scam?', '/checks/'), (c['pattern'], '')], family_label='checks')
+    top, by = frame(draft=not ok, rev=c.get('reviewed', ''), updated=c.get('updated', TODAY), crumbs=[('Is this a scam?', '/checks/'), (c['pattern'], '')], family_label='checks')
     checks = '<ul class="checks">' + ''.join(f'<li><b>{esc(q)}</b>{esc(w)}</li>' for q, w in c['check']) + '</ul>'
     cases = '<ul class="rec">' + ''.join(f'<li><time>{esc(w)}</time> <b>{esc(where)}</b>. {esc(t)}' + (f' <small>({a(u, o)})</small>' if u else '') + (case_ref(i) if i else '') + '</li>' for w, where, t, u, o, i in c['cases']) + '</ul>'
     report = '<ul>' + ''.join(f'<li><b>{esc(w)}:</b> {a(u, t) if u else esc(t)}</li>' for w, u, t in c['report']) + '</ul>'
@@ -65,7 +65,7 @@ for c in CH:
 {footer_note(not ok)}</article>"""
     howto = {"@type": "HowTo", "name": c['h1'], "step": [{"@type": "HowToStep", "position": i + 1, "name": t, "text": d} for i, (t, d) in enumerate(c['steps'])]}
     write(f"checks/{c['slug']}/index.html", url=url, title=c['title'], desc=c['desc'], body=body, draft=not ok, crumbs=[('Is this a scam?', '/checks/'), (c['pattern'], '')],
-          graph=[webpage(url, c['title'], c['desc'], TODAY, not ok, rev), article(url, c['title'], c['desc'], TODAY, not ok, rev, 'Is this a scam?', [u for _, u in c['sources']]), howto, faq_ld(c['faq'])])
+          graph=[webpage(url, c['title'], c['desc'], c.get('updated', TODAY), not ok, c.get('reviewed', '')), article(url, c['title'], c['desc'], c.get('updated', TODAY), not ok, c.get('reviewed', ''), 'Is this a scam?', [u for _, u in c['sources']]), howto, faq_ld(c['faq'])])
     if ok: urls.append(url)
 items = ''.join(f'<li><a href="/checks/{esc(c["slug"])}/">{esc(c["h1"])}</a><br><small>{esc(c["verdict"])}</small></li>' for c in CH)
 items += f'<li><a href="/help/voice-clone-scam-call/">{esc(TITLES.get("/help/voice-clone-scam-call/", "A loved one calls in a panic"))}</a></li><li><a href="/help/ai-scam-texts/">{esc(TITLES.get("/help/ai-scam-texts/", "AI scam texts"))}</a></li>'
@@ -80,7 +80,7 @@ J = L('research/jobs.json'); ok, rev = approved('jobs'); urls = []
 STL = {'deployed': 'In real use', 'demonstrated': 'Shown in tests or pilots', 'not yet': 'Not yet'}
 for j in J['jobs']:
     url = SITE + f"jobs/{j['slug']}/"
-    top, by = frame(draft=not ok, rev=rev, updated=TODAY, crumbs=[('Can AI do your job?', '/jobs/'), (j['occupation'], '')], family_label='jobs')
+    top, by = frame(draft=not ok, rev=j.get('reviewed', ''), updated=j.get('updated', TODAY), crumbs=[('Can AI do your job?', '/jobs/'), (j['occupation'], '')], family_label='jobs')
     rows = ''.join(f'<tr><td>{esc(t["task"])}</td><td><span class="st {esc(t["status"].replace(" ", "-"))}">{esc(STL.get(t["status"], t["status"]))}</span></td><td>{esc(t["evidence"])} <small>({a(t["url"], t["label"])})</small></td></tr>' for t in j['tasks'])
     ev = '<ul class="rec">' + ''.join(f'<li><time>{esc(d)}</time> {esc(w)} <small>({a(u, l)})</small></li>' for d, w, u, l in j['jobs_evidence']) + '</ul>'
     b = j['bls']
@@ -99,7 +99,7 @@ for j in J['jobs']:
 {capture('One update a month on your job. Only when something actually changes.', 'jobs-' + j['slug'])}
 {footer_note(not ok)}</article>"""
     write(f"jobs/{j['slug']}/index.html", url=url, title=j['title'], desc=j['desc'], body=body, draft=not ok, crumbs=[('Can AI do your job?', '/jobs/'), (j['occupation'], '')],
-          graph=[webpage(url, j['title'], j['desc'], TODAY, not ok, rev), article(url, j['title'], j['desc'], TODAY, not ok, rev, 'Can AI do your job?', [t['url'] for t in j['tasks']] + [u for _, u in j['sources']]),
+          graph=[webpage(url, j['title'], j['desc'], j.get('updated', TODAY), not ok, j.get('reviewed', '')), article(url, j['title'], j['desc'], j.get('updated', TODAY), not ok, j.get('reviewed', ''), 'Can AI do your job?', [t['url'] for t in j['tasks']] + [u for _, u in j['sources']]),
                  {"@type": "Occupation", "name": j['occupation'], "occupationLocation": {"@type": "Country", "name": "United States"}}, faq_ld(j['faq'])])
     if ok: urls.append(url)
 facts = stats_html([[f[0], f[1], f[2], f[3]] for f in J['overview']['facts']])
@@ -115,7 +115,7 @@ C = L('research/can_ai.json'); ok, rev = approved('can-ai'); urls = []
 STAGES = [('demonstrated', 'Demonstrated', 'shown at least once'), ('reproduced', 'Reproduced', 'independently repeated'), ('accessible', 'Accessible', 'available to ordinary people, or criminals'), ('reliable', 'Reliable', 'works most of the time for a defined task'), ('consequences', 'Consequences', 'real-world use or harm documented')]
 for c in C:
     url = SITE + f"can-ai/{c['slug']}/"
-    top, by = frame(draft=not ok, rev=rev, updated=TODAY, crumbs=[('What AI can now do', '/can-ai/'), (c['question'], '')], family_label='can-ai')
+    top, by = frame(draft=not ok, rev=c.get('reviewed', ''), updated=c.get('updated', TODAY), crumbs=[('What AI can now do', '/can-ai/'), (c['question'], '')], family_label='can-ai')
     lad = ''.join(f'<tr><td><b>{esc(n)}</b><br><small>{esc(d)}</small></td><td><span class="st {esc(c["ladder"][k]["status"])}">{esc(c["ladder"][k]["status"])}</span></td><td>{esc(fdate(c["ladder"][k].get("date") or "") or "")}</td><td>{esc(c["ladder"][k]["note"])} <small>({a(c["ladder"][k].get("source_url") or "", c["ladder"][k].get("source_label") or "source")})</small></td></tr>' for k, n, d in STAGES if k in c['ladder'])
     fp = c['first_proven']
     rec = '<ul class="rec">' + ''.join(f'<li><time>{esc(w)}</time> {esc(t)}' + (case_ref(r, l) if r else '') + '</li>' for w, r, t, l in c['record']) + '</ul>'
@@ -138,7 +138,7 @@ for c in C:
 {capture('Get an alert when AI crosses a new line', 'can-ai')}
 {footer_note(not ok)}</article>"""
     write(f"can-ai/{c['slug']}/index.html", url=url, title=c['title'], desc=c['desc'], body=body, draft=not ok, crumbs=[('What AI can now do', '/can-ai/'), (c['question'], '')],
-          graph=[webpage(url, c['title'], c['desc'], TODAY, not ok, rev), article(url, c['title'], c['desc'], TODAY, not ok, rev, 'What AI can now do', [u for _, u in c['sources']]),
+          graph=[webpage(url, c['title'], c['desc'], c.get('updated', TODAY), not ok, c.get('reviewed', '')), article(url, c['title'], c['desc'], c.get('updated', TODAY), not ok, c.get('reviewed', ''), 'What AI can now do', [u for _, u in c['sources']]),
                  {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": c['question'], "acceptedAnswer": {"@type": "Answer", "text": c['verdict']}}] + [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": t}} for q, t in c['faq']]}])
     if ok: urls.append(url)
 items = ''.join(f'<li><span class="st {esc(c["verdict_short"].lower().replace(" ", "-"))}">{esc(c["verdict_short"])}</span> <a href="/can-ai/{esc(c["slug"])}/">{esc(c["question"])}</a></li>' for c in C)
@@ -172,7 +172,7 @@ for name, rows in by_org.items():
     incs = sorted({r['incident_id'] for r in rows})
     gate = worst in ('confirmed', 'attacked') or len(incs) >= 2
     url = SITE + f'exposed/{s}/'
-    top, by = frame(draft=not (ok and gate), rev=rev, updated=TODAY, crumbs=[('Am I exposed?', '/exposed/'), (name, '')], family_label='exposed')
+    top, by = frame(draft=not (ok and gate), rev='', updated=TODAY, crumbs=[('Am I exposed?', '/exposed/'), (name, '')], family_label='exposed')
     entries = ''
     for r in rows:
         inc = INC.get(r['incident_id']) or {}
@@ -193,7 +193,7 @@ for name, rows in by_org.items():
 {capture('Alert me if ' + name + ' appears in a new AI incident', 'exposed-' + s)}
 {footer_note(not (ok and gate))}</article>"""
     write(f'exposed/{s}/index.html', url=url, title=title, desc=desc[:300], body=body, draft=not (ok and gate), crumbs=[('Am I exposed?', '/exposed/'), (name, '')],
-          graph=[webpage(url, title, desc[:300], TODAY, not (ok and gate), rev), {"@type": "Organization", "name": name}])
+          graph=[webpage(url, title, desc[:300], TODAY, not (ok and gate), ''), {"@type": "Organization", "name": name}])
     if ok and gate: urls.append(url)
     rows_js.append({'n': name, 's': s, 'g': worst, 'l': glabel, 'k': len(incs), 'sec': sector, 'c': country})
 gated = sum(1 for r in rows_js if r['g'] in ('confirmed', 'attacked') or r['k'] >= 2)
@@ -213,7 +213,7 @@ print(f'exposed/: {len(rows_js)} organisations, {gated} pass the quality gate ({
 
 # ======================================================== midterms-2026/
 MF = L('research/midterm_fakes.json'); MC = L('research/midterm_context.json'); ok, rev = approved('midterms'); url = SITE + 'midterms-2026/'
-top, by = frame(draft=not ok, rev=rev, updated=TODAY, crumbs=[('2026 midterms: AI fakes', '')], family_label='midterms')
+top, by = frame(draft=not ok, rev='', updated=TODAY, crumbs=[('2026 midterms: AI fakes', '')], family_label='midterms')
 SCL = {'confirmed fake': 'confirmed', 'removed': 'confirmed', 'labelled AI by poster': 'partly', 'alleged fake': 'other'}
 fk = ''.join(f'<li><time>{esc(fdate(m["date"]))}</time> <span class="st {SCL.get(m["status"], "other")}">{esc(m["status"])}</span> <b>{esc(m["race"])}</b>. {esc(m["what"])}'
              + (f' <i>Made or posted by:</i> {esc(m["who_made_it"])}.' if m.get('who_made_it') else '') + (f' <i>How it was caught:</i> {esc(m["how_caught"])}.' if m.get('how_caught') else '')
@@ -245,6 +245,6 @@ body = f"""<article class="pk">{top}
 title = 'AI deepfakes in the 2026 midterms: tracker'
 desc = f'Every AI-made fake and AI ad in the 2026 US midterms on our record: {len(MF)} entries, sourced and labelled confirmed, labelled or alleged, plus how to check a clip before you share.'
 write('midterms-2026/index.html', url=url, title=title, desc=desc, body=body, draft=not ok, crumbs=[('2026 midterms: AI fakes', '')],
-      graph=[webpage(url, title, desc, TODAY, not ok, rev), article(url, title, desc, TODAY, not ok, rev, 'Elections', [m['source_url'] for m in MF])])
+      graph=[webpage(url, title, desc, TODAY, not ok, ''), article(url, title, desc, TODAY, not ok, '', 'Elections', [m['source_url'] for m in MF])])
 register('midterms-2026/', [url] if ok else [])
 print(f'midterms-2026/: {len(MF)} fakes ({"approved" if ok else "draft, noindex"})')
