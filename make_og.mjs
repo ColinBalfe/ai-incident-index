@@ -57,7 +57,7 @@ await page.addStyleTag({ content: `
   #og-siren .k i { width: 16px; height: 16px; border-radius: 50%; background: #FF3300; box-shadow: 0 0 0 6px rgba(255,51,0,.25); }
   #og-siren .h { margin-top: 16px; color: #fff; font-weight: 700; font-size: 76px; line-height: .98; letter-spacing: -0.01em; text-transform: uppercase; text-decoration: underline; text-decoration-thickness: 5px; text-underline-offset: 8px; text-wrap: balance; }
   #og-siren .ft { position: absolute; left: 56px; right: 56px; bottom: 34px; display: flex; justify-content: space-between; align-items: baseline; color: #A8B3C2; font: 500 19px/1 Arial, sans-serif; border-top: 1px solid rgba(255,255,255,.18); padding-top: 18px; }
-  #og-siren .ft b { color: #fff; font-size: 24px; letter-spacing: .14em; }
+  #og-siren .ft b { color: #fff; font-size: 24px; letter-spacing: .16em; font-family: 'Playfair', Georgia, serif; font-weight: 700; }
 ` });
 await page.waitForTimeout(500);
 await page.screenshot({ path: out, clip: { x: 0, y: 0, width: 1200, height: 630 } });
