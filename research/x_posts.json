@@ -1,4 +1,47 @@
 [
- {"id": "rrwilliams-eth-claim-review", "url": "https://x.com/rrwilliams/status/2114833319431209352", "platform": "X", "author": "Ryan Williams", "handle": "@rrwilliams", "who": "MIT professor of theoretical computer science", "posted": "2026-10-26T21:35:29Z", "kind": "claim", "what": "OpenAI says one of its internal AI models proved that a famous assumption about how hard certain computing puzzles are is wrong. Three leading experts have been asked to run an open, independent check. Nobody outside OpenAI has confirmed it yet.", "quote": "An internal model at OpenAI has produced a claimed refutation of ETH!", "seen_via": "the post itself, read through X's public embed data", "related": "openai-eth-kakeya-qcd-proofs"},
- {"id": "boazbarak-eth-open-check", "url": "https://x.com/boazbaraktcs/status/2114836090766888977", "platform": "X", "author": "Boaz Barak", "handle": "@boazbaraktcs", "who": "Harvard computer scientist who also works at OpenAI", "posted": "2026-10-26T21:46:30Z", "kind": "opinion", "what": "A computer scientist who works at OpenAI welcomes the outside check, saying it comes with no secrecy agreements and no payment to the reviewers.", "quote": "with no NDAs, no secrecy, no compensation", "seen_via": "the post itself, read through X's public embed data", "related": "openai-eth-kakeya-qcd-proofs"}
+ {
+  "id": "trailofbits-php2shell-exploits-confirmed",
+  "url": "https://x.com/trailofbits/status/2114839775173906751",
+  "platform": "X",
+  "author": "Trail of Bits",
+  "handle": "@trailofbits",
+  "who": "security research firm that built a working attack to test the flaw",
+  "posted": "2026-10-26T22:01:08Z",
+  "kind": "breaking",
+  "power": 5,
+  "what": "A security firm says it has working attacks that take over servers running popular website software, on every recent version of PHP that hasn't been updated. If your site runs on PHP and you haven't updated, assume it can be broken into.",
+  "quote": "We’ve confirmed exploits work on pre-patch releases of PHP 8.2–8.5.",
+  "seen_via": "the post itself, read through X's public embed data",
+  "related": "php2shell"
+ },
+ {
+  "id": "rrwilliams-eth-claim-review",
+  "url": "https://x.com/rrwilliams/status/2114833319431209352",
+  "platform": "X",
+  "author": "Ryan Williams",
+  "handle": "@rrwilliams",
+  "who": "MIT professor of theoretical computer science",
+  "posted": "2026-10-26T21:35:29Z",
+  "kind": "claim",
+  "what": "OpenAI says one of its internal AI models proved that a famous assumption about how hard certain computing puzzles are is wrong. Three leading experts have been asked to run an open, independent check. Nobody outside OpenAI has confirmed it yet.",
+  "quote": "An internal model at OpenAI has produced a claimed refutation of ETH!",
+  "seen_via": "the post itself, read through X's public embed data",
+  "related": "openai-eth-kakeya-qcd-proofs",
+  "power": 5
+ },
+ {
+  "id": "boazbarak-eth-open-check",
+  "url": "https://x.com/boazbaraktcs/status/2114836090766888977",
+  "platform": "X",
+  "author": "Boaz Barak",
+  "handle": "@boazbaraktcs",
+  "who": "Harvard computer scientist who also works at OpenAI",
+  "posted": "2026-10-26T21:46:30Z",
+  "kind": "opinion",
+  "what": "A computer scientist who works at OpenAI welcomes the outside check, saying it comes with no secrecy agreements and no payment to the reviewers.",
+  "quote": "with no NDAs, no secrecy, no compensation",
+  "seen_via": "the post itself, read through X's public embed data",
+  "related": "openai-eth-kakeya-qcd-proofs",
+  "power": 4
+ }
 ]

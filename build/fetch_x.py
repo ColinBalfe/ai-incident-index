@@ -4,7 +4,7 @@ Uses X's public embed data (the same source X's own embedded posts use). Writes 
 keyed by entry id. A post that can't be fetched keeps its last cached copy; a post never fetched is
 shown from our own fields only. Run from the repo root: python3 build/fetch_x.py
 """
-import json, re, sys, urllib.request
+import html, json, re, sys, urllib.request
 
 SRC, OUT = 'research/x_posts.json', 'research/x_cache.json'
 
@@ -36,7 +36,7 @@ def clean(t):
     if vis and vis != t.get('text', ''):
         lead = t.get('text', '')[:a]
         text = text[len(lead):] if text.startswith(lead) else text
-    text = re.sub(r'\s*https://t\.co/\S+\s*$', '', text).strip()
+    text = html.unescape(re.sub(r'\s*https://t\.co/\S+\s*$', '', text)).strip()
     u = t.get('user') or {}
     out = {
         'name': u.get('name', ''), 'handle': u.get('screen_name', ''),

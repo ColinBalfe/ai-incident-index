@@ -1,5 +1,40 @@
 [
 {
+"id": "trailofbits-php2shell-exploits-confirmed",
+"url": "https://x.com/trailofbits/status/2114839775173906751",
+"platform": "X",
+"author": "Trail of Bits",
+"handle": "@trailofbits",
+"who": "security research firm that built a working attack to test the flaw",
+"posted": "2026-10-26T22:01:08Z",
+"kind": "breaking",
+"power": 5,
+"what": "A security firm says it has working attacks that take over servers running popular website software, on every recent version of PHP that hasn't been updated. If your site runs on PHP and you haven't updated, assume it can be broken into.",
+"quote": "We’ve confirmed exploits work on pre-patch releases of PHP 8.2–8.5.",
+"seen_via": "the post itself, read through X's public embed data",
+"related": "php2shell",
+"tweet": {
+"name": "Trail of Bits",
+"handle": "trailofbits",
+"avatar": "https://pbs.twimg.com/profile_images/1422651083500003334/FbbYmQT__bigger.png",
+"verified": true,
+"created_at": "2026-10-26T22:01:08.000Z",
+"text": "Our demo shows PHP2Shell giving a shell on MediaWiki, Symfony, Laravel, and phpBB.\n\nWe’ve confirmed exploits work on pre-patch releases of PHP 8.2–8.5. If you haven’t updated, assume attackers can compromise your server, and that exploitation will only get easier.",
+"id": "2114839775173906751",
+"photos": [],
+"quoted": {
+"name": "Dan Guido",
+"handle": "dguido",
+"avatar": "https://pbs.twimg.com/profile_images/1747707958761336832/wbg3zufg_bigger.jpg",
+"verified": true,
+"created_at": "2026-10-24T02:52:20.000Z",
+"text": "Update: Our PHP exploit is now production-grade.\n* stock php.ini-production, display_errors=off, normal memory_limit, multi-worker, ASLR, under load\n* ARM64 + x86-64 targets\n* MediaWiki, WordPress, phpBB, Laravel\n* Apache/mod_php and nginx/php-fpm -> root\nx.com/dguido/status/…",
+"id": "2113825891021144306",
+"photos": []
+}
+}
+},
+{
 "id": "boazbarak-eth-open-check",
 "url": "https://x.com/boazbaraktcs/status/2114836090766888977",
 "platform": "X",
@@ -12,6 +47,7 @@
 "quote": "with no NDAs, no secrecy, no compensation",
 "seen_via": "the post itself, read through X's public embed data",
 "related": "openai-eth-kakeya-qcd-proofs",
+"power": 4,
 "tweet": {
 "name": "Boaz Barak",
 "handle": "boazbaraktcs",
@@ -46,6 +82,7 @@
 "quote": "An internal model at OpenAI has produced a claimed refutation of ETH!",
 "seen_via": "the post itself, read through X's public embed data",
 "related": "openai-eth-kakeya-qcd-proofs",
+"power": 5,
 "tweet": {
 "name": "Ryan Williams @rrwilliams.bsky.social",
 "handle": "rrwilliams",

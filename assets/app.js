@@ -624,13 +624,19 @@ function drawWall() {
     const TICK = '<svg viewBox="0 0 22 22" aria-label="Verified account"><circle cx="11" cy="11" r="10" fill="#1d9bf0"/><path d="M6.5 11.3l3 3 6-6.3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     const when = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET · ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' }); };
     const who = (t, x, small) => { const h = el('div', 'tw-h'); const av = el('span', 'tw-av'); av.textContent = (t.name || x.author || '?').trim()[0]; if (t.avatar) { const im = el('img'); im.src = t.avatar; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); av.append(im); } const nm = el('span', 'tw-nm'); const b = el('b', null, t.name || x.author); nm.append(b); if (t.verified) { const v = el('span', 'tw-v'); v.innerHTML = TICK; nm.append(v); } nm.append(el('span', 'tw-hd', '@' + (t.handle || (x.handle || '').replace(/^@/, '')))); h.append(av, nm); if (!small) { const lg = el('span', 'tw-x'); lg.innerHTML = XLOGO; h.append(lg); } return h; };
-    const bx = el('section', 'xon'); bx.append(el('h2', 'wall-ch', 'On X'));
+    const bx = el('section', 'xon'); bx.append(el('h2', 'wall-ch', 'On X: three posts worth your time'));
     const grid = el('div', 'xon-g');
-    const RK = { breaking: 0, official: 1, claim: 2, opinion: 3 };
-    [...xposts].sort((a, b) => (RK[a.kind] ?? 4) - (RK[b.kind] ?? 4) || Date.parse(b.posted) - Date.parse(a.posted)).slice(0, 6).forEach((x) => {
+    // three slots, one per kind of post: the news (first-hand or official), the claim, the take. Best = highest power, then newest; the last 72 hours first, then up to 14 days back so all three are always filled
+    const SLOTS = [['news', ['breaking', 'official']], ['claim', ['claim']], ['take', ['opinion']]];
+    const age = (x) => Date.now() - Date.parse(x.posted), best = (a, b) => (b.power || 3) - (a.power || 3) || Date.parse(b.posted) - Date.parse(a.posted);
+    const pick = (kinds, used) => { const c = xposts.filter((x) => kinds.includes(x.kind) && !used.has(x)); return [...c.filter((x) => age(x) < 72 * 3.6e6)].sort(best)[0] || [...c].sort(best)[0]; };
+    const used = new Set(), three = [];
+    SLOTS.forEach(([, k]) => { const x = pick(k, used); if (x) { used.add(x); three.push(x); } });
+    while (three.length < 3) { const x = pick(['breaking', 'official', 'claim', 'opinion'], used); if (!x) break; used.add(x); three.push(x); }
+    three.forEach((x) => {
       const t = x.tweet || { name: x.author, handle: (x.handle || '').replace(/^@/, ''), text: x.quote, created_at: x.posted };
       const item = el('div', 'xon-i');
-      item.append(el('span', 'wl-lab ' + (x.kind === 'opinion' ? 'opinion' : x.kind === 'claim' ? 'reported' : 'proven'), XK[x.kind] || x.kind));
+      item.append(el('span', 'wl-lab ' + (x.kind === 'opinion' ? 'opinion' : x.kind === 'claim' ? 'reported' : 'proven'), x.kind === 'breaking' && age(x) >= 12 * 3.6e6 ? 'First-hand' : (XK[x.kind] || x.kind)));
       const card = el('a', 'tw'); card.href = x.url; card.target = '_blank'; card.rel = 'noopener noreferrer'; card.setAttribute('aria-label', 'Post by ' + (t.name || x.author) + ' on X');
       card.append(who(t, x), el('p', 'tw-t', t.text || x.quote));
       if (t.photos && t.photos[0]) { const im = el('img', 'tw-ph'); im.src = t.photos[0]; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); card.append(im); }
@@ -639,7 +645,7 @@ function drawWall() {
       item.append(card, el('p', 'xon-w', x.what), el('small', 'xon-by', (x.author || t.name) + ': ' + x.who));
       grid.append(item);
     });
-    bx.append(grid, el('p', 'xon-note', 'Breaking means a first-hand source posting a new fact you can check. An unverified claim is new but nobody independent has checked it yet. Opinion is commentary. The post text is shown exactly as it appears on X; the line under each is ours.'));
+    bx.append(grid, el('p', 'xon-note', 'Three posts, one of each kind: the news, the claim, the take. Breaking means a first-hand source posting a new fact you can check, in the last 12 hours; after that it shows as First-hand. An unverified claim is new but nobody independent has checked it yet. Opinion is commentary. The post text is shown exactly as it appears on X; the line under each is ours.'));
     return bx; })() : null;
   const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })(), txt(' · '), (() => { const a = el('a', null, 'Earlier days'); a.href = '/wire/archive/'; return a; })(), txt(' · Beats: '), (() => { const a = el('a', null, 'AI near you'); a.href = '/wire/near-you/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'AI at school'); a.href = '/wire/school/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'Layoffs tied to AI'); a.href = '/jobs/layoffs/'; return a; })());
   // Coming up: the next dated tests, so the reader knows when the loops close (no odds on the front page)
