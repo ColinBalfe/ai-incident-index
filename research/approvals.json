@@ -1,17 +1,22 @@
 {
  "checks": {
-  "approved": false
+  "approved": true,
+  "reviewed": "2026-10-27"
  },
  "jobs": {
-  "approved": false
+  "approved": true,
+  "reviewed": "2026-10-27"
  },
  "can-ai": {
-  "approved": false
+  "approved": true,
+  "reviewed": "2026-10-27"
  },
  "exposed": {
-  "approved": false
+  "approved": true,
+  "reviewed": "2026-10-27"
  },
  "midterms": {
-  "approved": false
+  "approved": true,
+  "reviewed": "2026-10-27"
  }
 }

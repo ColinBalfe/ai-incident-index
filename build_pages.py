@@ -325,6 +325,10 @@ open('news-sitemap.xml', 'w', encoding='utf-8').write('\n'.join(ns))
 json.dump([u for u, _, _ in _news], open('data/fresh_urls.json', 'w'))
 _help_live = [h for h in HELP if h.get('approved')]
 try:
+    _appr = json.load(open('research/approvals.json'))
+except (OSError, ValueError):
+    _appr = {}
+try:
     _learn_live = [h for h in json.load(open('research/learn.json', encoding='utf-8')) if h.get('approved')]
 except (OSError, ValueError):
     _learn_live = []
@@ -345,7 +349,7 @@ Last refresh: {as_of_label}. {len(scored)} incidents scored. Corrections and ret
 - [Did they fix it?]({site}c/): report, response, claimed fix, independent check, current status
 - [What AI can now do]({site}m/): capability milestones graded from demonstration to real consequences
 {f"- [Live tracker: {_live['title']}]({site}php2shell/)" if _live and os.path.exists('php2shell/index.html') else ''}
-{''.join(f'- [What to do: {h["title"]}]({site}help/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _help_live)}{''.join(f'- [Know What It Means: {h["title"]}]({site}learn/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _learn_live)}
+{''.join(f'- [What to do: {h["title"]}]({site}help/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _help_live)}{''.join(f'- [Know What It Means: {h["title"]}]({site}learn/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _learn_live)}{''.join(f'- [{t}]({site}{u}): {d}' + chr(10) for u, t, d in [('midterms-2026/', 'AI fakes in the 2026 midterms: tracker', 'every AI-made election fake and AI ad on the record, labelled and sourced'), ('exposed/', 'Am I exposed?', 'search organisations named in AI incidents, with status, sources and what to do'), ('checks/', 'Is this a scam?', 'yes-or-no checks for scams AI makes more convincing'), ('jobs/', 'Can AI do your job?', 'graded, dated evidence by occupation'), ('can-ai/', 'What AI can now do', 'graded answers on what AI can do, with an evidence ladder')] if os.path.exists(u + 'index.html') and (_appr.get(u.strip('/').replace('midterms-2026', 'midterms')) or {}).get('approved'))}
 
 ## Data
 - [incidents.json]({site}data/incidents.json) and [incidents.csv]({site}data/incidents.csv): every incident with its five factor ratings, dates, summary and sources
