@@ -393,7 +393,7 @@ function drawNow() {
   const grid = document.getElementById('live-grid');
   const since = D.meta.live_since ? Date.parse(D.meta.live_since) : null;
   const clock = since ? (() => { const c = el('div', 'live clock'); const v = el('div', 'v'); const upd = () => { const ms = Date.now() - since; const h = Math.floor(ms / 3.6e6), mn = Math.floor((ms % 3.6e6) / 6e4), sc = Math.floor((ms % 6e4) / 1000); v.textContent = h + 'h ' + String(mn).padStart(2, '0') + 'm ' + String(sc).padStart(2, '0') + 's'; }; upd(); clearInterval(window._liveClock); window._liveClock = setInterval(upd, 1000); c.append(v, el('div', 'l', D.meta.live_since_label || 'since the fix shipped')); c.append(el('div', 'd', 'Counting from the coordinated release. The gap between a patch and a working exploit is now measured in hours.')); return c; })() : null;
-  grid.replaceChildren(...(clock ? [clock] : []), ...D.live.map((r) => {
+  grid.replaceChildren(...(clock ? [clock] : []), ...D.live.filter((r) => !(r.hide_while_zero && String(r.value).trim() === '0')).map((r) => {
     const good = (r.key === 'confirmed' && r.value === '0') || (r.key === 'kev' && /not/i.test(r.value));
     const c = el('div', 'live' + (good ? ' ok' : ''));
     const v = el('div', 'v'); if (PRE) v.textContent = r.value; else countUp(v, r.value, 'live:' + r.key); c.append(v, el('div', 'l', r.label));

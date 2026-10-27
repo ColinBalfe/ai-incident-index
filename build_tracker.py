@@ -40,7 +40,7 @@ title = f"PHP2Shell live tracker: {', '.join(cves)} exploitation, victims, CISA 
 desc = f"Updated {as_of_label}. Is PHP2Shell being exploited, who has been hit, which PHP versions are fixed ({', '.join(fixed)}), and whether CISA has listed it. Every fact sourced."
 url = site + 'php2shell/'
 
-stats = ''.join(f'<div class="tk-st"><b>{esc(x["value"])}</b><span>{esc(x["label"])}</span><small>{a(x["source_url"], x["source_label"])}</small></div>' for x in live)
+stats = ''.join(f'<div class="tk-st"><b>{esc(x["value"])}</b><span>{esc(x["label"])}</span><small>{a(x["source_url"], x["source_label"])}</small></div>' for x in live if not (x.get('hide_while_zero') and str(x.get('value')).strip() == '0'))
 rows = sorted(tl, key=lambda t: t['date'], reverse=True)[:25]
 tl_html = ''.join(f'<li><time>{fd(t["date"])}</time><span>{esc(t["event"])} {a(t["source_url"], "source") if t.get("source_url") else ""}</span></li>' for t in rows)
 order = {'confirmed': 0, 'attacked': 1, 'disrupted': 2}
@@ -69,7 +69,7 @@ body = f"""
 <h1>PHP2Shell live tracker</h1>
 <div class="cv">{esc(' · '.join(cves))} · CVSS up to {esc(str(P.get('cvss_max')))} · fixed Oct 21, 2026</div>
 <span class="up">Updated {esc(as_of_label)}</span>
-<p class="tk-sum"><b>Status:</b> {esc(conf.get('value',''))} {esc(conf.get('label',''))}. {esc(kev.get('label','').capitalize() if False else '')}CISA Known Exploited Vulnerabilities: <b>{esc(kev.get('value',''))}</b>. Exploit attempts: <b>{esc(att.get('value',''))}</b> ({esc(att.get('label',''))}). Fixed in PHP {esc(', '.join(fixed))}.</p>
+<p class="tk-sum"><b>Status:</b> {'' if (conf.get('hide_while_zero') and str(conf.get('value')).strip() == '0') else esc(conf.get('value','')) + ' ' + esc(conf.get('label','')) + '. '}{esc(kev.get('label','').capitalize() if False else '')}CISA Known Exploited Vulnerabilities: <b>{esc(kev.get('value',''))}</b>. Exploit attempts: <b>{esc(att.get('value',''))}</b> ({esc(att.get('label',''))}). Fixed in PHP {esc(', '.join(fixed))}.</p>
 <details class="tk-more"><summary>The full latest note</summary><p class="tk-note">{esc(meta.get('live_note') or dd.get('now_text') or '')}</p></details>
 <div class="tk-grid">{stats}</div>
 <h2>Am I affected? What to do</h2>

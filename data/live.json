@@ -2,6 +2,7 @@
 {
 "key": "confirmed",
 "value": "0",
+"hide_while_zero": true,
 "label": "organizations confirmed breached by name",
 "detail": "Still no organization confirmed breached by name, even after the KEV listing (ZDNet Korea, Oct 27; BleepingComputer, Oct 27). Wiz (Oct 27) has seen no end-to-end success in its own telemetry; the only confirmed compromises remain Karimi's honeypots. A SOCRadar report on a Japanese real-estate extortion operator found PHP2Shell tooling on the operator's server but 'no link between PHP2Shell and these intrusions'.",
 "source_url": "https://www.wiz.io/blog/php2shell-exploitation-so-far",
