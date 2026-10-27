@@ -173,3 +173,14 @@ If the rebase reports a conflict, keep both sides' intent (your data rows and ch
 Finish with a short summary: what was added (counts), what changed on the live incident, anything that could not be verified, and the next scheduled check. Then paste the post queue from `posts/<date>.md` in full (the editor approves and posts by hand; nothing posts itself), and the daily brief from `briefs/<date>.md` in full (the editor reads, cuts, records or mails it). On Sundays run `python3 build_posts.py --week-ahead` so the queue includes the next-14-days post.
 
 Forecast resolutions: when a forecast's event has happened, or its `resolve_by` date has passed, add `resolved: yes|no`, `resolved_date` and a one-line `resolution_note` with a source to that forecast (in `build/aux_data.py`, where the forecasts live) rather than deleting it. The ledger in the brief grades these in public; a forecast is never silently edited after its window closes, only resolved or replaced with a new, dated one.
+
+## Growing the page families (every refresh)
+
+The families compound from the same research the refresh already does. Each refresh:
+
+- **Am I Exposed?** grows by itself: every new row in `research/victims.json` (named organisation, status, extent, source) becomes an entry and, if it passes the gate (confirmed, attacked, or in two or more incidents), an indexable page. Never name an organisation without a source; use the status labels exactly.
+- **Midterms tracker** (`research/midterm_fakes.json`): add every newly confirmed, labelled or alleged AI election fake, same fields, until results are certified; then freeze the page with a closing note.
+- **Can AI Do Your Job?** (`research/jobs.json`): when a refresh finds a company tying cuts to AI, a deployment, or a study for an occupation we cover, add a `jobs_evidence` row or upgrade a task's status (with its dated source). Add a new occupation once a week when the evidence for it is real.
+- **Is This a Scam?** (`research/checks.json`) and **What AI Can Now Do** (`research/can_ai.json`): add a new case to the matching page whenever the index gets one; add a new pattern or question once a week when it has an authoritative source (FTC, FBI, CFPB, a regulator, a peer-reviewed or lab study).
+- New pages in an approved family publish on the next build; anything new in tone or sensitivity (a new family, a page about minors, suicide or sexual images) goes up as a draft for Colin first.
+- Bump `updated` on any page you change, and run `python3 build_families.py` before `build_pages.py`.
