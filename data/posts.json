@@ -50,6 +50,14 @@
    "note": ""
   },
   {
+   "kind": "case",
+   "text": "Did they fix it? PHP2Shell: AI-found PHP flaws, global precautionary shutdowns: The fix exists for supported PHP versions and nobody has broken it yet; the exploit is now confirmed to work against a real unpatched server (a honeypot), the one vendor…",
+   "link": "https://warningshots.ai/c/php2shell/",
+   "image": "cards/c-php2shell.jpg",
+   "chars": 274,
+   "note": "Status: ongoing"
+  },
+  {
    "kind": "milestone",
    "text": "What AI can now do: AI agents chain flaws into virtual-machine escapes and talk across isolation through the CPU cache. Given source code and vulnerability documentation, fleets of OpenAI agents broke out of hardened microVMs onto host machines and…",
    "link": "https://warningshots.ai/m/agents-escape-microvms-2026/",

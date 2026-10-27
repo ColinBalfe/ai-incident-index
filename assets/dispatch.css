@@ -173,3 +173,5 @@ footer a { color: var(--ink-2); }
 .rel li a:hover { text-decoration: underline; }
 .rel li b { display: inline-block; min-width: 2.2em; color: var(--alarm); font-variant-numeric: tabular-nums; }
 .rel li small { display: block; color: var(--ink-3); font-size: 12.5px; margin-top: 2px; padding-left: 2.2em; }
+
+.live-nav .live-dot{color:var(--alarm);font-size:.8em;vertical-align:1px;animation:livepulse 2s ease-in-out infinite}@keyframes livepulse{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.live-nav .live-dot{animation:none}}

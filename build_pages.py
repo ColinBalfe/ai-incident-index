@@ -57,9 +57,28 @@ def av_color(org_type):
 # ---------- the shell (shared with build_tools.py)
 from pageshell import shell, MARK, NAV, FOOT, SCRIPT
 
-def article_ld(title, desc, url, img, published, section):
+import hashlib
+try:   # per-page last real change: a hash of the page body, so the stamp moves only when the content does
+    LM = json.load(open('research/page_lastmod.json', encoding='utf-8'))
+except (OSError, ValueError):
+    LM = {}
+def lastmod(url, body, first):
+    h = hashlib.sha1(re.sub(r'\s+', ' ', body).encode()).hexdigest()[:16]
+    old = LM.get(url)
+    if old and old[0] == h: return old[1]
+    d = (first or AS_OF_DATE)[:10] if not old else AS_OF_DATE
+    if d > AS_OF_DATE: d = AS_OF_DATE
+    LM[url] = [h, d]; return d
+try:
+    DEEP_IDS = {d['incident_id'] for d in json.load(open('data/deepdives.json', encoding='utf-8'))}
+except (OSError, ValueError):
+    DEEP_IDS = set()
+def stamp(d):
+    return f'<p class="k lastchanged">Last changed {esc(dt.date.fromisoformat(d).strftime("%b %-d, %Y"))}</p>'
+
+def article_ld(title, desc, url, img, published, section, modified=None):
     d = {"@context": "https://schema.org", "@type": "Article", "headline": title[:110], "description": desc, "url": url, "mainEntityOfPage": url, "image": [img],
-         "datePublished": published, "dateModified": AS_OF, "articleSection": section, "isAccessibleForFree": True,
+         "datePublished": published, "dateModified": modified or AS_OF, "articleSection": section, "isAccessibleForFree": True,
          "author": {"@type": "Organization", "name": "Warning Shots", "url": site}, "publisher": {"@type": "NewsMediaOrganization", "name": "Warning Shots", "url": site, "logo": {"@type": "ImageObject", "url": site + "assets/icon-512.png"}}}
     crumbs = {"i": ("All incidents", site + "i/"), "c": ("Did they fix it?", site + "c/"), "m": ("What AI can now do", site + "m/")}
     kind = url.replace(site, '').split('/')[0]
@@ -190,7 +209,10 @@ def incident_page(r, prev, nxt):
     body.append(share_html(url, share_text, f'/cards/i-{r["id"]}.jpg' if os.path.exists(f'cards/i-{r["id"]}.jpg') else '', f'/#i={r["id"]}', 'Open on the index'))
     body.append(prevnext(prev, nxt, 'i', lambda x: x['title'], lambda x: f'{x["ws"]} · {fdate(x["date"], x.get("date_precision"))} · {x["severity"]}/100 {x["tier"]}'))
     desc = f'{first_sentence(r["summary"])} {r["tier"]}, {r["severity"]}/100. {"Real-world incident" if r["setting"] == "wild" else "Lab or test finding"}, {fdate(r["date"], r.get("date_precision"))}. Scored and sourced by Warning Shots.'
-    write(f'i/{r["id"]}/index.html', shell(title=r['title'], desc=desc[:300], url=url, img=img, body='\n'.join(body), jsonld=article_ld(r['title'], desc[:300], url, img, (r.get('disclosed') or r['date'])[:10], 'Incidents'), kind='incident'))
+    _first = max((r.get('disclosed') or r['date'])[:10], r['date'][:10]) if len(r['date']) >= 10 else (r.get('disclosed') or r['date'] + '-01')[:10]
+    if r['id'] in DEEP_IDS or (dt.date.fromisoformat(AS_OF_DATE) - dt.date.fromisoformat(_first)).days <= 14: _first = AS_OF_DATE   # live dossiers and recent cases have been edited recently; baseline them at the first tracked build
+    _lmd = lastmod(url, '\n'.join(body), _first); body.insert(1, stamp(_lmd))
+    write(f'i/{r["id"]}/index.html', shell(title=r['title'], desc=desc[:300], url=url, img=img, body='\n'.join(body), jsonld=article_ld(r['title'], desc[:300], url, img, (r.get('disclosed') or r['date'])[:10], 'Incidents', _lmd), kind='incident'))
     return url
 
 for i, r in enumerate(by_date):
@@ -212,7 +234,8 @@ def case_page(f, prev, nxt):
     body.append(prevnext(prev, nxt, 'c', lambda x: x['name'], lambda x: 'Status: ' + cur_status(x).replace('_', ' ')) if (prev or nxt) else '')
     desc = ('Did they fix it? ' + (f.get('one_liner') or cur.get('note') or ''))[:300]
     rid = r['date'] if r else AS_OF_DATE
-    write(f'c/{f["incident_id"]}/index.html', shell(title=f['name'], desc=desc, url=url, img=img, body='\n'.join(body), jsonld=article_ld(f['name'], desc, url, img, rid[:10], 'Did they fix it?'), kind='case'))
+    _lmd = lastmod(url, '\n'.join(body), max([c.get('date', '')[:10] for c in f['chain'] if c.get('date')] or [AS_OF_DATE])); body.insert(1, stamp(_lmd))
+    write(f'c/{f["incident_id"]}/index.html', shell(title=f['name'], desc=desc, url=url, img=img, body='\n'.join(body), jsonld=article_ld(f['name'], desc, url, img, rid[:10], 'Did they fix it?', _lmd), kind='case'))
     return url
 
 cases = [dict(f, id=f['incident_id']) for f in fixes]
@@ -243,7 +266,8 @@ def milestone_page(c, prev, nxt):
     body.append(share_html(url, share_text, f'/cards/m-{c["id"]}.jpg' if os.path.exists(f'cards/m-{c["id"]}.jpg') else '', f'/index/#m={c["id"]}', 'Open on the index'))
     body.append(prevnext(prev, nxt, 'm', lambda x: x['title'], lambda x: fdate(x['date'], x.get('date_precision')) + ' · ' + (x.get('org') or '')))
     desc = ((c.get('what') or '') + ' Graded from demonstration to real consequences by Warning Shots.')[:300]
-    write(f'm/{c["id"]}/index.html', shell(title=c['title'], desc=desc, url=url, img=img, body='\n'.join(body), jsonld=article_ld(c['title'], desc, url, img, c['date'][:10], 'What AI can now do'), kind='milestone'))
+    _lmd = lastmod(url, '\n'.join(body), c['date'][:10]); body.insert(1, stamp(_lmd))
+    write(f'm/{c["id"]}/index.html', shell(title=c['title'], desc=desc, url=url, img=img, body='\n'.join(body), jsonld=article_ld(c['title'], desc, url, img, c['date'][:10], 'What AI can now do', _lmd), kind='milestone'))
     return url
 
 cap_sorted = sorted(caps, key=lambda c: (c['date'], c['id']))
@@ -300,7 +324,7 @@ def _img(u):
             return f'<image:image><image:loc>{esc(site)}cards/{k}-{esc(mm.group(1))}.jpg</image:loc></image:image>'
     return ''
 for u in urls:
-    lm = _lm.get(u) or lastmod
+    lm = (LM.get(u) or [None, None])[1] or _lm.get(u) or lastmod
     if len(lm) < 10 or lm > lastmod: lm = lastmod
     sm.append(f'<url><loc>{esc(u)}</loc><lastmod>{lm}</lastmod>{_img(u)}</url>')
 sm.append('</urlset>')
@@ -332,6 +356,7 @@ try:
     _learn_live = [h for h in json.load(open('research/learn.json', encoding='utf-8')) if h.get('approved')]
 except (OSError, ValueError):
     _learn_live = []
+json.dump(LM, open('research/page_lastmod.json', 'w'), indent=0)
 open('robots.txt', 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\nSitemap: {site}sitemap.xml\nSitemap: {site}news-sitemap.xml\n')
 _sev = sorted(scored, key=lambda r: -r['severity'])
 _live = by_id.get(meta.get('live_incident') or '')

@@ -21,6 +21,7 @@
 "source_url": "https://ppc.land/32-states-say-character-ai-sale-rules-block-bids-that-would-beat-disney/",
 "resolution": null,
 "plain": "Will a court approve the rules for selling Character.AI, with Disney's $700,000 break-up fee intact, by Oct 31?",
+"kind": "call",
 "odds_label": "60%"
 },
 {
@@ -43,6 +44,7 @@
 "source_url": "https://www.cisa.gov/news-events/directives",
 "resolution": null,
 "plain": "Will America's cyber agency order federal agencies to act on the flaw under most websites, by Oct 31?",
+"kind": "call",
 "odds_label": "15%"
 },
 {
@@ -64,6 +66,7 @@
 "source_url": "https://alignment.openai.com/misalignment-reports/",
 "resolution": null,
 "plain": "Will OpenAI publish its 21st report of its own AI misbehaving, by Oct 31?",
+"kind": "call",
 "odds_label": "70%"
 },
 {
@@ -87,6 +90,7 @@
 "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
 "resolution": null,
 "plain": "Will Britain say all 32 government services it switched off are back, by Oct 31?",
+"kind": "call",
 "odds_label": "50%"
 },
 {
@@ -109,6 +113,7 @@
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
 "resolution": null,
 "plain": "Will a real organization confirm it was broken into through the flaw under most websites by Nov 7?",
+"kind": "call",
 "odds_label": "60%"
 },
 {
@@ -130,6 +135,7 @@
 },
 "source_url": "https://www.php.net/archive/2026.php#2026-10-23-1",
 "resolution": null,
+"kind": "call",
 "odds_label": "80%"
 },
 {
@@ -146,6 +152,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "90%"
 },
 {
@@ -162,6 +169,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "85%"
 },
 {
@@ -178,6 +186,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "2%"
 },
 {
@@ -194,6 +203,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "85%"
 },
 {
@@ -215,6 +225,7 @@
 },
 "source_url": "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/",
 "resolution": null,
+"kind": "call",
 "odds_label": "25%"
 },
 {
@@ -235,6 +246,7 @@
 },
 "source_url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
 "resolution": null,
+"kind": "call",
 "odds_label": "30%"
 },
 {
@@ -255,6 +267,7 @@
 },
 "source_url": "https://www.engadget.com/2296019/openai-says-its-cutting-off-internet-access-for-frontier-model-training/",
 "resolution": null,
+"kind": "call",
 "odds_label": "20%"
 },
 {
@@ -271,6 +284,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "60%"
 },
 {
@@ -287,6 +301,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "35%"
 },
 {
@@ -303,6 +318,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "50%"
 },
 {
@@ -319,6 +335,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "25%"
 },
 {
@@ -335,6 +352,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "30%"
 },
 {
@@ -351,6 +369,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "70%"
 },
 {
@@ -367,6 +386,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "30%"
 },
 {
@@ -383,6 +403,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "35%"
 },
 {
@@ -399,6 +420,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "1%"
 },
 {
@@ -415,6 +437,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "12%"
 },
 {
@@ -431,6 +454,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "40%"
 },
 {
@@ -447,6 +471,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "90%"
 },
 {
@@ -463,6 +488,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "4%"
 },
 {
@@ -479,6 +505,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "25%"
 },
 {
@@ -495,6 +522,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "65%"
 },
 {
@@ -511,6 +539,7 @@
 "related": {},
 "source_url": "",
 "resolution": null,
+"kind": "question",
 "odds_label": "10%"
 },
 {
@@ -539,6 +568,7 @@
 "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
 },
 "plain": "Will America's cyber agency formally warn that the flaw under most websites is being used in attacks, by Oct 31?",
+"kind": "call",
 "odds_label": "50%"
 }
 ]

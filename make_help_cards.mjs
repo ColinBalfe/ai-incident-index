@@ -1,7 +1,7 @@
 // Share images for the help pages (1200x630): node make_help_cards.mjs. Text-only template cards, no photos of real people or incidents.
 import { chromium } from 'playwright';
 import fs from 'fs';
-const sets = [['help', 'What to do', JSON.parse(fs.readFileSync('research/help.json', 'utf8'))], ['learn', 'Know what it means', JSON.parse(fs.readFileSync('research/learn.json', 'utf8'))]];
+const sets = [['help', 'What to do', JSON.parse(fs.readFileSync('research/help.json', 'utf8'))], ['learn', 'Know what it means', JSON.parse(fs.readFileSync('research/learn.json', 'utf8'))], ...(fs.existsSync('data/forecast_cards.json') ? [['forecast', 'Warning Shots forecast', JSON.parse(fs.readFileSync('data/forecast_cards.json', 'utf8'))]] : [])];
 for (const [d] of sets) fs.mkdirSync('assets/' + d, { recursive: true });
 const mark = fs.readFileSync('assets/mark.svg', 'utf8');
 const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });

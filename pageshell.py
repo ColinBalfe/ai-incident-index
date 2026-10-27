@@ -15,7 +15,14 @@ as_of_label = dt.datetime.fromisoformat(AS_OF).astimezone(ZoneInfo('America/New_
 # ---------- the shell
 tpl = open(os.path.join(here, 'index.template.html'), encoding='utf-8').read()
 MARK = re.search(r'<a class="logo"[^>]*>\s*(<svg class="mark nf".*?</svg>)', tpl, re.S).group(1)
-NAV = '<nav aria-label="Sections"><a href="/wire/">The Wire</a><a href="/php2shell/">Live tracker</a><a href="/index/">Record</a><a href="/i/">Incidents</a><a href="/index/#about">About</a></nav>'
+def _live_nav():
+    sr = meta.get('serial') or {}
+    if not sr.get('name') or sr.get('state') == 'closed' or not sr.get('day1'):
+        return ''   # the live slot goes dark when nothing is live
+    day = (dt.date.fromisoformat(AS_OF[:10]) - dt.date.fromisoformat(sr['day1'])).days + 1
+    return f'<a href="{esc(sr.get("url") or "/")}" class="live-nav" title="{esc(sr["name"])}: day {day} since it went public"><span class="live-dot" aria-hidden="true">●</span> Live case · day {day}</a>'
+LIVE_NAV = _live_nav()
+NAV = '<nav aria-label="Sections"><a href="/wire/">The Wire</a>' + LIVE_NAV + '<a href="/exposed/">Am I exposed?</a><a href="/i/">Incidents</a><a href="/index/#about">About</a></nav>'
 FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Scores are the index’s own, by a <a href="/index/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}. <a href="/learn/">Know What It Means</a> · <a href="/help/">What to do</a> · <a href="/checks/">Is this a scam?</a> · <a href="/exposed/">Am I exposed?</a> · <a href="/jobs/">Can AI do your job?</a> · <a href="/can-ai/">What AI can do</a> · <a href="/press/">Press</a> · <a href="/badge/">Embed the level</a></span></div></footer>'
 SCRIPT = """<script>
 document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { var t = b.getAttribute('data-copy'); var done = function () { var x = document.getElementById('toast'); x.textContent = 'Copied'; x.classList.add('on'); setTimeout(function () { x.classList.remove('on'); }, 1500); };

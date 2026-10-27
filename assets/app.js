@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -594,7 +594,12 @@ function drawWall() {
       tabs.querySelectorAll('button').forEach((b) => { const on = b.dataset.k === cur; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); }); };
     opts.forEach(([k, lbl]) => { const b = el('button', 'you-tab', lbl); b.type = 'button'; b.dataset.k = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => { cur = k; try { if (k !== 'all') localStorage.setItem('ws-lens', k); } catch (e) {} paint(); }); tabs.append(b); });
     head.append(tabs); box.append(head, t1, t2); paint(); return box; })() : null;
-  lead.replaceChildren(dl, sv, ...(youBox ? [youBox] : []), ...(strip ? [strip] : []));
+  // Breaking from X/Bluesky: only first-hand, material posts under 12 hours old earn the bar (REFRESH.md rules); everything else is in "On X" below
+  const XK = { breaking: 'Breaking', official: 'Official', claim: 'Unverified claim', opinion: 'Opinion' };
+  const xposts = (D.xposts || []).filter((x) => x && x.url);
+  const brk = xposts.find((x) => (x.kind === 'breaking' || x.kind === 'official') && (Date.now() - Date.parse(x.posted)) < 12 * 3.6e6);
+  const bbar = brk ? (() => { const b = el('a', 'xbreak'); b.href = brk.url; b.target = '_blank'; b.rel = 'noopener noreferrer'; b.append(el('span', 'xb-k', XK[brk.kind]), el('span', 'xb-t', brk.what), el('span', 'xb-s', brk.author + ', ' + brk.who + ' · ' + ageShort({ published: brk.posted }) + ' · ' + brk.platform)); return b; })() : null;
+  lead.replaceChildren(...(bbar ? [bbar] : []), dl, sv, ...(youBox ? [youBox] : []), ...(strip ? [strip] : []));
   // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');
   [1, 2, 3].forEach((c) => {
@@ -614,7 +619,8 @@ function drawWall() {
   const extra = !slotH.some((h) => etH >= h - 0.25 && etH <= h + 1.5);
   if (D.meta.edition) { const ea = el('a', null, (extra ? 'Extra edition, No. ' : 'Edition No. ') + D.meta.edition); ea.href = '/' + (D.meta.edition_path || 'archive/'); ea.setAttribute('data-tip', 'Edition No. ' + D.meta.edition + ', published ' + fmtET(D.meta.as_of) + '. Opens a frozen copy of this page exactly as published.'); const cl = el('a', null, 'what changed'); cl.href = '/index/#changelog'; const all = el('a', null, 'every edition'); all.href = '/archive/'; ed.append(ea, txt(' · ' + fmtET(D.meta.as_of) + ' · '), cl, txt(' · '), all); if (extra) ea.setAttribute('data-tip', 'An extra edition outside the 5:17 AM, 12:17 PM and 6:17 PM schedule, published because something worth adding came in. Opens a frozen copy.'); }
   const cu = el('p', 'wall-cu'); cu.append(el('b', null, 'That’s your Warning Shots for ' + new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric' }).format(new Date(D.meta.as_of)) + ', as of ' + fmtET(D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.'), txt(' You’re caught up.' + (D.meta.next_check ? ' Next edition ' + fmtET(D.meta.next_check).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.' : '') + ' See what’s coming. Know what it means.'));
-  const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })());
+  const xbox = xposts.length ? (() => { const bx = el('section', 'xon'); bx.append(el('h2', 'wall-ch', 'On X and Bluesky')); xposts.slice(0, 6).forEach((x) => { const li = el('div', 'xon-i'); li.append(el('span', 'wl-lab ' + (x.kind === 'opinion' ? 'opinion' : x.kind === 'claim' ? 'reported' : 'proven'), XK[x.kind] || x.kind)); const a = el('a', null, x.what); a.href = x.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.append(a, el('small', null, ' ' + x.author + ', ' + x.who + ' · ' + ageShort({ published: x.posted }))); bx.append(li); }); bx.append(el('p', 'xon-note', 'Breaking means a first-hand source posting a new, checkable fact. Claims are new but not yet checked; opinion is commentary. We link every post and open it before it goes here.')); return bx; })() : null;
+  const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })(), txt(' · '), (() => { const a = el('a', null, 'Earlier days'); a.href = '/wire/archive/'; return a; })(), txt(' · Beats: '), (() => { const a = el('a', null, 'AI near you'); a.href = '/wire/near-you/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'AI at school'); a.href = '/wire/school/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'Layoffs tied to AI'); a.href = '/jobs/layoffs/'; return a; })());
   // Coming up: the next dated tests, so the reader knows when the loops close (no odds on the front page)
   const up = el('div', 'comingup'); const asOfD = D.meta.as_of.slice(0, 10);
   const open = (D.calls || []).filter((c) => c && !c.resolution && c.resolve_by >= asOfD).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by));
@@ -632,7 +638,7 @@ function drawWall() {
     gb.append(el('span', 'gr-rec', 'Track record so far: ' + hr0.w + ' right, ' + hr0.l + ' wrong. Misses stay on the page.'));
     up.prepend(gb); }
   if (up.childNodes.length && !fresh.length) up.prepend(el('div', 'cu-h', 'Coming up')); else if (fresh.length) up.insertBefore(el('div', 'cu-h', 'Coming up'), up.children[1] || null);
-  box.replaceChildren(cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, foot);
+  box.replaceChildren(cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
 }
 function drawWire() {
   const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');
@@ -927,7 +933,7 @@ function drawForecast() {
   const box = document.getElementById('forecast-list'), more = document.getElementById('forecast-more'), rec = document.getElementById('call-record'); if (!box) return;
   const all = callRows(); if (!all.length) return;
   const hr = houseRecord(), me = myRecord();
-  if (rec) { rec.replaceChildren(el('span', null, ''), el('span', null, ''), el('span', null, '')); const [a, b, c] = rec.children; a.append(el('b', null, 'Track record: ' + hr.w + ' right, ' + hr.l + ' wrong'), txt(hr.n ? ' on ' + hr.n + ' graded questions' : ' · nothing has resolved yet; the first questions are graded on ' + fmtDay(new Date(all.filter(callOpen).sort((x, y) => x.resolve_by.localeCompare(y.resolve_by))[0].resolve_by)))); c.append(txt(hr.open + ' open questions. The index’s estimate can move before a question resolves when the evidence does; every change is logged and explained in the changelog.')); }
+  if (rec) { rec.replaceChildren(el('span', null, ''), el('span', null, ''), el('span', null, '')); const [a, b, c] = rec.children; a.append(el('b', null, 'Track record: ' + hr.w + ' right, ' + hr.l + ' wrong'), txt(hr.n ? ' on ' + hr.n + ' graded questions' : ' · nothing has resolved yet; the first questions are graded on ' + fmtDay(new Date(all.filter(callOpen).sort((x, y) => x.resolve_by.localeCompare(y.resolve_by))[0].resolve_by)))); c.append(txt(all.filter((x) => callOpen(x) && x.kind === 'call').length + ' open calls (resolving in days to weeks) and ' + all.filter((x) => callOpen(x) && x.kind !== 'call').length + ' open questions (months to years). The index’s estimate can move before a question resolves when the evidence does; every change is logged and explained in the changelog.')); }
   const now = Date.now();
   const groups = [['Resolving within a week', (c) => callOpen(c) && callDays(c) <= 7], ['Within a month', (c) => callOpen(c) && callDays(c) > 7 && callDays(c) <= 31], ['Within three months', (c) => callOpen(c) && callDays(c) > 31 && callDays(c) <= 93], ['Later', (c) => callOpen(c) && callDays(c) > 93], ['Graded', (c) => !callOpen(c)]];
   const LIMIT = 14; let shown = 0;
@@ -938,12 +944,13 @@ function drawForecast() {
       if (!fcOpen && shown >= LIMIT) return; shown++;
       const row = el('div', 'fc' + (r.resolution ? ' graded' : '')); row.tabIndex = 0; row.id = 'fc-' + r.id;
       const ev = el('div', 'fc-event'); ev.append(txt(r.question));
-      if (r.resolution) { const res = el('span', 'fc-res ' + (r.resolution.outcome === 'void' ? '' : houseHit(r) ? 'hit' : 'miss')); res.textContent = r.resolution.outcome === 'void' ? 'void' : (r.resolution.outcome === 'yes' ? 'Yes' : 'No') + ' · index ' + (houseHit(r) ? 'right' : 'wrong'); ev.append(res); }
+      if (r.resolution) { const res = el('span', 'fc-res ' + (r.resolution.outcome === 'void' ? '' : houseHit(r) ? 'hit' : 'miss')); res.textContent = r.resolution.outcome === 'void' ? 'void' : (r.resolution.outcome === 'yes' ? 'Yes' : 'No') + (Math.abs(+r.odds - 0.5) < 1e-9 ? ' · called a toss-up, not counted' : ' · index ' + (houseHit(r) ? 'right' : 'wrong')); ev.append(res); }
       ev.append(el('span', 'fc-due', callDue(r)));
       const bar = el('div', 'fc-bar'); const p = +r.odds; const w = el('span', 'fc-word' + (p >= 0.6 ? ' hi' : p <= 0.4 ? ' lo' : ''), (r.resolution ? 'Expected: ' : 'The index expects: ') + likelyWord(p).toLowerCase()); w.title = 'The index’s estimate: ' + Math.round(p * 100) + '%'; bar.append(w);
       const moreB = el('div', 'fc-more'); const b1 = el('div'); b1.append(el('b', null, 'Why: '), txt(r.basis || '')); const b2 = el('div'); b2.style.marginTop = '4px'; b2.append(el('b', null, 'Watch for: '), txt(r.signposts || '')); moreB.append(b1, b2);
       if (r.resolution && r.resolution.note) { const b3 = el('div'); b3.style.marginTop = '4px'; b3.append(el('b', null, 'Resolution: '), txt(r.resolution.note + ' ')); if (r.resolution.source_url) { const a = el('a', null, 'source'); a.href = r.resolution.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); b3.append(a); } moreB.append(b3); }
       else if (r.source_url) { const b4 = el('div'); b4.style.marginTop = '4px'; const a = el('a', null, 'Where it will be checked'); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.addEventListener('click', (e) => e.stopPropagation()); b4.append(a); moreB.append(b4); }
+      { const pl = el('div'); pl.style.marginTop = '6px'; const a = el('a', null, 'Its own page, with a share card →'); a.href = '/forecast/' + r.id + '/'; a.addEventListener('click', (e) => e.stopPropagation()); pl.append(a); moreB.append(pl); }
       row.append(ev, bar, moreB);
       const toggle = () => row.classList.toggle('open');
       row.addEventListener('click', toggle); row.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });

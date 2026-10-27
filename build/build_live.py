@@ -260,10 +260,10 @@ def build_calls():
         c['odds'] = round(float(c['odds']), 2); c['odds_label'] = str(int(round(c['odds'] * 100))) + '%'
         out.append(c)
     for c in short:
-        push(dict(c))
+        push(dict(c, kind='call'))
     for f in FORECASTS:
         push(dict(id=f['id'], question=f['event'], opened=f.get('opened', '2026-10-22'), resolve_by=f['resolve_by'], odds=float(f['probability']), horizon='months' if f['horizon_months'] >= 3 else 'weeks',
-                  horizon_label=f['horizon'], basis=f['basis'], signposts=f.get('signposts', ''), tags=f.get('tags', []), related=f.get('related', {}), source_url=f.get('source_url', ''), resolution=f.get('resolution')))
+                  horizon_label=f['horizon'], basis=f['basis'], signposts=f.get('signposts', ''), tags=f.get('tags', []), related=f.get('related', {}), source_url=f.get('source_url', ''), resolution=f.get('resolution'), kind='question'))
     out.sort(key=lambda c: (c['resolution'] is not None, c['resolve_by'], c['id']))
     return out
 

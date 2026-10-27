@@ -74,3 +74,60 @@ p = os.path.join(here, 'data/tool_urls.json'); tu = json.load(open(p))
 tu = [u for u in tu if not (u.startswith(SITE + 'wire/20'))] + urls
 json.dump(tu, open(p, 'w'))
 print(f'wire archive: {len(rows)} stories, {len(days)} day pages')
+
+# ======================================================== beats: AI near you, AI at school, AI decided
+import re as _re
+BEATS = [
+ ('near-you', 'AI near you', 'Data centres, power bills, water and the local fights over them.', r'data[- ]?cent(er|re).{0,60}(power|electric|water|bill|within|oppose|neighbo|resident|local|town|county)|(power|electric|water).{0,40}data[- ]?cent(er|re)|power bill|electricity (bill|price|rate)'),
+ ('school', 'AI at school', 'Classrooms, tutors, cheating, school rules and the teachers caught in the middle.', r'\b(schools?|students?|teachers?|classrooms?|pupils?|homework|tutors?)\b(?!.{0,3}shoot)'),
+ ('decided', 'AI decided', 'When AI makes a decision about you: credit, insurance, hiring, benefits, policing and facial recognition.', r'credit score|loan (decision|denial)|insurance claim|claims? (were |was )?denied|denied coverage|hiring (tool|algorithm|screen)|job applicants?|r[eé]sum[eé] screen|benefits (claim|decision|denied)|facial recognition|wrongful(ly)? arrest|algorithm(ic)? (decision|denial)'),
+]
+beat_urls = []
+for slug, name, blurb, rx in BEATS:
+    hits = [n for n in rows if n.get('beat') == slug or (n.get('topic') != 'php2shell' and _re.search(rx, n.get('title', '') + ' ' + (n.get('tag') or ''), _re.I))]
+    hits.sort(key=lambda n: n.get('published') or '', reverse=True)
+    items = ''.join(f'<li><time>{esc(n["published"][:10])}</time> ' + (f'<span class="st">{esc(LBL[n["label"]])}</span> ' if n.get('label') in LBL else '') +
+                    f'<a href="{esc(n["url"])}" target="_blank" rel="noopener noreferrer"><b>{esc(n.get("tag") or n["title"])}</b></a> <small>{esc(n.get("outlet") or "")}</small>'
+                    + (f'<br>{esc(n["summary"])}' if n.get('summary') else '') + '</li>' for n in hits)
+    url = SITE + f'wire/{slug}/'
+    body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/wire/">The Wire</a> · A beat</nav><h1>{esc(name)}</h1>
+<p class="aka">{esc(blurb)}</p><div class="meta">{len(hits)} stories so far, newest first · added to on every refresh · each headline links to the original reporting</div>
+{('<ul class="rec">' + items + '</ul>') if hits else '<p>Nothing on this beat yet that meets our bar: AI as the actor, a real consequence, a source we could open. It fills as the stories come.</p>'}
+<p class="share"><a href="/wire/archive/">Every day on the Wire</a> · <a href="/exposed/">What it means for you</a></p></article>"""
+    write(f'wire/{slug}/index.html', url=url, title=f'{name}: AI news, tracked', desc=f'{blurb} Every story Warning Shots has reported on it, newest first, with sources.', body=body, draft=not hits,
+          crumbs=[('The Wire', '/wire/'), (name, '')], graph=[{"@type": "CollectionPage", "name": name, "url": url, "about": blurb}])
+    if hits: beat_urls.append(url)
+
+# ======================================================== the AI layoffs ledger (jobs/layoffs/)
+J = json.load(open('research/jobs.json', encoding='utf-8'))
+occ = {j['slug']: j['occupation'] for j in J['jobs']}
+led, seen_u = [], set()
+for j in J['jobs']:
+    for d, what, u, lab in j.get('jobs_evidence', []):
+        low = what.lower()
+        who = 'Company says AI' if 'company says ai' in low else 'Reported as AI' if 'reported as ai' in low else 'Study' if '(study' in low or low.endswith('study') or 'study)' in low else ''
+        if who == 'Study' or not u or u in seen_u: continue
+        seen_u.add(u)
+        led.append(dict(date=d, what=_re.sub(r'\s*\((company says AI[^)]*|reported as AI[^)]*)\)\s*', ' ', what).strip(), who=who or 'See source', url=u, label=lab, occ=j['slug']))
+for n in rows:
+    if n.get('topic') == 'jobs' and n['url'] not in seen_u and _re.search(r'cut|layoff|lay off|buyout|job loss|redundanc|shed|eliminat', n.get('title', '') + ' ' + (n.get('summary') or ''), _re.I):
+        seen_u.add(n['url'])
+        led.append(dict(date=n['published'][:10], what=n.get('tag') or n['title'], who={'confirmed': 'See source', 'reported': 'Reported as AI'}.get(n.get('label'), 'See source'), url=n['url'], label=n.get('outlet', ''), occ=''))
+led.sort(key=lambda x: x['date'], reverse=True)
+trs = ''.join(f'<tr><td>{esc(x["date"])}</td><td>{esc(x["what"])}' + (f' <small>(<a href="/jobs/{esc(x["occ"])}/">{esc(occ[x["occ"]])}</a>)</small>' if x['occ'] in occ else '') + f'</td><td><span class="st{" confirmed" if x["who"].startswith("Company") else ""}">{esc(x["who"])}</span></td><td>{a(x["url"], x["label"] or "source")}</td></tr>' for x in led)
+n_co = sum(1 for x in led if x['who'].startswith('Company'))
+body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/jobs/">Can AI do your job?</a> · The ledger</nav>
+<h1>Layoffs tied to AI: the ledger</h1>
+<p class="aka">Every job cut on our record where AI is part of the story, newest first, labelled by who says AI was the reason.</p>
+<section class="box"><b class="k">How to read it</b><p><b>Company says AI</b>: the employer itself tied the cuts to AI. <b>Reported as AI</b>: reporters or analysts made the link; the company didn't. A cut that names no AI link isn't evidence that AI took the jobs, and we label it that way.</p></section>
+<div class="stats"><div><b>{len(led)}</b><span>entries on the ledger</span></div><div><b>{n_co}</b><span>where the company itself tied the cuts to AI</span></div></div>
+<div class="tw"><table><thead><tr><th>Date</th><th>What happened</th><th>Who says AI</th><th>Source</th></tr></thead><tbody>{trs}</tbody></table></div>
+<p>Find your own job: <a href="/jobs/">Can AI do your job?</a> grades what AI has actually done, task by task.</p>
+{capture('One update a month on AI and jobs. Only when something actually changes.', 'jobs-ledger')}
+{footer_note(False)}</article>"""
+write('jobs/layoffs/index.html', url=SITE + 'jobs/layoffs/', title='AI layoffs ledger: job cuts tied to AI, labelled', desc=f'Every job cut on the Warning Shots record where AI is part of the story: {len(led)} entries, each labelled by whether the company or only reporters tied it to AI, with sources.', body=body, draft=False,
+      crumbs=[('Can AI do your job?', '/jobs/'), ('Layoffs ledger', '')], graph=[{"@type": "Dataset", "name": "AI layoffs ledger", "url": SITE + 'jobs/layoffs/', "description": "Job cuts tied to AI, labelled by attribution", "creator": {"@type": "Organization", "name": "Warning Shots"}}])
+p = os.path.join(here, 'data/tool_urls.json'); tu = json.load(open(p))
+tu = [u for u in tu if not any(u == SITE + f'wire/{b[0]}/' for b in BEATS) and u != SITE + 'jobs/layoffs/'] + beat_urls + [SITE + 'jobs/layoffs/']
+json.dump(tu, open(p, 'w'))
+print(f'beats: ' + ', '.join(f'{b[0]}' for b in BEATS) + f' ({len(beat_urls)} with stories); layoffs ledger: {len(led)} entries ({n_co} company-stated)')

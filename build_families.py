@@ -198,7 +198,18 @@ for name, rows in by_org.items():
     rows_js.append({'n': name, 's': s, 'g': worst, 'l': glabel, 'k': len(incs), 'sec': sector, 'c': country})
 gated = sum(1 for r in rows_js if r['g'] in ('confirmed', 'attacked') or r['k'] >= 2)
 lst = ''.join(f'<li data-n="{esc((r["n"] + " " + r["sec"] + " " + r["c"]).lower())}"><a href="/exposed/{esc(r["s"])}/">{esc(r["n"])}</a> <span class="st {esc(r["g"])}">{esc(r["l"])}</span><br><small>{esc(r["sec"])}{" · " + esc(r["c"]) if r["c"] else ""}</small></li>' for r in sorted(rows_js, key=lambda r: (order.index(r['g']) if r['g'] in order else 9, r['n'].lower())))
-hub = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>Am I exposed?</h1>
+hub = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>Am I exposed?</h1><p class="aka">What AI means for you, your family, your money, your job and your vote, and what to do about it.</p>
+<p>Start with your situation. Each one has the first thing to do, then the pages that help.</p>
+<ul class="grid sit">
+<li><b>Something is happening right now</b><br><span class="act">Hang up and call back on a number you already have. Don't pay anyone while you're still on the call.</span><br><a href="/help/voice-clone-scam-call/">A loved one calls in a panic</a> · <a href="/help/ai-scam-texts/">A text that seems off</a> · <a href="/help/is-this-video-real/">Is this video real?</a> · <a href="/checks/">Is this a scam?</a></li>
+<li><b>Your kids</b><br><span class="act">Ask which AI they talk to. Not as a test; just ask.</span><br><a href="/learn/ai-companions-parents-guide/">AI companions: a parent's guide</a> · <a href="/help/ai-fake-nude-image-what-to-do/">A fake nude of your child</a> · <a href="/checks/ai-sextortion-scam/">Sextortion</a></li>
+<li><b>Your money</b><br><span class="act">Agree a family safe word. It takes two minutes.</span><br><a href="/shield/">Make your safe-word card</a> · <a href="/checks/fake-bank-fraud-call/">The fake bank call</a> · <a href="/checks/deepfake-celebrity-investment-scam/">Celebrity investment videos</a> · <a href="/checks/ai-trading-bot-scam/">AI trading bots</a></li>
+<li><b>Your parents</b><br><span class="act">Set up their AI helper with them, and put the three rules by the phone.</span><br><a href="/learn/ai-helper-for-older-parent/">An AI helper for Mom, safely</a> · <a href="/checks/government-impersonator-scam/">Government impersonators</a></li>
+<li><b>Your job</b><br><span class="act">Find your job and see what AI has actually done in it, task by task.</span><br><a href="/jobs/">Can AI do your job?</a> · <a href="/jobs/layoffs/">Layoffs tied to AI</a> · <a href="/checks/task-job-scam/">Fake job offers</a></li>
+<li><b>Your website or business</b><br><span class="act">Ask your host which PHP version your site runs; anything before Oct 21 needs updating.</span><br><a href="/php2shell/">The live tracker</a> · <a href="/checks/boss-gift-card-wire-transfer-scam/">The boss asking for gift cards</a> · <a href="/scraped/">Keep AI crawlers out</a></li>
+<li><b>Your vote</b><br><span class="act">Get where and when to vote only from your election office or vote.gov.</span><br><a href="/midterms-2026/">AI fakes in the midterms</a> · <a href="/help/is-this-video-real/">Check a clip before you share</a></li>
+</ul>
+<h2>Is your organisation on the record?</h2>
 <p>Type your company, school, bank or employer. If it appears in an AI incident on our record, you will see what happened, how sure we are, the source, and what to do.</p>
 <input class="search" id="ex-q" type="search" placeholder="Search {len(rows_js)} organisations, sectors or countries" aria-label="Search organisations">
 <p id="ex-none" hidden><b>Not on our record.</b> That's good news, not a guarantee: we only list organisations named in public reporting about AI incidents.</p>
@@ -206,7 +217,7 @@ hub = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>Am I expo
 <script>(function(){{var q=document.getElementById('ex-q'),li=[].slice.call(document.querySelectorAll('#ex-list li')),no=document.getElementById('ex-none');q.addEventListener('input',function(){{var v=q.value.trim().toLowerCase(),n=0;li.forEach(function(x){{var m=!v||x.dataset.n.indexOf(v)>-1;x.hidden=!m;if(m)n++;}});no.hidden=n>0;}});}})();</script>
 {capture('Alert me if my organisation appears in an AI incident', 'exposed')}
 {footer_note(not ok)}</article>"""
-write('exposed/index.html', url=SITE + 'exposed/', title='Am I exposed? Search organisations hit by AI incidents', desc=f'Search {len(rows_js)} companies, governments, schools and services named in AI incidents: confirmed compromises, attacks and precautionary shutdowns, each sourced, with what to do.', body=hub, draft=not ok, crumbs=[('Am I exposed?', '')],
+write('exposed/index.html', url=SITE + 'exposed/', title='Am I exposed? What AI means for you, and what to do', desc=f'Start from your situation (a scam call now, your kids, your money, your parents, your job, your website, your vote) or search {len(rows_js)} organisations named in AI incidents, each sourced, with what to do.', body=hub, draft=not ok, crumbs=[('Am I exposed?', '')],
       graph=[{"@type": "CollectionPage", "name": "Am I exposed?", "url": SITE + 'exposed/'}])
 register('exposed/', ([SITE + 'exposed/'] if ok else []) + urls)
 print(f'exposed/: {len(rows_js)} organisations, {gated} pass the quality gate ({"approved" if ok else "drafts, noindex"})')
@@ -228,6 +239,7 @@ body = f"""<article class="pk">{top}
 <h1>AI fakes in the 2026 midterms: the tracker</h1><div class="meta">{esc(by)} · Election Day is Tuesday, Nov 3 · Every entry sourced</div>
 <section class="box"><b class="k">The short answer</b><p>{len(MF)} AI-made election fakes and AI ads are on our record this cycle, {n_conf} of them confirmed fake or taken down. Before you share a shocking clip of a candidate this week, run the checks below. For where and when to vote, use your state election office or vote.gov, not a video, text or call.</p></section>
 <div class="share"><button type="button" data-copy="{esc('AI fakes in the 2026 midterms, tracked and sourced: ' + url)}">Copy link</button></div>
+<section class="box" style="border-left-color:var(--ink)"><b class="k">Our promise</b><p>On Nov 4: which fakes mattered, and what this index got wrong. <a href="/midterms-2026/after/">The post-mortem will be here →</a></p></section>
 <h2>Before you share: how to check a clip</h2>{steps}
 <h2>The fakes so far</h2><p>Newest first. <b>Confirmed fake</b>: a fact-checker, platform, official or the poster confirmed AI. <b>Labelled AI by poster</b>: an ad that says it used AI. <b>Alleged</b>: claimed, not confirmed.</p><ul class="rec">{fk}</ul>
 <h2>The numbers</h2>{facts}
@@ -248,3 +260,54 @@ write('midterms-2026/index.html', url=url, title=title, desc=desc, body=body, dr
       graph=[webpage(url, title, desc, TODAY, not ok, ''), article(url, title, desc, TODAY, not ok, '', 'Elections', [m['source_url'] for m in MF])])
 register('midterms-2026/', [url] if ok else [])
 print(f'midterms-2026/: {len(MF)} fakes ({"approved" if ok else "draft, noindex"})')
+
+# ---------- the promised post-mortem: a permanent URL now, written on Nov 4 (research/midterms_after.json), hidden until then
+try:
+    AFTER = json.load(open('research/midterms_after.json', encoding='utf-8'))
+except (OSError, ValueError):
+    AFTER = {}
+au = SITE + 'midterms-2026/after/'
+if AFTER.get('body_html'):
+    abody = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/midterms-2026/">2026 midterms: AI fakes</a> · After the vote</nav><h1>{esc(AFTER.get('h1', 'After the midterms: which AI fakes mattered, and what we got wrong'))}</h1><div class="meta">Published {esc(fdate(AFTER.get('published', TODAY)))}</div>{AFTER['body_html']}{footer_note(False)}</article>"""
+    adraft = False
+else:
+    abody = """<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/midterms-2026/">2026 midterms: AI fakes</a> · After the vote</nav><h1>After the midterms: which AI fakes mattered, and what we got wrong</h1>
+<section class="box"><b class="k">Coming Nov 4</b><p>The day after the election, this page will grade the cycle: which AI fakes reached people, which were caught and by whom, which claims fell apart, and every place this index was wrong. Until then, <a href="/midterms-2026/">the tracker</a> is updated on every refresh.</p></section></article>"""
+    adraft = True
+write('midterms-2026/after/index.html', url=au, title='After the 2026 midterms: which AI fakes mattered', desc='The post-election grading of AI fakes in the 2026 US midterms: what reached people, what was caught, and what Warning Shots got wrong. Published Nov 4.', body=abody, draft=adraft,
+      crumbs=[('2026 midterms: AI fakes', '/midterms-2026/'), ('After the vote', '')], graph=[{"@type": "WebPage", "name": "After the 2026 midterms", "url": au}])
+if not adraft: register('midterms-2026/after/', [au])
+
+# ======================================================== forecast/<id>/: one permanent page per call and question
+CALLS = L('data/calls.json'); fu = []
+def likely(o):
+    o = float(o)
+    return 'a toss-up' if abs(o - 0.5) < 1e-9 else 'very likely' if o >= .85 else 'likely' if o >= .6 else 'unlikely' if o <= .4 and o > .15 else 'very unlikely' if o <= .15 else 'leaning yes' if o > .5 else 'leaning no'
+for c in CALLS:
+    url = SITE + f"forecast/{c['id']}/"
+    q = c.get('plain') or c['question']; kind = 'Call' if c.get('kind') == 'call' else 'Question'
+    r = c.get('resolution')
+    if r:
+        toss = abs(float(c['odds']) - .5) < 1e-9
+        hit = (r['outcome'] == 'yes') == (float(c['odds']) > .5)
+        grade = 'Called it a toss-up: not counted' if toss else ('Called it' if hit else 'Missed')
+        res = f"<section class=\"box\"><b class=\"k\">Graded {esc(fdate(r['date']))}</b><p>Answer: <b>{esc(r['outcome'])}</b>. The index said {esc(likely(c['odds']))} ({esc(c['odds_label'])}). <b>{esc(grade)}.</b></p><p class=\"meta\">{esc(r.get('note', ''))} " + (a(r.get('url') or r.get('source_url') or '', 'Source') if (r.get('url') or r.get('source_url')) else '') + "</p></section>"
+    else:
+        res = f"<section class=\"box\" style=\"border-left-color:var(--ink)\"><b class=\"k\">Open · resolves {esc(fdate(c['resolve_by']))}</b><p>The index says: <b>{esc(likely(c['odds']))}</b> ({esc(c['odds_label'])}). Graded on that date, right or wrong, in public.</p></section>"
+    body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/index/#next">Forecasts</a> · {kind}</nav>
+<h1>{esc(q)}</h1><div class="meta">{kind} opened {esc(fdate(c['opened']))} · {'days to weeks' if kind == 'Call' else 'months to years'} · the question's wording never changes after it is published</div>
+{res}
+<div class="share"><button type="button" data-copy="{esc(q + ' ' + url)}">Copy link</button></div>
+<h2>Why the index thinks so</h2><p>{esc(c.get('basis') or '')}</p>
+{('<h2>What would move it</h2><p>' + esc(c['signposts']) + '</p>') if c.get('signposts') else ''}
+<p class="meta">The exact question: {esc(c['question'])}</p>
+<p><a href="/index/#next">Every forecast and the track record →</a></p>
+{capture('Email me when this is graded', 'forecast-' + c['id'])}
+</article>"""
+    img = SITE + f"assets/forecast/{c['id']}.png" if os.path.exists(f"assets/forecast/{c['id']}.png") else None
+    write(f"forecast/{c['id']}/index.html", url=url, title=q[:90], desc=(f"Graded: {r['outcome']}. " if r else f"Open until {fdate(c['resolve_by'])}. ") + f"Warning Shots said {likely(c['odds'])} ({c['odds_label']}). " + (c.get('basis') or '')[:150], body=body, draft=False, img=img,
+          crumbs=[('Forecasts', '/index/#next'), (kind, '')], graph=[{"@type": "Question", "name": q, "dateCreated": c['opened'], "url": url}])
+    fu.append(url)
+register('forecast/', fu)
+json.dump([{'slug': c['id'], 'kicker': ('Graded ' + c['resolution']['date'] + ' · answer: ' + c['resolution']['outcome']) if c.get('resolution') else ('Forecast · resolves ' + c['resolve_by']), 'h1': c.get('plain') or c['question']} for c in CALLS], open('data/forecast_cards.json', 'w'))
+print(f'forecast/: {len(fu)} pages')
