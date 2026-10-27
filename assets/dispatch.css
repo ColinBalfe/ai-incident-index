@@ -1,5 +1,5 @@
 /* Warning Shots dispatch pages (i/, c/, m/): the main page's identity, in a one-column article. Tokens mirror index.template.html. */
-@font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
+@font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 400 900; font-stretch: 78% 100%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Playfair'; font-style: italic; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-italic.woff2) format('woff2'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 700; src: url(/assets/fonts/playfair-display-latin-700-normal.woff2) format('woff2'); }

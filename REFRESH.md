@@ -186,6 +186,7 @@ The lead shows its headline only: the standfirst is not displayed on the homepag
 ```
 cd build && python3 build_data.py && python3 build_deep.py && python3 build_live.py && cp data/*.json ../data/ && cd ..
 python3 build/fetch_x.py                                # exact text of the X posts in research/x_posts.json -> research/x_cache.json
+python3 build/make_img.py                               # WebP copies of new photos in assets/img/ at three sizes (the page picks the one that fits the screen)
 python3 build_site.py                                   # index.html, data/bundle.json (one request for all data), feed.xml, JSON-LD
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
 node prerender.mjs  http://127.0.0.1:8765/index.html   # bakes the first screen (ribbon, ticker, siren, brief, Wire, live rail) into index.html so the headline is in the first paint

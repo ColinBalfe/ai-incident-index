@@ -153,7 +153,7 @@ async function svgToPng(box, name, title) {
   const pad = 24, head = title ? 54 : 24, foot = 34;
   const out = d3.create('svg').attr('xmlns', 'http://www.w3.org/2000/svg').attr('width', W + pad * 2).attr('height', H + head + foot);
   const f = await fontData();
-  if (f) out.append('style').text(`@font-face{font-family:'Archivo';src:url(data:font/woff2;base64,${f}) format('woff2');font-weight:100 900;font-stretch:62% 125%;} text{font-family:'Archivo',system-ui,sans-serif}`);
+  if (f) out.append('style').text(`@font-face{font-family:'Archivo';src:url(data:font/woff2;base64,${f}) format('woff2');font-weight:400 900;font-stretch:78% 100%;} text{font-family:'Archivo',system-ui,sans-serif}`);
   out.append('rect').attr('width', '100%').attr('height', '100%').attr('fill', cssVar('--paper'));
   if (title) out.append('text').attr('x', pad).attr('y', 34).attr('font-size', 18).attr('font-weight', 600).attr('fill', cssVar('--ink')).attr('font-family', 'Archivo, system-ui, sans-serif').text(title);
   out.append('text').attr('x', pad).attr('y', H + head + 20).attr('font-size', 12).attr('fill', cssVar('--ink-2')).attr('font-family', 'Archivo, system-ui, sans-serif').text('Warning Shots, the AI Incident Index: ' + SITE.replace(/^https?:\/\//, ''));
@@ -453,7 +453,7 @@ function newsItems() { return (D.news || []).filter((n) => n && n.title && n.url
 /* ---------- the headline wall: index-written lines on top of credible reporting (research/news.json: tag, wall, red, wall_rank).
    Each line must be supportable by the story it links to; the outlet's own framing is in the tooltip and the small print. */
 // The reader's own clock: when they last loaded this page (this browser only). Read once, then stamped with now.
-const PREV_VISIT = (() => { let p = null; try { p = +localStorage.getItem('ws-last-visit') || null; localStorage.setItem('ws-last-visit', String(Date.now())); } catch (e) {} return p; })();
+const PREV_VISIT = (() => { let p = null; try { const now = Date.now(), last = +localStorage.getItem('ws-last-visit') || 0; p = +localStorage.getItem('ws-prev-session') || null; if (last && now - last > 30 * 6e4) { p = last; localStorage.setItem('ws-prev-session', String(last)); } localStorage.setItem('ws-last-visit', String(now)); } catch (e) {} return p; })(); // the start of the reader's previous visit (a visit ends after 30 quiet minutes)
 const isNewToReader = (n) => !!(PREV_VISIT && n.published && Date.parse(n.published) > PREV_VISIT);
 const TIP = {
   tried: 'Tried: attacks were attempted and logged. Nothing is confirmed broken into.',
@@ -526,7 +526,7 @@ function drawWall() {
     if (withOutlet) w.append(el('span', 'wl-o', (n.outlet || '') + (ageShort(n).endsWith('h ago') || ageShort(n) === 'just now' ? ' · ' + ageShort(n).replace(' ago', '') : '')));
     return w;
   };
-  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; im.alt = n.img_alt || ''; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) { const fc = el('figcaption'); if (n.img_credit_url) { const c = el('a', null, n.img_credit); c.href = n.img_credit_url; c.target = '_blank'; c.rel = 'noopener noreferrer'; fc.append(c); } else fc.textContent = n.img_credit; f.append(fc); } return f; };
+  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; { const m = /^(\/assets\/img\/[^?]+)\.(jpe?g|png)$/i.exec(n.img || ''); if (m) { im.srcset = [480, 960, 1440].map((w) => `${m[1]}-${w}.webp ${w}w`).join(', '); im.sizes = cls === 'dl-hero' ? '(max-width: 760px) 100vw, 50vw' : '320px'; } } if (cls === 'dl-hero') im.setAttribute('fetchpriority', 'high'); im.alt = n.img_alt || ''; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) { const fc = el('figcaption'); if (n.img_credit_url) { const c = el('a', null, n.img_credit); c.href = n.img_credit_url; c.target = '_blank'; c.rel = 'noopener noreferrer'; fc.append(c); } else fc.textContent = n.img_credit; f.append(fc); } return f; };
   // 1. the lead cluster: a picture, then four lines
   const cl = items.filter((n) => n.wall === 'lead').slice(0, 4);
   const buildSerial = (sr, leadLines) => {
@@ -597,13 +597,33 @@ function drawWall() {
       { const LL = LENSES.find((l) => l.id === cur); const hb = LL && LL.hub ? LL.hub[0] : ['/exposed/', 'Am I exposed? Find your situation']; const a = el('a', null, hb[1] + ' →'); a.href = hb[0]; t3.replaceChildren(a); }
       tabs.querySelectorAll('button').forEach((b) => { const on = b.dataset.k === cur; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); }); };
     opts.forEach(([k, lbl]) => { const b = el('button', 'you-tab', lbl); b.type = 'button'; b.dataset.k = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => { cur = k; try { if (k !== 'all') localStorage.setItem('ws-lens', k); } catch (e) {} paint(); }); tabs.append(b); });
-    head.append(tabs); box.append(head, t1, t2, t3); paint(); return box; })() : null;
+    const tog = el('button', 'you-tog', 'More ▸'); tog.type = 'button'; tog.setAttribute('aria-expanded', 'false');
+    tog.addEventListener('click', () => { const open = box.classList.toggle('open'); tog.setAttribute('aria-expanded', String(open)); tog.textContent = open ? 'Less ▴' : 'More ▸'; });
+    head.append(tabs, tog); box.append(head, t1, t2, t3); paint(); return box; })() : null;
   // Breaking from X: only first-hand, material posts under 12 hours old earn the bar (REFRESH.md rules); everything else is in "On X" below
   const XK = { breaking: 'Breaking', official: 'Official', claim: 'Unverified claim', opinion: 'Opinion' };
   const xposts = (D.xposts || []).filter((x) => x && x.url);
   const brk = xposts.find((x) => (x.kind === 'breaking' || x.kind === 'official') && (Date.now() - Date.parse(x.posted)) < 12 * 3.6e6);
   const bbar = brk ? (() => { const b = el('a', 'xbreak'); b.href = brk.url; b.target = '_blank'; b.rel = 'noopener noreferrer'; b.append(el('span', 'xb-k', XK[brk.kind]), el('span', 'xb-t', brk.what), el('span', 'xb-s', brk.author + ', ' + brk.who + ' · ' + ageShort({ published: brk.posted }) + ' · on X')); return b; })() : null;
-  lead.replaceChildren(...(bbar ? [bbar] : []), dl, sv, ...(youBox ? [youBox] : []), ...(strip ? [strip] : []));
+  const sinceBar = (() => {
+    if (!PREV_VISIT) return null;
+    const after = (iso) => iso && Date.parse(iso) > PREV_VISIT;
+    const wallItems = items.filter((n) => n.wall && n.wall !== 'siren' || n.siren);
+    const fresh = wallItems.filter((n) => after(n.published));
+    const moved = wallItems.filter((n) => n.moved && after(n.moved.at));
+    const graded = (D.calls || []).filter((c) => c.resolution && c.resolution.date && Date.parse(c.resolution.date + 'T23:59:59Z') > PREV_VISIT);
+    const bts = (D.breakthroughs || []).filter((b) => b.date && Date.parse(b.date + 'T12:00:00Z') > PREV_VISIT);
+    const bar = el('div', 'since-you');
+    const when = fmtET(new Date(PREV_VISIT).toISOString()).replace(/, \d{4}/, '');
+    bar.append(el('b', null, 'Since you were here'), el('span', 'sy-when', ' (' + when + ')'));
+    const parts = [];
+    if (fresh.length) { const a = el('a', 'sy-new', fresh.length + (fresh.length === 1 ? ' new headline' : ' new headlines')); a.href = '#wall'; a.addEventListener('click', (e) => { const d = document.querySelector('#wall .newdot'); if (d) { e.preventDefault(); d.closest('.wl').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } }); parts.push(a); }
+    if (moved.length) parts.push(txt(moved.length + (moved.length === 1 ? ' story moved' : ' stories moved')));
+    if (bts.length) parts.push(txt(bts.length + (bts.length === 1 ? ' new breakthrough' : ' new breakthroughs')));
+    if (graded.length) parts.push(txt(graded.length + (graded.length === 1 ? ' forecast graded' : ' forecasts graded')));
+    if (!parts.length) { bar.append(txt(': nothing new yet.' + (D.meta.next_check ? ' Next edition ' + fmtET(D.meta.next_check).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.' : ''))); bar.classList.add('quiet'); return bar; }
+    bar.append(txt(': ')); parts.forEach((p, i) => bar.append(...(i ? [txt(' · ')] : []), p)); return bar; })();
+  lead.replaceChildren(...(sinceBar ? [sinceBar] : []), ...(bbar ? [bbar] : []), dl, sv, ...(youBox ? [youBox] : []), ...(strip ? [strip] : []));
   // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');
   [1, 2, 3].forEach((c) => {
@@ -701,7 +721,7 @@ function drawWall() {
     const s = el('section', 'bt'); s.setAttribute('aria-label', 'Breakthroughs');
     const h = el('div', 'bt-h'); h.append(el('h2', 'bt-t', 'Breakthroughs'), el('span', 'bt-sub', 'What AI just made possible, and what it means for you')); const all = el('a', 'bt-all', 'All breakthroughs →'); all.href = '/breakthroughs/'; h.append(all); s.append(h);
     const g = el('div', 'bt-g');
-    BT.slice(0, 6).forEach((b) => { const c = el('article', 'bt-c'); const top = el('div', 'bt-k'); top.append(el('span', 'bt-area', b.area || ''), el('span', 'bt-p ' + b.proof, BTL[b.proof] || b.proof)); c.append(top);
+    BT.slice(0, 3).forEach((b) => { const c = el('article', 'bt-c'); const top = el('div', 'bt-k'); top.append(el('span', 'bt-area', b.area || ''), el('span', 'bt-p ' + b.proof, BTL[b.proof] || b.proof)); c.append(top);
       const a = el('a', 'bt-pay', b.payoff); a.href = b.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; c.append(a, el('p', 'bt-m', b.means));
       if (b.people) { const pp = el('p', 'bt-who'); pp.append(el('b', null, 'Who it helps: '), txt(b.people)); c.append(pp); }
       if (b.try && b.try[1]) { const t = el('a', 'bt-try', 'Try it: ' + b.try[0] + ' →'); t.href = b.try[1]; t.target = '_blank'; t.rel = 'noopener noreferrer'; c.append(t); }
@@ -1527,14 +1547,16 @@ function lensIncidents(L) {
   const cut = Date.parse(D.meta.as_of) - 72 * 3.6e6; // the front page already carries the last three days; this shows the record behind them
   return C.scored.filter((r) => L.cats.includes(r.category) && r.setting !== 'lab' && Date.parse(r.disclosed || r.date) < cut).sort((a, b) => String(b.disclosed || b.date).localeCompare(String(a.disclosed || a.date)));
 }
+let whyOpen = false; // the by-topic section opens when a reader picks a topic
 function drawWhy() {
   const box = document.getElementById('why-grid'), tabs = document.getElementById('fy-tabs'); if (!box || !tabs) return;
   if (!lensCur) lensCur = LENSES.some((l) => l.id === lensPref()) ? lensPref() : 'family';
   const L = LENSES.find((l) => l.id === lensCur);
+  const sec = document.getElementById('why'); if (sec) sec.classList.toggle('shut', !whyOpen);
   tabs.replaceChildren(...LENSES.map((l) => {
-    const b = el('button', 'fy-tab' + (l.id === lensCur ? ' on' : '')); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(l.id === lensCur));
+    const b = el('button', 'fy-tab' + (whyOpen && l.id === lensCur ? ' on' : '')); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(l.id === lensCur));
     b.append(el('span', 'fy-l', l.label));
-    b.addEventListener('click', () => { lensCur = l.id; try { localStorage.setItem('ws-lens', l.id); } catch (e) {} drawWhy(); });
+    b.addEventListener('click', () => { whyOpen = !(whyOpen && lensCur === l.id); lensCur = l.id; try { localStorage.setItem('ws-lens', l.id); } catch (e) {} drawWhy(); });
     return b;
   }));
   const seen = LAST_SEEN ? Date.parse(LAST_SEEN) : null;
@@ -1826,15 +1848,14 @@ function drawFront() {
   const newest = caps[0]; const nextCat = (D.catalysts || []).filter((c) => c.date >= C.asOf).sort((a, b) => a.date.localeCompare(b.date))[0]; const topF = (D.forecasts || []).slice().sort((a, b) => +b.probability - +a.probability)[0];
   const vc = C.victimCounts[live.incident_id] || {}; const countries = new Set((D.victims || []).filter((v) => v.incident_id === live.incident_id && v.country).map((v) => v.country)).size;
   const pct = (x) => Math.round(x * 100) + '%';
-  box.replaceChildren(
+  box.replaceChildren(...[
     card('#record', 'The record · ' + fmtN(h.n) + ' incidents since 2023', '', 'Severe incidents ' + h.severe_prior12 + ' → ' + h.severe_last12 + ' in a year; in ' + pct(h.agentic_recent) + ' of this year’s real-world cases the AI did the acting.', { dark: true, titleNodes: [txt('AI has started breaking in '), el('b', null, 'on its own.')], spark }),
     card('#fixes', 'Did they fix it? · ' + fx.length + ' cases', '', lastMoved ? 'Newest move: ' + lastMoved.name.split(':')[0] + ', ' + String(fixCur(lastMoved).status).replace('_', ' ') + '.' : 'Checked every refresh.', { titleNodes: [el('b', null, String(verified)), txt(' of ' + fx.length + ' verified fixed. ' + reopened + ' reopened.')] }),
-    card('#capabilities', 'What AI can now do · ' + caps.length + ' milestones', newest ? newest.title : '', 'Both edges: the same capabilities drive the breakthroughs and the incidents.'),
+    // What AI can do and the live case have their own desks and tracker; the phone front keeps only the three doors nothing else opens
     card('#next', 'Where this goes next', nextCat ? nextCat.date_label + ': ' + nextCat.event : 'The next two weeks', topF ? topF.probability_label + ' that ' + topF.event.charAt(0).toLowerCase() + topF.event.slice(1) + '.' : ''),
-    card('#dives', 'Inside the incidents', live.name, (vc.rows ? vc.rows + ' organizations' + (countries ? ' in ' + countries + ' countries' : '') + ', ' : '') + 'the map, the timeline, what officials said.'),
-  );
+  ].filter(Boolean));
   const link = (href, t, sub) => { const a = el('a'); a.href = href; a.append(el('b', null, t), txt(sub)); return a; };
-  more.replaceChildren(link('/shield/', 'The family safe word', 'Beat voice-clone calls'), link('/scraped/', 'Block AI crawlers', 'A robots.txt for your site'), link('#why', 'What it means for you', 'Family, money, job, website, vote'), link('#words', 'In their words', (D.quotes || []).length + ' quotes, verbatim'), link('#signals', 'Official signals', (D.signals || []).length + ' statements'), link('#pattern', 'The pattern of 2026', 'What changed this year'), link('#charts', 'The escalation', 'Five ways to count it'), link('#all', 'All incidents', fmtN(h.n) + ', ranked and searchable'), link('#about', 'About the data', 'Scores, sources, corrections'));
+  more.replaceChildren(link('/shield/', 'The family safe word', 'Beat voice-clone calls'), link('#all', 'All incidents', fmtN(h.n) + ', ranked and searchable'), link('#words', 'In their words', (D.quotes || []).length + ' quotes, verbatim'), link('#about', 'About the data', 'Scores, sources, corrections')); // the rest are one tap away in the menu and the desks
   document.getElementById('front-stamp').textContent = 'Updated ' + fmtET(D.meta.as_of);
 }
 document.getElementById('mf-off')?.addEventListener('click', () => { try { localStorage.setItem('ws-mf', 'off'); } catch (e) {} mfApply(null); drawAll(false); toast('One page. The front page is in the ? help.'); });
