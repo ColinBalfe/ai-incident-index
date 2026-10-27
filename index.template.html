@@ -1131,7 +1131,9 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 .ctail a:last-child { border-bottom: 0; }
 .ctail a:hover { color: var(--alarm); text-decoration: underline; }
 .dl-frags { margin: 14px auto 0; max-width: 780px; display: flex; flex-direction: column; gap: 6px; text-align: center; }
-.dl-frags .wl { justify-content: center; }
+.dl-frags .wl { justify-content: center; flex-wrap: nowrap; white-space: nowrap; }
+.dl-frags .dl { font-size: clamp(13px, 3.4vw, 1.02rem); white-space: nowrap; }
+.dl-frags .wl-lab { flex: none; }
 .you-hub { margin: 8px 0 0; font-weight: 700; font-size: 14.5px; }
 .you-hub a { color: var(--alarm); }
 .fy-hub { margin: 12px 0 0; font-weight: 700; font-size: 14.5px; line-height: 1.5; }

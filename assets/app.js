@@ -703,7 +703,7 @@ function drawWall() {
     BT.slice(0, 6).forEach((b) => { const c = el('article', 'bt-c'); const top = el('div', 'bt-k'); top.append(el('span', 'bt-area', b.area || ''), el('span', 'bt-p ' + b.proof, BTL[b.proof] || b.proof)); c.append(top);
       const a = el('a', 'bt-pay', b.payoff); a.href = b.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; c.append(a, el('p', 'bt-m', b.means));
       if (b.try && b.try[1]) { const t = el('a', 'bt-try', 'Try it: ' + b.try[0] + ' →'); t.href = b.try[1]; t.target = '_blank'; t.rel = 'noopener noreferrer'; c.append(t); }
-      c.append(el('small', 'bt-o', b.outlet || '')); g.append(c); });
+      g.append(c); });
     s.append(g); return s; })() : null;
   box.replaceChildren(...(btBand ? [btBand] : []), cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
 }
