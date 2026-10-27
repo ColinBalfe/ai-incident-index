@@ -1,5 +1,75 @@
 [
 {
+"id": "wral-stein-data-center-tariffs",
+"title": "North Carolina's governor urges regulators to make data centers pay for the power and grid costs they add",
+"url": "https://wral.com/news/local/governor-stein-calls-for-tariffs-on-data-center-companies-october-2026",
+"outlet": "WRAL",
+"published": "2026-10-27T20:10:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"summary": "Gov. Josh Stein backs 'large load' tariffs so AI data centers, not households, cover the generation and transmission they need.",
+"siren": false,
+"also": [],
+"wall": "3",
+"wall_rank": 4,
+"tag": "North Carolina's governor pushed to make data centers pay for power",
+"label": "confirmed",
+"beat": "near-you",
+"touches": "Duke Energy customers in North Carolina",
+"entities": {
+"orgs": [
+"Duke Energy",
+"North Carolina Utilities Commission"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"NC"
+]
+}
+},
+{
+"id": "bleeping-warp-breach-agent-logs",
+"title": "Warp says a breach at one of its vendors exposed AI agent logs and telemetry for about 1% of its users",
+"url": "https://www.bleepingcomputer.com/news/security/warp-discloses-breach-exposing-ai-agent-logs-user-telemetry-data/",
+"outlet": "BleepingComputer",
+"published": "2026-10-27T16:15:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-attack",
+"summary": "Warp's CEO estimates roughly 1% of users were hit; CrowdStrike is investigating. An outside analyst, not Warp, blames an 'agent swarm'.",
+"siren": false,
+"also": [],
+"wall": "1",
+"wall_rank": 5,
+"tag": "Hackers exposed AI agent logs of about 1% of Warp users",
+"label": "confirmed",
+"receipt": "'Roughly 1%' is Warp CEO Zach Lloyd's estimate; Warp lists at least 800,000 users. The 'agent swarm' attribution is an outside analyst's, not Warp's.",
+"touches": "Users of the Warp coding app, about 1% of them by the company's estimate",
+"entities": {
+"orgs": [
+"Warp",
+"CrowdStrike"
+],
+"vendors": [],
+"products": [
+"Warp"
+],
+"models": [],
+"sectors": [
+"tech"
+],
+"states": []
+}
+},
+{
 "id": "wtap-ohio-ai-election-answers",
 "title": "Ohio's elections chief asks voters to report wrong election answers from ChatGPT, Claude and Grok",
 "url": "https://www.wtap.com/2026/10/27/initiative-improve-accuracy-ai-generated-election-information-launched/",
@@ -269,6 +339,38 @@
 "touches": "Voters in North Carolina's 11th district"
 },
 {
+"id": "statesnewsroom-data-center-backlash-midterms",
+"title": "Voter backlash against data centers is now a midterm issue, from a Pennsylvania river town to Senate races",
+"url": "https://www.kotatv.com/2026/10/27/we-dont-want-it-voter-backlash-against-data-centers-consumes-midterm-elections/",
+"outlet": "States Newsroom via KOTA",
+"published": "2026-10-27T02:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"summary": "YouGov found 63% of US adults oppose a data center in their community; a PAC spent $2.5 million on ads over them.",
+"siren": false,
+"also": [],
+"beat": "near-you",
+"touches": "Residents of Springdale, Pennsylvania, and other towns facing proposed data centers",
+"entities": {
+"orgs": [
+"Dynamo DC"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"PA",
+"KS",
+"OH"
+]
+}
+},
+{
 "id": "star-dutch-government-25000-jobs-ai",
 "title": "The Dutch government plans to cut about 25,000 civil-service jobs by 2035, leaning on AI to do the work",
 "url": "https://www.thestar.com.my/tech/tech-news/2026/10/27/dutch-government-plans-to-cut-25000-jobs-in-ai-led-overhaul",
@@ -477,6 +579,10 @@
 {
 "outlet": "Crypto News Australia",
 "url": "https://cryptonews.com.au/news/australia-warns-ai-powered-cyberattacks-could-disrupt-essential-services-135316/"
+},
+{
+"outlet": "Euronews (AFP)",
+"url": "https://www.euronews.com/2026/10/27/australia-warns-of-unprecedented-ai-powered-cyberattacks-heres-whats-driving-them"
 }
 ],
 "tag": "Australia's cyber spies: more AI disruption is now 'inevitable'",
@@ -807,6 +913,69 @@
 "summary": "Filtering suppressed viral-protein skill in ESM-2 models, but fine-tuning restored it fully; AISI says filtering alone is not a robust safeguard.",
 "siren": false,
 "also": []
+},
+{
+"id": "dream-php2shell-25-servers-rooted",
+"title": "Security firm Dream: one PHP2Shell campaign rooted 25 real firewalls, two at a US government-linked body",
+"url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
+"outlet": "Dream",
+"published": "2026-10-26T12:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Attacker files show 24 firewalls and a management server rooted Oct 23-24 in four countries; no victim named, none has confirmed.",
+"siren": false,
+"also": [
+{
+"outlet": "Unite.AI",
+"url": "https://www.unite.ai/dream-reports-php2shell-attack-chain-that-compromised-25-servers/"
+},
+{
+"outlet": "Security Boulevard",
+"url": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/"
+},
+{
+"outlet": "Mallory",
+"url": "https://mallory.ai/stories/01a17f0b-b539-775a-a267-3d232e1d5e73"
+}
+],
+"wall": "lead",
+"wall_rank": 1,
+"tag": "Two at a US government-linked body",
+"label": "reported",
+"receipt": "Dream's count from the attacker's own logs (Oct 23-24); no victim, vendor or actor named, and no victim has confirmed it.",
+"moved": {
+"dir": "up",
+"at": "2026-10-27",
+"note": "First report of real systems, not decoys, broken into; one firm, unconfirmed by any victim"
+},
+"independent": {
+"n": 1,
+"who": [
+"Dream"
+],
+"carried_by": [
+"Unite.AI",
+"Security Boulevard",
+"Mallory"
+]
+},
+"touches": "Organizations running firewalls from one unnamed large vendor in the US, Japan, Taiwan and South Korea",
+"entities": {
+"orgs": [
+"Dream"
+],
+"vendors": [],
+"products": [
+"PHP"
+],
+"models": [],
+"sectors": [
+"government"
+],
+"states": []
+}
 },
 {
 "id": "sbs-agibot-110-humanoids-record",
@@ -2078,197 +2247,6 @@
 "region": "Global",
 "topic": "php2shell",
 "summary": "Version 3 lists 15 staging and 21 scan addresses, rates the DPRK nexus 'HIGH', names no organization, confirms no compromise.",
-"siren": false,
-"also": []
-},
-{
-"id": "globalnews-quebec-voters-chatbots",
-"url": "https://globalnews.ca/news/12119797/voters-ask-ai-who-to-vote-for",
-"outlet": "Global News / The Canadian Press",
-"published": "2026-10-24T11:29:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "Canada",
-"topic": "everyday",
-"summary": "Experts say answers were often wrong ahead of Ontario municipal votes; Anthropic says Claude shows sources.",
-"also": [],
-"title": "McGill estimate: 40% of Quebec voters asked AI chatbots about the election and got false or outdated answers",
-"siren": false
-},
-{
-"id": "foxnews-bonjovi-ai-video-scam",
-"title": "A fake Bon Jovi sent AI videos that said her name; a Louisiana fan lost $10,000 and nearly her home",
-"url": "https://www.foxnews.com/us/jon-bon-jovi-impersonator-uses-ai-videos-scam-woman-10k-nearly-costing-her-home",
-"outlet": "Fox News",
-"published": "2026-10-24T11:00:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "everyday",
-"summary": "Money requests began seven months after first contact in late 2024, via Venmo, PayPal, Cash App and crypto; IP traced to Lagos.",
-"siren": false,
-"also": []
-},
-{
-"id": "tnw-uk-biosecurity-lab",
-"url": "https://thenextweb.com/news/uk-funds-100m-ai-biosecurity-lab-with-openai-and-anthropic",
-"outlet": "The Next Web",
-"published": "2026-10-24T10:59:00Z",
-"time_known": true,
-"kind": "official",
-"region": "UK",
-"topic": "regulation",
-"summary": "Independent non-profit modelled on AISI, part of a £600m-plus AI security package; no site, director or start date yet.",
-"also": [
-{
-"outlet": "Bloomberg",
-"url": "https://www.bloomberg.com/news/articles/2026-10-23/uk-vows-100-million-for-biosecurity-lab-with-openai-anthropic"
-},
-{
-"outlet": "ITV News",
-"url": "https://www.itv.com/news/2026-10-24/tech-tycoons-must-not-be-allowed-to-let-rip-with-ai-minister-warns"
-}
-],
-"title": "UK puts £100m into an AI biosecurity lab; OpenAI and Anthropic pledge up to £100m each in compute and credits",
-"siren": false
-},
-{
-"id": "fortune-voice-clone-kidnap-scam",
-"url": "https://fortune.com/2026/10/24/ai-voice-cloning-scam-fake-kidnapping-safe-word/",
-"outlet": "Fortune",
-"published": "2026-10-24T10:36:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "everyday",
-"summary": "Daughter, 37, was at work; Martinez police investigating. Gallup: 15 million US adults scammed in 2025, 12% of cases involving AI.",
-"also": [],
-"title": "California mother wired $5,400 to Mexico after a fake-kidnapping call used an AI clone of her daughter's voice",
-"siren": false
-},
-{
-"id": "thn-google-privacy-ai-ads",
-"title": "Google's updated privacy policy lets Gmail, Drive and Photos data shared with AI Search personalize ads",
-"url": "https://thehackernews.com/2026/10/google-says-gmail-and-photos-data.html",
-"outlet": "The Hacker News",
-"published": "2026-10-24T10:00:00Z",
-"time_known": false,
-"kind": "breaking",
-"region": "Global",
-"topic": "everyday",
-"summary": "Effective Oct 16; opt-in through Personal Intelligence, not on by default; EEA, UK, Switzerland and Nigeria excluded.",
-"siren": false,
-"also": [
-{
-"outlet": "Android Authority",
-"url": "https://www.androidauthority.com/google-personal-intelligence-privacy-3727111/"
-},
-{
-"outlet": "The Verge",
-"url": "https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update"
-}
-]
-},
-{
-"id": "thn-brotli-flaw-beyond-nodejs",
-"title": "AI-found Brotli bug behind Node2Shell also hits Bun, Envoy, Istio and Python; the fix sat unreleased since Feb",
-"url": "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html",
-"outlet": "The Hacker News",
-"published": "2026-10-24T09:30:00Z",
-"time_known": false,
-"kind": "incident",
-"region": "Global",
-"topic": "ai-incident",
-"summary": "CVE-2026-111497, reported by OpenAI's Codex Security team; no in-the-wild exploitation or reliable public exploit yet.",
-"siren": false,
-"also": []
-},
-{
-"id": "thn-litellm-postmortem-master-key",
-"title": "LiteLLM post-mortem: a master key left in a public repo since May let an attacker hijack the release pipeline",
-"url": "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html",
-"outlet": "The Hacker News",
-"published": "2026-10-24T09:00:00Z",
-"time_known": false,
-"kind": "incident",
-"region": "Global",
-"topic": "other",
-"summary": "Poisoned 1.107.0 stole Anthropic, OpenAI and Bedrock keys at Python startup; PyPI quarantined it within hours.",
-"siren": false,
-"also": []
-},
-{
-"id": "ians-bengal-ai-police-id",
-"title": "Bengal police arrest a man who flashed an AI-made police ID at traffic officers to make them drive him home",
-"url": "https://www.socialnews.xyz/2026/10/24/man-arrested-in-bengal-for-threatening-traffic-cops-with-ai-generated-police-identity-card/",
-"outlet": "IANS via SocialNews.XYZ",
-"published": "2026-10-24T08:17:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "India",
-"topic": "deepfakes",
-"summary": "A scan showed the card was fake; he reportedly admitted making it with AI and was produced in Barrackpore court Saturday.",
-"siren": false,
-"also": []
-},
-{
-"id": "hankyung-artex-variants-japan",
-"title": "Korea Economic Daily, via Nikkei: modified ARTEX hacking agents keep spreading after the developer pulled them",
-"url": "https://hankyung.com/article/202610242500i",
-"outlet": "Korea Economic Daily",
-"published": "2026-10-24T07:08:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Korea",
-"topic": "ai-attack",
-"summary": "Variants tuned for remote access and scanning; claims of use against Japan are unsourced; a similar tool, Strix, has appeared.",
-"siren": false,
-"also": []
-},
-{
-"id": "reuters-moonshot-kimi-cyber",
-"url": "https://www.investing.com/news/stock-market-news/moonshot-curbs-hacking-ability-in-new-kimi-model-as-fears-grow-over-aipowered-cyberattacks-4970639",
-"outlet": "Reuters via Investing.com",
-"published": "2026-10-24T05:58:00Z",
-"time_known": false,
-"kind": "official",
-"region": "China",
-"topic": "ai-attack",
-"summary": "Open weights due Nov 4; the benchmark is Moonshot's own and not independently verified, as China drafts AI-malware export controls.",
-"also": [
-{
-"outlet": "Kimi (blog)",
-"url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
-}
-],
-"title": "Reuters: Moonshot cut cyber-offense data from Kimi K3.1 Pro; its own hacking score fell to 81% from 90.5%",
-"siren": false
-},
-{
-"id": "koreajoongang-cyfirma-minjun",
-"title": "CYFIRMA: Korean-speaking actors on I2P preparing PHP2Shell attacks on banks and government in four countries",
-"url": "https://www.koreajoongangdaily.com/business/hackers-used-korean-to-coordinate-potential-php-attack-targeting-banks-government-logistics-report/12936296",
-"outlet": "Korea JoongAng Daily",
-"published": "2026-10-24T05:35:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Korea",
-"topic": "php2shell",
-"summary": "Lazarus link rated only moderate; no victim or North Korean infrastructure identified; Korean experts skeptical.",
-"siren": false,
-"also": []
-},
-{
-"id": "cnnbrasil-tse-nikolas-marcal",
-"title": "Brazil's electoral court bars Nikolas Ferreira and Pablo Marçal from AI-manipulated posts, R$100,000 a post",
-"url": "https://www.cnnbrasil.com.br/eleicoes/tse-proibe-posts-falsos-de-nikolas-e-marcal-sob-multa-de-100-mil/",
-"outlet": "CNN Brasil",
-"published": "2026-10-24T03:12:56Z",
-"time_known": true,
-"kind": "official",
-"region": "Brazil",
-"topic": "deepfakes",
-"summary": "Signed Oct 23, in force until today's runoff closes; Meta and X must report on both profiles or face R$500,000 fines.",
 "siren": false,
 "also": []
 }

@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None by name as of Oct 26, 13:20 ET (SecurityWeek, 09:30 ET, names none). Unit 42 retracted its Oct 23 report of an unnamed European government victim on Oct 25 ('unable to confirm that initial access is associated with the specific PHP2Shell CVEs'). What remains is a honeypot: Perplexity's Adel Karimi recorded confirmed code execution against an unpatched mod_php server, endorsed by Expel's Marcus Hutchins (BleepingComputer, Oct 26); Dataminr: 'no known compromises' before it; odds of a named victim by Nov 7 cut 65% to 60%",
+"status": "None by name as of Oct 27, 19:40 ET. Closest yet: Dream (Oct 26) reports 25 real servers rooted Oct 23-24, two at an unnamed US government-affiliated organization, from the attacker's own files; unconfirmed by any victim. Unit 42 retracted its Oct 23 report on Oct 25; Karimi's honeypots remain the only independently confirmed code execution; odds of a named victim by Nov 7 raised 60% to 65%",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",

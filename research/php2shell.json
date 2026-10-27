@@ -936,6 +936,16 @@
    "what_happened": "Suspended its KB Tablet Branch service, which relies on PHP, from about 18:00 KST Oct 21 on the Financial Supervisory Service's recommendation, telling branches the security work would run from Oct 22 and finish no later than Oct 26; the service resumed Oct 26, per SBS Biz.",
    "damage": "none reported (precautionary outage)",
    "source": "https://biz.sbs.co.kr/article/20000342170"
+  },
+  {
+   "name": "Unnamed US government-affiliated organization and other firewall operators (Dream case)",
+   "sector": "Government and unnamed others",
+   "country": "United States, Japan, Taiwan, South Korea",
+   "status": "unconfirmed claim",
+   "date": "2026-10-23 to 2026-10-24",
+   "what_happened": "Dream says attacker files it recovered show a chained PHP2Shell and Fragnesia (Linux kernel) exploit rooting 24 perimeter firewalls from one unnamed large vendor and one internal firewall management server, 25 in all; two firewalls belonged to a US government-affiliated organization, where the files confirm credential extraction and directory enumeration. The evidence is the attacker's own logs, not access to the victims; no victim or vendor is named and none has confirmed it.",
+   "damage": "credentials taken and directory enumerated at one organization, per Dream; full extent unknown",
+   "source": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
   }
  ],
  "timeline": [
@@ -1398,6 +1408,21 @@
    "date": "2026-10-27",
    "event": "php.net archive, opened directly: no PHP release after Oct 21 and no fix yet for CVE-2026-115560 (its full advisory is promised 'with the next release'); the newest item remains the Oct 26 Windows rebuild for the separate Brotli flaw.",
    "source": "https://www.php.net/archive/2026.php"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "Dream publishes 'Chained PHP2Shell Exploit Roots 25 Servers': artifacts it recovered on Oct 25 (a custom PHP2Shell build, the Fragnesia kernel exploit, target lists, about 40 post-exploitation scripts and a success log) show 24 perimeter firewalls and one firewall management server rooted Oct 23-24 across the US, Japan, Taiwan and South Korea, two of them at a US government-affiliated organization. No victim, vendor or actor named; Dream notified the vendor.",
+   "source": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
+  },
+  {
+   "date": "2026-10-27",
+   "event": "The Register (14:45 UTC) recaps the KEV listing: CISA has not said which organizations were compromised, and the listing 'does not confirm how many production systems have been successfully breached'; AWS saw exploit attempts as early as Oct 17.",
+   "source": "https://www.theregister.com/cyber-crime/2026/10/27/cisa-confirms-php2shell-under-attack-as-researchers-clock-successful-exploits/5305681"
+  },
+  {
+   "date": "2026-10-27",
+   "event": "Security Boulevard (22:50 UTC) carries Dream's 25-server report alongside Wiz's 'limited number of exploitation attempts' in its own telemetry; still no organization named.",
+   "source": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/"
   }
  ],
  "statements": [
@@ -2598,6 +2623,15 @@
    "paraphrase": "Fourteen Korean security firms (incl. AhnLab, Penta Security, ESTsecurity) are offering free scanning, attack blocking and compromise checks for PHP2Shell.",
    "url": "https://www.ddaily.co.kr/page/view/2026102712512496739",
    "x_post": "no"
+  },
+  {
+   "date": "2026-10-26",
+   "organization": "Dream (Dream Group)",
+   "speaker": "",
+   "channel": "research blog",
+   "paraphrase": "Recovered attacker artifacts confirm credential extraction and directory enumeration at a US government-affiliated organization after PHP2Shell and Fragnesia were chained to root its firewalls; Dream cannot determine the full extent of the compromise and has notified the unnamed firewall vendor.",
+   "url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
+   "x_post": "no"
   }
  ],
  "scale": [
@@ -2824,6 +2858,13 @@
    "metric": "PHP hosts exposed online",
    "value": "more than 5.1 million, about 3.8 million with at least one port open to attack",
    "url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/"
+  },
+  {
+   "source_org": "Dream",
+   "date": "2026-10-26",
+   "metric": "Servers rooted in one chained PHP2Shell campaign (attacker's own logs)",
+   "value": "25 (24 perimeter firewalls, 1 management server); about 19,000 exposed firewall interfaces found, narrowed to 240 targets",
+   "url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
   }
  ],
  "ai_angle": [
@@ -2901,6 +2942,14 @@
    "finding": "Fortune's Oct 22 newsletter cites Microsoft's disclosure of 'hundreds' of autonomous AI-powered intrusions by the China-aligned group Storm-0940 using an open-source platform called Artex, but it does not tie them to PHP2Shell. No source reviewed attributes any PHP2Shell activity to AI-driven attackers.",
    "sources": [
     "https://fortune.com/2026/10/22/php-security-flaw-ai-powered-attacks-hackers-openai-daybreak/"
+   ]
+  },
+  {
+   "topic": "AI tools found on an attacker's server (Dream case)",
+   "finding": "Dream found Claude Code installed and an offensive platform configured with DeepSeek and Kimi on the operator's infrastructure, and says the code structure of about 40 scripts suggests AI-assisted development, but it has 'no direct evidence' the AI tools wrote the exploit and does not call the operation autonomous. This is the first PHP2Shell report to tie an attacker to AI tooling, and it rests on tool presence.",
+   "sources": [
+    "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
+    "https://www.unite.ai/dream-reports-php2shell-attack-chain-that-compromised-25-servers/"
    ]
   }
  ],

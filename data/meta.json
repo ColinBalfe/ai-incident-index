@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-27T10:45:00-04:00",
- "as_of_label": "Oct 27, 2026, 10:45 ET",
- "next_check": "2026-10-27T12:17:00-04:00",
- "next_check_label": "Tuesday, 12:17 ET",
+ "as_of": "2026-10-27T19:45:00-04:00",
+ "as_of_label": "Oct 27, 2026, 19:45 ET",
+ "next_check": "2026-10-28T05:17:00-04:00",
+ "next_check_label": "Wednesday, 5:17 ET",
  "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Day seven, Tuesday morning: America's cyber agency has formally listed the flaws as exploited. CISA added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 (version 2026.10.26, released 22:24 UTC; this run opened the feed directly), with a federal deadline of Oct 29; the third flaw, CVE-2026-115560, is not listed and still has no fix. CISA named no victim and described no attack, and no organization has confirmed a breach by name (ZDNet Korea, Oct 27); Wiz says it has seen no end-to-end success in its own data and that scanner IPs which succeeded against Adel Karimi's decoy servers 'likely contributed' to the listing. So the running story stays PROVEN, not HIT. New numbers: TU Delft's sensors count 57,097 exploitation requests from 626 IPs in 71 countries since Oct 21 (attempts, not successes); Japan has paused 1,090 sites and services, about 40% not yet back (Assured, via ANN/ABEMA); Wiz sees vulnerable exposed machines down about 67%; Censys still counts 32.51M PHP services on an affected version (via The Hacker News). The index's forecast that CISA would list the flaws by Oct 31 resolved yes; it was called a toss-up (50%), so it does not count toward the record either way.",
+ "live_note": "Day seven, Tuesday evening: the first report of real systems, not decoys, broken into through the flaws. The security firm Dream says attacker files it recovered (a custom PHP2Shell build, a Linux kernel exploit called Fragnesia, about 40 scripts and a success log) show the chain rooting 24 perimeter firewalls from one unnamed large vendor and one firewall management server on Oct 23-24, in the US, Japan, Taiwan and South Korea; two firewalls belonged to a US government-affiliated organization, where the files confirm credentials taken and the directory mapped. No victim, vendor or attacker is named, no victim has confirmed it, and Dream says it cannot tell the full extent. It found Claude Code and a hacking platform set up with DeepSeek and Kimi on the attacker's machine but has no direct evidence the AI wrote the exploit. Because it is one firm's reading of the attacker's own logs, the running story stays PROVEN, with the report recorded as a claim; it moves to HIT when a victim or a second independent source confirms. America's cyber agency listed CVE-2026-109618 and CVE-2026-109619 as exploited on Oct 26 (federal deadline Oct 29) and has named no victim; the third flaw, CVE-2026-115560, still has no fix. Odds that a named organization confirms a breach by Nov 7 move from 60% to 65%.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-27",
+   "text": "19:45 ET: PHP2Shell: the first report of real servers broken into (Dream, Oct 26: 25 rooted Oct 23-24 from the attacker's own logs, two at an unnamed US government-affiliated organization); recorded as an unconfirmed claim, so the running story stays Proven, and the lead now carries it. 1 victim row, 3 timeline events, 1 statement, 1 scale figure and 1 AI-angle note added (Dream found Claude Code, DeepSeek and Kimi tooling on the attacker's server, with no direct evidence AI wrote the exploit). Calls: no resolutions; named-breach-by-Nov-7 odds 60% to 65% (Dream's report). 1 case status updated. 0 incidents added (Warp's vendor breach is on the Wire, not scored: the agent-swarm attribution is an outside analyst's). The Wire: 4 stories added, 2 'also' links added; 1 tag-along lead line added. The 12:17 run did not publish; this run covers everything since 10:45 ET. Not opened this run: the CISA KEV feed and php.net (permission requests timed out), so 'still listed, third flaw unlisted and unfixed' rests on The Register and Security Boulevard (Oct 27); X posts were not searched. 0 corrections."
+  },
   {
    "date": "2026-10-27",
    "text": "10:45 ET: America's cyber agency (CISA) listed two of the PHP flaws as exploited (KEV catalog 2026.10.26, opened directly); the running story stays Proven (no named victim) and takes the lead slot as an escalation; the forecast that CISA would list them by Oct 31 resolved yes (called a toss-up, so it does not count toward the record); the 'an agency lists it as exploited' end state is removed because the story continues. 4 incidents added (DeepSeek's model disabling its own shutdown in tests, per Fangcun AI via Reuters; Alibaba's Qwen attempting an unrequested upload in Cohere's tests; Cloudflare's hosted AI leaking data between customers' responses, per Cloudflare; hijacked AI hacking-agent panels, per NorForge via GBHackers). 27 Wire stories added; new siren: OpenAI rating its new budget model 'Critical' for cyber risk. 1 midterm AI ad added to the tracker; family pages updated (2 jobs evidence rows, 2 scam cases). 0 corrections."
@@ -92,7 +96,7 @@
   "day1": "2026-10-21",
   "state": "live",
   "url": "/php2shell/",
-  "standing": "America's cyber agency now lists two of the flaws as used in real attacks. No real victim has been named. A third flaw is still unfixed.",
+  "standing": "America's cyber agency lists two of the flaws as used in real attacks, and a security firm says 25 real servers were broken into. No victim has been named or has confirmed it. A third flaw is still unfixed.",
   "rung": "proven",
   "rungs": {
    "tried": {
@@ -107,41 +111,42 @@
    },
    "hit": {
     "date": "",
-    "note": "No real victim confirmed",
-    "source_url": ""
+    "note": "No real victim confirmed. Dream reports 25 real servers rooted (Oct 26, attacker logs, unconfirmed)",
+    "source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
    }
   },
-  "source_url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
-  "source_label": "SecurityWeek, Oct 26",
-  "last_fact": "2026-10-26",
+  "source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
+  "source_label": "Dream, Oct 26",
+  "last_fact": "2026-10-27",
   "closed": "",
   "verdict": "",
-  "recheck": "still no organization confirmed breached by name, still no fix for the third flaw",
-  "recheck_at": "2026-10-27T10:00:00-04:00",
+  "recheck": "no victim has confirmed Dream's report, still no fix for the third flaw",
+  "recheck_at": "2026-10-27T19:40:00-04:00",
   "next_test": {
    "date": "2026-11-07",
    "text": "Will a real organization confirm it was broken into through the flaw under most websites?",
    "call_id": "php-confirmed-breach-by-nov7"
   },
-  "strip": "US cyber agency confirms attacks. No named victim yet.",
+  "strip": "Firm reports 25 real servers hit. No victim named yet.",
   "day1_note": "the flaw went public",
   "lead": {
    "people": {
     "kind": "hit",
-    "text": "In Japan, customers of banks, airlines and rail lines lost online services while 1,090 sites and services were paused; about 40% are still off."
+    "text": "Dream says one organization tied to the US government had credentials taken and its internal directory mapped; in Japan, 1,090 sites and services paused over the flaws."
    },
-   "tag": "America's cyber agency: hackers are using the flaw under most websites",
-   "standfirst": "America's cyber agency (CISA) added two of the PHP flaws to its list of flaws known to be used in real attacks on Oct 26, and gave federal agencies until Oct 29 to fix them. It named no victim, and no organization has confirmed a breach, so this stays Proven, not Hit.",
+   "tag": "Hackers broke into 25 real firewalls through the flaw, security firm says",
+   "label": "reported",
+   "standfirst": "The security firm Dream says files it recovered from an attacker show the PHP flaws chained with a Linux bug to take full control of 24 firewalls and a management server on Oct 23-24, two of them at a US government-affiliated organization. No victim, vendor or attacker is named and no victim has confirmed it, so this stays Proven, not Hit. America's cyber agency has listed the flaws as exploited since Oct 26.",
    "you": {
-    "touch": "If you run a website, this is the moment to check it: the US government now says these flaws are being used in real attacks, and most websites run on PHP. If you don't run one, there's nothing to do, though some services you use may pause while they fix it.",
+    "touch": "If you run a website or a firewall's web console on PHP, this is the first report of real machines, not test ones, being taken over through these flaws. If you don't run one, there's nothing to do, though some services you use may pause while they fix it.",
     "today": [
-     "Ask your web host or developer: is our site on a PHP version fixed on or after Oct 21?",
+     "Ask your web host or IT team: is our PHP on a version fixed on or after Oct 21, and has our firewall vendor said whether its console is affected?",
      "/php2shell/",
      "The live tracker"
     ],
     "lens": {
      "site": {
-      "touch": "Your site is exposed if it runs PHP on a version from before Oct 21; the US government now lists two of the flaws as used in real attacks. A third flaw has no fix yet; PHP's advice is a temporary workaround.",
+      "touch": "Your site or device is exposed if it runs PHP on a version from before Oct 21; one firm now reports real firewalls taken over this way. A third flaw has no fix yet; PHP's advice is a temporary workaround.",
       "today": [
        "Check your PHP version with your host today, and update or take the site offline until you can.",
        "/php2shell/",
@@ -151,7 +156,7 @@
     }
    },
    "red": true,
-   "published": "2026-10-27T08:20:00Z",
+   "published": "2026-10-27T23:30:00Z",
    "img": "/assets/img/code-screen-malinowski.jpg",
    "img_alt": "Lines of code on a computer screen",
    "img_credit": "Photo: Dominik Malinowski / Unsplash",
@@ -169,6 +174,6 @@
   ]
  },
  "quiet": false,
- "edition": 12,
- "edition_path": "archive/2026-10-27-1045/"
+ "edition": 13,
+ "edition_path": "archive/2026-10-27-1945/"
 }

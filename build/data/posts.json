@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-27T10:45:00-04:00",
+ "as_of": "2026-10-27T19:45:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -11,34 +11,26 @@
   },
   {
    "kind": "brief",
-   "text": "America's cyber agency has formally listed two of the PHP flaws as exploited in real attacks; federal agencies must fix them by Oct 29. It has not said who was hit, and no victim is confirmed by name.",
-   "link": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+   "text": "A security firm, Dream, says hackers chained the PHP flaws with a Linux bug to break into 25 real servers on Oct 23-24, including two firewalls at a US government-linked body. No victim is named and none has confirmed it.",
+   "link": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
    "image": "cards/i-php2shell.jpg",
-   "chars": 224,
+   "chars": 245,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Japan: 1,090 sites and services have paused over the PHP flaws, and about 40% had not come back as of Oct 26, per the firm Assured.",
-   "link": "https://times.abema.tv/articles/-/10284297",
-   "image": "cards/i-php2shell.jpg",
-   "chars": 155,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "OpenAI rates its new budget model, sold to ChatGPT subscribers and through its API at half the old price, at the top 'Critical' level for cyber risk in its own safety framework.",
-   "link": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
+   "text": "Coding app Warp says a breach at one of its vendors exposed AI agent logs and telemetry for roughly 1% of its users; CrowdStrike is investigating.",
+   "link": "https://www.bleepingcomputer.com/news/security/warp-discloses-breach-exposing-ai-agent-logs-user-telemetry-data/",
    "image": null,
-   "chars": 201,
+   "chars": 170,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "The Dutch government plans to cut about 25,000 central-government jobs by 2035, naming AI as one of the levers.",
-   "link": "https://www.thestar.com.my/tech/tech-news/2026/10/27/dutch-government-plans-to-cut-25000-jobs-in-ai-led-overhaul",
+   "text": "North Carolina's governor wants regulators to make data centers pay for the power and grid costs they add, instead of households.",
+   "link": "https://wral.com/news/local/governor-stein-calls-for-tariffs-on-data-center-companies-october-2026",
    "image": null,
-   "chars": 135,
+   "chars": 153,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
@@ -51,10 +43,10 @@
   },
   {
    "kind": "case",
-   "text": "Did they fix it? PHP2Shell: AI-found PHP flaws, global precautionary shutdowns: The fix exists for supported PHP versions and nobody has broken it yet; the exploit is now confirmed to work against a real unpatched server (a honeypot), the one vendor…",
+   "text": "Did they fix it? PHP2Shell: AI-found PHP flaws, global precautionary shutdowns: The fix exists for supported PHP versions and nobody has broken it yet; the US government lists the flaws as exploited, one security firm reports 25 real servers rooted from…",
    "link": "https://warningshots.ai/c/php2shell/",
    "image": "cards/c-php2shell.jpg",
-   "chars": 274,
+   "chars": 278,
    "note": "Status: ongoing"
   },
   {
@@ -72,14 +64,6 @@
    "image": "cards/m-ai-found-php-flaws-2026.jpg",
    "chars": 259,
    "note": ""
-  },
-  {
-   "kind": "call-graded",
-   "text": "Called it. We said 50%: CISA adds CVE-2026-109618 or CVE-2026-109619 (PHP2Shell) to its Known Exploited Vulnerabilities catalog by Oct 31. Resolved YES. CISA added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct…",
-   "link": "https://warningshots.ai/#fc-php-kev-by-oct31",
-   "image": null,
-   "chars": 278,
-   "note": "A miss is posted with the same prominence as a hit; that is what makes the record worth anything."
   }
  ]
 }

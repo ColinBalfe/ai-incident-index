@@ -35,11 +35,11 @@
     "stage": "current",
     "status": "ongoing",
     "date": "2026-10-27",
-    "note": "Day seven after the patch. America's cyber agency (CISA) added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 (version 2026.10.26, opened directly Oct 27), with a federal fix deadline of Oct 29; it named no victim and described no attack. The firmest evidence of real-world exploitation is still a honeypot: Perplexity's Adel Karimi recorded confirmed code execution against an unpatched Apache mod_php server, and Wiz says scanner IPs that succeeded there 'likely contributed' to the listing. Unit 42 retracted its one report of an intrusion on Oct 25. No named organization has confirmed a breach, Wiz sees vulnerable exposed machines down about 67%, Censys still counts 32.51M PHP services on an affected version, and the third PHP bug (CVE-2026-115560) has no fix.",
-    "source_url": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html"
+    "note": "Day seven after the patch. America's cyber agency (CISA) added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 with a federal fix deadline of Oct 29; it named no victim. The security firm Dream reported on Oct 26 that attacker files it recovered show a chained PHP2Shell and Linux-kernel exploit rooting 25 real servers (24 firewalls and a management server) on Oct 23-24, two at a US government-affiliated organization; no victim or vendor is named and none has confirmed it, so this is a single-firm report. Wiz still sees only 'a limited number of exploitation attempts' in its own telemetry. No named organization has confirmed a breach, and the third PHP bug (CVE-2026-115560) has no fix.",
+    "source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
    }
   ],
-  "one_liner": "The fix exists for supported PHP versions and nobody has broken it yet; the exploit is now confirmed to work against a real unpatched server (a honeypot), the one vendor report of a victim has been retracted, most exposed servers will never get the patch, and no organization has confirmed a breach by name.",
+  "one_liner": "The fix exists for supported PHP versions and nobody has broken it yet; the US government lists the flaws as exploited, one security firm reports 25 real servers rooted from the attacker's own logs, but no organization has confirmed a breach by name and most exposed servers will never get the patch.",
   "what_would_change_it": "A confirmed compromise at a named organization, or a public way around the Oct 21 patch, would turn precautionary disruption into real damage. (CISA's Oct 26 listing confirmed exploitation, but no victim.)",
   "confidence": "high"
  },

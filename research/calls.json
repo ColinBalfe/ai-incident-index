@@ -31,7 +31,7 @@
   "question": "A named organization publicly confirms a successful PHP2Shell compromise (code executed or data accessed on its systems) by Nov 7",
   "opened": "2026-10-23",
   "resolve_by": "2026-11-07",
-  "odds": 0.6,
+  "odds": 0.65,
   "horizon": "weeks",
   "basis": "About 2.6 million internet-facing PHP hosts were exposed before patching, exploitation attempts run in the millions, and VulnCheck reports an exploit that works on the recommended production setup. Against that: three days of attempts with no confirmed breach, one vendor retracted its claim, and experts tell The Record most public exploits fail outside labs. Confirmation lags compromise, which is why this is a two-week question. Oct 24, 13:50 ET: 60% to 65%. Unit 42 reports one successful intrusion at an unnamed European government entity; the question needs a named organization, and none has come forward. Oct 26, 06:40 ET: 65% to 60%. Unit 42 retracted its Oct 23 intrusion report on Oct 25 ('unable to confirm that initial access is associated with the specific PHP2Shell CVEs'), removing the one vendor account of a victim; the Oct 26 honeypot confirmation shows the technique works against unpatched servers in the wild but names no organization. Six days in, nobody has come forward.",
   "signposts": "A breach notification or regulator filing naming PHP2Shell; a CISA KEV listing; incident responders (Mandiant, CrowdStrike, Sophos) publishing a confirmed case.",

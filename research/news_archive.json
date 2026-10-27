@@ -2855,6 +2855,61 @@
 "also": []
 },
 {
+"id": "dream-php2shell-25-servers-rooted",
+"title": "Security firm Dream: one PHP2Shell campaign rooted 25 real firewalls, two at a US government-linked body",
+"url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
+"outlet": "Dream",
+"published": "2026-10-26T12:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "Global",
+"topic": "php2shell",
+"summary": "Attacker files show 24 firewalls and a management server rooted Oct 23-24 in four countries; no victim named, none has confirmed.",
+"also": [
+{
+"outlet": "Unite.AI",
+"url": "https://www.unite.ai/dream-reports-php2shell-attack-chain-that-compromised-25-servers/"
+},
+{
+"outlet": "Security Boulevard",
+"url": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/"
+},
+{
+"outlet": "Mallory",
+"url": "https://mallory.ai/stories/01a17f0b-b539-775a-a267-3d232e1d5e73"
+}
+],
+"tag": "Two at a US government-linked body",
+"label": "reported",
+"receipt": "Dream's count from the attacker's own logs (Oct 23-24); no victim, vendor or actor named, and no victim has confirmed it.",
+"independent": {
+"n": 1,
+"who": [
+"Dream"
+],
+"carried_by": [
+"Unite.AI",
+"Security Boulevard",
+"Mallory"
+]
+},
+"touches": "Organizations running firewalls from one unnamed large vendor in the US, Japan, Taiwan and South Korea",
+"entities": {
+"orgs": [
+"Dream"
+],
+"vendors": [],
+"products": [
+"PHP"
+],
+"models": [],
+"sectors": [
+"government"
+],
+"states": []
+}
+},
+{
 "id": "chalkbeat-candidates-ai-schools",
 "title": "Candidates for governor in California and Texas pledge to curb AI and screens in classrooms",
 "url": "https://chalkbeat.org/2026/10/26/backlash-to-ai-screen-time-ed-tech-factors-into-midterm-elections",
@@ -3086,6 +3141,10 @@
 {
 "outlet": "Crypto News Australia",
 "url": "https://cryptonews.com.au/news/australia-warns-ai-powered-cyberattacks-could-disrupt-essential-services-135316/"
+},
+{
+"outlet": "Euronews (AFP)",
+"url": "https://www.euronews.com/2026/10/27/australia-warns-of-unprecedented-ai-powered-cyberattacks-heres-whats-driving-them"
 }
 ],
 "tag": "Australia's cyber spies: more AI disruption is now 'inevitable'",
@@ -3288,6 +3347,37 @@
 "touches": "25,000 Dutch civil servants"
 },
 {
+"id": "statesnewsroom-data-center-backlash-midterms",
+"title": "Voter backlash against data centers is now a midterm issue, from a Pennsylvania river town to Senate races",
+"url": "https://www.kotatv.com/2026/10/27/we-dont-want-it-voter-backlash-against-data-centers-consumes-midterm-elections/",
+"outlet": "States Newsroom via KOTA",
+"published": "2026-10-27T02:30:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"summary": "YouGov found 63% of US adults oppose a data center in their community; a PAC spent $2.5 million on ads over them.",
+"also": [],
+"beat": "near-you",
+"touches": "Residents of Springdale, Pennsylvania, and other towns facing proposed data centers",
+"entities": {
+"orgs": [
+"Dynamo DC"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"PA",
+"KS",
+"OH"
+]
+}
+},
+{
 "id": "wlos-ager-ai-drag-ad",
 "title": "A Republican ad put a North Carolina Democrat at an AI-made drag barn dance; he calls it '100% fake'",
 "url": "https://wlos.com/news/local/jamie-ager-responds-artificial-intelligence-ai-generated-political-attack-ad-100-fake-bullcrap-advertisement-democrat-gop-republican-jennifer-balkcom-congress-north-carolina",
@@ -3413,6 +3503,10 @@
 {
 "outlet": "Cyber Press",
 "url": "https://cyberpress.org/cisa-warns-php2shell-flaws/"
+},
+{
+"outlet": "The Register",
+"url": "https://www.theregister.com/cyber-crime/2026/10/27/cisa-confirms-php2shell-under-attack-as-researchers-clock-successful-exploits/5305681"
 }
 ],
 "label": "confirmed",
@@ -3480,7 +3574,9 @@
 "region": "Global",
 "topic": "php2shell",
 "summary": "Under 53% of initially affected organizations still vulnerable a week on; public exploit kits failed against Wiz's systems.",
-"also": []
+"also": [],
+"tag": "Wiz data: no full break-in seen yet",
+"label": "confirmed"
 },
 {
 "id": "gbhackers-cairn-panels-hijacked",
@@ -3529,5 +3625,69 @@
 "topic": "everyday",
 "summary": "Frank LaRose warns AI answers 'can be incorrect or outdated, even when presented confidently'; no test results were released.",
 "also": []
+},
+{
+"id": "bleeping-warp-breach-agent-logs",
+"title": "Warp says a breach at one of its vendors exposed AI agent logs and telemetry for about 1% of its users",
+"url": "https://www.bleepingcomputer.com/news/security/warp-discloses-breach-exposing-ai-agent-logs-user-telemetry-data/",
+"outlet": "BleepingComputer",
+"published": "2026-10-27T16:15:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "ai-attack",
+"summary": "Warp's CEO estimates roughly 1% of users were hit; CrowdStrike is investigating. An outside analyst, not Warp, blames an 'agent swarm'.",
+"also": [],
+"tag": "Hackers exposed AI agent logs of about 1% of Warp users",
+"label": "confirmed",
+"receipt": "'Roughly 1%' is Warp CEO Zach Lloyd's estimate; Warp lists at least 800,000 users. The 'agent swarm' attribution is an outside analyst's, not Warp's.",
+"touches": "Users of the Warp coding app, about 1% of them by the company's estimate",
+"entities": {
+"orgs": [
+"Warp",
+"CrowdStrike"
+],
+"vendors": [],
+"products": [
+"Warp"
+],
+"models": [],
+"sectors": [
+"tech"
+],
+"states": []
+}
+},
+{
+"id": "wral-stein-data-center-tariffs",
+"title": "North Carolina's governor urges regulators to make data centers pay for the power and grid costs they add",
+"url": "https://wral.com/news/local/governor-stein-calls-for-tariffs-on-data-center-companies-october-2026",
+"outlet": "WRAL",
+"published": "2026-10-27T20:10:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"summary": "Gov. Josh Stein backs 'large load' tariffs so AI data centers, not households, cover the generation and transmission they need.",
+"also": [],
+"tag": "North Carolina's governor pushed to make data centers pay for power",
+"label": "confirmed",
+"beat": "near-you",
+"touches": "Duke Energy customers in North Carolina",
+"entities": {
+"orgs": [
+"Duke Energy",
+"North Carolina Utilities Commission"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"NC"
+]
+}
 }
 ]
