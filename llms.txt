@@ -14,6 +14,9 @@ Last refresh: Oct 26, 2026, 3:25 PM ET. 160 incidents scored. Corrections and re
 - [Live tracker: PHP2Shell: AI-found PHP flaws leak, trigger global shutdowns](https://warningshots.ai/php2shell/)
 - [What to do: AI voice clone scam call: what to do right now](https://warningshots.ai/help/voice-clone-scam-call/): A crying voice that sounds like your child or parent, a crisis, a demand for money: it may be an AI voice clone. What to do in the next five minutes, how to check, how to report it, with real cases.
 - [What to do: AI scam texts: how to spot them and what to do (2026)](https://warningshots.ai/help/ai-scam-texts/): Scam texts no longer have the typos that gave them away. The five most common text scams, the new AI-era warning signs, what to do if you clicked, and where to report it.
+- [Know What It Means: How to set up an AI chatbot for an older parent, safely](https://warningshots.ai/learn/ai-helper-for-older-parent/): An AI chatbot can help an older parent with letters, reminders and questions at 2 a.m. How to set one up together in 30 minutes, the three rules to teach, what to switch off, and what to watch for.
+- [Know What It Means: Why do AI chatbots make things up? (And how to catch it)](https://warningshots.ai/learn/why-chatbots-make-things-up/): Chatbots invent facts, quotes and court cases because they're built and tested to give a likely-sounding answer rather than say "I don't know". OpenAI's own explanation, the numbers, real cases, and five habits that catch it.
+- [Know What It Means: The treacherous turn: what Bostrom meant, and what we've seen](https://warningshots.ai/learn/treacherous-turn/): Bostrom's 'treacherous turn': an AI that behaves while it's weak or watched, then turns once it can't be stopped. It hasn't happened. But labs have now documented its ingredients in tests. The idea, the record, and the case against worry.
 
 
 ## Data

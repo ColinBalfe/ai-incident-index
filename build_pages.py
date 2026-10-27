@@ -324,6 +324,10 @@ ns.append('</urlset>')
 open('news-sitemap.xml', 'w', encoding='utf-8').write('\n'.join(ns))
 json.dump([u for u, _, _ in _news], open('data/fresh_urls.json', 'w'))
 _help_live = [h for h in HELP if h.get('approved')]
+try:
+    _learn_live = [h for h in json.load(open('research/learn.json', encoding='utf-8')) if h.get('approved')]
+except (OSError, ValueError):
+    _learn_live = []
 open('robots.txt', 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\nSitemap: {site}sitemap.xml\nSitemap: {site}news-sitemap.xml\n')
 _sev = sorted(scored, key=lambda r: -r['severity'])
 _live = by_id.get(meta.get('live_incident') or '')
@@ -341,7 +345,7 @@ Last refresh: {as_of_label}. {len(scored)} incidents scored. Corrections and ret
 - [Did they fix it?]({site}c/): report, response, claimed fix, independent check, current status
 - [What AI can now do]({site}m/): capability milestones graded from demonstration to real consequences
 {f"- [Live tracker: {_live['title']}]({site}php2shell/)" if _live and os.path.exists('php2shell/index.html') else ''}
-{''.join(f'- [What to do: {h["title"]}]({site}help/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _help_live)}
+{''.join(f'- [What to do: {h["title"]}]({site}help/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _help_live)}{''.join(f'- [Know What It Means: {h["title"]}]({site}learn/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _learn_live)}
 
 ## Data
 - [incidents.json]({site}data/incidents.json) and [incidents.csv]({site}data/incidents.csv): every incident with its five factor ratings, dates, summary and sources
