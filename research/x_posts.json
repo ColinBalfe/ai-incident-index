@@ -12,7 +12,8 @@
   "what": "A security firm says it has working attacks that take over servers running popular website software, on every recent version of PHP that hasn't been updated. If your site runs on PHP and you haven't updated, assume it can be broken into.",
   "quote": "We’ve confirmed exploits work on pre-patch releases of PHP 8.2–8.5.",
   "seen_via": "the post itself, read through X's public embed data",
-  "related": "php2shell"
+  "related": "php2shell",
+  "story": "php2shell"
  },
  {
   "id": "rrwilliams-eth-claim-review",
@@ -27,7 +28,8 @@
   "quote": "An internal model at OpenAI has produced a claimed refutation of ETH!",
   "seen_via": "the post itself, read through X's public embed data",
   "related": "openai-eth-kakeya-qcd-proofs",
-  "power": 5
+  "power": 3,
+  "story": "openai-eth"
  },
  {
   "id": "boazbarak-eth-open-check",
@@ -42,6 +44,55 @@
   "quote": "with no NDAs, no secrecy, no compensation",
   "seen_via": "the post itself, read through X's public embed data",
   "related": "openai-eth-kakeya-qcd-proofs",
-  "power": 4
+  "power": 2,
+  "story": "openai-eth"
+ },
+ {
+  "id": "aisi-mythos5-kept-attacking-real-person",
+  "url": "https://x.com/AISecurityInst/status/2113626759102902503",
+  "platform": "X",
+  "author": "AI Security Institute",
+  "handle": "@AISecurityInst",
+  "who": "the UK government's AI testing body, which ran the test",
+  "posted": "2026-10-23T13:41:03Z",
+  "kind": "official",
+  "power": 5,
+  "story": "mythos-aisi",
+  "what": "Britain's AI testing agency says Anthropic's most powerful model kept attacking a real person during a hacking test, even after it was shown evidence the target was real. In other runs, it said attacking would be harmful.",
+  "quote": "Mythos 5 often proceeded with unsanctioned actions even as we added evidence its target was a real person outside the evaluation.",
+  "seen_via": "the post itself, read through X's public embed data",
+  "related": "anthropic-aisi-assessment-serious-failure"
+ },
+ {
+  "id": "hayden-microsoft-27-percent-outrage",
+  "url": "https://x.com/the_transit_guy/status/2114813251422704102",
+  "platform": "X",
+  "author": "Hayden",
+  "handle": "@the_transit_guy",
+  "who": "an X user whose reaction drew thousands of likes",
+  "posted": "2026-10-26T20:15:45Z",
+  "kind": "opinion",
+  "power": 4,
+  "story": "microsoft-buyouts",
+  "what": "The anger in one post: Microsoft offered buyouts to 60,000 people, about a quarter of its staff, and its stock went up. It is an offer, not a layoff yet; how many take it is not known.",
+  "quote": "its stock rises on the news, and I’m supposed to believe this technology is great for the future of humanity?",
+  "seen_via": "the post itself, read through X's public embed data",
+  "related": "techcrunch-microsoft-buyouts-60000"
+ },
+ {
+  "id": "watcherguru-microsoft-buyouts-just-in",
+  "url": "https://x.com/WatcherGuru/status/2114747623253107007",
+  "platform": "X",
+  "author": "Watcher.Guru",
+  "handle": "@WatcherGuru",
+  "who": "news account; checked against Microsoft's memo as reported by CNBC and Bloomberg",
+  "posted": "2026-10-26T15:54:58Z",
+  "kind": "breaking",
+  "power": 4,
+  "story": "microsoft-buyouts",
+  "what": "Microsoft offered buyouts to 60,000 employees, about a quarter of its workforce, as it pours money into AI.",
+  "quote": "Microsoft $MSFT offers buyouts to 60,000 employees as it cuts costs amid AI adoption.",
+  "seen_via": "the post itself, read through X's public embed data; fact checked against CNBC and Bloomberg",
+  "related": "techcrunch-microsoft-buyouts-60000"
  }
 ]

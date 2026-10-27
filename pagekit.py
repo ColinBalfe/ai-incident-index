@@ -82,6 +82,7 @@ STYLE = """<style>
 .pk .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:10px;padding:0;list-style:none} .pk .grid li{border:1px solid var(--line-2);background:var(--panel);padding:12px} .pk .grid a{font-weight:700}
 .pk .cap{border:2px solid var(--ink);padding:14px 16px;margin:24px 0;background:var(--panel)} .pk .cap form{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px} .pk .cap input{flex:1 1 14rem;padding:10px;font:inherit;border:1px solid var(--ink-3)} .pk .cap button{padding:10px 14px;font:700 14px/1 var(--sans);background:var(--ink);color:var(--paper);border:0;cursor:pointer}
 .pk .sit li{line-height:1.5} .pk .sit .act{display:block;margin:4px 0 6px;color:var(--alarm);font-weight:600} .pk .sit a{font-weight:600}
+.pk ul.list{list-style:none;padding:0;margin:0} .pk ul.list li{padding:11px 0;border-bottom:1px solid var(--line)} .pk ul.list a{font-family:var(--serif);font-weight:700;font-size:1.12rem;line-height:1.3} .pk ul.list .meta{display:block;margin-top:3px;font-size:14px;color:var(--ink-2)}
 .pk .search{width:100%;padding:12px;font:inherit;font-size:17px;border:2px solid var(--ink);margin:8px 0}
 @media print{.mast,footer,.share,.draft,.skip,.cap{display:none!important}}
 </style>"""

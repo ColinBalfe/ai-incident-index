@@ -22,8 +22,23 @@ def _live_nav():
     day = (dt.date.fromisoformat(AS_OF[:10]) - dt.date.fromisoformat(sr['day1'])).days + 1
     return f'<a href="{esc(sr.get("url") or "/")}" class="live-nav" title="{esc(sr["name"])}: day {day} since it went public"><span class="live-dot" aria-hidden="true">●</span> Live case · day {day}</a>'
 LIVE_NAV = _live_nav()
-NAV = '<nav aria-label="Sections"><a href="/wire/">The Wire</a>' + LIVE_NAV + '<a href="/exposed/">Am I exposed?</a><a href="/i/">Incidents</a><a href="/index/#about">About</a></nav>'
-FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Scores are the index’s own, by a <a href="/index/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}. <a href="/learn/">Know What It Means</a> · <a href="/help/">What to do</a> · <a href="/checks/">Is this a scam?</a> · <a href="/exposed/">Am I exposed?</a> · <a href="/jobs/">Can AI do your job?</a> · <a href="/can-ai/">What AI can do</a> · <a href="/press/">Press</a> · <a href="/badge/">Embed the level</a></span></div></footer>'
+def _fix_open():
+    try:
+        fx = json.load(open(os.path.join(here, 'data', 'fixes.json'), encoding='utf-8'))
+    except (OSError, ValueError):
+        return 0
+    cur = lambda f: next((c for c in f['chain'] if c['stage'] == 'current'), f['chain'][-1])
+    return sum(1 for f in fx if cur(f)['status'] != 'fixed')
+FIX_OPEN = _fix_open()
+# the sections after the live slot, shared by the homepage (index.template.html {{MID_NAV}}) and every other page
+MID_NAV = ('<a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can do</a><a href="/forecast/">Forecasts</a>'
+           + f'<a href="/fixes/">Did they fix it?{f" <span class=nb>{FIX_OPEN} open</span>" if FIX_OPEN else ""}</a><a href="/i/">Incidents</a><a href="/index/#about">About</a>')
+# the desks: the standing pages people come back to, Drudge's reference shelf (homepage under the masthead; every page's footer)
+DESKS = [('/checks/', 'Is this a scam?'), ('/jobs/', 'Can AI do your job?'), ('/jobs/layoffs/', 'Layoffs tied to AI'), ('/help/', 'What to do'),
+         ('/midterms-2026/', 'Midterm fakes'), ('/learn/', 'Know what it means')]
+NAV = '<nav aria-label="Sections"><a href="/wire/">The Wire</a>' + LIVE_NAV + MID_NAV + '</nav>'
+DESK_ROW = '<nav class="desks" aria-label="Desks">' + ''.join(f'<a href="{u}">{esc(t)}</a>' for u, t in DESKS) + '</nav>'
+FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Scores are the index’s own, by a <a href="/index/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}. ' + ' · '.join(f'<a href="{u}">{esc(t)}</a>' for u, t in DESKS + [('/shield/', 'Family safe word'), ('/exposed/', 'Am I exposed?'), ('/can-ai/', 'What AI can do'), ('/forecast/', 'Forecasts'), ('/fixes/', 'Did they fix it?'), ('/wire/archive/', 'Earlier days'), ('/index/', 'The Record'), ('/press/', 'Press'), ('/badge/', 'Embed the level')]) + '</span></div></footer>'
 SCRIPT = """<script>
 document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { var t = b.getAttribute('data-copy'); var done = function () { var x = document.getElementById('toast'); x.textContent = 'Copied'; x.classList.add('on'); setTimeout(function () { x.classList.remove('on'); }, 1500); };
   if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function () { window.prompt('Copy this link', t); }); else window.prompt('Copy this link', t); }); });
@@ -58,7 +73,7 @@ def shell(*, title, desc, url, img, body, jsonld, kind):
 </head>
 <body data-kind="{kind}">
 <a class="skip" href="#main">Skip to content</a>
-<header class="mast"><div class="wrap"><a class="logo" href="/" aria-label="Warning Shots, home">{MARK}<span class="wm">Warning Shots</span></a>{NAV}</div></header>
+<header class="mast"><div class="wrap"><a class="logo" href="/" aria-label="Warning Shots, home">{MARK}<span class="wm">Warning Shots</span></a>{NAV}</div></header>{DESK_ROW}
 <main id="main"><div class="wrap">
 {body}
 </div></main>

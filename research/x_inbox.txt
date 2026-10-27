@@ -1,0 +1,1 @@
+# Paste X post links here, one per line. The next refresh opens each one, adds it if it meets the bar, then clears this file.

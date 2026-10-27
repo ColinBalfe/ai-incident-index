@@ -48,5 +48,49 @@
    "id": "2113825891021144306",
    "photos": []
   }
+ },
+ "aisi-mythos5-kept-attacking-real-person": {
+  "name": "AI Security Institute (AISI)",
+  "handle": "AISecurityInst",
+  "avatar": "https://pbs.twimg.com/profile_images/1890292397675827200/cQ64Nloh_bigger.png",
+  "verified": true,
+  "created_at": "2026-10-23T13:41:03.000Z",
+  "text": "Mythos 5 often proceeded with unsanctioned actions even as we added evidence its target was a real person outside the evaluation. In separate runs with the same information, it often said attacking would be harmful.",
+  "id": "2113626759102902503",
+  "photos": [
+   "https://pbs.twimg.com/media/HVUXm-XXkAEhmdq.jpg"
+  ]
+ },
+ "hayden-microsoft-27-percent-outrage": {
+  "name": "Hayden",
+  "handle": "the_transit_guy",
+  "avatar": "https://pbs.twimg.com/profile_images/1894188563400433664/CYdVaNRw_bigger.jpg",
+  "verified": true,
+  "created_at": "2026-10-26T20:15:45.000Z",
+  "text": "So the third-largest company on the planet is willing to cut 27% of its workforce due to AI, its stock rises on the news, and I’m supposed to believe this technology is great for the future of humanity?",
+  "id": "2114813251422704102",
+  "photos": [],
+  "quoted": {
+   "name": "Brody Ford",
+   "handle": "BrodyFord_",
+   "avatar": "https://pbs.twimg.com/profile_images/1784963665948516352/R19dt127_bigger.jpg",
+   "verified": false,
+   "created_at": "2026-10-26T15:36:53.000Z",
+   "text": "Microsoft is offering buyouts to 60,000(!) employees. Headcount and revenue growth is really starting to diverge at tech companies.",
+   "id": "2114743072693338603",
+   "photos": [
+    "https://pbs.twimg.com/media/HVkTeeTaoAAyj8e.jpg"
+   ]
+  }
+ },
+ "watcherguru-microsoft-buyouts-just-in": {
+  "name": "Watcher.Guru",
+  "handle": "WatcherGuru",
+  "avatar": "https://pbs.twimg.com/profile_images/1641221212578754562/DfiC0KW2_bigger.png",
+  "verified": true,
+  "created_at": "2026-10-26T15:54:58.000Z",
+  "text": "JUST IN: Microsoft $MSFT offers buyouts to 60,000 employees as it cuts costs amid AI adoption.",
+  "id": "2114747623253107007",
+  "photos": []
  }
 }

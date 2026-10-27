@@ -69,8 +69,9 @@ except (OSError, ValueError):
 _svm = ''.join(f'<meta name="{k}" content="{"".join(c for c in str(_sv.get(v, "")) if c.isalnum() or c in "-_")}">' for v, k in (('google', 'google-site-verification'), ('bing', 'msvalidate.01')) if _sv.get(v))
 if _svm:
     out = out.replace('</head>', _svm + '\n</head>', 1)
-from pageshell import LIVE_NAV as _LIVE_NAV
-out = out.replace('{{LIVE_NAV}}', _LIVE_NAV)
+from pageshell import LIVE_NAV as _LIVE_NAV, MID_NAV as _MID_NAV, DESKS as _DESKS
+out = out.replace('{{LIVE_NAV}}', _LIVE_NAV).replace('{{MID_NAV}}', _MID_NAV)
+out = out.replace('{{DESKS}}', '<nav class="mh-desks" aria-label="Desks">' + ''.join(f'<a href="{u}">{_h.escape(t)}</a>' for u, t in _DESKS) + '</nav>')
 open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front'))
 # ---- the Record (/index/): the same template with the headline page hidden and the full index shown
 rec = out.replace('{{PAGE}}', 'record')
@@ -113,11 +114,31 @@ try:
 except (OSError, ValueError):
     _xc = {}
 _xp = [dict(x, tweet=_xc[x['id']]) if x['id'] in _xc else x for x in _xp]
+# ---- the desks: counts for the standing links at the foot of each homepage column
+def _jl(f, d=None):
+    try:
+        return json.load(open(f, encoding='utf-8'))
+    except (OSError, ValueError):
+        return d
+_fx = _jl('data/fixes.json', []); _cur = lambda f: next((c for c in f['chain'] if c['stage'] == 'current'), f['chain'][-1])
+_calls = [c for c in (_jl('data/calls.json', []) or []) if not c.get('resolution') and c.get('kind') == 'call']
+_calls.sort(key=lambda c: c['resolve_by'])
+def _ow(o):
+    o = float(o); return 'a toss-up' if abs(o - .5) < 1e-9 else 'very likely' if o >= .85 else 'likely' if o >= .6 else 'very unlikely' if o <= .15 else 'unlikely' if o <= .4 else 'leaning yes' if o > .5 else 'leaning no'
+_jobs = _jl('research/jobs.json', {}) or {}
+_desks = {'fix_open': sum(1 for f in _fx if _cur(f)['status'] != 'fixed'), 'fix_total': len(_fx),
+          'checks': len(_jl('research/checks.json', []) or []), 'can_ai': len(_jl('research/can_ai.json', []) or []),
+          'jobs': len(_jobs.get('jobs', [])) if isinstance(_jobs, dict) else len(_jobs),
+          'midterms': len(_jl('research/midterm_fakes.json', []) or []), 'layoffs': (_jl('data/ledger_count.json', {}) or {}).get('layoffs')}
+if _calls:
+    _c = _calls[0]; _d = dt.date.fromisoformat(_c['resolve_by'])
+    _desks['next_call'] = {'id': _c['id'], 'q': (_c.get('plain') or _c['question']).rstrip('?') + '?', 'odds_word': _ow(_c['odds']), 'when': _d.strftime('%b ') + str(_d.day)}
+json.dump(_desks, open('data/desks.json', 'w', encoding='utf-8'), ensure_ascii=False)
 json.dump(sorted(_xp, key=lambda x: x['posted'], reverse=True), open('data/xposts.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 
 # ---- data/bundle.json: every data file in one request (the page preloads it; the individual files stay for scripts and the update check)
 FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta',
-         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts']
+         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks']
 bundle = {}
 for f in FILES:
     try:

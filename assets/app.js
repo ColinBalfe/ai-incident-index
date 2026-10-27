@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -551,7 +551,8 @@ function drawWall() {
   // The lead is the day's strongest story: one photo, one big headline, one plain sentence. The running story sits under it as a
   // one-line strip that opens to the proof ladder and the lines; it takes the lead itself only when meta.serial.lead is set
   // (a real victim, a formal government warning: an escalation, not a quiet day).
-  const ll = el('div', 'dl-lines'); cl.forEach((n) => ll.append(line(n, false)));
+  const ll = el('div', 'dl-lines');
+  const frags = el('div', 'dl-frags'); cl.slice(0, 4).forEach((n) => frags.append(line(n, false)));
   const srl = D.meta && D.meta.serial;
   if (srl && srl.name && srl.exposure && srl.state !== 'closed') { const vc0 = (C.victimCounts || {})[srl.incident_id] || {}; const nOrg = vc0.rows || 0; if (nOrg) { const w = el('div', 'wl'); const a = el('a', 'dl', srl.exposure.text.replace('{n}', nOrg)); a.href = srl.exposure.url; if (srl.exposure.tip) { const rc1 = el('sup', 'rcpt', 'ⓘ'); rc1.setAttribute('data-tip', srl.exposure.tip); rc1.tabIndex = 0; w.append(a, rc1); } else w.append(a); ll.append(w); } }
   const takeover = !!(srl && srl.name && srl.state !== 'closed' && srl.lead && srl.lead.tag);
@@ -563,6 +564,7 @@ function drawWall() {
   const body = el('div', 'dl-body'); body.append(kick, ext(el('a', 'dl-head' + (hero.red ? ' red' : ''), hero.tag), hero));
   sv.append(body);
   if (hero.standfirst) body.append(el('p', 'dl-stand', hero.standfirst));
+  if (frags.childNodes.length) body.append(frags);
   if (hero.action && hero.action.text && hero.action.url) { const ac = el('a', 'dl-act', hero.action.text + ' →'); ac.href = hero.action.url; if (/^https?:/.test(hero.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } body.append(ac); }
   const so = el('div', 'dl-src'); if (takeover) { const t = el('a', null, (srl.tech_name ? srl.tech_name + ' ' : '') + 'live tracker →'); t.href = srl.url; so.append(t); } else { so.append(txt(hero.outlet + ' · ' + ageShort(hero) + ' · '), ext(el('a', null, 'Read the original reporting →'), hero)); } body.append(so);
   let strip = null;
@@ -589,11 +591,12 @@ function drawWall() {
     const tabs = el('div', 'you-tabs'); tabs.setAttribute('role', 'tablist');
     const opts = [['all', 'Everyone']].concat(LENSES.filter((l) => Y.lens && Y.lens[l.id]).map((l) => [l.id, l.label]));
     let cur = (() => { try { const v = localStorage.getItem('ws-lens'); return opts.some((o) => o[0] === v) ? v : 'all'; } catch (e) { return 'all'; } })();
-    const t1 = el('p', 'you-t'), t2 = el('p', 'you-do');
+    const t1 = el('p', 'you-t'), t2 = el('p', 'you-do'), t3 = el('p', 'you-hub');
     const paint = () => { const L = cur !== 'all' && Y.lens && Y.lens[cur] ? Y.lens[cur] : Y; t1.textContent = L.touch; const td = L.today || Y.today || []; t2.replaceChildren(el('b', null, 'Do this today: '), txt(td[0] || '')); if (td[1]) { const a = el('a', null, ' ' + (td[2] || 'How') + ' →'); a.href = td[1]; t2.append(a); }
+      { const LL = LENSES.find((l) => l.id === cur); const hb = LL && LL.hub ? LL.hub[0] : ['/exposed/', 'Am I exposed? Find your situation']; const a = el('a', null, hb[1] + ' →'); a.href = hb[0]; t3.replaceChildren(a); }
       tabs.querySelectorAll('button').forEach((b) => { const on = b.dataset.k === cur; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); }); };
     opts.forEach(([k, lbl]) => { const b = el('button', 'you-tab', lbl); b.type = 'button'; b.dataset.k = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => { cur = k; try { if (k !== 'all') localStorage.setItem('ws-lens', k); } catch (e) {} paint(); }); tabs.append(b); });
-    head.append(tabs); box.append(head, t1, t2); paint(); return box; })() : null;
+    head.append(tabs); box.append(head, t1, t2, t3); paint(); return box; })() : null;
   // Breaking from X: only first-hand, material posts under 12 hours old earn the bar (REFRESH.md rules); everything else is in "On X" below
   const XK = { breaking: 'Breaking', official: 'Official', claim: 'Unverified claim', opinion: 'Opinion' };
   const xposts = (D.xposts || []).filter((x) => x && x.url);
@@ -605,11 +608,32 @@ function drawWall() {
   [1, 2, 3].forEach((c) => {
     const col = el('div', 'wall-col'); col.append(el('h2', 'wall-ch', WALL_COLS[c]));
     (c === 1 && takeover ? [siren] : []).concat(items.filter((n) => +n.wall === c).slice(0, 15)).forEach((n) => col.append(line(n, true)));
-    if (c === 3) {
-      const pr = el('div', 'protect'); pr.append(el('div', 'protect-h', 'Protect yourself'));
-      [['Set a family safe word (2 minutes)', '/shield/'], ['Check if your email was in a breach', 'https://haveibeenpwned.com/'], ['Keep your site out of AI training sets', '/scraped/']].forEach(([t, u]) => { const a = el('a', null, t + ' →'); a.href = u; if (/^https?:/.test(u)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } pr.append(a); });
-      col.append(pr);
-    }
+    // Standing desks at the foot of each column (Drudge's directory geometry): our own pages, labelled, never styled as headlines
+    const DK = D.desks || {};
+    const TAILS = {
+      1: ['Follow the damage', [
+        srl && srl.name && srl.state !== 'closed' ? [srl.url, (srl.tech_name || srl.name) + ': live tracker, day ' + (Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1)] : null,
+        ['/fixes/', 'Did they fix it?' + (DK.fix_open ? ' ' + DK.fix_open + ' of ' + DK.fix_total + ' still open' : '')],
+        DK.next_call ? ['/forecast/' + DK.next_call.id + '/', 'The odds: ' + DK.next_call.q + ' ' + DK.next_call.odds_word.toUpperCase() + ', resolves ' + DK.next_call.when] : ['/forecast/', 'The forecasts'],
+        ['/exposed/', 'Am I exposed? Find your situation'],
+        ['/index/', 'The Record: every incident, scored']]],
+      2: ['What AI can now do', [
+        ['/can-ai/', 'What AI can do now' + (DK.can_ai ? ': ' + DK.can_ai + ' questions answered' : '')],
+        ['/jobs/', 'Can AI do your job?' + (DK.jobs ? ' ' + DK.jobs + ' jobs graded' : '')],
+        ['/jobs/layoffs/', 'Layoffs tied to AI' + (DK.layoffs ? ': ' + DK.layoffs + ' so far' : '')],
+        ['/learn/', 'Know what it means: plain explainers']]],
+      3: ['Protect yourself', [
+        ['/checks/', 'Is this a scam?' + (DK.checks ? ' ' + DK.checks + ' quick checks' : '')],
+        ['/help/', 'What to do when AI is used against you'],
+        ['/shield/', 'Set a family safe word (2 minutes)'],
+        ['/help/ai-fake-nude-image-what-to-do/', 'A fake nude of you or your child: what to do now'],
+        ['https://haveibeenpwned.com/', 'Check if your email was in a breach'],
+        ['/midterms-2026/', 'Every AI fake in the midterms' + (DK.midterms ? ' (' + DK.midterms + ')' : '')],
+        ['/scraped/', 'Keep your site out of AI training sets']]],
+    };
+    const [th, links] = TAILS[c]; const tl = el('div', 'ctail'); tl.append(el('div', 'ctail-h', th));
+    links.filter(Boolean).forEach(([u, t]) => { const a = el('a', null, t); a.href = u; if (/^https?:/.test(u)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } tl.append(a); });
+    col.append(tl);
     cols.append(col);
   });
   const more = el('button', 'wall-more', 'More headlines'); more.type = 'button'; more.addEventListener('click', () => box.classList.add('open'));
@@ -626,26 +650,30 @@ function drawWall() {
     const who = (t, x, small) => { const h = el('div', 'tw-h'); const av = el('span', 'tw-av'); av.textContent = (t.name || x.author || '?').trim()[0]; if (t.avatar) { const im = el('img'); im.src = t.avatar; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); av.append(im); } const nm = el('span', 'tw-nm'); const b = el('b', null, t.name || x.author); nm.append(b); if (t.verified) { const v = el('span', 'tw-v'); v.innerHTML = TICK; nm.append(v); } nm.append(el('span', 'tw-hd', '@' + (t.handle || (x.handle || '').replace(/^@/, '')))); h.append(av, nm); if (!small) { const lg = el('span', 'tw-x'); lg.innerHTML = XLOGO; h.append(lg); } return h; };
     const bx = el('section', 'xon'); bx.append(el('h2', 'wall-ch', 'On X: three posts worth your time'));
     const grid = el('div', 'xon-g');
-    // three slots, one per kind of post: the news (first-hand or official), the claim, the take. Best = highest power, then newest; the last 72 hours first, then up to 14 days back so all three are always filled
-    const SLOTS = [['news', ['breaking', 'official']], ['claim', ['claim']], ['take', ['opinion']]];
-    const age = (x) => Date.now() - Date.parse(x.posted), best = (a, b) => (b.power || 3) - (a.power || 3) || Date.parse(b.posted) - Date.parse(a.posted);
-    const pick = (kinds, used) => { const c = xposts.filter((x) => kinds.includes(x.kind) && !used.has(x)); return [...c.filter((x) => age(x) < 72 * 3.6e6)].sort(best)[0] || [...c].sort(best)[0]; };
-    const used = new Set(), three = [];
-    SLOTS.forEach(([, k]) => { const x = pick(k, used); if (x) { used.add(x); three.push(x); } });
-    while (three.length < 3) { const x = pick(['breaking', 'official', 'claim', 'opinion'], used); if (!x) break; used.add(x); three.push(x); }
+    // three posts, each on a different story: highest power first (a post older than 72 hours counts one point less), and among equals a kind not yet shown (the news, the claim, the take), then the newest
+    const GRP = { breaking: 'news', official: 'news', claim: 'claim', opinion: 'take' };
+    const age = (x) => Date.now() - Date.parse(x.posted), eff = (x) => (x.power || 3) - (age(x) > 72 * 3.6e6 ? 1 : 0);
+    const three = [], stories = new Set(), groups = new Set();
+    let pool = [...xposts];
+    while (three.length < 3 && pool.length) {
+      pool.sort((a, b) => eff(b) - eff(a) || (groups.has(GRP[a.kind]) ? 1 : 0) - (groups.has(GRP[b.kind]) ? 1 : 0) || Date.parse(b.posted) - Date.parse(a.posted));
+      const i = pool.findIndex((x) => !stories.has(x.story || x.id)); const x = pool.splice(i < 0 ? 0 : i, 1)[0];
+      three.push(x); stories.add(x.story || x.id); groups.add(GRP[x.kind]);
+    }
     three.forEach((x) => {
       const t = x.tweet || { name: x.author, handle: (x.handle || '').replace(/^@/, ''), text: x.quote, created_at: x.posted };
       const item = el('div', 'xon-i');
       item.append(el('span', 'wl-lab ' + (x.kind === 'opinion' ? 'opinion' : x.kind === 'claim' ? 'reported' : 'proven'), x.kind === 'breaking' && age(x) >= 12 * 3.6e6 ? 'First-hand' : (XK[x.kind] || x.kind)));
       const card = el('a', 'tw'); card.href = x.url; card.target = '_blank'; card.rel = 'noopener noreferrer'; card.setAttribute('aria-label', 'Post by ' + (t.name || x.author) + ' on X');
-      card.append(who(t, x), el('p', 'tw-t', t.text || x.quote));
+      card.append(who(t, x), el('p', 'tw-t', (t.text || x.quote) + (t.truncated ? '…' : '')));
+      if (t.truncated) card.append(el('span', 'tw-more', 'Show more on X'));
       if (t.photos && t.photos[0]) { const im = el('img', 'tw-ph'); im.src = t.photos[0]; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); card.append(im); }
       if (t.quoted) { const q = el('div', 'tw-q'); q.append(who(t.quoted, {}, true), el('p', 'tw-t', t.quoted.text)); card.append(q); }
       const f = el('div', 'tw-f'); f.append(el('span', null, when(t.created_at || x.posted)), el('span', 'tw-go', 'View on X →')); card.append(f);
       item.append(card, el('p', 'xon-w', x.what), el('small', 'xon-by', (x.author || t.name) + ': ' + x.who));
       grid.append(item);
     });
-    bx.append(grid, el('p', 'xon-note', 'Three posts, one of each kind: the news, the claim, the take. Breaking means a first-hand source posting a new fact you can check, in the last 12 hours; after that it shows as First-hand. An unverified claim is new but nobody independent has checked it yet. Opinion is commentary. The post text is shown exactly as it appears on X; the line under each is ours.'));
+    bx.append(grid, el('p', 'xon-note', 'The three posts that matter most right now, each on a different story. Breaking means a first-hand source posting a new fact you can check, in the last 12 hours; after that it shows as First-hand. An unverified claim is new but nobody independent has checked it yet. Opinion is commentary. The post text is shown exactly as it appears on X; the line under each is ours.'));
     return bx; })() : null;
   const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })(), txt(' · '), (() => { const a = el('a', null, 'Earlier days'); a.href = '/wire/archive/'; return a; })(), txt(' · Beats: '), (() => { const a = el('a', null, 'AI near you'); a.href = '/wire/near-you/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'AI at school'); a.href = '/wire/school/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'Layoffs tied to AI'); a.href = '/jobs/layoffs/'; return a; })());
   // Coming up: the next dated tests, so the reader knows when the loops close (no odds on the front page)
@@ -1439,35 +1467,35 @@ function drawRibbon() {
 
 /* ---------- What it means for you: five everyday lenses on the same data. The chosen lens is remembered in this browser only. */
 const LENSES = [
-  { id: 'family', label: 'Your family', lede: 'Chatbots your kids talk to, deepfakes made of children, and calls that sound like someone you love.',
+  { id: 'family', hub: [['/help/', 'What to do when AI is used against your family'], ['/learn/ai-companions-parents-guide/', 'AI companions: a parent’s guide']], label: 'Your family', lede: 'Chatbots your kids talk to, deepfakes made of children, and calls that sound like someone you love.',
     topics: ['families', 'chatbot-harm'], cats: ['child_safety', 'psych_harm'], kw: /\b(child|children|teen|teenage|kids?|school|student|minor|parent|family|classmate)s?\b/i,
     act: [
       ['Agree a family safe word, so a cloned voice asking for money can be checked with one question.', '/shield/', 'Make one, free'],
       ['Ask which chatbots your kids talk to, and look at the companion or “friend” settings together.'],
       ['If someone makes a sexual image of a child, report it; Take It Down helps remove it from major platforms.', 'https://takeitdown.ncmec.org/', 'NCMEC Take It Down'],
     ] },
-  { id: 'money', label: 'Your money', lede: 'Voice-clone and deepfake scams, AI agents inside bank accounts, and faked photos used for refunds.',
+  { id: 'money', hub: [['/checks/', 'Is this a scam? Check it in a minute'], ['/help/voice-clone-scam-call/', 'A loved one calls in a panic: what to do']], label: 'Your money', lede: 'Voice-clone and deepfake scams, AI agents inside bank accounts, and faked photos used for refunds.',
     topics: ['everyday'], cats: ['fraud_deepfake'], kw: /\b(scam|scams|fraud|bank|banks|refund|crypto|money|savings|voice[- ]clon\w*|impersonat\w*)\b/i,
     act: [
       ['If a call or video asks you to move money urgently, hang up and call back on a number you already have.'],
       ['Treat a familiar voice or face as unproven; a few seconds of audio is enough to clone one.', '/shield/', 'The safe-word tool'],
       ['Don’t hand an AI agent or app your bank login; banks are restricting third-party agents found inside accounts.'],
     ] },
-  { id: 'work', label: 'Your job', lede: 'Layoffs tied to AI, and staff pasting patient, customer and HR records into tools nobody approved.',
+  { id: 'work', hub: [['/jobs/', 'Can AI do your job? 20 jobs graded'], ['/jobs/layoffs/', 'Layoffs tied to AI, company by company']], label: 'Your job', lede: 'Layoffs tied to AI, and staff pasting patient, customer and HR records into tools nobody approved.',
     topics: ['jobs'], cats: ['privacy_data', 'agent_accident'], kw: /\b(jobs?|layoffs?|hiring|workers?|employees?|staff|workplace|uploaded)\b/i,
     act: [
       ['Don’t paste customer, patient or HR data into an AI tool your employer hasn’t approved; two employers on this index did it this month.'],
       ['If you run AI agents at work, give them only the access the task needs, and retire idle ones with their keys.'],
       ['Check an agent’s report of what it did against what it actually changed; agents on this index have misreported their own work.'],
     ] },
-  { id: 'site', label: 'Your website', lede: 'The PHP flaws AI found, AI agents breaking into company systems, and crawlers scraping for training data.',
+  { id: 'site', hub: [['/php2shell/', 'The PHP flaw: live tracker'], ['/scraped/', 'Keep your site out of AI training sets']], label: 'Your website', lede: 'The PHP flaws AI found, AI agents breaking into company systems, and crawlers scraping for training data.',
     topics: ['php2shell', 'ai-attack'], cats: ['cyber_offense', 'security_vuln', 'ai_vuln'], kw: /\b(php|website|hack\w*|breach\w*|intrusion)\b/i,
     act: [
       ['If your site runs on PHP, ask your host or developer whether it is on a release fixed on or after Oct 21, 2026.', '#d=php2shell', 'The PHP2Shell breakdown'],
       ['Keep your work out of AI training sets with a robots.txt built for the crawlers that scrape for AI.', '/scraped/', 'Build one, free'],
       ['Review which outside tools and AI agents hold keys to your systems; this week’s breaches went through third-party software.'],
     ] },
-  { id: 'vote', label: 'Elections & news', lede: 'AI-made campaign ads, deepfakes of candidates and officials, and what governments are doing about it.',
+  { id: 'vote', hub: [['/midterms-2026/', 'Every AI fake in the midterms'], ['/help/is-this-video-real/', 'Is this video real? How to check']], label: 'Elections & news', lede: 'AI-made campaign ads, deepfakes of candidates and officials, and what governments are doing about it.',
     topics: ['deepfakes', 'regulation'], cats: ['info_integrity'], kw: /\b(election|elections|vote|voters?|campaign|candidate|midterms?|deepfakes?)\b/i,
     act: [
       ['Before sharing a shocking clip of a candidate, check whether a major outlet or the campaign has confirmed it.'],
@@ -1511,6 +1539,7 @@ function drawWhy() {
   const ol = el('ol');
   L.act.forEach(([t, href, label]) => { const li = el('li'); li.append(el('span', null, t)); if (href) { const a = el('a', null, label + ' →'); a.href = href; if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } li.append(a); } ol.append(li); });
   right.append(ol);
+  if (L.hub) { const hb = el('p', 'fy-hub'); L.hub.forEach(([u, t], i) => { const a = el('a', null, t + ' →'); a.href = u; hb.append(...(i ? [txt(' · ')] : []), a); }); right.append(hb); }
   right.append(el('p', 'fy-do-note', 'Your choice of topic is remembered in this browser only.'));
   box.replaceChildren(left, right);
 }

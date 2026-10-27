@@ -130,4 +130,5 @@ write('jobs/layoffs/index.html', url=SITE + 'jobs/layoffs/', title='AI layoffs l
 p = os.path.join(here, 'data/tool_urls.json'); tu = json.load(open(p))
 tu = [u for u in tu if not any(u == SITE + f'wire/{b[0]}/' for b in BEATS) and u != SITE + 'jobs/layoffs/'] + beat_urls + [SITE + 'jobs/layoffs/']
 json.dump(tu, open(p, 'w'))
+json.dump({'layoffs': len(led), 'company_stated': n_co}, open('data/ledger_count.json', 'w'))
 print(f'beats: ' + ', '.join(f'{b[0]}' for b in BEATS) + f' ({len(beat_urls)} with stories); layoffs ledger: {len(led)} entries ({n_co} company-stated)')

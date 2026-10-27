@@ -56,6 +56,8 @@ def fetch(tid):
     if d.get('__typename') == 'TweetTombstone' or not d.get('text'):
         raise ValueError('unavailable')
     out = clean(d)
+    if d.get('note_tweet'):
+        out['truncated'] = True  # a long post: X's embed data carries only the start
     if d.get('quoted_tweet'):
         out['quoted'] = clean(d['quoted_tweet'])
     return out

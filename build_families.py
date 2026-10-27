@@ -294,20 +294,70 @@ for c in CALLS:
         res = f"<section class=\"box\"><b class=\"k\">Graded {esc(fdate(r['date']))}</b><p>Answer: <b>{esc(r['outcome'])}</b>. The index said {esc(likely(c['odds']))} ({esc(c['odds_label'])}). <b>{esc(grade)}.</b></p><p class=\"meta\">{esc(r.get('note', ''))} " + (a(r.get('url') or r.get('source_url') or '', 'Source') if (r.get('url') or r.get('source_url')) else '') + "</p></section>"
     else:
         res = f"<section class=\"box\" style=\"border-left-color:var(--ink)\"><b class=\"k\">Open · resolves {esc(fdate(c['resolve_by']))}</b><p>The index says: <b>{esc(likely(c['odds']))}</b> ({esc(c['odds_label'])}). Graded on that date, right or wrong, in public.</p></section>"
-    body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/index/#next">Forecasts</a> · {kind}</nav>
+    body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/forecast/">Forecasts</a> · {kind}</nav>
 <h1>{esc(q)}</h1><div class="meta">{kind} opened {esc(fdate(c['opened']))} · {'days to weeks' if kind == 'Call' else 'months to years'} · the question's wording never changes after it is published</div>
 {res}
 <div class="share"><button type="button" data-copy="{esc(q + ' ' + url)}">Copy link</button></div>
 <h2>Why the index thinks so</h2><p>{esc(c.get('basis') or '')}</p>
 {('<h2>What would move it</h2><p>' + esc(c['signposts']) + '</p>') if c.get('signposts') else ''}
 <p class="meta">The exact question: {esc(c['question'])}</p>
-<p><a href="/index/#next">Every forecast and the track record →</a></p>
+<p><a href="/forecast/">Every forecast and the track record →</a></p>
 {capture('Email me when this is graded', 'forecast-' + c['id'])}
 </article>"""
     img = SITE + f"assets/forecast/{c['id']}.png" if os.path.exists(f"assets/forecast/{c['id']}.png") else None
     write(f"forecast/{c['id']}/index.html", url=url, title=q[:90], desc=(f"Graded: {r['outcome']}. " if r else f"Open until {fdate(c['resolve_by'])}. ") + f"Warning Shots said {likely(c['odds'])} ({c['odds_label']}). " + (c.get('basis') or '')[:150], body=body, draft=False, img=img,
-          crumbs=[('Forecasts', '/index/#next'), (kind, '')], graph=[{"@type": "Question", "name": q, "dateCreated": c['opened'], "url": url}])
+          crumbs=[('Forecasts', '/forecast/'), (kind, '')], graph=[{"@type": "Question", "name": q, "dateCreated": c['opened'], "url": url}])
     fu.append(url)
-register('forecast/', fu)
 json.dump([{'slug': c['id'], 'kicker': ('Graded ' + c['resolution']['date'] + ' · answer: ' + c['resolution']['outcome']) if c.get('resolution') else ('Forecast · resolves ' + c['resolve_by']), 'h1': c.get('plain') or c['question']} for c in CALLS], open('data/forecast_cards.json', 'w'))
 print(f'forecast/: {len(fu)} pages')
+
+# ---------- forecast/: the hub (scoreboard, what resolves next, every open call and question, every graded one)
+def _grade(c):
+    r = c['resolution']; toss = abs(float(c['odds']) - .5) < 1e-9
+    return 'toss' if toss else ('hit' if (r['outcome'] == 'yes') == (float(c['odds']) > .5) else 'miss')
+graded = [c for c in CALLS if c.get('resolution') and c['resolution'].get('outcome') in ('yes', 'no')]
+G = collections.Counter(_grade(c) for c in graded)
+openc = sorted([c for c in CALLS if not c.get('resolution')], key=lambda c: c['resolve_by'])
+def _row(c):
+    q = c.get('plain') or c['question']
+    if c.get('resolution'):
+        g = _grade(c) if c in graded else 'void'
+        tag = {'hit': 'Called it', 'miss': 'Missed', 'toss': 'Toss-up: not counted', 'void': 'Void'}[g]
+        side = f"Graded {fdate(c['resolution']['date'])} · answer: {c['resolution']['outcome']} · <b>{tag}</b>"
+    else:
+        side = f"Resolves {fdate(c['resolve_by'])} · the index says <b>{likely(c['odds'])}</b> ({esc(c['odds_label'])})"
+    return f'<li><a href="/forecast/{c["id"]}/">{esc(q)}</a><span class="meta">{side}</span></li>'
+calls_open = [c for c in openc if c.get('kind') == 'call']; qs_open = [c for c in openc if c.get('kind') != 'call']
+hu = SITE + 'forecast/'
+fbody = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>The forecasts: what happens next, and whether we were right</h1>
+<p>Every call is a dated yes-or-no question with the index's odds, published before the answer is known and graded in public on the day it resolves. Misses stay on the board. The wording never changes after a question goes up.</p>
+<section class="box"><b class="k">Track record</b><p><b>{G['hit']} right, {G['miss']} wrong</b>{f", {G['toss']} called a toss-up (not counted)" if G['toss'] else ''}. {len(openc)} still open; the next resolves {fdate(openc[0]['resolve_by']) if openc else 'soon'}.</p></section>
+<h2>Calls: resolving in days and weeks</h2><ul class="list">{''.join(_row(c) for c in calls_open)}</ul>
+<h2>Questions: months to years</h2><ul class="list">{''.join(_row(c) for c in qs_open)}</ul>
+<h2>Graded</h2><ul class="list">{''.join(_row(c) for c in sorted([c for c in CALLS if c.get('resolution')], key=lambda c: c['resolution']['date'], reverse=True)) or '<li>None yet.</li>'}</ul>
+<p class="meta">How the odds move and why: <a href="/index/#changelog">the changelog</a>. The full method: <a href="/index/#about">how the index works</a>.</p>
+{capture('Email me when a forecast is graded', 'forecast')}
+</article>"""
+write('forecast/index.html', url=hu, title='AI forecasts: what happens next, graded in public', desc=f"Warning Shots' dated AI forecasts: {len(openc)} open, {G['hit']} right, {G['miss']} wrong. Every call is graded in public on the day it resolves.", body=fbody, draft=False,
+      crumbs=[('Forecasts', '')], graph=[webpage(hu, 'AI forecasts', 'Dated AI forecasts, graded in public', TODAY, False, '')])
+register('forecast/', [hu] + fu)
+
+# ---------- fixes/: did they fix it? one line per major case, with where the fix stands
+FX = L('data/fixes.json')
+FXST = {'ongoing': 'Still unfolding', 'reopened': 'Happened again after a fix', 'disputed': 'Disputed', 'unverified': 'Fix claimed, not verified', 'unresolved': 'No fix claimed', 'fixed': 'Fixed and verified'}
+def _cur(f): return next((c for c in f['chain'] if c['stage'] == 'current'), f['chain'][-1])
+fopen = [f for f in FX if _cur(f)['status'] != 'fixed']
+order = {'reopened': 0, 'unresolved': 1, 'disputed': 2, 'unverified': 3, 'ongoing': 4, 'fixed': 9}
+xu = SITE + 'fixes/'
+items = ''.join(f'<li><a href="/c/{f["incident_id"]}/">{esc(f["name"])}</a><span class="meta"><b>{esc(FXST.get(_cur(f)["status"], _cur(f)["status"]))}.</b> {esc(f.get("one_liner") or "")}</span></li>' for f in sorted(FX, key=lambda f: order.get(_cur(f)['status'], 5)))
+xbody = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>Did they fix it?</h1>
+<p>When an AI company, a government or a victim says a problem is fixed, we follow it: who reported it, how they responded, what fix was claimed, and whether anyone independent has checked it since. Most fixes are claimed. Few are verified.</p>
+<section class="box"><b class="k">Right now</b><p><b>{len(fopen)} of {len(FX)}</b> major cases have no independently verified fix. {sum(1 for f in FX if _cur(f)['status'] == 'reopened')} happened again after a fix was announced.</p></section>
+<ul class="list">{items}</ul>
+<p class="meta">Each case page shows the full chain with sources. The same tracker, with every stage, is on <a href="/index/#fixes">the Record</a>.</p>
+{capture('Alert me when a fix is broken or verified', 'fixes')}
+</article>"""
+write('fixes/index.html', url=xu, title=f'Did they fix it? {len(fopen)} of {len(FX)} AI cases still open', desc=f'The fix tracker for major AI incidents: {len(fopen)} of {len(FX)} have no independently verified fix. Who claimed what, and what happened next.', body=xbody, draft=False,
+      crumbs=[('Did they fix it?', '')], graph=[webpage(xu, 'Did they fix it?', 'Fix tracker for major AI incidents', TODAY, False, '')])
+register('fixes/', [xu])
+print(f'forecast/ hub: {len(openc)} open, {G["hit"]}-{G["miss"]}; fixes/: {len(fopen)} of {len(FX)} open')
