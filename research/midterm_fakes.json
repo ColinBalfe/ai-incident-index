@@ -193,5 +193,20 @@
   "source_url": "https://www.coloradopolitics.com/2026/10/13/colorado-election-office-investigates-deepfake-election-video/",
   "source_label": "Colorado Politics, Oct 13",
   "index_id": ""
+ },
+ {
+  "id": "balkcom-nrcc-ager-drag-ad",
+  "date": "2026-10-24",
+  "state": "NC",
+  "race": "North Carolina 11th Congressional District (US House)",
+  "what": "An attack ad uses AI-generated video that appears manipulated from Democrat Jamie Ager's own barn-dance campaign ad: a pride flag is added to the wall and plainclothes dancers are replaced with drag performers while children watch. It closes: 'Jamie Ager talks like you and me on TV, but he's dancing with they/them.'",
+  "target": "Jamie Ager (D)",
+  "who_made_it": "Republican Jennifer Balkcom's campaign (approved the ad); paid for by the National Republican Congressional Committee",
+  "status": "alleged fake",
+  "reach": "",
+  "how_caught": "A News & Observer fact check found the footage appears manipulated from Ager's own ad and carries no AI disclaimer; North Carolina has no disclosure law. Asheville drag performers Divine Holeburn and Nova say their AI-generated likenesses were used without permission and sent cease-and-desist letters. Ager called it '100% fake AI-generated'. The NRCC stands by the ad and did not say whether it disclosed AI use",
+  "source_url": "https://www.yahoo.com/news/politics/articles/fact-check-gop-candidate-runs-090000635.html",
+  "source_label": "News & Observer fact check (via Yahoo), Oct 24; WLOS, Oct 26",
+  "index_id": ""
  }
 ]

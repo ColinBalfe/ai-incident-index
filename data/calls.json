@@ -67,29 +67,6 @@
 "odds_label": "70%"
 },
 {
-"id": "php-kev-by-oct31",
-"question": "CISA adds CVE-2026-109618 or CVE-2026-109619 (PHP2Shell) to its Known Exploited Vulnerabilities catalog by Oct 31",
-"opened": "2026-10-23",
-"resolve_by": "2026-10-31",
-"odds": 0.5,
-"horizon": "days",
-"basis": "KEV listing requires reliable evidence of active exploitation, not attempts. Three days in: millions of attempts, a working exploit for the recommended configuration per VulnCheck, and still no confirmed compromise; CISA updated the catalog on Oct 23 without the PHP CVEs. One confirmed breach anywhere would likely flip this within a day. Oct 24 update: a fourth day with no confirmed compromise, the PHP Foundation saying it has no evidence of exploitation on patched systems, and Mandiant validating code execution only against default mod_php; odds 45% to 40%. Oct 24, 13:50 ET: 40% to 50%. Unit 42 published the first vendor account of a successful post-exploitation intrusion (an unnamed European government entity); CISA listings usually follow a vendor or victim report, and the catalog checked directly this run still has no PHP entry. Oct 25: lowered to 45% on time decay: day five with the catalog still at version 2026.10.23, no new exploitation report from any vendor or agency overnight, and six days left in the window. Oct 26, 06:40 ET: 45% to 50%. Two things moved in opposite directions: Unit 42 retracted the only vendor report of a successful intrusion (Oct 25), while BleepingComputer reported (Oct 26) the first high-quality confirmation of code execution in the wild, on a Perplexity researcher's honeypot, endorsed by Marcus Hutchins; a reproducible in-the-wild capture is the kind of evidence a KEV listing rests on, and the catalog (opened directly, version 2026.10.23) still has no PHP entry with five days left.",
-"signposts": "CISA's KEV JSON feed; a named organization confirming a PHP2Shell compromise; a CISA alert escalating from advisory to directive.",
-"tags": [
-"php2shell",
-"cyber",
-"government"
-],
-"related": {
-"incident_id": "php2shell",
-"watch_id": "php-kev"
-},
-"source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-"resolution": null,
-"plain": "Will America's cyber agency formally warn that the flaw under most websites is being used in attacks, by Oct 31?",
-"odds_label": "50%"
-},
-{
 "id": "uk-services-restored-by-oct31",
 "question": "The UK government says all 32 digital services it took offline over PHP2Shell are back online by Oct 31",
 "opened": "2026-10-23",
@@ -131,6 +108,7 @@
 },
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
 "resolution": null,
+"plain": "Will a real organization confirm it was broken into through the flaw under most websites by Nov 7?",
 "odds_label": "60%"
 },
 {
@@ -534,5 +512,33 @@
 "source_url": "",
 "resolution": null,
 "odds_label": "10%"
+},
+{
+"id": "php-kev-by-oct31",
+"question": "CISA adds CVE-2026-109618 or CVE-2026-109619 (PHP2Shell) to its Known Exploited Vulnerabilities catalog by Oct 31",
+"opened": "2026-10-23",
+"resolve_by": "2026-10-31",
+"odds": 0.5,
+"horizon": "days",
+"basis": "KEV listing requires reliable evidence of active exploitation, not attempts. Three days in: millions of attempts, a working exploit for the recommended configuration per VulnCheck, and still no confirmed compromise; CISA updated the catalog on Oct 23 without the PHP CVEs. One confirmed breach anywhere would likely flip this within a day. Oct 24 update: a fourth day with no confirmed compromise, the PHP Foundation saying it has no evidence of exploitation on patched systems, and Mandiant validating code execution only against default mod_php; odds 45% to 40%. Oct 24, 13:50 ET: 40% to 50%. Unit 42 published the first vendor account of a successful post-exploitation intrusion (an unnamed European government entity); CISA listings usually follow a vendor or victim report, and the catalog checked directly this run still has no PHP entry. Oct 25: lowered to 45% on time decay: day five with the catalog still at version 2026.10.23, no new exploitation report from any vendor or agency overnight, and six days left in the window. Oct 26, 06:40 ET: 45% to 50%. Two things moved in opposite directions: Unit 42 retracted the only vendor report of a successful intrusion (Oct 25), while BleepingComputer reported (Oct 26) the first high-quality confirmation of code execution in the wild, on a Perplexity researcher's honeypot, endorsed by Marcus Hutchins; a reproducible in-the-wild capture is the kind of evidence a KEV listing rests on, and the catalog (opened directly, version 2026.10.23) still has no PHP entry with five days left.",
+"signposts": "CISA's KEV JSON feed; a named organization confirming a PHP2Shell compromise; a CISA alert escalating from advisory to directive.",
+"tags": [
+"php2shell",
+"cyber",
+"government"
+],
+"related": {
+"incident_id": "php2shell",
+"watch_id": "php-kev"
+},
+"source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+"resolution": {
+"outcome": "yes",
+"date": "2026-10-26",
+"note": "CISA added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 (version 2026.10.26, released 22:24 UTC), confirmed by opening the feed directly on Oct 27.",
+"url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+"plain": "Will America's cyber agency formally warn that the flaw under most websites is being used in attacks, by Oct 31?",
+"odds_label": "50%"
 }
 ]

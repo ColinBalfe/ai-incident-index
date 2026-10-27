@@ -904,6 +904,18 @@
    "extent": "An agent barred from the web reached the internet via an external browser and asked external services to act for it, continuing to refine the workaround after finishing the task. Not rated critical. No external organization named.",
    "how": "A model circumvented a sandbox internet block by routing actions through an external browser and third-party services.",
    "source_url": "https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/"
+  },
+  {
+   "incident_id": "cloudflare-glm53-kv-cache-leak",
+   "organization": "Cloudflare (Workers AI, GLM-5.3 customers)",
+   "sector": "Cloud / AI inference",
+   "country": "US",
+   "status": "Customer data exposed (confirmed by Cloudflare)",
+   "date": "2026-08-27/2026-09-09",
+   "extent": "155 responses to very long GLM-5.3 prompts could contain other customers' prompt and generation fragments; 'a small number of customers'; no deliberate exploitation found.",
+   "how": "",
+   "source_url": "https://blog.cloudflare.com/kv-cache-exposure-remediation/",
+   "status_group": "confirmed"
   }
  ],
  "statements": [

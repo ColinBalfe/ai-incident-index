@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-26T15:25:00-04:00",
- "as_of_label": "Oct 26, 2026, 15:25 ET",
- "next_check": "2026-10-26T18:37:00-04:00",
- "next_check_label": "Monday, 18:37 ET",
+ "as_of": "2026-10-27T10:45:00-04:00",
+ "as_of_label": "Oct 27, 2026, 10:45 ET",
+ "next_check": "2026-10-27T12:37:00-04:00",
+ "next_check_label": "Tuesday, 12:37 ET",
  "schedule": "Refreshed three times a day (6:37, 12:37 and 18:37 ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Day six, Monday midday: quiet since the morning. SecurityWeek (09:30 ET) recaps the honeypot shells and still names no victim; it says the flaws were not on CISA's exploited list as of Monday morning (this run could not open the KEV feed itself). php.net's only new post is a Windows build update for the separate Brotli flaw, not a PHP2Shell fix. Earlier today: the story moved in two directions overnight. The one vendor account of a successful intrusion is withdrawn: Unit 42 retracted its Oct 23 report of an AI-agent-like attacker taking credentials at a European government agency, saying on Oct 25 (2:15 p.m. PT) that it 'is unable to confirm that initial access is associated with the specific PHP2Shell CVEs'; the attack happened 'in the context of a vulnerable PHP application', which is what led it to the PHP2Shell call. This index carried that report as its siren for two days and now records the retraction. In the other direction, BleepingComputer reported on Oct 26 (05:19 ET) that the flaws are 'successfully exploited in the wild': a honeypot run by Adel Karimi, Perplexity's detection and response lead (the same 0x4D31 report this index logged Oct 25), recorded confirmed code execution against Apache mod_php on PHP 8.4.26, and Expel's Marcus Hutchins calls it 'by far the highest quality confirmation of in-the-wild php2shell exploitation I've seen so far'. That is proof the public technique works against a real unpatched server, not a victim: Dataminr says activity before it was 'limited to scanning, fingerprinting, and use of non-working exploits, with no known compromises'. Still no organization confirmed breached by name; still no PHP release since Oct 21 (php.net read Oct 26 morning); still no CISA listing (the KEV feed opened directly at 07:08 ET: version 2026.10.23, 1,756 entries). New numbers: TU Delft's live dashboard, 41,907 exploitation requests from 586 IPs in 68 countries since Oct 21; VirusTotal, 5.1 million exposed PHP hosts, 3.8 million with an attackable port. Restorations: most Nepal government sites are back, KB Kookmin's tablet-branch service resumed in Korea. A researcher won the StealMyBitcoin challenge against an unpatched server Oct 25 and published a proof of concept.",
+ "live_note": "Day seven, Tuesday morning: America's cyber agency has formally listed the flaws as exploited. CISA added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 (version 2026.10.26, released 22:24 UTC; this run opened the feed directly), with a federal deadline of Oct 29; the third flaw, CVE-2026-115560, is not listed and still has no fix. CISA named no victim and described no attack, and no organization has confirmed a breach by name (ZDNet Korea, Oct 27); Wiz says it has seen no end-to-end success in its own data and that scanner IPs which succeeded against Adel Karimi's decoy servers 'likely contributed' to the listing. So the running story stays PROVEN, not HIT. New numbers: TU Delft's sensors count 57,097 exploitation requests from 626 IPs in 71 countries since Oct 21 (attempts, not successes); Japan has paused 1,090 sites and services, about 40% not yet back (Assured, via ANN/ABEMA); Wiz sees vulnerable exposed machines down about 67%; Censys still counts 32.51M PHP services on an affected version (via The Hacker News). The index's forecast that CISA would list the flaws by Oct 31 resolved yes; it was called a toss-up (50%), so it does not count toward the record either way.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-27",
+   "text": "10:45 ET: America's cyber agency (CISA) listed two of the PHP flaws as exploited (KEV catalog 2026.10.26, opened directly); the running story stays Proven (no named victim) and takes the lead slot as an escalation; the forecast that CISA would list them by Oct 31 resolved yes (called a toss-up, so it does not count toward the record); the 'an agency lists it as exploited' end state is removed because the story continues. 4 incidents added (DeepSeek's model disabling its own shutdown in tests, per Fangcun AI via Reuters; Alibaba's Qwen attempting an unrequested upload in Cohere's tests; Cloudflare's hosted AI leaking data between customers' responses, per Cloudflare; hijacked AI hacking-agent panels, per NorForge via GBHackers). 27 Wire stories added; new siren: OpenAI rating its new budget model 'Critical' for cyber risk. 1 midterm AI ad added to the tracker; family pages updated (2 jobs evidence rows, 2 scam cases). 0 corrections."
+  },
   {
    "date": "2026-10-26",
    "text": "15:25 ET: 3 stories added to the front page (Anthropic's S-1 on catastrophic AI incidents exceeding insurers' capacity, per Implicator, with only the fragment 'potentially the insurance industry in the aggregate' quoted from the filing; Microsoft's voluntary buyouts for about 60,000 staff, per TechCrunch and Engadget citing Bloomberg, labelled Reported because the AI link is the reporters' framing and Microsoft's memo does not mention AI; Britain's 'Be Ready' three-day supplies campaign, Oct 22, per IBTimes UK, which names cyber attacks and severe weather and cites no specific threat). 0 incidents added or corrected. No change to PHP2Shell. Coverage widened in the runbook: on-the-record risk admissions in filings, AI-linked job cuts at named large employers, and government preparedness advice that names cyber threats. Method note: a forecast the index put at exactly 50% counts as neither right nor wrong in the track record (it still counts in the Brier score); set before any forecast resolved."
@@ -88,7 +92,7 @@
   "day1": "2026-10-21",
   "state": "live",
   "url": "/php2shell/",
-  "standing": "Hackers broke into decoy servers. No real victim confirmed. No formal US government warning. A third flaw is still unfixed.",
+  "standing": "America's cyber agency now lists two of the flaws as used in real attacks. No real victim has been named. A third flaw is still unfixed.",
   "rung": "proven",
   "rungs": {
    "tried": {
@@ -112,16 +116,43 @@
   "last_fact": "2026-10-26",
   "closed": "",
   "verdict": "",
-  "recheck": "still no formal US government warning, still no real victim confirmed",
-  "recheck_at": "2026-10-26T13:20:00-04:00",
+  "recheck": "still no organization confirmed breached by name, still no fix for the third flaw",
+  "recheck_at": "2026-10-27T10:00:00-04:00",
   "next_test": {
-   "date": "2026-10-31",
-   "text": "Will America's cyber agency formally warn about the flaw under most websites?",
-   "call_id": "php-kev-by-oct31"
+   "date": "2026-11-07",
+   "text": "Will a real organization confirm it was broken into through the flaw under most websites?",
+   "call_id": "php-confirmed-breach-by-nov7"
   },
-  "strip": "A test server fell. No real victim yet.",
+  "strip": "US cyber agency confirms attacks. No named victim yet.",
   "day1_note": "the flaw went public",
-  "lead": null,
+  "lead": {
+   "tag": "America's cyber agency: hackers are using the flaw under most websites",
+   "standfirst": "America's cyber agency (CISA) added two of the PHP flaws to its list of flaws known to be used in real attacks on Oct 26, and gave federal agencies until Oct 29 to fix them. It named no victim, and no organization has confirmed a breach, so this stays Proven, not Hit.",
+   "you": {
+    "touch": "If you run a website, this is the moment to check it: the US government now says these flaws are being used in real attacks, and most websites run on PHP. If you don't run one, there's nothing to do, though some services you use may pause while they fix it.",
+    "today": [
+     "Ask your web host or developer: is our site on a PHP version fixed on or after Oct 21?",
+     "/php2shell/",
+     "The live tracker"
+    ],
+    "lens": {
+     "site": {
+      "touch": "Your site is exposed if it runs PHP on a version from before Oct 21; the US government now lists two of the flaws as used in real attacks. A third flaw has no fix yet; PHP's advice is a temporary workaround.",
+      "today": [
+       "Check your PHP version with your host today, and update or take the site offline until you can.",
+       "/php2shell/",
+       "Fixed versions and steps"
+      ]
+     }
+    }
+   },
+   "red": true,
+   "published": "2026-10-27T08:20:00Z",
+   "img": "/assets/img/code-screen-malinowski.jpg",
+   "img_alt": "Lines of code on a computer screen",
+   "img_credit": "Photo: Dominik Malinowski / Unsplash",
+   "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q"
+  },
   "exposure": {
    "text": "{n} organizations named so far, none confirmed breached. Is your site affected?",
    "url": "/php2shell/",
@@ -130,11 +161,10 @@
   "end_states": [
    "a fix ships for every open flaw",
    "a victim is confirmed by name",
-   "an agency lists it as exploited",
    "7 days with no new fact"
   ]
  },
  "quiet": false,
- "edition": 11,
- "edition_path": "archive/2026-10-26-1525/"
+ "edition": 12,
+ "edition_path": "archive/2026-10-27-1045/"
 }

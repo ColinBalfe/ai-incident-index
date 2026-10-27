@@ -3,17 +3,17 @@
 "key": "confirmed",
 "value": "0",
 "label": "organizations confirmed breached by name",
-"detail": "Still none by name, and the one vendor account of a victim is gone: Palo Alto Networks' Unit 42 retracted its Oct 23 report of an AI-agent-like intrusion at a European government agency on Oct 25 (2:15 p.m. PT), saying it 'is unable to confirm that initial access is associated with the specific PHP2Shell CVEs'. What stands instead, as of Oct 26, is narrower and firmer: a honeypot run by Perplexity's detection lead Adel Karimi recorded confirmed code execution against an unpatched Apache mod_php server, which Expel's Marcus Hutchins calls the highest-quality in-the-wild confirmation so far; Dataminr says activity before it showed 'no known compromises'. The earlier 0x4D31 honeypot report (35 shells, three decoys, Oct 24) is Karimi's. Sophos retracted its one earlier claim on Oct 22. Proof the technique works against real unpatched servers; still no victim.",
-"source_url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
-"source_label": "BleepingComputer, Oct 26, 05:19 ET"
+"detail": "Still no organization confirmed breached by name, even after the KEV listing (ZDNet Korea, Oct 27; BleepingComputer, Oct 27). Wiz (Oct 27) has seen no end-to-end success in its own telemetry; the only confirmed compromises remain Karimi's honeypots. A SOCRadar report on a Japanese real-estate extortion operator found PHP2Shell tooling on the operator's server but 'no link between PHP2Shell and these intrusions'.",
+"source_url": "https://www.wiz.io/blog/php2shell-exploitation-so-far",
+"source_label": "Wiz, Oct 27"
 },
 {
 "key": "attempts",
-"value": "Millions",
-"label": "exploit attempts seen by Cloudflare",
-"detail": "Tens of thousands within 45 minutes of disclosure, millions by Oct 22. TU Delft's live dashboard counts 41,907 exploitation requests from 586 source IPs in 68 countries against its own honeypots and telescope between Oct 21 and 11:04 UTC Oct 26, 171 of them sending code or a dropper. Some attempts try to enlist servers into a Mirai botnet variant (Potassium); no infection count has been published.",
-"source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-"source_label": "The Hacker News, Oct 23; TU Delft, Oct 26"
+"value": "57,097",
+"label": "exploit attempts on TU Delft's sensors alone (Cloudflare: millions)",
+"detail": "Exploitation requests against TU Delft's honeypots and telescope, Oct 21 08:37 UTC to Oct 26 21:39 UTC, from 626 IPs in 71 countries; 171 IPs sent code or a dropper. Their sensors only; furthest step attempted, not success. Cloudflare's 'millions' (by Oct 22) still stands.",
+"source_url": "https://php2shell.delftintellab.com/",
+"source_label": "TU Delft dashboard, updated Oct 26 21:39 UTC"
 },
 {
 "key": "uk",
@@ -25,26 +25,34 @@
 },
 {
 "key": "vulnerable",
-"value": "41M+",
+"value": "32.51M",
 "label": "PHP services Censys counts on affected versions",
-"detail": "As of Oct 22, against about 1 million on a fixed release; Censys separately assesses 34.4 million services on 3.1 million hosts as vulnerable; Bitsight (Oct 25, via The Hacker News) counts nearly 37 million internet-facing systems running PHP or PHP-related software. Versions before 8.2 will never get an official fix.",
-"source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
-"source_label": "The Record, Oct 23"
+"detail": "PHP services still running an affected version, per Censys as cited by The Hacker News on Oct 27 (down from 41M+ on Oct 22 by Censys's earlier count; the two counts may not be like-for-like).",
+"source_url": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html",
+"source_label": "The Hacker News, Oct 27"
 },
 {
 "key": "patched",
-"value": "99.998%",
-"label": "of 2.6M exposed PHP hosts VulnCheck rates vulnerable or likely vulnerable",
-"detail": "2,608,039 internet-facing hosts as of Oct 23: 1,474,985 advertise a version below the fixed build, 1,133,000 hide their version, 700,000+ run PHP 3.x to 7.3. Qualys separately saw 199,000 instances patched in the first 12 hours and counts about 110 million on end-of-life versions.",
-"source_url": "https://www.vulncheck.com/blog/php2shell-vulnerabilities",
-"source_label": "VulnCheck, Oct 23"
+"value": "-67%",
+"label": "drop in vulnerable exposed machines in Wiz's data",
+"detail": "Drop in the daily count of vulnerable internet-exposed machines in Wiz's data since disclosure (window 'the past few days'); under 53% of initially affected organizations remain vulnerable a week on. Wiz's customer data only.",
+"source_url": "https://www.wiz.io/blog/php2shell-exploitation-so-far",
+"source_label": "Wiz, Oct 27"
 },
 {
 "key": "kev",
-"value": "Not listed",
-"label": "on CISA's Known Exploited Vulnerabilities catalog",
-"detail": "Not listed as of Monday morning, per SecurityWeek (09:30 ET Oct 26); this run could not open the feed itself. Last opened directly at 07:08 ET Oct 26: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; the newest additions are still the Oct 23 Arista and Collabora entries. No federal emergency directive reported. A listing is CISA's formal verdict that exploitation is real; the Oct 26 honeypot confirmation is the kind of evidence one rests on.",
-"source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-"source_label": "CISA KEV catalog, version 2026.10.23, checked Oct 26"
+"value": "Listed",
+"label": "on CISA's Known Exploited Vulnerabilities list (2 of 3 flaws)",
+"detail": "CISA added CVE-2026-109618 and CVE-2026-109619 to the KEV catalog on Oct 26 (version 2026.10.26, released 22:24 UTC); federal civilian agencies must act by Oct 29; forensic triage required; ransomware use 'Unknown'. CVE-2026-115560 not listed. CISA has named no victim and described no attack. No emergency directive found.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+"source_label": "CISA KEV catalog, version 2026.10.26, opened Oct 27"
+},
+{
+"key": "japan",
+"value": "1,090",
+"label": "sites and services paused in Japan over the flaws",
+"detail": "Sites and services suspended in Japan over the flaws (cumulative); about 40% had no confirmed restart as of Oct 26. Counted by Assured from company social-media posts; precautionary outages, no unauthorized access reported.",
+"source_url": "https://times.abema.tv/articles/-/10284297",
+"source_label": "ANN / ABEMA Times, Oct 27"
 }
 ]

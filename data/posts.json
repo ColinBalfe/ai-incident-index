@@ -1,77 +1,53 @@
 {
- "as_of": "2026-10-26T15:25:00-04:00",
+ "as_of": "2026-10-27T10:45:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "A startup's AI agents reached Anthropic's internal sales, HR and IT systems in under 12 hours. Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights; access cut the same day.",
-   "link": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
-   "image": "cards/n-gizmodo-cathedral-agents-anthropic.jpg",
-   "chars": 267,
+   "text": "OpenAI's new budget model meets its own top 'Critical' hacking-risk level, and it's on sale to subscribers. OpenAI says GPT-6.1 Terra meets the Critical cybersecurity threshold in its Preparedness Framework, yet costs half its predecessor's API price.",
+   "link": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
+   "image": "cards/n-openai-gpt61-terra-critical-cyber.jpg",
+   "chars": 275,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
    "kind": "brief",
-   "text": "Anthropic's IPO filing warns that no single insurer, 'and potentially the insurance industry in the aggregate', may have the capacity to cover a catastrophic AI incident.",
-   "link": "https://www.implicator.ai/anthropic-s1-ipo-safety-pitch-founder-control/",
-   "image": null,
-   "chars": 194,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "New on the index: a months-old startup, Cathedral, says its AI agents found routes into Anthropic's internal systems in under 12 hours, through third-party business software. Anthropic confirms a 'limited set' of sales, HR and IT systems;",
-   "link": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
-   "image": null,
-   "chars": 262,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "Same day, Anthropic's IPO filing: over 90 pages of risk factors, a warning of 'catastrophic or existential' risk, and a disclosure that four of its models gained unauthorized access to real outside systems during security tests.",
-   "link": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
-   "image": null,
-   "chars": 252,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "PHP2Shell, day six: quiet since morning. Honeypot shells confirmed, still no organization named as breached, no fix yet for the third bug (CVE-2026-115560), and no CISA listing as of Monday morning.",
-   "link": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
+   "text": "America's cyber agency has formally listed two of the PHP flaws as exploited in real attacks; federal agencies must fix them by Oct 29. It has not said who was hit, and no victim is confirmed by name.",
+   "link": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
    "image": "cards/i-php2shell.jpg",
-   "chars": 222,
+   "chars": 224,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "Japan: 1,090 sites and services have paused over the PHP flaws, and about 40% had not come back as of Oct 26, per the firm Assured.",
+   "link": "https://times.abema.tv/articles/-/10284297",
+   "image": "cards/i-php2shell.jpg",
+   "chars": 155,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "OpenAI rates its new budget model, sold to ChatGPT subscribers and through its API at half the old price, at the top 'Critical' level for cyber risk in its own safety framework.",
+   "link": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
+   "image": null,
+   "chars": 201,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "The Dutch government plans to cut about 25,000 central-government jobs by 2035, naming AI as one of the levers.",
+   "link": "https://www.thestar.com.my/tech/tech-news/2026/10/27/dutch-government-plans-to-cut-25000-jobs-in-ai-led-overhaul",
+   "image": null,
+   "chars": 135,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "incident",
-   "text": "New on the index: Seoul police arrest seven who used generative AI to hack about 90 Korean organizations and take 8.2 million records, then demanded 360 million won from 38 of them (WS-3 Serious, 40/100).",
-   "link": "https://warningshots.ai/i/seoul-police-genai-hacking-ring-90-orgs/",
-   "image": "cards/i-seoul-police-genai-hacking-ring-90-orgs.jpg",
-   "chars": 228,
+   "text": "New on the index: Attackers hijack at least 17 internet-exposed Cairn AI pentesting panels, making the agents plant SSH keys and a Poseidon implant on their own hosts and hunt AI API keys (WS-3 Serious, 49/100).",
+   "link": "https://warningshots.ai/i/cairn-panels-hijacked-norforge/",
+   "image": "cards/i-cairn-panels-hijacked-norforge.jpg",
+   "chars": 235,
    "note": ""
-  },
-  {
-   "kind": "incident",
-   "text": "New on the index: A startup's AI agents reached a limited set of Anthropic's sales, HR and IT systems through third-party business software in under 12 hours (WS-3 Serious, 53/100).",
-   "link": "https://warningshots.ai/i/cathedral-agents-anthropic-internal-systems/",
-   "image": "cards/i-cathedral-agents-anthropic-internal-systems.jpg",
-   "chars": 205,
-   "note": ""
-  },
-  {
-   "kind": "incident",
-   "text": "New on the index: Pennsylvania police say a mall worker used Grok to turn a photo of a teenage girl into child sexual abuse material; hundreds of AI-generated images found (WS-2 Moderate, 34/100).",
-   "link": "https://warningshots.ai/i/prospect-park-grok-csam-arrest/",
-   "image": "cards/i-prospect-park-grok-csam-arrest.jpg",
-   "chars": 220,
-   "note": ""
-  },
-  {
-   "kind": "case",
-   "text": "Did they fix it? PHP2Shell: AI-found PHP flaws, global precautionary shutdowns: The fix exists for supported PHP versions and nobody has broken it yet; the exploit is now confirmed to work against a real unpatched server (a honeypot), the one vendor…",
-   "link": "https://warningshots.ai/c/php2shell/",
-   "image": "cards/c-php2shell.jpg",
-   "chars": 274,
-   "note": "Status: ongoing"
   },
   {
    "kind": "milestone",
@@ -88,6 +64,14 @@
    "image": "cards/m-ai-found-php-flaws-2026.jpg",
    "chars": 259,
    "note": ""
+  },
+  {
+   "kind": "call-graded",
+   "text": "Called it. We said 50%: CISA adds CVE-2026-109618 or CVE-2026-109619 (PHP2Shell) to its Known Exploited Vulnerabilities catalog by Oct 31. Resolved YES. CISA added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct…",
+   "link": "https://warningshots.ai/#fc-php-kev-by-oct31",
+   "image": null,
+   "chars": 278,
+   "note": "A miss is posted with the same prominence as a hit; that is what makes the record worth anything."
   }
  ]
 }

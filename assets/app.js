@@ -574,7 +574,7 @@ function drawWall() {
     if (srl.state !== 'closed') row.append(el('span', 'ss-since', 'day ' + day + ' since ' + (srl.day1_note || 'it went public')));
     const rc = WALL_LABEL[srl.rung] ? el('span', 'wl-lab ' + srl.rung, WALL_LABEL[srl.rung]) : null; if (rc) row.append(rc);
     row.append(el('span', 'ss-st', srl.state === 'closed' ? (srl.verdict || '') : (srl.strip || srl.standing || '')), el('span', 'ss-more', 'Follow it ▾'));
-    const panel = buildSerial(srl, takeover ? null : ll); panel.hidden = true;
+    const panel = buildSerial(srl, ll); panel.hidden = true;
     row.addEventListener('click', () => { panel.hidden = !panel.hidden; row.setAttribute('aria-expanded', String(!panel.hidden)); row.lastChild.textContent = panel.hidden ? 'Follow it ▾' : 'Close ▴'; });
     strip.append(row, panel);
   }

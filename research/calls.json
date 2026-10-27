@@ -18,7 +18,12 @@
    "watch_id": "php-kev"
   },
   "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-  "resolution": null,
+  "resolution": {
+   "outcome": "yes",
+   "date": "2026-10-26",
+   "note": "CISA added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 (version 2026.10.26, released 22:24 UTC), confirmed by opening the feed directly on Oct 27.",
+   "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
   "plain": "Will America's cyber agency formally warn that the flaw under most websites is being used in attacks, by Oct 31?"
  },
  {
@@ -39,7 +44,8 @@
    "watch_id": "php-breach"
   },
   "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
-  "resolution": null
+  "resolution": null,
+  "plain": "Will a real organization confirm it was broken into through the flaw under most websites by Nov 7?"
  },
  {
   "id": "cisa-directive-by-oct31",

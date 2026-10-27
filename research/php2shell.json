@@ -24,14 +24,14 @@
   "reported_to_php": "2026-08-24",
   "disclosure_date": "2026-10-21",
   "first_known_exploitation": "2026-10-17 (single probe against Amazon MadPot honeypot, during embargo)",
-  "status_as_of": "2026-10-26",
+  "status_as_of": "2026-10-27",
   "sources": [
    "https://www.wiz.io/blog/php2shell-php-rce",
    "https://thehackernews.com/2026/10/someone-tried-to-exploit-php2shell-4.html",
    "https://cybersecuritynews.com/critical-php-vulnerabilities/",
    "https://www.govinfosecurity.com/attackers-exploit-leaked-zero-day-flaws-in-widely-used-php-a-33161"
   ],
-  "cisa_kev": "Not listed as of catalog version 2026.10.23 (released Oct 23, 19:30 UTC; the feed was opened directly at 07:08 ET Oct 26: 1,756 entries, none of CVE-2026-109618, -109619 or -115560; the newest additions are Arista VeloCloud and Collabora Online, dated Oct 23). No emergency directive found.",
+  "cisa_kev": "Listed: CVE-2026-109618 and CVE-2026-109619 added Oct 26 (catalog version 2026.10.26, released 2026-10-26T22:24:24Z (18:24 ET Oct 26); federal civilian deadline Oct 29). CVE-2026-115560 not listed. No emergency directive found.",
   "threat_actors": [
    {
     "name": "Unidentified actor using commercial anonymization network",
@@ -1373,6 +1373,31 @@
    "date": "2026-10-26",
    "event": "php.net posts updated Windows builds (8.5.12-1, 8.4.27-1, 8.3.36-1, 8.2.35-1) bundling Brotli 1.2.1 for CVE-2026-111497, the Node2Shell library flaw. This is not a fix for the PHP2Shell CVEs or for CVE-2026-115560; no PHP release for those since Oct 21.",
    "source": "https://www.php.net/archive/2026.php"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "CISA adds CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog (catalog version 2026.10.26, released 22:24 UTC / 18:24 ET), with a remediation due date of Oct 29 for federal civilian agencies, forensic triage required, ransomware use 'Unknown'. The third flaw, CVE-2026-115560, is not listed. CISA has not described the attacks or named any victim. Feed opened directly Oct 27 ~10:00 ET: 1,758 entries.",
+   "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  {
+   "date": "2026-10-26",
+   "event": "TU Delft's live dashboard, last updated 21:39 UTC Oct 26: 57,097 exploitation requests from 626 source IPs in 293 autonomous systems and 71 countries since 08:37 UTC Oct 21 (up from 41,907 from 586 IPs at 11:04 UTC); 171 IPs sent code or a dropper. Step counts are the furthest step attempted, not verified success; samples include Mirai-derived DDoS bots whose command server sent no attack command in the sandbox.",
+   "source": "https://php2shell.delftintellab.com/"
+  },
+  {
+   "date": "2026-10-27",
+   "event": "Japan: 1,090 sites and services have been suspended over the PHP flaws in total, and about 40% had no confirmed restart as of Oct 26, per the security-rating firm Assured's count of company social-media posts, reported by ANN/ABEMA (14:34 JST). No unauthorized access reported.",
+   "source": "https://times.abema.tv/articles/-/10284297"
+  },
+  {
+   "date": "2026-10-27",
+   "event": "Wiz's follow-up: the daily count of vulnerable internet-exposed machines in its data is down about 67%, and under 53% of initially affected organizations remain vulnerable a week after disclosure; it has seen only a 'limited number' of exploit attempts and 'not yet observed successful end-to-end PHP2Shell exploitation' in its own telemetry.",
+   "source": "https://www.wiz.io/blog/php2shell-exploitation-so-far"
+  },
+  {
+   "date": "2026-10-27",
+   "event": "php.net archive, opened directly: no PHP release after Oct 21 and no fix yet for CVE-2026-115560 (its full advisory is promised 'with the next release'); the newest item remains the Oct 26 Windows rebuild for the separate Brotli flaw.",
+   "source": "https://www.php.net/archive/2026.php"
   }
  ],
  "statements": [
@@ -2537,6 +2562,42 @@
    "paraphrase": "Calls the honeypot result 'confirmed RCE with usable memory disclosure', and cautions that it was shown on an intentionally favorable single-worker mod_php profile.",
    "url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
    "x_post": "yes"
+  },
+  {
+   "date": "2026-10-26",
+   "organization": "CISA",
+   "speaker": "",
+   "channel": "KEV catalog / alert (alert page not opened; quoted via BleepingComputer)",
+   "paraphrase": "Lists CVE-2026-109618 and -109619 as known exploited, due Oct 29 for federal civilian agencies; says such flaws are 'a frequent attack vector for malicious cyber actors' and gives no details of the attacks.",
+   "url": "https://www.bleepingcomputer.com/news/security/cisa-confirms-php2shell-vulnerabilities-now-exploited-in-attacks/",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-27",
+   "organization": "Wiz Research",
+   "speaker": "",
+   "channel": "blog",
+   "paraphrase": "'We have not yet observed successful end-to-end PHP2Shell exploitation in our own telemetry'; vulnerable exposed machines down about 67%; two scanner IPs that failed against Wiz succeeded against Karimi's honeypot, which likely contributed to the KEV listing.",
+   "url": "https://www.wiz.io/blog/php2shell-exploitation-so-far",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-27",
+   "organization": "Tiori (Korea), via ZDNet Korea",
+   "speaker": "Park Se-joon, CEO",
+   "channel": "interview",
+   "paraphrase": "Attack attempts are continuing, but 'attack attempts and actual successful breaches are entirely different matters' (translated); as of Oct 27 no publicly verified breach of a company or agency.",
+   "url": "https://zdnet.co.kr/view/?no=20261027104307",
+   "x_post": "no"
+  },
+  {
+   "date": "2026-10-27",
+   "organization": "Korea Information Security Industry Association (KISIA), via Digital Daily",
+   "speaker": "",
+   "channel": "announcement reported by press",
+   "paraphrase": "Fourteen Korean security firms (incl. AhnLab, Penta Security, ESTsecurity) are offering free scanning, attack blocking and compromise checks for PHP2Shell.",
+   "url": "https://www.ddaily.co.kr/page/view/2026102712512496739",
+   "x_post": "no"
   }
  ],
  "scale": [

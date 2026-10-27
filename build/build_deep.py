@@ -190,8 +190,10 @@ def date_parts(raw):
 ARTEX = {46, 47, 48, 49, 50, 51, 52, 53, 56, 57, 58, 59}
 other_victims = []
 for i, v in enumerate(vr['victims']):
-    if i not in VMAP or i in VDROP: continue
-    grp, lab, cnt, ov = VMAP[i]
+    if i in VDROP: continue
+    if i in VMAP: grp, lab, cnt, ov = VMAP[i]
+    elif v.get('status_group'): grp, lab, cnt, ov = v['status_group'], v['status'], 1, {}   # rows added by later refreshes carry their own group
+    else: continue
     d0, dl = date_parts(v['date'])
     how = v['how']
     if i in ARTEX: how = KOREA_HOW

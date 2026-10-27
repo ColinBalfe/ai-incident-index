@@ -29,6 +29,7 @@ Keep descriptions of hacking techniques high-level. Never invent a figure; if a 
 ## 2. Edit the research files
 
 - New scored incidents: append to `research/jul_oct_2026_mine.json` (same schema as the existing rows: id, date, date_precision, disclosed, title, actors, category, setting, summary, harm, H, R, A, N, I, source_url, source2_url, confidence, notes). Rate the five factors by `research/rubric.md`. Prefer a primary source as `source_url`.
+- New victims for incidents other than PHP2Shell: append to `research/victims.json` with `status_group` (confirmed|attacked|disrupted|reported|other) and a plain `status` label; such rows flow into data/victims.json and Am I Exposed? automatically.
 - New victims, timeline events, official statements, implications for an existing deep dive: `research/php2shell.json` (PHP2Shell) or `research/victims.json` (the other five). Follow the existing schemas exactly.
 - "Since the last refresh" box: `BRIEF` in `build/build_live.py`: two to four plain, tweet-length lines on what changed, each with a source. Write them so they can be posted as-is.
 - Quotes ("In their words" and the pull quotes in each deep dive): `research/quotes.json`. Add a quote only when you have fetched the page and copied the exact words (max ~45 words; mark cuts with …); fields: id, incident_id (from data/deepdives.json or ''), quote, speaker, title, org_type, date, channel, url, via, context, verified, verify_note, weight (0–10; the lead quote is the highest). `build/build_deep.py` copies it to `data/quotes.json`.
