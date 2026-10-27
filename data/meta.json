@@ -120,6 +120,7 @@
    "call_id": "php-kev-by-oct31"
   },
   "strip": "A test server fell. No real victim yet.",
+  "day1_note": "the flaw went public",
   "lead": null,
   "exposure": {
    "text": "{n} organizations named so far, none confirmed breached. Is your site affected?",

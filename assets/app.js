@@ -536,7 +536,7 @@ function drawWall() {
       const inc0 = C.scored.find((r) => r.id === sr.incident_id); const caseNo = inc0 ? el('a', 'serial-c', 'Case ' + inc0.ws) : null; if (caseNo) { caseNo.href = '/i/' + inc0.id + '/'; caseNo.setAttribute('data-tip', 'Case ' + inc0.ws + ' in the index: scored ' + inc0.severity + '/100 (' + inc0.tier + ') by the published formula. Opens the case file.'); }
       const a = leadLines && leadLines.childNodes.length && sr.state !== 'closed' ? leadLines : el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); if (a.tagName === 'A') a.href = sr.url || '#';
       const ft = el('div', 'serial-f'); const tr = el('a', null, (sr.tech_name ? sr.tech_name + ' ' : '') + 'live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
-      if (sr.state !== 'closed') { const shr = el('div', 'share serial-share'); shareRow(shr, { anchor: 'wall-lead', text: sr.name + ', day ' + day + ': ' + (sr.standing || '') + ' Via Warning Shots:' }); box2.shareRow = shr; }
+      if (sr.state !== 'closed') { const shr = el('div', 'share serial-share'); shareRow(shr, { anchor: 'wall-lead', text: sr.name + ', day ' + day + ' since ' + (sr.day1_note || 'it went public') + ': ' + (sr.standing || '') + ' Via Warning Shots:' }); box2.shareRow = shr; }
       if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
       const RUNGS = [['tried', 'Tried', 'attempts logged'], ['proven', 'Proven', 'a test system broken into'], ['hit', 'Hit', 'a real victim confirmed']];
       const at = RUNGS.findIndex(([k]) => k === sr.rung);
@@ -570,7 +570,8 @@ function drawWall() {
     const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1;
     strip = el('div', 'sstrip');
     const row = el('button', 'sstrip-row'); row.type = 'button'; row.setAttribute('aria-expanded', 'false');
-    row.append(el('span', 'ss-day', srl.state === 'closed' ? 'Closed' : 'Day ' + day), el('span', 'ss-name', srl.name));
+    row.append(el('span', 'ss-day', srl.state === 'closed' ? 'Closed' : 'We’re following'), el('span', 'ss-name', srl.name));
+    if (srl.state !== 'closed') row.append(el('span', 'ss-since', 'day ' + day + ' since ' + (srl.day1_note || 'it went public')));
     const rc = WALL_LABEL[srl.rung] ? el('span', 'wl-lab ' + srl.rung, WALL_LABEL[srl.rung]) : null; if (rc) row.append(rc);
     row.append(el('span', 'ss-st', srl.state === 'closed' ? (srl.verdict || '') : (srl.strip || srl.standing || '')), el('span', 'ss-more', 'Follow it ▾'));
     const panel = buildSerial(srl, takeover ? null : ll); panel.hidden = true;
