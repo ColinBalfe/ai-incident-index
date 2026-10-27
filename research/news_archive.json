@@ -3062,7 +3062,7 @@
 "topic": "php2shell",
 "summary": "171 source IPs sent code or a dropper; two IPs probed before the fix shipped; busiest hour 21:00 UTC Oct 21.",
 "also": [],
-"tag": "TU Delft's sensors alone logged 57,097 break-in attempts since Oct 21",
+"tag": "57,097 break-in attempts",
 "red": false,
 "label": "tried",
 "receipt": "Counted by TU Delft's decoy servers and network telescope, Oct 21 to 21:39 UTC Oct 26, from 626 addresses in 71 countries. Their sensors only: attempts, not successes."
