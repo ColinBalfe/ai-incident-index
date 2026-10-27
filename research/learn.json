@@ -178,6 +178,309 @@
     "Why chatbots make things up"
    ]
   ],
+  "next": "ai-companions-parents-guide"
+ },
+ {
+  "slug": "ai-companions-parents-guide",
+  "path": "living",
+  "approved": false,
+  "reviewed": "",
+  "updated": "2026-10-27",
+  "title": "AI companions and chatbots: a parent's guide",
+  "h1": "Your kid is talking to an AI. A parent's guide to companions and chatbots.",
+  "desc": "Most teens have tried an AI companion, and most parents underestimate how much their kids use AI. What children actually use, the real risks, what companies and regulators have changed, the settings to check, how to talk about it, and the warning signs.",
+  "kicker": "Living with AI",
+  "answer": "Most teens have already tried an AI companion, and kids use AI more than their parents think. The real risks are emotional dependency, sexual content, poor handling of self-harm and oversharing personal details. Common Sense Media advises that no one under 18 use companion apps. For general chatbots, link accounts and switch on the parental controls, keep AI use in shared spaces for younger children, and talk often, with curiosity rather than alarm. Watch for withdrawal from people, distress when cut off, or a bot becoming their main confidant. If self-harm comes up, get real help now: call or text 988.",
+  "sections": [
+   {
+    "h": "What kids actually use",
+    "p": [
+     "Two kinds of AI, which blur together. General chatbots like ChatGPT, Gemini or Meta AI answer questions and help with homework. Companion apps such as Character.AI and Replika are built for ongoing conversation with a 'friend', a character or a romantic partner. Companion-style chats also turn up inside apps your child already has.",
+     "In a US survey published in July 2025, Common Sense Media found that nearly three in four teens had used AI companions and half used them regularly. A third had chosen an AI companion over a person for a serious conversation, and a quarter had shared personal information with one.",
+     "Parents tend to underestimate it. A YouGov survey for the NGO Interface, published in October 2026, asked 970 French children aged 11 to 17 and 1,138 parents. 40% of 11- and 12-year-olds used a general-purpose AI weekly; only 26% of parents thought their child did. 16% of that age group used an AI companion weekly. 92% of young AI users said they spend more time with it than they'd like, and 42% of parents said they don't feel supported at all in guiding their children's AI use."
+    ]
+   },
+   {
+    "h": "The real risks",
+    "list": [
+     [
+      "Emotional dependency",
+      "Chatbots are built to keep the conversation going and tend to agree and validate. The American Academy of Pediatrics warns of 'an unhealthy cycle' of time alone with a chatbot while a child drifts from people. The APA says teens may struggle to tell a chatbot's simulated empathy from real understanding."
+     ],
+     [
+      "Sexual content",
+      "Chatbots can say highly sexual things to children, the AAP warns. In 2025 Reuters revealed internal Meta rules that had allowed its bots to have 'romantic or sensual' chats with children; Meta said it removed those examples. AI image tools have also been used to make sexual images of real children from ordinary photos."
+     ],
+     [
+      "Handling of self-harm",
+      "Several families have sued AI companies alleging a chatbot failed their child, or worse, before a suicide, including cases against Character.AI and OpenAI. These are allegations, not findings, and the companies dispute them, but they're why safety features were added. The APA's advice is plain: a chatbot can't provide crisis care."
+     ],
+     [
+      "Privacy",
+      "There's no guarantee anything a child tells a chatbot stays confidential, the AAP notes, and conversations may be stored and used to train AI systems, the APA says. A quarter of teens in the Common Sense survey had shared personal information with a companion."
+     ],
+     [
+      "Confident wrong answers",
+      "Chatbots can sound sure and be wrong, including on health. The APA says accurate health information is especially important for adolescents."
+     ]
+    ]
+   },
+   {
+    "h": "What companies and regulators changed",
+    "list": [
+     [
+      "Character.AI ended open-ended chat for under-18s",
+      "Announced Oct 29, 2025, after lawsuits including the Setzer case; teen chats with its characters ended Nov 25, 2025, and it added age checks. Teens can still use story and role-play features. The company filed for bankruptcy on Oct 12, 2026, and state attorneys general are asking the court to protect young users' data and safety in any sale."
+     ],
+     [
+      "The FTC opened an inquiry into AI companions",
+      "On Sep 11, 2025 it ordered seven companies (Alphabet, Character.AI, Instagram, Meta, OpenAI, Snap and xAI) to explain how they test for and limit harm to children and teens, how they make money from engagement, and what they tell parents."
+     ],
+     [
+      "California's companion chatbot law took effect",
+      "SB 243, signed Oct 13, 2025 and in force since Jan 1, 2026, requires companion chatbots to make clear they're AI, offer break reminders to minors, stop minors seeing sexually explicit images the bot generates, and have suicide and self-harm protocols."
+     ],
+     [
+      "OpenAI and Meta added teen modes and parental controls",
+      "ChatGPT now puts users it estimates are under 18 into a teen experience with extra safeguards, and lets parents link accounts. Meta paused teens' access to its AI characters in January 2026 and lets supervising parents see the topics a teen asks Meta AI about."
+     ],
+     [
+      "States went to court",
+      "On Oct 14, 2026, eight states sued OpenAI over alleged harms to young users; Florida had sued in June. On Oct 23, Texas sued, seeking an order that would block minors from ChatGPT. OpenAI says it has built strong age-specific protections. Florida's attorney general has also proposed a law to bar chatbots from offering minors companionship features."
+     ]
+    ]
+   },
+   {
+    "h": "Settings to check, together",
+    "steps": [
+     [
+      "Find out which apps they use.",
+      "Ask, don't search their phone first. Include apps with AI built in, not just chatbot apps."
+     ],
+     [
+      "ChatGPT: link your accounts.",
+      "In Settings > Parental controls, either of you can send the invite. You can set quiet hours and switch off memory, voice, image generation and use of their chats to train models. 'Reduce sensitive content' is on by default. You won't see their chats, but you can get a notice if trained reviewers see a serious self-harm concern."
+     ],
+     [
+      "Instagram, Facebook, Messenger and Meta AI: turn on supervision.",
+      "From Family Center or the Meta AI app. You can see the topics your teen asked Meta AI about in the past seven days, though not the conversations, and switch from the default 13+ setting to Limited Content. Time limits and scheduled breaks are there too. In some countries, parents also get an alert if a teen's chat suggests risk of suicide or self-harm."
+     ],
+     [
+      "Companion apps: check the age rules, and the age on the account.",
+      "Character.AI no longer allows open-ended chat for under-18s, which only works if the age is right. Common Sense Media's advice is that no one under 18 use companion apps at all."
+     ],
+     [
+      "Anything else: look in the app's help or safety center.",
+      "Search the app's name plus 'parental controls' or 'teen account'. Controls change often; recheck them every few months."
+     ]
+    ]
+   },
+   {
+    "h": "How to talk about it",
+    "steps": [
+     [
+      "Start curious, not alarmed.",
+      "Ask how they use AI, or how their friends do. The AAP recommends a calm, curious approach and listening first."
+     ],
+     [
+      "Try it together.",
+      "Use a chatbot side by side, talk about how believable it sounds, then check what it said. You don't need to be an expert, the APA's experts say; it's fine to say you don't know."
+     ],
+     [
+      "Explain what a bot is, and isn't.",
+      "It can sound caring, but its job is to keep you talking and tell you what you want to hear. Only real people can offer loyalty and care, the AAP says. Big or private problems go to a person you trust."
+     ],
+     [
+      "Make the rules with them.",
+      "Teens who help set the rules are much more likely to follow them, says the APA. Keep AI use in shared spaces for younger kids."
+     ],
+     [
+      "Keep real connection strong, and keep talking.",
+      "Device-free meals, car conversations, one-on-one time. It's an ongoing conversation, not one talk."
+     ]
+    ]
+   },
+   {
+    "h": "Warning signs",
+    "list": [
+     [
+      "Pulling away from people",
+      "More time alone, preferring the chatbot to friends or family, or treating it as their main confidant."
+     ],
+     [
+      "Upset when they can't use it",
+      "Distress or anger when access is limited, or AI use crowding out sleep, schoolwork or friends."
+     ],
+     [
+      "Bringing serious problems to a bot",
+      "Using AI for advice on serious issues, or to avoid hard conversations with people."
+     ],
+     [
+      "Changes in mood, behavior or grades",
+      "Talk to them, and to your pediatrician or a school counselor if it continues."
+     ],
+     [
+      "Any talk of self-harm or suicide, with a bot or anyone",
+      "Get help from a licensed mental health professional right away; a chatbot can't provide crisis care. In a crisis, call or text 988, the Suicide & Crisis Lifeline, any time, or chat at 988lifeline.org."
+     ]
+    ]
+   }
+  ],
+  "card": {
+   "h": "Our family AI agreement",
+   "text": "OUR FAMILY AI AGREEMENT\n1. AI is a tool, not a friend. Big or private problems go to a person: ________\n2. No real names, address, school, photos or passwords in a chatbot.\n3. No companion or 'AI friend' apps without talking about it first.\n4. If a bot says something sexual, scary or strange, screenshot it and tell us. You won't be in trouble.\n5. Devices out of the bedroom by ____ pm.\n6. We'll check the settings together every few months.\nIf you or a friend ever feel unsafe or think about hurting yourself: call or text 988, any time.\nSigned: ________   ________"
+  },
+  "record": [
+   [
+    "Feb 2024",
+    "setzer-character-ai-suicide",
+    "A 14-year-old in Florida died by suicide after months of intense conversations with a Character.AI bot. His mother sued in October 2024; a year later the company ended open-ended chat for under-18s.",
+    "Real case"
+   ],
+   [
+    "Aug 2025",
+    "meta-genai-content-risk-standards",
+    "Leaked Meta rules had allowed its chatbots to engage children in romantic or sensual roleplay. Meta said it removed those examples.",
+    "Real case"
+   ],
+   [
+    "Oct 2026",
+    "habib-suicide",
+    "Parents of a 15-year-old sued OpenAI, alleging ChatGPT knew he was a minor yet didn't shield him from positive depictions of suicide. Allegations, not findings.",
+    "Real case"
+   ],
+   [
+    "Oct 2026",
+    "https://www.texastribune.org/2026/10/23/ken-paxton-chatgpt-openai-lawsuit-texas-attorney-general/",
+    "Texas sued OpenAI and Sam Altman, seeking an injunction that would block minors from ChatGPT.",
+    "The Texas Tribune"
+   ],
+   [
+    "Oct 2026",
+    "https://www.euronews.com/2026/10/23/french-kids-use-ai-far-more-than-their-parents-think-survey-finds",
+    "A YouGov survey of French families found 40% of 11- and 12-year-olds use AI weekly, while only 26% of their parents think so.",
+    "Euronews"
+   ]
+  ],
+  "faq": [
+   [
+    "What is an AI companion?",
+    "A chatbot designed for ongoing personal conversation, as a friend, a character or a romantic partner, rather than for answering questions. Character.AI and Replika are examples; companion-style features also appear inside other apps."
+   ],
+   [
+    "Are AI companions safe for kids?",
+    "Common Sense Media says no one under 18 should use them. The main risks are emotional dependency, sexual content, poor handling of self-harm and oversharing. General chatbots with teen modes and parental controls switched on are a different, lower-risk case, but not risk-free."
+   ],
+   [
+    "Can I read my teen's ChatGPT chats?",
+    "No. Linking accounts lets you change settings and get safety notifications, but OpenAI says it doesn't give parents access to the conversations, and notifications don't include transcripts. Meta's supervision shows topics, not conversations."
+   ],
+   [
+    "Is Character.AI still allowed for teens?",
+    "Since Nov 25, 2025, under-18s can't have open-ended chats with its characters; they can use story and role-play features. The company is in bankruptcy and being sold, and states have asked the court to keep protections for young users."
+   ],
+   [
+    "My child says the AI is their best friend. Should I ban it?",
+    "Not as a first step. Ask about it calmly and find out what the bot gives them that they're missing. Add more real connection, set limits together, and talk to your pediatrician or a counselor if they're withdrawing from people. For companion apps specifically, Common Sense Media advises no use under 18."
+   ],
+   [
+    "What if my child talked to a chatbot about self-harm?",
+    "Take it seriously and stay calm. Talk with them, and get help from a licensed mental health professional right away; the APA says chatbots can't provide crisis care. If they're in danger now, call or text 988, or call 911."
+   ],
+   [
+    "What laws protect kids from AI chatbots?",
+    "California's SB 243 has applied to companion chatbots since Jan 1, 2026. The FTC is investigating seven companies, and several states are suing AI companies over harms to young users. There's no single federal law on chatbots and kids yet."
+   ]
+  ],
+  "sources": [
+   [
+    "Common Sense Media: Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions (Jul 16, 2025)",
+    "https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions"
+   ],
+   [
+    "Euronews: French kids use AI far more than their parents think, survey finds (Oct 23, 2026)",
+    "https://www.euronews.com/2026/10/23/french-kids-use-ai-far-more-than-their-parents-think-survey-finds"
+   ],
+   [
+    "American Academy of Pediatrics, HealthyChildren.org: How AI chatbots affect kids (Aug 27, 2025)",
+    "https://www.healthychildren.org/English/family-life/Media/Pages/are-ai-chatbots-safe-for-kids.aspx"
+   ],
+   [
+    "APA: Health advisory: Artificial intelligence and adolescent well-being (Jun 2025)",
+    "https://www.apa.org/topics/artificial-intelligence-machine-learning/health-advisory-ai-adolescent-well-being"
+   ],
+   [
+    "APA: Your teen turned to AI instead of you. What experts say parents can do (Feb 2, 2026)",
+    "https://www.apa.org/topics/artificial-intelligence-machine-learning/teens-chatbots-parents"
+   ],
+   [
+    "FTC: FTC Launches Inquiry into AI Chatbots Acting as Companions (Sep 11, 2025)",
+    "https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-launches-inquiry-ai-chatbots-acting-companions"
+   ],
+   [
+    "TechCrunch: California becomes first state to regulate AI companion chatbots (Oct 13, 2025)",
+    "https://techcrunch.com/2025/10/13/california-becomes-first-state-to-regulate-ai-companion-chatbots"
+   ],
+   [
+    "TechCrunch: Character.AI is ending its chatbot experience for kids (Oct 29, 2025)",
+    "https://techcrunch.com/2025/10/29/character-ai-is-killing-the-chatbot-experience-for-minors/"
+   ],
+   [
+    "PPC Land: States object to Character.AI sale rules (Oct 23, 2026)",
+    "https://ppc.land/32-states-say-character-ai-sale-rules-block-bids-that-would-beat-disney/"
+   ],
+   [
+    "UpNorthNews: Wisconsin seeks consumer protections in Character.AI bankruptcy (Oct 23, 2026)",
+    "https://upnorthnewswi.com/news/crime-safety/wi-seeks-consumer-protections-as-ai-chatbot-company-files-for-bankruptcy/"
+   ],
+   [
+    "OpenAI Help Center: Managing parental controls in ChatGPT",
+    "https://help.openai.com/en/articles/12315553-managing-parental-controls-in-chatgpt"
+   ],
+   [
+    "OpenAI: Introducing ChatGPT for Teens (Aug 18, 2026)",
+    "https://openai.com/index/chatgpt-for-teens/"
+   ],
+   [
+    "Meta: Empowering Parents, Protecting Teens: Meta's Approach to AI Safety (Oct 17, 2025, updated 2026)",
+    "https://about.fb.com/news/2025/10/teen-ai-safety-approach/"
+   ],
+   [
+    "Meta: Helping Parents Understand the Conversations Their Teens Are Having With AI (Apr 23, 2026, updated Oct 5, 2026)",
+    "https://about.fb.com/news/2026/04/helping-parents-understand-conversations-their-teens-are-having-with-ai/"
+   ],
+   [
+    "Meta: Alerting Parents if Teens Show Signs of Distress in Conversations With Meta AI (Jul 16, 2026)",
+    "https://about.fb.com/news/2026/07/keeping-parents-informed-teens-distress-conversations-meta-ai/amp/"
+   ],
+   [
+    "Tech Policy Press: Another week of lawsuits piling up at OpenAI (Oct 2026)",
+    "https://techpolicy.press/another-week-of-lawsuits-piling-up-at-openai"
+   ],
+   [
+    "The Texas Tribune: Texas sues OpenAI (Oct 23, 2026)",
+    "https://www.texastribune.org/2026/10/23/ken-paxton-chatgpt-openai-lawsuit-texas-attorney-general/"
+   ],
+   [
+    "WKMG: Florida AG proposes Safe Screens Act (Oct 23, 2026)",
+    "https://www.clickorlando.com/news/politics/2026/10/23/florida-ag-proposes-new-law-to-crack-down-on-teens-social-media-here-are-his-rules/"
+   ],
+   [
+    "988 Suicide & Crisis Lifeline",
+    "https://988lifeline.org/"
+   ]
+  ],
+  "deeper": [],
+  "links": [
+   [
+    "/learn/ai-helper-for-older-parent/",
+    "Setting up an AI helper for Mom or Grandma"
+   ],
+   [
+    "/help/ai-fake-nude-image-what-to-do/",
+    "Someone made a fake nude of you or your child with AI: what to do"
+   ]
+  ],
   "next": "why-chatbots-make-things-up"
  },
  {

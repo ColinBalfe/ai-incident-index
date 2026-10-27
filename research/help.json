@@ -398,5 +398,531 @@
     "A link to 'update your details', which is where your card number goes"
    ]
   }
+ },
+ {
+  "slug": "ai-fake-nude-image-what-to-do",
+  "approved": false,
+  "reviewed": "",
+  "updated": "2026-10-27",
+  "title": "Fake AI nude of you or your child: what to do now",
+  "h1": "Someone made a fake nude or sexual image of you, or your child, with AI. What to do now.",
+  "desc": "An AI 'nudify' tool or chatbot turned an ordinary photo into a sexual image. It's not your fault, and there are free ways to get it taken down. What to do first, how to save evidence safely, where to report, and what the TAKE IT DOWN Act now requires of platforms.",
+  "kicker": "AI fake nudes and sextortion",
+  "aka": "Also called deepfake nudes, 'nudify' or 'undress' images, nonconsensual intimate images (NCII) or image-based sexual abuse. When someone uses the image to demand money or more pictures, it's sextortion.",
+  "now": "You did nothing wrong: the person who made or shared it did. If someone is demanding money or more pictures, don't pay and don't reply; block them, but keep the messages. Write down where the image is (links, usernames, dates) without forwarding it to anyone. Then get it taken down: NCMEC's Take It Down for anyone under 18, StopNCII for adults, and a removal request to each platform, which must now act within 48 hours.",
+  "intro": "AI tools can turn an ordinary, fully clothed photo into a realistic sexual image in seconds. The FBI has warned since 2023 that criminals do this with pictures taken from social media, then post them or use them to harass and extort people, including children. A fake image can still do real harm, and it is treated seriously: the FBI says sexual images of children made with AI are illegal under federal law, and the TAKE IT DOWN Act covers AI deepfakes of adults too.",
+  "steps": [
+   [
+    "Take a breath. This is not your fault.",
+    "The person who made or shared the image is responsible, not you and not your child. The FBI's message to victims: you are not alone, and this is not your fault. If it's your child, the first thing they need to hear from you is that they're not in trouble."
+   ],
+   [
+    "If someone is demanding money or more images: don't pay, don't reply.",
+    "The FBI and NCMEC both say paying or cooperating rarely stops the blackmail. Block the account and report it on the platform, but don't delete your profile or the messages: they help police find the person. Don't give anyone access to your accounts or devices, and be wary of companies that charge victims for 'removal' help; the FBI warns against them."
+   ],
+   [
+    "Save evidence, but don't spread the image.",
+    "Note or screenshot the web address, the usernames, the platform and the date and time of each post and message. The FBI asks victims to keep usernames, emails, platform names and messages. Don't forward or re-post the image, even to friends or to 'prove' it's fake. If the image appears to show someone under 18, don't copy, save or send the image itself: give the location to NCMEC and police and let them handle it."
+   ],
+   [
+    "Get it removed: under 18.",
+    "Use NCMEC's free Take It Down service. NCMEC says it can help whether an image is real or AI-made. It creates a digital fingerprint (a hash) on your device, so the picture is never uploaded, and participating platforms use it to find and remove copies. You can stay anonymous. It's for images of you when you were under 18, so adults can use it for those too. Also report the image on the CyberTipline with its exact web address."
+   ],
+   [
+    "Get it removed: 18 or over.",
+    "Use StopNCII.org, run by the UK's Revenge Porn Helpline. Its FAQ says deepfakes and manipulated images count, as long as you're the person shown and have a copy. Like Take It Down, it sends only a fingerprint to partner platforms, never the image. It works going forward; for images already online, report them to each site as well."
+   ],
+   [
+    "Report it to every platform it's on.",
+    "Use the report option next to the post, often under the three dots. Under the TAKE IT DOWN Act, social media, messaging and image or video sharing services must offer a way to request removal and take the image, and known identical copies, down within 48 hours of a valid request. If they don't, or you can't find a way to ask, report them to the FTC at TakeItDown.ftc.gov."
+   ],
+   [
+    "Report the person.",
+    "If the image shows a child: NCMEC's CyberTipline and the FBI (tips.fbi.gov or 1-800-CALL-FBI). For sextortion of anyone: the FBI, your local FBI field office or ic3.gov, and your local police. Many states also have their own laws against sexual deepfakes; police or a lawyer can tell you which apply where you live."
+   ],
+   [
+    "Get support, for you or your child.",
+    "Adults can call the Cyber Civil Rights Initiative's free 24/7 Image Abuse Helpline at 844-878-2274. Families of children can call NCMEC's 24-hour line, 1-800-843-5678, which can also help find someone to talk to. If anyone is having thoughts of self-harm, call or text 988 at any hour."
+   ]
+  ],
+  "types": [
+   [
+    "Under 18, or the image shows you when you were under 18",
+    "NCMEC's Take It Down (removal, anonymous) and CyberTipline (report). Call 1-800-843-5678 for help."
+   ],
+   [
+    "18 or over, and you have a copy of the image",
+    "StopNCII.org, which covers deepfakes of adults, plus a removal request to each platform."
+   ],
+   [
+    "Any age, the image is on a site or app",
+    "The platform's own report button. Under the TAKE IT DOWN Act it has 48 hours. If it ignores you: TakeItDown.ftc.gov."
+   ],
+   [
+    "Someone is threatening or blackmailing you",
+    "The FBI (tips.fbi.gov, 1-800-CALL-FBI or ic3.gov) and local police. Under 18: the CyberTipline too."
+   ],
+   [
+    "A platform won't act, or has no way to ask",
+    "The FTC at TakeItDown.ftc.gov. You can file for yourself, your child, or someone else with their permission."
+   ]
+  ],
+  "prevent": [
+   [
+    "Make social accounts private.",
+    "The FBI suggests private profiles and friends lists, and caution about posting photos of children publicly. It reduces the photos a stranger can grab, though it can't stop someone who already knows you.",
+    "https://www.ic3.gov/PSA/2023/psa230605",
+    "FBI warning"
+   ],
+   [
+    "Talk to your kids before it happens.",
+    "Tell them fake images exist, that it's never their fault, that paying a blackmailer doesn't work, and that they can come to you without being punished. NCMEC says teenage boys have been the most common targets of financial sextortion lately.",
+    "https://www.missingkids.org/theissues/sextortion",
+    "NCMEC on sextortion"
+   ],
+   [
+    "Agree what your child should do if it ever happens.",
+    "Stop replying, don't pay, screenshot the account name, and tell you or another trusted adult. The FBI says sextortion can happen in as little as five minutes, so a plan made in advance matters."
+   ],
+   [
+    "Search for yourself now and then.",
+    "The FBI suggests using reverse image search to check whether your photos are circulating where they shouldn't be."
+   ]
+  ],
+  "stats": [
+   [
+    "400,000+",
+    "reports to NCMEC's CyberTipline in 2025 involving generative AI, up from 67,000 in 2024 and 4,700 in 2023.",
+    "https://www.missingkids.org/theissues/generative-ai",
+    "NCMEC"
+   ],
+   [
+    "About 3 million",
+    "sexualized, photorealistic images estimated to have been posted by X's Grok in 11 days around New Year 2026, about 23,000 of them appearing to show children. An estimate from a 20,000-post sample.",
+    "https://www.counterharm.com/research/grok-floods-x-with-sexualized-images",
+    "CCDH, Jan 22, 2026"
+   ],
+   [
+    "48 hours",
+    "is how long covered platforms have to remove a reported intimate image, and known identical copies, after a valid request. The rule took effect May 19, 2026.",
+    "https://www.ftc.gov/news-events/news/press-releases/2026/05/ftc-begins-enforcing-take-it-down-act",
+    "FTC, May 19, 2026"
+   ]
+  ],
+  "cases": [
+   [
+    "Oct 2026",
+    "Pennsylvania",
+    "Police say a 41-year-old man photographed a teenage girl in a park and used Grok to turn the photo into abuse material; investigators report hundreds of AI-made images on his devices. He was arrested Oct 21 and has a hearing Oct 30. The charges are allegations.",
+    "",
+    "",
+    "prospect-park-grok-csam-arrest"
+   ],
+   [
+    "Oct 2026",
+    "Cheongju, South Korea",
+    "A middle-school student allegedly made sexual deepfakes of several female classmates from ordinary photos and posted them online. Police opened an investigation after the images spread through the school.",
+    "",
+    "",
+    "cheongju-student-deepfake-assault"
+   ],
+   [
+    "Dec 2025 to Jan 2026",
+    "X, worldwide",
+    "Users prompted Grok to edit photos of real women and girls into sexualized images, often without consent. On Jan 9, after an outcry, xAI limited the image tools to paying users; several countries blocked Grok and regulators opened investigations.",
+    "",
+    "",
+    "grok-undressing-crisis"
+   ],
+   [
+    "May 2024",
+    "Wisconsin",
+    "A federal grand jury indicted a man accused of using Stable Diffusion to create thousands of sexual images of children. The Justice Department said AI-made abuse material will be prosecuted like any other.",
+    "",
+    "",
+    "anderegg-ai-csam-indictment"
+   ],
+   [
+    "Jan 2024",
+    "X",
+    "Explicit AI fakes of Taylor Swift spread widely before removal; one post was seen tens of millions of times. It showed how fast a fake can travel, even for someone with a large team behind her.",
+    "",
+    "",
+    "taylor-swift-explicit-deepfakes"
+   ]
+  ],
+  "report": [
+   [
+    "NCMEC's CyberTipline, if the image shows a child",
+    "https://www.missingkids.org/gethelpnow/cybertipline",
+    "CyberTipline, or call 1-800-843-5678"
+   ],
+   [
+    "NCMEC's Take It Down, to remove images of under-18s",
+    "https://takeitdown.ncmec.org/",
+    "takeitdown.ncmec.org"
+   ],
+   [
+    "StopNCII, to stop images of adults spreading",
+    "https://stopncii.org/",
+    "StopNCII.org"
+   ],
+   [
+    "The FBI, for sextortion or images of children",
+    "https://tips.fbi.gov/",
+    "tips.fbi.gov, or call 1-800-CALL-FBI"
+   ],
+   [
+    "The FBI's Internet Crime Complaint Center",
+    "https://www.ic3.gov/",
+    "ic3.gov"
+   ],
+   [
+    "The FTC, if a platform won't take it down within 48 hours",
+    "https://takeitdown.ftc.gov/",
+    "TakeItDown.ftc.gov"
+   ],
+   [
+    "Your local police",
+    "",
+    "the non-emergency number, or 911 if someone is in danger"
+   ]
+  ],
+  "faq": [
+   [
+    "Is it illegal to make a fake nude of someone with AI?",
+    "For images of children, yes: the FBI says sexual images of minors made with generative AI are illegal under federal law, including realistic computer-generated ones. For adults, the federal TAKE IT DOWN Act makes publishing nonconsensual intimate images a crime and covers AI deepfakes, and many states have their own laws. Which charges apply depends on what was made, shared and where."
+   ],
+   [
+    "What is the TAKE IT DOWN Act?",
+    "A federal law signed on May 19, 2025. Since May 19, 2026, social media, messaging and image or video sharing platforms must give people a way to ask for nonconsensual intimate images to be removed, and must take them down, with known identical copies, within 48 hours of a valid request. It covers real images, edited ones and AI deepfakes. The FTC enforces it."
+   ],
+   [
+    "The platform hasn't removed it after 48 hours. What now?",
+    "Report the platform to the FTC at TakeItDown.ftc.gov. You can also report it if you can't find a removal process or it doesn't work. You can file if you or your child are in the image, or for someone else with their permission."
+   ],
+   [
+    "Do I have to send the image to get it removed?",
+    "No. Take It Down and StopNCII both create a digital fingerprint on your own device and share only that, never the image. Take It Down lets you stay anonymous. For an image of a child, don't send or save copies yourself: give the web address to the CyberTipline or police."
+   ],
+   [
+    "Someone says they'll post a fake of me unless I pay. Should I pay?",
+    "No. The FBI says cooperating rarely stops the blackmail, but law enforcement can. Stop replying, block them, keep the messages and usernames, report the account to the platform and contact the FBI or local police. If you're under 18, tell a trusted adult and report to NCMEC too."
+   ],
+   [
+    "My teenager made one of a classmate. What should I do?",
+    "Take it seriously and act fast. Make sure they delete it from every device and account and don't share it further, and talk to the school. A sexual image of a minor is illegal even if it's AI-made, so get legal advice. The classmate's family can use Take It Down and the CyberTipline to get it removed."
+   ],
+   [
+    "Will it ever be fully gone?",
+    "Often most copies can be taken down, but there's no guarantee. Take It Down and StopNCII only work on participating, public or unencrypted platforms, and edited or cropped versions may need to be submitted separately. NCMEC also explains how to ask Google and Bing to drop cached copies from search results."
+   ],
+   [
+    "Where can I talk to someone?",
+    "Adults: the Cyber Civil Rights Initiative's free 24/7 Image Abuse Helpline, 844-878-2274. Children and families: NCMEC, 1-800-843-5678. If you or your child are thinking about self-harm, call or text 988, any time."
+   ]
+  ],
+  "script": "If anyone ever sends you a picture that looks like you, or says they'll share one unless you pay or send more: stop replying, don't pay, screenshot their username, and come to me. You won't be in trouble. It wouldn't be your fault, and we'll fix it together.",
+  "sources": [
+   [
+    "FTC: Image-based abuse: what to know and do",
+    "https://consumer.ftc.gov/articles/image-based-abuse-what-know-and-do"
+   ],
+   [
+    "FTC: What will the FTC's enforcement of the TAKE IT DOWN Act mean for you? (May 19, 2026)",
+    "https://consumer.ftc.gov/consumer-alerts/2026/05/what-will-ftcs-enforcement-take-it-down-act-mean-you"
+   ],
+   [
+    "FTC: Was your intimate image shared online without your consent? Here's what to do (Sep 10, 2026)",
+    "https://consumer.ftc.gov/consumer-alerts/2026/09/was-your-intimate-image-shared-online-without-your-consent-heres-what-do"
+   ],
+   [
+    "FTC press release: FTC Begins Enforcing the TAKE IT DOWN Act (May 19, 2026)",
+    "https://www.ftc.gov/news-events/news/press-releases/2026/05/ftc-begins-enforcing-take-it-down-act"
+   ],
+   [
+    "FTC business blog: Take It Down Act enforcement starts now (May 19, 2026)",
+    "https://www.ftc.gov/business-guidance/blog/2026/05/take-it-down-act-enforcement-starts-now-what-know-about-ftc-tida"
+   ],
+   [
+    "FTC legal library: TAKE IT DOWN Act (Pub. L. 119-12)",
+    "https://www.ftc.gov/legal-library/browse/statutes/tools-address-known-exploitation-immobilizing-technological-deepfakes-websites-networks-act-take-it"
+   ],
+   [
+    "FBI IC3: Malicious Actors Manipulating Photos and Videos to Create Explicit Content and Sextortion Schemes (I-060523-PSA, Jun 5, 2023)",
+    "https://www.ic3.gov/PSA/2023/psa230605"
+   ],
+   [
+    "FBI IC3: Child Sexual Abuse Material Created by Generative AI and Similar Online Tools is Illegal (I-032924-PSA, Mar 29, 2024)",
+    "https://www.ic3.gov/PSA/2024/PSA240329"
+   ],
+   [
+    "FBI: Financially Motivated Sextortion",
+    "https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/sextortion/financially-motivated-sextortion"
+   ],
+   [
+    "NCMEC: Take It Down",
+    "https://takeitdown.ncmec.org/"
+   ],
+   [
+    "NCMEC: Generative AI",
+    "https://www.missingkids.org/theissues/generative-ai"
+   ],
+   [
+    "NCMEC: Sextortion",
+    "https://www.missingkids.org/theissues/sextortion"
+   ],
+   [
+    "NCMEC: Is your explicit content out there?",
+    "https://www.missingkids.org/gethelpnow/isyourexplicitcontentoutthere"
+   ],
+   [
+    "StopNCII.org",
+    "https://stopncii.org/"
+   ],
+   [
+    "StopNCII FAQ",
+    "https://stopncii.org/faq/?lang=en-gb"
+   ],
+   [
+    "Cyber Civil Rights Initiative",
+    "https://cybercivilrights.org/"
+   ],
+   [
+    "Public Citizen: Tracker of state legislation on intimate deepfakes",
+    "https://citizen.org/article/tracker-intimate-deepfakes-state-legislation"
+   ],
+   [
+    "CCDH: Grok floods X with sexualized images (Jan 22, 2026)",
+    "https://www.counterharm.com/research/grok-floods-x-with-sexualized-images"
+   ],
+   [
+    "Tech Times UK: Pennsylvania man faces charges over Grok AI abuse material (Oct 26, 2026)",
+    "https://www.techtimes.co.uk/pennsylvania-man-grok-ai-abuse-material-charges-1809389"
+   ],
+   [
+    "988 Suicide & Crisis Lifeline",
+    "https://988lifeline.org/"
+   ]
+  ],
+  "related": [
+   "is-this-video-real"
+  ],
+  "types_h": "Which service is for you",
+  "types_note": "",
+  "script_h": "What to say to your child, before anything happens",
+  "script_intro": "Say it once, calmly, long before it's needed. Kids who know they won't be in trouble come to you sooner.",
+  "paid": false
+ },
+ {
+  "slug": "is-this-video-real",
+  "approved": false,
+  "reviewed": "",
+  "updated": "2026-10-27",
+  "title": "Is this video real? How to check before you share",
+  "h1": "Is this video real? How to check a clip before you share it",
+  "desc": "A shocking video of a candidate, a celebrity or someone you know may be an AI deepfake. Eight checks that take a few minutes, what not to rely on, and where to report it.",
+  "kicker": "Deepfakes",
+  "aka": "Also called deepfakes, AI-generated video, synthetic media or 'cheapfakes' when real footage is edited.",
+  "now": "Don't share it yet. Find where it first appeared, search whether major news outlets or fact-checkers have confirmed it, and check who posted it. If it's about voting, get the facts only from your state or local election office or vote.gov.",
+  "intro": "You can't reliably spot a good deepfake by looking at it. The checks that work are about where a clip came from and who has confirmed it, not about pixels. They take a few minutes, and they work for election clips, celebrity 'endorsements' and videos of people you know.",
+  "steps": [
+   [
+    "Pause before you share.",
+    "If a clip makes you angry or shocked, slow down. That is exactly when fakes spread fastest."
+   ],
+   [
+    "Find where it first came from.",
+    "Ask who posted it first and where. A brand-new or anonymous account is a warning sign; the account behind the Talarico deepfake was created only a month earlier."
+   ],
+   [
+    "Reverse-search a screenshot.",
+    "Take a screenshot of a key frame and upload it to Google Images or TinEye to find the original and see whether it was edited."
+   ],
+   [
+    "See what trusted outlets say.",
+    "Leave the post and search for the claim. If something this big were real, several news outlets or fact-checkers would be reporting it, or the campaign would have confirmed it."
+   ],
+   [
+    "Look and listen for glitches.",
+    "Check whether lips match the words, and watch for odd blinking, warped edges or backgrounds, and a flat or slurred voice. Newer fakes may show none of these signs, so this is only one clue."
+   ],
+   [
+    "Check for Content Credentials.",
+    "Upload an image or paste its link into contentcredentials.org/verify to see any record of the tool used, including AI. A missing credential does not prove a file is fake."
+   ],
+   [
+    "Read the fine print on ads.",
+    "Check who paid for an ad (usually stated at the end) and look for an AI disclaimer. Many states require one, but most AI ads this year carried none."
+   ],
+   [
+    "Get voting details only from officials.",
+    "Don't click links in unexpected texts or emails about your registration. Check with your state or county election office instead."
+   ]
+  ],
+  "types_h": "What not to rely on",
+  "types": [
+   [
+    "Your eyes alone",
+    "Lip-sync errors, odd blinking and warped backgrounds are worth noticing, but the best fakes don't have them, and real videos can look glitchy."
+   ],
+   [
+    "AI 'deepfake detector' apps",
+    "Results vary widely and can be wrong in both directions. Treat them as one clue, never as proof."
+   ],
+   [
+    "The number of views or shares",
+    "Bots can inflate both; Bloomberg reports bot-boosted views on the Matryoshka operation's fake celebrity videos."
+   ],
+   [
+    "A verified badge or familiar name",
+    "Accounts can be bought, hacked or impersonated. Check the account's history and when it was created."
+   ]
+  ],
+  "signs": [
+   [
+    "It makes you furious or thrilled",
+    "Fakes are built to trigger a fast share. Strong emotion is the cue to slow down."
+   ],
+   [
+    "A brand-new or anonymous account posted it first",
+    "The account behind a deepfake of Texas Senate candidate James Talarico had been created about a month earlier."
+   ],
+   [
+    "No major outlet is reporting it",
+    "If a candidate really said something explosive, newsrooms would be covering it within hours."
+   ],
+   [
+    "It tells you to vote differently",
+    "A clip or message changing your polling place, date or method is a red flag. Check with your election office."
+   ],
+   [
+    "It's an ad with no 'paid for by' line, or no AI disclosure",
+    "Many states require AI disclosures in political ads, but most AI ads this cycle didn't carry one."
+   ]
+  ],
+  "stats": [
+   [
+    "$137 million on 220 AI ads",
+    "The Wesleyan Media Project counted at least 220 political ads made or enhanced with AI by Oct 11, costing just under $137 million, against less than $50,000 of AI ad spending in the 2024 presidential election.",
+    "https://www.yahoo.com/news/politics/articles/deciding-fake-images-more-candidates-221040487.html",
+    "NBC News via Yahoo, Oct 23"
+   ],
+   [
+    "Only 27% disclosed AI",
+    "Of those 220 ads, only 27% told viewers AI was used. 81% were paid for by Republican candidates or groups and 12% by pro-Democratic sponsors.",
+    "https://www.yahoo.com/news/politics/articles/deciding-fake-images-more-candidates-221040487.html",
+    "NBC News via Yahoo, Oct 23"
+   ],
+   [
+    "More than 4 in 10 voters say an AI ad fooled them",
+    "In a Scripps News/Talker Research poll of 1,000 registered voters (Sept 30–Oct 1), more than four in ten said they had seen something in a political ad they thought was real and later learned was AI. Another 30% weren't sure. The headline says 43%.",
+    "https://www.wptv.com/politics/america-votes/scripps-news-poll-40-of-voters-say-theyve-been-fooled-by-ai-ads-this-campaign",
+    "Scripps News, Oct 14"
+   ]
+  ],
+  "cases": [
+   [
+    "Oct 2026",
+    "Texas",
+    "Videos posted on X showed a man falsely accusing Senate candidate James Talarico; researchers judged them 'very likely' deepfakes, linked to the Russia-aligned Storm-1516 operation. PolitiFact rated the claim Pants on Fire and X suspended the account.",
+    "https://politifact.com/factchecks/2026/oct/22/tweets/russian-disinformation-group-targets-james-talarico-with-baseless-claim-in-ai-generated-video/",
+    "PolitiFact",
+    "storm-1516-talarico-deepfake"
+   ],
+   [
+    "Oct 2026",
+    "Fort Bend County, Texas",
+    "A county judge's campaign shared, then pulled, an AI-generated video of Black residents endorsing him.",
+    "",
+    "",
+    "fort-bend-wong-ai-endorsement-video"
+   ],
+   [
+    "Jan 2024",
+    "New Hampshire",
+    "An AI clone of President Biden's voice in robocalls told voters to stay home from the primary.",
+    "",
+    "",
+    "biden-voice-clone-robocall"
+   ]
+  ],
+  "report": [
+   [
+    "The platform where you saw it",
+    "",
+    "use its report button for manipulated or misleading media"
+   ],
+   [
+    "Your state or local election office",
+    "https://www.vote.gov/",
+    "if it gives false voting information (find yours at vote.gov)"
+   ],
+   [
+    "The FBI",
+    "https://www.ic3.gov/",
+    "if it's being used in a scam, such as fake donation appeals"
+   ]
+  ],
+  "faq": [
+   [
+    "How can you tell if a video is a deepfake?",
+    "Don't rely on spotting glitches; good fakes don't have obvious ones. Check where the clip first appeared, whether major outlets or fact-checkers have confirmed it, and who posted it. A brand-new or anonymous account posting something explosive is a warning sign."
+   ],
+   [
+    "Can I check a video with a deepfake detector?",
+    "You can try, but detectors are unreliable and can be wrong in both directions. Use them as one clue at most. Where a clip came from, and who has confirmed it, matters more."
+   ],
+   [
+    "What are Content Credentials?",
+    "A labelling standard (C2PA) that some cameras, apps and AI tools use to record how an image or video was made. You can upload a file at contentcredentials.org/verify. If there's no record, that doesn't prove it's fake or real."
+   ],
+   [
+    "Are AI political ads legal?",
+    "In most states, yes, with conditions. NCSL counted 31 states regulating election deepfakes as of June 2026, most by requiring a disclosure. There's no federal law on AI in campaign ads; AI-voiced robocalls fall under federal robocall rules."
+   ],
+   [
+    "What should I do if I've already shared a fake?",
+    "Delete it, and post a short correction where you shared it. That stops it spreading further and helps the people who saw it from you."
+   ],
+   [
+    "Where do I report an election deepfake?",
+    "Report it on the platform. If it gives false voting information, tell your state or local election office."
+   ]
+  ],
+  "sources": [
+   [
+    "Pause before you share (source)",
+    "https://www.kuow.org/stories/deepfakes-want-to-sway-your-vote-here-s-how-to-spot-them"
+   ],
+   [
+    "Find where it first came from (source)",
+    "https://api.politifact.com/article/2023/apr/19/how-to-detect-deepfake-videos-like-a-fact-checker/"
+   ],
+   [
+    "Look and listen for glitches (source)",
+    "https://sos.vermont.gov/elections/election-info-resources/a-i-deepfakes-scams/"
+   ],
+   [
+    "Check for Content Credentials (source)",
+    "https://opensource.contentauthenticity.org/docs/verify"
+   ],
+   [
+    "Read the fine print on ads (source)",
+    "https://www.wrdw.com/2026/10/13/real-or-fake-deepfakes-flood-georgia-political-ads/"
+   ],
+   [
+    "NBC News via Yahoo, Oct 23",
+    "https://www.yahoo.com/news/politics/articles/deciding-fake-images-more-candidates-221040487.html"
+   ],
+   [
+    "Scripps News, Oct 14",
+    "https://www.wptv.com/politics/america-votes/scripps-news-poll-40-of-voters-say-theyve-been-fooled-by-ai-ads-this-campaign"
+   ]
+  ],
+  "related": [
+   "ai-scam-texts"
+  ],
+  "paid": false
  }
 ]

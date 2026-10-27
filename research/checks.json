@@ -1,0 +1,510 @@
+[
+ {
+  "slug": "deepfake-celebrity-investment-scam",
+  "title": "Is this celebrity investment video a scam?",
+  "h1": "A famous face is telling you to invest. Is it real?",
+  "desc": "A video of a celebrity, billionaire or official pushing a crypto or trading platform is almost always a deepfake scam. How to check it, and what to do now.",
+  "pattern": "Deepfake celebrity or official investment pitch",
+  "verdict": "Almost certainly a scam: real celebrities and officials don't sell investments in ads, livestreams or private messages.",
+  "how_it_works": [
+   "You see an ad, a 'livestream' or a message in which a famous business leader, celebrity or government official seems to recommend an investment, often crypto.",
+   "If you show interest, the conversation moves to WhatsApp, Signal or Telegram, where a 'manager' or 'assistant' takes over.",
+   "A website or app shows your money growing, so you're pushed to add more.",
+   "When you try to withdraw, you're asked for 'fees' or 'taxes' first, or the contact disappears.",
+   "Later, fake 'recovery' services may contact you and try to take even more."
+  ],
+  "ai_role": "Scammers now use AI to alter real footage so a famous person appears to endorse the scheme; the FBI's 2025 report lists believable videos of public figures and voice clones among the tools, and logged nearly $893 million in losses in AI-related complaints.",
+  "check": [
+   ["Is a famous person, or a government official, telling you to invest in a specific platform?", "New York's Attorney General lists investment requests from celebrities or famous people as a red flag. Real ones don't pitch you directly."],
+   ["Are you being promised guaranteed or very high returns?", "The FTC says no one can guarantee profits in any investment. Guarantees are a sign of a scam."],
+   ["Have you been asked to move to WhatsApp, Signal or Telegram?", "Moving the chat to a private app is a classic step in these schemes, flagged by both the FBI and New York's Attorney General."],
+   ["Do they want payment in crypto, or to a wallet or platform you'd never heard of before?", "Crypto payments don't have the protections that credit and debit cards do, so money sent is very hard to get back."],
+   ["Are you being asked to pay a fee or tax before you can withdraw?", "The FBI says this is a warning sign. The balance on screen isn't real."],
+   ["Can you find the same announcement on the person's verified, official channels?", "New York's Attorney General suggests comparing the video with the speaker's verified public appearances. If it's only in an ad or a DM, treat it as fake."]
+  ],
+  "now": "Don't send any more money, and don't pay any 'withdrawal fee' or 'tax'. Stop replying, take screenshots of the ad, chats and wallet addresses, then report it. If you've already paid, contact your bank, card company or crypto exchange today.",
+  "steps": [
+   ["Stop paying.", "Not another deposit, fee or 'tax'. The FBI says victims are often asked to pay to withdraw, and the money never comes back."],
+   ["Save the evidence.", "Screenshot the video or ad, the account names, the chats, the website address and every payment. The FBI asks for names, contact methods, dates, payment methods and where the money went."],
+   ["Report the ad or account to the platform.", "New York's Attorney General urges reporting the fake content to the social media site where it appeared."],
+   ["If you already paid, act today.", "Follow the FTC's steps for how you paid: for crypto, contact the exchange or ATM operator and say the transaction was fraudulent; for a bank transfer or wire, ask your bank or the transfer company to reverse it; for a card, call the number on the back. See 'What To Do if You Were Scammed' (FTC)."],
+   ["Ignore anyone offering to recover your money for a fee.", "The FBI warns that recovery offers are often a second scam, and that the IC3 never asks for payment to recover lost funds."]
+  ],
+  "stats": [
+   ["$893 million", "lost in 2025 in 22,364 complaints the FBI linked to AI, the first time its annual report had an AI section. It lists fake profiles, voice clones and believable videos of public figures.", "https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions", "FBI, Apr 6, 2026"],
+   ["$7.9 billion", "lost to investment scams reported to the FTC in 2025, the biggest category and about half of all reported fraud losses.", "https://www.ftc.gov/system/files/ftc_gov/pdf/ftc-testimony-jec-hearing-on-the-rising-scam-economy.pdf", "FTC testimony to Congress, Mar 25, 2026"]
+  ],
+  "cases": [
+   ["Oct 2026", "Lagos, Nigeria", "Police say a 23-year-old used AI voice cloning and deepfakes to pose as Elon Musk on Facebook, WhatsApp, Telegram and X to lure people into a 'Bitcoin Trading Hub'. He was among nine people arrested with help from UK, Canadian and German police. None of them has been tried yet.", "https://blueprint.ng/police-nab-9-recover-15900-in-cryptocurrency-others/", "Blueprint", "nigeria-musk-voice-clone-fraud-arrests"],
+   ["Feb 2026", "Osmaniye, Turkey", "Police detained eight people, five of whom were jailed pending trial. The group allegedly used AI-generated images and voices of government officials on social media to promote fake investment schemes.", "https://oecd.ai/en/incidents/2026-02-11-a158", "OECD AI Incidents Monitor", "turkey-osmaniye-deepfake-investment-fraud"],
+   ["Jul 2026", "United States", "The FBI warned of AI-generated deepfake videos of a senior FBI leader urging scam victims to file complaints on a fake IC3 website. It's a trap for people who have already lost money.", "https://www.ic3.gov/PSA/2026/PSA260720", "FBI IC3", ""]
+  ],
+  "report": [
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"],
+   ["The FBI's Internet Crime Complaint Center", "https://www.ic3.gov/", "ic3.gov (type it in yourself; avoid sponsored search results)"],
+   ["The platform where you saw the ad or video", "", "use the app's report button on the ad or account"],
+   ["In New York: the Attorney General", "https://ag.ny.gov/financial-fraud-complaint-form", "online form, or 1-800-771-7755"]
+  ],
+  "faq": [
+   ["Is Elon Musk (or another billionaire) really giving away crypto or offering an investment?", "Treat it as fake. New York's Attorney General says scammers use AI to alter real videos of people like Elon Musk, Jeff Bezos and Warren Buffett so they seem to endorse fake investments, often crypto."],
+   ["How can I tell if a video is a deepfake?", "The FBI suggests watching for distorted features, unnatural movement, odd shadows and voice lag, but good fakes can pass. The safer test is where it appears: a real endorsement would be on the person's verified channels, not only in an ad or a private message."],
+   ["The platform shows my money growing. Can I get it out?", "Usually not. The FBI says victims often can't withdraw and are asked for fees or taxes first. The balance is part of the scam. Stop paying and report it."],
+   ["Someone says they can recover my lost crypto for a fee. Should I pay?", "No. The FBI warns that recovery offers often come from scammers, and that the IC3 never asks for payment to recover funds."],
+   ["Where do I report a deepfake investment ad?", "To the FTC at ReportFraud.ftc.gov, the FBI at ic3.gov, and the platform that showed the ad. In New York you can also file with the Attorney General."]
+  ],
+  "sources": [
+   ["New York Attorney General: Investor alert on investment scams using AI-manipulated videos (Aug 29, 2024)", "https://ag.ny.gov/press-release/2024/investor-alert-attorney-general-james-warns-new-yorkers-investment-scams-using"],
+   ["FBI: Cryptocurrency and AI scams bilk Americans of billions (Apr 6, 2026)", "https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions"],
+   ["FBI IC3: Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud (PSA I-120324, Dec 3, 2024)", "https://www.ic3.gov/PSA/2024/PSA241203"],
+   ["FBI IC3: FBI Warns of Scammers Impersonating the IC3 (PSA I-072026, Jul 20, 2026)", "https://www.ic3.gov/PSA/2026/PSA260720"],
+   ["FBI: Operation Level Up", "https://www.fbi.gov/how-we-can-help-you/victim-services/national-crimes-and-victim-resources/operation-level-up"],
+   ["FTC: What to do if your online love interest offers to teach you how to invest (Jun 10, 2024)", "https://consumer.ftc.gov/consumer-alerts/2024/06/what-do-if-your-online-love-interest-offers-teach-you-how-invest-your-money"],
+   ["FTC: What To Do if You Were Scammed", "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed"],
+   ["FTC testimony to the Joint Economic Committee on the scam economy (Mar 25, 2026)", "https://www.ftc.gov/system/files/ftc_gov/pdf/ftc-testimony-jec-hearing-on-the-rising-scam-economy.pdf"]
+  ],
+  "related": ["romance-crypto-investment-scam", "voice-clone-scam-call", "ai-scam-texts"]
+ },
+ {
+  "slug": "boss-gift-card-wire-transfer-scam",
+  "title": "Is my boss really asking for gift cards or a transfer?",
+  "h1": "Your boss needs an urgent favor: gift cards or a secret transfer. Stop and check.",
+  "desc": "A message, call or even a video call from your boss or CFO asking for gift cards or an urgent, confidential payment? Check it this way before you pay.",
+  "pattern": "Boss or executive impersonation",
+  "verdict": "Very likely a scam: real managers don't ask for gift card numbers, and an urgent, secret transfer needs checking on a channel you already trust, even after a video call.",
+  "how_it_works": [
+   "You get a text, email, chat or call that seems to come from your boss, a senior executive or an important official.",
+   "There's an 'urgent favor' or a confidential deal, and you're told to act fast and keep quiet.",
+   "You're asked to buy gift cards and send the numbers, or to wire money to an account you haven't paid before.",
+   "In bigger cases there is a video call where the 'executives' look and sound right, which removes your doubts."
+  ],
+  "ai_role": "The FBI warns that criminals use AI to generate video for real-time calls with supposed company executives. In Hong Kong in 2024, every other person on one multi-person video call turned out to be a deepfake.",
+  "check": [
+   ["Are you being asked for gift card numbers or PINs?", "The FTC says only scammers ask for gift card numbers and PINs. Those numbers let them drain the cards without having them."],
+   ["Is the request urgent and meant to stay secret?", "Urgency and secrecy keep you from checking. In the Hong Kong deepfake case, the first message asked for a secret transaction."],
+   ["Is the money going to a new account, or one the request itself supplied?", "In the Singapore case, the money went to a corporate bank account the scammers supplied."],
+   ["Have you confirmed it with the person on a phone number or email you already had?", "The FTC's advice: check with your boss using contact details you know are real, not the ones in the message."],
+   ["Did a video call convince you?", "Don't let it. The FBI says criminals stage real-time video chats with fake executives. Confirm the request some other way before you pay."]
+  ],
+  "now": "Don't buy the cards or send the transfer yet. Contact the person directly on a number or email you already have, or walk over to them, and tell your finance or security team. If you've already paid, call the gift card company or your bank right away.",
+  "steps": [
+   ["Pause the payment.", "No real manager will mind a five-minute check. Anyone who pushes back on checking is a warning sign."],
+   ["Verify on a separate channel.", "Call your boss on the number you already have, or check in person. Don't reply to the message or use any link or number it gave you."],
+   ["Tell your company's finance or IT security team.", "Other colleagues may be getting the same message."],
+   ["If you already sent gift card numbers, call the card company now.", "The FTC says to contact the gift card company using the number on the card, explain that a scammer tricked you, ask for a refund, and keep the card and receipt."],
+   ["If you already sent a wire or bank transfer, call your bank now.", "The FTC says to contact your bank or the wire company right away and ask them to reverse it. See the FTC's 'What To Do if You Were Scammed'."],
+   ["Report it.", "To the FBI at ic3.gov and the FTC at ReportFraud.ftc.gov."]
+  ],
+  "stats": [
+   ["$3 billion", "lost to business email compromise (fake bosses, suppliers and colleagues asking for payments) in complaints to the FBI in 2025.", "https://securityweek.com/fbi-cybercrime-losses-neared-21-billion-in-2025", "SecurityWeek, on the FBI's 2025 IC3 report"],
+   ["$3.5 billion", "lost to impostor scams reported to the FTC in 2025, from more than 1 million reports.", "https://www.ftc.gov/system/files/ftc_gov/pdf/ftc-testimony-jec-hearing-on-the-rising-scam-economy.pdf", "FTC testimony to Congress, Mar 25, 2026"]
+  ],
+  "cases": [
+   ["Jan 2024", "Hong Kong", "A finance worker at engineering firm Arup joined a video call where the UK-based CFO and other colleagues were all deepfakes, and sent HK$200 million (about US$25.6 million). Police said 'everyone [he saw] was fake.' Arup confirmed it was the victim in May 2024.", "https://www.cnn.com/2024/02/04/asia/deepfake-cfo-scam-hong-kong-intl-hnk/index.html", "CNN", "arup-deepfake-video-call-fraud"],
+   ["May 2026", "Singapore", "A businessman was contacted on WhatsApp by someone posing as the Cabinet Secretary, got a forged letter with the Prime Minister's signature, then joined a Zoom call with deepfaked officials. He wired at least S$4.9 million.", "https://malaymail.com/news/singapore/2026/05/15/singapore-man-loses-rm15m-to-scammers-after-zoom-call-with-deepfake-pm-lawrence-wong/220011", "Malay Mail", "singapore-deepfake-pm-wong-zoom-scam"]
+  ],
+  "report": [
+   ["Your company's finance or IT security team", "", "straight away, so they can warn others"],
+   ["The FBI's Internet Crime Complaint Center", "https://www.ic3.gov/", "ic3.gov"],
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"]
+  ],
+  "faq": [
+   ["Why would a scammer ask for gift cards?", "Because once you share the numbers and PIN, they can spend the money without the physical card. The FTC says only scammers ask for gift card numbers. Scammers may also call them 'Google certificates'."],
+   ["It came from my boss's real name and photo. Is it still a scam?", "It can be. Names and photos are easy to copy, and the FBI says AI is now used to fake executives on live video calls. Check with your boss on a number or email you already have."],
+   ["Can a video call be faked?", "Yes. In the Arup case in Hong Kong, everyone else on a multi-person video call was a deepfake. A video call is not proof of who you're talking to."],
+   ["I already sent the gift card numbers. Can I get the money back?", "Maybe, if you're fast. Call the gift card company on the number on the card, say you were scammed, ask for a refund and keep the card and receipt. Then report it to the FTC."],
+   ["How can a company stop this happening?", "Agree in advance that payment requests are always confirmed on a second channel, and that gift cards are never bought on a message alone. Make sure staff know no one will be blamed for checking."]
+  ],
+  "sources": [
+   ["FTC: No, that's not your boss asking you to buy gift cards (Jan 2026)", "https://consumer.ftc.gov/consumer-alerts/2026/01/no-thats-not-your-boss-asking-you-buy-gift-cards"],
+   ["FBI IC3: Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud (PSA I-120324, Dec 3, 2024)", "https://www.ic3.gov/PSA/2024/PSA241203"],
+   ["CNN: Finance worker pays out $25 million after video call with deepfake 'chief financial officer' (Feb 4, 2024)", "https://www.cnn.com/2024/02/04/asia/deepfake-cfo-scam-hong-kong-intl-hnk/index.html"],
+   ["South China Morning Post: Arup confirmed as victim of HK$200 million deepfake scam (May 17, 2024)", "https://scmp.com/news/hong-kong/law-and-crime/article/3263151/uk-multinational-arup-confirmed-victim-hk200-million-deepfake-scam-used-digital-version-cfo-dupe"],
+   ["Malay Mail: Singapore man loses millions after Zoom call with deepfake PM (May 15, 2026)", "https://malaymail.com/news/singapore/2026/05/15/singapore-man-loses-rm15m-to-scammers-after-zoom-call-with-deepfake-pm-lawrence-wong/220011"],
+   ["SecurityWeek: FBI cybercrime losses neared $21 billion in 2025", "https://securityweek.com/fbi-cybercrime-losses-neared-21-billion-in-2025"],
+   ["FTC: What To Do if You Were Scammed", "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed"]
+  ],
+  "related": ["voice-clone-scam-call", "deepfake-celebrity-investment-scam", "ai-scam-texts"]
+ },
+ {
+  "slug": "romance-crypto-investment-scam",
+  "title": "Is my online partner's crypto tip a scam?",
+  "h1": "Someone you met online wants to help you invest. Read this first.",
+  "desc": "An online friend or partner who wants to teach you crypto trading is a top scam pattern, now with AI photos and video calls. How to check, and what to do.",
+  "pattern": "Romance-to-investment ('pig butchering')",
+  "verdict": "Almost certainly a scam: the FTC says that if someone you met online offers to help you invest in crypto, it's an investment scam.",
+  "how_it_works": [
+   "Someone contacts you out of the blue, by a 'wrong number' text, a social media message or a dating app, and becomes a friend or partner over weeks or months.",
+   "They mention their success with crypto or trading and offer to show you how, on a platform or app they recommend.",
+   "Your account appears to grow fast, so you're encouraged to put in more, sometimes your savings or retirement money.",
+   "When you try to withdraw, there are fees or 'taxes' to pay first, or your account is frozen. The FBI calls this 'pig butchering'.",
+   "The FBI says these operations are often run by organized crime groups in Southeast Asia and elsewhere."
+  ],
+  "ai_role": "The FBI says criminals use AI to make realistic photos for fake profiles and videos to 'prove' an online contact is real. In a 2026 US case, an impostor made custom videos on request within minutes.",
+  "check": [
+   ["Did you meet this person only online, and have never met in person?", "The FTC's advice is simple: don't send money to someone you've only met online."],
+   ["Has the conversation turned to your money or to investing?", "The FTC says if a new sweetheart only wants to talk about your money and how to invest it, stop talking."],
+   ["Are they promising profits or saying there's no risk?", "The FTC says all investments have risks, including crypto, and no one can guarantee profits."],
+   ["Are you having trouble withdrawing, or being asked for fees or taxes first?", "The FBI lists this as a warning sign. The balance isn't real."],
+   ["Have they asked you not to tell family or your financial adviser?", "The FBI lists pressure to limit contact with advisers or family as a warning sign."],
+   ["Did a video call or personal video convince you they're real?", "It no longer proves much. The FBI warns AI is used to make videos that convince victims a contact is real."]
+  ],
+  "now": "Stop sending money, including any fee or tax to 'unlock' a withdrawal. Save the chats, the app or website address and your payment records, and report it to the FBI at ic3.gov. If you paid recently, call your bank or crypto exchange today.",
+  "steps": [
+   ["Stop sending money.", "The FBI's first instruction to victims is to immediately stop sending money, and not to pay fees or taxes to withdraw."],
+   ["Report it to the FBI's IC3.", "File at ic3.gov as soon as you can. The FBI's Operation Level Up contacts people who are being targeted, and many didn't know they were being scammed."],
+   ["If you already paid, follow the FTC's steps for how you paid.", "For crypto, contact the exchange or ATM operator and say it was fraudulent; for a bank transfer, ask your bank to reverse it; for a payment app, report it to the app. See 'What To Do if You Were Scammed'."],
+   ["Don't pay anyone who offers to recover the money.", "The FBI says such offers are often scams too."],
+   ["Tell someone you trust.", "Scammers work hard to keep you isolated. Talking to family or a financial adviser breaks the spell, and it isn't your fault."]
+  ],
+  "stats": [
+   ["Nearly 60%", "of people who reported losing money to a romance scam in 2025 said it started on social media.", "https://www.ftc.gov/news-events/news/press-releases/2026/04/new-ftc-data-show-people-have-lost-billions-social-media-scams", "FTC, Apr 27, 2026"],
+   ["$11 billion+", "lost in 181,565 cryptocurrency-related complaints to the FBI in 2025, the highest of any category.", "https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions", "FBI, Apr 6, 2026"],
+   ["76%", "of the 4,323 crypto investment fraud victims the FBI had notified by January 2025 did not know they were being scammed.", "https://www.fbi.gov/how-we-can-help-you/victim-services/national-crimes-and-victim-resources/operation-level-up", "FBI Operation Level Up"]
+  ],
+  "cases": [
+   ["2024–2025", "Louisiana, US", "A fan was contacted on Instagram by an account posing as Jon Bon Jovi, which later sent AI-made videos and joined a live video call. About seven months later the money requests began. She lost over $10,000 and nearly lost her home. Investigators traced the account to Lagos.", "https://www.foxnews.com/us/jon-bon-jovi-impersonator-uses-ai-videos-scam-woman-10k-nearly-costing-her-home", "Fox News", ""],
+   ["Oct 2024", "Hong Kong", "Police arrested 27 people over romance scams that used AI-generated images to pose as attractive women, then steered victims, mostly men in India, Singapore and Malaysia, into fake crypto investments worth about HK$360 million.", "https://www.thestandard.com.hk/news/article/221507/Police-arrest-27-for-deepfake-love-scams-totaling-360m-seizes-scam-training-documents", "The Standard", ""],
+   ["Oct 2026", "Nigeria / Canada", "Nigerian police arrested two men over a romance fraud network that allegedly targeted elderly Canadians from 2020 to 2024. Two victims alone lost more than CA$417,000. None of the suspects has been tried yet.", "https://blueprint.ng/police-nab-9-recover-15900-in-cryptocurrency-others/", "Blueprint", "nigeria-musk-voice-clone-fraud-arrests"]
+  ],
+  "report": [
+   ["The FBI's Internet Crime Complaint Center", "https://www.ic3.gov/", "ic3.gov"],
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"],
+   ["The app or social network where you met", "", "report the profile so it can be taken down"],
+   ["If you're 60 or over and need help reporting", "", "the Justice Department's Elder Justice Hotline, 1-833-FRAUD-11 (833-372-8311)"]
+  ],
+  "faq": [
+   ["What is pig butchering?", "It's the FBI's term for scams where someone builds a friendship or romance online, then pitches a fake crypto investment. Victims are pushed to invest more and more on a platform that looks profitable, but they can't withdraw."],
+   ["We've video-chatted. Doesn't that prove they're real?", "Not any more. The FBI warns criminals use AI-generated video to convince victims a contact is real, and in the Bon Jovi case the impostor produced custom videos within minutes."],
+   ["The app says I've made a profit. Is my money there?", "Almost certainly not. The FBI says victims see high profits but can't withdraw, and are asked for fees or taxes. Paying more won't release it."],
+   ["Can I get my crypto back?", "It's hard. The FTC says crypto payments don't have the protections cards do. Contact the exchange right away, report to the FBI at ic3.gov, and never pay a 'recovery' service."],
+   ["How do I talk to a parent who won't believe it's a scam?", "Don't argue about the person. Ask them to try withdrawing a small amount, show them the FBI's warning signs, and suggest reporting to ic3.gov together. Shame keeps people paying."]
+  ],
+  "sources": [
+   ["FBI: Operation Level Up", "https://www.fbi.gov/how-we-can-help-you/victim-services/national-crimes-and-victim-resources/operation-level-up"],
+   ["FTC: What to do if your online love interest offers to teach you how to invest (Jun 10, 2024)", "https://consumer.ftc.gov/consumer-alerts/2024/06/what-do-if-your-online-love-interest-offers-teach-you-how-invest-your-money"],
+   ["FTC: Romance scams", "https://consumer.ftc.gov/romance-scams"],
+   ["FBI IC3: Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud (PSA I-120324, Dec 3, 2024)", "https://www.ic3.gov/PSA/2024/PSA241203"],
+   ["FTC: New data show people have lost billions to social media scams (Apr 27, 2026)", "https://www.ftc.gov/news-events/news/press-releases/2026/04/new-ftc-data-show-people-have-lost-billions-social-media-scams"],
+   ["FBI: Cryptocurrency and AI scams bilk Americans of billions (Apr 6, 2026)", "https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions"],
+   ["Fox News: Jon Bon Jovi impersonator uses AI videos to scam woman (Oct 24, 2026)", "https://www.foxnews.com/us/jon-bon-jovi-impersonator-uses-ai-videos-scam-woman-10k-nearly-costing-her-home"],
+   ["FTC: What To Do if You Were Scammed", "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed"]
+  ],
+  "related": ["deepfake-celebrity-investment-scam", "task-job-scam", "ai-scam-texts"]
+ },
+ {
+  "slug": "qr-code-scam",
+  "title": "Is this QR code a scam? Parking meter and sticker checks",
+  "h1": "About to scan a QR code to pay? Check it first.",
+  "desc": "Fake QR stickers on parking meters and QR codes in texts, emails or surprise parcels can lead to sites that steal card details. What to check, and what to do.",
+  "pattern": "QR code stickers and QR phishing",
+  "verdict": "Be suspicious of any QR code stuck on a meter or sent unexpectedly; pay through the machine, the official app or a web address you type yourself.",
+  "how_it_works": [
+   "Scammers stick their own QR codes over, or next to, real ones on parking meters and pay stations. In one city they also scribbled over the meter screens so people would scan instead.",
+   "The code opens a fake payment page that takes your card details, your money, or both.",
+   "QR codes also arrive by text, email or in a parcel you didn't order, with a story about a missed delivery, a problem with your account or a gift.",
+   "A code can also lead to a page that tries to install malware or collect passwords."
+  ],
+  "ai_role": "AI isn't what makes this scam work: a printed sticker does. The FBI says criminals use generative AI to write content for fraudulent websites, which can make the page a code opens look more convincing, so judge the web address rather than how polished the page looks.",
+  "check": [
+   ["Is the QR code a sticker on a meter or sign?", "Mississauga, Canada, says it never collects parking payments by QR code; Christchurch, New Zealand, says it would never ask for payment that way. Check your city's own rules."],
+   ["Does the web address in the preview match the official operator, spelled exactly right?", "The FTC says to look at the link preview for misspellings or switched letters before you open it."],
+   ["Did this code arrive in a text, email or package you weren't expecting?", "The FTC says don't scan QR codes in messages you weren't expecting, especially urgent ones."],
+   ["Is the page asking you to log in, or for more than the parking fee?", "A payment page that wants passwords or extra personal details is a red flag for phishing."],
+   ["Can you pay on the machine's own screen or the official app instead?", "That's the safe route. Mississauga tells drivers to use the payment prompts on the machine's screen."]
+  ],
+  "now": "If you haven't paid yet, don't. Use the meter's own screen, the official parking app, or a web address you type yourself. If you already entered card details, call your card company now using the number on the back of the card. If you entered a password, change it.",
+  "steps": [
+   ["Close the page and don't interact with it.", "The FTC says engaging with a fake site can expose you to more requests for money or data."],
+   ["Call your card issuer or bank if you paid.", "Use the number on the back of your card and ask about stopping or disputing the charge. The FTC says federal law protects you from unauthorized card use."],
+   ["Change passwords you typed in.", "Change them on any other account that uses the same password too, and turn on multi-factor authentication."],
+   ["Watch your statements.", "Look for charges you don't recognize over the next weeks."],
+   ["Tell the parking operator or city.", "They can remove the stickers before others are caught. Note where the meter was."],
+   ["Report it.", "To the FTC at ReportFraud.ftc.gov, and to local police if you lost money."]
+  ],
+  "stats": [
+   ["About 80", "fake QR stickers removed from downtown pay-and-display parking machines by the City of Mississauga, Canada, in April 2026.", "https://www.mississauga.ca/city-of-mississauga-news/news/city-warns-about-fraudulent-qr-codes-on-parking-machines/", "City of Mississauga, Apr 24, 2026"],
+   ["#1", "Text message was the most common way scammers first contacted people in fraud reports to the FTC in 2025.", "https://www.ftc.gov/system/files/ftc_gov/pdf/ftc-testimony-jec-hearing-on-the-rising-scam-economy.pdf", "FTC testimony to Congress, Mar 25, 2026"]
+  ],
+  "cases": [
+   ["Jul 2026", "Christchurch, New Zealand", "Fake QR payment stickers turned up on council and private parking machines across the city, and some meter screens were defaced with permanent marker to push people to scan. The council said it would never ask for payment by QR code.", "https://www.1news.co.nz/2026/07/14/fake-qr-code-payment-stickers-found-on-christchurch-parking-meters/", "1News", ""],
+   ["Apr 2026", "Mississauga, Canada", "The city removed about 80 fraudulent QR stickers from downtown parking machines that sent drivers to payment sites it doesn't run.", "https://www.mississauga.ca/city-of-mississauga-news/news/city-warns-about-fraudulent-qr-codes-on-parking-machines/", "City of Mississauga", ""],
+   ["Sep 2026", "United States", "The FTC warned that scammers are placing their own QR codes over legitimate ones on parking meters to steal money and personal information.", "https://www.consumer.ftc.gov/consumer-alerts/2026/09/see-qr-code-parked-somewhere-dont-scan-ityet", "FTC", ""]
+  ],
+  "report": [
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"],
+   ["The parking operator or your city", "", "the number or app shown on official signs (not on the sticker)"],
+   ["Your card issuer or bank", "", "the number on the back of your card"]
+  ],
+  "faq": [
+   ["Can scanning a QR code hack my phone?", "It can lead somewhere harmful. The FTC warns a QR code could install malware that steals information, or open a phishing site. Keep your phone's software updated and don't scan unexpected codes."],
+   ["I scanned it but didn't pay. Am I OK?", "Probably, if you didn't enter anything. If you typed a password, change it. If you entered card details, call your card company."],
+   ["How do I pay for parking safely?", "Use the payment screen on the machine, the operator's official app, or a website you type in yourself. Mississauga, for example, takes coins, cards and phone wallets at the machine."],
+   ["A parcel I didn't order has a QR code to 'find out who sent it'. Should I scan it?", "No. The FTC says that's a known scam, sometimes part of 'brushing'. You can keep a real gift, but don't scan the code."],
+   ["Will my bank refund a payment to a fake parking site?", "If you paid by credit or debit card, call right away and ask for a refund. The FTC says federal law protects you from unauthorized card use. Speed matters."]
+  ],
+  "sources": [
+   ["FTC: See a QR code parked somewhere? Don't scan it…yet! (Sep 3, 2026)", "https://www.consumer.ftc.gov/consumer-alerts/2026/09/see-qr-code-parked-somewhere-dont-scan-ityet"],
+   ["FTC: Scammers hide harmful links in QR codes to steal your information (Dec 2023)", "https://consumer.ftc.gov/consumer-alerts/2023/12/scammers-hide-harmful-links-qr-codes-steal-your-information"],
+   ["FTC: Scam alert: QR code on an unexpected package (Jan 23, 2025)", "https://consumer.ftc.gov/consumer-alerts/2025/01/scam-alert-qr-code-unexpected-package"],
+   ["City of Mississauga: City warns about fraudulent QR codes on parking machines (Apr 24, 2026)", "https://www.mississauga.ca/city-of-mississauga-news/news/city-warns-about-fraudulent-qr-codes-on-parking-machines/"],
+   ["1News: Fake QR code payment stickers found on Christchurch parking meters (Jul 14, 2026)", "https://www.1news.co.nz/2026/07/14/fake-qr-code-payment-stickers-found-on-christchurch-parking-meters/"],
+   ["FBI IC3: Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud (PSA I-120324, Dec 3, 2024)", "https://www.ic3.gov/PSA/2024/PSA241203"],
+   ["FTC: What To Do if You Were Scammed", "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed"]
+  ],
+  "related": ["ai-scam-texts", "fake-reviews-fake-online-store"]
+ },
+ {
+  "slug": "task-job-scam",
+  "title": "Is this online job or 'task' offer a scam?",
+  "h1": "A job that pays you to like videos or rate products, then asks you to deposit money? It's a scam.",
+  "desc": "Unexpected job texts offering pay for rating, liking or 'optimizing' tasks end with you depositing money you can't get back. How to check, and what to do.",
+  "pattern": "Fake job / task scam",
+  "verdict": "A scam if they ever ask you to pay: the FTC says never pay to get a job or to get paid.",
+  "how_it_works": [
+   "An unexpected text, WhatsApp or Telegram message offers easy remote work, often from someone claiming to be a recruiter at a well-known company.",
+   "The 'job' is simple online tasks, like rating products, liking videos or reviewing hotels, tracked in an app or website.",
+   "You get small payouts at first, which builds trust, and you may be added to a group chat full of people celebrating their earnings.",
+   "Then you're told to deposit your own money, often crypto, to unlock the next set of tasks or to withdraw what you 'earned'.",
+   "The earnings on screen aren't real, and the deposits keep growing until you stop."
+  ],
+  "ai_role": "The FBI lists employment lures among the scams where it sees AI used, and the Better Business Bureau says AI makes it easier than ever for scammers to impersonate real companies, using their logos and executives' names.",
+  "check": [
+   ["Did the job find you through an unexpected text, WhatsApp or Telegram message?", "The FTC says real employers will never contact you that way."],
+   ["Are you being paid to like, rate or review things?", "The FTC says no honest company will pay you for ratings or likes."],
+   ["Have you been asked to deposit money, buy crypto or pay to 'upgrade' or unlock tasks?", "Never pay to get paid. The FTC calls this a sure sign of a scam."],
+   ["Is your account showing a negative balance, or blocked until you pay more?", "Singapore police say this is often when victims realize. The balance is invented."],
+   ["Does the recruiter use a free email address, or can you not find them on the company's own website?", "The BBB and FlexJobs advice is to check that the email uses the company's own domain and that the recruiter appears on its official site."]
+  ],
+  "now": "Don't deposit anything else, however close you seem to 'unlocking' your earnings. Stop replying, screenshot the chats, app and payment details, and report it. If you sent money in the last few days, contact your bank, payment app or crypto exchange now.",
+  "steps": [
+   ["Stop depositing.", "More money won't release the balance. The FTC says the earnings shown aren't real and deposits aren't recoverable from the scammers."],
+   ["Leave the group chats and block the 'recruiter'.", "The other members cheering their payouts may be part of the scam."],
+   ["If you already paid, follow the FTC's steps for how you paid.", "For crypto, contact the exchange or ATM operator; for a bank transfer, ask your bank to reverse it; for a payment app, report it to the app. See 'What To Do if You Were Scammed'."],
+   ["If you shared your ID or bank details, protect your identity.", "If your Social Security number was used, report it at IdentityTheft.gov for a recovery plan, per the FTC."],
+   ["Report it.", "To the FTC at ReportFraud.ftc.gov and the FBI at ic3.gov."]
+  ],
+  "stats": [
+   ["About 20,000", "task scam reports to the FTC in the first half of 2024, up from about 5,000 in all of 2023.", "https://ftc.gov/system/files/ftc_gov/pdf/task-scams-spotlight-2024.pdf", "FTC Data Spotlight, Dec 2024"],
+   ["$41 million", "in reported crypto losses to job scams in the first half of 2024, compared with about $21 million in all of 2023. Crypto was the most common payment method.", "https://ftc.gov/system/files/ftc_gov/pdf/task-scams-spotlight-2024.pdf", "FTC Data Spotlight, Dec 2024"],
+   ["22,000", "employment-scam complaints to the BBB Scam Tracker in 2025, up from 11,000 in 2024.", "https://www.wcpo.com/money/consumer/dont-waste-your-money/better-business-bureau-warns-of-surge-in-ai-job-scams", "WCPO, Jul 14, 2026"]
+  ],
+  "cases": [
+   ["Aug–Oct 2025", "Shelton, Connecticut", "A 41-year-old got an unsolicited text offering work-at-home video-liking jobs paid in crypto. He was then told to pay fees, 'taxes' and a 'password reset' and lost $228,000, his entire 401(k) and investment accounts. Police told the family the money couldn't be recovered.", "https://www.yahoo.com/news/articles/shelton-man-disability-loses-life-201746540.html", "CTinsider, via Yahoo News", ""],
+   ["Dec 2023", "Singapore", "Police warned that at least 180 people lost at least S$2.6 million in a month to job scams that paid small commissions for social media tasks, then demanded growing transfers for 'advanced tasks'.", "https://police.gov.sg/Media-Room/News/20240108_police_advisory_on_job_scam_involving_social_media_tasks", "Singapore Police Force", ""]
+  ],
+  "report": [
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"],
+   ["The FBI's Internet Crime Complaint Center", "https://www.ic3.gov/", "ic3.gov"],
+   ["The messaging app", "", "report and block the number in WhatsApp or Telegram"]
+  ],
+  "faq": [
+   ["They already paid me a little. Doesn't that mean it's real?", "No. The FTC says early small payouts are how task scams build trust before asking for deposits."],
+   ["Is 'liking YouTube videos' or 'rating products' a real job?", "The FTC says no honest company will pay you for ratings or likes."],
+   ["My account shows thousands in earnings but it's frozen. Should I pay to unlock it?", "No. The earnings aren't real, and every unlock fee leads to another. Stop and report it."],
+   ["A recruiter texted me to reply 'YES'. What happens if I do?", "The FTC says replying tells scammers your number is active. Ignore generic or unexpected job messages."],
+   ["How do I check if a recruiter is real?", "Look the company up yourself, check its official careers page, and confirm the recruiter works there. A real recruiter's email should use the company's domain, not a free email service."]
+  ],
+  "sources": [
+   ["FTC Data Spotlight: Paying to get paid: gamified job scams drive record losses (Dec 2024)", "https://ftc.gov/system/files/ftc_gov/pdf/task-scams-spotlight-2024.pdf"],
+   ["FTC: That job offer text is probably a scam (Apr 30, 2026)", "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam"],
+   ["FBI: Operation Level Up (work-from-home task scams)", "https://www.fbi.gov/how-we-can-help-you/victim-services/national-crimes-and-victim-resources/operation-level-up"],
+   ["The Register: Cybercrime losses reach all-time high (Apr 7, 2026)", "https://www.theregister.com/2026/04/07/cybercrime_losses_reach_alltime_high/"],
+   ["WCPO: Better Business Bureau warns of surge in AI job scams (Jul 14, 2026)", "https://www.wcpo.com/money/consumer/dont-waste-your-money/better-business-bureau-warns-of-surge-in-ai-job-scams"],
+   ["Singapore Police Force: Advisory on job scam involving social media tasks (Jan 8, 2024)", "https://police.gov.sg/Media-Room/News/20240108_police_advisory_on_job_scam_involving_social_media_tasks"],
+   ["WFSB: Shelton man loses life savings to online crypto investment scam (Oct 16, 2025)", "https://www.wfsb.com/2025/10/16/shelton-man-loses-life-savings-online-crypto-investment-scam"],
+   ["FTC: What To Do if You Were Scammed", "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed"]
+  ],
+  "related": ["ai-scam-texts", "romance-crypto-investment-scam"]
+ },
+ {
+  "slug": "fake-bank-fraud-call",
+  "title": "Is this call from my bank's fraud team a scam?",
+  "h1": "'Your account is compromised, move your money now.' Hang up.",
+  "desc": "A caller from your 'bank', 'tech support' or a government agency says your money is at risk and must be moved, or wants a code or remote access. It's a scam.",
+  "pattern": "Fake bank, tech-support or government 'safe account' call",
+  "verdict": "A scam: the FTC says anyone telling you to move money to 'protect it' or asking for a verification code is a scammer, even if they say they're from your bank.",
+  "how_it_works": [
+   "A call, pop-up or automated message says there's fraud, a hack or suspicious activity on your account or computer.",
+   "Sometimes a 'tech support' agent first gets you to install remote-access software and look at your accounts.",
+   "Then someone posing as your bank's fraud team, and sometimes a 'government' official after them, says your money isn't safe and must be moved to a new 'safe' account, by wire, cash or crypto.",
+   "You may be told to keep it secret, to read out a verification code, or to install an app and hold your bank card to your phone.",
+   "Once the money moves, it's gone. The FTC notes your bank may not stop a transfer you were pressured into."
+  ],
+  "ai_role": "Dutch police say one 2026 gang used AI to make dozens of recorded 'bank' warning calls in different voices and scenarios, and the FBI says scammers now use AI to appear as officials on video calls.",
+  "check": [
+   ["Is someone telling you to move or transfer money to keep it safe?", "The FTC: never move or transfer your money to 'protect it'. Your money is fine where it is."],
+   ["Are they asking for a code sent to your phone?", "The FTC says no caller, especially from your bank's fraud department, will ever ask for the verification code."],
+   ["Did they ask you to install software or an app, give remote access, or tap your card on your phone?", "The FBI warns never to let an unknown person who contacted you control your computer. The Dutch gang used an app that copied victims' card data to withdraw cash."],
+   ["Did they tell you not to tell your family, bank branch or police?", "The FBI says these callers keep victims on the phone and tell them not to contact anyone. That isolation is the scam."],
+   ["Do they want payment by wire, cash, crypto, gift cards or a courier?", "The FBI says officials will never ask for payment by prepaid card, cryptocurrency or courier."],
+   ["Is caller ID showing your bank's real number?", "That doesn't prove anything. The FBI says scammers spoof official phone numbers."]
+  ],
+  "now": "Hang up. Call your bank yourself on the number on your card or statement, not one the caller gave you. Don't move money, share codes or install anything. If you already did, call your bank's fraud line now.",
+  "steps": [
+   ["Hang up and call the number on your card.", "The FTC says to stop and verify by calling your bank, broker or adviser on the number on your statement."],
+   ["If you moved money or shared a code, call your bank immediately.", "Tell them it was a scam and ask them to stop or reverse the transfer. For a wire through a company like Western Union or MoneyGram, the FTC says to report it to that company right away."],
+   ["If you gave remote access, clean up the device.", "The FTC says to update your security software, run a scan, delete anything it flags, change your passwords and turn on two-factor authentication."],
+   ["If you sent cash by mail or courier, act fast.", "The FTC says to contact the US Postal Inspection Service at 1-877-876-2455 for cash sent by mail, or FedEx or UPS as soon as possible."],
+   ["Report it.", "To the FBI at ic3.gov and the FTC at ReportFraud.ftc.gov. If you're 60 or over, the Elder Justice Hotline (1-833-372-8311) can help you file."]
+  ],
+  "stats": [
+   ["$2.1 billion", "lost to tech and customer support scams in complaints to the FBI in 2025.", "https://securityweek.com/fbi-cybercrime-losses-neared-21-billion-in-2025", "SecurityWeek, on the FBI's 2025 IC3 report"],
+   ["Nearly 61,000", "law enforcement and government impersonation complaints to the FBI from January 2025 to July 2026, with losses over $1.6 billion.", "https://www.ic3.gov/PSA/2026/PSA260917", "FBI IC3 PSA, Sep 17, 2026"],
+   ["66%", "of tech-support scam losses reported to the FBI in the first half of 2023 were from people over 60, nearly half of victims.", "https://www.ic3.gov/PSA/2023/PSA230929", "FBI IC3 'Phantom Hacker' PSA, Sep 29, 2023"]
+  ],
+  "cases": [
+   ["Oct 2026", "Netherlands", "Police arrested two men over bank-helpdesk fraud: AI-made recorded calls warned of suspicious activity, a fake bank employee told victims to install an app and hold their card to the phone, and the card data was used to take cash. About 170 victims lost about €380,000 in three weeks.", "https://nltimes.nl/2026/10/21/police-arrest-two-suspects-ai-powered-bank-fraud-cost-victims-eu380000", "NL Times", "nl-ai-voice-bank-helpdesk-fraud"],
+   ["Sep 2026", "United States", "The FBI warned that scammers posing as police and government officials, sometimes using AI on video calls, demand payment through prepaid cards, couriers, wires, crypto or cash at crypto kiosks.", "https://www.ic3.gov/PSA/2026/PSA260917", "FBI IC3", ""],
+   ["Sep 2023", "United States", "The FBI described the 'Phantom Hacker' scam: fake tech support, then a fake bank, then a fake government official, each telling victims, many of them seniors, to move their savings to 'safe' accounts.", "https://www.ic3.gov/PSA/2023/PSA230929", "FBI IC3", ""]
+  ],
+  "report": [
+   ["Your bank's fraud line", "", "the number on the back of your card or on your statement"],
+   ["The FBI's Internet Crime Complaint Center", "https://www.ic3.gov/", "ic3.gov"],
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"],
+   ["If you're 60 or over and need help reporting", "", "the Justice Department's Elder Justice Hotline, 1-833-FRAUD-11 (833-372-8311)"]
+  ],
+  "faq": [
+   ["Would my bank ever call and ask me to move money to a safe account?", "No. The FTC says anyone telling you to move money to protect it is a scammer, and that's always a scam."],
+   ["The caller knew my name and account details. Doesn't that make it real?", "No. Scammers often have some personal data. Caller ID can be spoofed too. Hang up and call the number on your card."],
+   ["I read out the code they texted me. What now?", "Call your bank immediately using the number on your card and change your passwords. The FTC says codes prove you are you, so sharing one can let a scammer log in."],
+   ["Will my bank refund me if I made the transfer myself?", "It may not. The FTC says bank accounts have fewer protections than credit cards and money sent in a scam may not be recoverable. Call your bank at once anyway; speed helps."],
+   ["Can a 'government agent' really come to collect cash or gold?", "No. The FBI says officials will never ask for payment by prepaid card, cryptocurrency or courier."],
+   ["What's the Phantom Hacker scam?", "The FBI's name for a three-step scam: fake tech support, then a fake bank fraud team, then a fake government official, all pushing you to move your savings."]
+  ],
+  "sources": [
+   ["FTC: Never move your money to 'protect it.' That's a scam (Mar 5, 2024)", "https://consumer.ftc.gov/consumer-alerts/2024/03/never-move-your-money-protect-it-thats-scam"],
+   ["FTC: Got a call about fraud activity on your bank account? It could be a scammer (Jul 2024)", "https://consumer.ftc.gov/consumer-alerts/2024/06/got-call-about-fraud-activity-your-bank-account-it-could-be-scammer"],
+   ["FBI IC3: 'Phantom Hacker' scams target senior citizens (PSA I-091223, Sep 29, 2023)", "https://www.ic3.gov/PSA/2023/PSA230929"],
+   ["FBI IC3: Scammers impersonating law enforcement and government officials (PSA I-091726, Sep 17, 2026)", "https://www.ic3.gov/PSA/2026/PSA260917"],
+   ["NL Times: Police arrest two suspects in AI-powered bank fraud (Oct 21, 2026)", "https://nltimes.nl/2026/10/21/police-arrest-two-suspects-ai-powered-bank-fraud-cost-victims-eu380000"],
+   ["SecurityWeek: FBI cybercrime losses neared $21 billion in 2025", "https://securityweek.com/fbi-cybercrime-losses-neared-21-billion-in-2025"],
+   ["FTC: What To Do if You Were Scammed", "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed"]
+  ],
+  "related": ["voice-clone-scam-call", "ai-scam-texts", "boss-gift-card-wire-transfer-scam"]
+ },
+ {
+  "slug": "ai-sextortion-scam",
+  "title": "Someone is threatening to share a fake nude of me",
+  "h1": "Someone has a fake explicit image of you and wants money. You can get through this.",
+  "desc": "Blackmailers use AI to make fake explicit images from ordinary photos, then demand money. Don't pay. What to do now, how to get images removed, where to report.",
+  "pattern": "Sextortion with AI-made images",
+  "verdict": "This is a crime against you, not something you did wrong: don't pay, stop replying, save the evidence and get help now.",
+  "how_it_works": [
+   "Someone, often a stranger on social media or a messaging app, sends you an explicit image that looks like you, or claims to have one.",
+   "The FBI says criminals can create these by altering ordinary photos or videos, such as social media posts or content captured during a video chat.",
+   "They threaten to send it to your friends, family, school or employer unless you pay or send more images.",
+   "Paying rarely ends it. NCMEC, the US child-safety nonprofit, says cooperating or paying rarely stops blackmail."
+  ],
+  "ai_role": "The FBI says criminals use AI to create explicit images of a victim to demand payment, which means a blackmailer doesn't need any real intimate photo of you to start. NCMEC reported a 1,325% rise in 2024 in reports to its CyberTipline that involved generative AI.",
+  "check": [
+   ["Is someone demanding money, gift cards or more images to keep an image private?", "That's sextortion, a crime. The FBI's advice is not to pay anyone who threatens you."],
+   ["Did you never take or send the image they're showing you?", "It may have been made with AI from an ordinary photo. The FBI says this is happening to children and adults."],
+   ["Is the person someone you only know online?", "The FBI says to be cautious with unknown contacts, especially ones who pressure you for images or video."],
+   ["Are you under 18, or was the image made to look like you when you were under 18?", "NCMEC's free Take It Down service can help remove explicit images of people under 18, and its CyberTipline takes reports."],
+   ["Are you feeling panicked or alone with this?", "Tell a trusted adult or friend now. NCMEC says the blackmailer is responsible, not you."]
+  ],
+  "now": "Don't pay and don't send anything. Stop replying, but don't delete the chats yet: screenshot the messages, usernames and any payment details. Tell someone you trust tonight. If you're under 18, use NCMEC's CyberTipline and Take It Down. If you feel overwhelmed or unsafe, call or text 988.",
+  "steps": [
+   ["Stop all contact and don't pay.", "The FBI says not to pay anyone who threatens you. NCMEC says paying rarely stops it."],
+   ["Save the evidence.", "The FBI asks victims to keep everything: usernames, emails, platforms and files. Screenshot before you block."],
+   ["Report the account and the image to the platform.", "Then block the person."],
+   ["Report it.", "In the US: the FBI at ic3.gov or 1-800-CALL-FBI, and NCMEC's CyberTipline if you're under 18. Adults can also contact local police."],
+   ["Get the image taken down.", "If you were under 18, use NCMEC's Take It Down. For adults, see our page on fake nude images."],
+   ["Talk to someone.", "A parent, a friend, a school counselor. If you feel overwhelmed or think about hurting yourself, call or text 988, any time."]
+  ],
+  "stats": [
+   ["50,000+", "financially motivated sextortion reports to NCMEC in 2025, an average of 137 a day, up from more than 36,000 in 2024.", "https://www.missingkids.org/blog/2026/ncmec-releases-new-sextortion-data-2025", "NCMEC, Jun 25, 2026"],
+   ["1,325%", "increase in 2024 in CyberTipline reports that involved generative AI.", "https://www.missingkids.org/blog/2025/ncmec-releases-new-data-2024-in-numbers", "NCMEC, 2025"]
+  ],
+  "cases": [
+   ["Mar 2025", "Barren County, Kentucky", "A 16-year-old was sent AI-generated explicit images of himself and told to pay $3,000 or they'd be released. He sent $50 and was told it wasn't enough. He died by suicide; the FBI and Kentucky State Police investigated it as financial sextortion.", "https://wpln.org/post/suicide-of-kentucky-teen-investigated-as-financial-sextortion/", "WPLN / WKU Public Media", ""],
+   ["Dec 2025–Jan 2026", "Worldwide (X)", "Users prompted Grok to edit photos of real people into sexualized images. The Center for Countering Digital Hate estimated about 3 million such images in 11 days, about 23,000 of which appeared to depict children.", "https://www.counterharm.com/research/grok-floods-x-with-sexualized-images", "CCDH", "grok-undressing-crisis"]
+  ],
+  "report": [
+   ["The FBI", "https://www.ic3.gov/", "ic3.gov, or 1-800-CALL-FBI (225-5324)"],
+   ["NCMEC CyberTipline (if the victim is under 18)", "https://report.cybertip.org/", "report.cybertip.org, or 1-800-THE-LOST"],
+   ["NCMEC Take It Down (images of under-18s)", "https://takeitdown.ncmec.org/", "takeitdown.ncmec.org"],
+   ["The 988 Suicide & Crisis Lifeline", "https://988lifeline.org/get-help/", "call or text 988"]
+  ],
+  "faq": [
+   ["Should I pay so they delete it?", "No. The FBI says don't pay, and NCMEC says cooperating or paying rarely stops blackmail. Paying usually shows them you'll pay again."],
+   ["The image isn't even real. Is it still a crime?", "Yes. The FBI treats AI-altered explicit images used for threats as part of sextortion schemes, and it includes adults and children among the victims."],
+   ["Should I delete the messages?", "Not yet. Screenshot and save usernames, messages and payment requests first. The FBI asks victims to keep all of it. Then block and report."],
+   ["How do I get a fake nude taken down?", "Report it to the platform. If the person shown is under 18, NCMEC's Take It Down and CyberTipline can help with removal. See our fake nude image page for adults."],
+   ["I'm a parent. What should I say to my child?", "Stay calm and make it clear they're not in trouble. NCMEC says the blackmailer is responsible, not the child. Then save the evidence together and report it."]
+  ],
+  "sources": [
+   ["FBI IC3: Malicious actors manipulating photos and videos to create explicit content and sextortion schemes (PSA I-060523, Jun 5, 2023)", "https://www.ic3.gov/PSA/2023/psa230605"],
+   ["FBI IC3: Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud (PSA I-120324, Dec 3, 2024)", "https://www.ic3.gov/PSA/2024/PSA241203"],
+   ["NCMEC: New sextortion data, over 100 reports received daily in 2025 (Jun 25, 2026)", "https://www.missingkids.org/blog/2026/ncmec-releases-new-sextortion-data-2025"],
+   ["NCMEC: 2024 in numbers", "https://www.missingkids.org/blog/2025/ncmec-releases-new-data-2024-in-numbers"],
+   ["WPLN: Suicide of Kentucky teen investigated as financial sextortion (Mar 25, 2025)", "https://wpln.org/post/suicide-of-kentucky-teen-investigated-as-financial-sextortion/"],
+   ["CCDH: Grok floods X with sexualized images (Jan 22, 2026)", "https://www.counterharm.com/research/grok-floods-x-with-sexualized-images"],
+   ["988 Suicide & Crisis Lifeline: Get help", "https://988lifeline.org/get-help/"]
+  ],
+  "related": ["fake-nude-image", "romance-crypto-investment-scam"]
+ },
+ {
+  "slug": "fake-reviews-fake-online-store",
+  "title": "Is this online store real or a scam? Fake review checks",
+  "h1": "Great reviews, a great price, a shop you've never heard of. Check before you pay.",
+  "desc": "Fake shops in social media ads and fake (even AI-written) reviews can look convincing. How to check a store and its reviews, and get your money back.",
+  "pattern": "Fake online shops and fake reviews",
+  "verdict": "Possibly a scam: glowing reviews and a slick site prove little, so check the seller elsewhere and pay only by credit card.",
+  "how_it_works": [
+   "An ad on social media shows brand-name goods at an unusually low price, sometimes impersonating a real company.",
+   "The link goes to a professional-looking shop with plenty of five-star reviews.",
+   "You pay, then get a counterfeit, something very different from the ad, or nothing.",
+   "Separately, real businesses sometimes buy or fake reviews to look better than they are, which the FTC now bans."
+  ],
+  "ai_role": "AI makes fake reviews, product photos and even shopfronts cheap to produce. The FTC's 2024 rule explicitly bans AI-generated fake reviews, and an ABC investigation in 2026 found a publishing firm's storefront photos were AI-made.",
+  "check": [
+   ["Did you find the shop through a social media ad with a too-good price?", "The FTC says scammers advertise brand-name products at unusually low prices and the link may lead to a fake site. More than 40% of people who lost money to a social media scam in 2025 had ordered something."],
+   ["What comes up when you search the shop's name or web address with 'scam', 'complaint' or 'review'?", "The FTC recommends this check before buying."],
+   ["Do the reviews arrive in a burst, from reviewers with no other reviews, or sound too positive?", "The FTC lists all three as signs of fake reviews. But it also warns you can't reliably spot fakes just by looking."],
+   ["Does the seller only accept gift cards, wire transfers, payment apps or crypto?", "The FTC says that's probably a scam."],
+   ["Can you verify the business exists: a real address, phone number and registration that match?", "In the ABC case, the storefront photo was AI-made and the business number belonged to a different company."]
+  ],
+  "now": "If you haven't paid, check the seller elsewhere first and pay only by credit card. If you've paid and nothing arrived, or it's not what you ordered, contact the seller once in writing, then your card company or payment app to dispute it. Save your receipt and order number.",
+  "steps": [
+   ["Pay by credit card if you can.", "The FTC says you can dispute a credit card charge if you're billed for something you never got, or sent a wrong or damaged item."],
+   ["Keep everything.", "Receipt, order confirmation number, screenshots of the ad and the product page. The FTC says these help you recover money."],
+   ["If it hasn't arrived, know your rights.", "The FTC says sellers must ship by the date they or their ads promise, or offer you a refund."],
+   ["If you paid another way, ask for a reversal now.", "For a payment app, report it to the app; for a bank transfer, ask your bank; for crypto, contact the exchange. See the FTC's 'What To Do if You Were Scammed'."],
+   ["Report the fake shop and the fake reviews.", "To the FTC at ReportFraud.ftc.gov, and flag the ad and reviews on the platform. The FTC lists how to report reviews on Amazon, Google, Yelp, Trustpilot and others."]
+  ],
+  "stats": [
+   ["40%+", "of people who lost money to a scam on social media in 2025 said they had ordered something after seeing it in a social media ad, the most reported kind of social media scam.", "https://www.ftc.gov/news-events/news/press-releases/2026/04/new-ftc-data-show-people-have-lost-billions-social-media-scams", "FTC, Apr 27, 2026"],
+   ["Up to $53,088", "in civil penalties per violation that businesses can face under the FTC's rule banning fake reviews.", "https://www.ftc.gov/news-events/news/press-releases/2025/12/ftc-warns-10-companies-about-possible-violations-agencys-new-consumer-review-rule", "FTC, Dec 22, 2025"]
+  ],
+  "cases": [
+   ["Oct 2026", "Australia", "ABC News found that 'Patrick White Publishing', which charged authors from a few hundred dollars up to $17,000, used AI-generated storefront images on Google Maps and a business number belonging to an unrelated firm, which reported it to Scamwatch. One author got a refund through a PayPal dispute. The company didn't respond.", "https://www.abc.net.au/news/2026-10-25/patrick-white-publishing-authors-unhappy-service-ai-art/107255794", "ABC News (Australia)", ""],
+   ["Oct 2026", "Dubai", "A café said a customer used an AI-faked photo of a spilled drink to claim a delivery refund. It spotted the wrong drink, cups and branding. AI fakes cut both ways for small businesses.", "https://gulfnews.com/uae/dubai-cafe-ai-generated-photo-food-delivery-refund-claim-1.500724167", "Gulf News", ""],
+   ["Dec 2025", "United States", "FTC staff sent warning letters to 10 companies about possible violations of the new rule banning fake reviews. The letters aren't findings that any of them broke the rule.", "https://www.ftc.gov/news-events/news/press-releases/2025/12/ftc-warns-10-companies-about-possible-violations-agencys-new-consumer-review-rule", "FTC", ""]
+  ],
+  "report": [
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"],
+   ["Your card company or payment app", "", "to dispute the charge"],
+   ["The platform that showed the ad or hosts the reviews", "https://consumer.ftc.gov/articles/how-report-suspicious-online-reviews", "the FTC's how-to for each site"]
+  ],
+  "faq": [
+   ["How can I tell if reviews are fake?", "The FTC's signs: a burst of reviews in a short time, reviewers with no other reviews, and reviews that seem too positive. It also says you can't reliably spot fakes by looking, so check several sources."],
+   ["Are AI-generated reviews illegal?", "In the US, the FTC's rule announced in August 2024 bans businesses from creating, buying or spreading fake reviews, including AI-generated ones, when they knew or should have known they were fake."],
+   ["How do I check if a website is legit before buying?", "Search the shop's name and web address with words like 'scam', 'complaint' and 'review', and be wary of social media ads with unusually low prices, the FTC says."],
+   ["I paid and nothing arrived. Can I get my money back?", "If you paid by card, dispute the charge with your card company. For a payment app or bank transfer, ask for a reversal right away. Keep your receipt and order number."],
+   ["Why does it matter how I pay?", "The FTC says a seller that accepts only gift cards, wire transfers, payment apps or crypto is probably a scam, and those payments are much harder to get back than a credit card charge."]
+  ],
+  "sources": [
+   ["FTC: Federal Trade Commission announces final rule banning fake reviews and testimonials (Aug 14, 2024)", "https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials"],
+   ["FTC: FTC warns 10 companies about possible violations of the Consumer Review Rule (Dec 22, 2025)", "https://www.ftc.gov/news-events/news/press-releases/2025/12/ftc-warns-10-companies-about-possible-violations-agencys-new-consumer-review-rule"],
+   ["FTC: How to evaluate online reviews", "https://consumer.ftc.gov/articles/how-evaluate-online-reviews"],
+   ["FTC: How to report suspicious online reviews", "https://consumer.ftc.gov/articles/how-report-suspicious-online-reviews"],
+   ["FTC: How to avoid an online shopping scam this holiday season (Nov 2025)", "https://consumer.ftc.gov/consumer-alerts/2025/11/how-avoid-online-shopping-scam-holiday-season"],
+   ["FTC: New data show people have lost billions to social media scams (Apr 27, 2026)", "https://www.ftc.gov/news-events/news/press-releases/2026/04/new-ftc-data-show-people-have-lost-billions-social-media-scams"],
+   ["ABC News: Patrick White Publishing authors unhappy with service, AI art (Oct 25, 2026)", "https://www.abc.net.au/news/2026-10-25/patrick-white-publishing-authors-unhappy-service-ai-art/107255794"],
+   ["Gulf News: Dubai café says AI-generated photo used for delivery refund claim (Oct 26, 2026)", "https://gulfnews.com/uae/dubai-cafe-ai-generated-photo-food-delivery-refund-claim-1.500724167"],
+   ["FTC: What To Do if You Were Scammed", "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed"]
+  ],
+  "related": ["qr-code-scam", "ai-scam-texts"]
+ }
+]

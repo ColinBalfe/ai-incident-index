@@ -1,0 +1,1468 @@
+{
+ "overview": {
+  "facts": [
+   [
+    "10,000+ a month",
+    "Pantheon Macroeconomics estimates AI is now costing the US more than 10,000 jobs a month, net, with accounting, advertising, office administration and legal services slowly shrinking while data-center construction hires. This is an economists' estimate, not a count of announced cuts.",
+    "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk",
+    "Fortune, Oct 2026"
+   ],
+   [
+    "19%",
+    "Employment of 22-25-year-olds in the most AI-exposed occupations is 19% below where it would be had it kept pace with less-exposed peers (ADP payroll data through June 2026). The authors find no economy-wide displacement, and experienced workers show no comparable gap.",
+    "https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/",
+    "Stanford Digital Economy Lab, Aug 2026"
+   ],
+   [
+    "No clear evidence",
+    "Yale's Budget Lab says its tracking 'does not provide clear evidence of labor market disruption associated with AI', and the occupational mix is not yet shifting in ways that line up with AI.",
+    "https://budgetlab.yale.edu/sites/default/files/page_to_pdf/1419/publication_1419.pdf",
+    "Yale Budget Lab, Sep 2026"
+   ],
+   [
+    "Just under half",
+    "In OpenAI's GDPval test of 1,320 tasks from 44 occupations, the best model's work was rated as good as or better than industry experts' in just under half of tasks. These were one-shot tasks with clear prompts, which OpenAI itself flags as a limitation.",
+    "https://openai.com/index/gdpval/",
+    "OpenAI GDPval, Sep 2025"
+   ],
+   [
+    "Zero payoff",
+    "Apollo's chief economist Torsten Slok found flat profit margins and revenue per worker across the S&P 500 minus its seven largest tech firms, with no sign yet that AI is raising productivity there.",
+    "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
+    "TechCrunch, Oct 2026"
+   ],
+   [
+    "4 of 9",
+    "In an AP tally of nine recent cuts, four companies tied them to AI in their own words (Barclays ~5,000, Block 4,000+, Coinbase ~14%, Standard Chartered 15%+ of back office by 2030). For others, such as Meta and Microsoft, the AI link came from reporters, not the company.",
+    "https://www.boston25news.com/news/business/layoffs-linked/PMZHUQWOU44UHBEQLFBDTNCYSM/",
+    "AP via Boston 25, Oct 2026"
+   ],
+   [
+    "60,000",
+    "Microsoft offered voluntary buyouts to about 60,000 staff. Coverage frames it as an AI-era overhaul, but the memo excerpts published do not mention AI.",
+    "https://techcrunch.com/2026/10/26/microsoft-offers-buyouts-to-around-60000-employees-reports-say/",
+    "TechCrunch, Oct 2026"
+   ]
+  ],
+  "method": "Each task is graded 'deployed' only when a named organisation reports AI doing it in real work at scale, 'demonstrated' when it works in tests, benchmarks or pilots, and 'not yet' when we found no credible evidence AI does it reliably. For job losses we separate what a company said in its own words ('company says AI') from what reporters or analysts attributed to AI ('reported as AI') and from research ('study'); employment and outlook figures come from the BLS 2025-35 projections."
+ },
+ "jobs": [
+  {
+   "slug": "paralegals",
+   "occupation": "Paralegals and legal assistants",
+   "title": "Will AI replace paralegals? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI can and can't do in paralegal work: document review, legal research, drafting, and the job numbers.",
+   "bls": {
+    "employment": "404,900 (2025)",
+    "outlook": "0% (little or no change, -1,100 jobs), 2025-35. BLS: demand 'is expected to be limited by advances in technology, including artificial intelligence (AI)', which may make paralegals more efficient at research and document preparation and so reduce demand.",
+    "url": "https://www.bls.gov/ooh/legal/paralegals-and-legal-assistants.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "AI is already used across law firms for document review, drafting and summarising, and it can speed up research, but it still invents case law often enough that a person has to check every citation. BLS expects flat paralegal employment as AI makes the work more efficient; we found law-firm cuts linked to AI in support and secretarial roles, not clear evidence of paralegal layoffs.",
+   "tasks": [
+    {
+     "task": "Reviewing large document sets in discovery",
+     "status": "deployed",
+     "evidence": "A federal court approved computer-assisted 'predictive coding' review in Da Silva Moore v. Publicis (Feb 2012), for about three million documents; this is older machine learning, not chatbots.",
+     "url": "https://www.proskauer.com/blog/court-endorses-use-of-predictive-coding-for-esi-discovery",
+     "label": "Proskauer, Mar 2012"
+    },
+    {
+     "task": "Drafting and summarising documents",
+     "status": "deployed",
+     "evidence": "Clio's 2025 survey found 79% of legal professionals use AI, for tasks including document drafting and summaries; Harvey said in Sep 2026 that 80% of Am Law 100 firms use its tool.",
+     "url": "https://www.2civility.org/2025-clio-legal-trends-report/",
+     "label": "2Civility on Clio, Oct 2025"
+    },
+    {
+     "task": "Legal research",
+     "status": "demonstrated",
+     "evidence": "Stanford researchers found commercial legal AI tools hallucinated on more than 17% (Lexis+ AI) and more than 34% (Westlaw AI-Assisted Research) of 200+ test queries (May 2024).",
+     "url": "https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries",
+     "label": "Stanford HAI, May 2024"
+    },
+    {
+     "task": "Checking contracts against a checklist",
+     "status": "demonstrated",
+     "evidence": "In a vendor-run test, LawGeex's software flagged issues in five NDAs with 94% accuracy in 26 seconds versus 85% in 92 minutes for 20 lawyers (Feb 2018).",
+     "url": "https://abajournal.com/news/article/ai_software_is_more_accurate_faster_than_attorneys_when_assessing_ndas",
+     "label": "ABA Journal, Feb 2018"
+    },
+    {
+     "task": "Verifying citations and facts before filing",
+     "status": "not yet",
+     "evidence": "Damien Charlotin's database counted 1,240 US court filings with AI-hallucinated material as of Jul 2026, including 668 so far in 2026, which is why human cite-checking remains essential.",
+     "url": "https://www.msba.org/site/content/News-and-Publications/News/General-News/Confronting_the_Hard%20Numbers_Behind_Lawyers_AI_and_Phantom_Precedents.aspx",
+     "label": "Maryland State Bar Association, Jul 2026"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2026-02-06",
+     "Baker McKenzie plans to cut business-services roles, reportedly up to ~600 including marketing and secretarial support (not paralegals); spokesperson cited 'rethinking the ways in which we work, including through our use of AI' (company says AI, in part)",
+     "https://www.legalcheek.com/2026/02/baker-mckenzie-to-cut-business-services-roles-as-ai-use-grows/",
+     "Legal Cheek, Feb 2026"
+    ],
+    [
+     "2025-11-21",
+     "Clifford Chance cuts ~50 London support roles; the FT reported staff were told increased use of AI contributed, but the firm did not say so on the record (reported as AI)",
+     "https://www.legalcheek.com/2025/11/clifford-chance-to-cut-50-london-support-roles/amp/",
+     "Legal Cheek, Nov 2025"
+    ],
+    [
+     "2026-10-23",
+     "Pantheon Macroeconomics names legal services among sectors slowly shedding jobs as AI costs the US 10,000+ jobs a month, net (study)",
+     "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk",
+     "Fortune, Oct 2026"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Own the verification step",
+     "Become the person who checks every AI-drafted citation, quote and date against the source. Courts are sanctioning filings with invented cases, so this skill is valued."
+    ],
+    [
+     "Learn your firm's AI tools properly",
+     "Get fluent in the review, drafting and research tools your firm licenses, including their known failure modes, rather than avoiding them."
+    ],
+    [
+     "Move toward judgment-heavy work",
+     "Case management, client and witness contact, privilege calls and trial preparation rely on context that current tools handle poorly."
+    ],
+    [
+     "Watch support-staff restructurings",
+     "Recent AI-linked law-firm cuts hit secretarial and business-services roles first; track whether paralegal headcounts follow at your firm."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace paralegals?",
+     "Not on current evidence. BLS projects flat employment (0%) for 2025-35 and says AI will limit demand growth by making paralegals more efficient. Tools still hallucinate case law, so human checking remains part of the job."
+    ],
+    [
+     "Which paralegal tasks are most exposed?",
+     "High-volume document review (automated for over a decade), first drafts and summaries. These are already done with AI at many firms."
+    ],
+    [
+     "Which paralegal tasks are safest?",
+     "Verifying citations and facts, working directly with clients and witnesses, and managing cases and deadlines, where errors carry court sanctions."
+    ],
+    [
+     "Are law firms cutting jobs because of AI?",
+     "Some large global law firms have cut support roles with AI given as one factor (Baker McKenzie, Clifford Chance), but those were mainly secretarial and business-services jobs, and AI was not the only reason given."
+    ],
+    [
+     "How accurate are legal AI tools?",
+     "A Stanford study in 2024 found leading legal research tools gave hallucinated answers on 17% to 34% of test queries. Newer versions may do better, but we found no independent update."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Paralegals and legal assistants",
+     "https://www.bls.gov/ooh/legal/paralegals-and-legal-assistants.htm"
+    ],
+    [
+     "Stanford HAI: legal models hallucinate (May 2024)",
+     "https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries"
+    ],
+    [
+     "MSBA: AI hallucination case numbers (Jul 2026)",
+     "https://www.msba.org/site/content/News-and-Publications/News/General-News/Confronting_the_Hard%20Numbers_Behind_Lawyers_AI_and_Phantom_Precedents.aspx"
+    ],
+    [
+     "Clio Legal Trends 2025 via 2Civility",
+     "https://www.2civility.org/2025-clio-legal-trends-report/"
+    ],
+    [
+     "Harvey funding announcement (Sep 2026)",
+     "https://www.harvey.ai/blog/harvey-raises-dollar550m-at-a-dollar155b-valuation-to-help-legal-teams-own-their-intelligence"
+    ],
+    [
+     "Proskauer: Da Silva Moore predictive coding",
+     "https://www.proskauer.com/blog/court-endorses-use-of-predictive-coding-for-esi-discovery"
+    ],
+    [
+     "ABA Journal: LawGeex NDA study",
+     "https://abajournal.com/news/article/ai_software_is_more_accurate_faster_than_attorneys_when_assessing_ndas"
+    ],
+    [
+     "Legal Cheek: Baker McKenzie",
+     "https://www.legalcheek.com/2026/02/baker-mckenzie-to-cut-business-services-roles-as-ai-use-grows/"
+    ],
+    [
+     "Legal Cheek: Clifford Chance",
+     "https://www.legalcheek.com/2025/11/clifford-chance-to-cut-50-london-support-roles/amp/"
+    ],
+    [
+     "Fortune: Pantheon estimate",
+     "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk"
+    ]
+   ]
+  },
+  {
+   "slug": "accountants-bookkeepers",
+   "occupation": "Accountants, auditors and bookkeepers",
+   "title": "Will AI replace accountants? What the evidence shows",
+   "desc": "Graded evidence on AI in accounting and bookkeeping: what's automated, what benchmarks show about closing the books, and BLS job projections.",
+   "bls": {
+    "employment": "Accountants and auditors: 1,595,200; bookkeeping, accounting and auditing clerks: 1,532,400 (2025)",
+    "outlook": "Accountants and auditors +5%; bookkeeping clerks -6% (-85,600 jobs), 2025-35. BLS says AI, cloud computing and blockchain may automate routine accounting tasks, and that 'Technological change is expected to reduce demand' for clerks.",
+    "url": "https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Routine data entry and transaction processing are already heavily automated, and BLS expects bookkeeping-clerk jobs to fall 6% while accountant jobs grow 5%. On multi-step work such as a month-end close, the best AI agents in 2026 benchmarks still fail most tasks when asked to get them right every time, so judgment and sign-off stay with people.",
+   "tasks": [
+    {
+     "task": "Data entry and routine transaction recording",
+     "status": "deployed",
+     "evidence": "BLS says 'software innovations have automated many of the tasks' performed by bookkeeping clerks and projects their employment to fall 6% in 2025-35.",
+     "url": "https://www.bls.gov/ooh/office-and-administrative-support/bookkeeping-accounting-and-auditing-clerks.htm",
+     "label": "BLS OOH, 2025-35 projections"
+    },
+    {
+     "task": "Month-end close and account reconciliation",
+     "status": "demonstrated",
+     "evidence": "In Mercor's Jul 2026 accounting benchmark (160 tasks written by accountants), the best model passed 56.4% of grading criteria, and the most consistent model fully solved only 2.6% of tasks in all eight runs.",
+     "url": "https://www.mercor.com/blog/introducing-the-ai-productivity-index-for-accounting/",
+     "label": "Mercor, Jul 2026"
+    },
+    {
+     "task": "Keeping books accurate over months",
+     "status": "demonstrated",
+     "evidence": "In Penrose's AccountingBench (Jul 2025), the best models stayed above 95% accuracy for several simulated months but then drifted, with errors compounding and models sometimes forcing balances to match with unrelated transactions.",
+     "url": "https://www.gigazine.net/news/20250724-accountingbench/",
+     "label": "Gigazine, Jul 2025"
+    },
+    {
+     "task": "Producing professional accountant deliverables",
+     "status": "demonstrated",
+     "evidence": "Accountants and auditors were one of 44 occupations in OpenAI's GDPval; across all occupations the best model matched or beat experts on just under half of tasks (Sep 2025).",
+     "url": "https://openai.com/index/gdpval/",
+     "label": "OpenAI GDPval, Sep 2025"
+    },
+    {
+     "task": "Advising clients and signing off on judgments",
+     "status": "not yet",
+     "evidence": "BLS expects automation of routine tasks such as data entry to shift accountants toward advisory and analytical duties, and projects 5% growth for accountants and auditors in 2025-35.",
+     "url": "https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm",
+     "label": "BLS OOH, 2025-35 projections"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-09-08",
+     "PwC UK hires 200 fewer graduates (1,300, down from 1,500); UK head Marco Amitrano said 'AI is reshaping roles' but also cited a wider slowdown in hiring and deal-making (company says AI, in part)",
+     "https://fortune.com/2025/09/08/pwc-uk-chief-cutting-entry-level-junior-gen-z-jobs-ai-economic-headwinds-like-amazon-salesforce",
+     "Fortune, Sep 2025"
+    ],
+    [
+     "2026-10-23",
+     "Pantheon Macroeconomics lists accounting among sectors slowly losing jobs as AI costs the US 10,000+ jobs a month, net (study)",
+     "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk",
+     "Fortune, Oct 2026"
+    ],
+    [
+     "2026",
+     "BLS projects bookkeeping, accounting and auditing clerks to fall 6% (-85,600 jobs) in 2025-35 because of technological change, while accountants and auditors grow 5% (study)",
+     "https://www.bls.gov/ooh/office-and-administrative-support/bookkeeping-accounting-and-auditing-clerks.htm",
+     "BLS OOH, 2025-35 projections"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Move up from data entry",
+     "If most of your day is keying or matching transactions, build skills in review, reconciliation exceptions and analysis, where BLS expects the work to shift."
+    ],
+    [
+     "Learn to supervise automation",
+     "Benchmarks show AI errors compound across months. Learn to set controls, spot forced balances and audit what the tools post."
+    ],
+    [
+     "Build advisory and communication skills",
+     "Explaining numbers to clients and managers, tax planning and judgment calls are the parts BLS expects to grow."
+    ],
+    [
+     "Watch entry-level hiring",
+     "Graduate intakes at large firms are the early signal; PwC UK's 2025 cut was partly tied to AI."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace accountants?",
+     "The evidence says no for accountants and auditors (BLS projects +5% to 2035) but points to fewer bookkeeping clerk jobs (-6%), where routine tasks are already automated."
+    ],
+    [
+     "Can AI close the books by itself?",
+     "Not reliably yet. In a Jul 2026 benchmark the most consistent model fully solved only 2.6% of month-end tasks in all eight attempts."
+    ],
+    [
+     "Which accounting tasks are safest?",
+     "Judgment, client advice, audit sign-off and explaining results; BLS says automation will make advisory and analytical duties more central."
+    ],
+    [
+     "Are firms cutting accounting jobs because of AI?",
+     "PwC UK cut graduate hiring in 2025, naming AI alongside a broader slowdown. Pantheon's analysts see accounting employment slowly shrinking. We found no large employer attributing accountant layoffs to AI alone."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Accountants and auditors",
+     "https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm"
+    ],
+    [
+     "BLS Occupational Outlook Handbook: Bookkeeping, accounting and auditing clerks",
+     "https://www.bls.gov/ooh/office-and-administrative-support/bookkeeping-accounting-and-auditing-clerks.htm"
+    ],
+    [
+     "Mercor: AI Productivity Index for Accounting (Jul 2026)",
+     "https://www.mercor.com/blog/introducing-the-ai-productivity-index-for-accounting/"
+    ],
+    [
+     "Gigazine: Penrose AccountingBench (Jul 2025)",
+     "https://www.gigazine.net/news/20250724-accountingbench/"
+    ],
+    [
+     "OpenAI: GDPval (Sep 2025)",
+     "https://openai.com/index/gdpval/"
+    ],
+    [
+     "Fortune: PwC UK graduate hiring (Sep 2025)",
+     "https://fortune.com/2025/09/08/pwc-uk-chief-cutting-entry-level-junior-gen-z-jobs-ai-economic-headwinds-like-amazon-salesforce"
+    ],
+    [
+     "Fortune: Pantheon estimate (Oct 2026)",
+     "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk"
+    ]
+   ]
+  },
+  {
+   "slug": "customer-service-representatives",
+   "occupation": "Customer service representatives",
+   "title": "Will AI replace customer service reps? The evidence",
+   "desc": "Dated evidence on AI in customer service: chatbots at Klarna and Salesforce, the productivity study, the reversals, and BLS's -5% outlook.",
+   "bls": {
+    "employment": "2,666,000 (2025)",
+    "outlook": "-5% (-141,800 jobs), 2025-35. BLS expects less demand 'as their tasks continue to be automated' and says 'Advancements in technology will gradually allow these automated systems to do even more tasks.'",
+    "url": "https://www.bls.gov/ooh/office-and-administrative-support/customer-service-representatives.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "AI already answers a large share of routine chats and calls at some large companies, and at least one CEO says it let him cut thousands of support jobs. Complex, emotional or phone-based cases still go badly without people: Klarna brought humans back after quality fell, and most support leaders plan to keep human agents.",
+   "tasks": [
+    {
+     "task": "Answering routine chat questions (refunds, returns, payments)",
+     "status": "deployed",
+     "evidence": "Klarna said in Feb 2024 its AI assistant handled 75% of customer chats, about 2.3 million conversations, in its first month, the work of 700 agents.",
+     "url": "https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396",
+     "label": "Entrepreneur, May 2025"
+    },
+    {
+     "task": "Handling support cases end to end",
+     "status": "deployed",
+     "evidence": "Salesforce CEO Marc Benioff said AI agents handle about half of support calls and that he reduced support staff 'from 9,000 heads to about 5,000' (Sep 2025).",
+     "url": "https://www.ktvu.com/news/salesforce-ai-layoffs-marc-benioff",
+     "label": "KTVU, Sep 2025"
+    },
+    {
+     "task": "Suggesting replies to human agents",
+     "status": "deployed",
+     "evidence": "A study of 5,179 support agents found an AI assistant raised issues resolved per hour by 14% on average and 34% for novices, with little effect for the most experienced.",
+     "url": "https://www.nber.org/papers/w31161",
+     "label": "Quarterly Journal of Economics, 2025"
+    },
+    {
+     "task": "Automated support workflows via API",
+     "status": "deployed",
+     "evidence": "Anthropic's Economic Index found customer service tasks prevalent in business API traffic, with Claude doing a high share of the tasks in automated workflows (Mar 2026).",
+     "url": "https://www.anthropic.com/research/economic-index-march-2026-report",
+     "label": "Anthropic Economic Index, Mar 2026"
+    },
+    {
+     "task": "Complex, emotional or high-stakes cases",
+     "status": "not yet",
+     "evidence": "Klarna's CEO said in May 2025 the AI-first approach gave 'lower quality' service and the company is rehiring humans so 'there will always be a human if you want'.",
+     "url": "https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396",
+     "label": "Entrepreneur, May 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-09-02",
+     "Salesforce: Benioff says he cut support headcount from about 9,000 to 5,000 'because I need less heads' as AI agents took on half of calls (company says AI)",
+     "https://www.ktvu.com/news/salesforce-ai-layoffs-marc-benioff",
+     "KTVU, Sep 2025"
+    ],
+    [
+     "2025-05-09",
+     "Klarna, which said its bot did the work of 700 agents, reverses course and rehires human agents after quality complaints (company says AI, then reverses)",
+     "https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396",
+     "Entrepreneur, May 2025"
+    ],
+    [
+     "2025-06-10",
+     "Gartner predicts half of organisations that planned big customer-service workforce cuts will abandon them by 2027; 95% of 163 leaders polled plan to keep human agents (study)",
+     "https://www.gartner.com/en/newsroom/press-releases/2025-06-10-gartner-predicts-50-percent-of-organizations-will-abandon-plans-to-reduce-customer-service-workforce-due-to-ai",
+     "Gartner, Jun 2025"
+    ],
+    [
+     "2025-07",
+     "Microsoft study of 200,000 Copilot conversations lists customer service representatives among occupations with the highest AI applicability (study)",
+     "https://newschannel9.com/news/nation-world/interpreter-historian-top-list-of-40-jobs-with-high-ai-overlap-microsoft-report",
+     "Sinclair/Newschannel 9, Aug 2025"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Specialise in the hard cases",
+     "Escalations, complaints, retention and anything involving vulnerable customers are where companies have pulled back from full automation."
+    ],
+    [
+     "Use the assistant, don't fight it",
+     "The best evidence shows AI suggestions make newer agents much faster; learning to use them well helps your numbers."
+    ],
+    [
+     "Learn the systems behind the bot",
+     "Roles that tune knowledge bases, review bot transcripts and handle bot hand-offs are growing out of the same teams."
+    ],
+    [
+     "Watch your employer's deflection rate",
+     "If the share of contacts handled by the bot keeps climbing, plan your move into a specialised or adjacent role early."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace customer service representatives?",
+     "It is already reducing headcount at some firms, and BLS projects a 5% decline to 2035. But no evidence shows companies running support without people: Klarna rehired humans and Gartner expects many firms to drop agent-less plans."
+    ],
+    [
+     "Which customer service tasks are most exposed?",
+     "High-volume, scripted chat and email questions such as order status, refunds and password resets."
+    ],
+    [
+     "Which tasks are safest?",
+     "Complex complaints, emotionally charged calls, retention and situations needing discretion or exceptions to policy."
+    ],
+    [
+     "Did Salesforce really cut 4,000 support jobs because of AI?",
+     "Its CEO said so: he described cutting support from about 9,000 to about 5,000 people as AI agents took half the calls. That is the company's own claim."
+    ],
+    [
+     "Does AI make agents better or worse?",
+     "In a large study, AI suggestions raised productivity 14% on average and 34% for novices, with customer sentiment improving."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Customer service representatives",
+     "https://www.bls.gov/ooh/office-and-administrative-support/customer-service-representatives.htm"
+    ],
+    [
+     "NBER/QJE: Generative AI at Work",
+     "https://www.nber.org/papers/w31161"
+    ],
+    [
+     "KTVU: Salesforce cut 4,000 jobs due to AI, Benioff says",
+     "https://www.ktvu.com/news/salesforce-ai-layoffs-marc-benioff"
+    ],
+    [
+     "Entrepreneur: Klarna hiring human agents again",
+     "https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396"
+    ],
+    [
+     "Gartner press release (Jun 2025)",
+     "https://www.gartner.com/en/newsroom/press-releases/2025-06-10-gartner-predicts-50-percent-of-organizations-will-abandon-plans-to-reduce-customer-service-workforce-due-to-ai"
+    ],
+    [
+     "Anthropic Economic Index, Mar 2026",
+     "https://www.anthropic.com/research/economic-index-march-2026-report"
+    ],
+    [
+     "Microsoft: Working with AI (arXiv)",
+     "https://arxiv.org/abs/2507.07935"
+    ]
+   ]
+  },
+  {
+   "slug": "software-developers",
+   "occupation": "Software developers",
+   "title": "Will AI replace software developers? The evidence",
+   "desc": "Graded evidence on AI coding: Google's 75% claim, METR's productivity trials, entry-level hiring data, layoffs, and BLS's +10% outlook.",
+   "bls": {
+    "employment": "1,905,400 software developers, QA analysts and testers (2025)",
+    "outlook": "+10%, 2025-35. BLS cites continued expansion of software development for artificial intelligence (AI) among drivers of demand; the page does not predict AI displacing developers.",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "AI now writes a large share of new code at some big companies, and coding is the single biggest use of AI chat tools. Measured productivity gains for experienced developers are smaller and less certain than the claims, and the clearest job effect so far is fewer openings for young developers rather than mass layoffs of experienced ones.",
+   "tasks": [
+    {
+     "task": "Writing new code",
+     "status": "deployed",
+     "evidence": "Google CEO Sundar Pichai said in Apr 2026 that AI generates three-quarters of the new code Google writes, up from 25% in 2024, with engineers supervising AI agents.",
+     "url": "https://www.semafor.com/article/04/24/2026/google-ceo-says-75-of-companys-new-code-is-ai-generated",
+     "label": "Semafor, Apr 2026"
+    },
+    {
+     "task": "Delegating multi-step coding to agents",
+     "status": "deployed",
+     "evidence": "Computer and math tasks were 35% of Claude.ai conversations in Feb 2026, and coding work is shifting to agentic API use, which Anthropic says 'may signal more imminent transformation' of these jobs.",
+     "url": "https://www.anthropic.com/research/economic-index-march-2026-report",
+     "label": "Anthropic Economic Index, Mar 2026"
+    },
+    {
+     "task": "Fixing issues in large, familiar codebases",
+     "status": "demonstrated",
+     "evidence": "METR's randomized trial found experienced developers took 19% longer with early-2025 AI tools; its Feb 2026 follow-up estimated a 4% speedup for new recruits (range -15% to +9%) and called the data unreliable.",
+     "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+     "label": "METR, Feb 2026"
+    },
+    {
+     "task": "Large code migrations",
+     "status": "demonstrated",
+     "evidence": "Pichai said one complex code migration took about one-sixth of the time it would have a year earlier (company claim, Apr 2026).",
+     "url": "https://www.semafor.com/article/04/24/2026/google-ceo-says-75-of-companys-new-code-is-ai-generated",
+     "label": "Semafor, Apr 2026"
+    },
+    {
+     "task": "Deciding what to build and owning ambiguous requirements",
+     "status": "not yet",
+     "evidence": "Benchmarks like GDPval give models clear prompts and reference files; OpenAI notes real tasks are often ambiguous and its test does not capture building context or iteration.",
+     "url": "https://openai.com/index/gdpval/",
+     "label": "OpenAI GDPval, Sep 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2026-02-26",
+     "Block cuts about 4,000 of 10,000+ staff (40%); Jack Dorsey wrote 'Intelligence tools have changed what it means to build and run a company' (company says AI; roles cut not specified)",
+     "https://sfstandard.com/2026/02/26/block-lays-off-staff/",
+     "SF Standard, Feb 2026"
+    ],
+    [
+     "2026-08-12",
+     "Stanford/ADP: employment of 22-25-year-olds in AI-exposed occupations is 19% below trend, mainly through reduced hiring; the pattern holds excluding tech firms (study)",
+     "https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/",
+     "Stanford Digital Economy Lab, Aug 2026"
+    ],
+    [
+     "2026-07-11",
+     "Indeed: US software development postings up almost 15% since Claude Code launched but still about 27.5% below pre-pandemic levels (study)",
+     "https://officechai.com/ai/us-software-job-postings-are-up-15-since-launch-of-claude-code-while-overall-job-postings-are-down-7-indeed-data/",
+     "OfficeChai on Indeed Hiring Lab, Jul 2026"
+    ],
+    [
+     "2026-10-26",
+     "Microsoft offers voluntary buyouts to about 60,000 employees, framed by press as an AI-era overhaul; memo excerpts do not mention AI (reported as AI)",
+     "https://techcrunch.com/2026/10/26/microsoft-offers-buyouts-to-around-60000-employees-reports-say/",
+     "TechCrunch, Oct 2026"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Get good at directing and reviewing agents",
+     "Writing specs, breaking work into tasks and reviewing AI-written code is becoming the core skill at companies where most new code is AI-generated."
+    ],
+    [
+     "Own the parts benchmarks skip",
+     "Requirements, architecture, security, production incidents and trade-off decisions are where ambiguity lives and tools are weakest."
+    ],
+    [
+     "Measure your own speedup",
+     "METR found developers believed AI sped them up even when it slowed them down; time real tasks with and without tools."
+    ],
+    [
+     "Watch junior hiring, not headlines",
+     "The clearest signal so far is fewer entry-level hires; early-career developers should build visible, shipped work."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace software developers?",
+     "Not on current evidence. BLS projects 10% growth to 2035, and Indeed postings rose in 2025-26 though they remain well below pre-pandemic levels. AI is changing the work rather than removing the role."
+    ],
+    [
+     "Is it true AI writes most code at Google?",
+     "Google's CEO said so in Apr 2026 (75% of new code). That is a company claim; how much human review that code gets was not detailed."
+    ],
+    [
+     "Does AI actually make developers faster?",
+     "Unclear. A 2025 randomized trial found experienced developers 19% slower; a 2026 follow-up suggested modest speedups but METR called its own data unreliable."
+    ],
+    [
+     "Are junior developers hit hardest?",
+     "Stanford's payroll study finds young workers in AI-exposed jobs 19% below trend, mainly through fewer hires. The authors call this descriptive, not proof that AI caused it."
+    ],
+    [
+     "Which developer tasks are safest?",
+     "Defining requirements, system design, security and incident response, and accountability for what ships."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Software developers, QA analysts and testers",
+     "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm"
+    ],
+    [
+     "METR: early-2025 developer RCT (Jul 2025)",
+     "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
+    ],
+    [
+     "METR: uplift update (Feb 2026)",
+     "https://metr.org/blog/2026-02-24-uplift-update/"
+    ],
+    [
+     "Semafor: Google says 75% of new code AI-generated",
+     "https://www.semafor.com/article/04/24/2026/google-ceo-says-75-of-companys-new-code-is-ai-generated"
+    ],
+    [
+     "Anthropic Economic Index, Mar 2026",
+     "https://www.anthropic.com/research/economic-index-march-2026-report"
+    ],
+    [
+     "Stanford: Canaries in the Coal Mine",
+     "https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/"
+    ],
+    [
+     "OfficeChai: Indeed software postings",
+     "https://officechai.com/ai/us-software-job-postings-are-up-15-since-launch-of-claude-code-while-overall-job-postings-are-down-7-indeed-data/"
+    ],
+    [
+     "SF Standard: Block layoffs",
+     "https://sfstandard.com/2026/02/26/block-lays-off-staff/"
+    ],
+    [
+     "TechCrunch: Microsoft buyouts",
+     "https://techcrunch.com/2026/10/26/microsoft-offers-buyouts-to-around-60000-employees-reports-say/"
+    ]
+   ]
+  },
+  {
+   "slug": "translators-interpreters",
+   "occupation": "Interpreters and translators",
+   "title": "Will AI replace translators? What the evidence shows",
+   "desc": "Dated evidence on machine translation and AI: Duolingo, the Oxford employment study, medical translation accuracy, surveys and BLS outlook.",
+   "bls": {
+    "employment": "73,900 (2025)",
+    "outlook": "+2%, 2025-35. BLS says computer tools including AI are changing translators' work, but that many of these jobs cannot be entirely automated because computers cannot yet produce comparable work.",
+    "url": "https://www.bls.gov/ooh/media-and-communication/interpreters-and-translators.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Machine translation is good enough that companies use it for routine content and freelance translators report lost work and income. For high-stakes text and live interpreting, studies still find errors that need professional review, and BLS projects small growth rather than decline.",
+   "tasks": [
+    {
+     "task": "Translating routine product and app content",
+     "status": "deployed",
+     "evidence": "Duolingo cut about 10% of its contractors in Jan 2024 as it used more AI to create content, saying humans still review AI output.",
+     "url": "https://semafor.com/article/01/09/2024/duolingo-cuts-contractors-as-it-further-embraces-ai",
+     "label": "Semafor, Jan 2024"
+    },
+    {
+     "task": "Marketing and corporate translation",
+     "status": "deployed",
+     "evidence": "Klarna reported cutting spending on external translation and other agencies, part of a $4 million run-rate saving from generative AI (May 2024).",
+     "url": "https://www.marketingdive.com/news/klarna-gen-ai-openai-cut-marketing-spend-efficiency/717332/",
+     "label": "Marketing Dive, May 2024"
+    },
+    {
+     "task": "Translating medical instructions",
+     "status": "demonstrated",
+     "evidence": "UCSF researchers found GPT-4 translated ER discharge instructions with 97% sentence accuracy in Spanish but 89% in Russian, where 56% of instruction sets had an error; they advise professional review for high-stakes content.",
+     "url": "https://qualitysafety.bmj.com/content/35/3/150",
+     "label": "BMJ Quality & Safety, 2026"
+    },
+    {
+     "task": "Live interpreting in courts, hospitals and negotiations",
+     "status": "not yet",
+     "evidence": "We found no rigorous study showing AI interpreting is reliable in these settings; BLS says many interpreter and translator jobs cannot yet be entirely automated.",
+     "url": "https://www.bls.gov/ooh/media-and-communication/interpreters-and-translators.htm",
+     "label": "BLS OOH, 2025-35 projections"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-03-22",
+     "Oxford study: each 1-point rise in machine-translation use is linked to ~0.7 points slower translator employment growth, roughly 28,000 positions not created in 2010-2023 (study)",
+     "https://cepr.org/voxeu/columns/lost-translation-ais-impact-translators-and-foreign-language-skills",
+     "CEPR VoxEU, Mar 2025"
+    ],
+    [
+     "2024-04-12",
+     "Society of Authors survey of 787 members: over a third of translators had lost work to generative AI and about 40% said it reduced their income (study)",
+     "https://thebookseller.com/news/a-third-of-translators-report-losing-work-to-generative-ai-systems-soa-survey-reveals",
+     "The Bookseller, Apr 2024"
+    ],
+    [
+     "2024-01-09",
+     "Duolingo cuts about 10% of contractors as it uses more AI; it said calling AI the sole reason would be an 'oversimplification' (company says AI, in part)",
+     "https://semafor.com/article/01/09/2024/duolingo-cuts-contractors-as-it-further-embraces-ai",
+     "Semafor, Jan 2024"
+    ],
+    [
+     "2025-07",
+     "Microsoft's study of 200,000 Copilot conversations puts interpreters and translators at the top of its AI-applicability list, with 98% of their activities overlapping AI tasks (study)",
+     "https://newschannel9.com/news/nation-world/interpreter-historian-top-list-of-40-jobs-with-high-ai-overlap-microsoft-report",
+     "Sinclair/Newschannel 9, Aug 2025"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Move to high-stakes specialisms",
+     "Legal, medical, certified and regulated translation still requires professional review, and errors carry liability."
+    ],
+    [
+     "Offer post-editing and quality review",
+     "Much routine work now starts as machine output; translators who can review and certify it quickly stay in the workflow."
+    ],
+    [
+     "Build interpreting and cultural skills",
+     "Live, in-person interpreting and transcreation for marketing rely on context machines handle poorly."
+    ],
+    [
+     "Track rates, not just volume",
+     "Freelancers report income falling before work disappears; watch per-word rates and client mix closely."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace translators?",
+     "It is already reducing demand for some routine translation, and research links machine translation to slower translator job growth. BLS still projects 2% growth to 2035 and says many jobs cannot be fully automated."
+    ],
+    [
+     "Is AI translation accurate enough for medical use?",
+     "For common languages like Spanish it is often accurate at the sentence level, but a 2026 study found errors in over half of Russian instruction sets and recommends professional review for high-stakes content."
+    ],
+    [
+     "Which translation tasks are safest?",
+     "Live interpreting in legal and medical settings, certified translation, and creative or cultural adaptation."
+    ],
+    [
+     "Have translators actually lost work to AI?",
+     "Over a third of translators in a 2024 UK Society of Authors survey said so, and about 40% reported lower income."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Interpreters and translators",
+     "https://www.bls.gov/ooh/media-and-communication/interpreters-and-translators.htm"
+    ],
+    [
+     "CEPR VoxEU: Lost in translation (Frey & Llanos-Paredes)",
+     "https://cepr.org/voxeu/columns/lost-translation-ais-impact-translators-and-foreign-language-skills"
+    ],
+    [
+     "BMJ Quality & Safety: machine translation of discharge instructions",
+     "https://qualitysafety.bmj.com/content/35/3/150"
+    ],
+    [
+     "Semafor: Duolingo contractor cuts",
+     "https://semafor.com/article/01/09/2024/duolingo-cuts-contractors-as-it-further-embraces-ai"
+    ],
+    [
+     "The Bookseller: SoA translator survey",
+     "https://thebookseller.com/news/a-third-of-translators-report-losing-work-to-generative-ai-systems-soa-survey-reveals"
+    ],
+    [
+     "Marketing Dive: Klarna generative AI savings",
+     "https://www.marketingdive.com/news/klarna-gen-ai-openai-cut-marketing-spend-efficiency/717332/"
+    ],
+    [
+     "Microsoft: Working with AI (arXiv)",
+     "https://arxiv.org/abs/2507.07935"
+    ]
+   ]
+  },
+  {
+   "slug": "writers-editors",
+   "occupation": "Writers, copywriters and editors",
+   "title": "Will AI replace writers and editors? The evidence",
+   "desc": "Graded evidence on AI writing: automated news, CNET's errors, freelance market studies, newsroom cuts and BLS's outlook for writers and editors.",
+   "bls": {
+    "employment": "Writers and authors: 140,300; editors: 105,000 (2025)",
+    "outlook": "Writers and authors 0% (-500 jobs); editors -1% (-1,100 jobs), 2025-35. BLS: 'Increasing use of artificial intelligence (AI) for writing is projected to dampen demand for these workers.' The editors page does not mention AI.",
+    "url": "https://www.bls.gov/ooh/media-and-communication/writers-and-authors.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "AI can draft routine and formulaic copy and is heavily used for writing and proofreading, and freelance markets saw fewer writing jobs after ChatGPT. Unsupervised AI articles have needed many corrections, and original reporting, interviews and editorial judgment still depend on people; BLS expects AI to dampen demand rather than eliminate the jobs.",
+   "tasks": [
+    {
+     "task": "Formulaic, data-driven stories",
+     "status": "deployed",
+     "evidence": "AP has produced about 3,000 automated earnings stories a quarter, ten times what staff wrote before, and said in Jan 2015 the automation had not cost anyone a job.",
+     "url": "https://poynter.org/?p=315931",
+     "label": "Poynter, Jan 2015"
+    },
+    {
+     "task": "Proofreading, copy editing and drafting",
+     "status": "deployed",
+     "evidence": "Microsoft's analysis of 200,000 Copilot conversations ranked writers and authors, technical writers, and proofreaders among the occupations with the highest AI applicability (Jul 2025).",
+     "url": "https://newschannel9.com/news/nation-world/interpreter-historian-top-list-of-40-jobs-with-high-ai-overlap-microsoft-report",
+     "label": "Sinclair/Newschannel 9, Aug 2025"
+    },
+    {
+     "task": "Publishing articles with light human oversight",
+     "status": "demonstrated",
+     "evidence": "CNET found 41 of the 77 AI-written stories it published needed corrections (Jan 2023).",
+     "url": "https://talkingbiznews.com/media-news/cnet-found-errors-in-more-than-half-of-its-ai-stories/",
+     "label": "Talking Biz News, Jan 2023"
+    },
+    {
+     "task": "Professional editing and reporting deliverables",
+     "status": "demonstrated",
+     "evidence": "Editors and news analysts, reporters and journalists were among GDPval's 44 occupations; the best model matched or beat experts on just under half of all tasks (Sep 2025).",
+     "url": "https://openai.com/index/gdpval/",
+     "label": "OpenAI GDPval, Sep 2025"
+    },
+    {
+     "task": "Original reporting, interviews and editorial judgment",
+     "status": "not yet",
+     "evidence": "GDPval's tasks supplied prompts and reference files; OpenAI says it does not capture gathering context or iteration, which is the core of reporting.",
+     "url": "https://openai.com/index/gdpval/",
+     "label": "OpenAI GDPval, Sep 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025",
+     "Upwork study (Management Science): job posts for automation-prone writing and coding work fell 21% within eight months of ChatGPT relative to manual-intensive jobs (study)",
+     "https://www.diw.de/de/diw_01.c.906828.de/publikationen/externe_referierte_aufsaetze/2025_0010/who_is_ai_replacing__the_impact_of_generative_ai_on_online_freelancing_platforms.html",
+     "Management Science, 2025"
+    ],
+    [
+     "2023-08-24",
+     "WashU/NYU study: after ChatGPT, freelance proofreading and copy-editing jobs fell 2% and monthly earnings 5.2% on Upwork (study)",
+     "https://olin.washu.edu/about/news-and-media/news/2023/08/study-ai-tools-cause-a-decline-in-freelance-work-and-incomeat-least-in-the-short-run.php",
+     "WashU Olin, Aug 2023"
+    ],
+    [
+     "2025-05-29",
+     "Business Insider cuts 21% of staff; CEO cited 'extreme traffic drops', with Reuters linking falling traffic to AI summaries and noting faster AI adoption (reported as AI)",
+     "https://finance.yahoo.com/news/business-insider-cuts-21-workforce-153126703.html",
+     "Reuters via Yahoo Finance, May 2025"
+    ],
+    [
+     "2026-10-23",
+     "Pantheon Macroeconomics lists advertising among sectors slowly losing jobs to AI (study)",
+     "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk",
+     "Fortune, Oct 2026"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Do what AI can't source",
+     "Interviews, on-the-ground reporting, proprietary data and subject expertise give your work material a model doesn't have."
+    ],
+    [
+     "Become the editor of AI drafts",
+     "CNET's corrections show the need for fact-checking and editing; position yourself as the person who makes AI drafts publishable."
+    ],
+    [
+     "Move away from commodity copy",
+     "Generic SEO and product copy is where freelance demand fell first; specialise in a field or format clients value."
+    ],
+    [
+     "Watch traffic, not just tools",
+     "Some newsroom cuts come from AI summaries reducing site visits, not AI writing; diversify where your work reaches readers."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace writers?",
+     "BLS projects writer employment to be flat (0%) to 2035, with AI dampening demand. Freelance studies show fewer writing gigs after ChatGPT, but no evidence that AI can replace reporting or expert writing."
+    ],
+    [
+     "Will AI replace copywriters?",
+     "Routine copy is the most exposed: freelance writing job posts fell sharply after ChatGPT. Brand strategy and specialised copy are less affected."
+    ],
+    [
+     "Will AI replace editors?",
+     "BLS projects a 1% decline for editors and does not attribute it to AI. AI is widely used for proofreading, but publishing AI text without careful editing has led to many corrections."
+    ],
+    [
+     "Which writing tasks are safest?",
+     "Original reporting, interviews, investigative and expert work, and editorial judgment about what to publish."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Writers and authors",
+     "https://www.bls.gov/ooh/media-and-communication/writers-and-authors.htm"
+    ],
+    [
+     "BLS Occupational Outlook Handbook: Editors",
+     "https://www.bls.gov/ooh/media-and-communication/editors.htm"
+    ],
+    [
+     "Poynter: AP automated earnings stories (2015)",
+     "https://poynter.org/?p=315931"
+    ],
+    [
+     "Talking Biz News: CNET AI story errors",
+     "https://talkingbiznews.com/media-news/cnet-found-errors-in-more-than-half-of-its-ai-stories/"
+    ],
+    [
+     "DIW: Who is AI replacing? (Management Science)",
+     "https://www.diw.de/de/diw_01.c.906828.de/publikationen/externe_referierte_aufsaetze/2025_0010/who_is_ai_replacing__the_impact_of_generative_ai_on_online_freelancing_platforms.html"
+    ],
+    [
+     "WashU Olin: freelance work study",
+     "https://olin.washu.edu/about/news-and-media/news/2023/08/study-ai-tools-cause-a-decline-in-freelance-work-and-incomeat-least-in-the-short-run.php"
+    ],
+    [
+     "Yahoo Finance/Reuters: Business Insider cuts",
+     "https://finance.yahoo.com/news/business-insider-cuts-21-workforce-153126703.html"
+    ],
+    [
+     "OpenAI: GDPval",
+     "https://openai.com/index/gdpval/"
+    ],
+    [
+     "Microsoft: Working with AI (arXiv)",
+     "https://arxiv.org/abs/2507.07935"
+    ]
+   ]
+  },
+  {
+   "slug": "graphic-designers",
+   "occupation": "Graphic designers",
+   "title": "Will AI replace graphic designers? The evidence",
+   "desc": "Evidence on image-generation AI in design: Klarna, Coca-Cola, Adobe Firefly, freelance job-post studies and BLS's -2% outlook.",
+   "bls": {
+    "employment": "253,100 (2025)",
+    "outlook": "-2% (about -4,200 jobs), 2025-35. BLS: 'Automated design tools, such as artificial intelligence (AI), are projected to make graphic designers more productive', which may also reduce the need for these workers.",
+    "url": "https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Companies already use image generators to produce marketing images faster and cheaper, and freelance demand for image work dropped after these tools launched. Evidence that AI can run brand identity, client direction and finished campaigns without designers is thin, and fully AI-made ads have drawn public backlash.",
+   "tasks": [
+    {
+     "task": "Producing marketing images",
+     "status": "deployed",
+     "evidence": "Klarna said it made more than 1,000 images in Q1 2024 with Midjourney, DALL-E and Firefly, cutting image development from six weeks to seven days.",
+     "url": "https://www.marketingdive.com/news/klarna-gen-ai-openai-cut-marketing-spend-efficiency/717332/",
+     "label": "Marketing Dive, May 2024"
+    },
+    {
+     "task": "Generating and editing images inside design software",
+     "status": "deployed",
+     "evidence": "Adobe reported Firefly generations topped 16 billion by Dec 2024.",
+     "url": "https://www.constellationr.com/insights/news/adobe-delivers-strong-q4-record-firefly-generations-light-outlook",
+     "label": "Constellation Research, Dec 2024"
+    },
+    {
+     "task": "Making a full ad with AI",
+     "status": "demonstrated",
+     "evidence": "Coca-Cola's Dec 2024 holiday ad was made with AI by three AI studios with no human actors; it drew criticism as 'lazy' and 'fake', and the company described it as a collaboration of human storytellers and AI.",
+     "url": "https://www.eweek.com/news/coca-cola-ai-holiday-ad-backlash/",
+     "label": "eWeek, Dec 2024"
+    },
+    {
+     "task": "Brand identity, client briefs and design direction",
+     "status": "not yet",
+     "evidence": "We found no credible study of AI handling brand strategy and client revision cycles end to end; BLS frames AI as making designers more productive rather than doing the full job.",
+     "url": "https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm",
+     "label": "BLS OOH, 2025-35 projections"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025",
+     "Upwork study (Management Science): job posts for image-creation work fell 17% after image-generating AI was introduced (study)",
+     "https://www.diw.de/de/diw_01.c.906828.de/publikationen/externe_referierte_aufsaetze/2025_0010/who_is_ai_replacing__the_impact_of_generative_ai_on_online_freelancing_platforms.html",
+     "Management Science, 2025"
+    ],
+    [
+     "2023-08-24",
+     "WashU/NYU study: after DALL-E and Midjourney, image-related freelancers saw monthly jobs fall 3.7% and earnings 9.4% (study)",
+     "https://olin.washu.edu/about/news-and-media/news/2023/08/study-ai-tools-cause-a-decline-in-freelance-work-and-incomeat-least-in-the-short-run.php",
+     "WashU Olin, Aug 2023"
+    ],
+    [
+     "2024-05-29",
+     "Klarna reports $6 million in image production savings and cuts in external agency spend from generative AI, and says AI removed its need for stock imagery (company says AI)",
+     "https://www.marketingdive.com/news/klarna-gen-ai-openai-cut-marketing-spend-efficiency/717332/",
+     "Marketing Dive, May 2024"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Sell direction, not pixels",
+     "Concept, brand systems and art direction are where clients still need a person; single images are what AI made cheap."
+    ],
+    [
+     "Learn AI tools inside your workflow",
+     "Generative fill, variations and quick mock-ups are now standard in design software; use them to take on more work in less time."
+    ],
+    [
+     "Build in rights and provenance",
+     "Brands face backlash and legal questions over AI imagery; knowing licensing and disclosure is a selling point."
+    ],
+    [
+     "Watch freelance marketplaces",
+     "Image job posts fell first on freelance platforms; if that is your main channel, diversify toward direct clients and in-house roles."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace graphic designers?",
+     "BLS projects a 2% decline to 2035 and says AI will make designers more productive while reducing the need for some. Freelance image work has already fallen, but there is little evidence AI can run brand and design direction."
+    ],
+    [
+     "Which design tasks are most exposed?",
+     "Stock-style images, simple illustrations, social graphics and variations, which companies like Klarna now generate in-house."
+    ],
+    [
+     "Which design tasks are safest?",
+     "Brand identity, art direction, interpreting client needs, and design systems that must stay consistent."
+    ],
+    [
+     "Do audiences accept AI-made design?",
+     "Not always: Coca-Cola's AI holiday ad drew wide criticism in 2024."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Graphic designers",
+     "https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm"
+    ],
+    [
+     "DIW: Who is AI replacing? (Management Science)",
+     "https://www.diw.de/de/diw_01.c.906828.de/publikationen/externe_referierte_aufsaetze/2025_0010/who_is_ai_replacing__the_impact_of_generative_ai_on_online_freelancing_platforms.html"
+    ],
+    [
+     "WashU Olin: freelance work study",
+     "https://olin.washu.edu/about/news-and-media/news/2023/08/study-ai-tools-cause-a-decline-in-freelance-work-and-incomeat-least-in-the-short-run.php"
+    ],
+    [
+     "Marketing Dive: Klarna generative AI savings",
+     "https://www.marketingdive.com/news/klarna-gen-ai-openai-cut-marketing-spend-efficiency/717332/"
+    ],
+    [
+     "eWeek: Coca-Cola AI ad backlash",
+     "https://www.eweek.com/news/coca-cola-ai-holiday-ad-backlash/"
+    ],
+    [
+     "Constellation Research: Adobe Firefly generations",
+     "https://www.constellationr.com/insights/news/adobe-delivers-strong-q4-record-firefly-generations-light-outlook"
+    ]
+   ]
+  },
+  {
+   "slug": "radiologists",
+   "occupation": "Radiologists",
+   "title": "Will AI replace radiologists? What the evidence shows",
+   "desc": "Graded evidence on AI in radiology: mammography trials, FDA-cleared tools, AI report drafting, autonomous X-ray reading and radiologist demand.",
+   "bls": {
+    "employment": "28,700 radiologists (2025), within 862,800 physicians and surgeons",
+    "outlook": "+3% (+1,000 jobs) for radiologists, 2025-35; physicians and surgeons +4%. The BLS page does not mention AI.",
+    "url": "https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "AI is widely deployed in radiology as a second reader and triage tool, and large trials show it can find more breast cancers while cutting reading workload by about 44%. In every major deployment radiologists still read and sign off, and demand for radiologists has grown since AI pioneers predicted their obsolescence in 2016.",
+   "tasks": [
+    {
+     "task": "Flagging suspicious findings on scans",
+     "status": "deployed",
+     "evidence": "1,094 of the 1,430 AI medical devices the FDA authorized through Dec 2025, about 76.5%, are for radiology.",
+     "url": "https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15830219/radiology-dominates-thirty-years-of-fda-ai-device-approvals",
+     "label": "AuntMinnie, Jul 2026"
+    },
+    {
+     "task": "Breast cancer screening support",
+     "status": "deployed",
+     "evidence": "In Germany's screening program (460,000+ women, 12 sites), radiologists using AI detected 17.6% more cancers without raising recall rates.",
+     "url": "https://pharmacytimes.com/view/ai-improves-breast-cancer-screening-and-detection-rates-in-real-world-study",
+     "label": "Nature Medicine via Pharmacy Times, Jan 2025"
+    },
+    {
+     "task": "Triaging screens to cut reading workload",
+     "status": "demonstrated",
+     "evidence": "Sweden's MASAI randomized trial (106,000 women) cut radiologists' screen-reading workload 44% and interval cancers 12%; radiologists still read every mammogram.",
+     "url": "https://www.lunduniversity.lu.se/article/ai-support-breast-cancer-screening-fewer-missed-cancer-cases",
+     "label": "The Lancet via Lund University, Jan 2026"
+    },
+    {
+     "task": "Drafting reports",
+     "status": "demonstrated",
+     "evidence": "At Northwestern Medicine, AI-drafted X-ray reports cut documentation time about 15.5%, with no accuracy difference on 800 peer-reviewed exams; radiologists review and finalise each draft (Jun 2025).",
+     "url": "https://radiologybusiness.com/topics/artificial-intelligence/real-world-use-generative-ai-boosts-radiologist-productivity-40",
+     "label": "Radiology Business, Jun 2025"
+    },
+    {
+     "task": "Reporting normal chest X-rays with no radiologist",
+     "status": "demonstrated",
+     "evidence": "Oxipit's ChestLink got a European CE mark in Mar 2022 to report likely-normal chest X-rays autonomously, after vendor-reported pilots of 500,000 images; the report did not mention US FDA clearance.",
+     "url": "https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15630635/oxipit-secures-ce-mark-for-autonomous-imaging-ai",
+     "label": "AuntMinnie, Mar 2022"
+    },
+    {
+     "task": "Final diagnosis, consultation and procedures",
+     "status": "not yet",
+     "evidence": "Mayo Clinic's radiologist numbers grew 55% after Geoffrey Hinton's 2016 prediction, while it adopted more than 250 AI models (NYT, May 2025).",
+     "url": "https://techcrunch.com/2025/05/14/radiologists-arent-going-anywhere/",
+     "label": "TechCrunch, May 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-05-14",
+     "Mayo Clinic radiologist headcount up 55% since 2016; AAMC projects a shortage of up to 42,000 radiologists and other specialists by 2033 (reported)",
+     "https://techcrunch.com/2025/05/14/radiologists-arent-going-anywhere/",
+     "TechCrunch, May 2025"
+    ],
+    [
+     "2026-10-13",
+     "Neiman Health Policy Institute projects US imaging use to grow 17-27% by 2055 and warns against downplaying AI's challenges in imaging (study)",
+     "https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15837225/hpi-evidence-contradicts-broad-claims-about-ai-radiology-workforce",
+     "AuntMinnie, Oct 2026"
+    ],
+    [
+     "2026",
+     "BLS projects radiologist employment to grow 3% in 2025-35 (study)",
+     "https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm",
+     "BLS OOH, 2025-35 projections"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Learn to work with AI triage",
+     "Screening programs are moving to AI-assisted single reading; understanding how the tools fail is part of safe practice."
+    ],
+    [
+     "Lean into what AI can't do",
+     "Interventional procedures, multidisciplinary consults and talking to patients and referrers rely on judgment and presence."
+    ],
+    [
+     "Get involved in AI governance",
+     "Mayo built a 40-person AI team inside radiology; hospitals need radiologists who can evaluate and monitor models."
+    ],
+    [
+     "Watch autonomous-reading approvals",
+     "The signal to track is regulators clearing AI to sign off normal studies without a radiologist, as Europe did for chest X-rays in 2022."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace radiologists?",
+     "Not on current evidence. AI is widely used but alongside radiologists, demand for imaging is rising, and BLS projects 3% growth to 2035."
+    ],
+    [
+     "What does AI do in radiology today?",
+     "It flags findings, triages screening mammograms, measures structures and drafts reports, with a radiologist reviewing and signing off."
+    ],
+    [
+     "Does AI make breast screening better?",
+     "Large studies say yes: 17.6% higher detection in Germany's real-world rollout and 12% fewer interval cancers in Sweden's MASAI trial, with a 44% lower reading workload."
+    ],
+    [
+     "Can AI read scans with no radiologist?",
+     "Only in narrow cases: one European-certified tool (CE mark, 2022) reports likely-normal chest X-rays autonomously. We did not verify any US equivalent."
+    ],
+    [
+     "Was Geoffrey Hinton wrong about radiologists?",
+     "So far, yes: in 2016 he said it was 'completely obvious' AI would replace them, but radiologist numbers have grown since."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Physicians and surgeons (radiologists)",
+     "https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm"
+    ],
+    [
+     "AuntMinnie: radiology dominates FDA AI approvals",
+     "https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15830219/radiology-dominates-thirty-years-of-fda-ai-device-approvals"
+    ],
+    [
+     "Lund University: MASAI final results",
+     "https://www.lunduniversity.lu.se/article/ai-support-breast-cancer-screening-fewer-missed-cancer-cases"
+    ],
+    [
+     "Applied Radiology: MASAI interim results",
+     "https://appliedradiology.com/articles/masai-trial-demonstrates-ai-assisted-mammography-screening-increases-cancer-detection-decreases-radiologist-workload"
+    ],
+    [
+     "Pharmacy Times: PRAIM real-world study",
+     "https://pharmacytimes.com/view/ai-improves-breast-cancer-screening-and-detection-rates-in-real-world-study"
+    ],
+    [
+     "Radiology Business: Northwestern AI report drafting",
+     "https://radiologybusiness.com/topics/artificial-intelligence/real-world-use-generative-ai-boosts-radiologist-productivity-40"
+    ],
+    [
+     "AuntMinnie: Oxipit CE mark",
+     "https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15630635/oxipit-secures-ce-mark-for-autonomous-imaging-ai"
+    ],
+    [
+     "TechCrunch: radiologists aren't going anywhere",
+     "https://techcrunch.com/2025/05/14/radiologists-arent-going-anywhere/"
+    ],
+    [
+     "AuntMinnie: HPI on radiology workforce",
+     "https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15837225/hpi-evidence-contradicts-broad-claims-about-ai-radiology-workforce"
+    ]
+   ]
+  },
+  {
+   "slug": "truck-drivers",
+   "occupation": "Heavy and tractor-trailer truck drivers",
+   "title": "Will AI replace truck drivers? What the evidence shows",
+   "desc": "Dated evidence on driverless trucks: Aurora's Texas operations, miles driven, fleet targets, what still needs a human, and BLS's +4% outlook.",
+   "bls": {
+    "employment": "2,221,200 (2025)",
+    "outlook": "+4% (+83,800 jobs), 2025-35. The BLS page does not mention AI, automation or self-driving trucks.",
+    "url": "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Driverless trucks are now hauling paying freight on a few highway lanes in Texas and the Southwest, but the leading operator expects about 200 trucks by the end of 2026 against more than 2.2 million truck-driving jobs. Evidence for AI handling city driving, loading, inspections and roadside problems is thin, and BLS still projects driver employment to grow.",
+   "tasks": [
+    {
+     "task": "Highway driving between hubs",
+     "status": "demonstrated",
+     "evidence": "Aurora reported nearly 440,000 driverless miles through Jun 2026 with no collisions attributed to its system, and expects about 200 driverless trucks in operation by end-2026.",
+     "url": "https://www.marketbeat.com/instant-alerts/aurora-innovation-q2-earnings-call-highlights-2026-07-29/",
+     "label": "MarketBeat, Jul 2026"
+    },
+    {
+     "task": "Fueling and truck-stop navigation",
+     "status": "demonstrated",
+     "evidence": "Aurora said truck-stop fueling and way-station navigation were still supervised pilots in Jul 2026.",
+     "url": "https://www.marketbeat.com/instant-alerts/aurora-innovation-q2-earnings-call-highlights-2026-07-29/",
+     "label": "MarketBeat, Jul 2026"
+    },
+    {
+     "task": "Handling breakdowns and roadside recovery",
+     "status": "not yet",
+     "evidence": "Aurora put an observer back in the cab in May 2025 at PACCAR's request, to help with recovery after events like tire blowouts or bad weather; the observer does not drive.",
+     "url": "https://www.freightwaves.com/news/aurora-keeps-person-in-the-drivers-seat-for-driverless-hauls",
+     "label": "FreightWaves, May 2025"
+    },
+    {
+     "task": "City streets, local delivery, loading and securing cargo",
+     "status": "not yet",
+     "evidence": "Aurora's driverless routes are interstate lanes between Dallas-Fort Worth, Houston, El Paso and Phoenix (Oct 2025); we found no credible deployment of driverless trucks for local delivery or cargo handling.",
+     "url": "https://www.freightwaves.com/?p=567242",
+     "label": "FreightWaves, Oct 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-05-01",
+     "Aurora launches the first commercial driverless trucking service in the US, Dallas to Houston, for Uber Freight and Hirschbach (company milestone; no job cuts announced)",
+     "https://www.businesswire.com/news/home/20250501031863/en/Aurora-Begins-Commercial-Driverless-Trucking-in-Texas-Ushering-in-a-New-Era-of-Freight",
+     "Business Wire, May 2025"
+    ],
+    [
+     "2026",
+     "BLS projects heavy and tractor-trailer driver employment to grow 4% in 2025-35, without citing automation (study)",
+     "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
+     "BLS OOH, 2025-35 projections"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Watch which lanes go driverless",
+     "Early operations are long, predictable interstate runs in Sun Belt states; local, regional and specialised hauling are further off."
+    ],
+    [
+     "Build skills that driverless trucks lack",
+     "Hazmat, oversize loads, cargo securement, customer delivery and equipment troubleshooting all need a person today."
+    ],
+    [
+     "Look at the hub jobs",
+     "Driverless lanes still need people at terminals for first- and last-mile driving, inspections and recovery."
+    ],
+    [
+     "Track the fleet numbers",
+     "The useful signal is how many driverless trucks run without anyone on board, not announcements; about 200 are targeted for end-2026."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace truck drivers?",
+     "Not soon at scale. Driverless trucks run on a handful of Southwest highway lanes, with about 200 targeted by end-2026 against 2.2 million driving jobs, and BLS projects 4% growth."
+    ],
+    [
+     "Are driverless trucks on the road now?",
+     "Yes. Aurora began commercial driverless runs in Texas in May 2025 and reported nearly 440,000 driverless miles by Jun 2026."
+    ],
+    [
+     "Is there anyone in a 'driverless' truck?",
+     "On some trucks, yes: Aurora placed an observer in the cab at PACCAR's request in 2025. The observer does not drive."
+    ],
+    [
+     "Which trucking jobs are safest?",
+     "Local delivery, specialised and hazardous loads, and jobs involving loading, securing cargo and customer contact."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Heavy and tractor-trailer truck drivers",
+     "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm"
+    ],
+    [
+     "Business Wire: Aurora begins driverless trucking (May 2025)",
+     "https://www.businesswire.com/news/home/20250501031863/en/Aurora-Begins-Commercial-Driverless-Trucking-in-Texas-Ushering-in-a-New-Era-of-Freight"
+    ],
+    [
+     "FreightWaves: observer in driver's seat (May 2025)",
+     "https://www.freightwaves.com/news/aurora-keeps-person-in-the-drivers-seat-for-driverless-hauls"
+    ],
+    [
+     "FreightWaves: El Paso expansion (Oct 2025)",
+     "https://www.freightwaves.com/?p=567242"
+    ],
+    [
+     "MarketBeat: Aurora Q2 2026 call highlights",
+     "https://www.marketbeat.com/instant-alerts/aurora-innovation-q2-earnings-call-highlights-2026-07-29/"
+    ]
+   ]
+  },
+  {
+   "slug": "financial-analysts",
+   "occupation": "Financial analysts",
+   "title": "Will AI replace financial analysts? The evidence",
+   "desc": "Graded evidence on AI in finance: analyst benchmarks, Morgan Stanley's rollout, Goldman and JPMorgan headcount plans, and bank cuts tied to AI.",
+   "bls": {
+    "employment": "443,100 (2025)",
+    "outlook": "+7% (about +32,000 jobs), 2025-35. The BLS page does not mention AI.",
+    "url": "https://www.bls.gov/ooh/business-and-financial/financial-analysts.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "AI tools are in daily use at big banks for finding information and summarising, and the best agents answer about two-thirds of entry-level analyst questions with partial credit. Banks tying job cuts to AI mostly point at operations and back-office roles; we found no bank saying it cut financial analysts specifically, and BLS projects 7% growth.",
+   "tasks": [
+    {
+     "task": "Finding information and summarising client meetings",
+     "status": "deployed",
+     "evidence": "Over 98% of Morgan Stanley advisor teams use its internal AI assistant, and its Debrief tool drafts meeting notes that advisors review.",
+     "url": "https://openai.com/index/morgan-stanley/",
+     "label": "OpenAI case study (undated)"
+    },
+    {
+     "task": "Answering analyst questions from company filings",
+     "status": "demonstrated",
+     "evidence": "On Vals AI's Finance Agent v2 (927 questions pitched at a 2nd-3rd-year investment banking analyst), the best model scored 65.4% with partial credit and 50.9% under strict all-pass scoring (Oct 2026).",
+     "url": "https://vals.ai/benchmarks/fabv2",
+     "label": "Vals AI, Oct 2026"
+    },
+    {
+     "task": "Producing expert-quality analyst deliverables",
+     "status": "demonstrated",
+     "evidence": "Financial and investment analysts were among GDPval's 44 occupations; the best model matched or beat experts on just under half of all tasks (Sep 2025).",
+     "url": "https://openai.com/index/gdpval/",
+     "label": "OpenAI GDPval, Sep 2025"
+    },
+    {
+     "task": "Recommendations clients and bosses can rely on",
+     "status": "not yet",
+     "evidence": "Even the top agent fails about half of entry-level analyst questions under strict scoring, so its work still needs checking before anyone acts on it.",
+     "url": "https://vals.ai/benchmarks/fabv2",
+     "label": "Vals AI, Oct 2026"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2026-10-23",
+     "American Express to cut about 5% of ~77,000 staff; CFO said the aim is to 'automate and take advantage of AI'; roles not specified (company says AI)",
+     "https://www.ibtimes.com/american-express-becomes-latest-company-announce-massive-layoffs-over-ai-boom-3808922",
+     "International Business Times, Oct 2026"
+    ],
+    [
+     "2026-10-23",
+     "Barclays cutting about 5,000 jobs citing 'technology change efficiency driven by AI'; Standard Chartered plans to cut 15%+ of back-office staff by 2030 (company says AI)",
+     "https://www.boston25news.com/news/business/layoffs-linked/PMZHUQWOU44UHBEQLFBDTNCYSM/",
+     "AP via Boston 25, Oct 2026"
+    ],
+    [
+     "2025-10-14",
+     "Goldman Sachs memo: will 'constrain headcount growth' with a 'limited reduction in roles' as AI drives efficiency, while expecting higher year-end headcount (company says AI)",
+     "https://fortune.com/2025/10/14/goldman-sachs-layoffs-headcount-earnings-ai-efficiencies",
+     "Fortune, Oct 2025"
+    ],
+    [
+     "2025-05",
+     "JPMorgan's Marianne Lake: headcount expected to 'trend down by about 10%' over five years, with operations 'at the tip of the spear' on AI tools (company says AI)",
+     "https://www.efinancialcareers.com/news/ai-in-operations",
+     "eFinancialCareers, Aug 2026"
+    ],
+    [
+     "2025-01-09",
+     "Bloomberg Intelligence: bank tech chiefs expect a net 3% workforce cut over 3-5 years, up to 200,000 jobs, mostly back and middle office (study)",
+     "https://news.bloomberglaw.com/banking-law/wall-street-job-losses-may-top-200-000-as-ai-replaces-roles",
+     "Bloomberg Law, Jan 2025"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Use agents for the first pass",
+     "Let AI pull figures from filings and draft comps, then check every number; benchmarks show about half of answers fail strict scoring."
+    ],
+    [
+     "Own the judgment and the client",
+     "Recommendations, client relationships and explaining risk are where accountability sits, and none of the evidence shows AI taking these on."
+    ],
+    [
+     "Stay out of pure processing roles",
+     "Bank AI cuts so far target operations and back office; if your role is mostly reconciliation or reporting, build analysis skills."
+    ],
+    [
+     "Watch junior analyst intakes",
+     "Benchmarks are pitched at 2nd-3rd-year analyst work; changes to graduate classes will show first."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace financial analysts?",
+     "Not on current evidence. BLS projects 7% growth to 2035, and top AI agents still fail about half of entry-level analyst questions under strict scoring."
+    ],
+    [
+     "Are banks cutting jobs because of AI?",
+     "Several say so in their own words, including Barclays, Standard Chartered, AmEx's CFO, Goldman and JPMorgan, but the roles named are mostly operations and back office, not analysts."
+    ],
+    [
+     "What do analysts use AI for today?",
+     "Searching internal research and filings, summarising documents and meetings, and first drafts of analysis that a person checks."
+    ],
+    [
+     "Which analyst tasks are safest?",
+     "Forming and defending recommendations, client relationships and judgment calls where someone must be accountable."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Financial analysts",
+     "https://www.bls.gov/ooh/business-and-financial/financial-analysts.htm"
+    ],
+    [
+     "Vals AI: Finance Agent v2",
+     "https://vals.ai/benchmarks/fabv2"
+    ],
+    [
+     "OpenAI: Morgan Stanley case study",
+     "https://openai.com/index/morgan-stanley/"
+    ],
+    [
+     "OpenAI: GDPval",
+     "https://openai.com/index/gdpval/"
+    ],
+    [
+     "Fortune: Goldman Sachs OneGS 3.0 memo",
+     "https://fortune.com/2025/10/14/goldman-sachs-layoffs-headcount-earnings-ai-efficiencies"
+    ],
+    [
+     "eFinancialCareers: JPMorgan operations headcount",
+     "https://www.efinancialcareers.com/news/ai-in-operations"
+    ],
+    [
+     "Bloomberg Law: 200,000 bank jobs",
+     "https://news.bloomberglaw.com/banking-law/wall-street-job-losses-may-top-200-000-as-ai-replaces-roles"
+    ],
+    [
+     "IBTimes: American Express cuts",
+     "https://www.ibtimes.com/american-express-becomes-latest-company-announce-massive-layoffs-over-ai-boom-3808922"
+    ],
+    [
+     "AP via Boston 25: layoffs linked to AI",
+     "https://www.boston25news.com/news/business/layoffs-linked/PMZHUQWOU44UHBEQLFBDTNCYSM/"
+    ]
+   ]
+  }
+ ]
+}

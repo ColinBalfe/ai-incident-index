@@ -141,6 +141,7 @@ python3 build_press.py                                  # the embeddable level b
 node make_help_cards.mjs                                # share images for the help and learn pages (text-only template cards)
 python3 build_help.py                                   # 'What to do' pages (help/<slug>/) from research/help.json; drafts stay noindex and out of the sitemap until Colin sets approved: true and reviewed: <date>
 python3 build_learn.py                                  # Know What It Means (learn/<slug>/) from research/learn.json; same draft/approval rule as the help pages
+python3 build_families.py                               # checks/, jobs/, can-ai/, exposed/ (from data/victims.json, quality-gated), midterms-2026/; each family stays noindex until approved in research/approvals.json. New victims rows and incidents flow into exposed/ automatically
 python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml
 cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)
 cd build && python3 build_brief.py && cd ..                                  # the daily brief script (briefs/<date>.md) and the forecast ledger (research/forecast_log.jsonl)

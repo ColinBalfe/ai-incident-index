@@ -1,0 +1,152 @@
+{
+ "facts": [
+  [
+   "$137 million on 220 AI ads",
+   "The Wesleyan Media Project counted at least 220 political ads made or enhanced with AI by Oct 11, costing just under $137 million, against less than $50,000 of AI ad spending in the 2024 presidential election.",
+   "https://www.yahoo.com/news/politics/articles/deciding-fake-images-more-candidates-221040487.html",
+   "NBC News via Yahoo, Oct 23"
+  ],
+  [
+   "Only 27% disclosed AI",
+   "Of those 220 ads, only 27% told viewers AI was used. 81% were paid for by Republican candidates or groups and 12% by pro-Democratic sponsors.",
+   "https://www.yahoo.com/news/politics/articles/deciding-fake-images-more-candidates-221040487.html",
+   "NBC News via Yahoo, Oct 23"
+  ],
+  [
+   "More than 4 in 10 voters say an AI ad fooled them",
+   "In a Scripps News/Talker Research poll of 1,000 registered voters (Sept 30–Oct 1), more than four in ten said they had seen something in a political ad they thought was real and later learned was AI. Another 30% weren't sure. The headline says 43%.",
+   "https://www.wptv.com/politics/america-votes/scripps-news-poll-40-of-voters-say-theyve-been-fooled-by-ai-ads-this-campaign",
+   "Scripps News, Oct 14"
+  ],
+  [
+   "77% of Democrats and 79% of Republicans want rules",
+   "The same Scripps poll found more than three-quarters of voters in both parties want rules on the use of AI in politics.",
+   "https://www.wptv.com/politics/america-votes/scripps-news-poll-40-of-voters-say-theyve-been-fooled-by-ai-ads-this-campaign",
+   "Scripps News, Oct 14"
+  ],
+  [
+   "31 states have election-deepfake laws, but no federal law",
+   "NCSL's June 2026 count: 31 states regulate election deepfakes. 28 require a disclosure, and Maryland, Minnesota and Texas ban certain deepfakes even when labelled. Congress has set no federal standard.",
+   "https://www.fastcompany.com/91615997/states-laws-struggling-ai-election-deepfakes",
+   "The Conversation via Fast Company, Oct 3"
+  ],
+  [
+   "FBI: scammers use AI to impersonate candidates",
+   "An FBI public service announcement (Oct 15, 2026) warns that scammers use AI to generate 'highly realistic voices, images, and written messages' impersonating candidates, campaigns and government bodies, and push fake PACs, 'campaign investment pools' and texts falsely saying you are not registered.",
+   "https://www.ic3.gov/PSA/2026/PSA261015-3",
+   "FBI IC3, Oct 15"
+  ],
+  [
+   "FBI and CISA warn of AI-polished phishing",
+   "A joint FBI–CISA alert on Oct 16 told election officials, candidates and campaigns that AI is making phishing emails and texts look and sound more legitimate ahead of the midterms.",
+   "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",
+   "Reuters via The Star, Oct 16"
+  ],
+  [
+   "Foreign AI fakes are in play",
+   "Bloomberg reports that Russia's Matryoshka operation has pushed AI-faked celebrity videos attacking Democrats since early September. Separately, Graphika tied a deepfake smear of Texas Senate candidate James Talarico to Russia-aligned Storm-1516.",
+   "https://news.bgov.com/bloomberg-government-news/russia-is-using-an-army-of-bots-to-push-fake-us-election-videos",
+   "Bloomberg, Oct 16"
+  ]
+ ],
+ "laws": [
+  [
+   "AI-voice robocalls fall under federal robocall law",
+   "The FCC ruled (adopted Feb 2, released Feb 8, 2024) that AI-generated voices count as 'artificial' voices under the Telephone Consumer Protection Act, so such calls need the called person's prior express consent. FCC Chair Rosenworcel said state attorneys general 'can go after the bad actors behind these robocalls'.",
+   "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf",
+   "FCC Declaratory Ruling FCC 24-17"
+  ],
+  [
+   "Texas: no deceptive AI ads in the final 30 days",
+   "Texas's 2019 law bars AI deepfake political videos published within 30 days of an election with intent to influence it. Rep. Vikki Goodwin filed a criminal complaint under it against Lt. Gov. Dan Patrick's campaign in September.",
+   "https://www.fox4news.com/news/texas-lt-governor-dan-patrick-ai-attack-ad-criminal-complaint.amp",
+   "FOX 4, Sep 22"
+  ],
+  [
+   "Mississippi: criminal penalties for election deepfakes",
+   "Section 97-13-47 of the Mississippi Code carries up to 5 years in prison and/or fines up to $10,000 when a deepfake is meant to deter someone from voting. The attorney general used it to force down a Senate campaign's AI video on Oct 23.",
+   "https://www.wlbt.com/2026/10/23/attorney-general-asks-colom-remove-ai-video-says-it-appears-violate-state-law/",
+   "WLBT, Oct 23"
+  ],
+  [
+   "Colorado: label it or face civil penalties",
+   "Colorado's HB 24-1147 requires a clear disclosure on deepfakes of candidates, with exemptions for satire or parody. Its first complaint, over an AI video of state Sen. Cathy Kipp, is under investigation.",
+   "https://www.coloradopolitics.com/2026/10/13/colorado-election-office-investigates-deepfake-election-video/",
+   "Colorado Politics, Oct 13"
+  ],
+  [
+   "Maryland: a label doesn't make it legal",
+   "A Maryland law in effect since June 1, 2026 bans certain deceptive election deepfakes even if labelled, with fines up to $5,000 and up to five years in prison. In September a federal judge temporarily blocked Montana's deepfake law on First Amendment grounds.",
+   "https://cobbcountycourier.com/2026/09/as-ai-political-deepfakes-go-viral-lawmakers-struggle-to-keep-up-2-states-laws-show-limits-of-what-they-can-do/",
+   "The Conversation via Cobb Courier, Sep 30"
+  ]
+ ],
+ "check_steps": [
+  [
+   "Pause before you share",
+   "If a clip makes you angry or shocked, slow down. That is exactly when fakes spread fastest.",
+   "https://www.kuow.org/stories/deepfakes-want-to-sway-your-vote-here-s-how-to-spot-them"
+  ],
+  [
+   "Find where it first came from",
+   "Ask who posted it first and where. A brand-new or anonymous account is a warning sign; the account behind the Talarico deepfake was created only a month earlier.",
+   "https://api.politifact.com/article/2023/apr/19/how-to-detect-deepfake-videos-like-a-fact-checker/"
+  ],
+  [
+   "Reverse-search a screenshot",
+   "Take a screenshot of a key frame and upload it to Google Images or TinEye to find the original and see whether it was edited.",
+   "https://api.politifact.com/article/2023/apr/19/how-to-detect-deepfake-videos-like-a-fact-checker/"
+  ],
+  [
+   "See what trusted outlets say",
+   "Leave the post and search for the claim. If something this big were real, several news outlets or fact-checkers would be reporting it, or the campaign would have confirmed it.",
+   "https://www.kuow.org/stories/deepfakes-want-to-sway-your-vote-here-s-how-to-spot-them"
+  ],
+  [
+   "Look and listen for glitches",
+   "Check whether lips match the words, and watch for odd blinking, warped edges or backgrounds, and a flat or slurred voice. Newer fakes may show none of these signs, so this is only one clue.",
+   "https://sos.vermont.gov/elections/election-info-resources/a-i-deepfakes-scams/"
+  ],
+  [
+   "Check for Content Credentials",
+   "Upload an image or paste its link into contentcredentials.org/verify to see any record of the tool used, including AI. A missing credential does not prove a file is fake.",
+   "https://opensource.contentauthenticity.org/docs/verify"
+  ],
+  [
+   "Read the fine print on ads",
+   "Check who paid for an ad (usually stated at the end) and look for an AI disclaimer. Many states require one, but most AI ads this year carried none.",
+   "https://www.wrdw.com/2026/10/13/real-or-fake-deepfakes-flood-georgia-political-ads/"
+  ],
+  [
+   "Get voting details only from officials",
+   "Don't click links in unexpected texts or emails about your registration. Check with your state or county election office instead.",
+   "https://sos.vermont.gov/elections/election-info-resources/a-i-deepfakes-scams/"
+  ]
+ ],
+ "voting_facts": [
+  [
+   "Election Day is Tuesday, Nov 3, 2026",
+   "The midterm elections are held on November 3, 2026.",
+   "https://www.aljazeera.com/economy/2026/10/9/ai-deepfake-ads-grow-more-popular-in-us-midterm-campaigns-blurring-truth",
+   "Al Jazeera, Oct 9"
+  ],
+  [
+   "Check your registration at vote.gov",
+   "vote.gov is an official US government website for registering, checking your registration or updating it in your state. The FBI's Oct 15 alert recommends confirming your status there rather than through a link in a text or email.",
+   "https://www.ic3.gov/PSA/2026/PSA261015-3",
+   "FBI IC3, Oct 15"
+  ],
+  [
+   "Find your own election official at CanIVote.org",
+   "The National Association of Secretaries of State's #TrustedInfo2026 campaign points voters to their state and local election officials, reachable through its nonpartisan site CanIVote.org.",
+   "https://www.nass.org/initiatives/trustedinfo",
+   "NASS #TrustedInfo2026"
+  ],
+  [
+   "Verify any call or text saying your polling place moved",
+   "Don't trust a call, text or email about where or how to vote without checking it with your local election office. In a 2020 example, Oklahoma's state election board secretary said officials 'will never contact you by text message to tell you your polling place has changed'. Report suspected voter intimidation to 866-OUR-VOTE.",
+   "https://www.consumerreports.org/voting/got-a-robocall-or-text-saying-your-polling-place-moved-better-double-check-election-misinformation",
+   "Consumer Reports, Oct 28, 2020"
+  ]
+ ]
+}

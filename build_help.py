@@ -87,13 +87,15 @@ PAID = [
 ]
 REPO = meta.get('repo_url', 'https://github.com/ColinBalfe/ai-incident-index')
 
+PAID_HTML = ('<h2>If you already paid or shared something</h2><p>Speed matters most. What to do depends on how you paid, per the FTC:</p><table class="paid"><thead><tr><th>You paid or gave…</th><th>Do this now</th></tr></thead><tbody>' + ''.join(f'<tr><td>{esc(k)}</td><td>{esc(v)}</td></tr>' for k, v in PAID) + '</tbody></table><p>Then report it (below). Recovery isn\'t guaranteed; reporting quickly gives you the best chance.</p>')
+
 built, approved_urls = [], []
 for p in PAGES:
     url = f"{site}help/{p['slug']}/"
     draft = not p.get('approved')
     rev = p.get('reviewed') or ''
     steps = ''.join(f'<li><b>{esc(t)}</b>{esc(d)}</li>' for t, d in p['steps'])
-    signs = ''.join(f'<div><dt>{esc(t)}</dt><dd>{esc(d)}</dd></div>' for t, d in p['signs'])
+    signs = ''.join(f'<div><dt>{esc(t)}</dt><dd>{esc(d)}</dd></div>' for t, d in p.get('signs', []))
     types = ''.join(f'<div><dt>{esc(t)}</dt><dd>{esc(d)}</dd></div>' for t, d in p.get('types', []))
     prevent = ''.join(f'<li><b>{esc(x[0])}</b> {esc(x[1])}' + (f' <a href="{esc(x[2])}">{esc(x[3])} →</a>' if len(x) > 3 else '') + '</li>' for x in p.get('prevent', []))
     stats = ''.join(f'<div><b>{esc(n)}</b><span>{esc(t)}</span><small>{a(u, s)}</small></div>' for n, t, u, s in p['stats'])
@@ -115,21 +117,14 @@ for p in PAGES:
 {f'<p>{esc(p["intro"])}</p>' if p.get('intro') else ''}
 <h2>What to do, step by step</h2>
 <ol class="steps">{steps}</ol>
-<h2>Warning signs</h2>
-<dl class="sig">{signs}</dl>
+{f'<h2>Warning signs</h2><dl class="sig">{signs}</dl>' if signs else ''}
 {(f'<h2>{esc(p["example"]["label"])}</h2><div class="ex"><div class="bubble">{esc(p["example"]["text"])}</div><ul>' + ''.join(f'<li>{esc(x)}</li>' for x in p['example']['flags']) + '</ul></div>') if p.get('example') else ''}
-{f'<h2>The five most common scam texts</h2><dl class="sig">{types}</dl><p class="meta">From the FTC’s analysis of 2024 reports.</p>' if types else ''}
+{f'<h2>{esc(p.get("types_h", "The five most common scam texts"))}</h2><dl class="sig">{types}</dl>' + ('<p class="meta">From the FTC’s analysis of 2024 reports.</p>' if 'types_h' not in p else '') if types else ''}
 {f'<h2>Protect your family before it happens</h2><ul>{prevent}</ul>' if prevent else ''}
-{(f'<h2>Send this to your family</h2><p>Copy it, fill in the blanks, and send it by text or read it to them on the phone.</p><blockquote class="script">{esc(p["script"])}</blockquote><div class="share"><button type="button" data-copy="{esc(p["script"])}">Copy the message</button></div>') if p.get('script') else ''}
-<h2>If you already paid or shared something</h2>
-<p>Speed matters most. What to do depends on how you paid, per the FTC:</p>
-<table class="paid"><thead><tr><th>You paid or gave…</th><th>Do this now</th></tr></thead><tbody>{''.join(f'<tr><td>{esc(k)}</td><td>{esc(v)}</td></tr>' for k, v in PAID)}</tbody></table>
-<p>Then report it (below). Recovery isn't guaranteed; reporting quickly gives you the best chance.</p>
-<h2>How big this is</h2>
-<div class="stats">{stats}</div>
-<h2>Real cases</h2>
-<p>From the Warning Shots index of AI incidents, each dated and sourced.</p>
-<ul class="cases">{cases}</ul>
+{(f'<h2>{esc(p.get("script_h", "Send this to your family"))}</h2><p>{esc(p.get("script_intro", "Copy it, fill in the blanks, and send it by text or read it to them on the phone."))}</p><blockquote class="script">{esc(p["script"])}</blockquote><div class="share"><button type="button" data-copy="{esc(p["script"])}">Copy the message</button></div>') if p.get('script') else ''}
+{PAID_HTML if p.get('paid', True) else ''}
+{f'<h2>How big this is</h2><div class="stats">{stats}</div>' if stats else ''}
+{f'<h2>Real cases</h2><p>From the Warning Shots index of AI incidents, each dated and sourced.</p><ul class="cases">{cases}</ul>' if cases else ''}
 <h2>Where to report it</h2>
 <ul>{report}</ul>
 <h2>Questions people ask</h2>
