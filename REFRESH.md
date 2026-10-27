@@ -188,6 +188,10 @@ One original chart a day, built from the index's own data, at the top of the hom
 - **Truth rules:** only data already on the record; counts recomputed from the data at build time, never typed in; no projection or trend line that the data doesn't support; small numbers shown as counts, not percentages.
 - Look at the PNG before publishing. Labels must not collide with marks or each other.
 
+### The Seismograph (homepage, automatic)
+
+The live chart at the top of the homepage Wire draws every incident from data/incidents.json by itself; there is nothing to edit. Because it already tells the story of incidents getting more severe and more autonomous over time, the homepage's Chart of the day (`home: true`) must tell a different story (fixes, money, jobs, scams, a comparison), never another severity- or autonomy-over-time chart.
+
 ## 2a. Sundays: the source audit
 
 A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/*.json` early on Sunday mornings and writes `research/link_audit.json` (dead: 404/410/DNS; unreachable: timeouts and 5xx; 401/403/429 count as alive). On the Sunday 06:37 run, and on any run where that file is newer than `as_of`:

@@ -248,6 +248,11 @@ function compute() {
   const asOf = D.meta.as_of.slice(0, 10);
   C.asOf = asOf;
   C.scored = D.incidents.map((r) => ({ ...r, ...sevScore(r) }));
+  // a missed refresh must not leave a time in the past on the page: roll 'next' forward to the next scheduled edition (5:17, 12:17, 18:17 ET)
+  if (D.meta.next_check && Date.parse(D.meta.next_check) < Date.now()) { const etH = (t) => +new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', hourCycle: 'h23' }).format(t);
+    const base = new Date(); let best = null; for (let d = 0; d <= 1 && !best; d++) for (const h of [5, 12, 18]) { const day = new Date(base.getTime() + d * 864e5); const ymd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(day).split('-').map(Number);
+      let t = Date.UTC(ymd[0], ymd[1] - 1, ymd[2], h + 4, 17); if (etH(t) !== h) t += (h - etH(t)) * 3.6e6; if (t > Date.now() + 6e4) { best = t; break; } }
+    if (best) D.meta.next_check = new Date(best).toISOString(); }
   C.scored.slice().sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id)).forEach((r, i) => { r.ws = 'WS-' + String(i + 1).padStart(4, '0'); r.level = 'WS-' + (TIERS.findIndex((t) => t.name === r.tier) + 1); });
   const t = Date.parse(asOf), yr = 365.25 * 864e5, d = (r) => Date.parse(r.date);
   const last12 = C.scored.filter((r) => d(r) > t - yr && d(r) <= t), prior12 = C.scored.filter((r) => d(r) > t - 2 * yr && d(r) <= t - yr);
@@ -767,27 +772,31 @@ function drawWall() {
 /* ---------- The Seismograph: every incident on the record as a spike (height = severity; red = the AI acted on its own).
    It replays 2023 to today once when it comes into view, then answers to hover, tap and the arrow keys. The replay is the real record
    in date order; nothing in it is simulated. */
-const pulseState = { f: 'all', played: false };
+const pulseState = { f: 'all', played: false, zoom: false };
 function buildPulse() {
   if (!C.scored || !C.scored.length) return null;
   const asOf = new Date(D.meta.as_of), asOfY = D.meta.as_of.slice(0, 4);
   const own = (r) => +r.A >= 3;
+  const t0d = pulseState.zoom ? new Date(+asOf - 90 * 864e5) : new Date('2023-01-01T00:00:00Z');
   const all = C.scored.filter((r) => r.date && !isNaN(Date.parse(r.date))).map((r) => ({ ...r, t: new Date(r.date + 'T12:00:00Z') })).sort((a, b) => a.t - b.t);
+  const full = all.slice(); all.splice(0, all.length, ...full.filter((r) => r.t >= t0d));
   const live = all.find((r) => r.id === D.meta.live_incident);
   const sec = el('section', 'seis dark-scope'); sec.setAttribute('aria-label', 'The Seismograph: every AI incident since 2023');
   const head = el('div', 'pl-h');
-  const ttl = el('div', 'pl-tt'); ttl.append(el('span', 'pl-k', 'The Seismograph'), el('span', 'pl-sub', 'Every AI incident on the record since 2023. Taller is worse. '), (() => { const b = el('b', 'pl-red', 'Red'); return b; })(), el('span', 'pl-sub', ': the AI acted on its own.'));
+  const ttl = el('div', 'pl-tt'); ttl.append(el('span', 'pl-k', 'The Seismograph'), el('span', 'pl-sub', (pulseState.zoom ? 'Every AI incident on the record in the last 90 days. ' : 'Every AI incident on the record since 2023. ') + 'Taller is worse. '), (() => { const b = el('b', 'pl-red', 'Red'); return b; })(), el('span', 'pl-sub', ': the AI acted on its own.'));
   const ctr = el('div', 'pl-ctr'); ctr.setAttribute('aria-live', 'polite');
   head.append(ttl, ctr);
   const ctl = el('div', 'pl-ctl'); ctl.setAttribute('role', 'group'); ctl.setAttribute('aria-label', 'Show');
   const F = [['all', 'All ' + all.length], ['own', 'AI acted on its own ' + all.filter(own).length], ['severe', 'Severe and worse ' + all.filter((r) => r.severity >= 60).length]];
   const btns = F.map(([k, l]) => { const b = el('button', 'pl-f' + (pulseState.f === k ? ' on' : ''), l); b.type = 'button'; b.setAttribute('aria-pressed', String(pulseState.f === k)); b.addEventListener('click', () => { pulseState.f = k; btns.forEach((x, i) => { const on = F[i][0] === k; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); }); paint(false); }); return b; });
   const rp = el('button', 'pl-f pl-rp', '↻ Replay'); rp.type = 'button'; rp.addEventListener('click', () => play());
-  ctl.append(...btns, rp);
+  const zm = el('button', 'pl-f pl-zm', pulseState.zoom ? '← Since 2023' : 'Zoom: last 90 days'); zm.type = 'button'; zm.setAttribute('aria-pressed', String(pulseState.zoom));
+  zm.addEventListener('click', () => { pulseState.zoom = !pulseState.zoom; const n = buildPulse(); if (n) { sec.replaceWith(n); n.querySelector('.pl-zm').focus(); } });
+  ctl.append(...btns, zm, rp);
   const fig = el('div', 'pl-fig'); const tip = el('div', 'pl-tip'); tip.hidden = true; fig.append(tip);
   const W = Math.max(300, Math.min(1180, (document.getElementById('wall') || document.body).clientWidth || window.innerWidth - 32)), phone = W < 640;
   const H = phone ? 220 : 300, m = { l: phone ? 26 : 34, r: phone ? 46 : 64, t: 18, b: 22 };
-  const x = d3.scaleUtc().domain([new Date('2023-01-01T00:00:00Z'), new Date(+asOf + 25 * 864e5)]).range([m.l, W - m.r]);
+  const x = d3.scaleUtc().domain([t0d, new Date(+asOf + (pulseState.zoom ? 3 : 25) * 864e5)]).range([m.l, W - m.r]);
   const y = d3.scaleLinear().domain([0, 100]).range([H - m.b, m.t]);
   const NS = 'http://www.w3.org/2000/svg', mk = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
   const svg = mk('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img', 'aria-label': `${all.length} AI incidents since 2023 plotted by date and severity; ${all.filter(own).length} where the AI acted on its own.` });
@@ -795,10 +804,20 @@ function buildPulse() {
   [[60, 'Severe'], [80, 'Critical']].forEach(([v, l]) => { svg.append(mk('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), class: 'pl-g' })); const t = mk('text', { x: m.l + 4, y: y(v) - 4, class: 'pl-gl' }); t.textContent = l; svg.append(t); });
   svg.append(mk('line', { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), class: 'pl-base' }));
   [0, 50, 100].forEach((v) => { const t = mk('text', { x: m.l - 6, y: y(v) + 4, class: 'pl-ax', 'text-anchor': 'end' }); t.textContent = String(v); svg.append(t); });
-  for (let yr = 2023; yr <= +asOfY; yr++) { const xx = x(new Date(yr + '-01-01T00:00:00Z')); svg.append(mk('line', { x1: xx, x2: xx, y1: y(0), y2: y(0) + 5, class: 'pl-base' })); const t = mk('text', { x: xx + 3, y: H - 5, class: 'pl-ax' }); t.textContent = String(yr); svg.append(t); }
+  const ticks = pulseState.zoom ? x.ticks(d3.utcMonth.every(1)).filter((d) => d >= t0d) : d3.range(2023, +asOfY + 1).map((yr) => new Date(yr + '-01-01T00:00:00Z'));
+  ticks.forEach((d) => { const xx = x(d); svg.append(mk('line', { x1: xx, x2: xx, y1: y(0), y2: y(0) + 5, class: 'pl-base' })); const t = mk('text', { x: xx + 3, y: H - 5, class: 'pl-ax' }); t.textContent = pulseState.zoom ? d3.utcFormat('%b')(d) : String(d.getUTCFullYear()); svg.append(t); });
   const gS = mk('g', {}); svg.append(gS);
   const spikes = all.map((r) => { const g = mk('g', { class: 'pl-s ' + (own(r) ? 'own' : 'ctx') + (r.setting === 'wild' ? '' : ' lab') }); const xx = x(r.t);
     const ln = mk('line', { x1: xx, x2: xx, y1: y(0), y2: y(0) }); const c = mk('circle', { cx: xx, cy: y(0), r: r.severity >= 60 ? (phone ? 3 : 3.5) : 2.4 }); g.append(ln, c); gS.append(g); return { r, g, ln, c, xx, top: y(r.severity) }; });
+  // landmarks: the two worst real-world incidents in view, labelled directly (wide screens only)
+  if (!phone) { const lm = all.filter((r) => r.setting === 'wild' && r.id !== (live && live.id)).sort((a, b) => b.severity - a.severity).slice(0, pulseState.zoom ? 1 : 2).sort((a, b) => a.t - b.t);
+    lm.forEach((r, i) => { const lx = x(r.t), ly = y(r.severity); const short = r.title.length > 60 ? r.title.slice(0, r.title.lastIndexOf(' ', 58)) + '…' : r.title;
+      svg.append(mk('line', { x1: lx, x2: lx, y1: ly - 6, y2: ly - 16, class: 'pl-lead' })); const lw = (short.length + 5) * 6.4; let anc = 'middle', ty = ly - 20;
+      if (lm.length > 1 && i === 0) anc = lx - lw > m.l ? 'end' : 'start';
+      else if (lm.length > 1) { const x0 = x(lm[0].t); if (lx + lw < W - 4 && lx > x0) anc = 'start'; else { anc = 'end'; if (lx - lw < x0 + 8) ty = Math.min(ty, y(lm[0].severity) - 38); } }
+      else anc = lx + lw / 2 > W - 4 ? 'end' : lx - lw / 2 < m.l ? 'start' : 'middle';
+      if (ty !== ly - 20) svg.append(mk('line', { x1: lx, x2: lx, y1: ly - 16, y2: ty + 4, class: 'pl-lead' }));
+      const t = mk('text', { x: lx, y: ty, class: 'pl-lm', 'text-anchor': anc }); t.textContent = short + ' · ' + r.severity; svg.append(t); }); }
   // now: the live incident and today's edge
   const nx = x(asOf); svg.append(mk('line', { x1: nx, x2: nx, y1: m.t - 6, y2: y(0), class: 'pl-now' }));
   const nl = mk('text', { x: nx + 6, y: m.t + 2, class: 'pl-nl' }); nl.textContent = 'NOW'; svg.append(nl);
@@ -837,10 +856,10 @@ function buildPulse() {
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); p = p < 0 ? visIdx.length - 1 : Math.max(0, Math.min(visIdx.length - 1, p + (e.key === 'ArrowRight' ? 1 : -1))); show(visIdx[p]); }
     else if (e.key === 'Enter' && cur >= 0) location.href = '/i/' + spikes[cur].r.id + '/'; else if (e.key === 'Escape') hide(); });
   // what it shows, computed from the record
-  const wild = (yr) => all.filter((r) => r.setting === 'wild' && r.date.startsWith(String(yr)));
+  const wild = (yr) => full.filter((r) => r.setting === 'wild' && r.date.startsWith(String(yr)));
   const shareOwn = (yr) => { const w = wild(yr); return w.length ? Math.round(100 * w.filter(own).length / w.length) : 0; };
-  const sevYr = (yr) => all.filter((r) => r.severity >= 60 && r.date.startsWith(String(yr))).length;
-  const top = all.filter((r) => r.date.startsWith(asOfY)).sort((a, b) => b.severity - a.severity)[0];
+  const sevYr = (yr) => full.filter((r) => r.severity >= 60 && r.date.startsWith(String(yr))).length;
+  const top = full.filter((r) => r.date.startsWith(asOfY)).sort((a, b) => b.severity - a.severity)[0];
   const ins = el('div', 'pl-ins');
   const tile = (big, l, sub, href) => { const d = el(href ? 'a' : 'div', 'pl-i'); if (href) d.href = href; d.append(el('b', null, big), el('span', null, l), ...(sub ? [el('small', null, sub)] : [])); return d; };
   const yrs = d3.range(2023, +asOfY + 1);
