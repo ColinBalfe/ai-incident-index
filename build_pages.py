@@ -183,7 +183,7 @@ def incident_page(r, prev, nxt):
     rel = sorted([x for x in scored if x['id'] != r['id'] and x.get('category') == r.get('category')], key=lambda x: abs((dt.date.fromisoformat(x['date'][:7] + '-01') - dt.date.fromisoformat(r['date'][:7] + '-01')).days))[:4]
     if rel:
         items = ''.join(f'<li><a href="/i/{esc(x["id"])}/"><b>{x["severity"]}</b> {esc(clip(x["title"], 110))}</a><small>{esc(fdate(x["date"], x.get("date_precision")))} · {esc(x["tier"])}</small></li>' for x in rel)
-        body.append(f'<section class="rel"><h2>Related on the index</h2><ul>{items}</ul><p class="k"><a href="/wire/">The latest AI threats and breakthroughs, checked three times a day →</a></p></section>')
+        body.append(f'<section class="rel"><h2>Related on the index</h2><ul>{items}</ul><p class="k"><a href="/wire/">The latest AI threats and breakthroughs →</a></p></section>')
     _hp = HELP_FOR.get(r['id'])
     if _hp:
         body.append(f'<section class="rel"><h2>If this happens to you</h2><ul><li><a href="/help/{esc(_hp["slug"])}/"><b>What to do:</b> {esc(_hp["h1"])}</a></li></ul></section>')

@@ -68,7 +68,7 @@ body = f"""
 <article class="tk">
 <h1>PHP2Shell live tracker</h1>
 <div class="cv">{esc(' · '.join(cves))} · CVSS up to {esc(str(P.get('cvss_max')))} · fixed Oct 21, 2026</div>
-<span class="up">Updated {esc(as_of_label)} · checked three times a day</span>
+<span class="up">Updated {esc(as_of_label)}</span>
 <p class="tk-sum"><b>Status:</b> {esc(conf.get('value',''))} {esc(conf.get('label',''))}. {esc(kev.get('label','').capitalize() if False else '')}CISA Known Exploited Vulnerabilities: <b>{esc(kev.get('value',''))}</b>. Exploit attempts: <b>{esc(att.get('value',''))}</b> ({esc(att.get('label',''))}). Fixed in PHP {esc(', '.join(fixed))}.</p>
 <details class="tk-more"><summary>The full latest note</summary><p class="tk-note">{esc(meta.get('live_note') or dd.get('now_text') or '')}</p></details>
 <div class="tk-grid">{stats}</div>

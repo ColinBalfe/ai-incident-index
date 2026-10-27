@@ -95,8 +95,8 @@ STYLE = """<style>
 
 # ---------- /badge/
 link = site + '?utm_source=badge&utm_medium=embed'
-html_big = f'<a href="{link}" title="Today\'s AI threat level, checked three times a day"><img src="{site}assets/badge.svg" width="320" height="64" alt="Today\'s AI threat level, from Warning Shots"></a>'
-html_small = f'<a href="{link}" title="Today\'s AI threat level, checked three times a day"><img src="{site}assets/badge-small.svg" width="190" height="28" alt="AI threat level, from Warning Shots"></a>'
+html_big = f'<a href="{link}" title="Today\'s AI threat level"><img src="{site}assets/badge.svg" width="320" height="64" alt="Today\'s AI threat level, from Warning Shots"></a>'
+html_small = f'<a href="{link}" title="Today\'s AI threat level"><img src="{site}assets/badge-small.svg" width="190" height="28" alt="AI threat level, from Warning Shots"></a>'
 md_small = f'[![AI threat level, from Warning Shots]({site}assets/badge-small.svg)]({site}?utm_source=badge&utm_medium=readme)'
 bbody = f"""{STYLE}<article class="pr">
 <h1>Put today’s AI threat level on your site</h1>
@@ -140,7 +140,7 @@ shots = [(f, c) for f, c in [('front-desktop.jpg', 'The front page: the day’s 
 shots_html = ''.join(f'<figure><a href="/assets/press/{f}"><img src="/assets/press/{f}" alt="{esc(c)}" loading="lazy"></a><figcaption>{esc(c)}</figcaption></figure>' for f, c in shots)
 pbody = f"""{STYLE}<article class="pr">
 <h1>Press</h1>
-<p class="lede">Warning Shots tracks AI’s dangers and breakthroughs as they land on real lives, checked three times a day. Every significant AI incident since 2023 is scored 0–100 by a published formula and linked to its sources. Free to cite, quote and embed.</p>
+<p class="lede">Warning Shots tracks AI’s dangers and breakthroughs as they land on real lives. Every significant AI incident since 2023 is scored 0–100 by a published formula and linked to its sources. Free to cite, quote and embed.</p>
 <h2>Key figures</h2>
 <div class="pr-figs"><div><b>{build['n']}</b><span>AI incidents since 2023, each scored and sourced</span></div><div><b>{build['severe_prior12']} → {build['severe_last12']}</b><span>severe incidents, previous 12 months vs. last 12</span></div><div><b>{build['agentic_share']}%</b><span>of this year’s real-world cases where the AI itself did the acting</span></div><div><b>WS-{n}</b><span>today’s level: {esc(tier)}</span></div></div>
 <p>Figures as of {esc(date_label)}; they change as the index is refreshed. Check the <a href="/index/">Record</a> for the current numbers before publishing.</p>
