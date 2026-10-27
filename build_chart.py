@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""The Chart: one original, striking chart a day, built from the index's own data.
+"""The Charts: one original, shareable chart a day, built from the index's own data.
 
-research/charts.json lists the charts, newest last: {id, date, kind, title, dek, takeaway, ...kind params}.
-Each `kind` is a renderer below that returns an SVG (16:9, title, source line and citation baked in, so the
-image carries its citation wherever it goes) plus a table of the data behind it.
+research/charts.json lists the charts: {id, date, kind, title?, dek?, takeaway?, pin?}. Each `kind` is a renderer below
+that returns the finding (title, dek, takeaway), a legend, the data table and a plot function. Every chart is drawn twice:
+wide (16:9, 1200x675: web, X, LinkedIn, TV) and tall (4:5, 1080x1350: phones, Instagram, stories). Title, source line and
+the citation are baked into both images, so a chart carries its citation wherever it goes.
 
-Writes: data/chart.json (today's chart, for the homepage), chart/<id>/index.html (permanent page with the
-table), chart/index.html (every chart), and assets/charts/<id>.svg. make_charts.mjs turns each SVG into a PNG.
-Run after build_site.py:  python3 build_chart.py
+Writes: assets/charts/<id>.svg and <id>-tall.svg (make_charts.mjs turns them into PNGs), chart/<id>/index.html (the
+chart, why it matters, share buttons, embed code, the data), chart/index.html (the gallery), data/chart.json (today's,
+for the homepage).  Run before build_site.py:  python3 build_chart.py
 """
-import json, os, datetime as dt, html, math
+import json, os, datetime as dt, html, collections, urllib.parse
 from pagekit import write, register, SITE, footer_note, webpage, fdate
 
 esc = html.escape
@@ -17,102 +18,239 @@ L = lambda f: json.load(open(f, encoding='utf-8'))
 meta = L('data/meta.json')
 AS_OF = meta['as_of'][:10]
 
-# palette (validated for the navy surface; the gray is muted context, not a category; red is the index's alarm, always labelled)
-NAVY, PAPER, INK2, GRID, MUTED, RED = '#0A111E', '#F4F3EF', '#A8B3C2', '#22304A', '#6F7F96', '#FF3B14'
-W, H = 1200, 675
-FONT_S = "Archivo, 'Archivo Fallback', Arial, sans-serif"
-FONT_D = "Playfair, 'Playfair Fallback', Georgia, serif"
+# Palette, validated on the navy surface (dataviz skill): muted slates are context, never a category; the alarm red marks
+# the one thing that matters and is always labelled. Ordinal context steps differ in lightness and carry direct labels.
+NAVY, PAPER, INK2, GRID, MUTED, DIM, RED = '#0A111E', '#F4F3EF', '#A8B3C2', '#22304A', '#6F7F96', '#3E4B62', '#FF3B14'
+FS = "Archivo, 'Archivo Fallback', Arial, sans-serif"
+FD = "Playfair, 'Playfair Fallback', Georgia, serif"
+FORMATS = {'wide': (1200, 675), 'tall': (1080, 1350)}
 
 def score(r):
     harm = 100 * (0.5 * r['H'] / 5 + 0.25 * r['R'] / 5 + 0.25 * r['I'] / 5)
     sig = 100 * (0.6 * r['A'] / 4 + 0.4 * r['N'] / 5)
     return round(0.55 * harm + 0.45 * sig)
 
-def frame(title, dek, source, body, aria):
-    """The shared card: title, dek, the plot, and the source + citation line."""
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-label="{esc(aria)}" class="ws-chart">'
-            f'<rect width="{W}" height="{H}" fill="{NAVY}"/>'
-            f'<text x="48" y="64" fill="{PAPER}" font-family="{FONT_D}" font-weight="900" font-size="38">{esc(title)}</text>'
-            f'<text x="48" y="100" fill="{INK2}" font-family="{FONT_S}" font-size="18">{esc(dek)}</text>'
-            + body +
-            f'<text x="48" y="{H - 22}" fill="{INK2}" font-family="{FONT_S}" font-size="13">{esc(source)}</text>'
-            f'<text x="{W - 48}" y="{H - 22}" text-anchor="end" fill="{PAPER}" font-family="{FONT_D}" font-weight="700" font-size="15" letter-spacing="2.4">W<tspan fill="{RED}">:</tspan> WARNING SHOTS · warningshots.ai</text>'
-            '</svg>')
+def wrap(text, n):
+    lines, cur = [], ''
+    for w in text.split():
+        if cur and len(cur) + 1 + len(w) > n:
+            lines.append(cur); cur = w
+        else:
+            cur = (cur + ' ' + w).strip()
+    return lines + ([cur] if cur else [])
 
-# ---------------------------------------------------------------- kind: every incident as a dot, by date and severity
-def incident_field(spec):
-    inc = L('data/incidents.json')
+def T(x, y, s, size, fill=PAPER, font=FS, weight=400, anchor='start', extra=''):
+    return f'<text x="{x:.1f}" y="{y:.1f}" fill="{fill}" font-family="{font}" font-size="{size}" font-weight="{weight}" text-anchor="{anchor}" {extra}>{esc(str(s))}</text>'
+
+def card(fmt, c):
+    """Header (title, dek, legend), the plot in the remaining box, and the footer with source and citation."""
+    W, H = FORMATS[fmt]; tall = fmt == 'tall'
+    m = 56 if tall else 48
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-label="{esc(c["aria"])}" class="ws-chart">', f'<rect width="{W}" height="{H}" fill="{NAVY}"/>']
+    tsize, tlh, tchars = (58, 64, 26) if tall else (38, 44, 54)
+    y = m + tsize * 0.9
+    for line in wrap(c['title'], tchars):
+        out.append(T(m, y, line, tsize, PAPER, FD, 900)); y += tlh
+    dsize, dchars = (25, 66) if tall else (18, 110)
+    y += 2
+    for line in wrap(c['dek'], dchars):
+        out.append(T(m, y, line, dsize, INK2)); y += dsize * 1.4
+    lx, ly = m, y + (18 if tall else 12)
+    for color, r, label in c['legend']:
+        cx, cy = lx + 6, ly - 5
+        if color == 'half':
+            out.append(f'<circle cx="{cx}" cy="{cy}" r="{r - 1}" fill="none" stroke="{PAPER}" stroke-width="2"/><path d="M{cx} {cy - r + 1} A{r - 1} {r - 1} 0 0 0 {cx} {cy + r - 1} Z" fill="{PAPER}"/>')
+        elif color == 'ring':
+            out.append(f'<circle cx="{cx}" cy="{cy}" r="{r - 1}" fill="none" stroke="{DIM}" stroke-width="2"/>')
+        else:
+            out.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{color}"/>')
+        out.append(T(lx + 6 + r + 8, ly, label, 22 if tall else 14))
+        lx += 6 + r + 8 + len(label) * (11 if tall else 7.2) + 30
+    top = ly + (40 if tall else 30)
+    foot = 96 if tall else 58
+    box = (m + (34 if tall else 24), top, W - m, H - foot)
+    out.append(c['plot'](box, tall))
+    if tall:
+        out.append(T(m, H - 58, c['source'], 18, INK2))
+        out.append(f'<text x="{m}" y="{H - 24}" fill="{PAPER}" font-family="{FD}" font-weight="700" font-size="22" letter-spacing="3.3">W<tspan fill="{RED}">:</tspan> WARNING SHOTS · warningshots.ai</text>')
+    else:
+        out.append(T(m, H - 22, c['source'], 13, INK2))
+        out.append(f'<text x="{W - m}" y="{H - 22}" text-anchor="end" fill="{PAPER}" font-family="{FD}" font-weight="700" font-size="15" letter-spacing="2.4">W<tspan fill="{RED}">:</tspan> WARNING SHOTS · warningshots.ai</text>')
+    out.append('</svg>')
+    return ''.join(out)
+
+def scored():
     rows = []
-    for r in inc:
-        s = score(r)
-        rows.append(dict(id=r['id'], date=r['date'], title=r['title'], sev=s, setting=r.get('setting', '')))
+    for r in L('data/incidents.json'):
+        rows.append(dict(r, sev=score(r)))
     rows.sort(key=lambda r: (r['date'], r['id']))
     for i, r in enumerate(rows):
         r['ws'] = 'WS-%04d' % (i + 1)
-    d0, d1 = dt.date(2023, 1, 1), dt.date.fromisoformat(AS_OF)
-    left, right, top, bot = 70, W - 48, 172, H - 74
-    X = lambda d: left + (right - left) * (d - d0).days / max(1, (d1 - d0).days)
-    Y = lambda s: bot - (bot - top) * s / 100
-    asof = dt.date.fromisoformat(AS_OF)
-    yr = dt.timedelta(days=365.25)
-    last = [r for r in rows if asof - yr < dt.date.fromisoformat(r['date']) <= asof]
-    prev = [r for r in rows if asof - 2 * yr < dt.date.fromisoformat(r['date']) <= asof - yr]
-    sev_last, sev_prev = sum(r['sev'] >= 60 for r in last), sum(r['sev'] >= 60 for r in prev)
-    out = []
-    # the two comparison years, as quiet bands
-    xa, xb, xc = X(asof - 2 * yr), X(asof - yr), X(asof)
-    out.append(f'<rect x="{xb:.1f}" y="{top - 26}" width="{xc - xb:.1f}" height="{bot - top + 26}" fill="{RED}" fill-opacity="0.07"/>')
-    out.append(f'<text x="{(xa + xb) / 2:.1f}" y="{top - 8}" text-anchor="middle" fill="{INK2}" font-family="{FONT_S}" font-size="15">12 months before: <tspan font-weight="700" fill="{PAPER}">{sev_prev} severe</tspan></text>')
-    out.append(f'<text x="{(xb + xc) / 2:.1f}" y="{top - 8}" text-anchor="middle" fill="{INK2}" font-family="{FONT_S}" font-size="15">Last 12 months: <tspan font-weight="700" fill="{RED}">{sev_last} severe</tspan></text>')
-    # grid: severity every 20, years on the axis
-    for s in (0, 20, 40, 60, 80, 100):
-        y = Y(s)
-        out.append(f'<line x1="{left}" x2="{right}" y1="{y:.1f}" y2="{y:.1f}" stroke="{GRID if s != 60 else RED}" stroke-width="{1 if s != 60 else 1.2}" stroke-dasharray="{"" if s != 60 else "5 5"}" stroke-opacity="{1 if s != 60 else .75}"/>')
-        out.append(f'<text x="{left - 12}" y="{y + 5:.1f}" text-anchor="end" fill="{INK2}" font-family="{FONT_S}" font-size="13">{s}</text>')
-    out.append(f'<text x="{left + 8}" y="{Y(60) - 8:.1f}" fill="{RED}" font-family="{FONT_S}" font-size="13" font-weight="700" letter-spacing="1">SEVERE: 60 AND ABOVE</text>')
-    out.append(f'<text transform="translate(22 {(top + bot) / 2:.0f}) rotate(-90)" text-anchor="middle" fill="{INK2}" font-family="{FONT_S}" font-size="13">Severity, 0–100</text>')
-    for yv in range(d0.year, d1.year + 1):
-        x = X(dt.date(yv, 1, 1))
-        out.append(f'<text x="{x:.1f}" y="{bot + 26}" fill="{INK2}" font-family="{FONT_S}" font-size="14">{yv}</text>')
-        out.append(f'<line x1="{x:.1f}" x2="{x:.1f}" y1="{bot}" y2="{bot + 8}" stroke="{INK2}"/>')
-    # dots: nudge sideways to avoid stacking (the score never moves)
-    placed = []
-    for r in sorted(rows, key=lambda r: r['sev']):
-        sev = r['sev'] >= 60
-        rad = 6.5 if sev else 4.5
-        x, y = X(dt.date.fromisoformat(r['date'])), Y(r['sev'])
-        for k in range(14):
-            dx = (k + 1) // 2 * (1 if k % 2 else -1) * 3.2
-            if left + rad <= x + dx <= right - rad and all((x + dx - px) ** 2 + (y - py) ** 2 >= (rad + pr + 1) ** 2 for px, py, pr in placed):
-                x += dx
-                break
-        placed.append((x, y, rad))
-        tip = f"{r['ws']} · {fdate(r['date'])} · {r['sev']}/100 · {r['title']}"
-        out.append(f'<a href="/i/{esc(r["id"])}/"><circle cx="{x:.1f}" cy="{y:.1f}" r="{rad}" fill="{RED if sev else MUTED}" stroke="{NAVY}" stroke-width="2"><title>{esc(tip)}</title></circle></a>')
-    # label the single most severe incident on the record
-    topr = max(rows, key=lambda r: (r['sev'], r['date']))
-    tx, ty = X(dt.date.fromisoformat(topr['date'])), Y(topr['sev'])
-    lab = topr['title'] if len(topr['title']) <= 48 else topr['title'][:46].rsplit(' ', 1)[0] + '…'
-    anchor = 'end' if tx > W * 0.6 else 'start'
-    lx = tx - 4 if anchor == 'end' else tx + 4
-    ly = max(top + 34, ty - 52)
-    out.append(f'<line x1="{tx:.1f}" y1="{ty - 8:.1f}" x2="{tx:.1f}" y2="{ly + 8:.1f}" stroke="{INK2}" stroke-width="1"/>')
-    out.append(f'<text x="{lx:.1f}" y="{ly - 14:.1f}" text-anchor="{anchor}" fill="{PAPER}" font-family="{FONT_S}" font-size="14" font-weight="700">Most severe: {topr["sev"]}/100</text>')
-    out.append(f'<text x="{lx:.1f}" y="{ly + 3:.1f}" text-anchor="{anchor}" fill="{INK2}" font-family="{FONT_S}" font-size="13">{esc(lab)}</text>')
-    # legend (two marks, labelled; never colour alone)
-    lgx = left + 6
-    out.append(f'<circle cx="{lgx}" cy="129" r="6.5" fill="{RED}"/><text x="{lgx + 12}" y="134" fill="{PAPER}" font-family="{FONT_S}" font-size="14">Severe or critical</text>')
-    out.append(f'<circle cx="{lgx + 158}" cy="129" r="4.5" fill="{MUTED}"/><text x="{lgx + 170}" y="134" fill="{PAPER}" font-family="{FONT_S}" font-size="14">Below severe</text>')
-    title = spec.get('title') or f'Severe AI incidents went from {sev_prev} to {sev_last} in a year'
-    dek = spec.get('dek') or f'Every AI incident on the record since January 2023 ({len(rows)}), one dot each, placed by date and severity.'
-    source = f'Source: Warning Shots AI Incident Index, scored 0–100 by a published formula. Data as of {fdate(AS_OF)}.'
-    aria = f'{title}. {len(rows)} incidents plotted by date and severity; {sev_last} scored severe in the last 12 months against {sev_prev} in the 12 before.'
-    svg = frame(title, dek, source, ''.join(out), aria)
-    table = [dict(case=r['ws'], date=r['date'], severity=r['sev'], incident=r['title'], url=f'/i/{r["id"]}/') for r in sorted(rows, key=lambda r: r['date'], reverse=True)]
-    takeaway = spec.get('takeaway') or f'The red dots are the ones that matter: {sev_last} severe incidents in the last 12 months, against {sev_prev} in the 12 before.'
-    return dict(title=title, dek=dek, svg=svg, table=table, takeaway=takeaway, source=source)
+    return rows
 
-KINDS = {'incident_field': incident_field}
+SRC_INDEX = f'Source: Warning Shots AI Incident Index, scored 0–100 by a published formula. Data as of {fdate(AS_OF)}.'
+
+# ---------------------------------------------------------------- kind: every incident as a dot, by date and severity
+def incident_field(spec):
+    rows = scored()
+    d0, d1 = dt.date(2023, 1, 1), dt.date.fromisoformat(AS_OF)
+    yr = dt.timedelta(days=365.25)
+    last = [r for r in rows if d1 - yr < dt.date.fromisoformat(r['date']) <= d1]
+    prev = [r for r in rows if d1 - 2 * yr < dt.date.fromisoformat(r['date']) <= d1 - yr]
+    a, b = sum(r['sev'] >= 60 for r in prev), sum(r['sev'] >= 60 for r in last)
+    topr = max(rows, key=lambda r: (r['sev'], r['date']))
+    def plot(box, tall):
+        left, top, right, bot = box
+        fs = 20 if tall else 13
+        X = lambda d: left + (right - left) * (d - d0).days / max(1, (d1 - d0).days)
+        Y = lambda s: bot - 34 - (bot - 34 - top - 30) * s / 100
+        out = []
+        xa, xb, xc = X(d1 - 2 * yr), X(d1 - yr), X(d1)
+        out.append(f'<rect x="{xb:.1f}" y="{top}" width="{xc - xb:.1f}" height="{bot - 34 - top:.1f}" fill="{RED}" fill-opacity="0.07"/>')
+        out.append(T((xa + xb) / 2, top + 20, f'Year before: {a} severe', fs + 1, INK2, anchor='middle'))
+        out.append(T((xb + xc) / 2, top + 20, f'Last 12 months: {b} severe', fs + 1, RED, weight=700, anchor='middle'))
+        for s in (0, 20, 40, 60, 80, 100):
+            y = Y(s); sev = s == 60
+            out.append(f'<line x1="{left}" x2="{right}" y1="{y:.1f}" y2="{y:.1f}" stroke="{RED if sev else GRID}" stroke-width="{1.2 if sev else 1}" {"stroke-dasharray=\"5 5\" stroke-opacity=\".75\"" if sev else ""}/>')
+            out.append(T(left - 10, y + fs * .35, s, fs, INK2, anchor='end'))
+        out.append(T(left + 8, Y(60) - 8, 'SEVERE: 60 AND ABOVE', fs, RED, weight=700, extra='letter-spacing="1"'))
+        for yv in range(d0.year, d1.year + 1):
+            x = X(dt.date(yv, 1, 1))
+            out.append(f'<line x1="{x:.1f}" x2="{x:.1f}" y1="{bot - 34}" y2="{bot - 26}" stroke="{INK2}"/>'); out.append(T(x, bot - 6, yv, fs + 1, INK2))
+        placed = []
+        for r in sorted(rows, key=lambda r: r['sev']):
+            sev = r['sev'] >= 60; rad = (9 if tall else 6.5) if sev else (6 if tall else 4.5)
+            x, y = X(dt.date.fromisoformat(r['date'])), Y(r['sev'])
+            for k in range(16):
+                dx = (k + 1) // 2 * (1 if k % 2 else -1) * (rad * .7)
+                if left + rad <= x + dx <= right - rad and all((x + dx - px) ** 2 + (y - py) ** 2 >= (rad + pr + 1) ** 2 for px, py, pr in placed):
+                    x += dx; break
+            placed.append((x, y, rad))
+            out.append(f'<a href="/i/{esc(r["id"])}/"><circle cx="{x:.1f}" cy="{y:.1f}" r="{rad}" fill="{RED if sev else MUTED}" stroke="{NAVY}" stroke-width="2"><title>{esc(r["ws"] + " · " + fdate(r["date"]) + " · " + str(r["sev"]) + "/100 · " + r["title"])}</title></circle></a>')
+        tx, ty = X(dt.date.fromisoformat(topr['date'])), Y(topr['sev'])
+        lab = topr['title'] if len(topr['title']) <= 44 else topr['title'][:42].rsplit(' ', 1)[0] + '…'
+        anc = 'end' if tx > (left + right) * .6 else 'start'; lx = tx - 4 if anc == 'end' else tx + 4
+        ly = ty - (70 if tall else 52)
+        out.append(f'<line x1="{tx:.1f}" y1="{ty - 10:.1f}" x2="{tx:.1f}" y2="{ly + 8:.1f}" stroke="{INK2}"/>')
+        out.append(T(lx, ly - fs - 4, f'Most severe: {topr["sev"]}/100', fs + 1, PAPER, weight=700, anchor=anc))
+        out.append(T(lx, ly + 2, lab, fs, INK2, anchor=anc))
+        return ''.join(out)
+    return dict(title=f'Severe AI incidents went from {a} to {b} in a year',
+                dek=f'Every AI incident on the record since January 2023 ({len(rows)}), one dot each, placed by date and severity.',
+                takeaway=f'The red dots are the ones that matter: {b} severe incidents in the last 12 months, against {a} in the 12 before.',
+                why='Most AI coverage counts incidents. This counts how bad they were, with one published formula for every case since 2023. The pile-up of red at the right is the escalation in one picture.',
+                legend=[(RED, 6.5, 'Severe or critical'), (MUTED, 4.5, 'Below severe')], source=SRC_INDEX, plot=plot,
+                aria=f'{len(rows)} AI incidents by date and severity; {b} severe in the last 12 months against {a} the year before.',
+                table=(['Date', 'Severity', 'Incident'], [(r['date'], r['sev'], r['title'], f'/i/{r["id"]}/') for r in sorted(rows, key=lambda r: r['date'], reverse=True)]))
+
+# ---------------------------------------------------------------- kind: who did the acting, person or AI, by half-year
+def autonomy_shift(spec):
+    rows = [r for r in scored() if r.get('setting') == 'wild']
+    def half(d): return f'{d[:4]} H{1 if int(d[5:7]) <= 6 else 2}'
+    groups = [('person', DIM, 'A person misused it, or trusted bad output', (0, 1)), ('acted', MUTED, 'The AI took a single action', (2,)), ('own', RED, 'The AI acted on its own', (3, 4))]
+    halves = []
+    y0, y1 = 2023, int(AS_OF[:4])
+    for y in range(y0, y1 + 1):
+        for h in (1, 2):
+            k = f'{y} H{h}'
+            if y == y1 and h == 2 and int(AS_OF[5:7]) <= 6: continue
+            halves.append(k)
+    cnt = {k: collections.Counter() for k in halves}
+    for r in rows:
+        k = half(r['date'])
+        if k in cnt:
+            g = next(g for g, _, _, a in groups if r['A'] in a); cnt[k][g] += 1
+    own_this = sum(cnt[k]['own'] for k in halves if k.startswith(AS_OF[:4]))
+    own_early = sum(cnt[k]['own'] for k in halves if k[:4] in ('2023', '2024'))
+    tot_this = sum(sum(cnt[k].values()) for k in halves if k.startswith(AS_OF[:4]))
+    def label(k):
+        y, h = k.split(' H'); return ('Jan–Jun ' if h == '1' else 'Jul–Dec ') + ("’" + y[2:]) + (' so far' if k == halves[-1] else '')
+    def plot(box, tall):
+        left, top, right, bot = box
+        fs = 19 if tall else 13
+        base = bot - (64 if tall else 40)
+        mx = max(1, max(sum(c.values()) for c in cnt.values()))
+        step = 10 if mx <= 50 else 20
+        ymax = ((mx // step) + 1) * step
+        Y = lambda v: base - (base - top - 10) * v / ymax
+        out = []
+        for v in range(0, ymax + 1, step):
+            out.append(f'<line x1="{left}" x2="{right}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" stroke="{GRID}"/>'); out.append(T(left - 10, Y(v) + fs * .35, v, fs, INK2, anchor='end'))
+        n = len(halves); bw = (right - left) / n
+        for i, k in enumerate(halves):
+            x = left + i * bw + bw * .18; w = bw * .64; yb = base
+            for g, color, name, _ in groups:
+                v = cnt[k][g]
+                if not v: continue
+                h = (base - Y(v)) - 2
+                out.append(f'<rect x="{x:.1f}" y="{yb - h:.1f}" width="{w:.1f}" height="{h:.1f}" rx="2" fill="{color}"><title>{esc(label(k) + ": " + str(v) + " · " + name)}</title></rect>')
+                if g == 'own' and h > fs + 6:
+                    out.append(T(x + w / 2, yb - h / 2 + fs * .35, v, fs + 1, NAVY, weight=700, anchor='middle'))
+                yb -= h + 2
+            tot = sum(cnt[k].values())
+            out.append(T(x + w / 2, yb - 8, tot, fs, INK2, anchor='middle'))
+            parts = label(k).split(' ', 1)
+            out.append(T(x + w / 2, base + fs + 6, parts[0], fs, INK2, anchor='middle'))
+            out.append(T(x + w / 2, base + 2 * fs + 10, parts[1], fs, INK2, anchor='middle'))
+        return ''.join(out)
+    return dict(title=f'AI went from tool to actor: {own_this} incidents this year where AI acted on its own',
+                dek='Real-world AI incidents every six months, by who did the acting.' + (' In 2023 and 2024, the AI never acted on its own.' if not own_early else f' In 2023 and 2024: {own_early}.'),
+                takeaway=(f'In 2023 and 2024, no real-world AI incident on the record had the AI acting on its own. ' if not own_early else f'In 2023 and 2024: {own_early}. ') + f'This year it happened in {own_this} of {tot_this}.',
+                why=f'The question people ask is whether AI is just a tool. The record says it was, until about a year ago. Part of the rise is that more incidents get reported now, so look at the share: in 2023 and 2024 the AI never acted on its own; this year it did in {round(100 * own_this / max(1, tot_this))}% of cases.',
+                legend=[(RED, 6.5, 'AI acted on its own'), (MUTED, 6.5, 'AI took a single action'), (DIM, 6.5, 'A person misused or trusted it')],
+                source=f'Source: Warning Shots AI Incident Index, real-world incidents, autonomy as scored. As of {fdate(AS_OF)}.', plot=plot,
+                aria=f'Real-world AI incidents per half-year by who did the acting; {own_this} this year where the AI acted on its own, {own_early} in 2023 and 2024.',
+                table=(['Period', 'AI acted on its own', 'AI took a single action', 'A person misused or trusted it', 'Total'], [(label(k), cnt[k]['own'], cnt[k]['acted'], cnt[k]['person'], sum(cnt[k].values()), '') for k in reversed(halves)]))
+
+# ---------------------------------------------------------------- kind: did they fix it? each case from report to retest
+def fix_chain(spec):
+    FX = L('data/fixes.json')
+    stages = [('reported', 'Reported'), ('response', 'Responded'), ('claimed_fix', 'Fix claimed'), ('retest', 'Checked by outsiders')]
+    ST = {'ongoing': 'Still unfolding', 'reopened': 'Came back', 'disputed': 'Disputed', 'unverified': 'Not verified', 'unresolved': 'No fix', 'fixed': 'Fixed, verified'}
+    cur = lambda f: next((c for c in f['chain'] if c['stage'] == 'current'), f['chain'][-1])
+    order = {'reopened': 0, 'unresolved': 1, 'disputed': 2, 'unverified': 3, 'ongoing': 4, 'fixed': 5}
+    FX = sorted(FX, key=lambda f: (order.get(cur(f)['status'], 9), f['name']))
+    back = sum(cur(f)['status'] == 'reopened' for f in FX); fixed = sum(cur(f)['status'] == 'fixed' for f in FX)
+    short = lambda f: f['name'].split(':')[0].strip()
+    def plot(box, tall):
+        left, top, right, bot = box
+        fs = 19 if tall else 13
+        namew = (right - left) * (.36 if tall else .32)
+        cols = len(stages) + 1
+        cw = (right - left - namew) / cols
+        rh = (bot - top - 40) / len(FX)
+        out = []
+        for j, (_, lab) in enumerate(stages + [('', 'Now')]):
+            cx = left + namew + cw * (j + .5)
+            for i, line in enumerate(wrap(lab, 12)):
+                out.append(T(cx, top + 14 + i * (fs + 2), line, fs, INK2, anchor='middle', weight=700))
+        for i, f in enumerate(FX):
+            y = top + 48 + i * rh + rh / 2
+            out.append(f'<line x1="{left}" x2="{right}" y1="{y + rh / 2:.1f}" y2="{y + rh / 2:.1f}" stroke="{GRID}"/>')
+            nm = short(f); nm = nm if len(nm) <= (30 if tall else 34) else nm[:28].rsplit(' ', 1)[0] + '…'
+            out.append(f'<a href="/c/{esc(f["incident_id"])}/">' + T(left, y + fs * .35, nm, fs, PAPER) + '</a>')
+            st = {c['stage']: c['status'] for c in f['chain']}
+            for j, (k, lab) in enumerate(stages):
+                cx = left + namew + cw * (j + .5); s = st.get(k, 'none'); r = 9 if tall else 7
+                if j: out.append(f'<line x1="{cx - cw + r:.1f}" x2="{cx - r:.1f}" y1="{y:.1f}" y2="{y:.1f}" stroke="{DIM}" stroke-width="2"/>')
+                if s == 'done':
+                    out.append(f'<circle cx="{cx:.1f}" cy="{y:.1f}" r="{r}" fill="{PAPER}"><title>{esc(lab + ": done")}</title></circle>')
+                elif s == 'partial':
+                    out.append(f'<circle cx="{cx:.1f}" cy="{y:.1f}" r="{r - 1}" fill="none" stroke="{PAPER}" stroke-width="2"/><path d="M{cx:.1f} {y - r + 1:.1f} A{r - 1} {r - 1} 0 0 0 {cx:.1f} {y + r - 1:.1f} Z" fill="{PAPER}"><title>{esc(lab + ": partly")}</title></path>')
+                else:
+                    out.append(f'<circle cx="{cx:.1f}" cy="{y:.1f}" r="{r - 1}" fill="none" stroke="{DIM}" stroke-width="2"><title>{esc(lab + ": not done")}</title></circle>')
+            s = cur(f)['status']; cx = left + namew + cw * (len(stages) + .5)
+            out.append(T(cx, y + fs * .35, ST.get(s, s), fs, RED if s == 'reopened' else INK2, weight=700 if s == 'reopened' else 400, anchor='middle'))
+        return ''.join(out)
+    return dict(title=f'{back} of {len(FX)} major AI cases came back after a fix',
+                dek='Every major case we track, from report to response to claimed fix to an outside check. ' + (f'{fixed} verified fixed.' if fixed else 'None has an outside-verified fix yet.'),
+                takeaway=f'When an AI company says a problem is fixed, it often isn\'t: {back} of the {len(FX)} biggest cases we follow happened again after a fix was announced.',
+                why='Companies announce fixes; almost nobody checks them. This follows each case to the end, and shows how many came back.',
+                legend=[(PAPER, 6.5, 'Done'), ('half', 6.5, 'Partly'), ('ring', 6.5, 'Not done')], source=f'Source: Warning Shots, Did they fix it? tracker, each stage sourced. As of {fdate(AS_OF)}.', plot=plot,
+                aria=f'{len(FX)} major AI cases tracked from report to retest; {back} came back after a fix.',
+                table=(['Case', 'Now', 'Fix claimed', 'Checked by outsiders'], [(short(f), ST.get(cur(f)['status'], ''), {c['stage']: c['status'] for c in f['chain']}.get('claimed_fix', ''), {c['stage']: c['status'] for c in f['chain']}.get('retest', ''), f'/c/{f["incident_id"]}/') for f in FX]))
+
+KINDS = {'incident_field': incident_field, 'autonomy_shift': autonomy_shift, 'fix_chain': fix_chain}
 
 # ---------------------------------------------------------------- build
 try:
@@ -120,33 +258,67 @@ try:
 except (OSError, ValueError):
     SPECS = []
 os.makedirs('assets/charts', exist_ok=True)
-built, urls = [], []
+built = []
 for spec in SPECS:
     fn = KINDS.get(spec['kind'])
     if not fn:
         print('  unknown chart kind', spec['kind']); continue
-    c = fn(spec); c.update(id=spec['id'], date=spec['date'])
-    open(f"assets/charts/{spec['id']}.svg", 'w', encoding='utf-8').write(c['svg'])
-    url = SITE + f"chart/{spec['id']}/"
-    rows = ''.join(f'<tr><td>{esc(t["date"])}</td><td>{t["severity"]}</td><td><a href="{esc(t["url"])}">{esc(t["incident"])}</a></td></tr>' for t in c['table'])
-    body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/chart/">The Chart</a> · {esc(fdate(spec['date']))}</nav>
-<h1>{esc(c['title'])}</h1><p>{esc(c['takeaway'])}</p>
-<figure style="margin:16px 0">{c['svg']}</figure>
-<div class="share"><a class="button" href="/assets/charts/{esc(spec['id'])}.png" download>Download the image</a> <button type="button" data-copy="{esc(c['title'] + ' ' + url)}">Copy link</button></div>
-<p class="meta">{esc(c['source'])} Hover or tap a dot for the incident; every dot opens its case page. Free to use with the citation: Source: Warning Shots, warningshots.ai.</p>
-<details><summary>The data behind this chart ({len(c['table'])} rows)</summary><div class="tw"><table><thead><tr><th>Date</th><th>Severity</th><th>Incident</th></tr></thead><tbody>{rows}</tbody></table></div></details>
+    c = fn(spec)
+    for k in ('title', 'dek', 'takeaway', 'why'):
+        if spec.get(k): c[k] = spec[k]
+    c.update(id=spec['id'], date=spec['date'], pin=spec.get('pin', False), home=spec.get('home', False))
+    c['svg'] = card('wide', c); c['svg_tall'] = card('tall', c)
+    open(f"assets/charts/{c['id']}.svg", 'w', encoding='utf-8').write(c['svg'])
+    open(f"assets/charts/{c['id']}-tall.svg", 'w', encoding='utf-8').write(c['svg_tall'])
+    built.append(c)
+
+def share_links(c):
+    url = SITE + f"chart/{c['id']}/"
+    x = 'https://x.com/intent/post?' + urllib.parse.urlencode({'text': c['title'], 'url': url})
+    li = 'https://www.linkedin.com/sharing/share-offsite/?' + urllib.parse.urlencode({'url': url})
+    rd = 'https://www.reddit.com/submit?' + urllib.parse.urlencode({'url': url, 'title': c['title']})
+    return url, x, li, rd
+
+for c in built:
+    url, x, li, rd = share_links(c)
+    hd, rows = c['table']
+    trs = ''.join('<tr>' + ''.join(f'<td>{(f"<a href=\"{esc(r[-1])}\">{esc(str(v))}</a>" if (i == len(r) - 2 and r[-1]) else esc(str(v)))}</td>' for i, v in enumerate(r[:-1])) + '</tr>' for r in rows)
+    embed = f'<a href="{url}"><img src="{SITE}assets/charts/{c["id"]}.png" alt="{esc(c["title"])}" width="1200" height="675"></a><br>Source: <a href="{url}">Warning Shots</a>'
+    body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/chart/">The Charts</a> · {esc(fdate(c['date']))}</nav>
+<h1>{esc(c['title'])}</h1><p class="aka">{esc(c['takeaway'])}</p>
+<style>.ch-fig .tallv{{display:none}}@media (max-width:700px){{.ch-fig .widev{{display:none}}.ch-fig .tallv{{display:block}}}}.ch-fig svg{{width:100%;height:auto;display:block}}</style><figure class="ch-fig" style="margin:16px 0"><div class="widev">{c['svg']}</div><div class="tallv">{c['svg_tall']}</div></figure>
+<div class="share ch-share"><a class="button" href="{esc(x)}" target="_blank" rel="noopener">Post on X</a><a class="button alt" href="{esc(li)}" target="_blank" rel="noopener">LinkedIn</a><a class="button alt" href="{esc(rd)}" target="_blank" rel="noopener">Reddit</a><button type="button" class="alt" data-copy="{esc(c['title'] + ' ' + url)}">Copy link</button></div>
+<p class="meta">Download: <a href="/assets/charts/{esc(c['id'])}.png" download>Wide image (16:9)</a> · <a href="/assets/charts/{esc(c['id'])}-tall.png" download>Phone and Instagram (4:5)</a> · <a href="/assets/charts/{esc(c['id'])}.svg" download>Vector (SVG)</a></p>
+<h2>Why it matters</h2><p>{esc(c['why'])}</p>
+<h2>Use it</h2><p>Free to share, embed and broadcast with the citation, which is already in the image: <b>Source: Warning Shots, warningshots.ai</b>. Paste this to embed it:</p>
+<textarea readonly rows="3" style="width:100%;font:13px/1.4 monospace;padding:8px" onclick="this.select()">{esc(embed)}</textarea>
+<details><summary>The data behind this chart ({len(rows)} rows)</summary><div class="tw"><table><thead><tr>{''.join(f'<th>{esc(h)}</th>' for h in hd)}</tr></thead><tbody>{trs}</tbody></table></div></details>
+<p class="meta">{esc(c['source'])} Every mark is computed from the data at build time, never typed in.</p>
 <p><a href="/chart/">Every chart →</a></p>{footer_note(False)}</article>"""
-    write(f"chart/{spec['id']}/index.html", url=url, title=c['title'], desc=c['takeaway'][:200], body=body, draft=False,
-          img=SITE + f"assets/charts/{spec['id']}.png",   # make_charts.mjs writes it later in the same refresh
-          crumbs=[('The Chart', '/chart/'), (fdate(spec['date']), '')], graph=[webpage(url, c['title'], c['takeaway'], spec['date'], False, '')])
-    built.append(c); urls.append(url)
+    write(f"chart/{c['id']}/index.html", url=url, title=c['title'], desc=c['takeaway'][:200], body=body, draft=False, img=SITE + f"assets/charts/{c['id']}.png",
+          crumbs=[('The Charts', '/chart/'), (fdate(c['date']), '')], graph=[webpage(url, c['title'], c['takeaway'], c['date'], False, '')])
+
 if built:
-    today = max(built, key=lambda c: (c['date'], c['id']))
-    json.dump(dict(id=today['id'], date=today['date'], title=today['title'], takeaway=today['takeaway'], svg=today['svg'], url=f"/chart/{today['id']}/"),
+    today = max(built, key=lambda c: (c['date'], c['home'], c['id']))
+    json.dump(dict(id=today['id'], date=today['date'], title=today['title'], takeaway=today['takeaway'], svg=today['svg'], svg_tall=today['svg_tall'], url=f"/chart/{today['id']}/"),
               open('data/chart.json', 'w', encoding='utf-8'), ensure_ascii=False)
-    items = ''.join(f'<li><a href="/chart/{esc(c["id"])}/">{esc(c["title"])}</a><span class="meta">{esc(fdate(c["date"]))}</span></li>' for c in sorted(built, key=lambda c: c['date'], reverse=True))
-    write('chart/index.html', url=SITE + 'chart/', title='The Chart: one original AI chart a day', desc='One original chart a day from the Warning Shots data: AI incidents, forecasts, jobs and breakthroughs, free to share with the citation.',
-          body=f'<article class="pk"><div class="kick">Warning Shots</div><h1>The Chart</h1><p>One original chart a day, built from the index\'s own data. Free to share and embed with the citation.</p><ul class="list">{items}</ul></article>',
-          draft=False, crumbs=[('The Chart', '')], graph=[webpage(SITE + 'chart/', 'The Chart', 'One original AI chart a day', AS_OF, False, '')])
-    register('chart/', [SITE + 'chart/'] + urls)
-print(f'chart: {len(built)} built' + (f", today: {today['title']}" if built else ''))
+    def tile(c, big=False):
+        url, x, li, rd = share_links(c)
+        return (f'<li class="ch-tile{" big" if big else ""}"><a class="ch-img" href="/chart/{esc(c["id"])}/"><img src="/assets/charts/{esc(c["id"])}.png" alt="{esc(c["title"])}" loading="lazy" width="1200" height="675"></a>'
+                f'<a class="ch-t" href="/chart/{esc(c["id"])}/">{esc(c["title"])}</a><span class="meta">{esc(c["takeaway"])}</span>'
+                f'<span class="ch-act"><a href="{esc(x)}" target="_blank" rel="noopener">Post</a> · <a href="/assets/charts/{esc(c["id"])}.png" download>Download</a> · <a href="/assets/charts/{esc(c["id"])}-tall.png" download>Phone size</a></span></li>')
+    pins = [c for c in built if c.get('pin')]
+    rest = sorted([c for c in built if not c.get('pin')], key=lambda c: c['date'], reverse=True)
+    css = ('<style>.ch-grid{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:22px}'
+           '.ch-tile{display:flex;flex-direction:column;gap:6px}.ch-tile.big{grid-column:1/-1}.ch-img img{width:100%;height:auto;display:block;border-radius:2px}'
+           '.ch-t{font-family:var(--serif);font-weight:800;font-size:1.15rem;line-height:1.25;color:var(--ink)}.ch-tile.big .ch-t{font-size:1.6rem}.ch-act{font-size:13.5px;font-weight:700}</style>')
+    body = (f'{css}<article class="pk" style="max-width:1100px"><div class="kick">Warning Shots</div><h1>The Charts</h1>'
+            '<p>Original charts from the Warning Shots data: what AI is actually doing, counted case by case. A new one every morning. Every chart is free to share, embed and broadcast; the citation is already in the image. Each comes wide for the web and TV, and tall for phones.</p>'
+            + (f'<h2>Start here</h2><ul class="ch-grid">{"".join(tile(c, True) for c in pins)}</ul>' if pins else '')
+            + f'<h2>{"Latest" if pins else "Every chart"}</h2><ul class="ch-grid">{"".join(tile(c) for c in rest)}</ul>'
+            + f'<p class="meta">Data: <a href="/index/">the Record</a> (download it there). Questions or corrections: <a href="{esc(meta.get("repo_url", ""))}">the public repository</a>.</p></article>')
+    write('chart/index.html', url=SITE + 'chart/', title='The Charts: what AI is actually doing, in charts', desc='Original charts from the Warning Shots data on AI incidents, jobs, fixes and breakthroughs. A new one every morning, free to share with the citation.',
+          body=body, draft=False, img=SITE + f"assets/charts/{(pins or rest)[0]['id']}.png",
+          crumbs=[('The Charts', '')], graph=[webpage(SITE + 'chart/', 'The Charts', 'Original AI charts', AS_OF, False, '')])
+    register('chart/', [SITE + 'chart/'] + [SITE + f"chart/{c['id']}/" for c in built])
+print(f'charts: {len(built)} built' + (f", today: {today['title']}" if built else ''))

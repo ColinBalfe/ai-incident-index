@@ -732,7 +732,7 @@ function drawWall() {
   const chartBand = CH ? (() => {
     const s = el('section', 'tchart'); s.setAttribute('aria-label', 'The Chart');
     const h = el('div', 'tc-h'); h.append(el('span', 'tc-k', 'The Chart'), el('span', 'tc-d', fmtDate(new Date(CH.date + 'T12:00:00Z'))));
-    const fig = el('div', 'tc-fig'); fig.innerHTML = CH.svg;
+    const fig = el('div', 'tc-fig'); fig.innerHTML = window.innerWidth < 700 && CH.svg_tall ? CH.svg_tall : CH.svg;
     const ft = el('p', 'tc-f'); ft.append(txt(CH.takeaway + ' '));
     const a1 = el('a', null, 'The data and the download →'); a1.href = CH.url; const a2 = el('a', null, 'Every chart'); a2.href = '/chart/'; ft.append(a1, txt(' · '), a2);
     s.append(h, fig, ft); return s; })() : null;
@@ -1892,6 +1892,7 @@ const drawn = new Set();
 const lazyIO = ('IntersectionObserver' in window) ? new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { if (MF()) drawSection(e.target.id); else drawThrough(e.target.id); } }); }, { rootMargin: '900px 0px' }) : null;
 function drawSection(id) {
   const spec = LAZY.find((s) => s[0] === id); if (!spec || !C.scored) return;
+  if (!FULL && RECORD_IDS.has(id)) { ensureFull().then(() => drawSection(id)); return; }
   const first = !drawn.has(id); drawn.add(id);
   const sec = document.getElementById(id); if (sec) { sec.classList.remove('pending'); if (lazyIO) lazyIO.unobserve(sec); }
   spec[1].forEach((fn) => { try { fn(first); } catch (err) { console.error(id, err); } });
@@ -1919,6 +1920,14 @@ function drawAll(first) {
 window.WS.drawAll = () => { if (!C.scored) return false; drawEverything(); return true; };
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (C.scored) { mfSync(); drawAll(false); } }, 160); });
 const DATA_ALL = FILES.concat(OPTIONAL);
+// The homepage draws from a lean bundle (the Record-only data emptied), then fetches the full one in the background for search and the Record sections.
+const LEAN = PAGE === 'front' && !EMBED;
+let FULL = !LEAN, fullP = null;
+function ensureFull() {
+  if (FULL) return Promise.resolve();
+  if (!fullP) fullP = fetch('/data/bundle.json?v=' + (window.AII_BUILD || '')).then((r) => r.json()).then((b) => { ['quotes', 'signals', 'timeline', 'implications', 'drivers', 'context', 'horizon'].forEach((f) => { if (b[f]) D[f] = b[f]; }); FULL = true; SIDX = null; if (MF()) drawFront(); }).catch(() => { fullP = null; });
+  return fullP;
+}
 async function loadBundle(url, opts) {
   const r = await fetch(url, opts); if (!r.ok) throw new Error('bundle ' + r.status);
   const b = await r.json(); if (!FILES.every((f) => b[f])) throw new Error('bundle incomplete');
@@ -1932,7 +1941,7 @@ async function checkForUpdate() {
   try {
     const m = await (await fetch('/data/meta.json?t=' + Date.now(), { cache: 'no-store' })).json();
     if (!D.meta || m.as_of === D.meta.as_of) return;
-    try { await loadBundle('/data/bundle.json?t=' + Date.now(), { cache: 'no-store' }); } catch (e) { await loadFiles('?t=' + Date.now(), { cache: 'no-store' }); }
+    try { await loadBundle('/data/bundle.json?t=' + Date.now(), { cache: 'no-store' }); FULL = true; } catch (e) { await loadFiles('?t=' + Date.now(), { cache: 'no-store' }); FULL = true; }
     compute(); SIDX = null; drawAll(false);
     const what = (m.changelog && m.changelog[0] && m.changelog[0].text) || 'new data';
     toastEl.classList.add('wide'); toast('Updated just now: ' + (what.length > 160 ? what.slice(0, 158) + '…' : what)); clearTimeout(toastT); toastT = setTimeout(() => { toastEl.classList.remove('on'); setTimeout(() => toastEl.classList.remove('wide'), 300); }, 9000);
@@ -1941,8 +1950,9 @@ async function checkForUpdate() {
 setInterval(checkForUpdate, 5 * 60 * 1000);
 (async () => {
   try {
-    try { await loadBundle('/data/bundle.json?v=' + (window.AII_BUILD || '')); } catch (e) { await loadFiles('?v=' + (window.AII_BUILD || '')); }
+    try { await loadBundle((LEAN ? '/data/bundle-front.json?v=' : '/data/bundle.json?v=') + (window.AII_BUILD || '')); } catch (e) { FULL = true; await loadFiles('?v=' + (window.AII_BUILD || '')); }
     compute(); window.__ready = true;
+    if (!FULL) setTimeout(() => ensureFull(), 2500);
     if (EMBED) { embedMode(); } else { drawAll(true); route(); }
   } catch (e) { console.error(e); document.getElementById('headline').textContent = 'The data could not be loaded. Reload the page or try again shortly.'; }
 })();

@@ -1,3 +1,5 @@
 [
- {"id": "2026-10-27-every-incident", "date": "2026-10-27", "kind": "incident_field"}
+ {"id": "2026-10-27-every-incident", "date": "2026-10-27", "kind": "incident_field", "pin": true},
+ {"id": "2026-10-27-fixes-came-back", "date": "2026-10-27", "kind": "fix_chain"},
+ {"id": "2026-10-27-ai-acts-on-its-own", "date": "2026-10-27", "kind": "autonomy_shift", "pin": true, "home": true}
 ]

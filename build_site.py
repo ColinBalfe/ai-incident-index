@@ -72,7 +72,7 @@ if _svm:
 from pageshell import LIVE_NAV as _LIVE_NAV, MID_NAV as _MID_NAV, DESKS as _DESKS
 out = out.replace('{{LIVE_NAV}}', _LIVE_NAV).replace('{{MID_NAV}}', _MID_NAV)
 out = out.replace('{{DESKS}}', '<nav class="mh-desks" aria-label="Desks">' + ''.join(f'<a href="{u}">{_h.escape(t)}</a>' for u, t in _DESKS) + '</nav>')
-open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front'))
+open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front').replace('/data/bundle.json?v=', '/data/bundle-front.json?v=', 1))
 # ---- the Record (/index/): the same template with the headline page hidden and the full index shown
 rec = out.replace('{{PAGE}}', 'record')
 rec = rec.replace('<title>Warning Shots: live AI incidents, threats and breakthroughs</title>', f'<title>The Record: every AI incident since 2023, scored and sourced | {title}</title>', 1)
@@ -154,6 +154,9 @@ for f in FILES:
     except (OSError, ValueError):
         pass
 json.dump(bundle, open('data/bundle.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+# the homepage loads a lean copy first (the Record-only sections' data emptied) and fetches the full bundle in the background
+_lean = {k: ([] if k in ('quotes', 'signals', 'timeline', 'implications', 'drivers', 'context', 'horizon') else v) for k, v in bundle.items()}
+json.dump(_lean, open('data/bundle-front.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 
 # ---- RSS: the Wire and the daily brief
 import html as _html, email.utils as _eu

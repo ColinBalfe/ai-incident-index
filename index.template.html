@@ -832,9 +832,9 @@ kbd { font: 600 12px 'Archivo', system-ui, sans-serif; border: 1px solid var(--l
 /* ----- the headline wall (Drudge format): lead cluster and siren above the masthead, columns below it */
 .dl-lead[hidden], .wall[hidden] { display: none; }
 .dl-lead { background: var(--paper); padding: clamp(14px, 2.4vw, 28px) clamp(12px, 3vw, 32px) clamp(18px, 3vw, 32px); }
-.dl, .dl-lines a { font-family: 'Courier New', Courier, ui-monospace, monospace; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+.dl, .dl-lines a { font-family: 'Courier New', Courier, ui-monospace, monospace; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, currentColor 28%, transparent); }
 .dl.red { color: var(--alarm); }
-.dl:hover { text-decoration-thickness: 2px; }
+.dl:hover, .dl:focus-visible { text-decoration-color: currentColor; text-decoration-thickness: 2px; }
 .dl-cluster { max-width: 1240px; margin: 0 auto; }
 .dl-pic { margin: 0; max-width: 620px; }
 .dl-pic img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--line); }
@@ -1189,6 +1189,14 @@ section#why.pending { min-height: 0; }
 .tc-fig a:hover circle, .tc-fig a:focus circle { stroke: #F4F3EF; }
 .tc-f { margin: 10px 0 0; font-size: 15px; line-height: 1.45; }
 .tc-f a { font-weight: 700; color: var(--ink); }
+@media (max-width: 700px) {
+  .dateline { margin-bottom: 8px; padding-top: 8px; border-top-width: 3px; }
+  .dl-today { font-size: 13px; letter-spacing: .14em; }
+  .dl-hero img { aspect-ratio: 2 / 1; }
+  .sstrip-row { gap: 2px 10px; }
+  .ss-st { font-size: 14px; }
+  .you { padding-top: 10px; padding-bottom: 10px; }
+}
 </style>
 </head>
 <body data-page="{{PAGE}}" data-lead="a">
