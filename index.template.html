@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Warning Shots: live AI incidents, threats and breakthroughs</title>
+<title>Warning Shots: AI threats, breakthroughs and impacts</title>
 <meta name="description" content="{{OG_DESC}}">
 <link rel="canonical" href="{{SITE_URL}}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -994,6 +994,41 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 .comingup { margin: 22px 0 0; border-top: 3px solid var(--ink); padding-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: baseline; font-size: 14px; }
 .cu-h { font-family: Arial, sans-serif; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; }
 .cu-i { color: var(--ink-2); text-decoration: none; } .cu-i b { color: var(--ink); margin-right: 3px; } .cu-i:hover { text-decoration: underline; }
+.seis-ph { background: #0A111E; border-top: 3px solid #FF3300; height: 560px; margin: 0 0 22px; } @media (min-width: 640px) { .seis-ph { height: 520px; } } @media (max-width: 639px) { .seis-ph { margin-left: -16px; margin-right: -16px; } }
+.seis { background: #0A111E; color: #F4F3EF; margin: 0 0 22px; padding: 16px clamp(12px, 2vw, 22px) 14px; border-top: 3px solid #FF3300; position: relative; }
+.pl-h { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 18px; }
+.pl-tt { font-size: 14px; line-height: 1.4; color: #A8B3C2; max-width: 46rem; }
+.pl-k { display: block; font-family: var(--serif); font-weight: 900; font-size: clamp(1.5rem, 2.6vw, 2.1rem); color: #F4F3EF; letter-spacing: -.01em; line-height: 1.05; margin-bottom: 4px; }
+.pl-red { color: #FF3300; }
+.pl-ctr { font-size: 14px; color: #A8B3C2; font-variant-numeric: tabular-nums; white-space: nowrap; } .pl-ctr b { color: #F4F3EF; font-size: 1.35rem; margin-right: 4px; }
+.pl-ctl { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+.pl-f { font: inherit; font-size: 12.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px; border: 1px solid #3A4D6B; background: transparent; color: #A8B3C2; cursor: pointer; }
+.pl-f:hover { border-color: #F4F3EF; color: #F4F3EF; } .pl-f.on { background: #F4F3EF; color: #0A111E; border-color: #F4F3EF; } .pl-f:focus-visible { outline: 2px solid #FF3300; outline-offset: 2px; }
+.pl-rp { margin-left: auto; }
+.pl-fig { position: relative; } .pl-fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+.pl-fig svg rect:focus { outline: none; } .pl-fig svg rect:focus-visible { outline: 2px solid #FF3300; }
+.pl-g { stroke: #3A4D6B; stroke-dasharray: 3 4; } .pl-gl { fill: #7E8C9F; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; }
+.pl-base { stroke: #3A4D6B; } .pl-ax { fill: #7E8C9F; font-size: 11px; font-variant-numeric: tabular-nums; }
+.pl-s line { stroke-width: 2; stroke-linecap: round; transition: y2 .45s cubic-bezier(.2,.9,.3,1.2); }
+.pl-s circle { transition: cy .45s cubic-bezier(.2,.9,.3,1.2), r .2s; }
+.pl-s.ctx line { stroke: #7E8C9F; stroke-opacity: .55; } .pl-s.ctx circle { fill: #7E8C9F; fill-opacity: .8; }
+.pl-s.own line { stroke: #FF3300; } .pl-s.own circle { fill: #FF3300; }
+.pl-s.lab line { stroke-dasharray: 2 3; } .pl-s.lab circle { fill: #0A111E; stroke-width: 1.5; } .pl-s.lab.own circle { stroke: #FF3300; } .pl-s.lab.ctx circle { stroke: #7E8C9F; }
+.pl-s { transition: opacity .3s; } .pl-s.off { opacity: .06; }
+.pl-s.lit circle { r: 6; } .pl-s.hov line { stroke-width: 3; stroke-opacity: 1; } .pl-s.hov circle { r: 6; stroke: #F4F3EF; stroke-width: 2; }
+.pl-needle { stroke: #F4F3EF; stroke-width: 1.5; stroke-opacity: .8; } .pl-hl { stroke: #F4F3EF; stroke-opacity: .3; pointer-events: none; }
+.pl-now { stroke: #F4F3EF; stroke-opacity: .35; stroke-dasharray: 2 3; } .pl-nl { fill: #F4F3EF; font-size: 11px; font-weight: 700; letter-spacing: .08em; } .pl-nl.sm { font-size: 10.5px; fill: #FF3300; }
+.pl-ring { fill: none; stroke: #FF3300; stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: plring 2s ease-out infinite; pointer-events: none; }
+@keyframes plring { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(2.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pl-ring { animation: none; } .pl-s line, .pl-s circle { transition: none; } }
+.pl-tip { position: absolute; z-index: 3; width: min(300px, 86vw); background: #F4F3EF; color: #0A111E; padding: 9px 11px; box-shadow: 0 6px 24px rgba(0,0,0,.45); border-top: 3px solid #FF3300; pointer-events: none; }
+.pt-v { font-weight: 800; font-size: 15px; } .pt-t { font-size: 14px; line-height: 1.3; margin-top: 2px; } .pt-m { font-size: 12px; color: #3F4B5C; margin-top: 4px; line-height: 1.35; } .pt-go { font-size: 12.5px; font-weight: 700; color: #D92D00; margin-top: 5px; }
+.pl-ins { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.pl-i { display: block; border-top: 1px solid #3A4D6B; padding-top: 8px; color: #A8B3C2; text-decoration: none; font-size: 13px; line-height: 1.35; }
+.pl-i b { display: block; color: #F4F3EF; font-size: clamp(1.15rem, 2vw, 1.5rem); font-variant-numeric: tabular-nums; line-height: 1.15; } .pl-i small { display: block; color: #7E8C9F; font-size: 12px; margin-top: 2px; }
+a.pl-i:hover span { color: #F4F3EF; text-decoration: underline; }
+.pl-ft { font-size: 12px; color: #7E8C9F; margin: 10px 0 0; line-height: 1.45; } .pl-ft a { color: #F4F3EF; }
+@media (max-width: 639px) { .seis { margin-left: -16px; margin-right: -16px; padding: 14px 16px 12px; } .pl-ins { grid-template-columns: 1fr; gap: 8px; } .pl-ctr { white-space: normal; } .pl-rp { margin-left: 0; } }
 .resday { flex-basis: 100%; border: 1px solid var(--line); border-left: 4px solid var(--alarm); background: var(--panel); padding: 10px 12px; margin: 4px 0 6px; }
 .rd-h { font-size: 15px; } .rd-h b { text-transform: uppercase; letter-spacing: .06em; font-size: 13px; } .rd-n { font-weight: 700; color: var(--alarm); }
 .rd-l { margin: 6px 0 4px; padding-left: 18px; } .rd-l li { margin: 3px 0; line-height: 1.35; } .rd-l a { color: var(--ink); } .rd-o { color: var(--ink-3); font-size: 13px; white-space: nowrap; }
@@ -1022,7 +1057,7 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 @media (min-width: 900px) { .fy-head { grid-template-columns: auto minmax(0, 1fr); align-items: end; } .fy-head h2 { white-space: nowrap; } }
 .fy-head h2 { font-family: var(--serif); font-size: clamp(2rem, 4.2vw, 3.2rem); line-height: 1.02; letter-spacing: -0.015em; margin: 0; }
 .fy-head .lede { margin: 0; max-width: 34rem; }
-.fy-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 22px; }
+.fy-tabs { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: 22px; }
 @media (max-width: 899px) { .fy-tabs { display: flex; overflow-x: auto; scrollbar-width: none; margin-left: -16px; margin-right: -16px; padding: 0 16px 4px; } .fy-tabs::-webkit-scrollbar { display: none; } .fy-tab { flex: 0 0 auto; } }
 .fy-tab { font: inherit; text-align: left; border: 1px solid var(--line-2); background: var(--panel); color: var(--ink); padding: 12px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 3px; min-height: 0; transition: border-color .12s, background .12s; }
 .fy-tab:hover { border-color: var(--ink); }
@@ -1042,6 +1077,23 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 .fy-new { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--alarm); color: #fff; padding: 1px 6px; margin-right: 8px; vertical-align: 2px; }
 .fy-m { font-size: 12.5px; color: var(--ink-3); margin-top: 3px; }
 .fy-empty { color: var(--ink-3); font-size: 14px; }
+.fy-w { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+.fy-check { margin-top: 6px; }
+.fc-q { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.fc-t { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.35; }
+.fc-b { display: flex; gap: 8px; margin-top: 7px; }
+.fc-o { font: inherit; font-size: 14px; font-weight: 600; padding: 5px 18px; border: 1.5px solid var(--line-2); background: var(--panel); color: var(--ink); cursor: pointer; border-radius: 999px; }
+.fc-o:hover { border-color: var(--ink); } .fc-o.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.fc-o:focus-visible { outline: 2px solid var(--alarm); outline-offset: 2px; }
+.fc-fix { margin: 8px 0 0; padding: 8px 10px; border-left: 3px solid var(--alarm); background: var(--panel); font-size: 14px; line-height: 1.45; }
+.fc-fix a { color: var(--alarm); font-weight: 600; text-decoration: none; } .fc-fix a:hover { text-decoration: underline; }
+.fc-ok { margin: 6px 0 0; font-size: 13.5px; color: var(--ink-2); }
+.fc-sum { margin: 10px 0 0; font-weight: 700; font-size: 14.5px; } .fc-note { margin: 8px 0 0; font-size: 12px; color: var(--ink-3); }
+.fy-watch { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line-2); }
+.fy-do-k2 { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; }
+.fy-watch ul { list-style: none; margin: 8px 0 0; padding: 0; }
+.fy-watch li { display: grid; grid-template-columns: 4.6em minmax(0, 1fr); gap: 8px; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.4; }
+.fy-watch li b { color: var(--alarm); } .fy-do .fy-watch li { counter-increment: none; padding: 7px 0; } .fy-do .fy-watch li::before { content: none; } .fy-do .fy-watch li a { display: inline; margin: 0; color: var(--ink); font-weight: 400; font-size: 14px; }
 .fy-rec { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
 .fy-do { background: var(--paper); color: var(--ink); box-shadow: 0 0 0 1px var(--line-2); padding: clamp(18px, 2.4vw, 26px); align-self: start; border-top: 3px solid var(--alarm); }
 .fy-do-k { font-family: var(--serif); font-weight: 700; font-size: 1.45rem; line-height: 1.1; }
@@ -1114,6 +1166,13 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 .tw-x svg { width: 20px; height: 20px; fill: var(--tw-ink); }
 .tw-t { margin: 10px 0 0; font-size: 16px; line-height: 1.35; white-space: pre-wrap; overflow-wrap: anywhere; }
 .tw-ph { display: block; width: 100%; margin-top: 10px; border-radius: 12px; border: 1px solid var(--tw-ln); }
+.tw-vid { position: relative; margin-top: 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--tw-ln); cursor: pointer; background: #000; aspect-ratio: 16 / 9; }
+.tw-vid img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tw-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 50%; border: 3px solid #fff; background: #1d9bf0; display: grid; place-items: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,.4); }
+.tw-play svg { width: 30px; height: 30px; fill: #fff; margin-left: 3px; }
+.tw-vid:hover .tw-play, .tw-play:focus-visible { transform: translate(-50%, -50%) scale(1.08); }
+.tw-dur { position: absolute; left: 8px; bottom: 8px; background: rgba(0,0,0,.75); color: #fff; font-size: 12px; font-weight: 600; padding: 1px 6px; border-radius: 4px; }
+.tw-embed { min-height: 200px; } .tw-load { font-size: 14px; color: var(--ink-2); padding: 20px 0; }
 .tw-q { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--tw-ln); border-radius: 12px; }
 .tw-q .tw-av { flex-basis: 22px; width: 22px; height: 22px; font-size: 11px; }
 .tw-q .tw-hd { flex-basis: auto; }
@@ -1285,7 +1344,7 @@ section#why.pending { min-height: 0; }
   <section class="wrap foryou" id="why" aria-labelledby="fy-h">
     <div class="fy-head">
       <h2 id="fy-h">What it means for you</h2>
-      <p class="lede">Pick a topic: the latest reporting, the incidents on the record, and what you can do about it today.</p>
+      <p class="lede">Pick what matters to you: the latest reporting, a 30-second check with a fix for each gap, what to watch, and what you can do today.</p>
     </div>
     <div class="fy-tabs" id="fy-tabs" role="tablist" aria-label="Topics"></div>
     <div class="fy-body" id="why-grid"></div>

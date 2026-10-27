@@ -23,7 +23,12 @@
 "created_at": "2026-10-27T18:55:00.000Z",
 "text": "BREAKING: A hacker is attempting to breach the US Federal Election Commission's systems and that agency has had to 'temporarily shut down' its web-facing services as a result, according to an email seen by Reuters reut.rs/4imQyUu",
 "id": "2115155318585930226",
-"photos": []
+"photos": [],
+"video": {
+"poster": "https://pbs.twimg.com/tweet_video_thumb/HVqKi4NXAAAM-NQ.jpg",
+"ms": 0,
+"gif": true
+}
 }
 },
 {
@@ -50,6 +55,11 @@
 "text": "Our demo shows PHP2Shell giving a shell on MediaWiki, Symfony, Laravel, and phpBB.\n\nWe’ve confirmed exploits work on pre-patch releases of PHP 8.2–8.5. If you haven’t updated, assume attackers can compromise your server, and that exploitation will only get easier.",
 "id": "2114839775173906751",
 "photos": [],
+"video": {
+"poster": "https://pbs.twimg.com/amplify_video_thumb/2114839531509948416/img/AwstQiJUX69AwVdr.jpg",
+"ms": 63900,
+"gif": false
+},
 "quoted": {
 "name": "Dan Guido",
 "handle": "dguido",
@@ -58,7 +68,12 @@
 "created_at": "2026-10-24T02:52:20.000Z",
 "text": "Update: Our PHP exploit is now production-grade.\n* stock php.ini-production, display_errors=off, normal memory_limit, multi-worker, ASLR, under load\n* ARM64 + x86-64 targets\n* MediaWiki, WordPress, phpBB, Laravel\n* Apache/mod_php and nginx/php-fpm -> root\nx.com/dguido/status/…",
 "id": "2113825891021144306",
-"photos": []
+"photos": [],
+"video": {
+"poster": "https://pbs.twimg.com/amplify_video_thumb/2113825813195866112/img/oJprX8eCNVRv7gJV.jpg",
+"ms": 25216,
+"gif": false
+}
 }
 }
 },

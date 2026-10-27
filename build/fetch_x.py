@@ -45,6 +45,10 @@ def clean(t):
         'created_at': t.get('created_at', ''), 'text': text, 'id': t.get('id_str', ''),
         'photos': [m.get('media_url_https') for m in (t.get('mediaDetails') or []) if m.get('type') == 'photo'][:1],
     }
+    vids = [m for m in (t.get('mediaDetails') or []) if m.get('type') in ('video', 'animated_gif')]
+    if vids:  # a clip: keep only the poster frame and length; the clip itself plays in X's own embedded player
+        v = vids[0]
+        out['video'] = {'poster': v.get('media_url_https', ''), 'ms': (v.get('video_info') or {}).get('duration_millis') or 0, 'gif': v.get('type') == 'animated_gif'}
     return out
 
 

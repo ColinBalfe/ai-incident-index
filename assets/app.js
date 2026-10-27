@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -62,6 +62,18 @@ const ICON = {
   x: '<svg viewBox="0 0 24 24"><path d="M4 4l16 16"/><path d="M20 4 4 20"/></svg>',
   embed: '<svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5"/><path d="m16 7 5 5-5 5"/><path d="m14 4-4 16"/></svg>',
 };
+/* A clip on X: show its poster frame with a play button; a tap swaps the card for X's own embedded post, which plays the clip.
+   X's script loads only on that tap, so pages stay fast and nothing is fetched from X until a reader asks for it. */
+function xClip(t, x, card, item) {
+  const v = el('div', 'tw-vid'); const im = el('img'); im.src = t.video.poster; im.alt = 'Video from ' + (t.name || x.author || 'X'); im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => v.remove();
+  const b = el('button', 'tw-play'); b.type = 'button'; b.setAttribute('aria-label', 'Play the clip here (loads it from X)'); b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  v.append(im, b); if (t.video.ms) { const s = Math.round(t.video.ms / 1000); v.append(el('span', 'tw-dur', Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'))); }
+  v.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation();
+    const box = el('div', 'tw-embed'); box.append(el('p', 'tw-load', 'Loading the clip from X…')); card.replaceWith(box);
+    const go = () => window.twttr.widgets.createTweet(t.id, box, { theme: isDark() ? 'dark' : 'light', dnt: true, conversation: 'none', align: 'center' }).then((n) => { const l = box.querySelector('.tw-load'); if (n && l) l.remove(); if (!n && l) { l.replaceChildren(txt('X didn’t load the clip. ')); const a = el('a', null, 'Watch it on X →'); a.href = x.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; l.append(a); } });
+    if (window.twttr && window.twttr.widgets) go(); else { const sc = document.createElement('script'); sc.src = 'https://platform.twitter.com/widgets.js'; sc.async = true; sc.onload = () => window.twttr.ready(go); sc.onerror = () => { location.href = x.url; }; document.head.append(sc); } });
+  return v;
+}
 function shareRow(node, o) {
   if (!node) return;
   node.replaceChildren();
@@ -697,6 +709,7 @@ function drawWall() {
       card.append(who(t, x), el('p', 'tw-t', (t.text || x.quote) + (t.truncated ? '…' : '')));
       if (t.truncated) card.append(el('span', 'tw-more', 'Show more on X'));
       if (t.photos && t.photos[0]) { const im = el('img', 'tw-ph'); im.src = t.photos[0]; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); card.append(im); }
+      if (t.video && t.video.poster && t.id) card.append(xClip(t, x, card, item));
       if (t.quoted) { const q = el('div', 'tw-q'); q.append(who(t.quoted, {}, true), el('p', 'tw-t', t.quoted.text)); card.append(q); }
       const f = el('div', 'tw-f'); f.append(el('span', null, when(t.created_at || x.posted)), el('span', 'tw-go', 'View on X →')); card.append(f);
       item.append(card, el('p', 'xon-w', x.what), el('small', 'xon-by', (x.author || t.name) + ': ' + x.who));
@@ -748,7 +761,97 @@ function drawWall() {
     const ft = el('p', 'tc-f'); ft.append(txt(CH.takeaway + ' '));
     const a1 = el('a', null, 'The data and the download →'); a1.href = CH.url; const a2 = el('a', null, 'Every chart'); a2.href = '/chart/'; ft.append(a1, txt(' · '), a2);
     s.append(h, fig, ft); return s; })() : null;
-  box.replaceChildren(...(chartBand ? [chartBand] : []), ...(btBand ? [btBand] : []), cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
+  const pulse = buildPulse();
+  box.replaceChildren(...(pulse ? [pulse] : []), ...(btBand ? [btBand] : []), cols, ...(chartBand ? [chartBand] : []), more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
+}
+/* ---------- The Seismograph: every incident on the record as a spike (height = severity; red = the AI acted on its own).
+   It replays 2023 to today once when it comes into view, then answers to hover, tap and the arrow keys. The replay is the real record
+   in date order; nothing in it is simulated. */
+const pulseState = { f: 'all', played: false };
+function buildPulse() {
+  if (!C.scored || !C.scored.length) return null;
+  const asOf = new Date(D.meta.as_of), asOfY = D.meta.as_of.slice(0, 4);
+  const own = (r) => +r.A >= 3;
+  const all = C.scored.filter((r) => r.date && !isNaN(Date.parse(r.date))).map((r) => ({ ...r, t: new Date(r.date + 'T12:00:00Z') })).sort((a, b) => a.t - b.t);
+  const live = all.find((r) => r.id === D.meta.live_incident);
+  const sec = el('section', 'seis dark-scope'); sec.setAttribute('aria-label', 'The Seismograph: every AI incident since 2023');
+  const head = el('div', 'pl-h');
+  const ttl = el('div', 'pl-tt'); ttl.append(el('span', 'pl-k', 'The Seismograph'), el('span', 'pl-sub', 'Every AI incident on the record since 2023. Taller is worse. '), (() => { const b = el('b', 'pl-red', 'Red'); return b; })(), el('span', 'pl-sub', ': the AI acted on its own.'));
+  const ctr = el('div', 'pl-ctr'); ctr.setAttribute('aria-live', 'polite');
+  head.append(ttl, ctr);
+  const ctl = el('div', 'pl-ctl'); ctl.setAttribute('role', 'group'); ctl.setAttribute('aria-label', 'Show');
+  const F = [['all', 'All ' + all.length], ['own', 'AI acted on its own ' + all.filter(own).length], ['severe', 'Severe and worse ' + all.filter((r) => r.severity >= 60).length]];
+  const btns = F.map(([k, l]) => { const b = el('button', 'pl-f' + (pulseState.f === k ? ' on' : ''), l); b.type = 'button'; b.setAttribute('aria-pressed', String(pulseState.f === k)); b.addEventListener('click', () => { pulseState.f = k; btns.forEach((x, i) => { const on = F[i][0] === k; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); }); paint(false); }); return b; });
+  const rp = el('button', 'pl-f pl-rp', '↻ Replay'); rp.type = 'button'; rp.addEventListener('click', () => play());
+  ctl.append(...btns, rp);
+  const fig = el('div', 'pl-fig'); const tip = el('div', 'pl-tip'); tip.hidden = true; fig.append(tip);
+  const W = Math.max(300, Math.min(1180, (document.getElementById('wall') || document.body).clientWidth || window.innerWidth - 32)), phone = W < 640;
+  const H = phone ? 220 : 300, m = { l: phone ? 26 : 34, r: phone ? 46 : 64, t: 18, b: 22 };
+  const x = d3.scaleUtc().domain([new Date('2023-01-01T00:00:00Z'), new Date(+asOf + 25 * 864e5)]).range([m.l, W - m.r]);
+  const y = d3.scaleLinear().domain([0, 100]).range([H - m.b, m.t]);
+  const NS = 'http://www.w3.org/2000/svg', mk = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+  const svg = mk('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img', 'aria-label': `${all.length} AI incidents since 2023 plotted by date and severity; ${all.filter(own).length} where the AI acted on its own.` });
+  // recessive frame: severity guides and years
+  [[60, 'Severe'], [80, 'Critical']].forEach(([v, l]) => { svg.append(mk('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), class: 'pl-g' })); const t = mk('text', { x: m.l + 4, y: y(v) - 4, class: 'pl-gl' }); t.textContent = l; svg.append(t); });
+  svg.append(mk('line', { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), class: 'pl-base' }));
+  [0, 50, 100].forEach((v) => { const t = mk('text', { x: m.l - 6, y: y(v) + 4, class: 'pl-ax', 'text-anchor': 'end' }); t.textContent = String(v); svg.append(t); });
+  for (let yr = 2023; yr <= +asOfY; yr++) { const xx = x(new Date(yr + '-01-01T00:00:00Z')); svg.append(mk('line', { x1: xx, x2: xx, y1: y(0), y2: y(0) + 5, class: 'pl-base' })); const t = mk('text', { x: xx + 3, y: H - 5, class: 'pl-ax' }); t.textContent = String(yr); svg.append(t); }
+  const gS = mk('g', {}); svg.append(gS);
+  const spikes = all.map((r) => { const g = mk('g', { class: 'pl-s ' + (own(r) ? 'own' : 'ctx') + (r.setting === 'wild' ? '' : ' lab') }); const xx = x(r.t);
+    const ln = mk('line', { x1: xx, x2: xx, y1: y(0), y2: y(0) }); const c = mk('circle', { cx: xx, cy: y(0), r: r.severity >= 60 ? (phone ? 3 : 3.5) : 2.4 }); g.append(ln, c); gS.append(g); return { r, g, ln, c, xx, top: y(r.severity) }; });
+  // now: the live incident and today's edge
+  const nx = x(asOf); svg.append(mk('line', { x1: nx, x2: nx, y1: m.t - 6, y2: y(0), class: 'pl-now' }));
+  const nl = mk('text', { x: nx + 6, y: m.t + 2, class: 'pl-nl' }); nl.textContent = 'NOW'; svg.append(nl);
+  let ring = null; if (live) { const lx = x(live.t), ly = y(live.severity); ring = mk('circle', { cx: lx, cy: ly, r: 6, class: 'pl-ring' }); svg.append(ring); const lt = mk('text', { x: lx + 10, y: ly + 4, class: 'pl-nl sm' }); lt.textContent = (live.level || '') + ' live'; if (!phone) svg.append(lt); }
+  const needle = mk('line', { x1: m.l, x2: m.l, y1: m.t - 6, y2: y(0), class: 'pl-needle' }); needle.style.opacity = 0; svg.append(needle);
+  const hl = mk('line', { x1: 0, x2: 0, y1: m.t, y2: y(0), class: 'pl-hl' }); hl.style.opacity = 0; svg.append(hl);
+  const hit = mk('rect', { x: m.l, y: 0, width: W - m.l - m.r + 30, height: H, fill: 'transparent', tabindex: '0', 'aria-label': 'Explore the incidents: use the left and right arrow keys; Enter opens one.' }); svg.append(hit);
+  fig.append(svg);
+  const vis = (r) => pulseState.f === 'all' || (pulseState.f === 'own' ? own(r) : r.severity >= 60);
+  const paint = (instant) => { spikes.forEach((s) => { const on = vis(s.r); s.g.classList.toggle('off', !on); if (pulseState.played || instant) { s.ln.setAttribute('y2', s.top); s.c.setAttribute('cy', s.top); } }); summary(); };
+  const fmtM = d3.utcFormat('%b %Y');
+  const summary = (upto) => { const rows = all.filter((r) => vis(r) && (!upto || r.t <= upto)); const yrRows = rows.filter((r) => r.date.startsWith(asOfY));
+    ctr.replaceChildren(el('b', null, String(rows.length)), txt(upto ? ' incidents through ' + fmtM(upto) : (pulseState.f === 'own' ? ' where the AI acted on its own' : pulseState.f === 'severe' ? ' severe or critical' : ' incidents') + ' · ' + yrRows.length + ' of them in ' + asOfY)); };
+  const play = () => { const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; pulseState.played = false;
+    spikes.forEach((s) => { s.ln.setAttribute('y2', y(0)); s.c.setAttribute('cy', y(0)); s.g.classList.remove('lit'); });
+    if (reduce) { pulseState.played = true; paint(true); return; }
+    const T = 3200, t0 = performance.now(), d0 = +x.domain()[0], d1 = +asOf; let i = 0; needle.style.opacity = 1;
+    const step = (now) => { const k = Math.min(1, (now - t0) / T), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, dt = new Date(d0 + (d1 - d0) * e), nxp = x(dt);
+      needle.setAttribute('x1', nxp); needle.setAttribute('x2', nxp);
+      while (i < spikes.length && spikes[i].r.t <= dt) { const s = spikes[i++]; s.ln.setAttribute('y2', s.top); s.c.setAttribute('cy', s.top); s.g.classList.add('lit'); setTimeout(() => s.g.classList.remove('lit'), 600); }
+      summary(dt);
+      if (k < 1) requestAnimationFrame(step); else { while (i < spikes.length) { const s = spikes[i++]; s.ln.setAttribute('y2', s.top); s.c.setAttribute('cy', s.top); } needle.style.opacity = 0; pulseState.played = true; summary(); } };
+    requestAnimationFrame(step); };
+  // hover, tap and keys: the nearest visible spike answers
+  let cur = -1;
+  const show = (idx) => { const s = spikes[idx]; if (!s) return; cur = idx; spikes.forEach((z, j) => z.g.classList.toggle('hov', j === idx)); hl.setAttribute('x1', s.xx); hl.setAttribute('x2', s.xx); hl.style.opacity = 1;
+    const r = s.r; tip.replaceChildren(el('div', 'pt-v', r.severity + '/100 · ' + r.tier), el('div', 'pt-t', r.title), el('div', 'pt-m', showDate(r) + ' · ' + (own(r) ? 'the AI acted on its own' : +r.A === 2 ? 'the AI took a single action' : 'a person used or misused it') + ' · ' + (r.setting === 'wild' ? 'in the real world' : 'in a lab or test')), el('div', 'pt-go', matchMedia('(hover: hover)').matches ? 'Click to open the case →' : 'Tap again to open the case →'));
+    tip.hidden = false; const k = svg.getBoundingClientRect().width / W, fw = fig.clientWidth, tw = tip.offsetWidth, left = Math.max(0, Math.min(fw - tw, s.xx * k - tw / 2)); tip.style.left = left + 'px'; tip.style.top = Math.max(0, s.top * k - tip.offsetHeight - 12) + 'px'; };
+  const hide = () => { tip.hidden = true; hl.style.opacity = 0; spikes.forEach((z) => z.g.classList.remove('hov')); };
+  const nearest = (px, py) => { let b = -1, bd = 1e9; spikes.forEach((s, j) => { if (!vis(s.r)) return; const d = Math.abs(s.xx - px) * 1.6 + Math.abs(s.top - py) * 0.35; if (d < bd) { bd = d; b = j; } }); return bd < 70 ? b : -1; };
+  const pt = (e) => { const bb = svg.getBoundingClientRect(); return [(e.clientX - bb.left) * W / bb.width, (e.clientY - bb.top) * H / bb.height]; };
+  hit.addEventListener('pointermove', (e) => { const [px, py] = pt(e); const j = nearest(px, py); if (j >= 0) show(j); else hide(); });
+  hit.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') hide(); });
+  hit.addEventListener('click', (e) => { const [px, py] = pt(e); const j = nearest(px, py); if (j < 0) return; if (e.pointerType !== 'mouse' && cur !== j) { show(j); return; } location.href = '/i/' + spikes[j].r.id + '/'; });
+  hit.addEventListener('keydown', (e) => { const visIdx = spikes.map((s, j) => vis(s.r) ? j : -1).filter((j) => j >= 0); if (!visIdx.length) return; let p = visIdx.indexOf(cur);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); p = p < 0 ? visIdx.length - 1 : Math.max(0, Math.min(visIdx.length - 1, p + (e.key === 'ArrowRight' ? 1 : -1))); show(visIdx[p]); }
+    else if (e.key === 'Enter' && cur >= 0) location.href = '/i/' + spikes[cur].r.id + '/'; else if (e.key === 'Escape') hide(); });
+  // what it shows, computed from the record
+  const wild = (yr) => all.filter((r) => r.setting === 'wild' && r.date.startsWith(String(yr)));
+  const shareOwn = (yr) => { const w = wild(yr); return w.length ? Math.round(100 * w.filter(own).length / w.length) : 0; };
+  const sevYr = (yr) => all.filter((r) => r.severity >= 60 && r.date.startsWith(String(yr))).length;
+  const top = all.filter((r) => r.date.startsWith(asOfY)).sort((a, b) => b.severity - a.severity)[0];
+  const ins = el('div', 'pl-ins');
+  const tile = (big, l, sub, href) => { const d = el(href ? 'a' : 'div', 'pl-i'); if (href) d.href = href; d.append(el('b', null, big), el('span', null, l), ...(sub ? [el('small', null, sub)] : [])); return d; };
+  const yrs = d3.range(2023, +asOfY + 1);
+  ins.append(tile(yrs.map(sevYr).join(' → '), 'severe or critical incidents a year, ' + yrs[0] + ' to ' + asOfY, asOfY + ' so far'),
+    tile(Math.round(100 * (C.headline ? C.headline.agentic_early : 0)) + '% → ' + Math.round(100 * (C.headline ? C.headline.agentic_recent : 0)) + '%', 'of real-world incidents where the AI acted on its own', 'before 2025 vs the last 12 months'),
+    ...(top ? [tile(top.severity + '/100', 'the worst so far this year', top.title.length > 70 ? top.title.slice(0, 68) + '…' : top.title, '/i/' + top.id + '/')] : []));
+  const ft = el('p', 'pl-ft'); ft.append(txt('Each spike is one incident on the index, scored 0–100 by a published formula and linked to its source; dashed spikes happened in labs or tests. The record is the major incidents we can source, not every one. '), (() => { const a = el('a', null, 'Every incident as a table →'); a.href = '/index/#all'; return a; })());
+  sec.append(head, ctl, fig, ins, ft);
+  paint(pulseState.played);
+  if (!pulseState.played) { const io = new IntersectionObserver((en) => { if (en.some((e) => e.isIntersecting)) { io.disconnect(); play(); } }, { threshold: 0.35 }); io.observe(sec); }
+  return sec;
 }
 function drawWire() {
   const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');
@@ -1543,6 +1646,20 @@ const LENSES = [
       ['If you run AI agents at work, give them only the access the task needs, and retire idle ones with their keys.'],
       ['Check an agent’s report of what it did against what it actually changed; agents on this index have misreported their own work.'],
     ] },
+  { id: 'health', hub: [['/wire/decided/', 'AI decided: cases still open'], ['/can-ai/diagnose-illness-or-read-scans/', 'Can AI read scans? Graded']], label: 'Your health', lede: 'Algorithms that decide what care insurers pay for, hospital staff feeding patient records to AI, and AI moving into diagnosis and discharge.',
+    topics: [], cats: ['privacy_data'], kw: /\b(hospitals?|patients?|health ?care|medical|medicare|insurer|claims? denied|doctors?|clinics?|nurses?|diagnos\w*)\b/i,
+    act: [
+      ['If an insurer denies care, ask in writing whether a clinician reviewed it, then appeal; you have the right to.'],
+      ['Treat a chatbot’s medical answer as questions for your doctor, not a diagnosis.'],
+      ['Ask your hospital or clinic how AI is used on your records, and who they were shared with.'],
+    ] },
+  { id: 'bills', beat: 'near-you', hub: [['/wire/near-you/', 'AI near you: data centres, power and water']], label: 'Your bills & town', lede: 'Data centres for AI are driving new power plants and lines. Who pays is being decided now, in rate cases most people never see.',
+    topics: [], cats: [], kw: /data[- ]?cent(er|re)s?|power bills?|electricity (bill|price|rate)s?|\butilit(y|ies)\b|ratepayers?/i,
+    act: [
+      ['Look up your utility’s open rate cases at your state utility commission; customer comments go on the record.'],
+      ['If a data centre is proposed near you, go to the zoning or utility hearing and ask who pays for the new lines and plants.'],
+      ['Read your bill’s fuel and transmission charges: that is where new grid costs usually show up.'],
+    ] },
   { id: 'site', hub: [['/php2shell/', 'The PHP flaw: live tracker'], ['/scraped/', 'Keep your site out of AI training sets']], label: 'Your website', lede: 'The PHP flaws AI found, AI agents breaking into company systems, and crawlers scraping for training data.',
     topics: ['php2shell', 'ai-attack'], cats: ['cyber_offense', 'security_vuln', 'ai_vuln'], kw: /\b(php|website|hack\w*|breach\w*|intrusion)\b/i,
     act: [
@@ -1562,29 +1679,48 @@ let LAST_SEEN = null; // the as_of of the reader's previous visit, set once by d
 const lensPref = () => { try { return localStorage.getItem('ws-lens'); } catch (e) { return null; } };
 let lensCur = null;
 function lensStories(L) {
-  return newsItems().filter((n) => (L.topics.includes(n.topic) && (L.id !== 'money' || L.kw.test(n.title + ' ' + (n.summary || '')))) || (n.topic !== 'php2shell' || L.id === 'site') && L.kw.test(n.title));
+  return newsItems().filter((n) => (L.beat && n.beat === L.beat) || (L.topics.includes(n.topic) && (L.id !== 'money' || L.kw.test(n.title + ' ' + (n.summary || '')))) || (n.topic !== 'php2shell' || L.id === 'site') && L.kw.test((n.tag || '') + ' ' + n.title)).sort((a, b) => (b.wall ? 1 : 0) - (a.wall ? 1 : 0) || String(b.published).localeCompare(String(a.published)));
 }
 function lensIncidents(L) {
   const cut = Date.parse(D.meta.as_of) - 72 * 3.6e6; // the front page already carries the last three days; this shows the record behind them
   return C.scored.filter((r) => L.cats.includes(r.category) && r.setting !== 'lab' && Date.parse(r.disclosed || r.date) < cut).sort((a, b) => String(b.disclosed || b.date).localeCompare(String(a.disclosed || a.date)));
 }
-let whyOpen = false; // the by-topic section opens when a reader picks a topic
+let whyOpen = window.innerWidth >= 900; // open on wide screens; on phones it opens when a reader picks a topic
+const checkState = {}; // the reader's answers to the 30-second check, this page view only (never stored or sent)
 function drawWhy() {
   const box = document.getElementById('why-grid'), tabs = document.getElementById('fy-tabs'); if (!box || !tabs) return;
   if (!lensCur) lensCur = LENSES.some((l) => l.id === lensPref()) ? lensPref() : 'family';
-  const L = LENSES.find((l) => l.id === lensCur);
+  const L = LENSES.find((l) => l.id === lensCur); const LX = (D.lenses || {})[L.id] || {};
   const sec = document.getElementById('why'); if (sec) sec.classList.toggle('shut', !whyOpen);
+  const asOfD = D.meta.as_of.slice(0, 10);
   tabs.replaceChildren(...LENSES.map((l) => {
     const b = el('button', 'fy-tab' + (whyOpen && l.id === lensCur ? ' on' : '')); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(l.id === lensCur));
-    b.append(el('span', 'fy-l', l.label));
+    const n = lensStories(l).length; b.append(el('span', 'fy-l', l.label), el('span', 'fy-n', n ? n + (n === 1 ? ' story' : ' stories') + ' in 3 days' : 'Nothing new in 3 days'));
     b.addEventListener('click', () => { whyOpen = !(whyOpen && lensCur === l.id); lensCur = l.id; try { localStorage.setItem('ws-lens', l.id); } catch (e) {} drawWhy(); });
     return b;
   }));
-  const seen = LAST_SEEN ? Date.parse(LAST_SEEN) : null;
-  const stories = lensStories(L).slice(0, 5), incs = lensIncidents(L).slice(0, 3);
+  const stories = lensStories(L).slice(0, 4), incs = lensIncidents(L).slice(0, 3);
   const left = el('div', 'fy-feed');
   left.append(el('p', 'fy-lede', L.lede));
-
+  // 1. Right now: the latest reporting on this topic, with who each story touches
+  left.append(el('div', 'fy-h', 'Right now'));
+  if (stories.length) { const ul = el('ul', 'fy-list'); stories.forEach((n) => { const li = el('li'); const a = el('a', 'fy-s', n.tag || n.title); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; if (isNewToReader(n)) li.append(el('span', 'fy-new', 'New')); li.append(a, el('div', 'fy-m', (n.outlet || '') + ' · ' + ageShort(n))); if (n.touches) li.append(el('div', 'fy-w', 'Who this touches: ' + n.touches)); ul.append(li); }); left.append(ul); }
+  else left.append(el('p', 'fy-empty', 'No new reporting on this in the last three days. The record and the check below still apply.'));
+  // 2. The 30-second check: three questions; each answer that applies brings its own fix. Nothing is scored, stored or sent.
+  if ((LX.check || []).length) {
+    const st = checkState[L.id] || (checkState[L.id] = {});
+    const ck = el('div', 'fy-check'); ck.append(el('div', 'fy-h', 'Check yourself in 30 seconds'));
+    LX.check.forEach((q, qi) => { const row = el('div', 'fc-q'); row.append(el('p', 'fc-t', q.q)); const bs = el('div', 'fc-b');
+      ['yes', 'no'].forEach((v) => { const b = el('button', 'fc-o' + (st[qi] === v ? ' on' : ''), v === 'yes' ? 'Yes' : 'No'); b.type = 'button'; b.setAttribute('aria-pressed', String(st[qi] === v)); b.addEventListener('click', () => { st[qi] = st[qi] === v ? undefined : v; drawWhy(); }); bs.append(b); });
+      row.append(bs);
+      if (st[qi] && st[qi] === q.flag) { const fx = el('p', 'fc-fix'); fx.append(el('b', null, 'Do this: '), txt(q.fix)); if (q.link) { const a = el('a', null, ' ' + q.link[1] + ' →'); a.href = q.link[0]; fx.append(a); } row.append(fx); }
+      else if (st[qi]) row.append(el('p', 'fc-ok', 'Good: nothing to do on this one.'));
+      ck.append(row); });
+    const done = LX.check.filter((q, qi) => st[qi]).length, flagged = LX.check.filter((q, qi) => st[qi] && st[qi] === q.flag).length;
+    if (done === LX.check.length) ck.append(el('p', 'fc-sum', flagged ? flagged + (flagged === 1 ? ' thing' : ' things') + ' worth doing this week, listed above. Your answers stay on this page and are never sent.' : 'You’ve covered the basics here. Your answers stay on this page and are never sent.'));
+    else ck.append(el('p', 'fc-note', 'Your answers stay on this page and are never stored or sent.'));
+    left.append(ck);
+  }
   if (incs.length) {
     left.append(el('div', 'fy-h', 'It has happened before'));
     const rec = el('div', 'fy-rec');
@@ -1596,6 +1732,11 @@ function drawWhy() {
   const ol = el('ol');
   L.act.forEach(([t, href, label]) => { const li = el('li'); li.append(el('span', null, t)); if (href) { const a = el('a', null, label + ' →'); a.href = href; if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } li.append(a); } ol.append(li); });
   right.append(ol);
+  // 3. What to watch: real dates (hearings, deadlines, the index's own calls on this topic), soonest first
+  const watch = (LX.watch || []).filter((w) => !w.date || w.date >= asOfD).map((w) => ({ d: w.date, t: w.text, u: w.url }))
+    .concat((LX.calls || []).map((id) => (D.calls || []).find((c) => c && c.id === id)).filter((c) => c && !c.resolution && c.resolve_by >= asOfD).map((c) => ({ d: c.resolve_by, t: (c.plain || c.question) + ' Our odds: ' + likelyWord(c.odds).toLowerCase() + '.', u: '/forecast/' + c.id + '/' })))
+    .sort((a, b) => (a.d || '9999').localeCompare(b.d || '9999')).slice(0, 4);
+  if (watch.length) { const wb = el('div', 'fy-watch'); wb.append(el('div', 'fy-do-k2', 'What to watch')); const ul = el('ul'); watch.forEach((w) => { const li = el('li'); li.append(el('b', null, w.d ? d3.utcFormat('%b %-d')(new Date(w.d + 'T12:00:00Z')) + (w.d.slice(0, 4) !== asOfD.slice(0, 4) ? ', ' + w.d.slice(0, 4) : '') : 'Open')); const a = el('a', null, w.t); a.href = w.u; if (/^https?:/.test(w.u)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } li.append(a); ul.append(li); }); wb.append(ul); right.append(wb); }
   if (L.hub) { const hb = el('p', 'fy-hub'); L.hub.forEach(([u, t], i) => { const a = el('a', null, t + ' →'); a.href = u; hb.append(...(i ? [txt(' · ')] : []), a); }); right.append(hb); }
   right.append(el('p', 'fy-do-note', 'Your choice of topic is remembered in this browser only.'));
   box.replaceChildren(left, right);

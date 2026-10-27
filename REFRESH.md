@@ -160,6 +160,9 @@ Every story is about what happened to people, good and bad. Three standing rules
 - **Ordinary life on the wall.** At least four of the column headlines on every edition are everyday-life stories: AI deciding things about people (hiring, insurance, credit, benefits, housing), power bills and data centres, schools, jobs, scams on ordinary people. Look for them first in research, not last. Set `beat` (`near-you`, `school`, `decided`) when a story clearly belongs to one; the beat pages fill from it.
 - **Cases still open:** slow stories that decide things about people (a hiring-bias case, an insurer's algorithm in court) live in `research/beat_background.json` under their beat, with `status`, `touches`, and `next` / `next_what` when a dated hearing or ruling is known. Update the status when the case moves; never drop a case because it went quiet.
 
+- **What it means for you** (`research/lenses.json`): per topic, a three-question check (each flagged answer shows one concrete fix), a `watch` list of real dated events, and `calls` (ids from calls.json). Review the watch list every refresh: drop passed dates, add new hearings, deadlines and votes with a source. Never a score, never a scare line.
+- **Video on X:** a post with a clip shows its poster frame with a play button; a tap loads X's own embedded player (we never download or rehost the clip). The post must still meet the X bar in 2c (AI in the story).
+
 ### The guardrail on engagement
 
 Loops that close are honest; manufactured urgency is not. No fake countdowns (a countdown only ever points at a real, dated resolution, hearing or deadline), no streaks or streak threats, no "you'll miss out", no fear-bait headlines the facts don't carry, no notifications for their own sake. The since-you-were-here line reports what changed, including "nothing new yet". Resolution Day shows misses as prominently as hits.

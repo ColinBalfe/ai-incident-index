@@ -26,6 +26,8 @@ const out = await page.evaluate(([src, ids]) => {
     tgt.innerHTML = live.innerHTML;
     done.push(id);
   }
+  // the Seismograph is drawn (and replayed) by the script; bake only a same-size placeholder so nothing jumps
+  doc.querySelectorAll('.seis').forEach((n) => { const ph = doc.createElement('div'); ph.className = 'seis-ph'; ph.setAttribute('aria-hidden', 'true'); n.replaceWith(ph); });
   // the ticker's measured animation is reapplied by the script; keep it still until then
   const run = doc.getElementById('ticker-run'); if (run) { run.classList.remove('go'); run.removeAttribute('style'); }
   doc.documentElement.setAttribute('data-prerendered', '1');

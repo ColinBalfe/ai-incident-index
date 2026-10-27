@@ -75,7 +75,7 @@ out = out.replace('{{DESKS}}', '<nav class="mh-desks" aria-label="Desks">' + ''.
 open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front').replace('/data/bundle.json?v=', '/data/bundle-front.json?v=', 1))
 # ---- the Record (/index/): the same template with the headline page hidden and the full index shown
 rec = out.replace('{{PAGE}}', 'record')
-rec = rec.replace('<title>Warning Shots: live AI incidents, threats and breakthroughs</title>', f'<title>The Record: every AI incident since 2023, scored and sourced | {title}</title>', 1)
+rec = rec.replace('<title>Warning Shots: AI threats, breakthroughs and impacts</title>', f'<title>The Record: every AI incident since 2023, scored and sourced | {title}</title>', 1)
 rec = rec.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}index/">', 1)
 rec = rec.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}index/">', 1)
 rec = rec.replace(og_title.replace('"', '&quot;'), (f"AI has started breaking in on its own — the Record, {title}").replace('"', '&quot;'))
@@ -86,7 +86,7 @@ os.makedirs('index', exist_ok=True)
 open('index/index.html', 'w', encoding='utf-8').write(rec)
 # ---- the Wire (/wire/): every report from the last three days, the refresh box and the live panel
 wre = out.replace('{{PAGE}}', 'wire')
-wre = wre.replace('<title>Warning Shots: live AI incidents, threats and breakthroughs</title>', f'<title>The Wire: every AI threat and breakthrough reported in the last three days | {title}</title>', 1)
+wre = wre.replace('<title>Warning Shots: AI threats, breakthroughs and impacts</title>', f'<title>The Wire: every AI threat and breakthrough reported in the last three days | {title}</title>', 1)
 wre = wre.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}wire/">', 1)
 wre = wre.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}wire/">', 1)
 wre = wre.replace('<a class="skip" href="#wall">Skip to the headlines</a>', '<a class="skip" href="#wire">Skip to the Wire</a>', 1)
@@ -146,7 +146,8 @@ json.dump(sorted(_xp, key=lambda x: x['posted'], reverse=True), open('data/xpost
 
 # ---- data/bundle.json: every data file in one request (the page preloads it; the individual files stay for scripts and the update check)
 FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta',
-         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart']
+         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses']
+json.dump({k: v for k, v in (_jl('research/lenses.json', {}) or {}).items() if not k.startswith('_')}, open('data/lenses.json', 'w', encoding='utf-8'), ensure_ascii=False)
 bundle = {}
 for f in FILES:
     try:
