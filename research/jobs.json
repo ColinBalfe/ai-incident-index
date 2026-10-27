@@ -1463,6 +1463,1300 @@
      "https://www.boston25news.com/news/business/layoffs-linked/PMZHUQWOU44UHBEQLFBDTNCYSM/"
     ]
    ]
+  },
+  {
+   "slug": "high-school-teachers",
+   "occupation": "High school teachers",
+   "title": "Will AI replace teachers? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI can and can't do in high school teaching: lesson prep, grading, tutoring, classroom work, and the job numbers.",
+   "bls": {
+    "employment": "1,087,500 (2025)",
+    "outlook": "0% (little or no change, -2,500 jobs), 2025-35. BLS ties the outlook to state and local budgets and falling school enrollment. The page does not mention AI; it says only that teachers 'must be comfortable with using and learning new technology'.",
+    "url": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Most US teachers now use AI to prepare lessons and materials, and it saves weekly users close to six hours a week. Experiments show AI tutoring can teach some material well and AI can roughly grade essays, but not accurately enough for grades that count. We found no evidence of teacher layoffs caused by AI; BLS expects flat employment for budget and enrollment reasons.",
+   "tasks": [
+    {
+     "task": "Preparing lessons, worksheets and adapted materials",
+     "status": "deployed",
+     "evidence": "A Gallup-Walton Family Foundation survey of 2,232 US public school teachers found about 60% used AI in 2024-25, mostly to prepare to teach; weekly users said it saved almost six hours a week.",
+     "url": "https://the74million.org/article/survey-60-of-teachers-used-ai-this-year-and-saved-up-to-6-hours-of-work-a-week/",
+     "label": "The 74, Jul 2025"
+    },
+    {
+     "task": "Grading essays",
+     "status": "demonstrated",
+     "evidence": "In a UC Irvine study of 1,800 middle and high school essays, ChatGPT matched human scores exactly only about 40% of the time (76-89% within one point on a six-point scale); researchers said it is not accurate enough for grades that count.",
+     "url": "https://hechingerreport.org/proof-points-ai-essay-grading/",
+     "label": "Hechinger Report, May 2024"
+    },
+    {
+     "task": "Tutoring students through new material",
+     "status": "demonstrated",
+     "evidence": "In a Harvard randomized trial with 194 physics students, a carefully designed GPT-4 tutor produced median learning gains over double those of an in-class active learning lesson; the authors stress it was one course at one institution.",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12179260/",
+     "label": "Scientific Reports, Jun 2025"
+    },
+    {
+     "task": "Delivering core academics with AI and human 'guides'",
+     "status": "demonstrated",
+     "evidence": "Arizona approved Unbound Academy, an online charter where AI apps deliver two hours of core academics a day and certified 'guides' (one per 33 students in its application) motivate and support students; it is an outlier, not a district model.",
+     "url": "https://www.edweek.org/technology/this-school-will-have-artificial-intelligence-teach-kids-with-some-human-help/2025/01",
+     "label": "Education Week, Jan 2025"
+    },
+    {
+     "task": "Building relationships and keeping students thinking for themselves",
+     "status": "not yet",
+     "evidence": "In the same Gallup survey, 57% of teachers said weekly student AI use would reduce independent thinking and 52% said it would reduce critical thinking; even Unbound's founder says 'You cannot get rid of the human in the classroom.'",
+     "url": "https://the74million.org/article/survey-60-of-teachers-used-ai-this-year-and-saved-up-to-6-hours-of-work-a-week/",
+     "label": "The 74, Jul 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2024-12",
+     "Arizona's state charter board approves Unbound Academy, an AI-first online school for grades 4-8 with about 200 expected students, staffed by 'guides' rather than subject teachers (company says AI; no layoffs involved)",
+     "https://www.edweek.org/technology/this-school-will-have-artificial-intelligence-teach-kids-with-some-human-help/2025/01",
+     "Education Week, Jan 2025"
+    ],
+    [
+     "2025-07-08",
+     "Gallup-Walton survey: about 60% of public school teachers used AI and weekly users saved almost six hours a week; only 19% work at a school with an AI policy (study)",
+     "https://the74million.org/article/survey-60-of-teachers-used-ai-this-year-and-saved-up-to-6-hours-of-work-a-week/",
+     "The 74, Jul 2025"
+    ],
+    [
+     "2025-07",
+     "Microsoft's study of Copilot conversations lists some postsecondary teachers (business, economics, library science) among the 40 most AI-applicable occupations; K-12 teachers are not on the list, and the authors say applicability does not mean job loss (study)",
+     "https://www.tomsguide.com/ai/microsoft-reveals-the-40-jobs-ai-is-most-likely-to-replace-and-40-that-are-safe-for-now",
+     "Tom's Guide, Jul 2025"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Use AI for the prep, not the judgment",
+     "Let it draft worksheets, differentiated versions and quiz banks, then edit. That is where teachers report the time savings."
+    ],
+    [
+     "Keep grading decisions human",
+     "Research finds AI essay scores drift toward the middle and miss individual students too often for grades that count. Use it for draft feedback only."
+    ],
+    [
+     "Teach students how to use AI well",
+     "Teachers worry AI will erode independent thinking. Designing assignments that require reasoning, drafts and discussion is a skill schools will need."
+    ],
+    [
+     "Push for a school AI policy and training",
+     "Only 19% of teachers report a school AI policy and most got no training in 2024-25. Clear rules protect you and your students."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace teachers?",
+     "Not on current evidence. BLS projects flat high school teacher employment for 2025-35 because of budgets and falling enrollment, and its outlook does not mention AI. AI is mostly being used as a prep and tutoring aid."
+    ],
+    [
+     "Can AI grade essays?",
+     "Roughly, but not reliably for individual students. A UC Irvine study found ChatGPT agreed exactly with trained human raters about 40% of the time, so researchers recommend it only for low-stakes feedback."
+    ],
+    [
+     "Are AI tutors any good?",
+     "Some are, in controlled settings. A Harvard trial found a well-designed AI tutor beat an active-learning class for first-exposure physics material, but the authors caution that results may not carry over to other subjects or tools."
+    ],
+    [
+     "Are schools replacing teachers with AI?",
+     "We found one high-profile example of an AI-first school model (Unbound Academy in Arizona), which still employs certified human guides. We found no district laying off teachers because of AI."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: High school teachers",
+     "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm"
+    ],
+    [
+     "The 74: Gallup-Walton teacher AI survey (Jul 2025)",
+     "https://the74million.org/article/survey-60-of-teachers-used-ai-this-year-and-saved-up-to-6-hours-of-work-a-week/"
+    ],
+    [
+     "Hechinger Report: AI essay grading study (May 2024)",
+     "https://hechingerreport.org/proof-points-ai-essay-grading/"
+    ],
+    [
+     "Kestin et al., AI tutoring RCT, Scientific Reports (Jun 2025)",
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC12179260/"
+    ],
+    [
+     "Education Week: Unbound Academy (Jan 2025)",
+     "https://www.edweek.org/technology/this-school-will-have-artificial-intelligence-teach-kids-with-some-human-help/2025/01"
+    ],
+    [
+     "Tom's Guide: Microsoft AI applicability list (Jul 2025)",
+     "https://www.tomsguide.com/ai/microsoft-reveals-the-40-jobs-ai-is-most-likely-to-replace-and-40-that-are-safe-for-now"
+    ]
+   ]
+  },
+  {
+   "slug": "registered-nurses",
+   "occupation": "Registered nurses",
+   "title": "Will AI replace nurses? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI can and can't do in nursing: charting, patient calls, early warnings, staffing tools, bedside care, and the job numbers.",
+   "bls": {
+    "employment": "3,465,400 (2025)",
+    "outlook": "+6% (+194,700 jobs), 2025-35, faster than average. BLS cites an aging population and chronic conditions such as diabetes and obesity. The page does not mention AI.",
+    "url": "https://www.bls.gov/OOH/healthcare/registered-nurses.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Hospitals are deploying AI to draft nursing documentation and place routine patient-education calls, and algorithms already help set staffing levels. Bedside care remains human, and nurses' unions report that the algorithms often disagree with their own assessments. BLS projects strong growth; the one AI-linked nursing layoff we found involved 12 chart-review nurses, and the hospital disputes the union's account.",
+   "tasks": [
+    {
+     "task": "Charting and documentation",
+     "status": "deployed",
+     "evidence": "Mercy uses Microsoft Dragon Copilot's ambient nursing tool on inpatient units in three cities; Microsoft-provided metrics show a 21% cut in documentation latency and 8-24 minutes saved per shift for high-use nurses (not independently evaluated).",
+     "url": "https://www.mercy.net/newsroom/2025-11-02/mercy-advances-groundbreaking-ai-tool-for-nursing-through-collab/",
+     "label": "Mercy, Nov 2025"
+    },
+    {
+     "task": "Patient education and follow-up phone calls",
+     "status": "demonstrated",
+     "evidence": "Hippocratic AI's Nurse Co-Pilot, co-developed with Cincinnati Children's, OhioHealth and Cleveland Clinic, phones patients for admission and medication education that a nurse triggers and reviews; the company claims it frees one to four hours per nurse per shift.",
+     "url": "https://www.beckershospitalreview.com/healthcare-information-technology/agentic-ai-arrives-for-nursing-shifts-and-health-system-call-centers/",
+     "label": "Becker's Hospital Review, Apr 2026"
+    },
+    {
+     "task": "Predicting patient acuity and staffing needs",
+     "status": "deployed",
+     "evidence": "In a National Nurses United survey of 2,300+ RNs, 50% said their employer uses algorithms to predict acuity and nursing hours; of those, 69% said the computer's acuity score did not match their own assessment.",
+     "url": "https://www.nationalnursesunited.org/press/national-nurses-united-survey-finds-ai-technology-undermines-patient-safety",
+     "label": "National Nurses United, May 2024"
+    },
+    {
+     "task": "Spotting patients who are deteriorating (e.g. sepsis)",
+     "status": "demonstrated",
+     "evidence": "A University of Michigan study of Epic's widely used sepsis model found it missed about two-thirds of sepsis cases while alerting on 18% of all inpatients; Epic disputed the configuration tested.",
+     "url": "https://www.healthcareitnews.com/news/research-suggests-epic-sepsis-model-lacking-predictive-power",
+     "label": "Healthcare IT News, Jun 2021"
+    },
+    {
+     "task": "Hands-on bedside care",
+     "status": "not yet",
+     "evidence": "The most widely deployed nursing robot, Diligent's Moxi, does non-patient-facing work such as fetching supplies and carrying lab samples; the company says its fleet passed 1 million deliveries across 23 health systems.",
+     "url": "https://www.robotics247.com/article/diligent_robotics_humanoid_mmr_performs_one_million_deliveries",
+     "label": "Robotics 24/7, Feb 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2026-07-01",
+     "Montefiore in the Bronx moves to lay off 12 utilization-review nurses, whose chart-review work the nurses' union says will go to AI software; Montefiore called the union's claims 'inaccurate and misleading' (reported as AI)",
+     "https://www.nysna.org/press/bronx-needs-real-nurses-not-ai",
+     "NYSNA, Jul 2026"
+    ],
+    [
+     "2024-04",
+     "Hundreds of nurses protest at Kaiser Permanente's San Francisco Medical Center against untested hospital AI; Kaiser says 'AI tools don't make medical decisions' (no job cuts involved)",
+     "https://digitalhealth.net/2024/04/us-nurses-protest-against-the-use-of-ai-in-hospitals",
+     "Digital Health, Apr 2024"
+    ],
+    [
+     "2025-08",
+     "Microsoft's AI-applicability study puts nursing assistants and phlebotomists among the least AI-applicable occupations; registered nurses appear on neither the top nor bottom list (study)",
+     "https://newschannel9.com/news/nation-world/interpreter-historian-top-list-of-40-jobs-with-high-ai-overlap-microsoft-report",
+     "Sinclair/Newschannel 9, Aug 2025"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Learn your hospital's documentation AI",
+     "Ambient charting tools are spreading fast. Nurses who know how to review and correct AI-drafted notes save time and catch errors."
+    ],
+    [
+     "Document when algorithms disagree with you",
+     "Union surveys find acuity and handoff tools often miss what nurses see. Recording your clinical reasoning protects patients and you."
+    ],
+    [
+     "Watch roles away from the bedside",
+     "The first AI-linked nursing cut we found hit chart-review (utilization) nurses, not bedside staff. Desk-based nursing roles may be more exposed."
+    ],
+    [
+     "Get involved in AI decisions",
+     "Nurses' unions are pushing to have a say in how AI is deployed. Joining a technology or practice committee gives you a voice in it."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace nurses?",
+     "Not on current evidence. BLS projects 6% growth (+194,700 jobs) for 2025-35, driven by an aging population, and does not mention AI. Most hospital AI targets paperwork and calls, not bedside care."
+    ],
+    [
+     "What nursing tasks does AI already do?",
+     "Drafting documentation from nurses' spoken notes, placing routine patient-education calls that nurses trigger and review, and scoring patient acuity for staffing."
+    ],
+    [
+     "Are hospitals laying off nurses because of AI?",
+     "We found one case: Montefiore's planned layoff of 12 utilization-review nurses in July 2026, which the union links to AI software and the hospital disputes. We found no bedside-nurse layoffs tied to AI."
+    ],
+    [
+     "Is hospital AI accurate?",
+     "Mixed. A 2021 study found Epic's sepsis model missed about two-thirds of cases, and most nurses whose employers use acuity algorithms say the scores don't match their assessments."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Registered nurses",
+     "https://www.bls.gov/OOH/healthcare/registered-nurses.htm"
+    ],
+    [
+     "Mercy: Dragon Copilot nursing rollout (Nov 2025)",
+     "https://www.mercy.net/newsroom/2025-11-02/mercy-advances-groundbreaking-ai-tool-for-nursing-through-collab/"
+    ],
+    [
+     "Becker's: Hippocratic AI Nurse Co-Pilot (Apr 2026)",
+     "https://www.beckershospitalreview.com/healthcare-information-technology/agentic-ai-arrives-for-nursing-shifts-and-health-system-call-centers/"
+    ],
+    [
+     "National Nurses United: AI survey (May 2024)",
+     "https://www.nationalnursesunited.org/press/national-nurses-united-survey-finds-ai-technology-undermines-patient-safety"
+    ],
+    [
+     "Healthcare IT News: Epic sepsis model study (Jun 2021)",
+     "https://www.healthcareitnews.com/news/research-suggests-epic-sepsis-model-lacking-predictive-power"
+    ],
+    [
+     "Robotics 24/7: Moxi 1 million deliveries (Feb 2025)",
+     "https://www.robotics247.com/article/diligent_robotics_humanoid_mmr_performs_one_million_deliveries"
+    ],
+    [
+     "NYSNA: Montefiore layoffs (Jul 2026)",
+     "https://www.nysna.org/press/bronx-needs-real-nurses-not-ai"
+    ],
+    [
+     "Bloomberg Law: NY nursing union fights AI layoffs (Jul 2026)",
+     "https://news.bloomberglaw.com/daily-labor-report/ny-nursing-union-fights-ai-layoffs-citing-technology-pitfalls"
+    ],
+    [
+     "Digital Health: Kaiser nurses protest (Apr 2024)",
+     "https://digitalhealth.net/2024/04/us-nurses-protest-against-the-use-of-ai-in-hospitals"
+    ]
+   ]
+  },
+  {
+   "slug": "pharmacists",
+   "occupation": "Pharmacists",
+   "title": "Will AI replace pharmacists? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI and automation can and can't do in pharmacy: filling prescriptions, drug questions, exams, clinical care, and job numbers.",
+   "bls": {
+    "employment": "325,200 (2025)",
+    "outlook": "+5% (+17,100 jobs), 2025-35. BLS expects growth in hospitals and clinics as pharmacists join care teams, and limited demand at retail pharmacies because of consolidation and mail or online prescriptions. The page does not mention AI or automation.",
+    "url": "https://www.bls.gov/ooh/healthcare/pharmacists.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Robots already fill a large share of routine prescriptions at some chains, which frees pharmacists for vaccines and clinical work rather than cutting them. Chatbots can pass pharmacy licensing exams but have given wrong or invented answers to real drug questions. BLS projects modest growth; the pressure on retail pharmacy jobs comes from consolidation, not AI.",
+   "tasks": [
+    {
+     "task": "Counting and filling routine prescriptions",
+     "status": "deployed",
+     "evidence": "Walgreens' 11 robotic micro-fulfillment centers served about 4,800 stores and handled 40% of prescription volume at those pharmacies on average (about 16 million prescriptions a month). This is robotics, not generative AI.",
+     "url": "https://www.nbcconnecticut.com/news/business/money-report/walgreens-doubles-down-on-prescription-filling-robots-to-cut-costs-free-up-pharmacists-amid-turnaround/3562965/",
+     "label": "CNBC via NBC Connecticut, May 2025"
+    },
+    {
+     "task": "Passing pharmacy knowledge exams",
+     "status": "demonstrated",
+     "evidence": "GPT-4 scored 72.9% on text-only questions from Taiwan's national pharmacist licensing exam, above the 60% pass mark, but was weaker on pharmacy law and could not read chemical-structure diagrams.",
+     "url": "https://mededu.jmir.org/2025//e56850",
+     "label": "JMIR Medical Education, Jan 2025"
+    },
+    {
+     "task": "Answering real-world medication questions",
+     "status": "not yet",
+     "evidence": "Long Island University pharmacists found free ChatGPT answered only 10 of 39 real drug-information questions satisfactorily; it said Paxlovid and verapamil had no reported interaction and every reference it cited was fake.",
+     "url": "https://www.cnbc.com/2023/12/05/free-chatgpt-may-incorrectly-answer-drug-questions-study-says.html",
+     "label": "CNBC, Dec 2023"
+    },
+    {
+     "task": "Vaccinations and clinical services",
+     "status": "not yet",
+     "evidence": "Walgreens says its fill-center robots free staff for patient care; stores using the centers administer 40% more vaccines than those without, work still done by pharmacists and technicians.",
+     "url": "https://www.nbcconnecticut.com/news/business/money-report/walgreens-doubles-down-on-prescription-filling-robots-to-cut-costs-free-up-pharmacists-amid-turnaround/3562965/",
+     "label": "CNBC via NBC Connecticut, May 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-05-11",
+     "Walgreens expands robotic prescription-filling centers, citing about $500 million in savings and a 13% drop in fulfillment costs, and frames it as freeing pharmacists; no job cuts announced (company says automation, not AI)",
+     "https://www.nbcconnecticut.com/news/business/money-report/walgreens-doubles-down-on-prescription-filling-robots-to-cut-costs-free-up-pharmacists-amid-turnaround/3562965/",
+     "CNBC via NBC Connecticut, May 2025"
+    ],
+    [
+     "2026-08",
+     "BLS projection factors: pharmacists' share falls in grocery and general retailers 'as consolidation of the retail pharmacy industry' continues, and rises in hospitals and physicians' offices; no AI factor is listed for pharmacists (study)",
+     "https://www.bls.gov/emp/tables/factors-affecting-occupational-utilization.htm",
+     "BLS Employment Projections"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Move toward clinical roles",
+     "BLS expects growth in hospitals and clinics where pharmacists manage medications on care teams, and weak demand in retail."
+    ],
+    [
+     "Own the final check",
+     "Chatbots have given wrong interaction answers and fake references. Verifying AI or automated output before it reaches a patient is the pharmacist's job."
+    ],
+    [
+     "Build patient-facing services",
+     "Vaccinations, testing and counselling are where chains say automation is meant to redirect pharmacist time."
+    ],
+    [
+     "Work with technicians, not against them",
+     "BLS projects technicians taking on a bigger role as state ratio rules loosen, so supervising and training them is a growing part of the job."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace pharmacists?",
+     "Not on current evidence. BLS projects 5% growth (+17,100 jobs) for 2025-35 and does not mention AI. Retail pharmacy faces pressure from consolidation and mail-order, not AI."
+    ],
+    [
+     "Do robots fill prescriptions already?",
+     "Yes. Walgreens' central fill centers handled about 40% of prescription volume at supported stores in 2025. Pharmacists still verify and dispense."
+    ],
+    [
+     "Can ChatGPT answer drug questions?",
+     "Not reliably. A 2023 study found free ChatGPT answered only about a quarter of real pharmacist-level questions satisfactorily, and newer models still need checking."
+    ],
+    [
+     "Which pharmacy tasks are safest?",
+     "Clinical medication management, patient counselling, vaccinations and the legal responsibility for what is dispensed."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Pharmacists",
+     "https://www.bls.gov/ooh/healthcare/pharmacists.htm"
+    ],
+    [
+     "BLS: Factors affecting occupational utilization, 2025-35",
+     "https://www.bls.gov/emp/tables/factors-affecting-occupational-utilization.htm"
+    ],
+    [
+     "CNBC via NBC Connecticut: Walgreens robots (May 2025)",
+     "https://www.nbcconnecticut.com/news/business/money-report/walgreens-doubles-down-on-prescription-filling-robots-to-cut-costs-free-up-pharmacists-amid-turnaround/3562965/"
+    ],
+    [
+     "CNBC: ChatGPT drug questions study (Dec 2023)",
+     "https://www.cnbc.com/2023/12/05/free-chatgpt-may-incorrectly-answer-drug-questions-study-says.html"
+    ],
+    [
+     "JMIR Medical Education: ChatGPT on Taiwan pharmacist exam (Jan 2025)",
+     "https://mededu.jmir.org/2025//e56850"
+    ]
+   ]
+  },
+  {
+   "slug": "data-entry-keyers",
+   "occupation": "Data entry keyers",
+   "title": "Will AI replace data entry jobs? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI can and can't do in data entry: keying paper forms, invoices, receipts, back-office processing, and the job numbers.",
+   "bls": {
+    "employment": "131,800 (2025)",
+    "outlook": "-25.5% (-33,600 jobs), 2025-35, the fourth-fastest projected decline of any occupation. BLS has no Occupational Outlook Handbook profile for this job, and the projections table we could read does not state a reason.",
+    "url": "https://www.bls.gov/emp/tables/fastest-declining-occupations.htm",
+    "label": "BLS Employment Projections"
+   },
+   "verdict": "This is one of the occupations BLS expects to shrink fastest, by about a quarter by 2035. Modern AI models pull fields from clean invoices with about 96% accuracy in tests, and scanning has replaced some manual keying. But big paper workflows are slow to convert: the IRS digitized only a small fraction of its planned paper returns in 2025, and errors on tricky fields still need a human.",
+   "tasks": [
+    {
+     "task": "Keying data from paper forms",
+     "status": "deployed",
+     "evidence": "The IRS scanned over 410,000 paper Forms 940 in its 2023 Digital Intake effort, reducing the digit-by-digit manual keying it relied on during the pandemic backlog.",
+     "url": "https://tax.thomsonreuters.com/news/digitization-led-to-successful-tax-season-officials-say/",
+     "label": "Thomson Reuters Tax, Apr 2023"
+    },
+    {
+     "task": "Pulling fields from invoices",
+     "status": "demonstrated",
+     "evidence": "Fraunhofer researchers found Gemini 2.5 Pro extracted invoice fields with 96.5% accuracy on clean invoices and 92.7% on scanned ones, zero-shot; the open datasets may have been in training data.",
+     "url": "https://arxiv.org/html/2509.04469v1",
+     "label": "arXiv (Fraunhofer IAIS), Aug 2025"
+    },
+    {
+     "task": "Reading receipts and error-prone fields without checking",
+     "status": "not yet",
+     "evidence": "In the same benchmark the best model reached only 87.5% on scanned receipts, and bank account numbers (IBANs) were consistently the hardest field, with errors like confusing zero and 'O'.",
+     "url": "https://arxiv.org/html/2509.04469v1",
+     "label": "arXiv (Fraunhofer IAIS), Aug 2025"
+    },
+    {
+     "task": "Converting a whole paper workflow to automated capture",
+     "status": "not yet",
+     "evidence": "TIGTA found IRS contractors had scanned 517,000 forms by May 2025, about 5% of the plan to digitize most paper-filed returns that season.",
+     "url": "https://www.accountingtoday.com/news/irs-falls-far-short-on-paperless-processing-goal",
+     "label": "Accounting Today, Feb 2026"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2023-05",
+     "IBM CEO Arvind Krishna says IBM will slow or pause hiring for back-office roles, saying 'I could easily see 30% of that getting replaced by AI and automation over a five-year period' (about 7,800 roles reported) (company says AI)",
+     "https://www.neowin.net/news/ibm-says-it-will-pause-hiring-for-jobs-to-be-replaced-by-ai-automation/",
+     "Neowin, May 2023"
+    ],
+    [
+     "2026-08",
+     "BLS projects data entry keyers to fall 25.5%, behind only word processors and typists, telephone operators and switchboard operators among the fastest-declining occupations (study)",
+     "https://www.bls.gov/emp/tables/fastest-declining-occupations.htm",
+     "BLS Employment Projections"
+    ],
+    [
+     "2026-10-23",
+     "Pantheon Macroeconomics names office administration among sectors slowly shrinking as AI costs the US 10,000+ jobs a month, net (study)",
+     "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk",
+     "Fortune, Oct 2026"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Move from keying to checking",
+     "AI extraction is good but not perfect, especially on scans and account numbers. Exception handling and quality control are the parts that remain."
+    ],
+    [
+     "Learn the capture tools",
+     "Document-processing and spreadsheet automation skills make you the person who runs the system rather than the one it replaces."
+    ],
+    [
+     "Build toward an adjacent role",
+     "Bookkeeping, records management, payroll or operations roles use the same accuracy skills with more judgment."
+    ],
+    [
+     "Don't wait for your employer",
+     "BLS expects about a quarter of these jobs to go by 2035. Start retraining while you still have a paycheck."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace data entry jobs?",
+     "Many of them. BLS projects a 25.5% decline (-33,600 jobs) for 2025-35, one of the steepest of any occupation, though it does not say how much of that is AI versus older automation."
+    ],
+    [
+     "How accurate is AI at data entry?",
+     "In a 2025 benchmark the best model got about 96% of invoice fields right on clean documents and 87% on scanned receipts, so humans still check the output."
+    ],
+    [
+     "Why hasn't automation happened faster?",
+     "Large paper workflows are hard to convert. The IRS reached only about 5% of its 2025 digitization goal, according to its inspector general."
+    ],
+    [
+     "Which companies have tied back-office cuts to AI?",
+     "IBM said in 2023 it would slow hiring for back-office roles AI could do. Most other data entry losses are not announced as such."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS: Fastest declining occupations, 2025-35",
+     "https://www.bls.gov/emp/tables/fastest-declining-occupations.htm"
+    ],
+    [
+     "Thomson Reuters Tax: IRS digitization (Apr 2023)",
+     "https://tax.thomsonreuters.com/news/digitization-led-to-successful-tax-season-officials-say/"
+    ],
+    [
+     "Accounting Today: TIGTA on IRS paperless processing (Feb 2026)",
+     "https://www.accountingtoday.com/news/irs-falls-far-short-on-paperless-processing-goal"
+    ],
+    [
+     "arXiv: Benchmarking LLM strategies for invoice processing (Aug 2025)",
+     "https://arxiv.org/html/2509.04469v1"
+    ],
+    [
+     "Neowin: IBM back-office hiring pause (May 2023)",
+     "https://www.neowin.net/news/ibm-says-it-will-pause-hiring-for-jobs-to-be-replaced-by-ai-automation/"
+    ],
+    [
+     "Fortune: Pantheon estimate (Oct 2026)",
+     "https://fortune.com/2026/10/23/ai-is-killing-10000-plus-jobs-per-month-and-9-of-jobs-are-at-risk"
+    ]
+   ]
+  },
+  {
+   "slug": "market-research-analysts",
+   "occupation": "Market research analysts",
+   "title": "Will AI replace market research analysts? The evidence",
+   "desc": "Graded, dated evidence on what AI can and can't do in market research: coding answers, synthetic respondents, tracking change, and the job numbers.",
+   "bls": {
+    "employment": "952,700 (2025)",
+    "outlook": "+7% (+66,300 jobs), 2025-35. BLS cites growing use of data and market research across industries, including analysis of big data such as social media comments and online reviews. The page does not mention AI.",
+    "url": "https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Market research ranks near the top of Microsoft's list of jobs where AI is most applicable, and about half of researchers already use AI regularly. Tests show AI-generated 'synthetic' respondents can land within a few points on headline numbers but fail at tracking change and subgroups. BLS still projects growth, and we found no company-stated job cuts in this field.",
+   "tasks": [
+    {
+     "task": "Everyday research work with AI tools",
+     "status": "deployed",
+     "evidence": "A Qualtrics survey of more than 3,000 market research professionals in 14 countries found 53% use AI regularly.",
+     "url": "https://www.research-live.com/article/news/most-researchers-using-ai-regularly-finds-qualtrics-study/id/5144776",
+     "label": "Research Live, Nov 2025"
+    },
+    {
+     "task": "Coding open-ended survey answers",
+     "status": "demonstrated",
+     "evidence": "Researchers at LMU Munich and GESIS found off-the-shelf GPT-4o reached a macro F1 of about 0.70 against expert coders; only a version fine-tuned on human-coded data was satisfactory (0.87).",
+     "url": "https://arxiv.org/pdf/2506.14634",
+     "label": "arXiv (LMU Munich/GESIS), 2025"
+    },
+    {
+     "task": "Estimating headline survey results with synthetic respondents",
+     "status": "demonstrated",
+     "evidence": "Strat7 compared two synthetic-data vendors with 3,000 real respondents: headline results were 2-3 points off on average, but synthetic willingness-to-pay ran about 16% high.",
+     "url": "https://www.research-live.com/article/news/synthetic-data-survey-responses-significantly-different-to-humans-finds-study/id/5151157",
+     "label": "Research Live, Jul 2026"
+    },
+    {
+     "task": "Detecting changes in consumer opinion over time",
+     "status": "not yet",
+     "evidence": "In the same Strat7 test, synthetic data tracked the direction of change between 2025 and 2026 correctly only 47% of the time, which the firm called essentially a coin toss.",
+     "url": "https://www.research-live.com/article/news/synthetic-data-survey-responses-significantly-different-to-humans-finds-study/id/5151157",
+     "label": "Research Live, Jul 2026"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-07",
+     "Microsoft's study of 200,000 Copilot conversations lists market research analysts among the 40 occupations with the highest AI applicability; Microsoft says this does not mean the jobs will be automated (study)",
+     "https://www.tomsguide.com/ai/microsoft-reveals-the-40-jobs-ai-is-most-likely-to-replace-and-40-that-are-safe-for-now",
+     "Tom's Guide, Jul 2025"
+    ],
+    [
+     "2025-11-19",
+     "Qualtrics: 53% of 3,000+ market researchers use AI regularly, and 45% of synthetic-data adopters call it their most reliable data source (study)",
+     "https://www.research-live.com/article/news/most-researchers-using-ai-regularly-finds-qualtrics-study/id/5144776",
+     "Research Live, Nov 2025"
+    ],
+    [
+     "2026-07-15",
+     "Strat7's AI lead on synthetic survey data: 'Don't replace people' (study)",
+     "https://www.research-live.com/article/news/synthetic-data-survey-responses-significantly-different-to-humans-finds-study/id/5151157",
+     "Research Live, Jul 2026"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Use AI for speed, real data for decisions",
+     "Synthetic respondents can help with early exploration and hard-to-reach boosts, but tests show they miss changes over time and subgroup differences."
+    ],
+    [
+     "Become the validator",
+     "Knowing when AI-coded or synthetic results diverge from real respondents is a skill clients will pay for."
+    ],
+    [
+     "Learn to fine-tune and audit",
+     "Off-the-shelf models coded survey answers poorly; models trained on your own human-coded data did much better."
+    ],
+    [
+     "Own the business question",
+     "Designing studies and turning findings into decisions draws on context and stakeholder trust that AI tools do not have."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace market research analysts?",
+     "Not on current evidence. BLS projects 7% growth (+66,300 jobs) for 2025-35. AI is changing the work, and Microsoft ranks the job among the most AI-applicable, but we found no company-stated cuts."
+    ],
+    [
+     "Are synthetic respondents as good as real ones?",
+     "For some headline numbers they come within a few points, but a 2026 test found they tracked change over time no better than a coin toss and broke logical price orders in most cases."
+    ],
+    [
+     "Can AI code open-ended survey answers?",
+     "Partly. A 2025 study found general models fell short of human coders; a model fine-tuned on human-coded examples performed acceptably."
+    ],
+    [
+     "How many researchers use AI?",
+     "About half use it regularly, according to a 2025 Qualtrics survey of more than 3,000 researchers."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Market research analysts",
+     "https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm"
+    ],
+    [
+     "Research Live: Strat7 synthetic data study (Jul 2026)",
+     "https://www.research-live.com/article/news/synthetic-data-survey-responses-significantly-different-to-humans-finds-study/id/5151157"
+    ],
+    [
+     "Research Live: Qualtrics researcher AI survey (Nov 2025)",
+     "https://www.research-live.com/article/news/most-researchers-using-ai-regularly-finds-qualtrics-study/id/5144776"
+    ],
+    [
+     "arXiv: LLMs for coding open-ended survey responses",
+     "https://arxiv.org/pdf/2506.14634"
+    ],
+    [
+     "Tom's Guide: Microsoft AI applicability list (Jul 2025)",
+     "https://www.tomsguide.com/ai/microsoft-reveals-the-40-jobs-ai-is-most-likely-to-replace-and-40-that-are-safe-for-now"
+    ],
+    [
+     "Sinclair/Newschannel 9: Microsoft caveat (Aug 2025)",
+     "https://newschannel9.com/news/nation-world/interpreter-historian-top-list-of-40-jobs-with-high-ai-overlap-microsoft-report"
+    ]
+   ]
+  },
+  {
+   "slug": "claims-adjusters-examiners",
+   "occupation": "Insurance claims adjusters, examiners and investigators",
+   "title": "Will AI replace claims adjusters? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI can and can't do in insurance claims: photo estimates, instant payouts, disputed claims, and the job numbers.",
+   "bls": {
+    "employment": "389,700 claims adjusters, appraisers, examiners and investigators (2025), including 376,100 adjusters, examiners and investigators",
+    "outlook": "-6% (-21,800 jobs), 2025-35; adjusters, examiners and investigators -5%, auto damage appraisers -9%. BLS: 'Technology is expected to automate some of the tasks that these workers currently perform', e.g. software that evaluates photos of damage, and 'data processing speed and artificial intelligence (AI) capabilities will continue to increase'.",
+    "url": "https://www.bls.gov/ooh/business-and-financial/claims-adjusters-appraisers-examiners-and-investigators.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Claims is one of the few jobs where BLS itself projects AI-driven decline. Insurers already use AI to estimate car damage from photos and settle simple claims without a person, and European insurers have begun cutting claims and call-centre jobs with AI cited as a reason. Complex and disputed claims still need people, and one AI-assisted denial system faces a class action.",
+   "tasks": [
+    {
+     "task": "Estimating car damage from photos",
+     "status": "deployed",
+     "evidence": "GEICO signed Tractable to assess vehicle damage from photos across the 28 million vehicles it insures, replacing a physical appraisal; Tokio Marine, Covéa and others also use it.",
+     "url": "https://www.emarketer.com/content/tractable-makes-inroads-in-us-insurance-market-with-geico-partnership/",
+     "label": "eMarketer, May 2021"
+    },
+    {
+     "task": "Settling simple claims end to end",
+     "status": "deployed",
+     "evidence": "Lemonade's CEO said its claims bot handles '40-something-percent' of claims with no need for any human intervention (company figure).",
+     "url": "https://www.pymnts.com/?p=1470369",
+     "label": "PYMNTS, Feb 2023"
+    },
+    {
+     "task": "Handling claims calls and routine enquiries",
+     "status": "deployed",
+     "evidence": "Allianz Partners, where about 14,000 of 22,000 staff handle enquiries and claims by phone, is cutting 1,500-1,800 jobs across Europe; Bloomberg reports the unit cited AI as a reason.",
+     "url": "https://www.dig-in.com/articles/allianz-unit-to-cut-1-800-jobs-in-push-to-adopt-ai",
+     "label": "Bloomberg via Digital Insurance, Jul 2026"
+    },
+    {
+     "task": "Judging complex or disputed claims",
+     "status": "not yet",
+     "evidence": "A federal judge let a class action proceed alleging UnitedHealth's nH Predict tool overrode doctors on post-acute care; plaintiffs claim nine in ten appealed denials were reversed. UnitedHealth says the tool does not make coverage decisions.",
+     "url": "https://www.healthcarefinancenews.com/news/class-action-lawsuit-against-unitedhealths-ai-claim-denials-advances",
+     "label": "Healthcare Finance News, Feb 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2026-07-08",
+     "Allianz Partners to cut 1,500-1,800 jobs across Europe in customer service and claims; Bloomberg reports the unit cited AI as a reason, though no verbatim company quote was published (company says AI, per Bloomberg)",
+     "https://www.dig-in.com/articles/allianz-unit-to-cut-1-800-jobs-in-push-to-adopt-ai",
+     "Bloomberg via Digital Insurance, Jul 2026"
+    ],
+    [
+     "2026-05-20",
+     "Broker Acrisure cuts 2,250 jobs (about 11%); CEO letter: 'Advances in technology, AI, and digital platforms are fundamentally changing how businesses operate.' Claims processing is among back-office work analysts say is hit first (company says AI)",
+     "https://www.insurancebusinessmag.com/us/news/claims/ai-is-cutting-insurance-jobs--the-industry-is-just-starting-to-say-so-580795.aspx",
+     "Insurance Business, Jun 2026"
+    ],
+    [
+     "2026-02",
+     "Munich Re's Ergo to cut about 1,000 German positions in phone service and claims handling by 2030, partly due to AI, with no forced redundancies (company says AI, in part)",
+     "https://www.clickclaims.com/2026/02/17/munich-re-unit-to-cut-1000-positions-as-ai-takes-over-jobs/",
+     "ClickClaims, Feb 2026"
+    ],
+    [
+     "2026-08",
+     "BLS projection factors: adjusters' share 'decreases as computer software and artificial intelligence (AI) will make claims adjustment processes more efficient' (study)",
+     "https://www.bls.gov/emp/tables/factors-affecting-occupational-utilization.htm",
+     "BLS Employment Projections"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Move toward complex claims",
+     "Large-loss, liability, injury and fraud work involves negotiation and judgment that current tools do not handle alone."
+    ],
+    [
+     "Get field-ready for catastrophes",
+     "BLS notes that floods, fires and other disasters drive demand for property adjusters on the ground."
+    ],
+    [
+     "Learn to audit AI decisions",
+     "Lawsuits over automated denials mean insurers need people who can check and explain what the software recommended."
+    ],
+    [
+     "Watch phone-based claims roles",
+     "The first AI-linked cuts in Europe hit call-centre claims handling. If that is your job, plan a move now."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace claims adjusters?",
+     "Partly. BLS projects a 6% decline (-21,800 jobs) for 2025-35 and explicitly cites software and AI. Simple claims are already automated at some insurers; complex ones are not."
+    ],
+    [
+     "Are insurers cutting jobs because of AI?",
+     "Yes, some say so. Acrisure's CEO cited AI when cutting 2,250 jobs, Ergo cited AI in part for 1,000 cuts, and Bloomberg reports Allianz Partners cited AI for up to 1,800 cuts."
+    ],
+    [
+     "Which claims tasks are most exposed?",
+     "Photo-based auto damage estimates, simple property and renters claims, and routine phone enquiries."
+    ],
+    [
+     "Is AI fair in claims decisions?",
+     "That is contested. A class action over UnitedHealth's nH Predict tool is proceeding; the insurer says the tool does not make coverage decisions."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Claims adjusters, appraisers, examiners and investigators",
+     "https://www.bls.gov/ooh/business-and-financial/claims-adjusters-appraisers-examiners-and-investigators.htm"
+    ],
+    [
+     "BLS: Factors affecting occupational utilization, 2025-35",
+     "https://www.bls.gov/emp/tables/factors-affecting-occupational-utilization.htm"
+    ],
+    [
+     "eMarketer: GEICO and Tractable (May 2021)",
+     "https://www.emarketer.com/content/tractable-makes-inroads-in-us-insurance-market-with-geico-partnership/"
+    ],
+    [
+     "PYMNTS: Lemonade CEO on AI claims (Feb 2023)",
+     "https://www.pymnts.com/?p=1470369"
+    ],
+    [
+     "Bloomberg via Digital Insurance: Allianz Partners cuts (Jul 2026)",
+     "https://www.dig-in.com/articles/allianz-unit-to-cut-1-800-jobs-in-push-to-adopt-ai"
+    ],
+    [
+     "Insurance Business: Acrisure and AI cuts (Jun 2026)",
+     "https://www.insurancebusinessmag.com/us/news/claims/ai-is-cutting-insurance-jobs--the-industry-is-just-starting-to-say-so-580795.aspx"
+    ],
+    [
+     "ClickClaims: Ergo cuts (Feb 2026)",
+     "https://www.clickclaims.com/2026/02/17/munich-re-unit-to-cut-1000-positions-as-ai-takes-over-jobs/"
+    ],
+    [
+     "Healthcare Finance News: UnitedHealth nH Predict lawsuit (Feb 2025)",
+     "https://www.healthcarefinancenews.com/news/class-action-lawsuit-against-unitedhealths-ai-claim-denials-advances"
+    ]
+   ]
+  },
+  {
+   "slug": "real-estate-agents",
+   "occupation": "Real estate brokers and sales agents",
+   "title": "Will AI replace real estate agents? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI can and can't do in real estate: listings, pricing, AI-led buying services, showings, and the job numbers.",
+   "bls": {
+    "employment": "530,600 (2025): 427,000 sales agents and 103,500 brokers",
+    "outlook": "+2% (+8,300 jobs), 2025-35. BLS ties the outlook to the housing market, credit conditions and the economy. The page does not mention AI.",
+    "url": "https://www.bls.gov/ooh/sales/real-estate-brokers-and-sales-agents.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "About two-thirds of Realtors use AI, mostly to write listing copy and marketing, and a few startups now sell AI-led home buying with licensed agents in the background. Machines have struggled with the core judgment: Zillow quit algorithmic home buying in 2021. Agent numbers are falling, but because of a frozen housing market and costs, not AI.",
+   "tasks": [
+    {
+     "task": "Writing listing descriptions and marketing",
+     "status": "deployed",
+     "evidence": "NAR's 2025 Technology Survey found 68-69% of members use AI and 46% use AI-generated content such as listing descriptions; ChatGPT was the top tool (58%).",
+     "url": "https://www.nar.realtor/newsroom/realtors-embrace-ai-digital-tools-to-enhance-client-service-nar-survey-finds",
+     "label": "NAR, Sep 2025"
+    },
+    {
+     "task": "Guiding buyers through a purchase",
+     "status": "demonstrated",
+     "evidence": "Startups reAlpha (Florida), Modern Realty (California) and Homa offer AI agents that answer questions, prepare market analyses and fill out forms, but licensed humans still work behind the scenes or lead tours.",
+     "url": "https://housingwire.com/articles/are-ai-real-estate-agents-the-future-for-homebuyers-these-firms-think-so",
+     "label": "HousingWire, Aug 2024"
+    },
+    {
+     "task": "Pricing homes to buy and sell",
+     "status": "not yet",
+     "evidence": "Zillow shut its home-buying business and cut 25% of staff, with CEO Rich Barton saying 'the unpredictability in forecasting home prices far exceeds what we anticipated.'",
+     "url": "https://www.cnbc.com/2021/11/02/zillow-shares-plunge-after-announcing-it-will-close-home-buying-business.html",
+     "label": "CNBC, Nov 2021"
+    },
+    {
+     "task": "Showing homes and negotiating in person",
+     "status": "not yet",
+     "evidence": "Even AI-first service Homa partners with a human-agent network for in-person tours, and reAlpha's executive said 'we can't just flip a switch and have everything fully AI.'",
+     "url": "https://housingwire.com/articles/are-ai-real-estate-agents-the-future-for-homebuyers-these-firms-think-so",
+     "label": "HousingWire, Aug 2024"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2026-05-31",
+     "NAR membership is projected to fall to about 1.2 million in 2026 from a pandemic peak of 1.6 million, blamed on a stalled housing market and agent costs; 76% of agents expect more competition from tech and AI (not attributed to AI)",
+     "https://propmodo.com/housing-market-stagnation-drives-mass-exodus-from-brokerage-ranks/",
+     "Propmodo, May 2026"
+    ],
+    [
+     "2025-09-18",
+     "NAR survey: 46% of agents report no noticeable impact from AI on their business, and 50% a positive one (study)",
+     "https://www.nar.realtor/newsroom/realtors-embrace-ai-digital-tools-to-enhance-client-service-nar-survey-finds",
+     "NAR, Sep 2025"
+    ],
+    [
+     "2021-11-02",
+     "Zillow closes its algorithm-driven home-buying arm and cuts 25% of staff, citing difficulty forecasting prices (company statement; a failed automation bet, not AI replacing agents)",
+     "https://www.cnbc.com/2021/11/02/zillow-shares-plunge-after-announcing-it-will-close-home-buying-business.html",
+     "CNBC, Nov 2021"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Let AI write the first draft",
+     "Listing copy, social posts and market summaries are where most agents already use AI. Use it, then check facts about the property."
+    ],
+    [
+     "Compete on local knowledge and negotiation",
+     "Pricing calls, showings and negotiation are where even AI-first brokerages still rely on licensed people."
+    ],
+    [
+     "Watch the AI-led brokerages",
+     "Low-commission AI buying services exist in some states. Know what they offer so you can explain your value to clients."
+    ],
+    [
+     "Manage costs through the downturn",
+     "Agent numbers are falling mainly because of the housing slump and fees, so financial resilience matters more than AI right now."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace real estate agents?",
+     "Not on current evidence. BLS projects 2% growth for 2025-35 and does not mention AI. AI-led buying services still use licensed humans."
+    ],
+    [
+     "Why are agents leaving the business?",
+     "Reporting ties the drop to the slowest housing market in decades and agents' fixed costs, not AI."
+    ],
+    [
+     "Can AI price a home?",
+     "Automated estimates exist, but Zillow shut its algorithm-driven home-buying business in 2021 after finding prices far harder to forecast than expected."
+    ],
+    [
+     "How do agents use AI today?",
+     "Mostly for content: 46% use AI-generated content such as listing descriptions, according to NAR's 2025 survey."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Real estate brokers and sales agents",
+     "https://www.bls.gov/ooh/sales/real-estate-brokers-and-sales-agents.htm"
+    ],
+    [
+     "NAR: 2025 Technology Survey",
+     "https://www.nar.realtor/newsroom/realtors-embrace-ai-digital-tools-to-enhance-client-service-nar-survey-finds"
+    ],
+    [
+     "HousingWire: AI real estate agents (Aug 2024)",
+     "https://housingwire.com/articles/are-ai-real-estate-agents-the-future-for-homebuyers-these-firms-think-so"
+    ],
+    [
+     "CNBC: Zillow closes home-buying business (Nov 2021)",
+     "https://www.cnbc.com/2021/11/02/zillow-shares-plunge-after-announcing-it-will-close-home-buying-business.html"
+    ],
+    [
+     "Propmodo: brokerage exodus (May 2026)",
+     "https://propmodo.com/housing-market-stagnation-drives-mass-exodus-from-brokerage-ranks/"
+    ]
+   ]
+  },
+  {
+   "slug": "cashiers-retail-salespersons",
+   "occupation": "Cashiers and retail salespersons",
+   "title": "Will AI replace cashiers and retail workers? The evidence",
+   "desc": "Graded, dated evidence on what AI and automation can and can't do in stores: self-checkout, cashierless shops, shopping assistants, and the job numbers.",
+   "bls": {
+    "employment": "Cashiers: 3,106,300; retail salespersons: 3,998,100 (2025)",
+    "outlook": "Cashiers -6% (-200,600 jobs); retail salespersons 0% (-14,000 jobs), 2025-35. BLS: cashier employment will decline 'because of advances in technology, such as the use of self-service checkout stands in retail stores' and online sales; for salespersons, 'Competition from e-commerce is expected to reduce demand'. Neither page mentions AI.",
+    "url": "https://www.bls.gov/ooh/sales/cashiers.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Self-checkout and online shopping, not chatbots, are what BLS expects to shrink cashier jobs, by about 200,000 by 2035. AI shopping assistants now handle product questions online at huge scale, but camera-based 'just walk out' stores and unattended checkouts have hit limits, and several chains have pulled back self-checkout. Walmart says AI will change every job but plans to keep headcount flat.",
+   "tasks": [
+    {
+     "task": "Scanning items and taking payment",
+     "status": "deployed",
+     "evidence": "BLS projects cashier employment to fall 6% partly 'because of advances in technology, such as the use of self-service checkout stands in retail stores'.",
+     "url": "https://www.bls.gov/ooh/sales/cashiers.htm",
+     "label": "BLS Occupational Outlook Handbook"
+    },
+    {
+     "task": "Answering shoppers' product questions",
+     "status": "deployed",
+     "evidence": "Amazon says its Rufus AI shopping assistant was used by 300 million customers in 2025 and helped drive nearly $12 billion in incremental annualized sales (company figures).",
+     "url": "https://www.modernretail.co/technology/amazon-says-its-ai-shopping-assistant-is-gaining-traction-with-rufus-users-up-115/",
+     "label": "Modern Retail, Apr 2026"
+    },
+    {
+     "task": "Checkout-free shopping with cameras",
+     "status": "demonstrated",
+     "evidence": "Amazon removed Just Walk Out from its US Amazon Fresh stores in favour of smart carts, keeping it at Amazon Go; it disputed reports that the system relied on human reviewers but said humans annotate video and validate some visits.",
+     "url": "https://www.retaildive.com/news/amazon-removes-just-walk-out-tech-amazon-fresh-stores-dash-carts/712150",
+     "label": "Retail Dive, Apr 2024"
+    },
+    {
+     "task": "Running checkout without staff oversight",
+     "status": "not yet",
+     "evidence": "Dollar General dropped self-checkout at 300 high-theft stores, Five Below is phasing it out, and Target limited it to 10 items or fewer (Target says not because of theft).",
+     "url": "https://www.fox29.com/news/target-stops-self-checkout-shoplifting-2025",
+     "label": "Fox 29, May 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-09-26",
+     "Walmart CEO Doug McMillon: 'It's very clear that AI is going to change literally every job'; Walmart plans to keep about 2.1 million workers for three years while the job mix shifts (company says AI; no cuts announced)",
+     "https://www.pymnts.com/walmart/2025/walmart-ceo-foresees-ai-transforming-literally-every-job/",
+     "PYMNTS on WSJ, Sep 2025"
+    ],
+    [
+     "2025-04",
+     "Dollar General eliminates self-checkout at 300 of its highest-theft stores, a reversal of checkout automation (company action, not AI)",
+     "https://www.fox29.com/news/target-stops-self-checkout-shoplifting-2025",
+     "Fox 29, May 2025"
+    ],
+    [
+     "2024-04-03",
+     "Amazon pulls camera-based Just Walk Out from US Amazon Fresh stores (company action; AI checkout scaled back)",
+     "https://www.retaildive.com/news/amazon-removes-just-walk-out-tech-amazon-fresh-stores-dash-carts/712150",
+     "Retail Dive, Apr 2024"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Move toward service roles",
+     "Cashier jobs are shrinking with self-checkout and online sales. Customer help, returns, pickup and department roles hold up better."
+    ],
+    [
+     "Become the self-checkout attendant",
+     "Retailers that kept self-checkout still need staff to oversee it, fix errors and prevent loss."
+    ],
+    [
+     "Learn the store's tech",
+     "Handheld devices, pickup systems and inventory tools are where retailers say the job mix is shifting."
+    ],
+    [
+     "Build product expertise",
+     "Specialist advice in areas like electronics, home improvement or cosmetics is harder to replace than checkout."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace cashiers?",
+     "Self-checkout and online shopping are shrinking the job more than AI is. BLS projects a 6% decline (-200,600 jobs) for 2025-35."
+    ],
+    [
+     "Are retail salespersons at risk?",
+     "BLS projects roughly flat employment (-14,000 jobs) for 2025-35, citing e-commerce competition. Its page does not mention AI."
+    ],
+    [
+     "Are cashierless stores taking over?",
+     "Not yet. Amazon removed its camera-based Just Walk Out system from US Amazon Fresh stores in 2024, and several chains have pulled back self-checkout."
+    ],
+    [
+     "Is Walmart cutting jobs for AI?",
+     "Walmart's CEO says AI will change every job, but the company plans to keep its workforce at about 2.1 million for three years."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Cashiers",
+     "https://www.bls.gov/ooh/sales/cashiers.htm"
+    ],
+    [
+     "BLS Occupational Outlook Handbook: Retail sales workers",
+     "https://www.bls.gov/ooh/sales/retail-sales-workers.htm"
+    ],
+    [
+     "PYMNTS: Walmart CEO on AI (Sep 2025)",
+     "https://www.pymnts.com/walmart/2025/walmart-ceo-foresees-ai-transforming-literally-every-job/"
+    ],
+    [
+     "Modern Retail: Amazon Rufus (Apr 2026)",
+     "https://www.modernretail.co/technology/amazon-says-its-ai-shopping-assistant-is-gaining-traction-with-rufus-users-up-115/"
+    ],
+    [
+     "Retail Dive: Amazon removes Just Walk Out (Apr 2024)",
+     "https://www.retaildive.com/news/amazon-removes-just-walk-out-tech-amazon-fresh-stores-dash-carts/712150"
+    ],
+    [
+     "Fox 29: Retailers scale back self-checkout (May 2025)",
+     "https://www.fox29.com/news/target-stops-self-checkout-shoplifting-2025"
+    ]
+   ]
+  },
+  {
+   "slug": "journalists-reporters",
+   "occupation": "News analysts, reporters and journalists",
+   "title": "Will AI replace journalists? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI can and can't do in journalism: routine stories, drafting, summarising news, fact-checking, and the job numbers.",
+   "bls": {
+    "employment": "47,100 (2025)",
+    "outlook": "-6% (-2,800 jobs), 2025-35. BLS cites falling advertising revenue in radio, newspapers and TV and newsroom consolidation, partly offset by demand for online news. The page does not mention AI.",
+    "url": "https://www.bls.gov/ooh/media-and-communication/reporters-correspondents-and-broadcast-news-analysts.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "Newsrooms have automated formulaic stories for a decade and most staff at some outlets now use AI daily, and a few publishers have tied layoffs partly to AI. But AI still distorts news when it summarises it and has put invented books and quotes into print. BLS projects decline, which it blames on advertising and consolidation, not AI.",
+   "tasks": [
+    {
+     "task": "Writing routine data-driven stories",
+     "status": "deployed",
+     "evidence": "AP automated corporate earnings stories, going from about 300 a quarter to 3,700; it said automation freed about 20% of staff time and did not cut jobs.",
+     "url": "https://www.journalism.co.uk/how-ap-is-using-automation-to-increase-story-output-tenfold/",
+     "label": "Journalism.co.uk, Jun 2015"
+    },
+    {
+     "task": "Drafting, editing and research help",
+     "status": "deployed",
+     "evidence": "Business Insider said over 70% of its employees use Enterprise ChatGPT, with a goal of 100%, as it went 'all-in on AI'.",
+     "url": "https://www.niemanlab.org/2025/05/business-insider-will-lay-off-21-of-staff-amid-ai-disruption-and-extreme-traffic-drops-outside-of-our-control/",
+     "label": "Nieman Lab, May 2025"
+    },
+    {
+     "task": "Summarising news accurately",
+     "status": "not yet",
+     "evidence": "BBC journalists found 51% of answers from ChatGPT, Copilot, Gemini and Perplexity to 100 news questions had significant issues.",
+     "url": "https://digitalcontentnext.org/blog/2025/02/24/ai-assistants-error-prone-when-it-comes-to-news/",
+     "label": "Digital Content Next, Feb 2025"
+    },
+    {
+     "task": "Fact-checking and verification",
+     "status": "not yet",
+     "evidence": "The Chicago Sun-Times and Philadelphia Inquirer ran a syndicated AI-generated summer reading list recommending books that don't exist; the freelancer said he 'failed' to check the chatbot's output.",
+     "url": "https://www.eweek.com/news/chicago-sun-times-ai-reading-list-fake-books/",
+     "label": "eWeek, May 2025"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-05-29",
+     "Business Insider cuts 21% of staff; CEO memo cites 'extreme traffic drops outside of our control' and says 'we are going all-in on AI' (company says AI, in part)",
+     "https://www.niemanlab.org/2025/05/business-insider-will-lay-off-21-of-staff-amid-ai-disruption-and-extreme-traffic-drops-outside-of-our-control/",
+     "Nieman Lab, May 2025"
+    ],
+    [
+     "2026-08-04",
+     "E.W. Scripps cuts 268 jobs across about a dozen local TV stations as it shifts to streaming; reporters describe an 'AI-powered' newsroom model, but no Scripps quote directly ties the cuts to AI (reported as AI)",
+     "https://hoodline.com/2026/08/scripps-slashes-268-jobs-corpus-christi-s-kris-6-braces-for-ai-newsroom-push/",
+     "Hoodline, Aug 2026"
+    ],
+    [
+     "2026-07",
+     "GB News proposes up to 90 job cuts as it introduces automated production workflows (company says automation)",
+     "https://mediacopilot.ai/journalism-job-cuts-2026-tracker/",
+     "The Media Copilot, Aug 2026"
+    ],
+    [
+     "2025-07",
+     "Microsoft's AI-applicability study puts news analysts, reporters and journalists among the 40 most AI-applicable occupations (study)",
+     "https://www.tomsguide.com/ai/microsoft-reveals-the-40-jobs-ai-is-most-likely-to-replace-and-40-that-are-safe-for-now",
+     "Tom's Guide, Jul 2025"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Do the reporting AI can't",
+     "Original sourcing, interviews and being on the scene are what AI summaries depend on and cannot produce."
+    ],
+    [
+     "Verify everything AI touches",
+     "AI has put invented books and quotes into print. Newsrooms need people who check every name, figure and quote."
+    ],
+    [
+     "Use AI for the grunt work",
+     "Transcription, first drafts of routine items and data processing free time for enterprise stories, as AP found with earnings reports."
+    ],
+    [
+     "Build a direct audience",
+     "Publishers cite search-traffic drops as much as AI itself. Journalists with their own following are less exposed."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace journalists?",
+     "Not wholesale. BLS projects a 6% decline for 2025-35 but blames advertising and consolidation; a few publishers, such as Business Insider, have cited AI as part of the reason for cuts."
+    ],
+    [
+     "Can AI write news stories?",
+     "It has written formulaic earnings stories at AP since about 2014. For broader news, AI assistants still distort or misattribute facts in about half of answers, according to a 2025 BBC study."
+    ],
+    [
+     "Which newsrooms have cut jobs over AI?",
+     "Business Insider (21%) cited AI along with traffic losses, GB News cited automated workflows, and coverage of Scripps' cuts describes an AI-powered model."
+    ],
+    [
+     "What journalism tasks are safest?",
+     "Original reporting, investigations, interviews and verification."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: News analysts, reporters and journalists",
+     "https://www.bls.gov/ooh/media-and-communication/reporters-correspondents-and-broadcast-news-analysts.htm"
+    ],
+    [
+     "Journalism.co.uk: AP automation (Jun 2015)",
+     "https://www.journalism.co.uk/how-ap-is-using-automation-to-increase-story-output-tenfold/"
+    ],
+    [
+     "Nieman Lab: Business Insider cuts (May 2025)",
+     "https://www.niemanlab.org/2025/05/business-insider-will-lay-off-21-of-staff-amid-ai-disruption-and-extreme-traffic-drops-outside-of-our-control/"
+    ],
+    [
+     "Digital Content Next: BBC AI news accuracy study (Feb 2025)",
+     "https://digitalcontentnext.org/blog/2025/02/24/ai-assistants-error-prone-when-it-comes-to-news/"
+    ],
+    [
+     "eWeek: Sun-Times fake reading list (May 2025)",
+     "https://www.eweek.com/news/chicago-sun-times-ai-reading-list-fake-books/"
+    ],
+    [
+     "Hoodline: Scripps cuts (Aug 2026)",
+     "https://hoodline.com/2026/08/scripps-slashes-268-jobs-corpus-christi-s-kris-6-braces-for-ai-newsroom-push/"
+    ],
+    [
+     "The Media Copilot: journalism job cuts tracker (Aug 2026)",
+     "https://mediacopilot.ai/journalism-job-cuts-2026-tracker/"
+    ],
+    [
+     "Tom's Guide: Microsoft AI applicability list (Jul 2025)",
+     "https://www.tomsguide.com/ai/microsoft-reveals-the-40-jobs-ai-is-most-likely-to-replace-and-40-that-are-safe-for-now"
+    ]
+   ]
+  },
+  {
+   "slug": "hr-specialists-recruiters",
+   "occupation": "Human resources specialists and recruiters",
+   "title": "Will AI replace HR and recruiters? What the evidence shows",
+   "desc": "Graded, dated evidence on what AI can and can't do in HR and recruiting: employee questions, résumé screening, interviews, and the job numbers.",
+   "bls": {
+    "employment": "939,700 (2025)",
+    "outlook": "+6% (+60,100 jobs), 2025-35, faster than average. BLS expects strong demand and more HR work outsourced to HR-services firms. The page does not mention AI.",
+    "url": "https://www.bls.gov/ooh/business-and-financial/human-resources-specialists.htm",
+    "label": "BLS Occupational Outlook Handbook"
+   },
+   "verdict": "HR is one of the first corporate functions where a big company has said plainly that AI replaced staff: IBM cut a few hundred HR roles after its HR chatbot began resolving most routine questions. AI also screens résumés and, in one large experiment, ran first-round interviews well. BLS still projects growth, and AI screening is now the subject of a discrimination lawsuit.",
+   "tasks": [
+    {
+     "task": "Answering routine employee HR questions",
+     "status": "deployed",
+     "evidence": "IBM says its AskHR agent resolves 94% of common questions without a human, automates around 80 HR tasks and handled more than 11.5 million interactions in 2024 (company figures).",
+     "url": "https://www.ibm.com/case-studies/ibm-askhr",
+     "label": "IBM, Aug 2025"
+    },
+    {
+     "task": "Screening and ranking job applicants",
+     "status": "deployed",
+     "evidence": "A federal judge let an age-discrimination collective action proceed against Workday, whose AI tools score, sort and rank applicants for employers; Workday says the suit lacks merit.",
+     "url": "https://www.hklaw.com/en/insights/publications/2025/05/federal-court-allows-collective-action-lawsuit-over-alleged",
+     "label": "Holland & Knight, May 2025"
+    },
+    {
+     "task": "Running first-round job interviews",
+     "status": "demonstrated",
+     "evidence": "In a field experiment with about 70,000 applicants, AI voice-agent interviews raised job offers 12%, starts 18% and 30-day retention 17%; human recruiters still made every hiring decision.",
+     "url": "https://marginalrevolution.com/marginalrevolution/2025/09/ai-led-job-interviews.html",
+     "label": "Marginal Revolution on Jabarian & Henkel, Sep 2025"
+    },
+    {
+     "task": "Workforce planning and employee relations",
+     "status": "not yet",
+     "evidence": "Even IBM's CEO, while predicting routine HR tasks would be fully automated, said HR work such as assessing workforce composition and productivity would be unaffected for about ten years.",
+     "url": "https://www.neowin.net/news/ibm-says-it-will-pause-hiring-for-jobs-to-be-replaced-by-ai-automation/",
+     "label": "Neowin, May 2023"
+    }
+   ],
+   "jobs_evidence": [
+    [
+     "2025-05-07",
+     "IBM CEO Arvind Krishna tells the WSJ IBM eliminated a few hundred HR roles using AI, while 'our total employment has actually gone up' (company says AI)",
+     "https://www.peoplematters.in/news/leadership/ibm-ceo-says-replacing-hr-staff-with-ai-led-to-more-hiring-45453",
+     "People Matters, May 2025"
+    ],
+    [
+     "2023-05",
+     "IBM says it will slow or pause hiring for back-office roles, with HR hit hardest; Krishna: 'I could easily see 30% of that getting replaced by AI and automation over a five-year period' (company says AI)",
+     "https://www.neowin.net/news/ibm-says-it-will-pause-hiring-for-jobs-to-be-replaced-by-ai-automation/",
+     "Neowin, May 2023"
+    ],
+    [
+     "2025-10-28",
+     "Amazon cuts about 14,000 corporate jobs; earlier reports said human resources was among targets, and CEO Andy Jassy had written that AI 'will reduce our total corporate workforce' (reported as AI)",
+     "https://www.gpb.org/news/2025/10/28/amazon-lays-off-thousands-of-corporate-workers-it-spends-big-on-ai",
+     "NPR via GPB, Oct 2025"
+    ]
+   ],
+   "what_to_do": [
+    [
+     "Move up from transactional HR",
+     "Benefits questions, verification letters and transfers are the tasks IBM automated first. Employee relations, investigations and workforce planning are holding up."
+    ],
+    [
+     "Learn to audit hiring AI",
+     "With the Workday lawsuit proceeding, employers need people who can test screening tools for bias and explain their decisions."
+    ],
+    [
+     "Use AI interviewers carefully",
+     "Research shows AI first-round interviews can work, but humans still make the hire. Own the judgment step."
+    ],
+    [
+     "Consider HR-services firms",
+     "BLS expects outsourced HR providers to grow faster than in-house departments."
+    ]
+   ],
+   "faq": [
+    [
+     "Will AI replace HR specialists?",
+     "Not on current evidence for the occupation overall. BLS projects 6% growth (+60,100 jobs) for 2025-35 and does not mention AI, but routine HR service roles are being automated at some large employers."
+    ],
+    [
+     "Has any company replaced HR staff with AI?",
+     "Yes. IBM's CEO said in 2025 that it eliminated a few hundred HR roles using AI, while hiring elsewhere."
+    ],
+    [
+     "Is AI résumé screening legal?",
+     "It is legal but contested. A federal court let an age-discrimination collective action against Workday's AI screening proceed in 2025; the case is ongoing."
+    ],
+    [
+     "Do candidates mind AI interviews?",
+     "In one large experiment, 78% of applicants offered the choice picked the AI interviewer, and AI-interviewed candidates got more offers."
+    ]
+   ],
+   "sources": [
+    [
+     "BLS Occupational Outlook Handbook: Human resources specialists",
+     "https://www.bls.gov/ooh/business-and-financial/human-resources-specialists.htm"
+    ],
+    [
+     "IBM: AskHR case study (Aug 2025)",
+     "https://www.ibm.com/case-studies/ibm-askhr"
+    ],
+    [
+     "People Matters: IBM CEO on HR roles (May 2025)",
+     "https://www.peoplematters.in/news/leadership/ibm-ceo-says-replacing-hr-staff-with-ai-led-to-more-hiring-45453"
+    ],
+    [
+     "Neowin: IBM hiring pause (May 2023)",
+     "https://www.neowin.net/news/ibm-says-it-will-pause-hiring-for-jobs-to-be-replaced-by-ai-automation/"
+    ],
+    [
+     "Holland & Knight: Mobley v. Workday (May 2025)",
+     "https://www.hklaw.com/en/insights/publications/2025/05/federal-court-allows-collective-action-lawsuit-over-alleged"
+    ],
+    [
+     "Marginal Revolution: AI-led job interviews (Sep 2025)",
+     "https://marginalrevolution.com/marginalrevolution/2025/09/ai-led-job-interviews.html"
+    ],
+    [
+     "NPR via GPB: Amazon corporate cuts (Oct 2025)",
+     "https://www.gpb.org/news/2025/10/28/amazon-lays-off-thousands-of-corporate-workers-it-spends-big-on-ai"
+    ]
+   ]
   }
  ]
 }

@@ -1129,5 +1129,1089 @@
    "/learn/treacherous-turn/",
    "/learn/why-chatbots-make-things-up/"
   ]
+ },
+ {
+  "slug": "write-a-convincing-scam-message",
+  "question": "Can AI write a convincing phishing email or scam message?",
+  "title": "Can AI write a phishing email as convincing as a human's?",
+  "desc": "Yes. In a 2024 study, fully AI-written phishing got 54% of people to click, as many as human experts. The FBI warns scammers use AI. How to protect yourself.",
+  "verdict": "Yes. Controlled studies show fully automated AI phishing now works as well as emails written by human experts, and the FBI and AI companies report criminals using chatbots to write and translate scam messages.",
+  "verdict_short": "Yes",
+  "first_proven": {
+   "date": "2023-08-23",
+   "what": "Harvard-affiliated researchers found GPT-4-written phishing emails drew 30-44% click-through from 112 participants, against 19-28% for generic phishing, though human-designed emails still did better.",
+   "url": "https://arxiv.org/abs/2308.12287v2",
+   "label": "Heiding et al. (arXiv)"
+  },
+  "explain": [
+   "Phishing means a message, usually an email or text, that tricks you into clicking a link, handing over a password or sending money. The old giveaway was clumsy writing. AI removes that: the FBI said in December 2024 that criminals use AI to write believable messages faster, reach more people, and translate them to avoid grammar and spelling mistakes.",
+   "Researchers have measured how well it works by sending test emails to consenting volunteers. In a 2023 study GPT-4 emails beat generic phishing but lost to emails crafted by an expert. By late 2024 the same research group found fully AI-automated emails, built from public information about each person, got 54% of 101 participants to click, the same as human experts and against 12% for ordinary spam-style phishing. The study was peer reviewed and published in 2026.",
+   "The bigger change is cost. IBM's security team found in 2023 that an AI built a phishing email in about five minutes, against about 16 hours for its human experts, though the human email still won narrowly. The 2024 study estimated fully automated emails cost about four cents each and could make large campaigns up to 50 times more profitable.",
+   "AI companies see this in the wild. OpenAI reported in October 2025 that scam networks in Cambodia, Myanmar and Nigeria used ChatGPT to translate messages and build fake investment personas, and in August 2026 that it had disrupted a Cambodia-based network using its models to write and translate messages to targets. OpenAI also says ChatGPT is used about three times as often to spot scams as to make them."
+  ],
+  "ladder": {
+   "demonstrated": {
+    "status": "yes",
+    "date": "2023-08-23",
+    "note": "GPT-4 phishing emails drew 30-44% click-through among 112 participants, against 19-28% for generic phishing; expert human emails still did better (69-79%).",
+    "source_url": "https://arxiv.org/abs/2308.12287v2",
+    "source_label": "Heiding et al. (arXiv)"
+   },
+   "reproduced": {
+    "status": "yes",
+    "date": "2023-10-24",
+    "note": "IBM X-Force sent AI- and human-written phishing tests to more than 800 staff at a healthcare firm; humans won by the narrowest of margins, and the AI needed about five minutes against about 16 hours.",
+    "source_url": "https://www.ibm.com/think/x-force/ai-vs-human-deceit-unravelling-new-age-phishing-tactics",
+    "source_label": "IBM X-Force"
+   },
+   "accessible": {
+    "status": "yes",
+    "date": "2024-12-03",
+    "note": "The FBI said criminals use generative AI to write believable messages faster for wider audiences and to translate them so they contain fewer grammar and spelling errors.",
+    "source_url": "https://www.ic3.gov/PSA/2024/PSA241203",
+    "source_label": "FBI PSA I-120324-PSA"
+   },
+   "reliable": {
+    "status": "yes",
+    "date": "2024-11-30",
+    "note": "Fully AI-automated spear-phishing got 54% click-through from 101 participants, matching human experts (54%) against 12% for a control; peer reviewed in Expert Systems with Applications (2026).",
+    "source_url": "https://arxiv.org/html/2412.00586v1",
+    "source_label": "Heiding et al. (arXiv)"
+   },
+   "consequences": {
+    "status": "yes",
+    "date": "2026-08-04",
+    "note": "OpenAI disrupted a Cambodia-based scam network that used its models to create fake personas and generate and translate messages to targets; it may have reached hundreds of people.",
+    "source_url": "https://therecord.media/openai-chatgpt-cambodia-scam-centers-disruption",
+    "source_label": "The Record"
+   }
+  },
+  "record": [
+   [
+    "2023-10-24",
+    "https://www.ibm.com/think/x-force/ai-vs-human-deceit-unravelling-new-age-phishing-tactics",
+    "IBM's security team pitted an AI-written phishing test against one by its own experts at a healthcare firm; the humans won narrowly, but the AI took about five minutes instead of about 16 hours.",
+    "IBM X-Force"
+   ],
+   [
+    "2024-12-03",
+    "https://www.ic3.gov/PSA/2024/PSA241203",
+    "The FBI warned that criminals use AI-generated text for spear phishing and fraud, and to translate messages for US victims with fewer errors.",
+    "FBI"
+   ],
+   [
+    "2025-10-07",
+    "https://siliconangle.com/2025/10/07/openai-details-expanding-efforts-disrupt-malicious-use-ai-new-report/",
+    "OpenAI reported scam networks in Cambodia, Myanmar and Nigeria using ChatGPT to translate messages and create fake investment personas.",
+    "SiliconANGLE"
+   ],
+   [
+    "2026-08-04",
+    "https://therecord.media/openai-chatgpt-cambodia-scam-centers-disruption",
+    "OpenAI said it disrupted a Cambodia-based scam network that used its models to write and translate messages to targets and to run its daily operations.",
+    "The Record"
+   ],
+   [
+    "2026-10-11",
+    "midterm-deepfakes",
+    "During the 2026 midterms the FBI and CISA warned election officials about AI-enhanced phishing.",
+    "Resemble AI watchlist"
+   ]
+  ],
+  "what_it_means": "Good spelling and a personal touch are no longer signs that a message is genuine. A scam can now mention your job, your colleagues or your interests and read like a real person wrote it, in any language.",
+  "what_to_do": [
+   [
+    "Judge the request, not the writing",
+    "Any message asking you to click, log in, pay or share a code needs checking, however well written."
+   ],
+   [
+    "Check through another channel",
+    "Contact the person or company using a number or app you already have, not the link or number in the message."
+   ],
+   [
+    "Slow down on urgency",
+    "Deadlines, threats and secrecy are what make phishing work; take time to check."
+   ],
+   [
+    "Use passkeys or an authenticator app",
+    "They stop a stolen password alone from opening your accounts."
+   ]
+  ],
+  "faq": [
+   [
+    "Are AI-written phishing emails better than human ones?",
+    "In a 2024 study they were as good: fully AI-automated emails got 54% of participants to click, the same as emails by human experts."
+   ],
+   [
+    "Can I spot AI phishing by bad grammar?",
+    "No. The FBI says criminals use AI to translate messages and limit grammar and spelling errors, so clean writing proves nothing."
+   ],
+   [
+    "Do chatbots refuse to write scam messages?",
+    "They are meant to, but OpenAI has repeatedly reported and banned scam networks that used ChatGPT to write and translate messages."
+   ],
+   [
+    "Can AI help me spot a scam?",
+    "OpenAI says ChatGPT is used about three times as often to identify scams as to create them; still, verify through a trusted channel."
+   ]
+  ],
+  "sources": [
+   [
+    "FBI PSA I-120324-PSA (Dec 2024)",
+    "https://www.ic3.gov/PSA/2024/PSA241203"
+   ],
+   [
+    "Heiding et al., Devising and Detecting Phishing (arXiv, 2023)",
+    "https://arxiv.org/abs/2308.12287v2"
+   ],
+   [
+    "Heiding et al., fully automated spear phishing (arXiv, Nov 2024)",
+    "https://arxiv.org/html/2412.00586v1"
+   ],
+   [
+    "Schneier: peer-reviewed version in Expert Systems with Applications (2026)",
+    "https://www.schneier.com/academic/archives/2026/02/evaluating-large-language-models-ability-to-automate-spear-phishing.html"
+   ],
+   [
+    "IBM X-Force: AI vs human phishing (Oct 2023)",
+    "https://www.ibm.com/think/x-force/ai-vs-human-deceit-unravelling-new-age-phishing-tactics"
+   ],
+   [
+    "The Register on Microsoft Digital Defense Report 2025",
+    "https://www.theregister.com/2025/10/16/ai_makes_phishing_45x_more_effective"
+   ],
+   [
+    "SiliconANGLE on OpenAI's October 2025 threat report",
+    "https://siliconangle.com/2025/10/07/openai-details-expanding-efforts-disrupt-malicious-use-ai-new-report/"
+   ],
+   [
+    "The Record: OpenAI disrupts Cambodia scam network (Aug 2026)",
+    "https://therecord.media/openai-chatgpt-cambodia-scam-centers-disruption"
+   ]
+  ],
+  "related": [
+   "/help/ai-scam-texts/",
+   "/checks/boss-gift-card-wire-transfer-scam/",
+   "/checks/fake-bank-fraud-call/",
+   "/learn/ai-helper-for-older-parent/"
+  ]
+ },
+ {
+  "slug": "fake-an-id-document",
+  "question": "Can AI make a fake ID or document good enough to fool checks?",
+  "title": "Can AI make a fake ID that gets past identity checks?",
+  "desc": "Partly. AI-made ID images have passed photo-upload checks and US regulators report a rise, but chip and in-person checks are harder to fool. What it means.",
+  "verdict": "Partly. AI-generated or AI-edited ID images have got past online checks that rely on a photo of a document, and US regulators report a rise in them, but they are not physical documents and checks that read an ID's chip or happen in person are much harder to beat.",
+  "verdict_short": "Partly",
+  "first_proven": {
+   "date": "2024-02-05",
+   "what": "404 Media bought an image of a fake British passport for $15 from OnlyFake, a site claiming to use 'neural networks', and used it to get through the identity check at crypto exchange OKX.",
+   "url": "https://www.404media.co/inside-the-underground-site-where-ai-neural-networks-churns-out-fake-ids-onlyfake/",
+   "label": "404 Media"
+  },
+  "explain": [
+   "Many banks, crypto exchanges and apps check who you are by asking you to upload a photo of your ID and sometimes a selfie. That makes the check only as strong as its ability to tell a real photo of a real document from a convincing image. AI image tools can now produce such images, or edit a real one.",
+   "In February 2024 404 Media reported on OnlyFake, a site selling images of fake IDs for $15 that it said were made with 'neural networks'. A reporter used one of its fake passports to pass the identity check at the OKX exchange. Its Ukrainian creator pleaded guilty in New York in February 2026 to selling more than 10,000 digital fake IDs that people used to get around bank and crypto identity checks.",
+   "Regulators see the same trend. FinCEN, the US financial crime agency, said in November 2024 that since 2023 banks had filed more suspicious-activity reports describing deepfake media, most often fake identity documents, including AI-edited or AI-generated images of driver's licenses and passport cards combined with stolen personal details. Identity-check firm Entrust said digital document forgeries rose 244% in a year and in 2024 overtook physical counterfeits for the first time, at 57% of the document fraud it saw.",
+   "There are limits. These are images, not physical cards: an April 2025 replica passport made with ChatGPT, for example, had no working chip, so checks that read an ID's chip would likely catch it, and ChatGPT soon refused similar requests. FinCEN's advice to banks is to cross-check details, use reverse image searches and add stronger multi-factor checks rather than rely on one photo."
+  ],
+  "ladder": {
+   "demonstrated": {
+    "status": "yes",
+    "date": "2024-02-05",
+    "note": "A 404 Media reporter used a $15 OnlyFake passport image to pass OKX's identity verification; OnlyFake's 'neural network' claim was its own.",
+    "source_url": "https://www.404media.co/inside-the-underground-site-where-ai-neural-networks-churns-out-fake-ids-onlyfake/",
+    "source_label": "404 Media"
+   },
+   "reproduced": {
+    "status": "yes",
+    "date": "2024-11-13",
+    "note": "FinCEN said some financial institutions had seen generative AI used to alter or create images of driver's licenses and passport cards to open accounts.",
+    "source_url": "https://www.fincen.gov/sites/default/files/shared/FinCEN-Alert-DeepFakes-Alert508FINAL.pdf",
+    "source_label": "FinCEN alert"
+   },
+   "accessible": {
+    "status": "yes",
+    "date": "2025-04-06",
+    "note": "A researcher said he made a replica of his own passport with ChatGPT-4o in about five minutes; he predicted rather than showed that it would pass checks, and ChatGPT soon refused similar prompts. OnlyFake sold images for $15.",
+    "source_url": "https://securityaffairs.com/?p=176224",
+    "source_label": "Security Affairs"
+   },
+   "reliable": {
+    "status": "partly",
+    "date": "2024-11-19",
+    "note": "Entrust says digital forgeries made up 57% of the document fraud it saw in 2024, up 244% in a year; checks that read a document's chip or happen in person are not beaten by an image alone.",
+    "source_url": "https://www.entrust.com/company/newsroom/deepfake-attacks-strike-every-five-minutes-amid-244-surge-in-digital-document-forgeries",
+    "source_label": "Entrust"
+   },
+   "consequences": {
+    "status": "yes",
+    "date": "2026-02-26",
+    "note": "OnlyFake's creator pleaded guilty in New York to selling at least about 10,000 digital fake IDs used to get around bank and crypto identity checks, agreeing to forfeit $1.2 million.",
+    "source_url": "https://www.justice.gov/usao-sdny/pr/creator-onlyfake-charged-and-pleads-guilty-selling-more-10000-digital-fake",
+    "source_label": "US Department of Justice"
+   }
+  },
+  "record": [
+   [
+    "2024-02-05",
+    "https://www.404media.co/inside-the-underground-site-where-ai-neural-networks-churns-out-fake-ids-onlyfake/",
+    "404 Media used a $15 fake passport image from OnlyFake to pass the identity check at crypto exchange OKX.",
+    "404 Media"
+   ],
+   [
+    "2024-11-13",
+    "https://fincen.gov/news/news-releases/fincen-issues-alert-fraud-schemes-involving-deepfake-media-targeting-financial",
+    "FinCEN issued an alert on deepfake fraud against financial institutions, saying fake identity documents were the most common problem reported.",
+    "FinCEN"
+   ],
+   [
+    "2026-02-26",
+    "https://www.justice.gov/usao-sdny/pr/creator-onlyfake-charged-and-pleads-guilty-selling-more-10000-digital-fake",
+    "OnlyFake's creator pleaded guilty to selling more than 10,000 digital fake IDs; sentencing was set for June 2026.",
+    "US Department of Justice"
+   ],
+   [
+    "2026-08-04",
+    "https://therecord.media/openai-chatgpt-cambodia-scam-centers-disruption",
+    "OpenAI said a Cambodia-based scam network had used its models to make fake images of passports, legal notices and stock purchase confirmations.",
+    "The Record"
+   ]
+  ],
+  "what_it_means": "A photo of an ID, or a screenshot of an official-looking document, is weak proof that someone is who they say. For you, the bigger risk is that your stolen personal details get paired with an AI-made image to open accounts in your name.",
+  "what_to_do": [
+   [
+    "Don't trust a photo of an ID",
+    "If someone online sends a picture of their passport or licence to prove who they are, treat it as unproven."
+   ],
+   [
+    "Guard your own ID images",
+    "Only send copies of your ID to organisations you contacted yourself through their official site or app."
+   ],
+   [
+    "Freeze your credit",
+    "In the US and UK, a credit freeze or protective registration makes it harder to open accounts in your name."
+   ],
+   [
+    "Watch for unknown accounts",
+    "Check credit reports and bank alerts for accounts or applications you didn't make, and report them quickly."
+   ]
+  ],
+  "faq": [
+   [
+    "Can AI make a physical fake ID?",
+    "The documented cases are images, not physical cards. They target online checks that ask you to upload a photo of your document."
+   ],
+   [
+    "Have AI fake IDs actually fooled a bank or exchange?",
+    "Yes. 404 Media passed OKX's check with a $15 OnlyFake image in 2024, and US prosecutors say OnlyFake IDs were used to get around bank and crypto checks."
+   ],
+   [
+    "How do banks catch AI-generated IDs?",
+    "FinCEN suggests cross-checking details, reverse image searches, checking image data, deepfake detection tools and stronger multi-factor checks."
+   ],
+   [
+    "Is selling AI-made fake IDs illegal?",
+    "Yes. OnlyFake's creator pleaded guilty in 2026 to conspiracy to commit fraud involving identification documents, which carries up to 15 years."
+   ]
+  ],
+  "sources": [
+   [
+    "404 Media: Inside OnlyFake (Feb 2024)",
+    "https://www.404media.co/inside-the-underground-site-where-ai-neural-networks-churns-out-fake-ids-onlyfake/"
+   ],
+   [
+    "Cointelegraph on the OnlyFake report",
+    "https://cointelegraph.com/news/ai-generated-fake-ids-pass-crypto-exchange-kyc-onlyfake"
+   ],
+   [
+    "FinCEN news release on deepfake alert (Nov 2024)",
+    "https://fincen.gov/news/news-releases/fincen-issues-alert-fraud-schemes-involving-deepfake-media-targeting-financial"
+   ],
+   [
+    "FinCEN Alert FIN-2024-Alert004",
+    "https://www.fincen.gov/sites/default/files/shared/FinCEN-Alert-DeepFakes-Alert508FINAL.pdf"
+   ],
+   [
+    "Security Affairs: ChatGPT-4o passport replica (Apr 2025)",
+    "https://securityaffairs.com/?p=176224"
+   ],
+   [
+    "Entrust 2025 Identity Fraud Report release",
+    "https://www.entrust.com/company/newsroom/deepfake-attacks-strike-every-five-minutes-amid-244-surge-in-digital-document-forgeries"
+   ],
+   [
+    "US DOJ: OnlyFake creator pleads guilty (Feb 2026)",
+    "https://www.justice.gov/usao-sdny/pr/creator-onlyfake-charged-and-pleads-guilty-selling-more-10000-digital-fake"
+   ],
+   [
+    "The Record: OpenAI disrupts Cambodia scam network (Aug 2026)",
+    "https://therecord.media/openai-chatgpt-cambodia-scam-centers-disruption"
+   ]
+  ],
+  "related": [
+   "/help/ai-scam-texts/",
+   "/checks/task-job-scam/",
+   "/checks/romance-crypto-investment-scam/"
+  ]
+ },
+ {
+  "slug": "change-peoples-minds",
+  "question": "Can AI change people's minds?",
+  "title": "Can AI change people's minds about politics or beliefs?",
+  "desc": "Yes, modestly. Peer-reviewed studies show chatbot chats shift beliefs and voting preferences by a few points. What the evidence shows, and what it doesn't.",
+  "verdict": "Yes, by measurable but modest amounts. Large peer-reviewed studies find conversations with chatbots shift beliefs and candidate preferences, sometimes more than human debaters or TV ads; there is no evidence yet of AI swinging an election, and known influence operations have struggled to reach real audiences.",
+  "verdict_short": "Yes",
+  "first_proven": {
+   "date": "2024-09-13",
+   "what": "A study in Science found that conversations with GPT-4 Turbo cut more than 2,000 people's belief in a conspiracy theory they held by about 20% on average, and the effect lasted at least two months.",
+   "url": "https://news.cornell.edu/node/329310",
+   "label": "Cornell Chronicle"
+  },
+  "explain": [
+   "Persuasion here means shifting what people believe or how they plan to vote, measured in experiments that compare people who chatted with an AI against people who didn't. In September 2024 a study in Science found short conversations with GPT-4 Turbo reduced believers' confidence in a conspiracy theory by about 20%, and about one in four dropped it, with effects lasting at least two months.",
+   "Personal details make AI more persuasive. In a 2025 Nature Human Behaviour study of 900 US participants in structured online debates, GPT-4 was 64.4% more persuasive than a human opponent when both had basic facts about the other person, such as age and political leaning; without that information, the advantage disappeared.",
+   "In December 2025 studies in Nature and Science tested this in elections. In the 2024 US race a pro-Harris chatbot moved likely Trump voters 3.9 points on a 100-point scale and a pro-Trump bot moved likely Harris voters 1.51 points, roughly four times the effect of TV ads tested in 2016 and 2020; shifts in Canada and Poland were about 10 points. Among nearly 77,000 UK participants, persuasion came from packing in many factual-sounding claims, and the most persuasive models were less accurate.",
+   "Outside the lab the picture is thinner. University of Zurich researchers secretly posted more than 1,700 AI comments on Reddit's r/changemyview, sometimes posing as a trauma counselor or abuse survivor; Reddit called it 'deeply wrong' and the results went unpublished. OpenAI said in 2024 that five state-linked influence operations using its models had not gained meaningful audiences, and Anthropic found in 2025 that a 100-account bot network run with Claude reached tens of thousands of real users but no content went viral."
+  ],
+  "ladder": {
+   "demonstrated": {
+    "status": "yes",
+    "date": "2024-09-13",
+    "note": "Conversations with GPT-4 Turbo cut conspiracy belief by about 20% among more than 2,000 believers, lasting at least two months (Science).",
+    "source_url": "https://news.cornell.edu/node/329310",
+    "source_label": "Cornell Chronicle"
+   },
+   "reproduced": {
+    "status": "yes",
+    "date": "2025-12-04",
+    "note": "Separate teams in Nature and Science found chatbots shifted candidate preferences in the US, Canada and Poland and policy views in nearly 77,000 UK adults across 19 models.",
+    "source_url": "https://www.news.cornell.edu/stories/2025/12/ai-chatbots-can-effectively-sway-voters-either-direction",
+    "source_label": "Cornell Chronicle"
+   },
+   "accessible": {
+    "status": "yes",
+    "date": "2025-12-04",
+    "note": "The Science study found post-training raised persuasiveness by up to 51% and prompting by up to 27%, and its authors argue this could make even small open-source models highly persuasive.",
+    "source_url": "https://www.oii.ox.ac.uk/oxford-researchers-reveal-how-conversational-ai-can-change-political-opinions/",
+    "source_label": "Oxford Internet Institute"
+   },
+   "reliable": {
+    "status": "partly",
+    "date": "2025-12-04",
+    "note": "Effects are consistent but modest (1.5 to 3.9 points on a 100-point scale in the US, about 10 in Canada and Poland), and the most persuasive models made less accurate claims.",
+    "source_url": "https://www.news.cornell.edu/stories/2025/12/ai-chatbots-can-effectively-sway-voters-either-direction",
+    "source_label": "Cornell Chronicle"
+   },
+   "consequences": {
+    "status": "partly",
+    "date": "2025-04-23",
+    "note": "A commercial bot network used Claude to run 100+ political personas that engaged tens of thousands of real users, but Anthropic found no content went viral; OpenAI said in 2024 influence operations using its models gained no meaningful audience.",
+    "source_url": "https://www.anthropic.com/news/detecting-and-countering-malicious-uses-of-claude-march-2025",
+    "source_label": "Anthropic"
+   }
+  },
+  "record": [
+   [
+    "2024-05-30",
+    "https://openai.com/index/disrupting-deceptive-uses-of-AI-by-covert-influence-operations/",
+    "OpenAI said five influence operations from Russia, China, Iran and an Israeli firm used its models but did not appear to gain meaningfully more audience engagement.",
+    "OpenAI"
+   ],
+   [
+    "2025-04-23",
+    "https://www.anthropic.com/news/detecting-and-countering-malicious-uses-of-claude-march-2025",
+    "Anthropic banned an 'influence-as-a-service' operation that used Claude to decide when 100+ fake political personas should like, share or comment.",
+    "Anthropic"
+   ],
+   [
+    "2025-04-28",
+    "https://engadget.com/ai/researchers-secretly-experimented-on-reddit-users-with-ai-generated-comments-194328026.html?src=rss",
+    "Reddit moderators revealed University of Zurich researchers had secretly posted AI comments on r/changemyview, including as a trauma counselor; Reddit prepared legal demands.",
+    "Engadget"
+   ],
+   [
+    "2026-10-20",
+    "storm-1516-talarico-deepfake",
+    "Graphika said Russia-aligned Storm-1516 seeded 'very likely' deepfake videos accusing a Texas Senate candidate, two weeks before the midterms.",
+    "Graphika"
+   ]
+  ],
+  "what_it_means": "A friendly, well-informed chatbot can nudge what you believe, and the most persuasive ones may get facts wrong. That can help, as with conspiracy beliefs, or be used by whoever controls the bot.",
+  "what_to_do": [
+   [
+    "Check the claims, not the confidence",
+    "Persuasive AI answers pack in many facts; check the ones that matter against a trusted source."
+   ],
+   [
+    "Ask who set up the bot",
+    "A chatbot on a campaign, company or advocacy site is built to argue its owner's side."
+   ],
+   [
+    "Be wary of personal tailoring",
+    "Studies show AI persuades more when it knows about you; share less about your views with unknown bots."
+   ],
+   [
+    "Doubt accounts that never tire",
+    "Online accounts that argue endlessly and fluently may be automated, as the Reddit and bot-network cases show."
+   ]
+  ],
+  "faq": [
+   [
+    "Is AI more persuasive than people?",
+    "In one 2025 debate study, GPT-4 was 64.4% more persuasive than humans when it had personal details about its opponent; without them it was not."
+   ],
+   [
+    "Can AI chatbots sway elections?",
+    "In 2025 studies, chatbot conversations shifted candidate preferences by a few points in the US and about 10 points in Canada and Poland; no election has been shown to be swung."
+   ],
+   [
+    "What was the Reddit ChangeMyView experiment?",
+    "University of Zurich researchers secretly posted more than 1,700 AI comments on r/changemyview; after an outcry they chose not to publish the results."
+   ],
+   [
+    "Can AI talk people out of false beliefs?",
+    "Yes, in one Science study conversations with GPT-4 Turbo cut belief in conspiracy theories by about 20%, lasting at least two months."
+   ]
+  ],
+  "sources": [
+   [
+    "Cornell Chronicle on Costello et al., Science (Sep 2024)",
+    "https://news.cornell.edu/node/329310"
+   ],
+   [
+    "The Register on Salvi et al., Nature Human Behaviour (May 2025)",
+    "https://theregister.com/2025/05/19/when_llms_get_personal_info"
+   ],
+   [
+    "Oxford Internet Institute on Hackenburg et al., Science (Dec 2025)",
+    "https://www.oii.ox.ac.uk/oxford-researchers-reveal-how-conversational-ai-can-change-political-opinions/"
+   ],
+   [
+    "Cornell Chronicle on AI chatbots swaying voters (Dec 2025)",
+    "https://www.news.cornell.edu/stories/2025/12/ai-chatbots-can-effectively-sway-voters-either-direction"
+   ],
+   [
+    "Live Science on the r/changemyview experiment (May 2025)",
+    "https://www.livescience.com/technology/artificial-intelligence/ai-researchers-ran-a-secret-experiment-on-reddit-users-to-see-if-they-could-change-their-minds-and-the-results-are-creepy"
+   ],
+   [
+    "Engadget on the r/changemyview experiment (Apr 2025)",
+    "https://engadget.com/ai/researchers-secretly-experimented-on-reddit-users-with-ai-generated-comments-194328026.html?src=rss"
+   ],
+   [
+    "OpenAI: covert influence operations (May 2024)",
+    "https://openai.com/index/disrupting-deceptive-uses-of-AI-by-covert-influence-operations/"
+   ],
+   [
+    "Anthropic: malicious uses of Claude (Mar 2025 report)",
+    "https://www.anthropic.com/news/detecting-and-countering-malicious-uses-of-claude-march-2025"
+   ]
+  ],
+  "related": [
+   "/learn/why-chatbots-make-things-up/",
+   "/help/is-this-video-real/",
+   "/learn/ai-companions-parents-guide/"
+  ]
+ },
+ {
+  "slug": "solve-olympiad-and-research-math",
+  "question": "Can AI solve math olympiad or research-level math problems?",
+  "title": "Can AI solve olympiad and research-level math problems?",
+  "desc": "Yes. AI reached gold at the 2025 Math Olympiad, claimed perfect scores in 2026 and has settled some open problems. Where it still falls short.",
+  "verdict": "Yes. AI systems reached gold-medal level at the 2025 International Mathematical Olympiad, several claimed perfect scores in 2026, and AI has resolved some genuinely open research problems, though most so far are easier ones and claims still need expert checking.",
+  "verdict_short": "Yes",
+  "first_proven": {
+   "date": "2025-07-21",
+   "what": "Google DeepMind's Gemini Deep Think solved 5 of 6 IMO 2025 problems in natural language within the time limit, scoring 35/42, gold-medal level, as graded by IMO coordinators; OpenAI reported the same score two days earlier under its own grading.",
+   "url": "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/",
+   "label": "Google DeepMind"
+  },
+  "explain": [
+   "The International Mathematical Olympiad is the hardest math contest for school students: six problems over two 4.5-hour sessions, answered with written proofs. In July 2025 an experimental OpenAI model and Google DeepMind's Gemini Deep Think each solved five of six problems for 35 of 42 points, gold-medal level, writing proofs in ordinary language. IMO coordinators graded Google's answers, though they did not vouch for the system itself; OpenAI's were graded by three former medalists.",
+   "A year earlier Google's AlphaProof had reached silver, but only after humans translated the problems into a formal language and with two to three days of computing. At the 2026 olympiad in Shanghai, Huawei and Xiaohongshu said their models scored a perfect 42/42, with Xiaohongshu saying its answers went through official IMO judging; seven of 666 human contestants did the same.",
+   "Research math is harder, because nobody knows the answer in advance. In October 2025 an OpenAI executive claimed GPT-5 had solved ten open Erdos problems, but it had found solutions already in the literature, and the post was deleted. In January 2026 Terence Tao confirmed GPT-5.2 Pro had solved Erdos problem #728 more or less on its own, checked by computer, while estimating that only about 1-2% of open Erdos problems are easy enough for today's AI.",
+   "Bigger results followed. In May 2026 OpenAI said an internal model disproved a 1946 Erdos conjecture about distances between points, with outside mathematicians checking the proof. In July 2026 Anthropic researcher Levent Alpoge announced a counterexample to the 1939 Jacobian conjecture that he credits to Claude; anyone can check the formula, but it had not been peer reviewed."
+  ],
+  "ladder": {
+   "demonstrated": {
+    "status": "yes",
+    "date": "2025-07-21",
+    "note": "Gemini Deep Think scored 35/42 at IMO 2025 in natural language within the time limits; IMO coordinators confirmed the proofs but did not validate the system.",
+    "source_url": "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/",
+    "source_label": "Google DeepMind"
+   },
+   "reproduced": {
+    "status": "yes",
+    "date": "2026-07-23",
+    "note": "At IMO 2026 Huawei and Xiaohongshu said their models scored 42/42; a venture investor's own test found four other models also scored 42/42, without official grading.",
+    "source_url": "https://standardmedia.co.ke/sports/amp/sci-tech/2001553533/ai-catches-up-with-humans-to-score-100pc-at-top-maths-contest",
+    "source_label": "AFP via The Standard"
+   },
+   "accessible": {
+    "status": "partly",
+    "date": "2025-08-01",
+    "note": "A faster Gemini Deep Think, bronze-level on IMO 2025 by Google's own tests, went to paying AI Ultra subscribers; the gold-level version went only to selected mathematicians.",
+    "source_url": "https://blog.google/products/gemini/gemini-2-5-deep-think/",
+    "source_label": "Google"
+   },
+   "reliable": {
+    "status": "partly",
+    "date": "2026-01-16",
+    "note": "Tao confirmed an AI solution to Erdos problem #728 but estimated only about 1-2% of open Erdos problems are within reach of current AI with little help; an October 2025 claim of ten solutions collapsed.",
+    "source_url": "https://the-decoder.com/terence-tao-says-gpt-5-2-pro-cracked-an-erdos-problem-but-warns-the-win-says-more-about-speed-than-difficulty/",
+    "source_label": "The Decoder"
+   },
+   "consequences": {
+    "status": "yes",
+    "date": "2026-07-20",
+    "note": "A counterexample to the 1939 Jacobian conjecture, credited to Claude, followed OpenAI's May 2026 disproof of a 1946 Erdos conjecture; the Jacobian result was not yet peer reviewed.",
+    "source_url": "https://forklog.com/en/anthropics-claude-fable-5-finds-counterexample-to-1939-jacobian-conjecture/",
+    "source_label": "Forklog"
+   }
+  },
+  "record": [
+   [
+    "2025-07-19",
+    "https://simonwillison.net/2025/Jul/19/openai-gold-medal-math-olympiad/",
+    "OpenAI said an experimental model scored 35/42 at IMO 2025 under contest conditions, graded by three former medalists.",
+    "Simon Willison"
+   ],
+   [
+    "2025-10-19",
+    "https://techcrunch.com/2025/10/19/openais-embarrassing-math/",
+    "An OpenAI executive deleted a claim that GPT-5 had solved ten open Erdos problems after it emerged that the model had found existing published solutions.",
+    "TechCrunch"
+   ],
+   [
+    "2026-05-20",
+    "https://openai.com/index/model-disproves-discrete-geometry-conjecture/",
+    "OpenAI said an internal model disproved Erdos's 1946 unit distance conjecture, with external mathematicians checking the proof.",
+    "OpenAI"
+   ],
+   [
+    "2026-07-20",
+    "https://ulam.ai/research/jacobian.pdf",
+    "A written-up counterexample to the 1939 Jacobian conjecture was posted, credited to Anthropic's Claude after Levent Alpoge announced it.",
+    "ulam.ai"
+   ]
+  ],
+  "what_it_means": "Solving hard, well-defined math problems is no longer something only top humans can do. Students and teachers face AI that can do contest math, and mathematicians are starting to use it as a collaborator, though its claims still need checking.",
+  "what_to_do": [
+   [
+    "Check AI math before relying on it",
+    "Ask for the steps and check them, or use a tool that verifies proofs; even good models make confident mistakes."
+   ],
+   [
+    "Teachers: test understanding",
+    "Contest-level homework can now be solved by AI; oral explanations and in-class work show what students know."
+   ],
+   [
+    "Treat breakthrough claims with care",
+    "Wait for mathematicians to check a claimed AI result; the October 2025 Erdos claim fell apart within days."
+   ],
+   [
+    "Use it to learn, not to skip learning",
+    "Asking AI to explain a solution can help; copying it teaches nothing."
+   ]
+  ],
+  "faq": [
+   [
+    "Did AI really win a gold medal at the Math Olympiad?",
+    "AI did not compete officially, but in 2025 two systems scored 35/42, gold-medal level, on the same problems under the same time limits."
+   ],
+   [
+    "Has AI solved an unsolved math problem?",
+    "Yes. Terence Tao confirmed an AI solution to Erdos problem #728 in January 2026, and AI was credited with disproving older conjectures in May and July 2026."
+   ],
+   [
+    "Will AI replace mathematicians?",
+    "Not yet. Tao estimates only about 1-2% of open Erdos problems are within reach of current AI, and harder work still needs human strategy."
+   ],
+   [
+    "Can I trust a chatbot's math answer?",
+    "Not blindly. Even strong models make errors, so check the steps; consumer versions are often weaker than the systems used in these results."
+   ]
+  ],
+  "sources": [
+   [
+    "Google DeepMind: Gemini Deep Think IMO gold (Jul 2025)",
+    "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/"
+   ],
+   [
+    "Simon Willison on OpenAI's IMO result (Jul 2025)",
+    "https://simonwillison.net/2025/Jul/19/openai-gold-medal-math-olympiad/"
+   ],
+   [
+    "Google: Gemini 2.5 Deep Think release (Aug 2025)",
+    "https://blog.google/products/gemini/gemini-2-5-deep-think/"
+   ],
+   [
+    "TechCrunch: OpenAI's embarrassing math (Oct 2025)",
+    "https://techcrunch.com/2025/10/19/openais-embarrassing-math/"
+   ],
+   [
+    "The Decoder: Tao on GPT-5.2 Pro and Erdos #728 (Jan 2026)",
+    "https://the-decoder.com/terence-tao-says-gpt-5-2-pro-cracked-an-erdos-problem-but-warns-the-win-says-more-about-speed-than-difficulty/"
+   ],
+   [
+    "OpenAI: model disproves discrete geometry conjecture (May 2026)",
+    "https://openai.com/index/model-disproves-discrete-geometry-conjecture/"
+   ],
+   [
+    "AFP via The Standard: AI scores 100% at IMO 2026",
+    "https://standardmedia.co.ke/sports/amp/sci-tech/2001553533/ai-catches-up-with-humans-to-score-100pc-at-top-maths-contest"
+   ],
+   [
+    "Forklog: Claude and the Jacobian conjecture (Jul 2026)",
+    "https://forklog.com/en/anthropics-claude-fable-5-finds-counterexample-to-1939-jacobian-conjecture/"
+   ],
+   [
+    "A Counterexample to the Jacobian Conjecture (ulam.ai)",
+    "https://ulam.ai/research/jacobian.pdf"
+   ]
+  ],
+  "related": [
+   "/learn/why-chatbots-make-things-up/"
+  ]
+ },
+ {
+  "slug": "replace-customer-service-agents",
+  "question": "Can AI replace a customer service agent?",
+  "title": "Can AI replace a human customer service agent?",
+  "desc": "Partly. AI now handles a large share of routine support chats, but Klarna and others brought humans back after quality fell. What it means when you need help.",
+  "verdict": "Partly. AI assistants now handle a large share of routine customer chats at big companies, but firms that cut deepest have brought humans back, and AI agents have given wrong answers or been talked into harmful actions.",
+  "verdict_short": "Partly",
+  "first_proven": {
+   "date": "2024-02-27",
+   "what": "Klarna said its OpenAI-powered assistant handled 2.3 million conversations in its first month, two-thirds of its customer service chats, doing the work of about 700 full-time agents.",
+   "url": "https://www.vktr.com/the-wire/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month",
+   "label": "VKTR (Klarna release)"
+  },
+  "explain": [
+   "Customer service chatbots used to follow fixed scripts. Large language models can instead read a question, look up account details and reply in natural language in many languages. In February 2024 payments company Klarna said its new AI assistant handled two-thirds of its customer chats in its first month, cut resolution times from 11 minutes to under 2, and matched human agents on satisfaction, by its own figures.",
+   "Others followed. Salesforce's chief executive said in September 2025 that AI agents were handling half of its customer service interactions, as reports put its support staff cut from about 9,000 to about 5,000. A September 2025 Gartner survey found 11% of companies had cut staff because of AI and 22% had stopped replacing staff who left.",
+   "Then came the walk-backs. In May 2025 Klarna's chief executive said cost had been 'a too predominant evaluation factor', the result was 'lower quality', and the company was hiring human agents again, promising customers there would 'always be a human if you want'. In August 2025 Commonwealth Bank of Australia reversed 45 job cuts tied to an AI voice bot, admitting an 'error' after its union said call volumes were rising. Gartner predicts half of the companies that planned big cuts to service staff will abandon those plans by 2027.",
+   "Mistakes carry real costs. In 2024 a Canadian tribunal held Air Canada liable for its chatbot's wrong advice about bereavement fares, rejecting the idea that the bot was responsible for itself. In 2026 attackers persuaded Meta's AI support agent to attach new email addresses to high-profile Instagram accounts and took them over."
+  ],
+  "ladder": {
+   "demonstrated": {
+    "status": "yes",
+    "date": "2024-02-27",
+    "note": "Klarna said its assistant handled 2.3 million chats, two-thirds of the total, in its first month, in 35+ languages; these are the company's own figures.",
+    "source_url": "https://www.vktr.com/the-wire/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month",
+    "source_label": "VKTR (Klarna release)"
+   },
+   "reproduced": {
+    "status": "yes",
+    "date": "2025-09-03",
+    "note": "Salesforce's CEO said AI agents handled 50% of its customer service interactions as it cut about 4,000 support roles.",
+    "source_url": "https://www.techrepublic.com/article/news-salesforce-cuts-4k-jobs/",
+    "source_label": "TechRepublic"
+   },
+   "accessible": {
+    "status": "yes",
+    "date": "2025-09-12",
+    "note": "A Gartner survey found 11% of companies had cut staff because of AI and 22% had stopped backfilling departures, though none of the largest were predicted to drop humans entirely by 2028.",
+    "source_url": "https://www.theregister.com/2025/09/12/gartner_support_ai/",
+    "source_label": "The Register"
+   },
+   "reliable": {
+    "status": "partly",
+    "date": "2025-05-09",
+    "note": "Klarna's CEO said its AI-first approach gave 'lower quality' and it was rehiring humans; Commonwealth Bank reversed AI-linked job cuts in August 2025.",
+    "source_url": "https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396",
+    "source_label": "Entrepreneur"
+   },
+   "consequences": {
+    "status": "yes",
+    "date": "2026-06-01",
+    "note": "Attackers talked Meta's AI support agent into attaching new emails to high-profile Instagram accounts; in 2024 Air Canada was held liable for its chatbot's wrong advice.",
+    "source_url": "https://www.404media.co/hackers-simply-asked-meta-ai-to-give-them-access-to-high-profile-instagram-accounts-it-worked/",
+    "source_label": "404 Media"
+   }
+  },
+  "record": [
+   [
+    "2024-02-14",
+    "air-canada-chatbot-ruling",
+    "A British Columbia tribunal held Air Canada liable after its website chatbot wrongly told a grieving customer he could claim a bereavement fare afterwards.",
+    "Civil Resolution Tribunal"
+   ],
+   [
+    "2025-05-09",
+    "https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396",
+    "Klarna's CEO said its AI-led customer service had produced lower quality and the company was hiring human agents again.",
+    "Entrepreneur"
+   ],
+   [
+    "2025-08-21",
+    "https://ia.acs.org.au/article/2025/cba-reverses-ai-driven-job-cuts--admits--error-.html",
+    "Commonwealth Bank of Australia reversed 45 customer service job cuts linked to an AI voice bot and apologised, calling the decision an error.",
+    "Information Age (ACS)"
+   ],
+   [
+    "2026-06-01",
+    "meta-ai-support-instagram-takeovers",
+    "Hackers took over high-profile Instagram accounts by asking Meta's AI support agent to attach a new email address, which it did without adequate checks.",
+    "404 Media"
+   ]
+  ],
+  "what_it_means": "When you contact a company you will increasingly reach an AI first. It can be fast for simple questions, but it can be wrong, and the company, not the bot, is responsible for what it tells you.",
+  "what_to_do": [
+   [
+    "Ask for a human",
+    "If the bot can't solve your problem or the stakes are high, ask for a person; Klarna and others say one should be available."
+   ],
+   [
+    "Keep a record",
+    "Screenshot or save chatbot answers about refunds, fares or policies; Air Canada had to honour what its bot said."
+   ],
+   [
+    "Check important answers",
+    "Confirm policies on the company's official pages before acting on a chatbot's word."
+   ],
+   [
+    "Lock down your accounts",
+    "Use strong account recovery settings and two-factor login, since AI support agents have been tricked into handing over accounts."
+   ]
+  ],
+  "faq": [
+   [
+    "Did Klarna replace its customer service staff with AI?",
+    "Partly. Its AI handled two-thirds of chats in 2024, but in May 2025 its CEO said quality had suffered and it began hiring humans again."
+   ],
+   [
+    "Is a company responsible for what its chatbot says?",
+    "In Canada, yes: a tribunal held Air Canada liable in 2024 for its chatbot's wrong advice and rejected the claim that the bot was a separate entity."
+   ],
+   [
+    "How much customer service does AI handle now?",
+    "Salesforce says about half of its service interactions; Klarna says its assistant does the work of about 853 full-time staff as of late 2025."
+   ],
+   [
+    "Will companies get rid of human agents entirely?",
+    "Gartner predicts none of the Fortune 500 will fully drop human customer service by 2028, and that half of firms planning big cuts will abandon them."
+   ]
+  ],
+  "sources": [
+   [
+    "VKTR: Klarna AI assistant handles two-thirds of chats (Feb 2024)",
+    "https://www.vktr.com/the-wire/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month"
+   ],
+   [
+    "Entrepreneur: Klarna rehires human agents (May 2025)",
+    "https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396"
+   ],
+   [
+    "CX Today on Klarna's change of course (May 2025)",
+    "https://cxtoday.com/klarna-grapples-with-ai-led-customer-service-pivots-to-an-uber-type-of-setup"
+   ],
+   [
+    "Resultsense: Klarna headcount and AI (Nov 2025)",
+    "https://www.resultsense.com/news/2025-11-19-klarna-ai-workforce-reduction-salary-increase/"
+   ],
+   [
+    "TechRepublic: Salesforce cuts 4,000 support roles (Sep 2025)",
+    "https://www.techrepublic.com/article/news-salesforce-cuts-4k-jobs/"
+   ],
+   [
+    "Gartner: 50% will abandon service workforce cuts (Jun 2025)",
+    "https://www.gartner.com/en/newsroom/press-releases/2025-06-10-gartner-predicts-50-percent-of-organizations-will-abandon-plans-to-reduce-customer-service-workforce-due-to-ai"
+   ],
+   [
+    "The Register on Gartner support AI survey (Sep 2025)",
+    "https://www.theregister.com/2025/09/12/gartner_support_ai/"
+   ],
+   [
+    "Information Age: CBA reverses AI job cuts (Aug 2025)",
+    "https://ia.acs.org.au/article/2025/cba-reverses-ai-driven-job-cuts--admits--error-.html"
+   ],
+   [
+    "Moffatt v. Air Canada decision (2024)",
+    "https://decisions.civilresolutionbc.ca/crt/crtd/en/525448/1/document.do"
+   ],
+   [
+    "404 Media on Meta AI support account takeovers",
+    "https://www.404media.co/hackers-simply-asked-meta-ai-to-give-them-access-to-high-profile-instagram-accounts-it-worked/"
+   ]
+  ],
+  "related": [
+   "/learn/why-chatbots-make-things-up/",
+   "/learn/ai-helper-for-older-parent/",
+   "/checks/fake-bank-fraud-call/"
+  ]
+ },
+ {
+  "slug": "find-software-security-flaws",
+  "question": "Can AI find security flaws in software?",
+  "title": "Can AI find security flaws in software? Graded answer",
+  "desc": "Yes: AI has found serious, previously unknown flaws in widely used software, including the PHP flaws behind this month's shutdowns. What it means for you.",
+  "verdict": "Yes. AI systems have found serious, previously unknown security flaws in widely used software, and in October 2026 AI-found flaws in PHP led governments to switch services off as a precaution.",
+  "verdict_short": "Yes",
+  "first_proven": {
+   "date": "2024-11-01",
+   "what": "Google's Big Sleep agent found a previously unknown, exploitable flaw in the SQLite database engine, fixed before any release was affected; Google called it the first public example of its kind.",
+   "url": "https://projectzero.google/2024/10/from-naptime-to-big-sleep.html",
+   "label": "Google Project Zero, Nov 2024"
+  },
+  "explain": [
+   "Finding security flaws used to take scarce human experts weeks. AI models can now read large amounts of code and spot mistakes that automated testing missed, and labs report finding thousands of serious flaws this way.",
+   "The same ability cuts both ways. Defenders use it to find and fix bugs first; that is how most of these flaws were found. But once a flaw is public, attackers can use AI to turn it into a working attack faster, which is part of why the PHP flaws were attacked within days.",
+   "The most capable bug-finding tools are mostly restricted to vetted security teams. The general models anyone can use are less capable at this, but improving."
+  ],
+  "ladder": {
+   "demonstrated": {
+    "status": "yes",
+    "date": "2024-11-01",
+    "note": "Google called it the 'first public example' of an AI agent finding an unknown exploitable memory-safety issue in widely used real-world software, and described the work as 'highly experimental'.",
+    "source_url": "https://projectzero.google/2024/10/from-naptime-to-big-sleep.html",
+    "source_label": "Google Project Zero"
+   },
+   "reproduced": {
+    "status": "yes",
+    "date": "2026-04-07",
+    "note": "Anthropic's Mythos Preview reported thousands of high- and critical-severity vulnerabilities, including in every major operating system and browser (Apr 2026); OpenAI's Daybreak program said its cyber-tuned model found two high-severity Chrome bugs (Aug 2026).",
+    "source_url": "https://www.anthropic.com/research/mythos-preview",
+    "source_label": "Anthropic"
+   },
+   "accessible": {
+    "status": "partly",
+    "date": "2026-10-06",
+    "note": "Frontier bug-finding is gated to vetted defenders: Anthropic's Glasswing and three-tier Cyber Verification Program, OpenAI's Daybreak tiers with hardware keys from Sept 2026; general models such as Opus 4.6 are still said to 'find real vulnerabilities in codebases'.",
+    "source_url": "https://www.anthropic.com/glasswing",
+    "source_label": "Anthropic"
+   },
+   "reliable": {
+    "status": "partly",
+    "date": "2026-10-23",
+    "note": "Forbes, Oct 23: OpenAI's Patch the Planet program (run with Trail of Bits) has found 1,995 bugs, 1,316 of them still awaiting a patch; of 130 AI-written patches deployed, 16 caused functional problems and one a performance problem, none a new weakness. Anthropic's Glasswing has found more than 29,000 possible bugs and triaged about 6,000. No published success rate for discovery of flaws of PHP2Shell's severity.",
+    "source_url": "https://www.forbes.com/sites/thomasbrewster/2026/10/23/inside-openais-plan-to-protect-the-internet-before-hackers-break-it/",
+    "source_label": "Forbes, Oct 23, 2026"
+   },
+   "consequences": {
+    "status": "yes",
+    "date": "2026-10-26",
+    "note": "PHP2Shell: governments from the Netherlands to Japan took public services offline as a precaution; millions of exploit attempts. Unit 42's Oct 23 report of a successful intrusion at a European government body was retracted on Oct 25 (it could not tie the break-in to these flaws); as of Oct 26 code execution is confirmed only on researchers' decoy servers and no organization has confirmed a breach.",
+    "source_url": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+    "source_label": "The Hacker News, Oct 2026"
+   }
+  },
+  "record": [
+   [
+    "Nov 2024",
+    "https://projectzero.google/2024/10/from-naptime-to-big-sleep.html",
+    "Google's Big Sleep finds a previously unknown flaw in SQLite, fixed the same day.",
+    "Google Project Zero"
+   ],
+   [
+    "May 2026",
+    "gtig-ai-zero-day",
+    "Google reports a criminal group using an attack on an unknown flaw that it assessed was likely developed with AI.",
+    ""
+   ],
+   [
+    "Oct 2026",
+    "php2shell",
+    "Researchers use frontier AI to find critical flaws in PHP, the software under most websites; governments take services offline as a precaution.",
+    ""
+   ]
+  ],
+  "what_it_means": "The software you rely on is being checked for flaws faster than ever, by both defenders and attackers. The practical consequence for you is that updates matter more and arrive more often.",
+  "what_to_do": [
+   [
+    "Turn on automatic updates",
+    "on your phone, computer, browser and router. Fixes for newly found flaws now arrive fast; installing them quickly is the best protection."
+   ],
+   [
+    "If you run a website,",
+    "make sure whoever hosts it applies security updates promptly, and ask which software versions it runs."
+   ],
+   [
+    "Use two-step login",
+    "on important accounts, so a flaw in one service doesn't hand over everything."
+   ]
+  ],
+  "faq": [
+   [
+    "Can AI find zero-day vulnerabilities?",
+    "Yes. A zero-day is a flaw nobody knew about. Google's Big Sleep found one in 2024, and labs have since reported many more, including the PHP flaws disclosed in October 2026."
+   ],
+   [
+    "Is AI making hacking easier?",
+    "It makes some steps faster for attackers, especially turning known flaws into attacks. It also helps defenders find and fix flaws first, which is how most AI-found flaws have been handled so far."
+   ],
+   [
+    "What should I do to stay safe?",
+    "Keep everything updated automatically, use two-step login, and be wary of messages that use security news as a lure."
+   ]
+  ],
+  "sources": [
+   [
+    "Google Project Zero: From Naptime to Big Sleep (Nov 2024)",
+    "https://projectzero.google/2024/10/from-naptime-to-big-sleep.html"
+   ],
+   [
+    "Anthropic: Mythos Preview",
+    "https://www.anthropic.com/research/mythos-preview"
+   ],
+   [
+    "Wiz: PHP2Shell",
+    "https://www.wiz.io/blog/php2shell-php-rce"
+   ],
+   [
+    "Forbes: OpenAI's plan to protect the internet (Oct 23, 2026)",
+    "https://www.forbes.com/sites/thomasbrewster/2026/10/23/inside-openais-plan-to-protect-the-internet-before-hackers-break-it/"
+   ],
+   [
+    "The Hacker News: PHP2Shell exploit attempts (Oct 2026)",
+    "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html"
+   ]
+  ],
+  "related": [
+   "/help/ai-scam-texts/"
+  ]
+ },
+ {
+  "slug": "hack-on-its-own",
+  "question": "Can AI hack into systems on its own?",
+  "title": "Can AI hack into systems on its own? Graded answer",
+  "desc": "Partly: AI agents have carried out most of real break-ins with little human help, but people still direct them. The record, graded, and what it means for you.",
+  "verdict": "Partly. AI agents have done most of the work in real break-ins, with people choosing targets and stepping in at key moments; no fully independent AI attack has been documented.",
+  "verdict_short": "Partly",
+  "first_proven": {
+   "date": "2025-09-15",
+   "what": "Anthropic reported a campaign in which operators had its Claude Code tool carry out most of an espionage operation against about 30 organisations, with humans stepping in only at a few decision points.",
+   "url": "https://www.anthropic.com/news/disrupting-AI-espionage",
+   "label": "Anthropic, Nov 2025"
+  },
+  "explain": [
+   "An AI agent is an AI that can take actions, such as running programs and logging in, not just chat. In the cases on our record, criminals or testers pointed agents at targets and the agents did most of the routine work: looking for weak spots, trying ways in and collecting data.",
+   "People are still in the loop. They pick the targets, approve key steps and handle what the agents can't. What's changed is scale: one person with agents can now attempt far more targets than before.",
+   "Labs and security firms report these cases and say they cut off the accounts involved. Each case on our record is graded by how much the AI did and whether there was a real victim."
+  ],
+  "ladder": {
+   "demonstrated": {
+    "status": "yes",
+    "date": "2025-09-15",
+    "note": "Anthropic reported operators using Claude Code to perform most of an espionage campaign against about 30 organisations.",
+    "source_url": "https://www.anthropic.com/news/disrupting-AI-espionage",
+    "source_label": "Anthropic"
+   },
+   "reproduced": {
+    "status": "yes",
+    "date": "2026-07-04",
+    "note": "Sysdig documented a ransomware campaign it said was carried out end to end by an AI agent.",
+    "source_url": "https://www.bleepingcomputer.com/news/security/jadepuffer-ransomware-used-ai-agent-to-automate-entire-attack/",
+    "source_label": "BleepingComputer"
+   },
+   "accessible": {
+    "status": "partly",
+    "date": "2026-09-25",
+    "note": "Reuters reported one hacker running open-source agent software against more than 1,200 websites, breaking into over 100 company sites.",
+    "source_url": "https://www.staradvertiser.com/2026/10/19/breaking-news/how-one-hacker-used-ai-agents-to-break-into-over-100-company-websites/",
+    "source_label": "Reuters via Star-Advertiser"
+   },
+   "reliable": {
+    "status": "partly",
+    "date": "2026-10-15",
+    "note": "A startup's agents found routes into a limited set of Anthropic's internal systems in under 12 hours, after days of failed attempts against its own software.",
+    "source_url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
+    "source_label": "Gizmodo"
+   },
+   "consequences": {
+    "status": "yes",
+    "date": "2026-10-15",
+    "note": "Seoul police arrested seven people who used generative AI to hack about 90 organisations and take 8.2 million records.",
+    "source_url": "https://www.koreajoongangdaily.com/korea/seven-arrested-for-using-generative-ai-to-hack-90-organizations/12938493",
+    "source_label": "Korea JoongAng Daily"
+   }
+  },
+  "record": [
+   [
+    "Sep 2025",
+    "gtg1002-claude-code-espionage",
+    "Operators have Claude Code perform most of an espionage campaign against about 30 organisations.",
+    ""
+   ],
+   [
+    "Jul 2026",
+    "jadepuffer",
+    "A ransomware campaign run end to end by an AI agent, per Sysdig.",
+    ""
+   ],
+   [
+    "Sep 2026",
+    "cairn-agents-100-company-sites",
+    "One hacker's AI agents break into more than 100 company websites, per Reuters.",
+    ""
+   ],
+   [
+    "Oct 2026",
+    "seoul-police-genai-hacking-ring-90-orgs",
+    "Seoul police arrest seven over AI-assisted hacking of about 90 organisations.",
+    ""
+   ],
+   [
+    "Oct 2026",
+    "cathedral-agents-anthropic-internal-systems",
+    "A startup's AI agents reach a limited set of Anthropic's internal systems in under 12 hours.",
+    ""
+   ]
+  ],
+  "what_it_means": "More organisations will be tested by attackers more often, including the small ones that used to be ignored. For individuals, the fallout usually arrives as breach notices and the scams that follow them.",
+  "what_to_do": [
+   [
+    "Use unique passwords and two-step login",
+    "so a breach at one company doesn't open your other accounts."
+   ],
+   [
+    "Treat breach-news messages with suspicion.",
+    "Scammers use real attacks as cover. Go to the company's own site or app."
+   ],
+   [
+    "Search our record",
+    "to see whether an organisation you deal with has been named: warningshots.ai/exposed/."
+   ]
+  ],
+  "faq": [
+   [
+    "Can AI hack on its own?",
+    "Not fully, on the public record. AI agents have done most of the work in real attacks, but people chose the targets and stepped in at key points."
+   ],
+   [
+    "Has AI been used in real cyberattacks?",
+    "Yes. Our record includes espionage, ransomware and mass website break-ins in which AI agents did much of the work, each with its source."
+   ],
+   [
+    "Am I affected?",
+    "Search the organisations you use at warningshots.ai/exposed/, and keep passwords unique with two-step login on."
+   ]
+  ],
+  "sources": [
+   [
+    "Anthropic: Disrupting the first reported AI-orchestrated cyber espionage campaign",
+    "https://www.anthropic.com/news/disrupting-AI-espionage"
+   ],
+   [
+    "BleepingComputer: JadePuffer ransomware used AI agent",
+    "https://www.bleepingcomputer.com/news/security/jadepuffer-ransomware-used-ai-agent-to-automate-entire-attack/"
+   ],
+   [
+    "Reuters via Star-Advertiser: one hacker, AI agents, 100+ company websites (Oct 19, 2026)",
+    "https://www.staradvertiser.com/2026/10/19/breaking-news/how-one-hacker-used-ai-agents-to-break-into-over-100-company-websites/"
+   ],
+   [
+    "Korea JoongAng Daily: seven arrested (Oct 26, 2026)",
+    "https://www.koreajoongangdaily.com/korea/seven-arrested-for-using-generative-ai-to-hack-90-organizations/12938493"
+   ],
+   [
+    "Gizmodo: startup claims it hacked Anthropic (Oct 26, 2026)",
+    "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560"
+   ]
+  ],
+  "related": [
+   "/help/ai-scam-texts/"
+  ]
  }
 ]
