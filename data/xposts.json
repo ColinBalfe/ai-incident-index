@@ -1,16 +1,60 @@
 [
 {
+"id": "boazbarak-eth-open-check",
+"url": "https://x.com/boazbaraktcs/status/2114836090766888977",
+"platform": "X",
+"author": "Boaz Barak",
+"handle": "@boazbaraktcs",
+"who": "Harvard computer scientist who also works at OpenAI",
+"posted": "2026-10-26T21:46:30Z",
+"kind": "opinion",
+"what": "A computer scientist who works at OpenAI welcomes the outside check, saying it comes with no secrecy agreements and no payment to the reviewers.",
+"quote": "with no NDAs, no secrecy, no compensation",
+"seen_via": "the post itself, read through X's public embed data",
+"related": "openai-eth-kakeya-qcd-proofs",
+"tweet": {
+"name": "Boaz Barak",
+"handle": "boazbaraktcs",
+"avatar": "https://pbs.twimg.com/profile_images/1252262363132280834/ytIN-vzv_bigger.jpg",
+"verified": true,
+"created_at": "2026-10-26T21:46:30.000Z",
+"text": "Couldn't think of a better team to study and expand on this result! \n\nAnd with no NDAs, no secrecy,  no compensation, we get the benefit of human understanding without gatekeeping.",
+"id": "2114836090766888977",
+"photos": [],
+"quoted": {
+"name": "Ryan Williams @rrwilliams.bsky.social",
+"handle": "rrwilliams",
+"avatar": "https://pbs.twimg.com/profile_images/1587257679726133248/En7AKJHO_bigger.jpg",
+"verified": false,
+"created_at": "2026-10-26T21:35:29.000Z",
+"text": "An internal model at OpenAI has produced a claimed refutation of ETH! Russell Impagliazzo, Mohan Paturi, and I have been asked to help organize an open and independent examination of this claim. 1/4",
+"id": "2114833319431209352",
+"photos": []
+}
+}
+},
+{
 "id": "rrwilliams-eth-claim-review",
-"url": "https://bsky.app/profile/rrwilliams.bsky.social/post/3myspd26qjk2c",
-"platform": "Bluesky (also on X)",
+"url": "https://x.com/rrwilliams/status/2114833319431209352",
+"platform": "X",
 "author": "Ryan Williams",
 "handle": "@rrwilliams",
 "who": "MIT professor of theoretical computer science",
-"posted": "2026-10-26T21:50:37Z",
+"posted": "2026-10-26T21:35:29Z",
 "kind": "claim",
-"what": "An internal OpenAI model has produced a claimed proof that overturns a famous assumption about how hard certain computing puzzles are. Williams, Russell Impagliazzo and Mohan Paturi say they have been asked to organize an open, independent check, and have asked OpenAI to release all its raw data.",
+"what": "OpenAI says one of its internal AI models proved that a famous assumption about how hard certain computing puzzles are is wrong. Three leading experts have been asked to run an open, independent check. Nobody outside OpenAI has confirmed it yet.",
 "quote": "An internal model at OpenAI has produced a claimed refutation of ETH!",
-"seen_via": "the post itself, opened through Bluesky's public API",
-"related": "openai-eth-kakeya-qcd-proofs"
+"seen_via": "the post itself, read through X's public embed data",
+"related": "openai-eth-kakeya-qcd-proofs",
+"tweet": {
+"name": "Ryan Williams @rrwilliams.bsky.social",
+"handle": "rrwilliams",
+"avatar": "https://pbs.twimg.com/profile_images/1587257679726133248/En7AKJHO_bigger.jpg",
+"verified": false,
+"created_at": "2026-10-26T21:35:29.000Z",
+"text": "An internal model at OpenAI has produced a claimed refutation of ETH! Russell Impagliazzo, Mohan Paturi, and I have been asked to help organize an open and independent examination of this claim. 1/4",
+"id": "2114833319431209352",
+"photos": []
+}
 }
 ]

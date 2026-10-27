@@ -113,16 +113,18 @@ Before publishing, check every line: actor in the first three words; past-tense 
 6. Presentation: the page shows these as the index's own expectations in plain words (very likely, likely, could go either way, unlikely, very unlikely), never as a betting board. Readers do not place picks and there is no reader record; keep it that way. Odds live in the data and the changelog so moves stay accountable.
 6. The report pastes the graded calls (hit or miss) and any odds that moved, with the reason.
 
-## 2c. Posts on X and Bluesky (every refresh)
+## 2c. Posts on X (every refresh)
 
-`research/x_posts.json` holds posts worth surfacing; `build_site.py` puts the last 72 hours on the homepage ("On X and Bluesky"), newest first. Every post gets exactly one label, and the label is about the post, not the topic:
+`research/x_posts.json` holds posts worth surfacing; `build_site.py` puts the last 72 hours on the homepage ("On X"), newest first, each drawn to look like the post on X (name, photo, handle, the exact text, time) with our label above it and our plain-words line under it. Every post gets exactly one label, and the label is about the post, not the topic:
 
 - `breaking`: a first-hand source (the researcher, the victim organisation, the reporter who broke it) posting a new, material fact a reader can check. Only `breaking` and `official` posts under 12 hours old can take the red bar above the lead; after that they stay in the list with their label.
 - `official`: an agency, company or lab account stating something on the record.
 - `claim`: a new result or allegation nobody independent has checked yet (shown as "Unverified claim"). A claim never becomes `breaking` until a second, independent source confirms it; then add that source to the related Wire item.
 - `opinion`: commentary, analysis, explainer threads, reactions. Shown as "Opinion" in the list, never in the red bar, however big the account.
 
-Rules: open every post before listing it (Bluesky's public API `public.api.bsky.app/xrpc/app.bsky.feed.getPostThread` works; x.com usually cannot be fetched, so an X-only post goes in only when an article you opened quotes it, and `seen_via` says which). Never list a post you have not seen in full. `what` is our plain-words summary of what the post says, human fact first, no acronyms; `quote` is the shortest exact line that carries it. Fields: `id`, `url`, `platform`, `author`, `handle`, `who` (why this person matters, in a few words), `posted` (UTC ISO), `kind`, `what`, `quote`, `seen_via`, `related` (Wire or incident id). Do not delete old entries; the page drops them after 72 hours. Never post to or reply on X or Bluesky from the refresh.
+Finding posts: search X through web search (`site:x.com <topic>` and the names of the people at the centre of the story: the researchers, the company's officials, the reporters who broke it). X only; no other social network.
+
+Rules: only X posts (`https://x.com/<handle>/status/<id>`). After adding entries, run `python3 build/fetch_x.py`: it pulls each post's exact text, name, photo and time from X's public embed data into `research/x_cache.json`, which the page uses. Read the fetched text before keeping an entry; if the fetch fails, the post was deleted or is private, so drop it (never show a post whose text you have not seen in full). Never retype or edit the post text; the card shows it exactly. `what` is our plain-words line under the card (human fact first, no acronyms, says plainly when something is unconfirmed); `quote` is the shortest exact line that carries it. `who` says why this person matters, including any tie to the company involved. Fields: `id`, `url`, `platform` ("X"), `author`, `handle`, `who`, `posted` (UTC ISO, from the fetch), `kind`, `what`, `quote`, `seen_via`, `related` (Wire or incident id). Do not delete old entries; the page drops them after 72 hours. Never post, reply, like or repost on X from the refresh.
 
 ## 2a. Sundays: the source audit
 
@@ -145,6 +147,7 @@ The lead carries **What it means for you** (`you` on the siren item in research/
 
 ```
 cd build && python3 build_data.py && python3 build_deep.py && python3 build_live.py && cp data/*.json ../data/ && cd ..
+python3 build/fetch_x.py                                # exact text of the X posts in research/x_posts.json -> research/x_cache.json
 python3 build_site.py                                   # index.html, data/bundle.json (one request for all data), feed.xml, JSON-LD
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
 node prerender.mjs  http://127.0.0.1:8765/index.html   # bakes the first screen (ribbon, ticker, siren, brief, Wire, live rail) into index.html so the headline is in the first paint

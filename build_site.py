@@ -100,7 +100,7 @@ _cols = ['id', 'date', 'date_precision', 'disclosed', 'title', 'actors', 'catego
 with open('data/incidents.csv', 'w', newline='', encoding='utf-8') as _f:
     _w = _csv.DictWriter(_f, fieldnames=_cols, extrasaction='ignore'); _w.writeheader(); [_w.writerow(r) for r in _rows]
 
-# ---- posts from X/Bluesky (research/x_posts.json): the last 72 hours go to the page; labels per REFRESH.md (breaking/official/claim/opinion)
+# ---- posts from X (research/x_posts.json, exact text from research/x_cache.json via build/fetch_x.py): the last 72 hours go to the page; labels per REFRESH.md (breaking/official/claim/opinion)
 try:
     _xp = json.load(open('research/x_posts.json', encoding='utf-8'))
 except (OSError, ValueError):
@@ -108,6 +108,11 @@ except (OSError, ValueError):
 import datetime as _dtx
 _cut = _dtx.datetime.fromisoformat(meta['as_of']) - _dtx.timedelta(hours=72)
 _xp = [x for x in _xp if _dtx.datetime.fromisoformat(x['posted'].replace('Z', '+00:00')) >= _cut]
+try:
+    _xc = json.load(open('research/x_cache.json', encoding='utf-8'))
+except (OSError, ValueError):
+    _xc = {}
+_xp = [dict(x, tweet=_xc[x['id']]) if x['id'] in _xc else x for x in _xp]
 json.dump(sorted(_xp, key=lambda x: x['posted'], reverse=True), open('data/xposts.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 
 # ---- data/bundle.json: every data file in one request (the page preloads it; the individual files stay for scripts and the update check)

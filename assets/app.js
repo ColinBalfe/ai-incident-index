@@ -594,11 +594,11 @@ function drawWall() {
       tabs.querySelectorAll('button').forEach((b) => { const on = b.dataset.k === cur; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); }); };
     opts.forEach(([k, lbl]) => { const b = el('button', 'you-tab', lbl); b.type = 'button'; b.dataset.k = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => { cur = k; try { if (k !== 'all') localStorage.setItem('ws-lens', k); } catch (e) {} paint(); }); tabs.append(b); });
     head.append(tabs); box.append(head, t1, t2); paint(); return box; })() : null;
-  // Breaking from X/Bluesky: only first-hand, material posts under 12 hours old earn the bar (REFRESH.md rules); everything else is in "On X" below
+  // Breaking from X: only first-hand, material posts under 12 hours old earn the bar (REFRESH.md rules); everything else is in "On X" below
   const XK = { breaking: 'Breaking', official: 'Official', claim: 'Unverified claim', opinion: 'Opinion' };
   const xposts = (D.xposts || []).filter((x) => x && x.url);
   const brk = xposts.find((x) => (x.kind === 'breaking' || x.kind === 'official') && (Date.now() - Date.parse(x.posted)) < 12 * 3.6e6);
-  const bbar = brk ? (() => { const b = el('a', 'xbreak'); b.href = brk.url; b.target = '_blank'; b.rel = 'noopener noreferrer'; b.append(el('span', 'xb-k', XK[brk.kind]), el('span', 'xb-t', brk.what), el('span', 'xb-s', brk.author + ', ' + brk.who + ' · ' + ageShort({ published: brk.posted }) + ' · ' + brk.platform)); return b; })() : null;
+  const bbar = brk ? (() => { const b = el('a', 'xbreak'); b.href = brk.url; b.target = '_blank'; b.rel = 'noopener noreferrer'; b.append(el('span', 'xb-k', XK[brk.kind]), el('span', 'xb-t', brk.what), el('span', 'xb-s', brk.author + ', ' + brk.who + ' · ' + ageShort({ published: brk.posted }) + ' · on X')); return b; })() : null;
   lead.replaceChildren(...(bbar ? [bbar] : []), dl, sv, ...(youBox ? [youBox] : []), ...(strip ? [strip] : []));
   // 3. the columns, below the masthead
   const cols = el('div', 'wall-cols');
@@ -619,7 +619,28 @@ function drawWall() {
   const extra = !slotH.some((h) => etH >= h - 0.25 && etH <= h + 1.5);
   if (D.meta.edition) { const ea = el('a', null, (extra ? 'Extra edition, No. ' : 'Edition No. ') + D.meta.edition); ea.href = '/' + (D.meta.edition_path || 'archive/'); ea.setAttribute('data-tip', 'Edition No. ' + D.meta.edition + ', published ' + fmtET(D.meta.as_of) + '. Opens a frozen copy of this page exactly as published.'); const cl = el('a', null, 'what changed'); cl.href = '/index/#changelog'; const all = el('a', null, 'every edition'); all.href = '/archive/'; ed.append(ea, txt(' · ' + fmtET(D.meta.as_of) + ' · '), cl, txt(' · '), all); if (extra) ea.setAttribute('data-tip', 'An extra edition outside the 5:17 AM, 12:17 PM and 6:17 PM schedule, published because something worth adding came in. Opens a frozen copy.'); }
   const cu = el('p', 'wall-cu'); cu.append(el('b', null, 'That’s your Warning Shots for ' + new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric' }).format(new Date(D.meta.as_of)) + ', as of ' + fmtET(D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.'), txt(' You’re caught up.' + (D.meta.next_check ? ' Next edition ' + fmtET(D.meta.next_check).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.' : '') + ' See what’s coming. Know what it means.'));
-  const xbox = xposts.length ? (() => { const bx = el('section', 'xon'); bx.append(el('h2', 'wall-ch', 'On X and Bluesky')); xposts.slice(0, 6).forEach((x) => { const li = el('div', 'xon-i'); li.append(el('span', 'wl-lab ' + (x.kind === 'opinion' ? 'opinion' : x.kind === 'claim' ? 'reported' : 'proven'), XK[x.kind] || x.kind)); const a = el('a', null, x.what); a.href = x.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.append(a, el('small', null, ' ' + x.author + ', ' + x.who + ' · ' + ageShort({ published: x.posted }))); bx.append(li); }); bx.append(el('p', 'xon-note', 'Breaking means a first-hand source posting a new, checkable fact. Claims are new but not yet checked; opinion is commentary. We link every post and open it before it goes here.')); return bx; })() : null;
+  const xbox = xposts.length ? (() => {
+    const XLOGO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+    const TICK = '<svg viewBox="0 0 22 22" aria-label="Verified account"><circle cx="11" cy="11" r="10" fill="#1d9bf0"/><path d="M6.5 11.3l3 3 6-6.3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const when = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET · ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' }); };
+    const who = (t, x, small) => { const h = el('div', 'tw-h'); const av = el('span', 'tw-av'); av.textContent = (t.name || x.author || '?').trim()[0]; if (t.avatar) { const im = el('img'); im.src = t.avatar; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); av.append(im); } const nm = el('span', 'tw-nm'); const b = el('b', null, t.name || x.author); nm.append(b); if (t.verified) { const v = el('span', 'tw-v'); v.innerHTML = TICK; nm.append(v); } nm.append(el('span', 'tw-hd', '@' + (t.handle || (x.handle || '').replace(/^@/, '')))); h.append(av, nm); if (!small) { const lg = el('span', 'tw-x'); lg.innerHTML = XLOGO; h.append(lg); } return h; };
+    const bx = el('section', 'xon'); bx.append(el('h2', 'wall-ch', 'On X'));
+    const grid = el('div', 'xon-g');
+    const RK = { breaking: 0, official: 1, claim: 2, opinion: 3 };
+    [...xposts].sort((a, b) => (RK[a.kind] ?? 4) - (RK[b.kind] ?? 4) || Date.parse(b.posted) - Date.parse(a.posted)).slice(0, 6).forEach((x) => {
+      const t = x.tweet || { name: x.author, handle: (x.handle || '').replace(/^@/, ''), text: x.quote, created_at: x.posted };
+      const item = el('div', 'xon-i');
+      item.append(el('span', 'wl-lab ' + (x.kind === 'opinion' ? 'opinion' : x.kind === 'claim' ? 'reported' : 'proven'), XK[x.kind] || x.kind));
+      const card = el('a', 'tw'); card.href = x.url; card.target = '_blank'; card.rel = 'noopener noreferrer'; card.setAttribute('aria-label', 'Post by ' + (t.name || x.author) + ' on X');
+      card.append(who(t, x), el('p', 'tw-t', t.text || x.quote));
+      if (t.photos && t.photos[0]) { const im = el('img', 'tw-ph'); im.src = t.photos[0]; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); card.append(im); }
+      if (t.quoted) { const q = el('div', 'tw-q'); q.append(who(t.quoted, {}, true), el('p', 'tw-t', t.quoted.text)); card.append(q); }
+      const f = el('div', 'tw-f'); f.append(el('span', null, when(t.created_at || x.posted)), el('span', 'tw-go', 'View on X →')); card.append(f);
+      item.append(card, el('p', 'xon-w', x.what), el('small', 'xon-by', (x.author || t.name) + ': ' + x.who));
+      grid.append(item);
+    });
+    bx.append(grid, el('p', 'xon-note', 'Breaking means a first-hand source posting a new fact you can check. An unverified claim is new but nobody independent has checked it yet. Opinion is commentary. The post text is shown exactly as it appears on X; the line under each is ours.'));
+    return bx; })() : null;
   const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })(), txt(' · '), (() => { const a = el('a', null, 'Earlier days'); a.href = '/wire/archive/'; return a; })(), txt(' · Beats: '), (() => { const a = el('a', null, 'AI near you'); a.href = '/wire/near-you/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'AI at school'); a.href = '/wire/school/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'Layoffs tied to AI'); a.href = '/jobs/layoffs/'; return a; })());
   // Coming up: the next dated tests, so the reader knows when the loops close (no odds on the front page)
   const up = el('div', 'comingup'); const asOfD = D.meta.as_of.slice(0, 10);

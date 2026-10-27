@@ -1,0 +1,32 @@
+{
+ "rrwilliams-eth-claim-review": {
+  "name": "Ryan Williams @rrwilliams.bsky.social",
+  "handle": "rrwilliams",
+  "avatar": "https://pbs.twimg.com/profile_images/1587257679726133248/En7AKJHO_bigger.jpg",
+  "verified": false,
+  "created_at": "2026-10-26T21:35:29.000Z",
+  "text": "An internal model at OpenAI has produced a claimed refutation of ETH! Russell Impagliazzo, Mohan Paturi, and I have been asked to help organize an open and independent examination of this claim. 1/4",
+  "id": "2114833319431209352",
+  "photos": []
+ },
+ "boazbarak-eth-open-check": {
+  "name": "Boaz Barak",
+  "handle": "boazbaraktcs",
+  "avatar": "https://pbs.twimg.com/profile_images/1252262363132280834/ytIN-vzv_bigger.jpg",
+  "verified": true,
+  "created_at": "2026-10-26T21:46:30.000Z",
+  "text": "Couldn't think of a better team to study and expand on this result! \n\nAnd with no NDAs, no secrecy,  no compensation, we get the benefit of human understanding without gatekeeping.",
+  "id": "2114836090766888977",
+  "photos": [],
+  "quoted": {
+   "name": "Ryan Williams @rrwilliams.bsky.social",
+   "handle": "rrwilliams",
+   "avatar": "https://pbs.twimg.com/profile_images/1587257679726133248/En7AKJHO_bigger.jpg",
+   "verified": false,
+   "created_at": "2026-10-26T21:35:29.000Z",
+   "text": "An internal model at OpenAI has produced a claimed refutation of ETH! Russell Impagliazzo, Mohan Paturi, and I have been asked to help organize an open and independent examination of this claim. 1/4",
+   "id": "2114833319431209352",
+   "photos": []
+  }
+ }
+}
