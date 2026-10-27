@@ -126,6 +126,10 @@
   "strip": "US cyber agency confirms attacks. No named victim yet.",
   "day1_note": "the flaw went public",
   "lead": {
+   "people": {
+    "kind": "hit",
+    "text": "In Japan, customers of banks, airlines and rail lines lost online services while 1,090 sites and services were paused; about 40% are still off."
+   },
    "tag": "America's cyber agency: hackers are using the flaw under most websites",
    "standfirst": "America's cyber agency (CISA) added two of the PHP flaws to its list of flaws known to be used in real attacks on Oct 26, and gave federal agencies until Oct 29 to fix them. It named no victim, and no organization has confirmed a breach, so this stays Proven, not Hit.",
    "you": {

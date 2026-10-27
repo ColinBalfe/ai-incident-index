@@ -564,6 +564,7 @@ function drawWall() {
   const body = el('div', 'dl-body'); body.append(kick, ext(el('a', 'dl-head' + (hero.red ? ' red' : ''), hero.tag), hero));
   sv.append(body);
   // The standfirst is not shown under the lead for now (Colin, Oct 27): headline only. It is still written: share cards and search snippets use it.
+  if (hero.people && hero.people.text) { const pp = el('p', 'dl-people'); pp.append(el('b', null, (hero.people.kind === 'helped' ? 'Who it helped: ' : 'Who it hit: ')), txt(hero.people.text)); body.append(pp); }
   if (frags.childNodes.length) body.append(frags);
   if (hero.action && hero.action.text && hero.action.url) { const ac = el('a', 'dl-act', hero.action.text + ' →'); ac.href = hero.action.url; if (/^https?:/.test(hero.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } body.append(ac); }
   const so = el('div', 'dl-src'); if (takeover) { const t = el('a', null, (srl.tech_name ? srl.tech_name + ' ' : '') + 'live tracker →'); t.href = srl.url; so.append(t); } else { so.append(txt(hero.outlet + ' · ' + ageShort(hero) + ' · '), ext(el('a', null, 'Read the original reporting →'), hero)); } body.append(so);
@@ -702,6 +703,7 @@ function drawWall() {
     const g = el('div', 'bt-g');
     BT.slice(0, 6).forEach((b) => { const c = el('article', 'bt-c'); const top = el('div', 'bt-k'); top.append(el('span', 'bt-area', b.area || ''), el('span', 'bt-p ' + b.proof, BTL[b.proof] || b.proof)); c.append(top);
       const a = el('a', 'bt-pay', b.payoff); a.href = b.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; c.append(a, el('p', 'bt-m', b.means));
+      if (b.people) { const pp = el('p', 'bt-who'); pp.append(el('b', null, 'Who it helps: '), txt(b.people)); c.append(pp); }
       if (b.try && b.try[1]) { const t = el('a', 'bt-try', 'Try it: ' + b.try[0] + ' →'); t.href = b.try[1]; t.target = '_blank'; t.rel = 'noopener noreferrer'; c.append(t); }
       g.append(c); });
     s.append(g); return s; })() : null;

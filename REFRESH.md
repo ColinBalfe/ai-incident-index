@@ -146,6 +146,14 @@ The site covers AI's breakthroughs as seriously as its dangers. `research/breakt
 - Fields: `id`, `news_id` (the Wire item it comes from; add the Wire item first, with its source), `date`, `area` (Medicine, Science, Math and physics, Weather, Planet, Safer software, New models, Everyday), `proof`, `payoff`, `means`, `try`.
 - Hype check: no "revolutionary", no "game-changer", no claims the source doesn't make. The wonder should come from the facts.
 
+## 2e. People, not just systems (every refresh)
+
+Every story is about what happened to people, good and bad. Three standing rules:
+
+- **Who it hit / who it helped.** The lead item (or `serial.lead` on a takeover) carries `people: {kind: "hit" | "helped", text}`: one plain sentence about the real people affected, from the reporting ("A Michigan grandmother wired $9,000 to a voice that sounded like her grandson"; "Families in Japan couldn't book trains or check bank balances for days"). Each breakthrough carries `people`: who it helps, concretely ("People with rare illnesses who wait years for a diagnosis"). Counted groups are fine when no person is named. Don't repeat the people line in a tag-along line or column headline. Never invent a person, never add details the reporting doesn't give, never name a minor or a private person the reporting didn't name, and keep it to text (no photos of real victims; the free-images rule stands).
+- **One human story a day,** alternating harm and help: a Wire item whose `tag` leads with the person ("Laid-off support agent trains the AI that replaced her" style), flagged `human: true`.
+- **Count the people.** When an incident record has a sourced count of people harmed or helped, put it in the record's `people_count` with its source, so the index can one day say how many people AI incidents touched.
+
 ## 2a. Sundays: the source audit
 
 A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/*.json` early on Sunday mornings and writes `research/link_audit.json` (dead: 404/410/DNS; unreachable: timeouts and 5xx; 401/403/429 count as alive). On the Sunday 06:37 run, and on any run where that file is newer than `as_of`:

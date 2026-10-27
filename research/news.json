@@ -3547,8 +3547,8 @@
   "summary": "Assured's count of company posts, as of Oct 26; precautionary outages, no unauthorized access reported.",
   "siren": false,
   "also": [],
-  "wall": "lead",
-  "wall_rank": 3,
+  "wall": 1,
+  "wall_rank": 2,
   "label": "confirmed",
   "tag": "Japan paused 1,090 sites; ~40% still off",
   "receipt": "Counted by the firm Assured from company posts, per ANN/ABEMA, Oct 27. Precautionary outages; no unauthorized access reported."
