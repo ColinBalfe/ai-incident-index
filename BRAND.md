@@ -2,7 +2,7 @@
 
 Set Oct 27, 2026 by Colin. This is the master; every masthead, card and file follows it.
 
-**Files** (in `assets/brand/`): `warning-shots-lockup-dark.png` (on navy), `-light.png` (on paper), each also `-transparent.png`, and `-notag` versions without the tagline. Rendered at 2x from the live CSS; re-render if the lockup changes.
+**Files** (in `assets/brand/`): `brand-sheet.png` (Colin's master sheet: primary on navy, primary on paper, icon), `warning-shots-icon.svg` and `-icon-1024.png` (the icon: W and colon on a navy square, no frame; also the site favicon and app icons), `warning-shots-lockup-dark.png` (on navy), `-light.png` (on paper), each also `-transparent.png`, and `-notag` versions without the tagline. Rendered at 2x from the live CSS; re-render if the lockup changes.
 
 **The lockup**
 - **Mark:** the serif W with a colon, top dot red, bottom dot in the ink colour. The W stands about 1.75 times the height of the wordmark's capitals, and its foot sits on the same baseline as the capitals.
