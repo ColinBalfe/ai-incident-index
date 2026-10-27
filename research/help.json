@@ -1,0 +1,126 @@
+[
+ {
+  "slug": "voice-clone-scam-call",
+  "approved": false,
+  "reviewed": "",
+  "updated": "2026-10-27",
+  "title": "AI voice-clone scam call: what to do if a loved one calls in a panic",
+  "h1": "A loved one calls in a panic, asking for money. What to do right now.",
+  "desc": "A crying voice that sounds like your child or parent, a crisis, a demand for money: it may be an AI voice clone. What to do in the next five minutes, how to check, how to report it, with real cases.",
+  "kicker": "AI voice-clone scams",
+  "now": "Hang up and call them back on a number you already have. Scammers can copy a voice from short audio clips, so the voice on the line proves nothing. Don't send money, gift cards or crypto while that call is still going. If your family has a safe word, ask for it.",
+  "steps": [
+   ["Hang up.", "Don't argue and don't stay on the line. Keeping you talking is the scam: in one case reported this October, a California mother was kept on the phone for five hours while she wired $5,400."],
+   ["Call them yourself, on a number you already have.", "Not the number that called you. If they don't answer, call another relative or a friend who would know where they are."],
+   ["Ask for your family's safe word.", "A clone of their voice won't know it. If you don't have one yet, make one today."],
+   ["Refuse payment by wire transfer, crypto or gift cards.", "The FTC says requests to pay these ways are signs of a scam. Real emergencies don't need them."],
+   ["If you already paid, act within the hour.", "Call your bank or the transfer service and ask them to stop or reverse the payment. Then report it (below) and call your local police."]
+  ],
+  "signs": [
+   ["An unknown or blocked number", "Caller ID can also be faked, so a familiar name on screen isn't proof either."],
+   ["Panic, crying, a crisis", "An arrest, an accident, a kidnapping. Fear is designed to stop you thinking."],
+   ["\"Don't hang up\" or \"don't tell anyone\"", "Being cut off from everyone who could check the story is the point."],
+   ["Wire, crypto or gift cards", "Money that is fast to send and hard to get back."],
+   ["The voice is right, but something is off", "The FBI says to listen for tone and word choice that don't sound like your loved one."]
+  ],
+  "prevent": [
+   ["Agree a family safe word.", "A word or phrase only your family knows, kept off social media and texts. The FBI recommends it.", "/shield/", "Make one in two minutes"],
+   ["Limit public clips of your voice.", "The FBI suggests keeping social media private and only accepting followers you know."],
+   ["Tell the people most likely to be targeted.", "Parents and grandparents especially. Send them this page."]
+  ],
+  "stats": [
+   ["15 million", "American adults scammed in 2025, losing about $68 billion, per a Gallup and Stop Scams Alliance survey; 12% of reported scams involved AI or deepfakes.", "https://fortune.com/2026/10/24/ai-voice-cloning-scam-fake-kidnapping-safe-word/", "Fortune, Oct 24, 2026"],
+   ["$3.5 billion", "lost to impostor scams in 2025, from more than 1 million reports to the FTC. Total reported fraud losses hit a record $15.9 billion.", "https://www.aol.com/articles/americans-lost-record-15-9-135921819.html", "FTC data, Mar 2026, via AOL"],
+   ["13%", "of the scams in the Gallup survey were reported to the FTC or federal law enforcement. Most never are.", "https://fortune.com/2026/10/24/ai-voice-cloning-scam-fake-kidnapping-safe-word/", "Fortune, Oct 24, 2026"]
+  ],
+  "cases": [
+   ["Oct 2026", "Martinez, California", "A mother heard a cloned recording of her 37-year-old daughter crying for help, was told a cartel had kidnapped her, and wired $5,400 to Mexico over five hours. Her daughter was at work the whole time.", "https://fortune.com/2026/10/24/ai-voice-cloning-scam-fake-kidnapping-safe-word/", "Fortune", ""],
+   ["Oct 2026", "Netherlands", "Police arrested two people over bank-helpdesk fraud that used AI-generated calls; about 170 victims and about €380,000 lost.", "", "", "nl-ai-voice-bank-helpdesk-fraud"],
+   ["Oct 2026", "Nigeria", "Police say a 23-year-old used AI voice cloning and deepfakes to pose as Elon Musk in a crypto 'trading' scam; nine arrested with UK, Canadian and German help.", "", "", "nigeria-musk-voice-clone-fraud-arrests"],
+   ["Jan 2023", "Arizona", "Jennifer DeStefano got a call with what sounded like her teenage daughter sobbing, then a man demanding ransom. Her daughter was safe. She later testified about it to the US Senate.", "", "", "destefano-voice-clone-kidnap-scam"]
+  ],
+  "report": [
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"],
+   ["The FBI's Internet Crime Complaint Center", "https://www.ic3.gov/", "ic3.gov"],
+   ["Your local police", "", "the non-emergency number, or 911 if someone may really be in danger"]
+  ],
+  "faq": [
+   ["Can AI really copy someone's voice from a short clip?", "Yes. The FBI warns that criminals use short audio clips to clone a relative's voice and ask for urgent money or ransom. A voice message, a video on social media or a few words on a call can be enough."],
+   ["How can I tell if it's really them?", "Don't try to judge the voice. Hang up and call them on a number you already have, ask for your family's safe word, or ask something only they would know that isn't online."],
+   ["What is a family safe word?", "A word or phrase agreed in person by your family and never posted or texted. In an emergency call you ask for it; a scammer with a cloned voice won't know it. The FBI recommends one."],
+   ["I already sent money. What now?", "Call your bank or the transfer service immediately and ask them to stop or reverse the payment. Then report it to the FTC at ReportFraud.ftc.gov and the FBI at ic3.gov, and tell your local police. Recovery isn't guaranteed, and speed matters."],
+   ["Where do I report an AI voice scam?", "In the US: the FTC (ReportFraud.ftc.gov), the FBI's Internet Crime Complaint Center (ic3.gov) and your local police. Reporting helps even if no money was lost."],
+   ["Can caller ID be faked too?", "Yes. Scammers can make a call look like it comes from a number or name you know, so caller ID isn't proof. Call back on a number you already have."]
+  ],
+  "sources": [
+   ["FTC: Scammers use AI to enhance their family emergency schemes (Mar 20, 2023)", "https://consumer.ftc.gov/node/80688"],
+   ["FBI IC3: Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud (PSA I-120324, Dec 3, 2024)", "https://www.ic3.gov/PSA/2024/PSA241203"],
+   ["Fortune: AI voice-cloning scam, fake kidnapping, safe word (Oct 24, 2026)", "https://fortune.com/2026/10/24/ai-voice-cloning-scam-fake-kidnapping-safe-word/"],
+   ["FTC data on 2025 fraud losses, via AOL (Apr 3, 2026)", "https://www.aol.com/articles/americans-lost-record-15-9-135921819.html"]
+  ],
+  "related": ["ai-scam-texts"]
+ },
+ {
+  "slug": "ai-scam-texts",
+  "approved": false,
+  "reviewed": "",
+  "updated": "2026-10-27",
+  "title": "AI scam texts: how to spot them and what to do (2026)",
+  "h1": "A text that seems off? How AI changed scam texts, and what to do",
+  "desc": "Scam texts no longer have the typos that gave them away. The five most common text scams, the new AI-era warning signs, what to do if you clicked, and where to report it.",
+  "kicker": "AI scam texts",
+  "now": "Don't tap the link and don't reply. If it claims to be your bank, a delivery or a toll, check by opening the company's own app or calling a number you already have. Forward the text to 7726 (SPAM), report it in your messaging app, and report fraud at ReportFraud.ftc.gov.",
+  "intro": "Bad spelling and clumsy grammar used to give scam texts away. The FBI warns that criminals now use AI to write persuasive messages faster, for more people, and to translate them without the errors that once exposed foreign scammers. The tell is no longer how a text is written. It's what the text wants you to do.",
+  "steps": [
+   ["Don't tap, don't reply.", "The FTC's advice: never click on links or respond to unexpected texts. Replying, even \"STOP\" to a scam, tells them your number is live."],
+   ["Check it another way.", "Open the bank's, carrier's or delivery company's own app, or call a number you already have. Never use the link or number in the text."],
+   ["Forward it to 7726.", "That spells SPAM. It helps your mobile carrier block similar messages. Then use the report-junk option in iMessage or Google Messages."],
+   ["Report it to the FTC.", "At ReportFraud.ftc.gov. It takes a few minutes and feeds the data law enforcement uses."],
+   ["If you clicked and typed anything in, act now.", "Change that password, and anywhere you reuse it. Call your bank to block the card. If you shared ID details, go to IdentityTheft.gov for a recovery plan. If you sent money, call your bank and report it at ic3.gov."]
+  ],
+  "types": [
+   ["Fake package delivery problems", "A 'redelivery fee' link pretending to be the Postal Service or a courier. The most-reported text scam of 2024."],
+   ["Fake jobs ('task scams')", "Easy pay to rate apps or products, until you have to send money to 'finish your tasks' or unlock earnings."],
+   ["Fake fraud alerts", "Your 'bank' or Amazon about a suspicious charge, then pressure to move your money somewhere 'safe'. It goes to the scammer."],
+   ["Bogus toll notices", "An unpaid-toll balance with a link that collects card and Social Security numbers."],
+   ["'Wrong number' texts", "A friendly mistake that turns into a friendship, then an investment tip. Losses often run to tens of thousands of dollars."]
+  ],
+  "signs": [
+   ["Urgency", "Pay now, verify now, your account will close today."],
+   ["A link or a number to call", "Real companies rarely need you to act through a link in a text."],
+   ["Moving your money 'to keep it safe'", "No real bank asks you to move money to protect it."],
+   ["'Let's move to WhatsApp, Signal or Telegram'", "The FBI says impersonators use texts to move victims onto encrypted apps, sometimes using AI voice messages that sound like officials."],
+   ["Perfect, friendly, patient writing", "AI makes scam messages fluent and lets them keep chatting for weeks. Good writing isn't a sign of a real person."]
+  ],
+  "stats": [
+   ["#1", "Texts were the top way scammers first contacted people in fraud reports to the FTC in 2025, a year of record $15.9 billion in reported losses.", "https://www.aol.com/articles/americans-lost-record-15-9-135921819.html", "FTC data, Mar 2026, via AOL"],
+   ["$470 million", "lost to text scams in 2024, more than five times the 2020 figure. The FTC says most fraud is never reported.", "https://www.ftc.gov/system/files/ftc_gov/pdf/spotlight-top-text-scams.pdf", "FTC Data Spotlight, Apr 2025"]
+  ],
+  "cases": [
+   ["2025", "United States", "The FBI warned that impersonators sent texts and AI-cloned voice messages posing as senior US officials, moved targets onto encrypted apps, then texted their contacts too. It later said the campaign dated back to 2023.", "https://cyberscoop.com/fbi-says-ongoing-deepfake-impersonation-of-us-officials-dates-back-to-2023/", "CyberScoop", ""],
+   ["Oct 2026", "Louisiana", "A fan lost $10,000 to a fake 'Bon Jovi' who sent AI videos that said her name. The money requests began seven months after first contact.", "https://www.foxnews.com/us/jon-bon-jovi-impersonator-uses-ai-videos-scam-woman-10k-nearly-costing-her-home", "Fox News", ""],
+   ["Oct 2026", "Nigeria", "Police say a 23-year-old used AI voice cloning and deepfakes to pose as Elon Musk in a crypto 'trading' scam.", "", "", "nigeria-musk-voice-clone-fraud-arrests"]
+  ],
+  "report": [
+   ["Your mobile carrier", "", "forward the text to 7726"],
+   ["The FTC", "https://reportfraud.ftc.gov/", "ReportFraud.ftc.gov"],
+   ["The FBI, if you lost money", "https://www.ic3.gov/", "ic3.gov"],
+   ["If your identity was stolen", "https://www.identitytheft.gov/", "IdentityTheft.gov"]
+  ],
+  "faq": [
+   ["Is it safe to reply STOP to a scam text?", "Don't. The FTC advises not responding to unexpected texts. Replying confirms your number is active. Report and delete instead; STOP is for real companies you signed up with."],
+   ["Can AI write scam texts?", "Yes. The FBI warns that criminals use generative AI to write persuasive messages faster and for more people, and to translate them without the spelling and grammar mistakes that once gave them away."],
+   ["What does forwarding to 7726 do?", "7726 spells SPAM. Forwarding a scam text to it reports it to your mobile carrier, which uses the reports to block similar messages."],
+   ["I clicked the link. What now?", "If you didn't type anything, close it and don't go back. If you entered a password, change it everywhere you use it. If you entered card or bank details, call your bank. If you entered ID details such as a Social Security number, go to IdentityTheft.gov."],
+   ["Are 'wrong number' texts scams?", "Often. A friendly text to the wrong person is the classic opening of long scams that end in a fake investment. The FTC says these can cost tens of thousands of dollars."],
+   ["Where do I report a scam text?", "Forward it to 7726, use the report button in your messaging app, and report it to the FTC at ReportFraud.ftc.gov. If you lost money, also report it to the FBI at ic3.gov."]
+  ],
+  "sources": [
+   ["FTC Data Spotlight: Top text scams of 2024 (Apr 2025)", "https://www.ftc.gov/system/files/ftc_gov/pdf/spotlight-top-text-scams.pdf"],
+   ["FBI IC3: Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud (PSA I-120324, Dec 3, 2024)", "https://www.ic3.gov/PSA/2024/PSA241203"],
+   ["CyberScoop: FBI says deepfake impersonation of US officials dates back to 2023 (Dec 2025)", "https://cyberscoop.com/fbi-says-ongoing-deepfake-impersonation-of-us-officials-dates-back-to-2023/"],
+   ["FTC data on 2025 fraud losses, via AOL (Apr 3, 2026)", "https://www.aol.com/articles/americans-lost-record-15-9-135921819.html"]
+  ],
+  "related": ["voice-clone-scam-call"]
+ }
+]
