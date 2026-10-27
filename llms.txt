@@ -13,6 +13,7 @@ Last refresh: Oct 26, 2026, 3:25 PM ET. 160 incidents scored. Corrections and re
 - [What AI can now do](https://warningshots.ai/m/): capability milestones graded from demonstration to real consequences
 - [Live tracker: PHP2Shell: AI-found PHP flaws leak, trigger global shutdowns](https://warningshots.ai/php2shell/)
 
+
 ## Data
 - [incidents.json](https://warningshots.ai/data/incidents.json) and [incidents.csv](https://warningshots.ai/data/incidents.csv): every incident with its five factor ratings, dates, summary and sources
 - [forecasts.json](https://warningshots.ai/data/forecasts.json): dated forecasts with probabilities and resolution dates

@@ -3,6 +3,11 @@
 site's design, plus i/, c/, m/ index pages, sitemap.xml and robots.txt. Each page carries its own title, description, share card
 and Article JSON-LD, and links back to the interactive view on the front page. Run after build_site.py and make_cards.mjs."""
 import json, os, re, html, datetime as dt, shutil
+try:   # 'What to do' pages (build_help.py): approved ones are linked from the incident pages they cite and listed in llms.txt
+    HELP = json.load(open('research/help.json', encoding='utf-8'))
+except (OSError, ValueError):
+    HELP = []
+HELP_FOR = {c[5]: h for h in HELP if h.get('approved') for c in h.get('cases', []) if len(c) > 5 and c[5]}
 from zoneinfo import ZoneInfo
 
 here = os.path.dirname(os.path.abspath(__file__)); os.chdir(here)
@@ -179,6 +184,9 @@ def incident_page(r, prev, nxt):
     if rel:
         items = ''.join(f'<li><a href="/i/{esc(x["id"])}/"><b>{x["severity"]}</b> {esc(clip(x["title"], 110))}</a><small>{esc(fdate(x["date"], x.get("date_precision")))} · {esc(x["tier"])}</small></li>' for x in rel)
         body.append(f'<section class="rel"><h2>Related on the index</h2><ul>{items}</ul><p class="k"><a href="/wire/">The latest AI threats and breakthroughs, checked three times a day →</a></p></section>')
+    _hp = HELP_FOR.get(r['id'])
+    if _hp:
+        body.append(f'<section class="rel"><h2>If this happens to you</h2><ul><li><a href="/help/{esc(_hp["slug"])}/"><b>What to do:</b> {esc(_hp["h1"])}</a></li></ul></section>')
     body.append(share_html(url, share_text, f'/cards/i-{r["id"]}.jpg' if os.path.exists(f'cards/i-{r["id"]}.jpg') else '', f'/#i={r["id"]}', 'Open on the index'))
     body.append(prevnext(prev, nxt, 'i', lambda x: x['title'], lambda x: f'{x["ws"]} · {fdate(x["date"], x.get("date_precision"))} · {x["severity"]}/100 {x["tier"]}'))
     desc = f'{first_sentence(r["summary"])} {r["tier"]}, {r["severity"]}/100. {"Real-world incident" if r["setting"] == "wild" else "Lab or test finding"}, {fdate(r["date"], r.get("date_precision"))}. Scored and sourced by Warning Shots.'
@@ -315,6 +323,7 @@ for u, t, pd in _news:
 ns.append('</urlset>')
 open('news-sitemap.xml', 'w', encoding='utf-8').write('\n'.join(ns))
 json.dump([u for u, _, _ in _news], open('data/fresh_urls.json', 'w'))
+_help_live = [h for h in HELP if h.get('approved')]
 open('robots.txt', 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\nSitemap: {site}sitemap.xml\nSitemap: {site}news-sitemap.xml\n')
 _sev = sorted(scored, key=lambda r: -r['severity'])
 _live = by_id.get(meta.get('live_incident') or '')
@@ -332,6 +341,7 @@ Last refresh: {as_of_label}. {len(scored)} incidents scored. Corrections and ret
 - [Did they fix it?]({site}c/): report, response, claimed fix, independent check, current status
 - [What AI can now do]({site}m/): capability milestones graded from demonstration to real consequences
 {f"- [Live tracker: {_live['title']}]({site}php2shell/)" if _live and os.path.exists('php2shell/index.html') else ''}
+{''.join(f'- [What to do: {h["title"]}]({site}help/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _help_live)}
 
 ## Data
 - [incidents.json]({site}data/incidents.json) and [incidents.csv]({site}data/incidents.csv): every incident with its five factor ratings, dates, summary and sources
