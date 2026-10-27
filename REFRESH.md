@@ -154,6 +154,16 @@ Every story is about what happened to people, good and bad. Three standing rules
 - **One human story a day,** alternating harm and help: a Wire item whose `tag` leads with the person ("Laid-off support agent trains the AI that replaced her" style), flagged `human: true`.
 - **Count the people.** When an incident record has a sourced count of people harmed or helped, put it in the record's `people_count` with its source, so the index can one day say how many people AI incidents touched.
 
+## 2f. Entity tags (every refresh, from now on)
+
+Every new Wire item, incident record and breakthrough gets an `entities` object naming who and what is involved, so readers can later follow an organization, a product or a sector and be told when it appears:
+
+`"entities": {"orgs": [], "vendors": [], "products": [], "models": [], "sectors": [], "states": []}`
+
+- `orgs`: organizations affected or acting (victims, agencies, companies in the story). `vendors`: companies whose product is the route in or the subject. `products`: named software or services (e.g. "PHP", "Langflow", "ChatGPT"). `models`: named AI models. `sectors`: from a fixed list (government, health, finance, education, retail, media, tech, energy, transport, legal, defense, consumer). `states`: two-letter US state codes when a place is named.
+- Use the name as the source gives it, consistently spelled (check existing tags first). Leave a list empty rather than guess. Never tag a private person.
+- Never rewrite history: when a fact changes, add a dated note, don't overwrite the old record.
+
 ## 2a. Sundays: the source audit
 
 A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/*.json` early on Sunday mornings and writes `research/link_audit.json` (dead: 404/410/DNS; unreachable: timeouts and 5xx; 401/403/429 count as alive). On the Sunday 06:37 run, and on any run where that file is newer than `as_of`:
