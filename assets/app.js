@@ -603,7 +603,7 @@ function drawWall() {
   // Breaking from X: only first-hand, material posts under 12 hours old earn the bar (REFRESH.md rules); everything else is in "On X" below
   const XK = { breaking: 'Breaking', official: 'Official', claim: 'Unverified claim', opinion: 'Opinion' };
   const xposts = (D.xposts || []).filter((x) => x && x.url);
-  const brk = xposts.find((x) => (x.kind === 'breaking' || x.kind === 'official') && (Date.now() - Date.parse(x.posted)) < 12 * 3.6e6);
+  const brk = xposts.find((x) => (x.kind === 'breaking' || x.kind === 'official') && x.bar !== false && (Date.now() - Date.parse(x.posted)) < 12 * 3.6e6);
   const bbar = brk ? (() => { const b = el('a', 'xbreak'); b.href = brk.url; b.target = '_blank'; b.rel = 'noopener noreferrer'; b.append(el('span', 'xb-k', XK[brk.kind]), el('span', 'xb-t', brk.what), el('span', 'xb-s', brk.author + ', ' + brk.who + ' · ' + ageShort({ published: brk.posted }) + ' · on X')); return b; })() : null;
   const sinceBar = (() => {
     if (!PREV_VISIT) return null;

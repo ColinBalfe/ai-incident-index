@@ -1,5 +1,32 @@
 [
 {
+"id": "reuters-fec-shuts-web-services",
+"url": "https://x.com/Reuters/status/2115155318585930226",
+"platform": "X",
+"author": "Reuters",
+"handle": "@Reuters",
+"who": "the news agency, citing an internal email and the FEC's own status notice",
+"posted": "2026-10-27T18:55:00Z",
+"kind": "breaking",
+"power": 5,
+"story": "fec-breach-attempt",
+"bar": false,
+"what": "A week before the midterms, the US election-finance regulator shut its public websites while a hacker tries to break in. Its filing system has been down since Monday night. No breach confirmed, and no AI link reported so far.",
+"quote": "A hacker is attempting to breach the US Federal Election Commission's systems",
+"seen_via": "the post itself, read through X's public embed data; checked against the FEC's status notice as reported by Reuters",
+"related": "",
+"tweet": {
+"name": "Reuters",
+"handle": "Reuters",
+"avatar": "https://pbs.twimg.com/profile_images/1874154135869616128/nJDmubGJ_bigger.jpg",
+"verified": true,
+"created_at": "2026-10-27T18:55:00.000Z",
+"text": "BREAKING: A hacker is attempting to breach the US Federal Election Commission's systems and that agency has had to 'temporarily shut down' its web-facing services as a result, according to an email seen by Reuters reut.rs/4imQyUu",
+"id": "2115155318585930226",
+"photos": []
+}
+},
+{
 "id": "trailofbits-php2shell-exploits-confirmed",
 "url": "https://x.com/trailofbits/status/2114839775173906751",
 "platform": "X",

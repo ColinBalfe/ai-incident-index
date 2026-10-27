@@ -92,5 +92,15 @@
   "text": "JUST IN: Microsoft $MSFT offers buyouts to 60,000 employees as it cuts costs amid AI adoption.",
   "id": "2114747623253107007",
   "photos": []
+ },
+ "reuters-fec-shuts-web-services": {
+  "name": "Reuters",
+  "handle": "Reuters",
+  "avatar": "https://pbs.twimg.com/profile_images/1874154135869616128/nJDmubGJ_bigger.jpg",
+  "verified": true,
+  "created_at": "2026-10-27T18:55:00.000Z",
+  "text": "BREAKING: A hacker is attempting to breach the US Federal Election Commission's systems and that agency has had to 'temporarily shut down' its web-facing services as a result, according to an email seen by Reuters reut.rs/4imQyUu",
+  "id": "2115155318585930226",
+  "photos": []
  }
 }
