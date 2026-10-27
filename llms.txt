@@ -12,6 +12,8 @@ Last refresh: Oct 26, 2026, 3:25 PM ET. 160 incidents scored. Corrections and re
 - [Did they fix it?](https://warningshots.ai/c/): report, response, claimed fix, independent check, current status
 - [What AI can now do](https://warningshots.ai/m/): capability milestones graded from demonstration to real consequences
 - [Live tracker: PHP2Shell: AI-found PHP flaws leak, trigger global shutdowns](https://warningshots.ai/php2shell/)
+- [What to do: AI voice clone scam call: what to do right now](https://warningshots.ai/help/voice-clone-scam-call/): A crying voice that sounds like your child or parent, a crisis, a demand for money: it may be an AI voice clone. What to do in the next five minutes, how to check, how to report it, with real cases.
+- [What to do: AI scam texts: how to spot them and what to do (2026)](https://warningshots.ai/help/ai-scam-texts/): Scam texts no longer have the typos that gave them away. The five most common text scams, the new AI-era warning signs, what to do if you clicked, and where to report it.
 
 
 ## Data

@@ -1,8 +1,8 @@
 [
  {
   "slug": "voice-clone-scam-call",
-  "approved": false,
-  "reviewed": "",
+  "approved": true,
+  "reviewed": "2026-10-27",
   "updated": "2026-10-27",
   "title": "AI voice clone scam call: what to do right now",
   "h1": "A loved one calls in a panic, asking for money. What to do right now.",
@@ -200,8 +200,8 @@
  },
  {
   "slug": "ai-scam-texts",
-  "approved": false,
-  "reviewed": "",
+  "approved": true,
+  "reviewed": "2026-10-27",
   "updated": "2026-10-27",
   "title": "AI scam texts: how to spot them and what to do (2026)",
   "h1": "A text that seems off? How AI changed scam texts, and what to do",
