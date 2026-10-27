@@ -189,4 +189,4 @@ except (OSError, ValueError): tu = []
 tu = [u for u in tu if '/help/' not in u] + ([hub_url] if live else []) + approved_urls
 json.dump(tu, open('data/tool_urls.json', 'w'))
 json.dump(approved_urls, open('data/help_urls.json', 'w'))
-print(f'help/: {len(built)} pages ({len(live)} approved, {len(built) - len(live)} drafts, noindex)')
+print(f'help/: {len(built)} pages ({len(live)} approved, {len(built) - len(live)} drafts kept noindex)')
