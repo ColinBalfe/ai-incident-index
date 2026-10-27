@@ -164,6 +164,16 @@ Every new Wire item, incident record and breakthrough gets an `entities` object 
 - Use the name as the source gives it, consistently spelled (check existing tags first). Leave a list empty rather than guess. Never tag a private person.
 - Never rewrite history: when a fact changes, add a dated note, don't overwrite the old record.
 
+## 2g. The Chart (every morning refresh)
+
+One original chart a day, built from the index's own data, at the top of the homepage Wire and on its own page (`/chart/<id>/`) with the data table and a downloadable image. The bar is high: a chart someone would screenshot and send. It has to make one thing obvious in five seconds.
+
+- **Add an entry to `research/charts.json`**: `{id: "YYYY-MM-DD-slug", date, kind, title, dek, takeaway}` (title, dek and takeaway are optional overrides; renderers compute honest defaults). `kind` names a renderer in `build_chart.py`.
+- **Vary it.** Don't run the same kind two days in a row, and add a new kind (a new renderer) at least once a week. Ideas that fit our data: the live case as a timeline of rungs and counts; the forecast board as dots on a probability line, graded ones marked hit or miss; "Did they fix it?" as a chain per case; layoffs tied to AI by month and company; incidents by who did the acting (person vs. AI) over time; the map of organizations named in the live case; breakthroughs vs. incidents by month; the Panel's numbers once live.
+- **Design rules** (follow the dataviz skill): one point per chart; the title says the finding in plain words, human fact first; one axis only; muted gray for context and the alarm red only for the thing that matters, always labelled (never colour alone); a legend for two or more series; every mark hoverable with its source, and linked to its case page where one exists; a data table on the page; source line and the citation baked into the image. Navy card, the site's fonts, 16:9.
+- **Truth rules:** only data already on the record; counts recomputed from the data at build time, never typed in; no projection or trend line that the data doesn't support; small numbers shown as counts, not percentages.
+- Look at the PNG before publishing. Labels must not collide with marks or each other.
+
 ## 2a. Sundays: the source audit
 
 A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/*.json` early on Sunday mornings and writes `research/link_audit.json` (dead: 404/410/DNS; unreachable: timeouts and 5xx; 401/403/429 count as alive). On the Sunday 06:37 run, and on any run where that file is newer than `as_of`:
@@ -186,10 +196,12 @@ The lead shows its headline only: the standfirst is not displayed on the homepag
 ```
 cd build && python3 build_data.py && python3 build_deep.py && python3 build_live.py && cp data/*.json ../data/ && cd ..
 python3 build/fetch_x.py                                # exact text of the X posts in research/x_posts.json -> research/x_cache.json
+python3 build_chart.py                                  # The Chart: today's chart from research/charts.json -> data/chart.json, chart/<id>/, assets/charts/<id>.svg
 python3 build/make_img.py                               # WebP copies of new photos in assets/img/ at three sizes (the page picks the one that fits the screen)
 python3 build_site.py                                   # index.html, data/bundle.json (one request for all data), feed.xml, JSON-LD
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 &
 node prerender.mjs  http://127.0.0.1:8765/index.html   # bakes the first screen (ribbon, ticker, siren, brief, Wire, live rail) into index.html so the headline is in the first paint
+node make_charts.mjs http://127.0.0.1:8765               # PNG of each new chart (share and press image)
 node make_og.mjs    http://127.0.0.1:8765/index.html
 node make_cards.mjs http://127.0.0.1:8765/index.html   # share cards for every dispatch; re-renders only changed records
 python3 build_tools.py                                  # the two free tools (shield/, scraped/); refreshes the AI-crawler list from GitHub when reachable

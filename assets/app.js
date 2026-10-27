@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -727,7 +727,16 @@ function drawWall() {
       if (b.try && b.try[1]) { const t = el('a', 'bt-try', 'Try it: ' + b.try[0] + ' →'); t.href = b.try[1]; t.target = '_blank'; t.rel = 'noopener noreferrer'; c.append(t); }
       g.append(c); });
     s.append(g); return s; })() : null;
-  box.replaceChildren(...(btBand ? [btBand] : []), cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
+  // The Chart: one original chart a day, from the index's own data (build_chart.py); the image carries its own title and citation
+  const CH = D.chart && D.chart.svg ? D.chart : null;
+  const chartBand = CH ? (() => {
+    const s = el('section', 'tchart'); s.setAttribute('aria-label', 'The Chart');
+    const h = el('div', 'tc-h'); h.append(el('span', 'tc-k', 'The Chart'), el('span', 'tc-d', fmtDate(new Date(CH.date + 'T12:00:00Z'))));
+    const fig = el('div', 'tc-fig'); fig.innerHTML = CH.svg;
+    const ft = el('p', 'tc-f'); ft.append(txt(CH.takeaway + ' '));
+    const a1 = el('a', null, 'The data and the download →'); a1.href = CH.url; const a2 = el('a', null, 'Every chart'); a2.href = '/chart/'; ft.append(a1, txt(' · '), a2);
+    s.append(h, fig, ft); return s; })() : null;
+  box.replaceChildren(...(chartBand ? [chartBand] : []), ...(btBand ? [btBand] : []), cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
 }
 function drawWire() {
   const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');

@@ -1179,6 +1179,16 @@ section#why.pending { min-height: 0; }
   .bt-c, .xon-i { flex: 0 0 84%; scroll-snap-align: start; }
   .bt-c { border-bottom: 0; }
 }
+.tchart { margin: 0 0 26px; padding: 16px 0 4px; border-top: 4px solid var(--ink); }
+.tc-h { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.tc-k { font-family: var(--serif); font-weight: 700; font-size: clamp(1.3rem, 2.2vw, 1.7rem); letter-spacing: .12em; text-transform: uppercase; }
+.tc-d { font-family: var(--sans); font-size: 13px; color: var(--ink-2); }
+.tc-fig { display: block; line-height: 0; border-radius: 2px; overflow: hidden; }
+.tc-fig svg { width: 100%; height: auto; display: block; }
+.tc-fig circle { transition: r .12s; }
+.tc-fig a:hover circle, .tc-fig a:focus circle { stroke: #F4F3EF; }
+.tc-f { margin: 10px 0 0; font-size: 15px; line-height: 1.45; }
+.tc-f a { font-weight: 700; color: var(--ink); }
 </style>
 </head>
 <body data-page="{{PAGE}}" data-lead="a">

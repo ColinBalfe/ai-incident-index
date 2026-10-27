@@ -146,7 +146,7 @@ json.dump(sorted(_xp, key=lambda x: x['posted'], reverse=True), open('data/xpost
 
 # ---- data/bundle.json: every data file in one request (the page preloads it; the individual files stay for scripts and the update check)
 FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta',
-         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs']
+         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart']
 bundle = {}
 for f in FILES:
     try:
