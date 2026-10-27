@@ -29,6 +29,7 @@ Keep descriptions of hacking techniques high-level. Never invent a figure; if a 
 ## 2. Edit the research files
 
 - New scored incidents: append to `research/jul_oct_2026_mine.json` (same schema as the existing rows: id, date, date_precision, disclosed, title, actors, category, setting, summary, harm, H, R, A, N, I, source_url, source2_url, confidence, notes). Rate the five factors by `research/rubric.md`. Prefer a primary source as `source_url`.
+- **When a fact changes** (an agency lists a flaw, a fix ships, a victim is named), update every current-state field that states it (case `current` notes and one-liners in `research/case_status.json`, `WATCH` statuses and `LIVE` in `build/build_live.py`) and add the old claim's pattern to `research/superseded.json`; `check_site.py` fails the build if any current-state field still says it. Dated history (timelines, changelog, the Wire archive) is left as it was.
 - New victims for incidents other than PHP2Shell: append to `research/victims.json` with `status_group` (confirmed|attacked|disrupted|reported|other) and a plain `status` label; such rows flow into data/victims.json and Am I Exposed? automatically.
 - New victims, timeline events, official statements, implications for an existing deep dive: `research/php2shell.json` (PHP2Shell) or `research/victims.json` (the other five). Follow the existing schemas exactly.
 - "Since the last refresh" box: `BRIEF` in `build/build_live.py`: two to four plain, tweet-length lines on what changed, each with a source. Write them so they can be posted as-is.

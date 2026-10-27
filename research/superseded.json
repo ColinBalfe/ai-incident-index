@@ -1,0 +1,8 @@
+[
+ {
+  "id": "php-kev-not-listed",
+  "pattern": "(CISA (has not|hasn't) (added|listed)|not (yet )?(on|in) CISA's (Known Exploited|KEV)|no CISA (KEV )?listing)",
+  "since": "2026-10-26",
+  "why": "CISA listed CVE-2026-109618 and -109619 on Oct 26"
+ }
+]

@@ -496,7 +496,7 @@ function drawLevel() {
     if (lastState && lastState.serial === nowState.serial && lastState.rung && lastState.rung !== nowState.rung) bits.push('the running story moved up to ' + nowState.rung.charAt(0).toUpperCase() + nowState.rung.slice(1));
     if (k || bits.length) { a2.append(el('i', 'newdot')); if (k) a2.append(el('b', null, String(k)), txt(' new' + (bits.length ? ', ' : ''))); if (bits.length) a2.append(txt(bits.join(', '))); a2.append(txt(' since you last looked')); }
     else a2.append(txt('Nothing new since you last looked: level unchanged, no new rung')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
-  else { a2.append(el('b', null, String(wall.length)), txt(' headlines from the last 3 days')); }
+  else { a2.append(el('b', null, String(wall.length)), txt(' top stories of ' + newsItems().length + ' reports from the last 3 days')); }
   try { localStorage.setItem('ws-last-state', JSON.stringify(nowState)); } catch (e) {}
   const a3 = el('a', 'lvl-s'); a3.href = '#record'; a3.append(txt('Severe incidents, last 12 months: '), el('b', null, String(h.severe_last12 ?? '')), txt(' (was ' + (h.severe_prior12 ?? '') + ')'));
   const det = el('div', 'lvl-det'); det.hidden = true;
@@ -952,7 +952,7 @@ function drawForecast() {
     return g;
   }).filter((g) => g.children.length > 1));
   more.replaceChildren();
-  if (all.length > LIMIT) { const b = el('button', 'more-btn', fcOpen ? 'Show fewer' : 'Show all ' + all.length + ' questions'); b.type = 'button'; b.addEventListener('click', () => { fcOpen = !fcOpen; drawForecast(); }); more.append(b); }
+  if (all.length > LIMIT) { const b = el('button', 'more-btn', fcOpen ? 'Show fewer' : 'Show all ' + all.length + ' questions (' + all.filter(callOpen).length + ' open, ' + (all.length - all.filter(callOpen).length) + ' graded)'); b.type = 'button'; b.addEventListener('click', () => { fcOpen = !fcOpen; drawForecast(); }); more.append(b); }
   const soon = all.filter(callOpen).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by))[0];
   shareRow(document.getElementById('share-forecast'), { anchor: 'card-forecast', text: `What Warning Shots expects next on AI's dangers, graded in public. Next up: ${soon ? soon.question : ''}. Warning Shots:` });
 }

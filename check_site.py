@@ -71,6 +71,27 @@ for d in re.findall(r'<news:publication_date>([^<]+)</news:publication_date>', n
     except ValueError:
         fails.append(f'news sitemap: bad date {d}')
 
+# 5. superseded claims: a fact that has changed must not survive in any current-state field (watch statuses, live panel,
+#    the current stage of every fix chain, case one-liners). Dated history (timelines, changelog, Wire archive) is exempt.
+try:
+    superseded = json.load(open('research/superseded.json', encoding='utf-8'))
+except (OSError, ValueError):
+    superseded = []
+if superseded:
+    cur = []
+    for w in json.load(open('data/watch.json', encoding='utf-8')): cur.append(('watch:' + w['id'], w.get('status', '')))
+    for x in json.load(open('data/live.json', encoding='utf-8')): cur.append(('live:' + x['key'], x.get('detail', '') + ' ' + str(x.get('value', ''))))
+    cur.append(('live_note', meta.get('live_note') or ''))
+    for f in json.load(open('data/fixes.json', encoding='utf-8')):
+        cur.append(('case:' + f['incident_id'] + ':one_liner', f.get('one_liner', '')))
+        cur.append(('case:' + f['incident_id'] + ':what_would_change_it', f.get('what_would_change_it', '')))
+        for st in f.get('chain', []):
+            if st.get('stage') == 'current': cur.append(('case:' + f['incident_id'] + ':current', st.get('note', '')))
+    for s in superseded:
+        for where, text in cur:
+            if re.search(s['pattern'], text or '', re.I):
+                fails.append(f'superseded claim "{s["id"]}" ({s["why"]}) still stated in {where}')
+
 for w in warns: print('warn:', w)
 for f in fails: print('FAIL:', f)
 print(f'check_site: {len(fails)} failures, {len(warns)} warnings, {len(pages)} pages checked')

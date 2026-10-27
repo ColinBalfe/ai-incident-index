@@ -28,19 +28,19 @@
     "stage": "retest",
     "status": "partial",
     "date": "2026-10-24",
-    "note": "No independent party has reported a way around the Oct 21 patch. VulnCheck says it has a working exploit against the recommended production configuration of unpatched hosts, kept to paying customers, and 'We are not aware of any other public or commercial exploit that achieves RCE on multiple versions of PHP.' Hunt.io, Wordfence, SOCRadar and Sansec report millions of attempts but no confirmed compromise; Sophos corrected its one claim of a successful exploit. Nobody has published an independent review of the patch's completeness, and CISA has not added either CVE to its Known Exploited Vulnerabilities list. Oct 24: CISA's catalog, opened directly, still lists neither CVE (version 2026.10.23).",
+    "note": "No independent party has reported a way around the Oct 21 patch. VulnCheck says it has a working exploit against the recommended production configuration of unpatched hosts, kept to paying customers, and 'We are not aware of any other public or commercial exploit that achieves RCE on multiple versions of PHP.' Hunt.io, Wordfence, SOCRadar and Sansec report millions of attempts but no confirmed compromise; Sophos corrected its one claim of a successful exploit. Nobody has published an independent review of the patch's completeness, and CISA added two of the three CVEs to its Known Exploited Vulnerabilities list on Oct 26, which confirms exploitation but names no victim. Oct 24: CISA's catalog, opened directly, still lists neither CVE (version 2026.10.23).",
     "source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/"
    },
    {
     "stage": "current",
     "status": "ongoing",
-    "date": "2026-10-26",
-    "note": "Day six after the patch. The one vendor account of a successful intrusion is gone: Unit 42 retracted its Oct 23 report on Oct 25, saying it could not confirm the initial access at the European government agency involved the PHP2Shell flaws. What replaced it on Oct 26 is narrower and firmer: a honeypot capture by Perplexity's Adel Karimi showing confirmed code execution against an unpatched Apache mod_php server, which Expel's Marcus Hutchins calls the highest-quality in-the-wild confirmation so far; Dataminr says activity before it showed 'no known compromises'. No named organization has confirmed a breach, CISA's catalog (version 2026.10.23, opened directly Oct 26) still has no PHP entry, a Mirai variant is still trying to recruit servers, a third PHP bug is unpatched by design and most exposed hosts run versions that will never be fixed.",
-    "source_url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/"
+    "date": "2026-10-27",
+    "note": "Day seven after the patch. America's cyber agency (CISA) added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 (version 2026.10.26, opened directly Oct 27), with a federal fix deadline of Oct 29; it named no victim and described no attack. The firmest evidence of real-world exploitation is still a honeypot: Perplexity's Adel Karimi recorded confirmed code execution against an unpatched Apache mod_php server, and Wiz says scanner IPs that succeeded there 'likely contributed' to the listing. Unit 42 retracted its one report of an intrusion on Oct 25. No named organization has confirmed a breach, Wiz sees vulnerable exposed machines down about 67%, Censys still counts 32.51M PHP services on an affected version, and the third PHP bug (CVE-2026-115560) has no fix.",
+    "source_url": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html"
    }
   ],
   "one_liner": "The fix exists for supported PHP versions and nobody has broken it yet; the exploit is now confirmed to work against a real unpatched server (a honeypot), the one vendor report of a victim has been retracted, most exposed servers will never get the patch, and no organization has confirmed a breach by name.",
-  "what_would_change_it": "A confirmed in-the-wild compromise (or a CISA KEV listing), or a public way around the Oct 21 patch, would turn precautionary disruption into real damage.",
+  "what_would_change_it": "A confirmed compromise at a named organization, or a public way around the Oct 21 patch, would turn precautionary disruption into real damage. (CISA's Oct 26 listing confirmed exploitation, but no victim.)",
   "confidence": "high"
  },
  {

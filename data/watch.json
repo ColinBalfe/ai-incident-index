@@ -11,7 +11,7 @@
 {
 "id": "php-kev",
 "item": "CISA lists the PHP flaws as exploited, or issues an emergency directive",
-"status": "Not yet: catalog version 2026.10.23 (Oct 23, 19:30 UTC), opened directly at 07:08 ET Oct 26, has no PHP entry; odds raised 45% to 50% on the first high-quality in-the-wild confirmation (a honeypot), with five days left",
+"status": "Done: CVE-2026-109618 and -109619 listed Oct 26 (KEV catalog 2026.10.26, opened directly Oct 27); no emergency directive found",
 "kind": "open",
 "why": "Forces US federal agencies to patch on a deadline. It is CISA's formal verdict that exploitation is real.",
 "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
