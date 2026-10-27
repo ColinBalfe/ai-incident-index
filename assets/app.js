@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -693,7 +693,19 @@ function drawWall() {
     gb.append(el('span', 'gr-rec', 'Track record so far: ' + hr0.w + ' right, ' + hr0.l + ' wrong. Misses stay on the page.'));
     up.prepend(gb); }
   if (up.childNodes.length && !fresh.length) up.prepend(el('div', 'cu-h', 'Coming up')); else if (fresh.length) up.insertBefore(el('div', 'cu-h', 'Coming up'), up.children[1] || null);
-  box.replaceChildren(cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
+  // Breakthroughs: what AI just made possible, written as the payoff to a person, with the same proof labels as the warnings
+  const BT = (D.breakthroughs || []).filter((b) => b && b.payoff);
+  const BTL = { 'in-use': 'In use now', published: 'Peer-reviewed', reproduced: 'Reproduced', claimed: 'Claimed, not yet checked' };
+  const btBand = BT.length ? (() => {
+    const s = el('section', 'bt'); s.setAttribute('aria-label', 'Breakthroughs');
+    const h = el('div', 'bt-h'); h.append(el('h2', 'bt-t', 'Breakthroughs'), el('span', 'bt-sub', 'What AI just made possible, and what it means for you')); const all = el('a', 'bt-all', 'All breakthroughs →'); all.href = '/breakthroughs/'; h.append(all); s.append(h);
+    const g = el('div', 'bt-g');
+    BT.slice(0, 6).forEach((b) => { const c = el('article', 'bt-c'); const top = el('div', 'bt-k'); top.append(el('span', 'bt-area', b.area || ''), el('span', 'bt-p ' + b.proof, BTL[b.proof] || b.proof)); c.append(top);
+      const a = el('a', 'bt-pay', b.payoff); a.href = b.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; c.append(a, el('p', 'bt-m', b.means));
+      if (b.try && b.try[1]) { const t = el('a', 'bt-try', 'Try it: ' + b.try[0] + ' →'); t.href = b.try[1]; t.target = '_blank'; t.rel = 'noopener noreferrer'; c.append(t); }
+      c.append(el('small', 'bt-o', b.outlet || '')); g.append(c); });
+    s.append(g); return s; })() : null;
+  box.replaceChildren(...(btBand ? [btBand] : []), cols, more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
 }
 function drawWire() {
   const items = newsItems(), sirenBox = document.getElementById('siren'), board = document.getElementById('wire-board'), chips = document.getElementById('wire-chips'), cnt = document.getElementById('wire-count'), more = document.getElementById('wire-more');

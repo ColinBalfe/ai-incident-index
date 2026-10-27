@@ -1138,6 +1138,23 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 .fy-hub a { color: inherit; text-decoration: underline; }
 .recfoot .rf-desks { margin: 10px 0 0; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 .recfoot .rf-desks a { color: var(--ink-2); }
+.bt { margin: 0 0 26px; padding: 16px 0 6px; border-top: 4px solid var(--ok); border-bottom: 1px solid var(--line-2); }
+.bt-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 12px; }
+.bt-t { margin: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(1.3rem, 2.2vw, 1.7rem); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.bt-sub { font-family: var(--serif); font-style: italic; color: var(--ink-2); font-size: 1rem; flex: 1 1 260px; }
+.bt-all { font-weight: 700; font-size: 14px; color: var(--ink); }
+.bt-g { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px 22px; }
+.bt-c { display: flex; flex-direction: column; gap: 6px; padding: 0 0 12px; border-bottom: 1px dotted var(--line-2); }
+.bt-k { display: flex; gap: 8px; align-items: center; font-family: var(--sans); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.bt-area { color: var(--ok); }
+.bt-p { padding: 1px 5px; border: 1px solid var(--line-2); color: var(--ink-2); }
+.bt-p.in-use, .bt-p.published, .bt-p.reproduced { border-color: var(--ok); color: var(--ok); }
+.bt-pay { font-family: var(--serif); font-weight: 800; font-size: clamp(1.12rem, 1.6vw, 1.32rem); line-height: 1.2; color: var(--ink); text-decoration: none; text-wrap: balance; }
+.bt-pay:hover { text-decoration: underline; }
+.bt-m { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+.bt-try { font-weight: 700; font-size: 14px; color: var(--ok); }
+.bt-o { color: var(--ink-3); font-size: 12px; }
+@media (max-width: 700px) { .bt-c:nth-child(n+4) { display: none; } }
 </style>
 </head>
 <body data-page="{{PAGE}}" data-lead="a">

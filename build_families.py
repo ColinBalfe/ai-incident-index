@@ -278,6 +278,29 @@ write('midterms-2026/after/index.html', url=au, title='After the 2026 midterms: 
       crumbs=[('2026 midterms: AI fakes', '/midterms-2026/'), ('After the vote', '')], graph=[{"@type": "WebPage", "name": "After the 2026 midterms", "url": au}])
 if not adraft: register('midterms-2026/after/', [au])
 
+# ======================================================== breakthroughs/: what AI just made possible, as human payoffs (research/breakthroughs.json)
+try:
+    BTS = sorted(L('research/breakthroughs.json'), key=lambda b: b.get('date', ''), reverse=True)
+except (OSError, ValueError):
+    BTS = []
+_NW = {n['id']: n for n in (L('research/news_archive.json') if os.path.exists('research/news_archive.json') else []) + L('research/news.json')}
+BTL = {'in-use': 'In use now', 'published': 'Peer-reviewed', 'reproduced': 'Reproduced', 'claimed': 'Claimed, not yet checked'}
+bu = SITE + 'breakthroughs/'
+def _bt(b):
+    n = _NW.get(b.get('news_id'), {}); url = b.get('url') or n.get('url', ''); outlet = b.get('outlet') or n.get('outlet', '')
+    tr = f'<p><a href="{esc(b["try"][1])}"><b>Try it:</b> {esc(b["try"][0])} →</a></p>' if b.get('try') else ''
+    return (f'<li><span class="st {"yes" if b["proof"] != "claimed" else ""}">{esc(BTL.get(b["proof"], b["proof"]))}</span> <span class="meta">{esc(b.get("area", ""))} · {esc(fdate(b["date"]))}</span>'
+            f'<h2 style="border:0;margin:6px 0 4px;padding:0;font-size:1.3rem">{esc(b["payoff"])}</h2><p>{esc(b["means"])}</p>{tr}<p class="meta">Source: <a href="{esc(url)}">{esc(outlet)}</a></p></li>')
+btbody = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>Breakthroughs: what AI just made possible</h1>
+<p>The other half of the story. Real advances in medicine, science, weather, the planet and the software we all depend on, written as what they mean for you, with a way to try them when you can. Each carries the same proof label as our warnings: in use now, peer-reviewed, reproduced, or claimed and not yet checked.</p>
+<ul class="list">{''.join(_bt(b) for b in BTS)}</ul>
+{capture('Send me the next breakthrough', 'breakthroughs')}
+{footer_note(False)}</article>"""
+write('breakthroughs/index.html', url=bu, title='AI breakthroughs: what AI just made possible, in plain words', desc=f'{len(BTS)} recent AI advances in medicine, science, weather and software, written as what they mean for you, each labelled in use, peer-reviewed or claimed.', body=btbody, draft=False,
+      crumbs=[('Breakthroughs', '')], graph=[webpage(bu, 'AI breakthroughs', 'Recent AI advances in plain words', TODAY, False, '')])
+register('breakthroughs/', [bu] if BTS else [])
+print(f'breakthroughs/: {len(BTS)}')
+
 # ======================================================== forecast/<id>/: one permanent page per call and question
 CALLS = L('data/calls.json'); fu = []
 def likely(o):

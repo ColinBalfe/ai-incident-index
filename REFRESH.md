@@ -133,6 +133,16 @@ Finding posts: search X through web search (`site:x.com <topic>`, the names of t
 
 Rules: only X posts (`https://x.com/<handle>/status/<id>`). After adding entries, run `python3 build/fetch_x.py`: it pulls each post's exact text, name, photo and time from X's public embed data into `research/x_cache.json`, which the page uses. Read the fetched text before keeping an entry; if the fetch fails, the post was deleted or is private, so drop it (never show a post whose text you have not seen in full). Never retype or edit the post text; the card shows it exactly. `what` is our plain-words line under the card (human fact first, no acronyms, says plainly when something is unconfirmed); `quote` is the shortest exact line that carries it. `who` says why this person matters, including any tie to the company involved. Fields: `id`, `url`, `platform` ("X"), `author`, `handle`, `who`, `posted` (UTC ISO, from the fetch), `kind`, `power`, `story`, `what`, `quote`, `seen_via`, `related` (Wire or incident id). Do not delete old entries; the page stops using them after 14 days. Never post, reply, like or repost on X from the refresh.
 
+## 2d. Breakthroughs (every refresh)
+
+The site covers AI's breakthroughs as seriously as its dangers. `research/breakthroughs.json` feeds the Breakthroughs band at the top of the Wire on the homepage (newest six) and `/breakthroughs/` (all of them, never pruned). Every refresh, look for real advances from the last few days in medicine, science, math, weather and climate, the planet, safer software, new models and new abilities people can use, and add the strongest. Aim for at least one new entry a day and keep the band at six.
+
+- **Write the payoff to a person, not the lab's announcement.** `payoff` is the headline: what changed for people, short, no acronyms or model names carrying it ("An AI solved 8 in 10 of medicine's hardest diagnosis puzzles. Doctors solved fewer than 4", not "MAI-DxO achieves 83% on NEJM CPC benchmark"). `means` is two or three plain sentences: what happened, who it helps, and the honest catch (not available yet, weaker at X, only the company's word so far).
+- **`try`** (optional): `[what to do, url]` only when an ordinary person can use it today; say if it costs money or needs a sign-in. Never invent one.
+- **`proof`**, the same discipline as the warnings: `in-use` (people are using it now), `published` (peer-reviewed paper), `reproduced` (an independent group got the same result), `claimed` (the company's or lab's own word, not yet checked). A lab claim is never written as settled fact.
+- Fields: `id`, `news_id` (the Wire item it comes from; add the Wire item first, with its source), `date`, `area` (Medicine, Science, Math and physics, Weather, Planet, Safer software, New models, Everyday), `proof`, `payoff`, `means`, `try`.
+- Hype check: no "revolutionary", no "game-changer", no claims the source doesn't make. The wonder should come from the facts.
+
 ## 2a. Sundays: the source audit
 
 A GitHub Action (`.github/workflows/link-audit.yml`) fetches every URL in `data/*.json` early on Sunday mornings and writes `research/link_audit.json` (dead: 404/410/DNS; unreachable: timeouts and 5xx; 401/403/429 count as alive). On the Sunday 06:37 run, and on any run where that file is newer than `as_of`:
