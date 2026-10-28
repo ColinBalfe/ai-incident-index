@@ -151,5 +151,18 @@
   "id": "2114800787716972873",
   "photos": [],
   "truncated": true
+ },
+ "sundarpichai-gemini-4-carbon": {
+  "name": "Sundar Pichai",
+  "handle": "sundarpichai",
+  "avatar": "https://pbs.twimg.com/profile_images/2051799620062429184/AL8CoAUG_bigger.jpg",
+  "verified": true,
+  "created_at": "2026-10-28T17:01:48.000Z",
+  "text": "I did say we'd be releasing our models periodically...introducing Gemini 4 Carbon, our next frontier model.\n\nFollowing Argon's release just two weeks ago, Carbon shows the pace at which we’re pushing the frontier, it ranks #1 on the recently updated v5.0 of @ArtificialAnlys",
+  "id": "2115489219804352921",
+  "photos": [
+   "https://pbs.twimg.com/media/HVu5GHmbUAAppsK.jpg"
+  ],
+  "truncated": true
  }
 }

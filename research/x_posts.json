@@ -159,5 +159,21 @@
   "quote": "we became aware of what we believe to be an active and narrow-banded exploitation of a vendor in Warp's infrastructure",
   "seen_via": "search",
   "related": "bleeping-warp-breach-agent-logs"
+ },
+ {
+  "id": "sundarpichai-gemini-4-carbon",
+  "url": "https://x.com/sundarpichai/status/2115489219804352921",
+  "platform": "X",
+  "author": "Sundar Pichai",
+  "handle": "@sundarpichai",
+  "who": "Google's chief executive, announcing his own company's model",
+  "posted": "2026-10-28T17:01:48Z",
+  "kind": "official",
+  "power": 5,
+  "story": "gemini-4-carbon",
+  "what": "Two weeks after Argon, Google ships another frontier model. The independent ranker Artificial Analysis puts it No. 1 at 59; Google reports it exploits 54.8% of a hacking benchmark.",
+  "quote": "introducing Gemini 4 Carbon, our next frontier model.",
+  "seen_via": "Colin",
+  "related": "9to5google-gemini-4-carbon"
  }
 ]

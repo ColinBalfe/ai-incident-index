@@ -1,5 +1,48 @@
 [
 {
+"id": "9to5google-gemini-4-carbon",
+"title": "Google announces Gemini 4 Carbon with 'significant' coding gains",
+"url": "https://9to5google.com/2026/10/28/gemini-4-carbon-announcement/",
+"outlet": "9to5Google",
+"published": "2026-10-28T17:08:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Two weeks after Argon, Google's new frontier model ranks No. 1 on Artificial Analysis's Intelligence Index (59); Google reports 88.2% on a vulnerability-finding benchmark and 54.8% on an exploitation one.",
+"siren": false,
+"also": [
+{
+"url": "https://artificialanalysis.ai/models/gemini-4-carbon",
+"outlet": "Artificial Analysis"
+}
+],
+"tag": "Google's new No. 1 AI exploits 55% of a hacking benchmark",
+"wall": 2,
+"wall_rank": 10.5,
+"red": false,
+"label": "confirmed",
+"touches": "Every organization whose software a cheaper, stronger hacking-capable AI can be pointed at",
+"entities": {
+"orgs": [
+"Google"
+],
+"vendors": [
+"Google"
+],
+"products": [
+"Gemini"
+],
+"models": [
+"Gemini 4 Carbon"
+],
+"sectors": [
+"tech"
+],
+"states": []
+}
+},
+{
 "id": "commondreams-warren-anthropic-ipo",
 "title": "Senator Warren presses Anthropic's CEO on AI safety risks before its IPO, wants answers by Nov 3",
 "url": "https://www.commondreams.org/news/anthropic-ipo",

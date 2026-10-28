@@ -12,13 +12,13 @@
 <meta property="og:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta property="og:description" content="The Record: all 165 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 13 in a year; in 41% of this year's real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
 <meta property="og:url" content="https://warningshots.ai/index/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610281754">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610281822">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta name="twitter:description" content="The Record: all 165 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 13 in a year; in 41% of this year's real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610281754">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610281822">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -30,11 +30,11 @@
 <link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/data/bundle.json?v=202610281754" as="fetch" crossorigin>
-<script>window.AII_BUILD = "202610281754"; window.AII_SITE = "https://warningshots.ai/";</script>
+<link rel="preload" href="/data/bundle.json?v=202610281822" as="fetch" crossorigin>
+<script>window.AII_BUILD = "202610281822"; window.AII_SITE = "https://warningshots.ai/";</script>
 <script src="/assets/vendor/d3-lite.min.js" defer></script>
 <script src="/assets/vendor/topojson-client.min.js" defer></script>
-<script src="/assets/app.js?v=202610281754" defer></script>
+<script src="/assets/app.js?v=202610281822" defer></script>
 <style>
 @font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 400 900; font-stretch: 78% 100%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
@@ -1231,6 +1231,10 @@ a.pl-i:hover span { color: #F4F3EF; text-decoration: underline; }
 .fy-hub a { color: inherit; text-decoration: underline; }
 .recfoot .rf-desks { margin: 10px 0 0; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 .recfoot .rf-desks a { color: var(--ink-2); }
+.names-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 4px 0 18px; padding: 10px 0; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); font-size: 14px; }
+.nr-k { font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+.nr-a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-2); } .nr-a:hover { border-bottom-color: var(--ink); } .nr-a small { color: var(--ink-3); font-weight: 600; }
+.nr-all { margin-left: auto; font-weight: 700; color: var(--ink); font-size: 13px; }
 .ed-more { margin: 8px 0 18px; border-top: 3px solid var(--ink); }
 .ed-tog { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 100%; padding: 14px 12px; background: var(--panel); border: 0; border-bottom: 1px solid var(--line-2); cursor: pointer; font: inherit; color: var(--ink); }
 .ed-tog:hover .ed-tl { text-decoration: underline; } .ed-tog:focus-visible { outline: 2px solid var(--alarm); outline-offset: 2px; }
@@ -1347,7 +1351,7 @@ section#why.pending { min-height: 0; }
   <div class="wrap">
     <a class="mini" href="#top"><svg class="mark nf" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.3) translate(-50 -50)"><path d="M68.18 34.00 L68.18 34.99 Q67.05 35.53 65.81 37.11 Q64.57 38.70 63.59 41.91 L55.28 69.00 Q54.69 68.95 54.02 68.93 Q53.35 68.90 52.66 68.90 Q52.02 68.90 51.35 68.93 Q50.68 68.95 50.09 69.00 L39.71 37.31 Q39.31 36.03 38.67 35.53 Q38.03 35.04 37.19 34.99 L37.19 34.00 Q38.87 34.05 41.14 34.10 Q43.42 34.15 45.74 34.15 Q48.06 34.15 50.11 34.10 Q52.17 34.05 53.40 34.00 L53.40 34.99 Q51.87 35.04 51.03 35.36 Q50.19 35.68 50.07 36.55 Q49.94 37.41 50.53 39.14 L57.31 59.71 L55.87 62.72 L60.87 46.75 Q62.25 42.35 62.20 39.81 Q62.15 37.26 61.02 36.15 Q59.88 35.04 57.90 34.99 L57.90 34.00 Q59.78 34.05 61.24 34.10 Q62.70 34.15 64.38 34.15 Q65.37 34.15 66.40 34.10 Q67.44 34.05 68.18 34.00 Z M32.44 34.00 L32.44 34.99 Q31.60 35.14 31.33 35.85 Q31.06 36.57 31.18 37.49 Q31.30 38.40 31.55 39.14 L39.02 60.15 L37.63 62.28 L43.56 46.21 L44.26 47.64 L36.69 69.00 Q36.10 68.95 35.43 68.93 Q34.77 68.90 34.07 68.90 Q33.43 68.90 32.76 68.93 Q32.10 68.95 31.50 69.00 L20.03 38.15 Q19.39 36.42 18.60 35.73 Q17.81 35.04 17.12 34.99 L17.12 34.00 Q18.90 34.05 21.29 34.10 Q23.69 34.15 25.87 34.15 Q28.04 34.15 29.72 34.10 Q31.40 34.05 32.44 34.00 Z" fill="currentColor"/><circle cx="78.28" cy="50.80" r="4.6" fill="var(--alarm)"/><circle cx="78.28" cy="64.40" r="4.6" fill="currentColor"/></g></svg>Warning Shots</a>
     <div class="nav-scroll" id="nav-scroll">
-      <a href="#front" class="mf-only">Front</a><a href="/wire/">The Wire</a><a href="/php2shell/" class="live-nav" title="The flaw under most websites: day 8 since it went public"><span class="live-dot" aria-hidden="true">●</span> Live case · day 8</a><a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can do</a><a href="/forecast/">Forecasts</a><a href="/fixes/">Did they fix it? <span class=nb>12 open</span></a><a href="/i/">Incidents</a><a href="/index/#about">About</a>
+      <a href="#front" class="mf-only">Front</a><a href="/wire/">The Wire</a><a href="/php2shell/" class="live-nav" title="The flaw under most websites: day 8 since it went public"><span class="live-dot" aria-hidden="true">●</span> Live case · day 8</a><a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can do</a><a href="/who/">Who's who</a><a href="/forecast/">Forecasts</a><a href="/fixes/">Did they fix it? <span class=nb>12 open</span></a><a href="/i/">Incidents</a><a href="/index/#about">About</a>
     </div>
     <div class="nav-right">
       <span class="nav-updated" id="nav-updated"></span>

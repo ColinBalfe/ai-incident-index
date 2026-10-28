@@ -793,7 +793,12 @@ function drawWall() {
   const inner = el('div', 'ed-in'); inner.id = 'ed-more-in'; inner.append(...(pulse ? [pulse] : []), ...(chartBand ? [chartBand] : []), ...(up.childNodes.length ? [up] : []), ...(xbox ? [xbox] : []));
   tg.addEventListener('click', () => { setEdOpen(!edOpen); if (!edOpen) edMore.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); });
   edMore.append(tg, inner);
-  box.replaceChildren(...(btBand ? [btBand] : []), cols, more, ...(incBand ? [incBand] : []), edMore, cu, ed, foot);
+  // Names in today's news: the names with their own page, counted across today's headlines (links to /who/)
+  const wc = new Map(); items.forEach((n) => (n.who || []).forEach((w) => wc.set(w, (wc.get(w) || 0) + 1)));
+  const namesRow = wc.size >= 2 ? (() => { const r = el('nav', 'names-row'); r.setAttribute('aria-label', 'Names in today’s news'); r.append(el('span', 'nr-k', 'Names in today’s news'));
+    [...wc.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8).forEach(([w, c]) => { const a = el('a', 'nr-a', (D.whonames || {})[w] || w); a.href = '/who/' + w + '/'; a.append(el('small', null, ' ' + c)); r.append(a); });
+    const all = el('a', 'nr-all', 'Who’s who →'); all.href = '/who/'; r.append(all); return r; })() : null;
+  box.replaceChildren(...(btBand ? [btBand] : []), cols, more, ...(namesRow ? [namesRow] : []), ...(incBand ? [incBand] : []), edMore, cu, ed, foot);
 }
 /* ---------- The story so far: a 20-second film at the top of the homepage, told by the record itself.
    Four beats, each lighting its stretch of the incident strip: when a person was always behind it, the first severe case where the AI
@@ -1899,10 +1904,11 @@ function searchIndex() {
   callRows().forEach((c) => rows.push({ kind: 'What to expect', title: c.question, text: [c.basis, c.signposts, (c.tags || []).join(' ')].join(' '), kicker: likelyWord(c.odds) + ' · ' + callDue(c), go: () => go('#fc-' + c.id) }));
   (D.quotes || []).forEach((q) => { if (q && q.quote) rows.push({ kind: 'In their words', title: q.quote, text: [q.speaker, q.title].join(' '), kicker: (q.speaker || '') + (q.title ? ', ' + q.title : '') + (q.date ? ' · ' + fmtDate(new Date(q.date)) : ''), go: () => go('#q=' + q.id) }); });
   (D.signals || []).forEach((x) => { if (x && x.gist) rows.push({ kind: 'Official signals', title: x.gist, text: [x.org, x.speaker, x.quote].join(' '), kicker: (x.org || '') + (x.date ? ' · ' + fmtDate(new Date(x.date)) : ''), href: x.url || null, go: x.url ? null : () => go('#signals') }); });
+  Object.entries(D.whonames || {}).forEach(([w, nm]) => rows.push({ kind: 'Names', title: nm, text: nm + ' ' + w.replace(/-/g, ' '), kicker: 'Everything Warning Shots has on ' + nm, href: '/who/' + w + '/' }));
   rows.forEach((r) => { r.t = snorm(r.title); r.x = snorm(r.text); });
   SIDX = rows; return rows;
 }
-const KIND_W = { 'Incidents': 1.3, 'Did they fix it?': 1.2, 'The call sheet': 1.2, 'What AI can now do': 1.15, 'The Wire': 1.1, 'In their words': 1, 'Official signals': 1 };
+const KIND_W = { 'Names': 4, 'Incidents': 1.3, 'Did they fix it?': 1.2, 'The call sheet': 1.2, 'What AI can now do': 1.15, 'The Wire': 1.1, 'In their words': 1, 'Official signals': 1 };
 function searchRun(q) {
   const toks = snorm(q).split(/[^a-z0-9%$.+-]+/).filter((t) => t.length >= 2);
   if (!toks.length) return { toks, rows: [] };

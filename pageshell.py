@@ -31,7 +31,7 @@ def _fix_open():
     return sum(1 for f in fx if cur(f)['status'] != 'fixed')
 FIX_OPEN = _fix_open()
 # the sections after the live slot, shared by the homepage (index.template.html {{MID_NAV}}) and every other page
-MID_NAV = ('<a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can do</a><a href="/forecast/">Forecasts</a>'
+MID_NAV = ('<a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can do</a><a href="/who/">Who\'s who</a><a href="/forecast/">Forecasts</a>'
            + f'<a href="/fixes/">Did they fix it?{f" <span class=nb>{FIX_OPEN} open</span>" if FIX_OPEN else ""}</a><a href="/i/">Incidents</a><a href="/index/#about">About</a>')
 # the desks: the standing pages people come back to, Drudge's reference shelf (homepage under the masthead; every page's footer)
 DESKS = [('/breakthroughs/', 'Breakthroughs'), ('/up-and-down/', 'Up & Down'), ('/chart/', 'The Charts'), ('/checks/', 'Is this a scam?'), ('/jobs/', 'Can AI do your job?'), ('/jobs/layoffs/', 'Layoffs tied to AI'), ('/help/', 'What to do'),
