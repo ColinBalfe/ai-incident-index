@@ -322,7 +322,7 @@ write('up-and-down/index.html', url=uu, title='Up & Down: who gained power in AI
       crumbs=[('Up & Down', '')], graph=[webpage(uu, 'Up & Down', 'Who gained or lost power in AI', TODAY, False, '')])
 register('up-and-down/', [uu] if UDR else [])
 os.makedirs('ai-inc', exist_ok=True)
-open('ai-inc/index.html', 'w').write('<!doctype html><meta charset="utf-8"><title>Up &amp; Down</title><meta name="robots" content="noindex"><link rel="canonical" href="' + uu + '"><meta http-equiv="refresh" content="0; url=/up-and-down/"><p><a href="/up-and-down/">Up &amp; Down</a></p>')
+open('ai-inc/index.html', 'w').write('<!doctype html><meta charset="utf-8"><title>Up &amp; Down</title><meta name="description" content="AI Inc. is now Up &amp; Down: who gained power in AI, who lost it, and why it matters."><meta property="og:image" content="' + SITE + 'assets/og.png"><meta name="robots" content="noindex"><link rel="canonical" href="' + uu + '"><meta http-equiv="refresh" content="0; url=/up-and-down/"><p><a href="/up-and-down/">Up &amp; Down</a></p>')
 print(f'up-and-down/: {len(UDR)}')
 
 # ======================================================== forecast/<id>/: one permanent page per call and question
