@@ -208,5 +208,20 @@
   "source_url": "https://www.yahoo.com/news/politics/articles/fact-check-gop-candidate-runs-090000635.html",
   "source_label": "News & Observer fact check (via Yahoo), Oct 24; WLOS, Oct 26",
   "index_id": ""
+ },
+ {
+  "id": "storm1516-brown-akbik-video",
+  "date": "2026-10-27",
+  "state": "OH",
+  "race": "Ohio US Senate",
+  "what": "A newscast-style video uses photos of Haya Akbik, who interned for Sherrod Brown years ago, and other former staffers to attribute allegations to them; Akbik says the claims attributed to her are 'completely made up'.",
+  "target": "Sherrod Brown (D), Senate candidate",
+  "who_made_it": "Likely Russia's Storm-1516 network, per Clemson's Darren Linvill (the accounts had shared earlier Storm-1516 content)",
+  "status": "alleged fake",
+  "reach": "Copies still online Oct 27, some with 'hundreds of shares' (AP); X removed the originals",
+  "how_caught": "Dartmouth's Hany Farid said it was likely generated or manipulated with AI, a 'fairly low-tech fake'; Akbik denied the claims; X suspended the accounts",
+  "source_url": "https://www.wsbtv.com/news/politics/disinformation/7RREVIBYPU775GGLQO6YHSPNXQ/",
+  "source_label": "AP via WSB-TV, Oct 27",
+  "index_id": ""
  }
 ]

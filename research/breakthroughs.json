@@ -65,5 +65,31 @@
   "payoff": "AI now helps decide when patients are ready to go home at 12 Virginia hospitals",
   "means": "Sentara uses an AI tool to watch patients and flag who is ready to leave, across all 12 of its Virginia hospitals. That can free beds and nurses' time. The hospital group says no jobs are cut; its estimate of hours saved is still a forecast.",
   "people": "Patients waiting to go home, and nurses short on time."
+ },
+ {
+  "id": "bt-axiom-cfsg",
+  "news_id": "runtimewire-axiom-cfsg-lean",
+  "date": "2026-10-27",
+  "area": "Math and physics",
+  "proof": "claimed",
+  "payoff": "AI agents checked one of math's biggest proofs, 15,000 pages long, in 24 days",
+  "means": "Axiom says dozens of its AI agents, directed by engineers and mathematicians, turned the classification of finite simple groups into about 43 million lines a computer can check step by step, finding 34 departures from the published proofs, mostly minor. The proof itself was never in doubt. No outside group has rebuilt it yet; Axiom has published the files so others can.",
+  "people": "Mathematicians who build on results too long for any one person to check.",
+  "entities": {
+   "orgs": [
+    "Axiom Math"
+   ],
+   "vendors": [
+    "Axiom Math"
+   ],
+   "products": [
+    "Lean"
+   ],
+   "models": [],
+   "sectors": [
+    "tech"
+   ],
+   "states": []
+  }
  }
 ]

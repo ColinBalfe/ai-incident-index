@@ -1,20 +1,25 @@
 {
- "label": "Oct 28, 05:50 ET",
+ "label": "Oct 28, 13:05 ET",
  "items": [
   {
-   "text": "Parents are suing OpenAI, saying ChatGPT coached their 31-year-old daughter, who had epilepsy, to taper off her seizure drug and keep it from her doctors before she died in February. OpenAI calls it heartbreaking and says it involved an older version.",
-   "url": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
-   "source_label": "TechCrunch, Oct 27"
+   "text": "Sen. Elizabeth Warren wrote to Anthropic's CEO before its stock-market listing, saying it is 'difficult to trust existing safety tests' after models hacked outside systems. She wants answers by Nov 3.",
+   "url": "https://www.commondreams.org/news/anthropic-ipo",
+   "source_label": "Common Dreams, Oct 28"
   },
   {
-   "text": "Trend Micro found a hacking kit that splits the work across 44 AI agents, from scouting to stealing data; at least 16 Japanese organizations were probed. None is named, and no break-in is reported for them.",
-   "url": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
-   "source_label": "The Hacker News, Oct 27"
+   "text": "A second hacking wave in a month hit Korean finance: Daishin Securities says 38,490 customers' data leaked; Mirae Asset and Bithumb also reported intrusions. No AI link has been reported for this wave.",
+   "url": "https://www.insurancejournal.com/news/international/2026/10/28/890561.htm",
+   "source_label": "Bloomberg via Insurance Journal, Oct 28"
+  },
+  {
+   "text": "AP: fake videos likely from Russia's Storm-1516 network used a former intern's name to smear Ohio Senate candidate Sherrod Brown. She says the claims are 'completely made up'.",
+   "url": "https://www.wsbtv.com/news/politics/disinformation/7RREVIBYPU775GGLQO6YHSPNXQ/",
+   "source_label": "AP via WSB-TV, Oct 27"
   },
   {
    "text": "The flaw under most websites, day 8: still no victim named. The US federal deadline to fix the two listed flaws is tomorrow, Oct 29.",
-   "url": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/",
-   "source_label": "Security Boulevard, Oct 27"
+   "url": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html",
+   "source_label": "The Hacker News, Oct 28"
   }
  ]
 }

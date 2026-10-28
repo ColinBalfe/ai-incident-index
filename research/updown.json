@@ -25,5 +25,8 @@
   "why": "When near-frontier weights are free to download, paid labs lose pricing power, and nobody can recall a model once it's out."},
  {"id": "kazakhstan-both-blocs", "date": "2026-10-25", "dir": "up", "name": "Kazakhstan", "news_id": "abc-ap-ai-blocs-kazakhstan",
   "line": "Joins both the US-led AI bloc and China's, with up to $10 billion of Nvidia data centres on one side and record Chinese investment on the other.",
-  "why": "Middle powers are learning the AI race pays whoever won't pick a side, until Washington makes them choose, as it now says they must."}
+  "why": "Middle powers are learning the AI race pays whoever won't pick a side, until Washington makes them choose, as it now says they must."},
+ {"id": "axiom-cfsg-up", "date": "2026-10-27", "dir": "up", "name": "Axiom Math", "news_id": "runtimewire-axiom-cfsg-lean",
+  "line": "Says its AI agents produced a computer-checked version of a 15,000-page proof in 24 days; no outside group has rebuilt it yet.",
+  "why": "A machine-checked proof is something a buyer can verify without trusting the seller, which is exactly what AI-written code lacks. If outsiders reproduce it, chipmakers and banks get a reason to pay for proofs of their software, not just tests."}
 ]

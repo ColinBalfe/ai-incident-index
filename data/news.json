@@ -1,5 +1,158 @@
 [
 {
+"id": "commondreams-warren-anthropic-ipo",
+"title": "Senator Warren presses Anthropic's CEO on AI safety risks before its IPO, wants answers by Nov 3",
+"url": "https://www.commondreams.org/news/anthropic-ipo",
+"outlet": "Common Dreams",
+"published": "2026-10-28T16:43:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "regulation",
+"summary": "Warren's letter to Dario Amodei says it is 'difficult to trust existing safety tests' after models hacked outside systems.",
+"also": [
+{
+"outlet": "Newsquawk (citing WSJ)",
+"url": "https://www.newsquawk.com/headlines/us-senator-warren-d-reportedly-raises-concerns-over-risks-disclosed-in-anthropics-ipo-filings-and-is-demanding-answers-to-a-series-of-questions-ahead-of-its-planned-listing-wsj-reports-citing-sources"
+}
+],
+"siren": false,
+"wall": "lead",
+"wall_rank": 1.5,
+"tag": "Warren demands answers by Nov 3",
+"label": "confirmed",
+"receipt": "Sen. Warren's Oct 27 letter to Anthropic's CEO, per Common Dreams; deadline Nov 3, before the listing. No Anthropic reply found.",
+"touches": "Savers whose index funds and pensions would hold Anthropic shares after its listing",
+"independent": {
+"n": 2,
+"who": [
+"Common Dreams",
+"WSJ"
+],
+"carried_by": [
+"Newsquawk"
+]
+},
+"entities": {
+"orgs": [
+"Anthropic",
+"US Senate Banking Committee"
+],
+"vendors": [
+"Anthropic"
+],
+"products": [],
+"models": [],
+"sectors": [
+"finance",
+"tech"
+],
+"states": []
+}
+},
+{
+"id": "ij-korea-second-wave-daishin",
+"title": "Second hacking wave in a month hits Korean finance; Daishin Securities says 38,490 customers' data leaked",
+"url": "https://www.insurancejournal.com/news/international/2026/10/28/890561.htm",
+"outlet": "Insurance Journal (Bloomberg)",
+"published": "2026-10-28T11:55:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "Asia",
+"topic": "ai-attack",
+"summary": "Daishin, Mirae Asset and Bithumb report intrusions. An AI agent hit Korean banks earlier this month; no AI link reported for these.",
+"also": [
+{
+"outlet": "Seoul Economic Daily",
+"url": "https://en.sedaily.com/finance/2026/10/28/hacked-almost-weekly-koreas-digital-finance-security-bill"
+}
+],
+"siren": false,
+"wall": "1",
+"wall_rank": 2.5,
+"tag": "Korean broker Daishin leaked 38,490 customers' data in new hacking wave",
+"label": "confirmed",
+"receipt": "Daishin's own disclosure via Bloomberg and Seoul Economic Daily (Oct 28): names, emails, addresses, encrypted account and phone numbers. No AI link reported for this wave.",
+"touches": "38,490 Daishin Securities customers in South Korea",
+"independent": {
+"n": 2,
+"who": [
+"Bloomberg",
+"Seoul Economic Daily"
+],
+"carried_by": [
+"Insurance Journal"
+]
+},
+"entities": {
+"orgs": [
+"Daishin Securities",
+"Mirae Asset Global Investments",
+"Bithumb",
+"Financial Supervisory Service"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"finance"
+],
+"states": []
+}
+},
+{
+"id": "ap-storm1516-brown-talarico-fakes",
+"title": "AP: fake videos likely from Russia used a former intern's name to smear Sherrod Brown, and targeted Talarico",
+"url": "https://www.wsbtv.com/news/politics/disinformation/7RREVIBYPU775GGLQO6YHSPNXQ/",
+"outlet": "AP (via WSB-TV)",
+"published": "2026-10-28T03:14:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Clemson's Linvill ties the accounts to Russia's Storm-1516; Dartmouth's Farid says both videos were likely AI-made or manipulated.",
+"also": [
+{
+"outlet": "Fast Company",
+"url": "https://www.fastcompany.com/91631353/fake-videos-possibly-linked-russia-targeting-two-democratic-senate-candidates?partner=rss"
+}
+],
+"siren": false,
+"wall": "3",
+"wall_rank": 20.3,
+"tag": "Ex-intern says Russia-linked fake put lies about Sherrod Brown in her name",
+"label": "reported",
+"human": true,
+"touches": "Ohio and Texas voters seeing the videos, and the former Brown staffers whose photos were used",
+"independent": {
+"n": 1,
+"who": [
+"AP"
+],
+"carried_by": [
+"WSB-TV",
+"Fast Company"
+]
+},
+"entities": {
+"orgs": [
+"X",
+"Clemson University",
+"Dartmouth College"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"media"
+],
+"states": [
+"OH",
+"TX"
+]
+}
+},
+{
 "id": "techcrunch-openai-seizure-medication-suit",
 "title": "Parents sue OpenAI, saying ChatGPT coached their epileptic daughter off her seizure drug and to hide it from doctors",
 "url": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
@@ -40,6 +193,42 @@
 "sectors": [
 "health",
 "consumer"
+],
+"states": []
+}
+},
+{
+"id": "runtimewire-axiom-cfsg-lean",
+"title": "Axiom says its AI agents machine-checked the 15,000-page classification of finite simple groups in 24 days",
+"url": "https://runtimewire.com/article/axiom-s-ceo-says-no-one-outside-the-company-has-rebuilt-its-43-million-line-proo",
+"outlet": "Runtime Wire",
+"published": "2026-10-27T21:31:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "breakthrough",
+"summary": "About 43.1 million lines of Lean; the CEO says no outside group has rebuilt it yet. The proof also surfaced 34 deviations from the published record.",
+"also": [
+{
+"outlet": "Unite.AI",
+"url": "https://www.unite.ai/axiom-math-releases-43-1m-line-lean-proof-of-group-classification/"
+}
+],
+"siren": false,
+"touches": "Mathematicians who rely on the classification theorem",
+"entities": {
+"orgs": [
+"Axiom Math"
+],
+"vendors": [
+"Axiom Math"
+],
+"products": [
+"Lean"
+],
+"models": [],
+"sectors": [
+"tech"
 ],
 "states": []
 }
@@ -713,6 +902,45 @@
 "touches": "Anyone running an unpatched PHP website"
 },
 {
+"id": "abc17-missouri-data-center-costs",
+"title": "Missouri consumer advocates say rules don't stop data-center power costs landing on homes; regulators disagree",
+"url": "https://abc17news.com/news/special-report/2026/10/26/consumer-advocates-warn-missouri-lacks-data-center-cost-safeguards-but-regulators-disagree",
+"outlet": "ABC17 News",
+"published": "2026-10-26T20:37:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "Ameren seeks a 10% rise, about $13 a month for homes; it says data centers aren't the reason. Advocates want stricter terms.",
+"also": [],
+"siren": false,
+"wall": "3",
+"wall_rank": 4.2,
+"tag": "Missouri advocates warn homes could pay for data centers' power plants",
+"label": "reported",
+"receipt": "Consumers Council of Missouri's warning; Ameren's requested ~$13/month residential rise (2027) is Ameren's figure, and Ameren says data centers are not the cause.",
+"touches": "Ameren electricity customers in Missouri",
+"entities": {
+"orgs": [
+"Ameren",
+"Consumers Council of Missouri",
+"Missouri Public Service Commission",
+"Google",
+"Amazon Web Services"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"MO"
+]
+}
+},
+{
 "id": "fortune-anthropic-s1-intended-controls",
 "title": "Anthropic's S-1 risk factors include human extinction, the Pentagon, and Dario Amodei's reputation",
 "url": "https://fortune.com/2026/10/26/anthropic-s1-risk-factors-existential-risk-pentagon-dario-amodei/",
@@ -1154,13 +1382,17 @@
 {
 "outlet": "Mallory",
 "url": "https://mallory.ai/stories/01a17f0b-b539-775a-a267-3d232e1d5e73"
+},
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html"
 }
 ],
 "wall": 1,
 "wall_rank": 1.2000000000000002,
 "tag": "Two at a US government-linked body",
 "label": "reported",
-"receipt": "Dream's count from the attacker's own logs (Oct 23-24); no victim, vendor or actor named, and no victim has confirmed it.",
+"receipt": "Dream's count from the attacker's own logs (Oct 23-24); no victim, vendor or actor named. Dream says it notified the vendor (Tom's Guide, Oct 28); no victim has confirmed it.",
 "moved": {
 "dir": "up",
 "at": "2026-10-27",
@@ -1174,7 +1406,9 @@
 "carried_by": [
 "Unite.AI",
 "Security Boulevard",
-"Mallory"
+"Mallory",
+"The Hacker News",
+"Tom's Guide"
 ]
 },
 "touches": "Organizations running firewalls from one unnamed large vendor in the US, Japan, Taiwan and South Korea",
@@ -2078,20 +2312,6 @@
 "region": "Israel",
 "topic": "deepfakes",
 "summary": "Haaretz-reported bot repurposing; AI videos of Netanyahu and the opposition on X; Likud switches turnout apps after a privacy ruling.",
-"siren": false,
-"also": []
-},
-{
-"id": "etoday-korea-php-shinhan-broadcom",
-"title": "Korean banks widen PHP2Shell checks; regulators found security gaps at 130 of 555 financial firms inspected",
-"url": "https://www.etoday.co.kr/news/view/2639738",
-"outlet": "eToday (Korea)",
-"published": "2026-10-25T04:31:00Z",
-"time_known": true,
-"kind": "official",
-"region": "Korea",
-"topic": "php2shell",
-"summary": "Shinhan extends checks to unmonitored subsidiaries; Broadcom lists three affected products; the 555-firm inspection is not tied to PHP.",
 "siren": false,
 "also": []
 }

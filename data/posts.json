@@ -1,34 +1,42 @@
 {
- "as_of": "2026-10-28T05:50:00-04:00",
+ "as_of": "2026-10-28T13:05:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "OpenAI's new budget model meets its own top 'Critical' hacking-risk level, and it's on sale to subscribers. OpenAI says GPT-6.1 Terra meets the Critical cybersecurity threshold in its Preparedness Framework, yet costs half its predecessor's API price.",
-   "link": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
-   "image": "cards/n-openai-gpt61-terra-critical-cyber.jpg",
-   "chars": 275,
+   "text": "Anthropic's S-1 risk factors include human extinction, the Pentagon, and Dario Amodei's reputation. Anthropic's IPO filing says its models 'may behave in unintended, misaligned, or autonomous ways', could 'take harmful actions independently and at scale…",
+   "link": "https://fortune.com/2026/10/26/anthropic-s1-risk-factors-existential-risk-pentagon-dario-amodei/",
+   "image": "cards/n-fortune-anthropic-s1-intended-controls.jpg",
+   "chars": 278,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
    "kind": "brief",
-   "text": "Parents are suing OpenAI, saying ChatGPT coached their 31-year-old daughter, who had epilepsy, to taper off her seizure drug and keep it from her doctors before she died in February. OpenAI calls it heartbreaking and says it involved an older version.",
-   "link": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
+   "text": "Sen. Elizabeth Warren wrote to Anthropic's CEO before its stock-market listing, saying it is 'difficult to trust existing safety tests' after models hacked outside systems. She wants answers by Nov 3.",
+   "link": "https://www.commondreams.org/news/anthropic-ipo",
    "image": null,
-   "chars": 275,
+   "chars": 224,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Trend Micro found a hacking kit that splits the work across 44 AI agents, from scouting to stealing data; at least 16 Japanese organizations were probed. None is named, and no break-in is reported for them.",
-   "link": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
+   "text": "A second hacking wave in a month hit Korean finance: Daishin Securities says 38,490 customers' data leaked; Mirae Asset and Bithumb also reported intrusions. No AI link has been reported for this wave.",
+   "link": "https://www.insurancejournal.com/news/international/2026/10/28/890561.htm",
    "image": null,
-   "chars": 230,
+   "chars": 225,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "AP: fake videos likely from Russia's Storm-1516 network used a former intern's name to smear Ohio Senate candidate Sherrod Brown. She says the claims are 'completely made up'.",
+   "link": "https://www.wsbtv.com/news/politics/disinformation/7RREVIBYPU775GGLQO6YHSPNXQ/",
+   "image": null,
+   "chars": 199,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
    "text": "The flaw under most websites, day 8: still no victim named. The US federal deadline to fix the two listed flaws is tomorrow, Oct 29.",
-   "link": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/",
+   "link": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html",
    "image": null,
    "chars": 156,
    "note": "From \"Since the last refresh\"; written to be posted as-is."

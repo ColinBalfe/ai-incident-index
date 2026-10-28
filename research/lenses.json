@@ -15,7 +15,7 @@
    {"q": "Would you move money if a relative called in a panic and asked?", "flag": "yes", "fix": "Make a rule now: no money moves on an incoming call or video. Hang up and call back.", "link": ["/checks/", "Is this a scam? Check it"]},
    {"q": "Have you given an app or AI agent your bank login?", "flag": "yes", "fix": "Revoke it in your bank's settings and change the password; banks are restricting third-party agents found inside accounts."}
   ],
-  "watch": [],
+  "watch": [{"date": "2026-11-03", "text": "Sen. Warren's deadline for Anthropic to answer her questions on AI safety and risk before its stock-market listing", "url": "https://www.commondreams.org/news/anthropic-ipo"}],
   "calls": ["korea-attribution-by-nov30"]
  },
  "work": {

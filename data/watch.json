@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None by name as of Oct 28, 05:40 ET. Closest yet: Dream (Oct 26) reports 25 real servers rooted Oct 23-24, two at an unnamed US government-affiliated organization, from the attacker's own files; unconfirmed by any victim. Unit 42 retracted its Oct 23 report on Oct 25; Karimi's honeypots remain the only independently confirmed code execution; odds of a named victim by Nov 7 raised 60% to 65%",
+"status": "None by name as of Oct 28, 12:50 ET. Closest yet: Dream (Oct 26) reports 25 real servers rooted Oct 23-24, two at an unnamed US government-affiliated organization, from the attacker's own files; unconfirmed by any victim. Unit 42 retracted its Oct 23 report on Oct 25; Karimi's honeypots remain the only independently confirmed code execution; odds of a named victim by Nov 7 raised 60% to 65%",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -56,7 +56,7 @@
 {
 "id": "korea-attrib",
 "item": "Korean regulators' final tally and police attribution; any Microsoft report backing its Storm-0940 claim",
-"status": "Seoul Serious Crimes office declined the case Oct 23; police keep it, no suspect named; Wiz (Oct 22) ties ARTEX tooling to Storm-0940 activity against software vendors, no link to the banks",
+"status": "Seoul Serious Crimes office declined the case Oct 23; police keep it, no suspect named. A second wave hit Korean finance Oct 27 (Daishin Securities: 38,490 customers' data leaked; Mirae Asset and Bithumb also reported intrusions), with no AI link reported for it (Bloomberg via Insurance Journal, Oct 28); Wiz (Oct 22) ties ARTEX tooling to Storm-0940 activity against software vendors, no link to the banks",
 "kind": "open",
 "why": "Would confirm the same open-source hacking agent in both a criminal campaign and a state-aligned one.",
 "source_url": "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/",
