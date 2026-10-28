@@ -8,13 +8,18 @@
  {
   "id": "2026-10-27-fixes-came-back",
   "date": "2026-10-27",
-  "kind": "fix_chain",
-  "home": true
+  "kind": "fix_chain"
  },
  {
   "id": "2026-10-27-ai-acts-on-its-own",
   "date": "2026-10-27",
   "kind": "autonomy_shift",
   "pin": true
+ },
+ {
+  "id": "2026-10-28-ai-job-cuts",
+  "date": "2026-10-28",
+  "kind": "layoff_months",
+  "home": true
  }
 ]

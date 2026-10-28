@@ -250,7 +250,85 @@ def fix_chain(spec):
                 aria=f'{len(FX)} major AI cases tracked from report to retest; {back} came back after a fix.',
                 table=(['Case', 'Now', 'Fix claimed', 'Checked by outsiders'], [(short(f), ST.get(cur(f)['status'], ''), {c['stage']: c['status'] for c in f['chain']}.get('claimed_fix', ''), {c['stage']: c['status'] for c in f['chain']}.get('retest', ''), f'/c/{f["incident_id"]}/') for f in FX]))
 
-KINDS = {'incident_field': incident_field, 'autonomy_shift': autonomy_shift, 'fix_chain': fix_chain}
+# ---------------------------------------------------------------- kind: job cuts tied to AI, by month and by who made the link
+def layoff_months(spec):
+    import re as _re
+    J = L('research/jobs.json')
+    led, seen = [], set()
+    for j in J['jobs']:
+        for d, what, u, lab in j.get('jobs_evidence', []):
+            low = what.lower()
+            who = 'co' if 'company says ai' in low else 'rep' if 'reported as ai' in low else 'study' if ('(study' in low or low.endswith('study') or 'study)' in low) else 'other'
+            if who in ('study', 'other') or not u or u in seen: continue
+            seen.add(u); led.append(dict(date=d, what=_re.sub(r'\s*\((company says AI[^)]*|reported as AI[^)]*)\)\s*', ' ', what).strip(), who=who, url=u))
+    try:
+        arch = {}
+        try:
+            arch = {n['id']: n for n in L('research/news_archive.json')}
+        except (OSError, ValueError):
+            pass
+        for n in L('research/news.json'): arch[n['id']] = {**arch.get(n['id'], {}), **n}
+        for n in sorted(arch.values(), key=lambda n: n.get('published') or ''):
+            if n.get('topic') == 'jobs' and n['url'] not in seen and _re.search(r'cut|layoff|lay off|buyout|job loss|redundanc|shed|eliminat', n.get('title', '') + ' ' + (n.get('summary') or ''), _re.I):
+                low = (n.get('title', '') + ' ' + (n.get('summary') or '')).lower()
+                seen.add(n['url']); led.append(dict(date=n['published'][:10], what=n.get('tag') or n['title'], who='rep' if n.get('label') == 'reported' else 'co' if ('says ai' in low or 'citing ai' in low or 'cites ai' in low) else 'unk', url=n['url']))
+    except (OSError, ValueError):
+        pass
+    end = dt.date.fromisoformat(AS_OF)
+    months = []
+    y, m = end.year, end.month
+    for _ in range(12):
+        months.append(f'{y:04d}-{m:02d}'); m -= 1
+        if not m: y, m = y - 1, 12
+    months.reverse()
+    cnt = {k: collections.Counter() for k in months}
+    for x in led:
+        if x['date'][:7] in cnt: cnt[x['date'][:7]][x['who']] += 1
+    inwin = [x for x in led if x['date'][:7] in cnt]
+    co = sum(1 for x in inwin if x['who'] == 'co'); tot = len(inwin)
+    last3 = sum(sum(cnt[k].values()) for k in months[-3:]); prior9 = sum(sum(cnt[k].values()) for k in months[:-3])
+    MN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    lab = lambda k: MN[int(k[5:]) - 1] + (" '" + k[2:4] if k[5:] == '01' or k == months[0] else '')
+    groups = [('co', RED, 'The company itself tied the cuts to AI'), ('rep', MUTED, 'Only reporters or analysts made the link'), ('unk', DIM, 'Link to AI unclear: see the source')]
+    def plot(box, tall):
+        left, top, right, bot = box
+        fs = 19 if tall else 13
+        base = bot - (40 if tall else 28)
+        mx = max(1, max(sum(c.values()) for c in cnt.values()))
+        step = 1 if mx <= 6 else 2 if mx <= 12 else 5
+        ymax = ((mx // step) + 1) * step
+        Y = lambda v: base - (base - top - 10) * v / ymax
+        out = []
+        for v in range(0, ymax + 1, step):
+            out.append(f'<line x1="{left}" x2="{right}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" stroke="{GRID}"/>'); out.append(T(left - 10, Y(v) + fs * .35, v, fs, INK2, anchor='end'))
+        bw = (right - left) / len(months)
+        for i, k in enumerate(months):
+            x = left + i * bw + bw * .2; w = bw * .6; yb = base
+            for g, color, name in groups:
+                v = cnt[k][g]
+                if not v: continue
+                h = (base - Y(v)) - 2
+                out.append(f'<rect x="{x:.1f}" y="{yb - h:.1f}" width="{w:.1f}" height="{h:.1f}" rx="2" fill="{color}"><title>{esc(lab(k) + ": " + str(v) + " · " + name)}</title></rect>')
+                if h > fs + 6: out.append(T(x + w / 2, yb - h / 2 + fs * .35, v, fs, NAVY if g == 'co' else PAPER, weight=700, anchor='middle'))
+                yb -= h + 2
+            t = sum(cnt[k].values())
+            if t: out.append(T(x + w / 2, yb - 8, t, fs, INK2, anchor='middle'))
+            out.append(T(x + w / 2, base + fs + 6, lab(k), fs, INK2, anchor='middle'))
+        return ''.join(out)
+    cur = sum(cnt[months[-1]].values()); best_prev = max(sum(cnt[k].values()) for k in months[:-1])
+    MF = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][int(months[-1][5:]) - 1]
+    ttl = (f'{MF} already has {cur} AI-linked job cuts on our ledger, more than any other month this past year' if cur > best_prev
+           else f'Job cuts tied to AI: {last3} in the last three months, {prior9} in the nine before')
+    return dict(title=ttl,
+                dek=f'Each bar counts announced cuts on our ledger, by month. Red: the employer itself named AI ({co} of {tot}). Counts of announcements, not of jobs.',
+                takeaway=f'Our ledger holds {last3} AI-linked job-cut announcements from the last three months against {prior9} in the nine months before; in {co} of {tot} the company itself named AI.',
+                why='Layoff headlines blur who is actually blaming AI. This separates cuts the employer tied to AI from cuts only reporters linked to it, so the trend can be read honestly. Part of the recent rise is that we started collecting in earnest this autumn, so read the red share as much as the height.',
+                legend=[(RED, 6.5, 'Company named AI'), (MUTED, 6.5, 'Reported as AI'), (DIM, 6.5, 'Link unclear')],
+                source=f'Source: Warning Shots layoffs ledger (jobs/layoffs/), each entry sourced. As of {fdate(AS_OF)}.', plot=plot,
+                aria=f'AI-linked job-cut announcements per month over 12 months; {last3} in the last three months, {prior9} in the nine before; {co} of {tot} company-stated.',
+                table=(['Date', 'Who says AI', 'What happened'], [(x['date'], {'co': 'Company says AI', 'rep': 'Reported as AI'}.get(x['who'], 'See source'), x['what'], x['url']) for x in sorted(inwin, key=lambda x: x['date'], reverse=True)]))
+
+KINDS = {'incident_field': incident_field, 'autonomy_shift': autonomy_shift, 'fix_chain': fix_chain, 'layoff_months': layoff_months}
 
 # ---------------------------------------------------------------- build
 try:
