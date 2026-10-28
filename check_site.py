@@ -32,7 +32,7 @@ try:
     retractions = json.load(open('research/retractions.json', encoding='utf-8'))
 except (OSError, ValueError):
     retractions = []
-pages = [p for p in glob.glob('**/*.html', recursive=True) if not p.startswith(('node_modules', 'archive', 'shots')) and p != 'index.template.html']
+pages = [p for p in glob.glob('**/*.html', recursive=True) if not p.startswith(('node_modules', 'archive', 'shots', 'build/xcard_out')) and p != 'index.template.html']
 for page in pages:
     raw = open(page, encoding='utf-8').read()
     paras = re.split(r'</(?:p|li|div|td|section|tr)>', raw)

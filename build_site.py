@@ -45,7 +45,7 @@ if _limg:
         print(f'WARNING: the lead photo {_limg} is the same as on {_prev[-1]}; pick a new free image (REFRESH: one new lead photo a day)')
     json.dump(dict(sorted(_li.items())[-60:]), open('research/lead_images.json', 'w', encoding='utf-8'), indent=1)
 og_title = (_sir['tag'] + ' | ' + title) if _sir else f"AI has started breaking in on its own — {title}: see what’s coming, know what it means"
-og_desc = ((_sir.get("summary", "") + " ") if _sir else "") + f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of this year's real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
+og_desc = ((_sir.get("summary", "") + " ") if _sir else "") + f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of the last 12 months' real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
 build = time.strftime('%Y%m%d%H%M', time.gmtime())
 site_url = meta['site_url']
 jsonld = json.dumps({"@context": "https://schema.org", "@graph": [
@@ -92,7 +92,7 @@ rec = rec.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="cano
 rec = rec.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}index/">', 1)
 rec = rec.replace(og_title.replace('"', '&quot;'), (f"AI has started breaking in on its own — the Record, {title}").replace('"', '&quot;'))
 rec = rec.replace('<a class="skip" href="#wall">Skip to the headlines</a>', '<a class="skip" href="#record">Skip to the Record</a>', 1)
-rec_desc = f"The Record: all {n} AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from {p12} to {s12} in a year; in {share}% of this year's real-world cases the AI did the acting. Charts, forecasts and whether the fixes held."
+rec_desc = f"The Record: all {n} AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from {p12} to {s12} in a year; in {share}% of the last 12 months' real-world cases the AI did the acting. Charts, forecasts and whether the fixes held."
 rec = rec.replace(og_desc.replace('"', '&quot;'), rec_desc.replace('"', '&quot;'))
 os.makedirs('index', exist_ok=True)
 open('index/index.html', 'w', encoding='utf-8').write(rec)

@@ -2,3 +2,4 @@ node_modules/
 node_modules
 shots/
 __pycache__/
+build/xcard_out/

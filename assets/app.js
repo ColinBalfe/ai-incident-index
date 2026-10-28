@@ -286,7 +286,7 @@ function drawHeadline() {
   const H = document.getElementById('headline');
   H.replaceChildren(txt('AI has started breaking in '), el('b', null, 'on its own.'));
   const sub = document.getElementById('sub');
-  sub.replaceChildren(txt('Severe AI incidents went from '), el('b', null, String(h.severe_prior12)), txt(' to '), el('b', null, String(h.severe_last12)), txt(' in a year. In '), el('b', null, Math.round(h.agentic_recent * 100) + '%'), txt(" of this year's real-world cases the AI itself did the acting: into a national health portal, government data sites, its own developers' servers and dozens of organizations, with nobody telling it to. Most of what happened inside the labs in the last three months is still undisclosed."));
+  sub.replaceChildren(txt('Severe AI incidents went from '), el('b', null, String(h.severe_prior12)), txt(' to '), el('b', null, String(h.severe_last12)), txt(' in a year. In '), el('b', null, Math.round(h.agentic_recent * 100) + '%'), txt(" of the last 12 months' real-world cases the AI itself did the acting: into a national health portal, government data sites, its own developers' servers and dozens of organizations, with nobody telling it to. Most of what happened inside the labs in the last three months is still undisclosed."));
   const stats = document.getElementById('hero-stats');
   const stat = (v, l, cls, small) => { const s = el('div', 'stat' + (cls ? ' ' + cls : '')); const vv = el('div', 'v'); const num = el('span'); countUp(num, v, 'stat:' + l.map((n) => n.textContent).join('').slice(0, 30)); vv.append(num); if (small) vv.append(el('small', null, small)); const ll = el('div', 'l'); ll.append(...l); s.append(vv, ll); return s; };
   const pct = (x) => Math.round(x * 100) + '%';
@@ -299,7 +299,7 @@ function drawHeadline() {
     stat(fmtN(h.n), [el('b', null, fmtN(h.n_wild)), txt(' real-world incidents and '), el('b', null, fmtN(h.n_lab)), txt(' lab or test findings, scored')]),
     stat(h.n_critical === 0 ? 'None' : String(h.n_critical), [txt(h.n_critical === 0 ? 'rated Critical yet. Odds of one within 12 months: ' : 'rated Critical. Odds of another within 12 months: '), el('b', null, crit ? crit.probability_label : '—')]),
   );
-  shareRow(document.getElementById('hero-share'), { anchor: 'record', text: `AI has started breaking in on its own. Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year; in ${pct(h.agentic_recent)} of this year's real-world cases the AI itself did the acting. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
+  shareRow(document.getElementById('hero-share'), { anchor: 'record', text: `AI has started breaking in on its own. Severe AI incidents went from ${h.severe_prior12} to ${h.severe_last12} in a year; in ${pct(h.agentic_recent)} of the last 12 months' real-world cases the AI itself did the acting. Warning Shots:`, svgBox: document.getElementById('ch-timeline'), name: 'escalation', title: `Every major AI incident since 2023, scored 0–100 (severe: ${h.severe_prior12} → ${h.severe_last12} in a year)`, embed: 'timeline', embedH: 560 });
   const up = document.getElementById('tb-updated');
   const tickUp = () => { const ms = Date.now() - Date.parse(D.meta.as_of); const mins = Math.max(0, Math.round(ms / 6e4)); const nx = D.meta.next_check ? Date.parse(D.meta.next_check) - Date.now() : null; const nxm = nx != null ? Math.round(nx / 6e4) : null; const nxs = nxm != null && nxm > 0 ? ', next check in ' + (nxm >= 60 ? Math.floor(nxm / 60) + 'h ' + (nxm % 60) + 'm' : nxm + ' min') : (nx != null ? (nxm <= -120 ? ', refresh overdue' : ', refresh due') : ''); const short = (mins < 60 ? 'Updated ' + mins + ' min ago' : 'Updated ' + relTime(D.meta.as_of)); up.textContent = short + nxs; up.title = 'Last refresh ' + fmtET(D.meta.as_of) + '. ' + D.meta.schedule; const nu = document.getElementById('nav-updated'); if (nu) nu.textContent = short; };
   tickUp(); clearInterval(window._tickUp); window._tickUp = setInterval(tickUp, 30000);
@@ -515,7 +515,7 @@ function drawLevel() {
     if (lastState && lastState.serial === nowState.serial && lastState.rung && lastState.rung !== nowState.rung) bits.push('the running story moved up to ' + nowState.rung.charAt(0).toUpperCase() + nowState.rung.slice(1));
     if (k || bits.length) { a2.append(el('i', 'newdot')); if (k) a2.append(el('b', null, String(k)), txt(' new' + (bits.length ? ', ' : ''))); if (bits.length) a2.append(txt(bits.join(', '))); a2.append(txt(' since you last looked')); }
     else a2.append(txt('Nothing new since you last looked: level unchanged, no new rung')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
-  else { a2.append(el('b', null, String(wall.length)), txt(' top stories of ' + newsItems().length + ' reports from the last 3 days')); }
+  else { a2.append(el('b', null, String(wall.length)), txt(' stories today, from ' + newsItems().length + ' reports in 3 days')); }
   try { localStorage.setItem('ws-last-state', JSON.stringify(nowState)); } catch (e) {}
   const a3 = el('a', 'lvl-s'); a3.href = '#record'; a3.append(txt('Severe incidents, last 12 months: '), el('b', null, String(h.severe_last12 ?? '')), txt(' (was ' + (h.severe_prior12 ?? '') + ')'));
   const det = el('div', 'lvl-det'); det.hidden = true;
@@ -628,7 +628,8 @@ function drawWall() {
   // Breaking from X: only first-hand, material posts under 12 hours old earn the bar (REFRESH.md rules); everything else is in "On X" below
   const XK = { breaking: 'Breaking', official: 'Official', claim: 'Unverified claim', opinion: 'Opinion' };
   const xposts = (D.xposts || []).filter((x) => x && x.url);
-  const brk = xposts.find((x) => (x.kind === 'breaking' || x.kind === 'official') && x.bar !== false && (Date.now() - Date.parse(x.posted)) < 12 * 3.6e6);
+  // The red bar is for alarms only: a 'breaking' post, or an 'official' one marked alarm:true (a warning, attack, recall, death, deadline). Product launches never get it.
+  const brk = xposts.find((x) => (x.kind === 'breaking' || (x.kind === 'official' && x.alarm === true)) && x.bar !== false && (Date.now() - Date.parse(x.posted)) < 12 * 3.6e6);
   const bbar = brk ? (() => { const b = el('a', 'xbreak'); b.href = brk.url; b.target = '_blank'; b.rel = 'noopener noreferrer'; b.append(el('span', 'xb-k', XK[brk.kind]), el('span', 'xb-t', brk.what), el('span', 'xb-s', brk.author + ', ' + brk.who + ' · ' + ageShort({ published: brk.posted }) + ' · on X')); return b; })() : null;
   const sinceBar = (() => {
     if (!PREV_VISIT) return null;
@@ -833,7 +834,11 @@ function drawStory() {
   const dotEls = beats.map((b, i) => { const d = el('button', 'st-dot'); d.type = 'button'; d.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + b.k); d.addEventListener('click', () => { stop(); show(i); }); dots.append(d); return d; });
   const rp = el('button', 'st-a', '↻ Replay'); rp.type = 'button'; rp.addEventListener('click', () => { storyState.done = false; show(0); run(); });
   const ex = el('button', 'st-a', 'Explore every incident ↓'); ex.type = 'button'; ex.addEventListener('click', () => { setEdOpen(true); const t = document.querySelector('.seis'); if (t) setTimeout(() => t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }), 60); });
-  ctl.append(dots, rp, ex); left.append(kick, ttl, ctl);
+  ctl.append(dots, rp, ex);
+  // On phones the band is one line (the current beat); a tap opens the chart and the controls
+  const pm = el('button', 'st-pm', 'See the chart ▾'); pm.type = 'button'; pm.setAttribute('aria-expanded', 'false');
+  pm.addEventListener('click', () => { const o = box.classList.toggle('open'); pm.setAttribute('aria-expanded', String(o)); pm.textContent = o ? 'Hide the chart ▴' : 'See the chart ▾'; });
+  left.append(kick, ttl, pm, ctl);
   // the strip: every incident as a hairline spike
   const strip = el('div', 'st-strip'); const W = 640, H = 120, ml = 4, mr = 34, base = H - 16;
   const x = d3.scaleUtc().domain([t0, new Date(+asOf + 20 * 864e5)]).range([ml, W - mr]), y = d3.scaleLinear().domain([0, 100]).range([base, 6]);
@@ -2123,7 +2128,7 @@ function drawFront() {
   const vc = C.victimCounts[live.incident_id] || {}; const countries = new Set((D.victims || []).filter((v) => v.incident_id === live.incident_id && v.country).map((v) => v.country)).size;
   const pct = (x) => Math.round(x * 100) + '%';
   box.replaceChildren(...[
-    card('#record', 'The record · ' + fmtN(h.n) + ' incidents since 2023', '', 'Severe incidents ' + h.severe_prior12 + ' → ' + h.severe_last12 + ' in a year; in ' + pct(h.agentic_recent) + ' of this year’s real-world cases the AI did the acting.', { dark: true, titleNodes: [txt('AI has started breaking in '), el('b', null, 'on its own.')], spark }),
+    card('#record', 'The record · ' + fmtN(h.n) + ' incidents since 2023', '', 'Severe incidents ' + h.severe_prior12 + ' → ' + h.severe_last12 + ' in a year; in ' + pct(h.agentic_recent) + ' of the last 12 months’ real-world cases the AI did the acting.', { dark: true, titleNodes: [txt('AI has started breaking in '), el('b', null, 'on its own.')], spark }),
     card('#fixes', 'Did they fix it? · ' + fx.length + ' cases', '', lastMoved ? 'Newest move: ' + lastMoved.name.split(':')[0] + ', ' + String(fixCur(lastMoved).status).replace('_', ' ') + '.' : 'Checked every refresh.', { titleNodes: [el('b', null, String(verified)), txt(' of ' + fx.length + ' verified fixed. ' + reopened + ' reopened.')] }),
     // What AI can do and the live case have their own desks and tracker; the phone front keeps only the three doors nothing else opens
     card('#next', 'Where this goes next', nextCat ? nextCat.date_label + ': ' + nextCat.event : 'The next two weeks', topF ? topF.probability_label + ' that ' + topF.event.charAt(0).toLowerCase() + topF.event.slice(1) + '.' : ''),

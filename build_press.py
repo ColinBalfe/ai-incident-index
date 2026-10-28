@@ -142,7 +142,7 @@ pbody = f"""{STYLE}<article class="pr">
 <h1>Press</h1>
 <p class="lede">Warning Shots tracks AI’s dangers and breakthroughs as they land on real lives. Every significant AI incident since 2023 is scored 0–100 by a published formula and linked to its sources. Free to cite, quote and embed.</p>
 <h2>Key figures</h2>
-<div class="pr-figs"><div><b>{build['n']}</b><span>AI incidents since 2023, each scored and sourced</span></div><div><b>{build['severe_prior12']} → {build['severe_last12']}</b><span>severe incidents, previous 12 months vs. last 12</span></div><div><b>{build['agentic_share']}%</b><span>of this year’s real-world cases where the AI itself did the acting</span></div><div><b>WS-{n}</b><span>today’s level: {esc(tier)}</span></div></div>
+<div class="pr-figs"><div><b>{build['n']}</b><span>AI incidents since 2023, each scored and sourced</span></div><div><b>{build['severe_prior12']} → {build['severe_last12']}</b><span>severe incidents, previous 12 months vs. last 12</span></div><div><b>{build['agentic_share']}%</b><span>of the last 12 months’ real-world cases where the AI itself did the acting</span></div><div><b>WS-{n}</b><span>today’s level: {esc(tier)}</span></div></div>
 <p>Figures as of {esc(date_label)}; they change as the index is refreshed. Check the <a href="/index/">Record</a> for the current numbers before publishing.</p>
 <h2>How to cite</h2>
 <p>Short credit, for a chart or a caption:</p>
