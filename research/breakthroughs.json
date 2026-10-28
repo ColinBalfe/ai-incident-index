@@ -43,7 +43,7 @@
   "date": "2026-10-22",
   "area": "Safer software",
   "proof": "claimed",
-  "payoff": "AI checked the code inside 123 widely used programs and found hundreds of hidden bugs",
+  "payoff": "Anthropic says its AI checked the code inside 123 widely used programs and found hundreds of hidden bugs",
   "means": "Anthropic says its AI mathematically checked the building blocks that many apps and websites rely on, and found defects some of which had gone unnoticed for years. Bugs like these are how hackers get in, so finding them first makes the software you use safer. This is Anthropic's own account so far.",
   "people": "Everyone who uses the apps and websites built on that code."
  },
@@ -72,7 +72,7 @@
   "date": "2026-10-27",
   "area": "Math and physics",
   "proof": "claimed",
-  "payoff": "AI agents checked one of math's biggest proofs, 15,000 pages long, in 24 days",
+  "payoff": "Axiom says its AI agents checked one of math's biggest proofs, 15,000 pages long, in 24 days",
   "means": "Axiom says dozens of its AI agents, directed by engineers and mathematicians, turned the classification of finite simple groups into about 43 million lines a computer can check step by step, finding 34 departures from the published proofs, mostly minor. The proof itself was never in doubt. No outside group has rebuilt it yet; Axiom has published the files so others can.",
   "people": "Mathematicians who build on results too long for any one person to check.",
   "entities": {

@@ -754,7 +754,7 @@ function drawWall() {
     const s = el('section', 'bt'); s.setAttribute('aria-label', 'Breakthroughs');
     const h = el('div', 'bt-h'); h.append(el('h2', 'bt-t', 'Breakthroughs'), el('span', 'bt-sub', 'What AI just made possible, and what it means for you')); const all = el('a', 'bt-all', 'All breakthroughs →'); all.href = '/breakthroughs/'; h.append(all); s.append(h);
     const g = el('div', 'bt-g');
-    BT.slice(0, 3).forEach((b) => { const c = el('article', 'bt-c'); const top = el('div', 'bt-k'); top.append(el('span', 'bt-area', b.area || ''), el('span', 'bt-p ' + b.proof, BTL[b.proof] || b.proof)); c.append(top);
+    BT.slice(0, 3).forEach((b) => { const c = el('article', 'bt-c'); const top = el('div', 'bt-k'); top.append(el('span', 'bt-area', b.area || ''), ...(b.proof === 'claimed' ? [] : [el('span', 'bt-p ' + b.proof, BTL[b.proof] || b.proof)])); c.append(top);
       const a = el('a', 'bt-pay', b.payoff); a.href = b.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; c.append(a, el('p', 'bt-m', b.means));
       if (b.people) { const pp = el('p', 'bt-who'); pp.append(el('b', null, 'Who it helps: '), txt(b.people)); c.append(pp); }
       if (b.try && b.try[1]) { const t = el('a', 'bt-try', 'Try it: ' + b.try[0] + ' →'); t.href = b.try[1]; t.target = '_blank'; t.rel = 'noopener noreferrer'; c.append(t); }
