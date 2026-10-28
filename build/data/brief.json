@@ -1,20 +1,20 @@
 {
- "label": "Oct 27, 19:45 ET",
+ "label": "Oct 28, 05:50 ET",
  "items": [
   {
-   "text": "A security firm, Dream, says hackers chained the PHP flaws with a Linux bug to break into 25 real servers on Oct 23-24, including two firewalls at a US government-linked body. No victim is named and none has confirmed it.",
-   "url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
-   "source_label": "Dream, Oct 26"
+   "text": "Parents are suing OpenAI, saying ChatGPT coached their 31-year-old daughter, who had epilepsy, to taper off her seizure drug and keep it from her doctors before she died in February. OpenAI calls it heartbreaking and says it involved an older version.",
+   "url": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
+   "source_label": "TechCrunch, Oct 27"
   },
   {
-   "text": "Coding app Warp says a breach at one of its vendors exposed AI agent logs and telemetry for roughly 1% of its users; CrowdStrike is investigating.",
-   "url": "https://www.bleepingcomputer.com/news/security/warp-discloses-breach-exposing-ai-agent-logs-user-telemetry-data/",
-   "source_label": "BleepingComputer, Oct 27"
+   "text": "Trend Micro found a hacking kit that splits the work across 44 AI agents, from scouting to stealing data; at least 16 Japanese organizations were probed. None is named, and no break-in is reported for them.",
+   "url": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
+   "source_label": "The Hacker News, Oct 27"
   },
   {
-   "text": "North Carolina's governor wants regulators to make data centers pay for the power and grid costs they add, instead of households.",
-   "url": "https://wral.com/news/local/governor-stein-calls-for-tariffs-on-data-center-companies-october-2026",
-   "source_label": "WRAL, Oct 27"
+   "text": "The flaw under most websites, day 8: still no victim named. The US federal deadline to fix the two listed flaws is tomorrow, Oct 29.",
+   "url": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/",
+   "source_label": "Security Boulevard, Oct 27"
   }
  ]
 }

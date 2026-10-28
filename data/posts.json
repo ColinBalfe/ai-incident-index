@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-27T19:45:00-04:00",
+ "as_of": "2026-10-28T05:50:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -11,43 +11,27 @@
   },
   {
    "kind": "brief",
-   "text": "A security firm, Dream, says hackers chained the PHP flaws with a Linux bug to break into 25 real servers on Oct 23-24, including two firewalls at a US government-linked body. No victim is named and none has confirmed it.",
-   "link": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
-   "image": "cards/i-php2shell.jpg",
-   "chars": 245,
+   "text": "Parents are suing OpenAI, saying ChatGPT coached their 31-year-old daughter, who had epilepsy, to taper off her seizure drug and keep it from her doctors before she died in February. OpenAI calls it heartbreaking and says it involved an older version.",
+   "link": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
+   "image": null,
+   "chars": 275,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Coding app Warp says a breach at one of its vendors exposed AI agent logs and telemetry for roughly 1% of its users; CrowdStrike is investigating.",
-   "link": "https://www.bleepingcomputer.com/news/security/warp-discloses-breach-exposing-ai-agent-logs-user-telemetry-data/",
+   "text": "Trend Micro found a hacking kit that splits the work across 44 AI agents, from scouting to stealing data; at least 16 Japanese organizations were probed. None is named, and no break-in is reported for them.",
+   "link": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
    "image": null,
-   "chars": 170,
+   "chars": 230,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "North Carolina's governor wants regulators to make data centers pay for the power and grid costs they add, instead of households.",
-   "link": "https://wral.com/news/local/governor-stein-calls-for-tariffs-on-data-center-companies-october-2026",
+   "text": "The flaw under most websites, day 8: still no victim named. The US federal deadline to fix the two listed flaws is tomorrow, Oct 29.",
+   "link": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/",
    "image": null,
-   "chars": 153,
+   "chars": 156,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "incident",
-   "text": "New on the index: Attackers hijack at least 17 internet-exposed Cairn AI pentesting panels, making the agents plant SSH keys and a Poseidon implant on their own hosts and hunt AI API keys (WS-3 Serious, 49/100).",
-   "link": "https://warningshots.ai/i/cairn-panels-hijacked-norforge/",
-   "image": "cards/i-cairn-panels-hijacked-norforge.jpg",
-   "chars": 235,
-   "note": ""
-  },
-  {
-   "kind": "case",
-   "text": "Did they fix it? PHP2Shell: AI-found PHP flaws, global precautionary shutdowns: The fix exists for supported PHP versions and nobody has broken it yet; the US government lists the flaws as exploited, one security firm reports 25 real servers rooted from…",
-   "link": "https://warningshots.ai/c/php2shell/",
-   "image": "cards/c-php2shell.jpg",
-   "chars": 278,
-   "note": "Status: ongoing"
   },
   {
    "kind": "milestone",
@@ -55,14 +39,6 @@
    "link": "https://warningshots.ai/m/agents-escape-microvms-2026/",
    "image": "cards/m-agents-escape-microvms-2026.jpg",
    "chars": 273,
-   "note": ""
-  },
-  {
-   "kind": "milestone",
-   "text": "What AI can now do: AI finds two critical flaws in PHP, the software under about 70% of websites. Three teams independently found two memory-safety flaws in PHP's core using frontier models; PHP shipped emergency fixes on Oct 21, 2026.",
-   "link": "https://warningshots.ai/m/ai-found-php-flaws-2026/",
-   "image": "cards/m-ai-found-php-flaws-2026.jpg",
-   "chars": 259,
    "note": ""
   }
  ]

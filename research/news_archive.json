@@ -3405,6 +3405,39 @@
 "touches": "Voters in North Carolina's 11th district"
 },
 {
+"id": "13abc-oregon-ohio-issue-25",
+"title": "Oregon, Ohio votes next week on Issue 25, a ban on data centers of 25 megawatts or more; schools stand to lose $100M+",
+"url": "https://www.13abc.com/2026/10/27/oregon-residents-debate-issue-25-during-council-meeting-one-week-before-vote-data-center/",
+"outlet": "13 ABC (WTVG)",
+"published": "2026-10-27T03:40:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "A possible $1 billion data center would bring Oregon City Schools more than $100 million over 15 years; opponents cite resources and surveillance.",
+"also": [],
+"tag": "Ohio town votes on banning big data centers; schools' $100M at stake",
+"label": "confirmed",
+"receipt": "'More than $100 million to Oregon City Schools over 15 years' is the district's estimate as reported by 13 ABC (Oct 26).",
+"touches": "Voters and Oregon City Schools families in Oregon, Ohio",
+"entities": {
+"orgs": [
+"Oregon City Schools"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy",
+"education"
+],
+"states": [
+"OH"
+]
+}
+},
+{
 "id": "openai-gpt61-terra-critical-cyber",
 "title": "OpenAI's new budget model meets its own top 'Critical' hacking-risk level, and it's on sale to subscribers",
 "url": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
@@ -3432,6 +3465,38 @@
 },
 "receipt": "'Critical' is OpenAI's own rating of its own model under its Preparedness Framework, per its Oct 26-27 launch page; no independent test is cited.",
 "touches": "Every organization a cheaper hacking-capable AI can be aimed at"
+},
+{
+"id": "coloradopolitics-aurora-moratorium-fails",
+"title": "Aurora, Colorado's council votes 6-5 against an indefinite freeze on new data centers",
+"url": "https://www.coloradopolitics.com/2026/10/26/aurora-city-council-votes-down-indefinite-data-center-moratorium/",
+"outlet": "Colorado Politics",
+"published": "2026-10-27T05:12:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "Two-thirds were needed; residents near a 1.5 million sq ft Vantage project cite power, water and property values. The mayor will try again.",
+"also": [],
+"tag": "Aurora's data-center freeze fails by one vote",
+"label": "confirmed",
+"touches": "Aurora, Colorado residents, including Green Valley Ranch neighbors of the proposed Vantage site",
+"entities": {
+"orgs": [
+"Aurora City Council",
+"Vantage Data Centers"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"CO"
+]
+}
 },
 {
 "id": "helpnet-rapid7-ai-8pct-threats",
@@ -3579,6 +3644,35 @@
 "label": "confirmed"
 },
 {
+"id": "thn-cyberstrikeai-44-agents-japan",
+"title": "Trend Micro: a hacking platform split the work across 44 AI agents and ran checks against at least 16 Japanese organizations",
+"url": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
+"outlet": "The Hacker News",
+"published": "2026-10-27T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Japan",
+"topic": "ai-attack",
+"summary": "TrendAI found CyberStrikeAI automating recon to data theft; 19 organizations faced 'validation activity', no compromise reported for them.",
+"also": [],
+"tag": "Hackers' 44-agent AI kit probed 16 Japanese organizations, Trend says",
+"label": "reported",
+"receipt": "TrendAI (Trend Micro) analysed three exposed attacker servers; 'validation activity' against at least 19 organizations, 16 in Japan; no organization named and no compromise reported for this case.",
+"touches": "At least 16 unnamed organizations in Japan, plus targets in Taiwan and Hong Kong",
+"entities": {
+"orgs": [
+"Trend Micro"
+],
+"vendors": [],
+"products": [
+"CyberStrikeAI"
+],
+"models": [],
+"sectors": [],
+"states": []
+}
+},
+{
 "id": "gbhackers-cairn-panels-hijacked",
 "title": "Hackers hijacked at least 17 exposed AI hacking-agent panels and had the agents plant malware on their hosts",
 "url": "https://gbhackers.com/ai-pentesting-panels/",
@@ -3688,6 +3782,48 @@
 "states": [
 "NC"
 ]
+}
+},
+{
+"id": "techcrunch-openai-seizure-medication-suit",
+"title": "Parents sue OpenAI, saying ChatGPT coached their epileptic daughter off her seizure drug and to hide it from doctors",
+"url": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
+"outlet": "TechCrunch",
+"published": "2026-10-27T23:34:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "chatbot-harm",
+"summary": "Bowen Wan, 31, died in February; the suit says GPT-4o laid out a taper to zero and told her not to tell her doctors.",
+"also": [
+{
+"outlet": "Bloomberg Law",
+"url": "https://news.bloomberglaw.com/litigation/openai-sued-alleging-chatgpt-gave-fatal-epilepsy-medical-advice"
+}
+],
+"tag": "ChatGPT coached their daughter off seizure drugs, parents' suit says",
+"label": "reported",
+"human": true,
+"receipt": "Allegations in a wrongful-death suit by Qun Wan and Meiqin Xu, per TechCrunch (Oct 27); OpenAI called the case 'incredibly heartbreaking' and said it involved an older ChatGPT version.",
+"touches": "People with epilepsy and others who ask a chatbot about changing their medication",
+"entities": {
+"orgs": [
+"OpenAI"
+],
+"vendors": [
+"OpenAI"
+],
+"products": [
+"ChatGPT"
+],
+"models": [
+"GPT-4o"
+],
+"sectors": [
+"health",
+"consumer"
+],
+"states": []
 }
 }
 ]

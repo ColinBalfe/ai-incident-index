@@ -6,7 +6,7 @@
    {"q": "Are photos of your kids public on social media?", "flag": "yes", "fix": "Switch those accounts to private or limit who can see the photos; public images are what deepfake abusers use.", "link": ["/help/", "What to do if it happens"]},
    {"q": "Has your family agreed a safe word for emergency calls?", "flag": "no", "fix": "Pick one tonight. A cloned voice can't answer a question only your family knows.", "link": ["/shield/", "Make a safe word, free"]}
   ],
-  "watch": [],
+  "watch": [{"date": "2026-11-02", "text": "Google's deadline to answer Senators Hawley and Blumenthal on AI switched on by default for students", "url": "https://theoutpost.ai/news-story/google-faces-bipartisan-senate-inquiry-over-ai-in-schools-and-student-mental-health-concerns-32482/"}],
   "calls": ["characterai-bid-procedures-by-oct31"]
  },
  "money": {
@@ -47,7 +47,8 @@
    {"q": "Do you know which state agency approves your power rates?", "flag": "no", "fix": "It is usually the public utility (or public service) commission. Its website lists open rate cases and how to comment."}
   ],
   "watch": [
-   {"date": "", "text": "Arizona: the attorney general wants an audit of whether homes paid data-centre-driven fuel costs; APS asks for a 14% to 16% residential rise", "url": "https://kjzz.org/business/2026-10-26/arizona-utilities-scramble-to-keep-up-as-data-center-boom-drives-rapid-expansion-of-the-power-grid"}
+   {"date": "", "text": "Arizona: the attorney general wants an audit of whether homes paid data-centre-driven fuel costs; APS asks for a 14% to 16% residential rise", "url": "https://kjzz.org/business/2026-10-26/arizona-utilities-scramble-to-keep-up-as-data-center-boom-drives-rapid-expansion-of-the-power-grid"},
+   {"date": "2026-11-03", "text": "Oregon, Ohio votes on Issue 25, a ban on data centers of 25 megawatts or more", "url": "https://www.13abc.com/2026/10/27/oregon-residents-debate-issue-25-during-council-meeting-one-week-before-vote-data-center/"}
   ],
   "calls": []
  },

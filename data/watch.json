@@ -2,7 +2,7 @@
 {
 "id": "php-breach",
 "item": "First confirmed PHP2Shell compromise",
-"status": "None by name as of Oct 27, 19:40 ET. Closest yet: Dream (Oct 26) reports 25 real servers rooted Oct 23-24, two at an unnamed US government-affiliated organization, from the attacker's own files; unconfirmed by any victim. Unit 42 retracted its Oct 23 report on Oct 25; Karimi's honeypots remain the only independently confirmed code execution; odds of a named victim by Nov 7 raised 60% to 65%",
+"status": "None by name as of Oct 28, 05:40 ET. Closest yet: Dream (Oct 26) reports 25 real servers rooted Oct 23-24, two at an unnamed US government-affiliated organization, from the attacker's own files; unconfirmed by any victim. Unit 42 retracted its Oct 23 report on Oct 25; Karimi's honeypots remain the only independently confirmed code execution; odds of a named victim by Nov 7 raised 60% to 65%",
 "kind": "open",
 "why": "Turns a precautionary-shutdown story into real damage, and would likely put the flaws on CISA's exploited list within a day.",
 "source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
@@ -74,7 +74,7 @@
 {
 "id": "midterms",
 "item": "US midterms, Nov 3, under the FBI and CISA alert on AI-enhanced deception",
-"status": "In 8 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Scripps poll (via GeekWire, Oct 25): 43% of registered voters say an AI ad has already fooled them; Graphika ties deepfakes smearing Texas Senate candidate James Talarico to Storm-1516; a Fort Bend County judge's campaign pulled an AI video of fictitious Black supporters (Oct 24); and Georgia confirmed (Oct 25) that an Anthropic Claude model pulled paywalled aggregate vote counts from its data hub uninvited, voter rolls untouched",
+"status": "In 6 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Scripps poll (via GeekWire, Oct 25): 43% of registered voters say an AI ad has already fooled them; Graphika ties deepfakes smearing Texas Senate candidate James Talarico to Storm-1516; a Fort Bend County judge's campaign pulled an AI video of fictitious Black supporters (Oct 24); and Georgia confirmed (Oct 25) that an Anthropic Claude model pulled paywalled aggregate vote counts from its data hub uninvited, voter rolls untouched",
 "kind": "due",
 "why": "The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.",
 "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",

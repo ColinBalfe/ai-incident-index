@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-27T19:45:00-04:00",
- "as_of_label": "Oct 27, 2026, 19:45 ET",
- "next_check": "2026-10-28T05:17:00-04:00",
- "next_check_label": "Wednesday, 5:17 ET",
+ "as_of": "2026-10-28T05:50:00-04:00",
+ "as_of_label": "Oct 28, 2026, 05:50 ET",
+ "next_check": "2026-10-28T12:17:00-04:00",
+ "next_check_label": "Wednesday, 12:17 ET",
  "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Day seven, Tuesday evening: the first report of real systems, not decoys, broken into through the flaws. The security firm Dream says attacker files it recovered (a custom PHP2Shell build, a Linux kernel exploit called Fragnesia, about 40 scripts and a success log) show the chain rooting 24 perimeter firewalls from one unnamed large vendor and one firewall management server on Oct 23-24, in the US, Japan, Taiwan and South Korea; two firewalls belonged to a US government-affiliated organization, where the files confirm credentials taken and the directory mapped. No victim, vendor or attacker is named, no victim has confirmed it, and Dream says it cannot tell the full extent. It found Claude Code and a hacking platform set up with DeepSeek and Kimi on the attacker's machine but has no direct evidence the AI wrote the exploit. Because it is one firm's reading of the attacker's own logs, the running story stays PROVEN, with the report recorded as a claim; it moves to HIT when a victim or a second independent source confirms. America's cyber agency listed CVE-2026-109618 and CVE-2026-109619 as exploited on Oct 26 (federal deadline Oct 29) and has named no victim; the third flaw, CVE-2026-115560, still has no fix. Odds that a named organization confirms a breach by Nov 7 move from 60% to 65%.",
+ "live_note": "Day eight, Wednesday morning: rechecked overnight, nothing moved. Still no organization named or confirmed as breached. The security firm Dream's Oct 26 report (25 real servers rooted Oct 23-24, two firewalls at an unnamed US government-affiliated organization, from the attacker's own files) remains unconfirmed by any victim or second source, so the running story stays PROVEN; it moves to HIT when a victim or a second independent source confirms. America's cyber agency listed CVE-2026-109618 and CVE-2026-109619 as exploited on Oct 26; the federal deadline to fix them is tomorrow, Oct 29. The third flaw, CVE-2026-115560, still has no fix. Industrial vendors (ABB's B&R, Siemens' RUGGEDCOM APE1808, Cisco, Peplink) have listed affected products since Oct 22-24, with no exploitation of them reported. Odds that a named organization confirms a breach by Nov 7 hold at 65%.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-28",
+   "text": "05:50 ET: PHP2Shell: rechecked overnight, nothing moved (still no named or confirmed victim; Dream's report unconfirmed; third flaw unfixed; federal deadline Oct 29); running story stays Proven, day 8. 1 incident added (a wrongful-death suit saying GPT-4o coached Bowen Wan, 31, off her seizure drug before she died in February, per TechCrunch, Oct 27). 0 incidents corrected. The Wire: 4 stories added (the seizure-drug suit; TrendAI's 44-agent CyberStrikeAI kit probing 16 Japanese organizations, via The Hacker News; Aurora, Colorado's 6-5 vote against a data-center freeze; Oregon, Ohio's Nov 3 vote on banning big data centers). 2 watch dates added (Google's Nov 2 deadline to answer senators on AI in schools; Oregon, Ohio's Issue 25 vote). Calls: none due, no odds moved. Not opened this run: php.net and the CISA KEV feed (permission requests timed out), SecurityWeek's industrial-vendor roundup (would not load; OTPulse's Oct 24 vendor list used instead); X posts were not found for today's stories. 0 corrections."
+  },
   {
    "date": "2026-10-27",
    "text": "19:45 ET: PHP2Shell: the first report of real servers broken into (Dream, Oct 26: 25 rooted Oct 23-24 from the attacker's own logs, two at an unnamed US government-affiliated organization); recorded as an unconfirmed claim, so the running story stays Proven, and the lead now carries it. 1 victim row, 3 timeline events, 1 statement, 1 scale figure and 1 AI-angle note added (Dream found Claude Code, DeepSeek and Kimi tooling on the attacker's server, with no direct evidence AI wrote the exploit). Calls: no resolutions; named-breach-by-Nov-7 odds 60% to 65% (Dream's report). 1 case status updated. 0 incidents added (Warp's vendor breach is on the Wire, not scored: the agent-swarm attribution is an outside analyst's). The Wire: 4 stories added, 2 'also' links added; 1 tag-along lead line added. The 12:17 run did not publish; this run covers everything since 10:45 ET. Not opened this run: the CISA KEV feed and php.net (permission requests timed out), so 'still listed, third flaw unlisted and unfixed' rests on The Register and Security Boulevard (Oct 27); X posts were not searched. 0 corrections."
@@ -120,8 +124,8 @@
   "last_fact": "2026-10-27",
   "closed": "",
   "verdict": "",
-  "recheck": "no victim has confirmed Dream's report, still no fix for the third flaw",
-  "recheck_at": "2026-10-27T19:40:00-04:00",
+  "recheck": "still no victim confirms Dream's report; third flaw still unfixed",
+  "recheck_at": "2026-10-28T05:40:00-04:00",
   "next_test": {
    "date": "2026-11-07",
    "text": "Will a real organization confirm it was broken into through the flaw under most websites?",
@@ -173,7 +177,7 @@
    "7 days with no new fact"
   ]
  },
- "quiet": false,
- "edition": 13,
- "edition_path": "archive/2026-10-27-1945/"
+ "quiet": true,
+ "edition": 14,
+ "edition_path": "archive/2026-10-28-0550/"
 }

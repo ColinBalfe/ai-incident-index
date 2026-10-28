@@ -1,5 +1,50 @@
 [
 {
+"id": "techcrunch-openai-seizure-medication-suit",
+"title": "Parents sue OpenAI, saying ChatGPT coached their epileptic daughter off her seizure drug and to hide it from doctors",
+"url": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
+"outlet": "TechCrunch",
+"published": "2026-10-27T23:34:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "chatbot-harm",
+"summary": "Bowen Wan, 31, died in February; the suit says GPT-4o laid out a taper to zero and told her not to tell her doctors.",
+"siren": false,
+"also": [
+{
+"outlet": "Bloomberg Law",
+"url": "https://news.bloomberglaw.com/litigation/openai-sued-alleging-chatgpt-gave-fatal-epilepsy-medical-advice"
+}
+],
+"tag": "ChatGPT coached their daughter off seizure drugs, parents' suit says",
+"wall": "3",
+"wall_rank": 20.4,
+"label": "reported",
+"human": true,
+"receipt": "Allegations in a wrongful-death suit by Qun Wan and Meiqin Xu, per TechCrunch (Oct 27); OpenAI called the case 'incredibly heartbreaking' and said it involved an older ChatGPT version.",
+"touches": "People with epilepsy and others who ask a chatbot about changing their medication",
+"entities": {
+"orgs": [
+"OpenAI"
+],
+"vendors": [
+"OpenAI"
+],
+"products": [
+"ChatGPT"
+],
+"models": [
+"GPT-4o"
+],
+"sectors": [
+"health",
+"consumer"
+],
+"states": []
+}
+},
+{
 "id": "wral-stein-data-center-tariffs",
 "title": "North Carolina's governor urges regulators to make data centers pay for the power and grid costs they add",
 "url": "https://wral.com/news/local/governor-stein-calls-for-tariffs-on-data-center-companies-october-2026",
@@ -135,6 +180,38 @@
 "summary": "Under 53% of initially affected organizations still vulnerable a week on; public exploit kits failed against Wiz's systems.",
 "siren": false,
 "also": []
+},
+{
+"id": "thn-cyberstrikeai-44-agents-japan",
+"title": "Trend Micro: a hacking platform split the work across 44 AI agents and ran checks against at least 16 Japanese organizat",
+"url": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
+"outlet": "The Hacker News",
+"published": "2026-10-27T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Japan",
+"topic": "ai-attack",
+"summary": "TrendAI found CyberStrikeAI automating recon to data theft; 19 organizations faced 'validation activity', no compromise reported for them.",
+"siren": false,
+"also": [],
+"tag": "Hackers' 44-agent AI kit probed 16 Japanese organizations, Trend says",
+"wall": "1",
+"wall_rank": 5.2,
+"label": "reported",
+"receipt": "TrendAI (Trend Micro) analysed three exposed attacker servers; 'validation activity' against at least 19 organizations, 16 in Japan; no organization named and no compromise reported for this case.",
+"touches": "At least 16 unnamed organizations in Japan, plus targets in Taiwan and Hong Kong",
+"entities": {
+"orgs": [
+"Trend Micro"
+],
+"vendors": [],
+"products": [
+"CyberStrikeAI"
+],
+"models": [],
+"sectors": [],
+"states": []
+}
 },
 {
 "id": "reuters-deepseek-shutdown-39pct",
@@ -277,6 +354,41 @@
 "also": []
 },
 {
+"id": "coloradopolitics-aurora-moratorium-fails",
+"title": "Aurora, Colorado's council votes 6-5 against an indefinite freeze on new data centers",
+"url": "https://www.coloradopolitics.com/2026/10/26/aurora-city-council-votes-down-indefinite-data-center-moratorium/",
+"outlet": "Colorado Politics",
+"published": "2026-10-27T05:12:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "Two-thirds were needed; residents near a 1.5 million sq ft Vantage project cite power, water and property values. The mayor will try again.",
+"siren": false,
+"also": [],
+"tag": "Aurora's data-center freeze fails by one vote",
+"wall": "3",
+"wall_rank": 4.5,
+"label": "confirmed",
+"touches": "Aurora, Colorado residents, including Green Valley Ranch neighbors of the proposed Vantage site",
+"entities": {
+"orgs": [
+"Aurora City Council",
+"Vantage Data Centers"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"CO"
+]
+}
+},
+{
 "id": "openai-gpt61-terra-critical-cyber",
 "title": "OpenAI's new budget model meets its own top 'Critical' hacking-risk level, and it's on sale to subscribers",
 "url": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
@@ -307,6 +419,42 @@
 "siren": true,
 "wall_rank": 0,
 "touches": "Every organization a cheaper hacking-capable AI can be aimed at"
+},
+{
+"id": "13abc-oregon-ohio-issue-25",
+"title": "Oregon, Ohio votes next week on Issue 25, a ban on data centers of 25 megawatts or more; schools stand to lose $100M+",
+"url": "https://www.13abc.com/2026/10/27/oregon-residents-debate-issue-25-during-council-meeting-one-week-before-vote-data-center/",
+"outlet": "13 ABC (WTVG)",
+"published": "2026-10-27T03:40:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "A possible $1 billion data center would bring Oregon City Schools more than $100 million over 15 years; opponents cite resources and surveillance.",
+"siren": false,
+"also": [],
+"tag": "Ohio town votes on banning big data centers; schools' $100M at stake",
+"wall": "3",
+"wall_rank": 4.6,
+"label": "confirmed",
+"receipt": "'More than $100 million to Oregon City Schools over 15 years' is the district's estimate as reported by 13 ABC (Oct 26).",
+"touches": "Voters and Oregon City Schools families in Oregon, Ohio",
+"entities": {
+"orgs": [
+"Oregon City Schools"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy",
+"education"
+],
+"states": [
+"OH"
+]
+}
 },
 {
 "id": "wlos-ager-ai-drag-ad",
@@ -2050,203 +2198,6 @@
 "region": "UK",
 "topic": "php2shell",
 "summary": "Warned in advance, he rushed when the leak moved the release up; 'the most severe incident in years', maybe not the last.",
-"siren": false,
-"also": []
-},
-{
-"id": "abc-patrick-white-publishing-ai",
-"title": "Authors paid up to $17,000 to a 'Patrick White Publishing'; ABC finds its storefronts and covers are AI-made",
-"url": "https://www.abc.net.au/news/2026-10-25/patrick-white-publishing-authors-unhappy-service-ai-art/107255794",
-"outlet": "ABC News (Australia)",
-"published": "2026-10-24T21:29:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Australia",
-"topic": "everyday",
-"summary": "Google Maps storefront images carry OpenAI watermarks; the company's ABN belongs to an unrelated firm that reported it to Scamwatch.",
-"siren": false,
-"also": []
-},
-{
-"id": "blueprint-nigeria-musk-voice-clone-arrests",
-"title": "Nigeria arrests nine with UK, Canadian and German help; one allegedly cloned Elon Musk's voice for a scam",
-"url": "https://blueprint.ng/police-nab-9-recover-15900-in-cryptocurrency-others/",
-"outlet": "Blueprint (Nigeria)",
-"published": "2026-10-24T21:28:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Nigeria",
-"topic": "everyday",
-"summary": "$15,900 in crypto recovered; two Canadian romance-fraud victims lost more than CA$417,000; suspects not yet tried.",
-"siren": false,
-"also": [
-{
-"outlet": "Crime Fighters",
-"url": "https://crimefightersng.com/news/npf-nccc-arrests-nine-over-international-fraud-elon-musk-impersonation"
-}
-]
-},
-{
-"id": "fnnews-korea-smes-php2shell",
-"title": "Korean small businesses say they cannot tell whether PHP2Shell affects them; KISA reports no exploitation yet",
-"url": "https://www.fnnews.com/news/202610250601277183",
-"outlet": "Financial News (Korea)",
-"published": "2026-10-24T21:01:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Korea",
-"topic": "php2shell",
-"summary": "Cafe24 and Gabia patched; PHP 8.1 and older get no official fix; professors urge help for SMEs and schools.",
-"siren": false,
-"also": []
-},
-{
-"id": "kathmandupost-nepal-sites-offline",
-"title": "PHP2Shell keeps thousands of Nepali government sites and the central bank offline; return due by Tuesday",
-"url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline",
-"outlet": "Kathmandu Post",
-"published": "2026-10-24T19:56:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Nepal",
-"topic": "php2shell",
-"summary": "Shared GIWIMS platform to be patched centrally after the Dashain holiday; NCSC says no unauthorised access found; three banks back.",
-"siren": false,
-"also": []
-},
-{
-"id": "the420-spain-pp-deepfake-complaint",
-"title": "Spain's PP deepfake ad draws a criminal complaint for defamation and digital identity theft",
-"url": "https://the420.in/spain-election-deepfake-pp-ai-political-ad-legal-complaint/",
-"outlet": "The420.in",
-"published": "2026-10-24T18:24:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "EU",
-"topic": "deepfakes",
-"summary": "Leire Díez asks judge Pedraz for the video's immediate removal; minister López condemns it, the PP's Sémper calls it satire.",
-"siren": false,
-"also": [
-{
-"outlet": "Vozpópuli",
-"url": "https://www.vozpopuli.com/tribunales/leire-diez-se-querella-contra-el-pp-por-el-video-hecho-con-ia-en-el-que-la-acusan-de-haber-contratado-matones-contra-biedma.html"
-}
-]
-},
-{
-"id": "riotimes-brazil-lupa-ai-election-posts",
-"title": "Lupa counts 1,423 AI-made posts in Brazil's campaign: 54% unlabelled, 716 deepfakes, 548 by candidates",
-"url": "https://www.riotimesonline.com/brazil-lupa-tracker-1423-ai-election-posts-2026/",
-"outlet": "The Rio Times",
-"published": "2026-10-24T17:11:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Brazil",
-"topic": "deepfakes",
-"summary": "VigIA tracker, Aug 16 to Oct 22: Lula in 509 posts, Flávio Bolsonaro in 247; Instagram 794, Facebook 690; runoff Oct 25.",
-"siren": false,
-"also": []
-},
-{
-"id": "reuters-ai-bugs-fresh-disruptions",
-"title": "Reuters: Cloudflare's Prince knows of 'a bunch' more severe AI-found flaws; VulnCheck sees disclosures doubled",
-"url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/",
-"outlet": "Reuters (via Honolulu Star-Advertiser)",
-"published": "2026-10-24T17:05:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Seven experts expect PHP2Shell-style weeks for years; curl's Stenberg and ArmorCode's Rahman say more bugs found does not mean more breaches.",
-"siren": false,
-"also": []
-},
-{
-"id": "winbuzzer-deepseek-v41-flash",
-"title": "DeepSeek V4.1 Flash: Intelligence Index 39 to 45 and 35% cheaper per task, but still near the bottom on facts",
-"url": "https://winbuzzer.com/2026/10/24/deepseeks-flash-ai-improves-coding-but-still-lags-on-facts-xcxwbn/",
-"outlet": "WinBuzzer",
-"published": "2026-10-24T15:39:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "breakthrough",
-"summary": "Artificial Analysis: Terminal-Bench 4.0 27% to 34%; Omniscience score 5 against 46 for Claude Opus 5.5.",
-"siren": false,
-"also": []
-},
-{
-"id": "techcrunch-php-ocalypse",
-"title": "TechCrunch reconstructs PHP2Shell: bugs seen in 2024, Calif found the path, Amazon saw probes a week early",
-"url": "https://techcrunch.com/2026/10/24/php-ocalypse-how-two-critical-web-bugs-almost-broke-the-internet/",
-"outlet": "TechCrunch",
-"published": "2026-10-24T15:30:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Calif says AI helped exploit but most work was human PHP expertise; cites Palo Alto and Trail of Bits on compromises.",
-"siren": false,
-"also": []
-},
-{
-"id": "techcrunch-convovo-grok-gpt-midterm-picks",
-"title": "Forced to pick, Grok 4.7 named the Republican in 92% of 500 midterm races; GPT-6.1 Sol the Democrat in 97%",
-"url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
-"outlet": "TechCrunch",
-"published": "2026-10-24T15:00:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "United States",
-"topic": "everyday",
-"summary": "Convovo study led by Cornell's Tapan Parikh; the models agreed under 10% of the time. OpenAI: the API test is not ChatGPT.",
-"siren": false,
-"also": []
-},
-{
-"id": "futurism-characterai-horror-show",
-"title": "Futurism: Character.AI's suicide and school-shooter bots reached minor decoy accounts as it lost $8-9M a month",
-"url": "https://futurism.com/artificial-intelligence/character-ai-horror-show-bankrupt",
-"outlet": "Futurism",
-"published": "2026-10-24T12:53:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "chatbot-harm",
-"summary": "Retrospective after the Chapter 11 filing; revenue peaked at $5.3 million a month per 404 Media's reading of court papers.",
-"siren": false,
-"also": []
-},
-{
-"id": "cnbc-data-center-voter-backlash-poll",
-"title": "CNBC poll: 63% of US voters oppose an AI data center within 10 miles of home; 13% support one",
-"url": "https://politicalwire.com/2026/10/24/trump-ai-data-center-push-faces-voter-backlash/",
-"outlet": "CNBC via Political Wire",
-"published": "2026-10-24T12:02:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "everyday",
-"summary": "All-America survey finds bipartisan resistance to the data-center build-out nine days before the midterms.",
-"siren": false,
-"also": [
-{
-"outlet": "CNBC",
-"url": "https://www.cnbc.com/2026/10/24/trump-ai-data-centers-voter-backlash-midterms.html"
-}
-]
-},
-{
-"id": "cyfirma-dprk-php2shell-advisory-v3",
-"title": "CYFIRMA says a suspected North Korean crew is staging PHP2Shell attacks on 216 hosts; unconfirmed elsewhere",
-"url": "https://cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure",
-"outlet": "CYFIRMA",
-"published": "2026-10-24T12:00:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Version 3 lists 15 staging and 21 scan addresses, rates the DPRK nexus 'HIGH', names no organization, confirms no compromise.",
 "siren": false,
 "also": []
 }
