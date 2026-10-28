@@ -2,11 +2,25 @@
 
 Used by the scheduled refresh task and by anyone updating the index by hand. A refresh adds what happened since the last one, re-checks the live incident, and republishes. It never rewrites history silently: every change goes in the changelog.
 
+## The site as it stands (the baseline; keep it, don't redesign it)
+
+Colin approved the site as it is on Oct 27, 2026. A refresh updates content; it does not remove, reorder or restyle these parts. Changes to the design come from Colin, not from a refresh.
+
+- **Browser title:** "Warning Shots: AI threats, breakthroughs and impacts". **Tagline:** See what's coming. Know what it means.
+- **Homepage, top to bottom:** the level bar (today's level, "Why WS-x today?" with its share row and Level card) → the lead (since-you-were-here line, the red X breaking bar when a breaking post qualifies, photo, headline, "Who it hit/helped", up to four one-line tag-alongs, the running-story strip with the Tried → Proven → Hit ladder and its card) → the masthead (logo lockup, desk shelf, nav from `pageshell.py`) → **the Seismograph** (automatic, from data/incidents.json) → Breakthroughs (three) → the three Drudge columns with their standing desks → the Chart of the day → Graded / Resolution Day / Coming up → the end-of-edition line → On X (three posts, one per story, clips play on tap) → What it means for you (seven topics: family, money, job, health, bills & town, website, elections; each with Right now, the 30-second check, It has happened before, What you can do, What to watch) → the Record footer.
+- **No standfirst under the lead.** No reader picks, streaks or countdowns that don't point at a real date. No "0" stats (`hide_while_zero`).
+- **Inner pages:** the Wire board (with "Who this touches" lines), day pages and beats (`near-you`, `school`, `decided` with Cases still open), /forecast/ (each call with Post on X and its card), /chart/ gallery, /breakthroughs/, /fixes/, the page families.
+- **Data that drives it and must stay current every refresh:** research/news.json (tags, wall, touches, beat), research/x_posts.json, research/breakthroughs.json, research/calls.json (grade on time), research/lenses.json (watch dates), research/beat_background.json (case status), research/charts.json, serial in build_live.py.
+
 ## 0. Setup
 
 ```
 git clone https://github.com/ColinBalfe/ai-incident-index && cd ai-incident-index
 ```
+
+**Missed runs.** If `as_of` is more than 8 hours old, one or more refreshes did not run. Research the whole gap since `as_of`, grade every call whose date has passed, write the changelog entry as "HH:MM ET: caught up after missed refresh(es) at <times>", and notify Colin once in one line.
+
+**Others push too.** Colin's sessions also push to this repo. `git pull --rebase` before you start building and again just before you commit; if a push is rejected, pull, rebuild and push again. Never force-push.
 
 Read `data/meta.json` (`as_of`, `live_incident`, `changelog`) so you know the last refresh time and what is being tracked live.
 
@@ -254,7 +268,9 @@ git push
 
 After the push has deployed (about two minutes), run `python3 indexnow.py` so Bing, Yandex, Naver and Seznam recrawl the front page, the tracker and new incident pages at once (Bing also feeds DuckDuckGo and ChatGPT search). The share card (`assets/og.png`) is now the siren: its picture and headline, so every share of the front page shows the current lead.
 
-If the rebase reports a conflict, keep both sides' intent (your data rows and changelog entry, the site's code), run the build steps again from `python3 build_site.py` onward, `git add -A && git rebase --continue`, then push. GitHub Pages redeploys automatically within a couple of minutes. Confirm the live site shows the new `as_of` in the top bar.
+If the rebase reports a conflict, keep both sides' intent (your data rows and changelog entry, the site's code), run the build steps again from `python3 build_site.py` onward, `git add -A && git rebase --continue`, then push. GitHub Pages redeploys automatically within a couple of minutes. Then check the live site, not just the build: fetch https://warningshots.ai/data/meta.json and confirm the new `as_of`, and load the homepage (Playwright) and confirm the lead headline is yours and the Seismograph drew (`.seis svg` present). If any of that fails, fix it or notify Colin.
+
+**Edition first, depth second.** Once the edition itself is ready (lead, Wire, level, running story, calls graded) and check_site passes, publish it. Then do the slower work (new page-family pages, the chart, breakthroughs backfill) and push again. A run that runs out of time must never leave the site on the old edition.
 
 ## 6. Report
 
