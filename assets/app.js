@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'inside'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'updown'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -757,17 +757,19 @@ function drawWall() {
       if (b.try && b.try[1]) { const t = el('a', 'bt-try', 'Try it: ' + b.try[0] + ' →'); t.href = b.try[1]; t.target = '_blank'; t.rel = 'noopener noreferrer'; c.append(t); }
       g.append(c); });
     s.append(g); return s; })() : null;
-  // AI Inc.: the drama and the money, then what it means (the facts are the outlet's; 'Our read' is ours and labelled)
-  const IN = (D.inside || []).filter((x) => x && x.url);
-  const incBand = IN.length ? (() => {
-    const s = el('section', 'inc'); s.setAttribute('aria-label', 'AI Inc.');
-    const h = el('div', 'inc-h'); h.append(el('h2', 'inc-t', 'AI Inc.'), el('span', 'inc-sub', 'The drama, the money and the power plays. What happened, then what it means.')); const all = el('a', 'inc-all', 'All of it →'); all.href = '/ai-inc/'; h.append(all); s.append(h);
-    const g = el('div', 'inc-g');
-    IN.slice(0, 3).forEach((b) => { const c = el('article', 'inc-c'); c.append(el('span', 'inc-k', b.kicker || ''));
-      const a = el('a', 'inc-hl', b.headline); a.href = b.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; c.append(a);
-      const t = el('p', 'inc-tea'); t.append(txt(b.tea + ' ')); const o = el('span', 'inc-o', (b.outlet || '') + (b.also_outlet ? ', ' + b.also_outlet : '')); t.append(o); c.append(t);
-      const r = el('p', 'inc-read'); r.append(el('b', null, 'Our read: '), txt(b.read)); c.append(r); g.append(c); });
-    s.append(g); return s; })() : null;
+  // Up & Down: who gained or lost power in AI this week, and why it matters (the facts are the outlet's; 'Why it matters' is ours)
+  const UD = (D.updown || []).filter((x) => x && x.url && (Date.parse(D.meta.as_of) - Date.parse(x.date + 'T12:00:00Z')) < 8 * 864e5);
+  const incBand = UD.length >= 3 ? (() => {
+    const s = el('section', 'ud'); s.setAttribute('aria-label', 'Up and Down: who gained or lost power in AI this week');
+    const h = el('div', 'ud-h'); h.append(el('h2', 'ud-t', 'Up & Down'), el('span', 'ud-sub', 'Who gained power in AI this week, who lost it, and why it matters.')); const all = el('a', 'ud-all', 'The full board →'); all.href = '/up-and-down/'; h.append(all); s.append(h);
+    const row = (b) => { const r = el('div', 'ud-r ' + b.dir); r.append(el('span', 'ud-ar', b.dir === 'up' ? '▲' : '▼'));
+      const body = el('div', 'ud-b'); const top = el('p', 'ud-l'); const nm = el('a', 'ud-n', b.name); nm.href = b.url; nm.target = '_blank'; nm.rel = 'noopener noreferrer'; nm.title = b.outlet || ''; top.append(nm, txt(' ' + b.line));
+      const w = el('p', 'ud-w'); w.append(el('b', null, 'Why it matters: '), txt(b.why + ' '));
+      const x = el('a', 'ud-x', 'Post'); x.href = 'https://x.com/intent/post?text=' + encodeURIComponent((b.dir === 'up' ? '▲ ' : '▼ ') + b.name + ': ' + b.line + ' Why it matters: ' + b.why) + '&url=' + encodeURIComponent(SITE + 'up-and-down/'); x.target = '_blank'; x.rel = 'noopener noreferrer'; w.append(x);
+      body.append(top, w); r.append(body); return r; };
+    const cols = el('div', 'ud-cols');
+    [['up', 'Up'], ['down', 'Down']].forEach(([k, l]) => { const c = el('div', 'ud-c ' + k); c.append(el('div', 'ud-ch', (k === 'up' ? '▲ ' : '▼ ') + l)); UD.filter((b) => b.dir === k).slice(0, 3).forEach((b) => c.append(row(b))); cols.append(c); });
+    s.append(cols, el('p', 'ud-f', 'Each name links to the reporting. The arrow and “Why it matters” are our read. A story already in the headlines above never appears here twice.')); return s; })() : null;
   // The Chart: one original chart a day, from the index's own data (build_chart.py); the image carries its own title and citation
   const CH = D.chart && D.chart.svg ? D.chart : null;
   const chartBand = CH ? (() => {
