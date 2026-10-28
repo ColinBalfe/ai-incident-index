@@ -273,9 +273,18 @@ node shot.mjs       http://127.0.0.1:8765/index.html
 
 `prerender.mjs` must print `prerendered 5 blocks` (it exits non-zero if the page threw or a block was missing; never publish without it, or the first paint is empty). `shot.mjs` must print `errors none` three times. The build prints the Wire's story count and the siren headline; check both. Look at `shots/site-desktop-top.png` and `shots/site-phone-top.png` before publishing. If anything fails, fix it; do not publish a broken page.
 
-## 4. Fact-check what you added
+## 4. Fact-check what you added (twice, every time)
 
-Re-verify every new row against its source: names, dates, numbers, who said what. Mark uncertain attributions as uncertain in the text ("consistent with", "reported", "denies"). Fix before publishing.
+Colin's rule (Oct 28): nothing goes out unchecked, and every fact is checked twice.
+
+1. **First pass, as you write:** every figure, name, date and claim comes from a page you opened this run; copy numbers, never round them up; attribute claims ("says", "reports") and include denials.
+2. **Second pass, before publishing, as a separate step:** re-open the source for every new headline, tag-along, "Who it hit", Up & Down row, X-post line, chart title and "This week" note, and confirm each fact against it, word by word. Then re-derive every computed number from the data (counts, percentages, "more than any other month", "first", "worst"), and check:
+   - **Duplicates:** the same event or the same employer counted twice (two stories on one cut, one incident logged twice). Counts are of distinct events.
+   - **Category errors:** an industry tally, survey or forecast counted as an event; a lab test counted as a real-world incident without saying so.
+   - **Absolute words:** "every", "none", "first", "only", "always", "record": check each one against the full data, not a sample.
+   - **The site agrees with itself:** a number shown in two places (a chart, a band, a page, a post card) is the same everywhere.
+3. Write "checked twice" and what the second pass changed in the changelog entry. If the second pass finds an error in something already published, fix it at once and log the correction in research/retractions.json (or the changelog) in plain words; never quietly.
+4. Anything meant for X goes through both passes too, and its wording must match exactly what the data shows (for example "on our record", "in the real world" as the index defines it).
 
 ## 5. Publish
 

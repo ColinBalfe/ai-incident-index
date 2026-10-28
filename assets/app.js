@@ -819,7 +819,7 @@ function drawStory() {
   const B = (k, from, to, html, hot) => ({ k, from, to, html, hot: hot || [] });
   const beats = [
     B('2023–2024', t0, new Date('2024-12-31T23:59:00Z'), earlyWild.length && !earlyWild.some(own)
-      ? `In 2023 and 2024, every real-world AI incident on our record had <b>a person</b> at the controls.`
+      ? `In 2023 and 2024, in <b>none</b> of the real-world AI incidents on our record did the AI act on its own.`
       : `In 2023 and 2024, our record logged <b>${early.length}</b> AI incidents, most of them with a person at the controls.`),
     ...(firstSev ? [B(fmtMY(firstSev.t), new Date(+firstSev.t - 40 * 864e5), new Date(+firstSev.t + 40 * 864e5), `${fmtMY(firstSev.t)}, the first severe case where the AI acted on its own: ${esc(firstSev.title)}. <b>${firstSev.severity}/100.</b>`, [firstSev.id])] : []),
     B('The last 12 months', yrAgo, asOf, `In the last 12 months: <b>${h.severe_last12 ?? '?'}</b> severe incidents, up from ${h.severe_prior12 ?? '?'}. In <b>${pct}%</b> of real-world cases, the AI did the acting.`),

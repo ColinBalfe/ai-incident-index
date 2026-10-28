@@ -123,6 +123,8 @@ for n in rows:
     if n.get('topic') == 'jobs' and n['url'] not in seen_u and _re.search(r'cut|layoff|lay off|buyout|job loss|redundanc|shed|eliminat', n.get('title', '') + ' ' + (n.get('summary') or ''), _re.I):
         seen_u.add(n['url'])
         led.append(dict(date=n['published'][:10], what=n.get('tag') or n['title'], who={'confirmed': 'See source', 'reported': 'Reported as AI'}.get(n.get('label'), 'See source'), url=n['url'], label=n.get('outlet', ''), occ=''))
+import ledger_rules as _LR
+led = _LR.clean(led, is_company=lambda w: w.startswith('Company'))   # same rules as the job-cuts chart
 led.sort(key=lambda x: x['date'], reverse=True)
 trs = ''.join(f'<tr><td>{esc(x["date"])}</td><td>{esc(x["what"])}' + (f' <small>(<a href="/jobs/{esc(x["occ"])}/">{esc(occ[x["occ"]])}</a>)</small>' if x['occ'] in occ else '') + f'</td><td><span class="st{" confirmed" if x["who"].startswith("Company") else ""}">{esc(x["who"])}</span></td><td>{a(x["url"], x["label"] or "source")}</td></tr>' for x in led)
 n_co = sum(1 for x in led if x['who'].startswith('Company'))

@@ -274,23 +274,8 @@ def layoff_months(spec):
                 seen.add(n['url']); led.append(dict(date=n['published'][:10], what=n.get('tag') or n['title'], who='rep' if n.get('label') == 'reported' else 'co' if ('says ai' in low or 'citing ai' in low or 'cites ai' in low) else 'unk', url=n['url']))
     except (OSError, ValueError):
         pass
-    # one entry per employer per month (two stories on the same cut count once), and no industry tallies (they are not a cut)
-    def employer(w):
-        w = _re.sub(r'^(The )', '', w)
-        m = _re.match(r"([A-Z][\w&.'’-]*(?: [A-Z][\w&.'’-]*){0,3})", w)
-        e = m.group(1) if m else w[:30]
-        e = _re.sub(r' (To|Offers|Confirms|Cutting|Plans|Will|Says|Cuts)$', '', e)
-        return {'Dutch': 'Dutch government', 'Dutch cabinet': 'Dutch government'}.get(e, e)
-    _led, _seen = [], set()
-    for x in sorted(led, key=lambda x: x['date']):
-        if _re.search(r'layoffs reach|tall(y|ies)|in 2026; |across the industry', x['what'], _re.I): continue
-        x['emp'] = employer(x['what']); k = (x['date'][:7], x['emp'].lower())
-        if k in _seen:
-            prev = next(y for y in _led if (y['date'][:7], y['emp'].lower()) == k)
-            if x['who'] == 'co' and prev['who'] != 'co': prev['who'] = 'co'
-            continue
-        _seen.add(k); _led.append(x)
-    led = _led
+    import ledger_rules as _LR
+    led = _LR.clean(led)   # one entry per employer per month, no industry tallies (ledger_rules.py, shared with the ledger page)
     end = dt.date.fromisoformat(AS_OF)
     months = []
     y, m = end.year, end.month
