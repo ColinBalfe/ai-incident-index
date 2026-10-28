@@ -302,6 +302,28 @@ write('breakthroughs/index.html', url=bu, title='AI breakthroughs: what AI just 
 register('breakthroughs/', [bu] if BTS else [])
 print(f'breakthroughs/: {len(BTS)}')
 
+# ======================================================== ai-inc/: AI Inc. (research/inside.json): the drama and the money, then what it means
+try:
+    INC = sorted(L('research/inside.json'), key=lambda b: b.get('date', ''), reverse=True)
+except (OSError, ValueError):
+    INC = []
+iu = SITE + 'ai-inc/'
+def _inc(b):
+    n = _NW.get(b.get('news_id'), {}); a2 = _NW.get(b.get('also'), {}) if b.get('also') else {}
+    src = a(n.get('url', ''), n.get('outlet', 'source')) + ((' · ' + a(a2['url'], a2.get('outlet', 'source'))) if a2.get('url') else '')
+    return (f'<li><span class="st" style="background:var(--alarm);color:#fff;border-color:var(--alarm)">{esc(b.get("kicker", ""))}</span> <span class="meta">{esc(fdate(b["date"]))}</span>'
+            f'<h2 style="border:0;margin:6px 0 4px;padding:0;font-size:1.35rem;text-transform:uppercase;font-stretch:82%;font-weight:900"><a href="{esc(n.get("url", ""))}">{esc(b["headline"])}</a></h2>'
+            f'<p>{esc(b["tea"])} <small>{src}</small></p><p style="border-left:3px solid var(--ink);padding:6px 10px;background:var(--panel)"><b>Our read:</b> {esc(b["read"])}</p></li>')
+ibody = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>AI Inc.: the drama, the money and the power plays</h1>
+<p>The fights, the exits, the filings and the price tags behind AI, and what they mean for the people on the other end. The facts come from the outlet linked on each story; <b>Our read</b> is our analysis, labelled as ours.</p>
+<ul class="list">{''.join(_inc(b) for b in INC)}</ul>
+{capture('Send me AI Inc. when something big moves', 'ai-inc')}
+{footer_note(False)}</article>"""
+write('ai-inc/index.html', url=iu, title='AI Inc.: the drama, the money and the power plays in AI', desc=f'{len(INC)} stories on the fights, filings, exits and price tags behind AI, each sourced, each with our read on what it means.', body=ibody, draft=not INC,
+      crumbs=[('AI Inc.', '')], graph=[webpage(iu, 'AI Inc.', 'The drama, the money and the power plays in AI', TODAY, False, '')])
+register('ai-inc/', [iu] if INC else [])
+print(f'ai-inc/: {len(INC)}')
+
 # ======================================================== forecast/<id>/: one permanent page per call and question
 CALLS = L('data/calls.json'); fu = []
 def likely(o):

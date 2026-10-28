@@ -140,13 +140,20 @@ for _b in sorted(_jl('research/breakthroughs.json', []) or [], key=lambda b: b.g
     _n = _news.get(_b.get('news_id'), {})
     _bt.append(dict(_b, url=_b.get('url') or _n.get('url', ''), outlet=_b.get('outlet') or _n.get('outlet', '')))
 json.dump(_bt, open('data/breakthroughs.json', 'w', encoding='utf-8'), ensure_ascii=False)
+# ---- AI Inc. (research/inside.json): the drama, the money and the strategy; each joined to its Wire source
+_in = []
+for _b in sorted(_jl('research/inside.json', []) or [], key=lambda b: b.get('date', ''), reverse=True):
+    _n = _news.get(_b.get('news_id'), {}); _a = _news.get(_b.get('also'), {}) if _b.get('also') else {}
+    if not _n.get('url'): continue
+    _in.append(dict(_b, url=_n['url'], outlet=_n.get('outlet', ''), also_url=_a.get('url', ''), also_outlet=_a.get('outlet', '')))
+json.dump(_in, open('data/inside.json', 'w', encoding='utf-8'), ensure_ascii=False)
 _desks['breakthroughs'] = len(_bt)
 json.dump(_desks, open('data/desks.json', 'w', encoding='utf-8'), ensure_ascii=False)
 json.dump(sorted(_xp, key=lambda x: x['posted'], reverse=True), open('data/xposts.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 
 # ---- data/bundle.json: every data file in one request (the page preloads it; the individual files stay for scripts and the update check)
 FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta',
-         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses']
+         'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'inside']
 json.dump({k: v for k, v in (_jl('research/lenses.json', {}) or {}).items() if not k.startswith('_')}, open('data/lenses.json', 'w', encoding='utf-8'), ensure_ascii=False)
 bundle = {}
 for f in FILES:

@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'inside'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -757,6 +757,17 @@ function drawWall() {
       if (b.try && b.try[1]) { const t = el('a', 'bt-try', 'Try it: ' + b.try[0] + ' →'); t.href = b.try[1]; t.target = '_blank'; t.rel = 'noopener noreferrer'; c.append(t); }
       g.append(c); });
     s.append(g); return s; })() : null;
+  // AI Inc.: the drama and the money, then what it means (the facts are the outlet's; 'Our read' is ours and labelled)
+  const IN = (D.inside || []).filter((x) => x && x.url);
+  const incBand = IN.length ? (() => {
+    const s = el('section', 'inc'); s.setAttribute('aria-label', 'AI Inc.');
+    const h = el('div', 'inc-h'); h.append(el('h2', 'inc-t', 'AI Inc.'), el('span', 'inc-sub', 'The drama, the money and the power plays. What happened, then what it means.')); const all = el('a', 'inc-all', 'All of it →'); all.href = '/ai-inc/'; h.append(all); s.append(h);
+    const g = el('div', 'inc-g');
+    IN.slice(0, 3).forEach((b) => { const c = el('article', 'inc-c'); c.append(el('span', 'inc-k', b.kicker || ''));
+      const a = el('a', 'inc-hl', b.headline); a.href = b.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; c.append(a);
+      const t = el('p', 'inc-tea'); t.append(txt(b.tea + ' ')); const o = el('span', 'inc-o', (b.outlet || '') + (b.also_outlet ? ', ' + b.also_outlet : '')); t.append(o); c.append(t);
+      const r = el('p', 'inc-read'); r.append(el('b', null, 'Our read: '), txt(b.read)); c.append(r); g.append(c); });
+    s.append(g); return s; })() : null;
   // The Chart: one original chart a day, from the index's own data (build_chart.py); the image carries its own title and citation
   const CH = D.chart && D.chart.svg ? D.chart : null;
   const chartBand = CH ? (() => {
@@ -767,7 +778,7 @@ function drawWall() {
     const a1 = el('a', null, 'The data and the download →'); a1.href = CH.url; const a2 = el('a', null, 'Every chart'); a2.href = '/chart/'; ft.append(a1, txt(' · '), a2);
     s.append(h, fig, ft); return s; })() : null;
   const pulse = buildPulse();
-  box.replaceChildren(...(pulse ? [pulse] : []), ...(btBand ? [btBand] : []), cols, ...(chartBand ? [chartBand] : []), more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
+  box.replaceChildren(...(pulse ? [pulse] : []), ...(btBand ? [btBand] : []), cols, ...(incBand ? [incBand] : []), ...(chartBand ? [chartBand] : []), more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
 }
 /* ---------- The story so far: a 20-second film at the top of the homepage, told by the record itself.
    Four beats, each lighting its stretch of the incident strip: when a person was always behind it, the first severe case where the AI

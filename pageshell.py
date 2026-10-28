@@ -34,7 +34,7 @@ FIX_OPEN = _fix_open()
 MID_NAV = ('<a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can do</a><a href="/forecast/">Forecasts</a>'
            + f'<a href="/fixes/">Did they fix it?{f" <span class=nb>{FIX_OPEN} open</span>" if FIX_OPEN else ""}</a><a href="/i/">Incidents</a><a href="/index/#about">About</a>')
 # the desks: the standing pages people come back to, Drudge's reference shelf (homepage under the masthead; every page's footer)
-DESKS = [('/breakthroughs/', 'Breakthroughs'), ('/chart/', 'The Charts'), ('/checks/', 'Is this a scam?'), ('/jobs/', 'Can AI do your job?'), ('/jobs/layoffs/', 'Layoffs tied to AI'), ('/help/', 'What to do'),
+DESKS = [('/breakthroughs/', 'Breakthroughs'), ('/ai-inc/', 'AI Inc.'), ('/chart/', 'The Charts'), ('/checks/', 'Is this a scam?'), ('/jobs/', 'Can AI do your job?'), ('/jobs/layoffs/', 'Layoffs tied to AI'), ('/help/', 'What to do'),
          ('/midterms-2026/', 'Midterm fakes')]
 NAV = '<nav aria-label="Sections"><a href="/wire/">The Wire</a>' + LIVE_NAV + MID_NAV + '</nav>'
 DESK_ROW = '<nav class="desks" aria-label="Desks">' + ''.join(f'<a href="{u}">{esc(t)}</a>' for u, t in DESKS) + '</nav>'

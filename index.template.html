@@ -1231,6 +1231,21 @@ a.pl-i:hover span { color: #F4F3EF; text-decoration: underline; }
 .fy-hub a { color: inherit; text-decoration: underline; }
 .recfoot .rf-desks { margin: 10px 0 0; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 .recfoot .rf-desks a { color: var(--ink-2); }
+.inc { margin: 6px 0 28px; padding: 14px 0 8px; border-top: 6px solid var(--ink); border-bottom: 1px solid var(--line-2); }
+.inc-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 14px; }
+.inc-t { margin: 0; font-family: var(--sans); font-stretch: 78%; font-weight: 900; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -.01em; line-height: 1; color: var(--ink); text-transform: uppercase; }
+.inc-sub { font-family: var(--sans); font-weight: 500; color: var(--ink); font-size: clamp(1rem, 1.4vw, 1.12rem); line-height: 1.35; flex: 1 1 260px; }
+.inc-all { font-weight: 700; font-size: 14px; color: var(--ink); }
+.inc-g { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px 24px; }
+.inc-c { display: flex; flex-direction: column; gap: 7px; padding-bottom: 14px; border-bottom: 1px dotted var(--line-2); }
+.inc-k { align-self: flex-start; background: var(--alarm); color: #fff; font-family: var(--sans); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; padding: 3px 7px; transform: rotate(-1.5deg); }
+.inc-hl { font-family: var(--sans); font-stretch: 82%; font-weight: 900; font-size: clamp(1.25rem, 1.9vw, 1.55rem); line-height: 1.08; color: var(--ink); text-decoration: none; text-transform: uppercase; letter-spacing: -.005em; text-wrap: balance; }
+.inc-hl:hover { color: var(--alarm); }
+.inc-tea { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--ink); }
+.inc-o { color: var(--ink-3); font-size: 12px; }
+.inc-read { margin: 2px 0 0; padding: 8px 10px; background: var(--panel); border-left: 3px solid var(--ink); font-family: var(--serif); font-size: 15px; line-height: 1.45; color: var(--ink); }
+.inc-read b { font-family: var(--sans); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin-right: 4px; }
+@media (max-width: 759px) { .inc-g { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px; scrollbar-width: none; margin: 0 -16px; padding: 0 16px 6px; } .inc-g::-webkit-scrollbar { display: none; } .inc-c { flex: 0 0 86%; scroll-snap-align: start; } }
 .bt { margin: 0 0 26px; padding: 16px 0 6px; border-top: 4px solid var(--ok); border-bottom: 1px solid var(--line-2); }
 .bt-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 12px; }
 .bt-t { margin: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(1.3rem, 2.2vw, 1.7rem); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
