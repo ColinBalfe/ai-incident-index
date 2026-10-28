@@ -35,7 +35,7 @@
 "stage": "current",
 "status": "ongoing",
 "date": "2026-10-27",
-"note": "Day seven after the patch. America's cyber agency (CISA) added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 with a federal fix deadline of Oct 29; it named no victim. The security firm Dream reported on Oct 26 that attacker files it recovered show a chained PHP2Shell and Linux-kernel exploit rooting 25 real servers (24 firewalls and a management server) on Oct 23-24, two at a US government-affiliated organization; no victim or vendor is named and none has confirmed it, so this is a single-firm report. Wiz still sees only 'a limited number of exploitation attempts' in its own telemetry. No named organization has confirmed a breach, and the third PHP bug (CVE-2026-115560) has no fix.",
+"note": "Day seven after the patch. America's cyber agency (CISA) added CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog on Oct 26 with a federal fix deadline of Oct 29; it named no victim. The security firm Dream reported on Oct 26 that attacker files it recovered show a chained PHP2Shell and Linux-kernel exploit rooting 25 real servers (24 firewalls and a management server) on Oct 23-24, three in a US government-affiliated network (The Hacker News, Oct 28); no victim or vendor is named and none has confirmed it, so this is a single-firm report. Wiz still sees only 'a limited number of exploitation attempts' in its own telemetry. No named organization has confirmed a breach, and the third PHP bug (CVE-2026-115560) has no fix.",
 "source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
 }
 ],

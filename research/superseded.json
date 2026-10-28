@@ -4,5 +4,11 @@
   "pattern": "(CISA (has not|hasn't) (added|listed)|not (yet )?(on|in) CISA's (Known Exploited|KEV)|no CISA (KEV )?listing)",
   "since": "2026-10-26",
   "why": "CISA listed CVE-2026-109618 and -109619 on Oct 26"
+ },
+ {
+  "id": "dream-two-gov-systems",
+  "pattern": "(two at an? (unnamed )?US government|two firewalls at an unnamed US government)",
+  "since": "2026-10-28",
+  "why": "The Hacker News's account of Dream's report (Oct 28) counts three systems in the US government-affiliated network, not two"
  }
 ]

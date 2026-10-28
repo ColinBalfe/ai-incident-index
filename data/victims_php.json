@@ -1241,7 +1241,7 @@
 "status_group": "other",
 "date": "2026-10-23",
 "date_label": "Oct 23–24",
-"extent": "Dream says attacker files it recovered show a chained PHP2Shell and Fragnesia (Linux kernel) exploit rooting 24 perimeter firewalls from one unnamed large vendor and one internal firewall management server, 25 in all; two firewalls belonged to a US government-affiliated organization, where the files confirm credential extraction and directory enumeration. The evidence is the attacker's own logs, not access to the victims; no victim or vendor is named and none has confirmed it. Damage: credentials taken and directory enumerated at one organization, per Dream; full extent unknown",
+"extent": "Dream says attacker files it recovered show a chained PHP2Shell and Fragnesia (Linux kernel) exploit rooting 24 perimeter firewalls from one unnamed large vendor and one internal firewall management server, 25 in all; three of them (two firewalls and the internal management server) were in a US government-affiliated network, where the files confirm credential extraction and directory enumeration. The evidence is the attacker's own logs, not access to the victims; no victim or vendor is named and none has confirmed it. Damage: credentials taken and directory enumerated at one organization, per Dream; full extent unknown",
 "how": "",
 "count": 1,
 "source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",

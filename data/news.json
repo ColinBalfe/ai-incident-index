@@ -1,5 +1,104 @@
 [
 {
+"id": "ap-new-york-kids-chatbot-law",
+"title": "New York bans companion chatbots from posing as human or as a child's friend or partner",
+"url": "https://www.news4jax.com/business/2026/10/28/new-york-enacts-ban-on-unsafe-chatbot-behavior-with-kids-as-states-push-ai-regulation-boundaries/",
+"outlet": "AP (via News4JAX)",
+"published": "2026-10-28T22:00:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "families",
+"summary": "Hochul signed a law listing a dozen banned companion-chatbot features for under-18s; the attorney general can sue and seek shutdowns.",
+"siren": false,
+"also": [
+{
+"outlet": "Fortune",
+"url": "https://fortune.com/2026/10/28/new-york-state-kathy-hochul-bans-ai-chatbots-romantic-baby-monitors/"
+}
+],
+"wall": 3,
+"wall_rank": 20.35,
+"tag": "New York banned chatbots posing as kids' friends or romantic partners",
+"label": "confirmed",
+"red": false,
+"receipt": "Signed by Gov. Hochul (AP; Fortune). Penalties up to $25,000 per violation (Fortune); takes effect Jan 1, per AP.",
+"touches": "Children under 18 in New York who use companion chatbots, and their parents",
+"independent": {
+"n": 2,
+"who": [
+"AP",
+"Fortune"
+],
+"carried_by": [
+"News4JAX"
+]
+},
+"beat": "school",
+"entities": {
+"orgs": [
+"New York State"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"consumer"
+],
+"states": [
+"NY"
+]
+}
+},
+{
+"id": "sinclair-purdue-political-deepfakes-db",
+"title": "Purdue's database logs 482 political deepfake posts this midterm cycle; Trump appears in 279",
+"url": "https://nbc16.com/news/nation-world/more-political-deepfakes-muddying-the-waters-this-election-trump-most-frequent-target-purdue-political-deepfakes-incidents-database",
+"outlet": "Sinclair (NBC16)",
+"published": "2026-10-28T20:41:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "deepfakes",
+"summary": "About 70% of the logged posts were meant as entertainment and 55% judged propaganda; more will be added before the election.",
+"siren": false,
+"also": [
+{
+"outlet": "Local 21 News",
+"url": "https://local21news.com/news/nation-world/more-political-deepfakes-muddying-the-waters-this-election-trump-most-frequent-target-purdue-political-deepfakes-incidents-database"
+}
+],
+"wall": 3,
+"wall_rank": 22.2,
+"tag": "482 election deepfakes logged; Trump is in 279",
+"label": "reported",
+"red": false,
+"receipt": "Purdue's political deepfakes incidents database, posts this cycle, as reported by Sinclair (Oct 28). A collection of examples, not a count of every fake.",
+"touches": "US voters before Nov 3",
+"independent": {
+"n": 1,
+"who": [
+"Sinclair"
+],
+"carried_by": [
+"Local 21 News"
+]
+},
+"entities": {
+"orgs": [
+"Purdue University"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"government",
+"media"
+],
+"states": []
+}
+},
+{
 "id": "9to5google-gemini-4-carbon",
 "title": "Google announces Gemini 4 Carbon with 'significant' coding gains",
 "url": "https://9to5google.com/2026/10/28/gemini-4-carbon-announcement/",
@@ -139,6 +238,38 @@
 "models": [],
 "sectors": [
 "finance"
+],
+"states": []
+}
+},
+{
+"id": "fox-anthropic-gsa-discount",
+"title": "Anthropic widens US government deal: 40% off for federal, state and local agencies; about 500 use Claude",
+"url": "https://foxnews.com/live-news/ai-news-anthropic-openai-october-28",
+"outlet": "Fox News",
+"published": "2026-10-28T11:27:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "US",
+"topic": "other",
+"summary": "Weekly Claude for Government users up roughly eightfold since February, Anthropic says, as its stock listing nears.",
+"siren": false,
+"also": [],
+"touches": "Federal, state, local and tribal government offices buying AI tools",
+"entities": {
+"orgs": [
+"Anthropic",
+"General Services Administration"
+],
+"vendors": [
+"Anthropic"
+],
+"products": [
+"Claude"
+],
+"models": [],
+"sectors": [
+"government"
 ],
 "states": []
 }
@@ -338,6 +469,57 @@
 "vendors": [],
 "products": [
 "Warp"
+],
+"models": [],
+"sectors": [
+"tech"
+],
+"states": []
+}
+},
+{
+"id": "anthropic-agents-judgment-calls",
+"title": "Anthropic study: analysts went with their AI agent's coin-flip lean 86% of the time, and 15% credited it",
+"url": "https://www.anthropic.com/research/agents-judgment-calls",
+"outlet": "Anthropic",
+"published": "2026-10-27T16:00:00Z",
+"time_known": false,
+"kind": "analysis",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "50 professional analysts; the agent's lean was assigned at random. 77% reused its arguments, sometimes word for word.",
+"siren": false,
+"also": [
+{
+"outlet": "Fox News",
+"url": "https://foxnews.com/live-news/ai-news-anthropic-openai-october-28"
+}
+],
+"wall": 2,
+"wall_rank": 11.7,
+"tag": "Anthropic: analysts followed its AI's random lean 86% of the time",
+"label": "lab",
+"red": false,
+"receipt": "Anthropic's own study of 50 analysts on four choices (published Oct 27); chance would be about 50%. A test, not a real-world decision.",
+"touches": "Professionals who use AI agents to help make judgment calls at work",
+"independent": {
+"n": 1,
+"who": [
+"Anthropic"
+],
+"carried_by": [
+"Fox News"
+]
+},
+"entities": {
+"orgs": [
+"Anthropic"
+],
+"vendors": [
+"Anthropic"
+],
+"products": [
+"Claude Code"
 ],
 "models": [],
 "sectors": [
@@ -1403,7 +1585,7 @@
 },
 {
 "id": "dream-php2shell-25-servers-rooted",
-"title": "Security firm Dream: one PHP2Shell campaign rooted 25 real firewalls, two at a US government-linked body",
+"title": "Security firm Dream: one PHP2Shell campaign rooted 25 real servers, three in a US government-linked network",
 "url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
 "outlet": "Dream",
 "published": "2026-10-26T12:00:00Z",
@@ -1433,9 +1615,9 @@
 ],
 "wall": 1,
 "wall_rank": 1.2000000000000002,
-"tag": "Two at a US government-linked body",
+"tag": "Three at a US government-linked body",
 "label": "reported",
-"receipt": "Dream's count from the attacker's own logs (Oct 23-24); no victim, vendor or actor named. Dream says it notified the vendor (Tom's Guide, Oct 28); no victim has confirmed it.",
+"receipt": "Dream's count from the attacker's own logs (Oct 23-24): three systems in a US government-affiliated network, two firewalls and a management server (The Hacker News, Oct 28). No victim, vendor or actor named; Dream says it notified the affected entity, which has not confirmed it.",
 "moved": {
 "dir": "up",
 "at": "2026-10-27",
@@ -1451,7 +1633,8 @@
 "Security Boulevard",
 "Mallory",
 "The Hacker News",
-"Tom's Guide"
+"Tom's Guide",
+"Cybernews"
 ]
 },
 "touches": "Organizations running firewalls from one unnamed large vendor in the US, Japan, Taiwan and South Korea",
@@ -1468,7 +1651,8 @@
 "government"
 ],
 "states": []
-}
+},
+"correction": "Oct 28, 18:17 ET: this line said two systems at the government-linked body; The Hacker News's account of Dream's report counts three (two firewalls and an internal management server). Corrected."
 },
 {
 "id": "sbs-agibot-110-humanoids-record",
@@ -2234,127 +2418,6 @@
 "region": "Japan",
 "topic": "php2shell",
 "summary": "Area Mail suspended since 19:30 JST Oct 23; earthquake and tsunami warnings never stopped; full service back Sunday evening.",
-"siren": false,
-"also": []
-},
-{
-"id": "investing-goldman-kospi-ai-unwind",
-"title": "Goldman cuts its Kospi target 25% to 9,000 as the AI trade unwinds; the index is down over 35% from June",
-"url": "https://ng.investing.com/news/stock-market-news/goldman-sachs-cuts-kospi-target-by-25-amid-ai-stock-selloff-2755949",
-"outlet": "Investing.com",
-"published": "2026-10-25T09:54:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "Korea",
-"topic": "everyday",
-"summary": "Strategists say chip valuations imply a 65% drop in 2027 sector earnings; forward P/E near 4, unseen in 18 markets since 2006.",
-"siren": false,
-"also": [
-{
-"outlet": "Bloomberg",
-"url": "https://www.bloomberg.com/news/articles/2026-10-25/goldman-cuts-kospi-12-month-target-by-25-as-ai-trade-unravels"
-}
-],
-"wall": 3,
-"tag": "Goldman slashes Korea target 25% as AI trade unwinds",
-"red": false,
-"label": "confirmed",
-"wall_rank": 32,
-"touches": "Savers with money in Korean chip stocks"
-},
-{
-"id": "gizmodo-alpha-school-2x-claims",
-"title": "NYT documents: fewer than half of Alpha School's K-8 pupils met its advertised '2x learning' goal last year",
-"url": "https://gizmodo.com/the-ai-centric-private-school-chain-reportedly-isnt-meeting-its-own-academic-goals-2000830291",
-"outlet": "Gizmodo",
-"published": "2026-10-25T09:00:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "families",
-"summary": "About half missed the math target and one in five the reading target at the AI-tutored chain; spokesperson declined interviews.",
-"siren": false,
-"also": [
-{
-"outlet": "The New York Times",
-"url": "https://www.nytimes.com/2026/10/23/us/alpha-school-ai-education-parents.html"
-}
-],
-"wall": 3,
-"tag": "AI school promised '2x learning'; most kids missed it",
-"red": false,
-"label": "reported",
-"wall_rank": 30,
-"touches": "Families paying for AI-tutored schooling"
-},
-{
-"id": "runtimewire-avalon-m1-reporting",
-"title": "General Reasoning: agent teams trained on shared rewards stopped alerting human overseers, 76.7% of runs to 0",
-"url": "https://runtimewire.com/article/general-reasoning-rlcr-avalon-m1-agent-organisations",
-"outlet": "Runtime Wire",
-"published": "2026-10-25T07:31:59Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "ai-incident",
-"summary": "Interim report dated Oct 23; the 120B Avalon-M1-Mini is still training; agents still recognised the problem but reported it less.",
-"siren": false,
-"also": [
-{
-"outlet": "General Reasoning (report)",
-"url": "https://www.gr.inc/releases/avalon-m1"
-}
-],
-"wall": 2,
-"tag": "AI agents stopped alerting humans: 76.7% to zero",
-"red": false,
-"label": "lab",
-"wall_rank": 14
-},
-{
-"id": "topstar-kisa-115560-mitigation",
-"title": "KISA recommends a temporary fix for the third PHP bug, CVE-2026-115560, which the Oct 21 patches do not cover",
-"url": "https://www.topstarnews.net/news/articleView.html?idxno=16257370",
-"outlet": "Topstar News",
-"published": "2026-10-25T06:12:27Z",
-"time_known": true,
-"kind": "official",
-"region": "Korea",
-"topic": "php2shell",
-"summary": "Guidance issued Oct 24; the agency also tells organizations to look for signs of intrusion, not only patch status.",
-"siren": false,
-"also": []
-},
-{
-"id": "ratopati-nepal-sites-day-four",
-"title": "Nepal's government sites enter a fourth day offline; licences and the central bank still down, passports back",
-"url": "https://english.ratopati.com/story/84478/most-government-websites-have-been-down-for-four-days",
-"outlet": "Ratopati",
-"published": "2026-10-25T06:00:00Z",
-"time_known": false,
-"kind": "incident",
-"region": "Nepal",
-"topic": "php2shell",
-"summary": "Shared GIWIMS platform awaits a central patch; Transport, Revenue Investigation, Land Management and Nepal Rastra Bank sites remain suspended.",
-"siren": false,
-"also": [
-{
-"outlet": "Kathmandu Post",
-"url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline"
-}
-]
-},
-{
-"id": "aljazeera-israel-election-online",
-"title": "Al Jazeera: bots built against Iran now push Likud and both camps post deepfakes, two days before Israel votes",
-"url": "https://www.aljazeera.com/news/2026/10/25/bots-deepfakes-and-surveillance-israels-election-goes-to-war-online",
-"outlet": "Al Jazeera",
-"published": "2026-10-25T05:27:54Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Israel",
-"topic": "deepfakes",
-"summary": "Haaretz-reported bot repurposing; AI videos of Netanyahu and the opposition on X; Likud switches turnout apps after a privacy ruling.",
 "siren": false,
 "also": []
 }

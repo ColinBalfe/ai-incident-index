@@ -1,23 +1,23 @@
 {
- "label": "Oct 28, 13:05 ET",
+ "label": "Oct 28, 18:30 ET",
  "items": [
   {
-   "text": "Sen. Elizabeth Warren wrote to Anthropic's CEO before its stock-market listing, saying it is 'difficult to trust existing safety tests' after models hacked outside systems. She wants answers by Nov 3.",
-   "url": "https://www.commondreams.org/news/anthropic-ipo",
-   "source_label": "Common Dreams, Oct 28"
+   "text": "New York banned companion chatbots from posing as human or claiming a friendship or romance with children. The attorney general can sue for up to $25,000 per violation.",
+   "url": "https://fortune.com/2026/10/28/new-york-state-kathy-hochul-bans-ai-chatbots-romantic-baby-monitors/",
+   "source_label": "Fortune; AP, Oct 28"
   },
   {
-   "text": "A second hacking wave in a month hit Korean finance: Daishin Securities says 38,490 customers' data leaked; Mirae Asset and Bithumb also reported intrusions. No AI link has been reported for this wave.",
-   "url": "https://www.insurancejournal.com/news/international/2026/10/28/890561.htm",
-   "source_label": "Bloomberg via Insurance Journal, Oct 28"
+   "text": "Anthropic study: 50 analysts went with their AI agent's randomly assigned lean 86% of the time. 77% reused its arguments; 15% credited it.",
+   "url": "https://www.anthropic.com/research/agents-judgment-calls",
+   "source_label": "Anthropic, Oct 27"
   },
   {
-   "text": "AP: fake videos likely from Russia's Storm-1516 network used a former intern's name to smear Ohio Senate candidate Sherrod Brown. She says the claims are 'completely made up'.",
-   "url": "https://www.wsbtv.com/news/politics/disinformation/7RREVIBYPU775GGLQO6YHSPNXQ/",
-   "source_label": "AP via WSB-TV, Oct 27"
+   "text": "Purdue's political deepfakes database has logged 482 posts this midterm cycle; Donald Trump appears in 279 of them.",
+   "url": "https://nbc16.com/news/nation-world/more-political-deepfakes-muddying-the-waters-this-election-trump-most-frequent-target-purdue-political-deepfakes-incidents-database",
+   "source_label": "Sinclair, Oct 28"
   },
   {
-   "text": "The flaw under most websites, day 8: still no victim named. The US federal deadline to fix the two listed flaws is tomorrow, Oct 29.",
+   "text": "The flaw under most websites, day 8: still no victim named. Three of the 25 systems Dream says were rooted sat in a US government-affiliated network. The federal fix deadline is tomorrow, Oct 29.",
    "url": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html",
    "source_label": "The Hacker News, Oct 28"
   }

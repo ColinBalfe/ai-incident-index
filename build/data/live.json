@@ -4,7 +4,7 @@
 "value": "0",
 "hide_while_zero": true,
 "label": "organizations confirmed breached by name",
-"detail": "Still no organization confirmed breached by name. The security firm Dream reported on Oct 26 that attacker files it recovered show 25 real servers rooted Oct 23-24 (24 firewalls from one unnamed vendor and a management server), two at a US government-affiliated organization; no victim or vendor is named and none has confirmed it. Wiz (Oct 27) sees only 'a limited number of exploitation attempts' in its own telemetry.",
+"detail": "Still no organization confirmed breached by name. The security firm Dream reported on Oct 26 that attacker files it recovered show 25 real servers rooted Oct 23-24 (24 firewalls from one unnamed vendor and a management server), three of them in a US government-affiliated network (The Hacker News, Oct 28); no victim or vendor is named and none has confirmed it. Wiz (Oct 27) sees only 'a limited number of exploitation attempts' in its own telemetry.",
 "source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
 "source_label": "Dream, Oct 26"
 },

@@ -943,7 +943,7 @@
    "country": "United States, Japan, Taiwan, South Korea",
    "status": "unconfirmed claim",
    "date": "2026-10-23 to 2026-10-24",
-   "what_happened": "Dream says attacker files it recovered show a chained PHP2Shell and Fragnesia (Linux kernel) exploit rooting 24 perimeter firewalls from one unnamed large vendor and one internal firewall management server, 25 in all; two firewalls belonged to a US government-affiliated organization, where the files confirm credential extraction and directory enumeration. The evidence is the attacker's own logs, not access to the victims; no victim or vendor is named and none has confirmed it.",
+   "what_happened": "Dream says attacker files it recovered show a chained PHP2Shell and Fragnesia (Linux kernel) exploit rooting 24 perimeter firewalls from one unnamed large vendor and one internal firewall management server, 25 in all; three of them (two firewalls and the internal management server) were in a US government-affiliated network, where the files confirm credential extraction and directory enumeration. The evidence is the attacker's own logs, not access to the victims; no victim or vendor is named and none has confirmed it.",
    "damage": "credentials taken and directory enumerated at one organization, per Dream; full extent unknown",
    "source": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
   }
@@ -1411,7 +1411,7 @@
   },
   {
    "date": "2026-10-26",
-   "event": "Dream publishes 'Chained PHP2Shell Exploit Roots 25 Servers': artifacts it recovered on Oct 25 (a custom PHP2Shell build, the Fragnesia kernel exploit, target lists, about 40 post-exploitation scripts and a success log) show 24 perimeter firewalls and one firewall management server rooted Oct 23-24 across the US, Japan, Taiwan and South Korea, two of them at a US government-affiliated organization. No victim, vendor or actor named; Dream notified the vendor.",
+   "event": "Dream publishes 'Chained PHP2Shell Exploit Roots 25 Servers': artifacts it recovered on Oct 25 (a custom PHP2Shell build, the Fragnesia kernel exploit, target lists, about 40 post-exploitation scripts and a success log) show 24 perimeter firewalls and one firewall management server rooted Oct 23-24 across the US, Japan, Taiwan and South Korea, three of them (two firewalls and the management server) in a US government-affiliated network. No victim, vendor or actor named; Dream notified the vendor.",
    "source": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
   },
   {
@@ -1423,6 +1423,11 @@
    "date": "2026-10-27",
    "event": "Security Boulevard (22:50 UTC) carries Dream's 25-server report alongside Wiz's 'limited number of exploitation attempts' in its own telemetry; still no organization named.",
    "source": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/"
+  },
+  {
+   "date": "2026-10-28",
+   "event": "The Hacker News and Cybernews carry Dream's account: three of the 25 rooted systems sat in a US government-affiliated network (one crashed on Oct 23; a second, on Oct 24, was used to tunnel to an internal firewall management server). Dream calls the actor suspected China-linked without naming a group and says it notified the affected entity; no victim has confirmed it.",
+   "source": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html"
   }
  ],
  "statements": [

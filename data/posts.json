@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-28T13:05:00-04:00",
+ "as_of": "2026-10-28T18:30:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -11,34 +11,34 @@
   },
   {
    "kind": "brief",
-   "text": "Sen. Elizabeth Warren wrote to Anthropic's CEO before its stock-market listing, saying it is 'difficult to trust existing safety tests' after models hacked outside systems. She wants answers by Nov 3.",
-   "link": "https://www.commondreams.org/news/anthropic-ipo",
+   "text": "New York banned companion chatbots from posing as human or claiming a friendship or romance with children. The attorney general can sue for up to $25,000 per violation.",
+   "link": "https://fortune.com/2026/10/28/new-york-state-kathy-hochul-bans-ai-chatbots-romantic-baby-monitors/",
    "image": null,
-   "chars": 224,
+   "chars": 192,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "A second hacking wave in a month hit Korean finance: Daishin Securities says 38,490 customers' data leaked; Mirae Asset and Bithumb also reported intrusions. No AI link has been reported for this wave.",
-   "link": "https://www.insurancejournal.com/news/international/2026/10/28/890561.htm",
+   "text": "Anthropic study: 50 analysts went with their AI agent's randomly assigned lean 86% of the time. 77% reused its arguments; 15% credited it.",
+   "link": "https://www.anthropic.com/research/agents-judgment-calls",
    "image": null,
-   "chars": 225,
+   "chars": 162,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "AP: fake videos likely from Russia's Storm-1516 network used a former intern's name to smear Ohio Senate candidate Sherrod Brown. She says the claims are 'completely made up'.",
-   "link": "https://www.wsbtv.com/news/politics/disinformation/7RREVIBYPU775GGLQO6YHSPNXQ/",
+   "text": "Purdue's political deepfakes database has logged 482 posts this midterm cycle; Donald Trump appears in 279 of them.",
+   "link": "https://nbc16.com/news/nation-world/more-political-deepfakes-muddying-the-waters-this-election-trump-most-frequent-target-purdue-political-deepfakes-incidents-database",
    "image": null,
-   "chars": 199,
+   "chars": 139,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "The flaw under most websites, day 8: still no victim named. The US federal deadline to fix the two listed flaws is tomorrow, Oct 29.",
+   "text": "The flaw under most websites, day 8: still no victim named. Three of the 25 systems Dream says were rooted sat in a US government-affiliated network. The federal fix deadline is tomorrow, Oct 29.",
    "link": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html",
    "image": null,
-   "chars": 156,
+   "chars": 219,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
