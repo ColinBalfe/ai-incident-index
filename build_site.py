@@ -174,6 +174,19 @@ for f in FILES:
         bundle[f] = json.load(open(f'data/{f}.json', encoding='utf-8'))
     except (OSError, ValueError):
         pass
+# links: each Wire story and Up & Down row knows its record (an incident page) and the names with their own page (entities.py)
+import entities as _E
+_EIDX, _EPAGES, _N2I, _EA = _E.index()
+for _n in bundle.get('news') or []:
+    if _N2I.get(_n.get('id')): _n['rec'] = _N2I[_n['id']]
+    _w = [w for w in _E.who(_E.text_of('news', _n)) if _EPAGES.get(w)]
+    if _w: _n['who'] = _w[:3]
+for _u in bundle.get('updown') or []:
+    _w = [w for w in _E.who(_u.get('name', '')) if _EPAGES.get(w)]
+    if _w: _u['who'] = _w[0]
+    if _N2I.get(_u.get('news_id')): _u['rec'] = _N2I[_u['news_id']]
+bundle['whonames'] = {w: _E.NAME[w] for w in _EPAGES if _EPAGES[w]}
+json.dump(bundle['whonames'], open('data/whonames.json', 'w', encoding='utf-8'), ensure_ascii=False)
 json.dump(bundle, open('data/bundle.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 # the homepage loads a lean copy first (the Record-only sections' data emptied) and fetches the full bundle in the background
 _lean = {k: ([] if k in ('quotes', 'signals', 'timeline', 'implications', 'drivers', 'context', 'horizon') else v) for k, v in bundle.items()}

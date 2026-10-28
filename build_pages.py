@@ -144,6 +144,30 @@ def chain_html(f, compact=False):
 
 # ---------- incident pages
 urls = []
+# connections (entities.py): who is involved, the Wire stories that reported it, forecasts and Up & Down rows that point at it
+import entities as _E
+_EIDX, _EPAGES, _N2I, _EA = _E.index()
+_INC2NEWS = {}
+for _nid, _iid in _N2I.items(): _INC2NEWS.setdefault(_iid, []).append(_EA['news'][_nid])
+_CALLS_BY_INC = {}
+for _c in _EA['calls']:
+    _ri = (_c.get('related') or {}).get('incident_id') if isinstance(_c.get('related'), dict) else None
+    if _ri: _CALLS_BY_INC.setdefault(_ri, []).append(_c)
+_UD_BY_INC = {}
+for _u in _EA['ud']:
+    if _N2I.get(_u.get('news_id')): _UD_BY_INC.setdefault(_N2I[_u['news_id']], []).append(_u)
+def connected_html(r):
+    whos = [w for w in _E.who(_E.text_of('inc', r)) if _EPAGES.get(w)]
+    parts = []
+    if whos: parts.append('<p><b>Who is involved:</b> ' + ' · '.join(f'<a href="/who/{w}/">{esc(_E.NAME[w])}</a>' for w in whos) + '</p>')
+    ns = sorted(_INC2NEWS.get(r['id'], []), key=lambda n: n.get('published') or '', reverse=True)[:8]
+    if ns: parts.append('<p><b>On the Wire:</b></p><ul class="rows">' + ''.join(f'<li><span class="t">{link(n["url"], n.get("tag") or n["title"])}<small>{esc(n.get("outlet") or "")} · {esc(fdate((n.get("published") or "")[:10]))}</small></span></li>' for n in ns) + '</ul>')
+    cs = _CALLS_BY_INC.get(r['id'], [])
+    if cs: parts.append('<p><b>Forecasts on it:</b> ' + ' · '.join(f'<a href="/forecast/{esc(c["id"])}/">{esc(c.get("plain") or c["question"])}</a>' for c in cs[:6]) + '</p>')
+    us = _UD_BY_INC.get(r['id'], [])
+    if us: parts.append('<p><b>Up &amp; Down:</b> ' + ' · '.join(f'{"▲" if u["dir"] == "up" else "▼"} {esc(u["name"])}: {esc(u["line"])}' for u in us) + ' <a href="/up-and-down/">The board</a></p>')
+    return ('<section><h2>Connected</h2>' + ''.join(parts) + '</section>') if parts else ''
+
 def incident_page(r, prev, nxt):
     url = f'{site}i/{r["id"]}/'; img = card_for('i', r['id'])
     tier_dot = TIER_DOT[r['tier']]
@@ -192,6 +216,7 @@ def incident_page(r, prev, nxt):
     cs = sorted(caps_by_inc.get(r['id'], []), key=lambda c: c['date'], reverse=True)
     if cs:
         body.append('<section><h2>The capability behind it</h2><ul class="rows">' + ''.join(f'<li><span class="t"><a href="/m/{esc(c["id"])}/">{esc(c["title"])}</a><small>{esc(fdate(c["date"], c.get("date_precision")))} · {esc(c.get("org") or "")} · reliable for a defined task: {esc(((c.get("stages") or {}).get("reliable") or {}).get("status") or "unknown")}</small></span></li>' for c in cs) + '</ul></section>')
+    body.append(connected_html(r))
     srcs = [(r.get('source_url'), r.get('source_label') or 'primary source'), (r.get('source2_url'), 'second source'), (r.get('source3_url'), 'third source')]
     src = ', '.join(link(u, l) for u, l in srcs if u)
     conf = f' Evidence confidence: {esc(r["confidence"])}.' if r.get('confidence') and r['confidence'] != 'high' else ''

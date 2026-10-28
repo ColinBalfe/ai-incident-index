@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'updown'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'updown', 'whonames'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -530,7 +530,10 @@ function drawLevel() {
   const brand = el('a', 'lvl-brand'); brand.href = '#top'; brand.setAttribute('aria-label', 'Warning Shots: the masthead'); const mk = document.querySelector('.masthead .logo .mark'); if (mk) { const c = mk.cloneNode(true); c.setAttribute('class', 'lvl-mark'); c.setAttribute('aria-hidden', 'true'); brand.append(c); } brand.append(el('b', null, 'Warning Shots'), el('span', 'lvl-desc', '· AI’s dangers and breakthroughs'));
   box.replaceChildren(brand, a1, why, a2, a3, det);
 }
+let edOpen = /^#(why|seis|chart|xon|graded|next-up|ed-more)/.test(location.hash || '');
+function setEdOpen(v) { edOpen = v; document.body.classList.toggle('ed-open', v); const m = document.getElementById('ed-more'); if (!m) return; m.classList.toggle('open', v); const t = m.querySelector('.ed-tog'); if (t) { t.setAttribute('aria-expanded', String(v)); t.querySelector('.ed-tl').textContent = v ? 'Show less ▴' : 'More in today’s edition ▾'; } }
 function drawWall() {
+  document.body.classList.toggle('ed-open', edOpen);
   const lead = document.getElementById('wall-lead'), box = document.getElementById('wall'); if (!box || !lead) return;
   drawLevel(); drawStory();
   const items = newsItems().filter((n) => n.tag && n.wall).sort((a, b) => (a.wall_rank ?? 999) - (b.wall_rank ?? 999));
@@ -589,7 +592,7 @@ function drawWall() {
   if (hero.people && hero.people.text) { const pp = el('p', 'dl-people'); pp.append(el('b', null, (hero.people.kind === 'helped' ? 'Who it helped: ' : 'Who it hit: ')), txt(hero.people.text)); body.append(pp); }
   if (frags.childNodes.length) body.append(frags);
   if (hero.action && hero.action.text && hero.action.url) { const ac = el('a', 'dl-act', hero.action.text + ' →'); ac.href = hero.action.url; if (/^https?:/.test(hero.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } body.append(ac); }
-  const so = el('div', 'dl-src'); if (takeover) { const t = el('a', null, (srl.tech_name ? srl.tech_name + ' ' : '') + 'live tracker →'); t.href = srl.url; so.append(t); } else { so.append(txt(hero.outlet + ' · ' + ageShort(hero) + ' · '), ext(el('a', null, 'Read the original reporting →'), hero)); } body.append(so);
+  const so = el('div', 'dl-src'); if (takeover) { const t = el('a', null, (srl.tech_name ? srl.tech_name + ' ' : '') + 'live tracker →'); t.href = srl.url; so.append(t); } else { so.append(txt(hero.outlet + ' · ' + ageShort(hero) + ' · '), ext(el('a', null, 'Read the original reporting →'), hero)); } if (hero.rec) { const r = el('a', null, 'On the record →'); r.href = '/i/' + hero.rec + '/'; so.append(txt(' · '), r); } if (hero.who && hero.who[0]) { const w = el('a', null, 'Everything on ' + ((D.whonames || {})[hero.who[0]] || hero.who[0]) + ' →'); w.href = '/who/' + hero.who[0] + '/'; so.append(txt(' · '), w); } body.append(so);
   let strip = null;
   if (srl && srl.name) {
     const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1;
@@ -763,7 +766,8 @@ function drawWall() {
     const s = el('section', 'ud'); s.setAttribute('aria-label', 'Up and Down: who gained or lost power in AI this week');
     const h = el('div', 'ud-h'); h.append(el('h2', 'ud-t', 'Up & Down'), el('span', 'ud-sub', 'Who gained power in AI this week, who lost it, and why it matters.')); const all = el('a', 'ud-all', 'The full board →'); all.href = '/up-and-down/'; h.append(all); s.append(h);
     const row = (b) => { const r = el('div', 'ud-r ' + b.dir); r.append(el('span', 'ud-ar', b.dir === 'up' ? '▲' : '▼'));
-      const body = el('div', 'ud-b'); const top = el('p', 'ud-l'); const nm = el('a', 'ud-n', b.name); nm.href = b.url; nm.target = '_blank'; nm.rel = 'noopener noreferrer'; nm.title = b.outlet || ''; top.append(nm, txt(' ' + b.line));
+      const body = el('div', 'ud-b'); const top = el('p', 'ud-l'); const nm = el('a', 'ud-n', b.name); if (b.who) { nm.href = '/who/' + b.who + '/'; nm.title = 'Everything on ' + b.name; } else { nm.href = b.url; nm.target = '_blank'; nm.rel = 'noopener noreferrer'; } top.append(nm, txt(' ' + b.line + ' '));
+      const so = el('a', 'ud-s', b.outlet || 'source'); so.href = b.url; so.target = '_blank'; so.rel = 'noopener noreferrer'; top.append(so); if (b.rec) { const rc = el('a', 'ud-s', ' · on the record'); rc.href = '/i/' + b.rec + '/'; top.append(rc); }
       const w = el('p', 'ud-w'); w.append(el('b', null, 'Why it matters: '), txt(b.why + ' '));
       const x = el('a', 'ud-x', 'Post'); x.href = 'https://x.com/intent/post?text=' + encodeURIComponent((b.dir === 'up' ? '▲ ' : '▼ ') + b.name + ': ' + b.line + ' Why it matters: ' + b.why) + '&url=' + encodeURIComponent(SITE + 'up-and-down/'); x.target = '_blank'; x.rel = 'noopener noreferrer'; w.append(x);
       body.append(top, w); r.append(body); return r; };
@@ -780,7 +784,16 @@ function drawWall() {
     const a1 = el('a', null, 'The data and the download →'); a1.href = CH.url; const a2 = el('a', null, 'Every chart'); a2.href = '/chart/'; ft.append(a1, txt(' · '), a2);
     s.append(h, fig, ft); return s; })() : null;
   const pulse = buildPulse();
-  box.replaceChildren(...(pulse ? [pulse] : []), ...(btBand ? [btBand] : []), cols, ...(incBand ? [incBand] : []), ...(chartBand ? [chartBand] : []), more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
+  // The edited front page: the lead, Breakthroughs, the columns and Up & Down; everything else waits behind one 'more' break
+  const edMore = el('section', 'ed-more' + (edOpen ? ' open' : '')); edMore.id = 'ed-more';
+  const rdN = open.filter((c) => c.resolve_by === firstDay).length;
+  const tg = el('button', 'ed-tog'); tg.type = 'button'; tg.setAttribute('aria-expanded', String(edOpen)); tg.setAttribute('aria-controls', 'ed-more-in');
+  const tgL = el('span', 'ed-tl', edOpen ? 'Show less ▴' : 'More in today’s edition ▾');
+  tg.append(tgL, el('span', 'ed-ts', ['The Seismograph', 'Today’s chart', ...(rdN ? [rdN + ' forecasts graded ' + d3.utcFormat('%a')(new Date(firstDay + 'T12:00:00Z'))] : []), ...(xbox ? ['On X'] : []), 'What it means for you'].join(' · ')));
+  const inner = el('div', 'ed-in'); inner.id = 'ed-more-in'; inner.append(...(pulse ? [pulse] : []), ...(chartBand ? [chartBand] : []), ...(up.childNodes.length ? [up] : []), ...(xbox ? [xbox] : []));
+  tg.addEventListener('click', () => { setEdOpen(!edOpen); if (!edOpen) edMore.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); });
+  edMore.append(tg, inner);
+  box.replaceChildren(...(btBand ? [btBand] : []), cols, more, ...(incBand ? [incBand] : []), edMore, cu, ed, foot);
 }
 /* ---------- The story so far: a 20-second film at the top of the homepage, told by the record itself.
    Four beats, each lighting its stretch of the incident strip: when a person was always behind it, the first severe case where the AI
@@ -814,7 +827,7 @@ function drawStory() {
   const ctl = el('div', 'st-c'); const dots = el('div', 'st-dots'); dots.setAttribute('role', 'tablist'); dots.setAttribute('aria-label', 'Steps');
   const dotEls = beats.map((b, i) => { const d = el('button', 'st-dot'); d.type = 'button'; d.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + b.k); d.addEventListener('click', () => { stop(); show(i); }); dots.append(d); return d; });
   const rp = el('button', 'st-a', '↻ Replay'); rp.type = 'button'; rp.addEventListener('click', () => { storyState.done = false; show(0); run(); });
-  const ex = el('button', 'st-a', 'Explore every incident ↓'); ex.type = 'button'; ex.addEventListener('click', () => { const t = document.querySelector('.seis'); if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); });
+  const ex = el('button', 'st-a', 'Explore every incident ↓'); ex.type = 'button'; ex.addEventListener('click', () => { setEdOpen(true); const t = document.querySelector('.seis'); if (t) setTimeout(() => t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }), 60); });
   ctl.append(dots, rp, ex); left.append(kick, ttl, ctl);
   // the strip: every incident as a hairline spike
   const strip = el('div', 'st-strip'); const W = 640, H = 120, ml = 4, mr = 34, base = H - 16;
@@ -971,6 +984,7 @@ function drawWire() {
     const a = el('a', 'wi-t'); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; if (fresh(n)) a.append(el('i', 'nd')); a.append(txt(n.title));
     const m = el('div', 'wi-m'); const hours = n.published ? (Date.now() - Date.parse(n.published)) / 3.6e6 : 99; const k = n.kind === 'breaking' && hours >= 24 ? null : KIND[n.kind]; if (k) m.append(el('span', 'kind ' + n.kind, k)); m.append(el('b', null, n.outlet || ''), el('span', 'ag', ageShort(n)));
     if ((n.also || []).length) { const also = el('span', 'also'); also.append(txt('also ')); n.also.slice(0, 2).forEach((x, i) => { const l = el('a', null, x.outlet); l.href = x.url; l.target = '_blank'; l.rel = 'noopener noreferrer'; if (i) also.append(txt(', ')); also.append(l); }); m.append(also); }
+    if (n.rec || (n.who && n.who.length)) { const lk = el('span', 'wi-rec'); if (n.rec) { const r = el('a', null, 'On the record →'); r.href = '/i/' + n.rec + '/'; lk.append(r); } (n.who || []).slice(0, 2).forEach((w) => { const x = el('a', null, (D.whonames || {})[w] || w); x.href = '/who/' + w + '/'; lk.append(x); }); m.append(lk); }
     it.append(a, m); if (n.touches) it.append(el('div', 'wi-w', 'Who this touches: ' + n.touches)); if (n.summary) it.append(el('div', 'wi-s', n.summary)); it.title = n.summary || ''; it.tabIndex = 0; it.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target === it) a.click(); }); return it;
   }));
   const span = d3.extent(items, (n) => n.published);

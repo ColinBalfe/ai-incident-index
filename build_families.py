@@ -325,6 +325,15 @@ os.makedirs('ai-inc', exist_ok=True)
 open('ai-inc/index.html', 'w').write('<!doctype html><meta charset="utf-8"><title>Up &amp; Down</title><meta name="description" content="AI Inc. is now Up &amp; Down: who gained power in AI, who lost it, and why it matters."><meta property="og:image" content="' + SITE + 'assets/og.png"><meta name="robots" content="noindex"><link rel="canonical" href="' + uu + '"><meta http-equiv="refresh" content="0; url=/up-and-down/"><p><a href="/up-and-down/">Up &amp; Down</a></p>')
 print(f'up-and-down/: {len(UDR)}')
 
+import entities as _E
+_EIDX, _EPAGES, _N2I, _EA = _E.index()
+def _fc_links(c):
+    ws = [w for w in _E.who(_E.text_of('call', c)) if _EPAGES.get(w)]
+    ri = (c.get('related') or {}).get('incident_id') if isinstance(c.get('related'), dict) else None
+    bits = []
+    if ri and ri in INC: bits.append(f'<b>The incident:</b> <a href="/i/{esc(ri)}/">{esc(INC[ri]["title"])}</a>')
+    if ws: bits.append('<b>Who is involved:</b> ' + ' · '.join(f'<a href="/who/{w}/">{esc(_E.NAME[w])}</a>' for w in ws))
+    return ('<p class="meta">' + ' · '.join(bits) + '</p>') if bits else ''
 # ======================================================== forecast/<id>/: one permanent page per call and question
 CALLS = L('data/calls.json'); fu = []
 def likely(o):
@@ -345,7 +354,7 @@ for c in CALLS:
 <h1>{esc(q)}</h1><div class="meta">{kind} opened {esc(fdate(c['opened']))} · {'days to weeks' if kind == 'Call' else 'months to years'} · the question's wording never changes after it is published</div>
 {res}
 <div class="share"><a class="button" href="https://x.com/intent/post?{esc(urllib.parse.urlencode({'text': (q + ' Graded: ' + r['outcome'] + '. Warning Shots had said ' + likely(c['odds']).lower() + '.') if r else ('Warning Shots says ' + likely(c['odds']).lower() + ': ' + q + ' Graded ' + fdate(c['resolve_by']) + ', right or wrong.'), 'url': url}))}" target="_blank" rel="noopener">Post on X</a><button type="button" class="alt" data-copy="{esc(q + ' ' + url)}">Copy link</button>{(f'<a class="button alt" href="/assets/forecast/{esc(c["id"])}.png" download>Download the card</a>') if os.path.exists(f"assets/forecast/{c['id']}.png") else ''}</div>
-<h2>Why the index thinks so</h2><p>{esc(c.get('basis') or '')}</p>
+{_fc_links(c)}<h2>Why the index thinks so</h2><p>{esc(c.get('basis') or '')}</p>
 {('<h2>What would move it</h2><p>' + esc(c['signposts']) + '</p>') if c.get('signposts') else ''}
 <p class="meta">The exact question: {esc(c['question'])}</p>
 <p><a href="/forecast/">Every forecast and the track record →</a></p>
