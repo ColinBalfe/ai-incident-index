@@ -532,7 +532,7 @@ function drawLevel() {
 }
 function drawWall() {
   const lead = document.getElementById('wall-lead'), box = document.getElementById('wall'); if (!box || !lead) return;
-  drawLevel();
+  drawLevel(); drawStory();
   const items = newsItems().filter((n) => n.tag && n.wall).sort((a, b) => (a.wall_rank ?? 999) - (b.wall_rank ?? 999));
   const siren = items.find((n) => n.wall === 'siren');
   if (!siren) { box.hidden = true; lead.hidden = true; return; }
@@ -768,6 +768,66 @@ function drawWall() {
     s.append(h, fig, ft); return s; })() : null;
   const pulse = buildPulse();
   box.replaceChildren(...(pulse ? [pulse] : []), ...(btBand ? [btBand] : []), cols, ...(chartBand ? [chartBand] : []), more, ...(up.childNodes.length ? [up] : []), cu, ed, ...(xbox ? [xbox] : []), foot);
+}
+/* ---------- The story so far: a 20-second film at the top of the homepage, told by the record itself.
+   Four beats, each lighting its stretch of the incident strip: when a person was always behind it, the first severe case where the AI
+   acted on its own, the last twelve months, and today's live case. Every number is computed from the data; nothing is staged. */
+const storyState = { i: 0, timer: null, paused: false, done: false };
+function drawStory() {
+  const box = document.getElementById('story'); if (!box || !C.scored || !C.scored.length || EMBED) { if (box) box.hidden = true; return; }
+  clearTimeout(storyState.timer); storyState.timer = null;
+  const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const asOf = new Date(D.meta.as_of), h = C.headline || {}, own = (r) => +r.A >= 3;
+  const all = C.scored.filter((r) => r.date && !isNaN(Date.parse(r.date))).map((r) => ({ ...r, t: new Date(r.date + 'T12:00:00Z') })).sort((a, b) => a.t - b.t);
+  const t0 = new Date('2023-01-01T00:00:00Z'), fmtMY = d3.utcFormat('%b %Y'), yrAgo = new Date(+asOf - 365.25 * 864e5);
+  const early = all.filter((r) => r.t < new Date('2025-01-01T00:00:00Z')), earlyWild = early.filter((r) => r.setting === 'wild');
+  const firstSev = all.find((r) => r.setting === 'wild' && own(r) && r.severity >= 60);
+  const sr = D.meta.serial || {}, live = all.find((r) => r.id === D.meta.live_incident);
+  const day = sr.day1 ? Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1 : null;
+  const pct = Math.round(100 * (h.agentic_recent || 0));
+  const B = (k, from, to, html, hot) => ({ k, from, to, html, hot: hot || [] });
+  const beats = [
+    B('2023–2024', t0, new Date('2024-12-31T23:59:00Z'), earlyWild.length && !earlyWild.some(own)
+      ? `In 2023 and 2024, every real-world AI incident on our record had <b>a person</b> at the controls.`
+      : `In 2023 and 2024, our record logged <b>${early.length}</b> AI incidents, most of them with a person at the controls.`),
+    ...(firstSev ? [B(fmtMY(firstSev.t), new Date(+firstSev.t - 40 * 864e5), new Date(+firstSev.t + 40 * 864e5), `${fmtMY(firstSev.t)}, the first severe case where the AI acted on its own: ${esc(firstSev.title)}. <b>${firstSev.severity}/100.</b>`, [firstSev.id])] : []),
+    B('The last 12 months', yrAgo, asOf, `In the last 12 months: <b>${h.severe_last12 ?? '?'}</b> severe incidents, up from ${h.severe_prior12 ?? '?'}. In <b>${pct}%</b> of real-world cases, the AI did the acting.`),
+    B('Now' + (day ? ' · day ' + day : ''), new Date(+asOf - 10 * 864e5), asOf, live && sr.name
+      ? `Right now: <b>${esc(sr.name)}</b>${sr.strip ? '. ' + esc(sr.strip) : ''} Today's level: <b>${esc(live.level || '')}</b>.`
+      : `Today's level: <b>${esc((C.scored.slice().sort((a, b) => b.severity - a.severity)[0] || {}).level || '')}</b>.`, live ? [live.id] : []),
+  ];
+  const inner = el('div', 'st-in');
+  const left = el('div', 'st-l'); const kick = el('div', 'st-k'); const ttl = el('p', 'st-t');
+  const ctl = el('div', 'st-c'); const dots = el('div', 'st-dots'); dots.setAttribute('role', 'tablist'); dots.setAttribute('aria-label', 'Steps');
+  const dotEls = beats.map((b, i) => { const d = el('button', 'st-dot'); d.type = 'button'; d.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + b.k); d.addEventListener('click', () => { stop(); show(i); }); dots.append(d); return d; });
+  const rp = el('button', 'st-a', '↻ Replay'); rp.type = 'button'; rp.addEventListener('click', () => { storyState.done = false; show(0); run(); });
+  const ex = el('button', 'st-a', 'Explore every incident ↓'); ex.type = 'button'; ex.addEventListener('click', () => { const t = document.querySelector('.seis'); if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); });
+  ctl.append(dots, rp, ex); left.append(kick, ttl, ctl);
+  // the strip: every incident as a hairline spike
+  const strip = el('div', 'st-strip'); const W = 640, H = 120, ml = 4, mr = 34, base = H - 16;
+  const x = d3.scaleUtc().domain([t0, new Date(+asOf + 20 * 864e5)]).range([ml, W - mr]), y = d3.scaleLinear().domain([0, 100]).range([base, 6]);
+  const NS = 'http://www.w3.org/2000/svg', mk = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+  const svg = mk('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `${all.length} AI incidents since 2023 as spikes; red where the AI acted on its own in the real world.` });
+  const band = mk('rect', { x: ml, y: 0, width: 0, height: base, class: 'st-band' }); svg.append(band);
+  svg.append(mk('line', { x1: ml, x2: W - mr, y1: base, y2: base, class: 'st-base' }));
+  for (let yr = 2023; yr <= asOf.getUTCFullYear(); yr++) { const t = mk('text', { x: x(new Date(yr + '-01-01T00:00:00Z')) + 2, y: H - 3, class: 'st-yr' }); t.textContent = String(yr); svg.append(t); }
+  const sp = all.map((r) => { const l = mk('line', { x1: x(r.t), x2: x(r.t), y1: base, y2: base, class: 'sp ' + (own(r) && r.setting === 'wild' ? 'own' : 'ctx') }); svg.append(l); return { r, l, top: y(r.severity) }; });
+  const nx = x(asOf); if (live) { svg.append(mk('circle', { cx: x(live.t), cy: y(live.severity), r: 3, class: 'st-now' }), mk('circle', { cx: x(live.t), cy: y(live.severity), r: 6, class: 'st-ring' })); }
+  const nl = mk('text', { x: nx + 4, y: 12, class: 'st-lab' }); nl.textContent = 'NOW'; svg.append(nl);
+  strip.append(svg); strip.title = 'Explore every incident'; strip.addEventListener('click', () => ex.click());
+  inner.append(left, strip); box.replaceChildren(inner); box.hidden = false;
+  const MS = 5200; box.style.setProperty('--st-ms', MS + 'ms');
+  function show(i) { storyState.i = i; const b = beats[i];
+    kick.replaceChildren(txt(b.k), el('span', 'st-step', (i + 1) + ' of ' + beats.length));
+    ttl.classList.add('fade'); setTimeout(() => { ttl.innerHTML = b.html; ttl.classList.remove('fade'); }, reduced ? 0 : 180);
+    dotEls.forEach((d, j) => { d.classList.toggle('on', j === i); d.classList.toggle('done', j < i); d.setAttribute('aria-selected', String(j === i)); if (j === i) { d.style.animation = 'none'; void d.offsetWidth; d.style.animation = ''; } });
+    const a = Math.max(ml, x(b.from)), z = Math.min(W - mr + 6, x(b.to) + 3); band.setAttribute('x', a); band.setAttribute('width', Math.max(4, z - a));
+    sp.forEach(({ r, l, top }) => { const inR = r.t >= b.from && r.t <= b.to; l.setAttribute('y2', r.t <= b.to || i === beats.length - 1 ? top : base); l.classList.toggle('dim', !inR && i !== beats.length - 1); l.classList.toggle('hot', b.hot.includes(r.id)); }); }
+  function stop() { clearTimeout(storyState.timer); storyState.timer = null; box.classList.add('paused'); }
+  function run() { box.classList.remove('paused'); clearTimeout(storyState.timer); if (reduced) return; storyState.timer = setTimeout(function tick() { if (storyState.i < beats.length - 1) { show(storyState.i + 1); storyState.timer = setTimeout(tick, MS); } else { storyState.done = true; dotEls.forEach((d) => d.classList.remove('on')); dotEls.forEach((d) => d.classList.add('done')); } }, MS); }
+  box.onmouseenter = () => { if (storyState.timer) { clearTimeout(storyState.timer); storyState.timer = null; box.classList.add('paused'); storyState.hold = true; } };
+  box.onmouseleave = () => { if (storyState.hold) { storyState.hold = false; run(); } };
+  if (reduced || storyState.done) show(beats.length - 1); else { show(storyState.i || 0); run(); }
 }
 /* ---------- The Seismograph: every incident on the record as a spike (height = severity; red = the AI acted on its own).
    It replays 2023 to today once when it comes into view, then answers to hover, tap and the arrow keys. The replay is the real record
