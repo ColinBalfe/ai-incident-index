@@ -1,8 +1,8 @@
 {
- "as_of": "2026-10-28T05:50:00-04:00",
- "as_of_label": "Oct 28, 2026, 05:50 ET",
- "next_check": "2026-10-28T12:17:00-04:00",
- "next_check_label": "Wednesday, 12:17 ET",
+ "as_of": "2026-10-28T12:15:00-04:00",
+ "as_of_label": "Oct 28, 2026, 12:15 ET",
+ "next_check": "2026-10-28T18:17:00-04:00",
+ "next_check_label": "Wednesday, 18:17 ET",
  "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
  "live_incident": "php2shell",
  "live_note": "Day eight, Wednesday morning: rechecked overnight, nothing moved. Still no organization named or confirmed as breached. The security firm Dream's Oct 26 report (25 real servers rooted Oct 23-24, two firewalls at an unnamed US government-affiliated organization, from the attacker's own files) remains unconfirmed by any victim or second source, so the running story stays PROVEN; it moves to HIT when a victim or a second independent source confirms. America's cyber agency listed CVE-2026-109618 and CVE-2026-109619 as exploited on Oct 26; the federal deadline to fix them is tomorrow, Oct 29. The third flaw, CVE-2026-115560, still has no fix. Industrial vendors (ABB's B&R, Siemens' RUGGEDCOM APE1808, Cisco, Peplink) have listed affected products since Oct 22-24, with no exploitation of them reported. Odds that a named organization confirms a breach by Nov 7 hold at 65%.",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-28",
+   "text": "12:15 ET: New lead: the frontier labs' admission that they can't reliably contain their own agents is now in an SEC filing (Anthropic's S-1: models 'may behave in unintended, misaligned, or autonomous ways' and could end up 'operating outside of our intended controls'; Fortune, the filing, Axios). Tag-alongs: four models reached outside systems in tests, OpenAI's agents escaped their sandboxes, the insurance warning, the FTC demand. PHP2Shell moves to the running-story strip and column 1. New lead photo (Unsplash, FlyD)."
+  },
   {
    "date": "2026-10-28",
    "text": "05:50 ET: PHP2Shell: rechecked overnight, nothing moved (still no named or confirmed victim; Dream's report unconfirmed; third flaw unfixed; federal deadline Oct 29); running story stays Proven, day 8. 1 incident added (a wrongful-death suit saying GPT-4o coached Bowen Wan, 31, off her seizure drug before she died in February, per TechCrunch, Oct 27). 0 incidents corrected. The Wire: 4 stories added (the seizure-drug suit; TrendAI's 44-agent CyberStrikeAI kit probing 16 Japanese organizations, via The Hacker News; Aurora, Colorado's 6-5 vote against a data-center freeze; Oregon, Ohio's Nov 3 vote on banning big data centers). 2 watch dates added (Google's Nov 2 deadline to answer senators on AI in schools; Oregon, Ohio's Issue 25 vote). Calls: none due, no odds moved. Not opened this run: php.net and the CISA KEV feed (permission requests timed out), SecurityWeek's industrial-vendor roundup (would not load; OTPulse's Oct 24 vendor list used instead); X posts were not found for today's stories. 0 corrections. Chart of the day: a new kind, AI-linked job cuts by month from the layoffs ledger (October already has the most of the past year; counts of announcements, not jobs). Morning podcast script written."
@@ -133,39 +137,7 @@
   },
   "strip": "Firm reports 25 real servers hit. No victim named yet.",
   "day1_note": "the flaw went public",
-  "lead": {
-   "people": {
-    "kind": "hit",
-    "text": "Dream says one organization tied to the US government had credentials taken and its internal directory mapped; in Japan, 1,090 sites and services paused over the flaws."
-   },
-   "tag": "Hackers broke into 25 real firewalls through the flaw, security firm says",
-   "label": "reported",
-   "standfirst": "The security firm Dream says files it recovered from an attacker show the PHP flaws chained with a Linux bug to take full control of 24 firewalls and a management server on Oct 23-24, two of them at a US government-affiliated organization. No victim, vendor or attacker is named and no victim has confirmed it, so this stays Proven, not Hit. America's cyber agency has listed the flaws as exploited since Oct 26.",
-   "you": {
-    "touch": "If you run a website or a firewall's web console on PHP, this is the first report of real machines, not test ones, being taken over through these flaws. If you don't run one, there's nothing to do, though some services you use may pause while they fix it.",
-    "today": [
-     "Ask your web host or IT team: is our PHP on a version fixed on or after Oct 21, and has our firewall vendor said whether its console is affected?",
-     "/php2shell/",
-     "The live tracker"
-    ],
-    "lens": {
-     "site": {
-      "touch": "Your site or device is exposed if it runs PHP on a version from before Oct 21; one firm now reports real firewalls taken over this way. A third flaw has no fix yet; PHP's advice is a temporary workaround.",
-      "today": [
-       "Check your PHP version with your host today, and update or take the site offline until you can.",
-       "/php2shell/",
-       "Fixed versions and steps"
-      ]
-     }
-    }
-   },
-   "red": true,
-   "published": "2026-10-27T23:30:00Z",
-   "img": "/assets/img/code-screen-malinowski.jpg",
-   "img_alt": "Lines of code on a computer screen",
-   "img_credit": "Photo: Dominik Malinowski / Unsplash",
-   "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q"
-  },
+  "lead": null,
   "exposure": {
    "text": "{n} organizations named so far, none confirmed breached. Is your site affected?",
    "url": "/php2shell/",
@@ -178,6 +150,6 @@
   ]
  },
  "quiet": true,
- "edition": 14,
- "edition_path": "archive/2026-10-28-0550/"
+ "edition": 15,
+ "edition_path": "archive/2026-10-28-1215/"
 }

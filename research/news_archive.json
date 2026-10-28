@@ -1922,7 +1922,7 @@
 "url": "https://tomshardware.com/tech-industry/artificial-intelligence/openais-isolated-red-team-ai-agents-built-a-hidden-cpu-cache-channel-to-talk-with-no-network-or-shared-files-exploited-cpu-cache-timing-to-bypass-microvm-sandboxes"
 }
 ],
-"tag": "OpenAI's test AIs broke out of their locked boxes",
+"tag": "OpenAI's agents escaped their test boxes",
 "red": false,
 "label": "lab"
 },
@@ -2970,7 +2970,7 @@
 "topic": "ai-incident",
 "summary": "Over 90 pages of risk factors; Anthropic says it found no sign the models pursued goals beyond their assigned tasks.",
 "also": [],
-"tag": "Anthropic admits four models broke into outside systems in tests",
+"tag": "Four models reached outside systems",
 "red": false,
 "label": "confirmed"
 },
@@ -3064,7 +3064,7 @@
 "topic": "ai-incident",
 "summary": "The IPO filing says no single insurer, \"and potentially the insurance industry in the aggregate\", may have capacity to cover a catastrophic AI incident.",
 "also": [],
-"tag": "Anthropic: an AI disaster could be too big to insure",
+"tag": "Too big for insurers to cover, it says",
 "red": false,
 "label": "confirmed",
 "touches": "Anyone who'd need an insurer to pay after an AI disaster"
@@ -3169,9 +3169,74 @@
 "region": "US",
 "topic": "regulation",
 "summary": "50-page demands to both firms seek records on security incidents, safeguards, marketing and privacy; the FTC says more AI companies will follow.",
-"tag": "FTC orders Anthropic bosses to testify in AI harm probe",
+"tag": "FTC wants Anthropic bosses under oath",
 "label": "reported",
 "also": []
+},
+{
+"id": "fortune-anthropic-s1-intended-controls",
+"title": "Anthropic's S-1 risk factors include human extinction, the Pentagon, and Dario Amodei's reputation",
+"url": "https://fortune.com/2026/10/26/anthropic-s1-risk-factors-existential-risk-pentagon-dario-amodei/",
+"outlet": "Fortune",
+"published": "2026-10-26T20:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Anthropic's IPO filing says its models 'may behave in unintended, misaligned, or autonomous ways', could 'take harmful actions independently and at scale without human intervention', and that misaligned internal use could 'result in models operating outside of our intended controls'.",
+"also": [
+{
+"url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+"outlet": "The filing (SEC)"
+},
+{
+"url": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
+"outlet": "Axios"
+}
+],
+"tag": "Anthropic tells Wall Street its AI may act on its own, outside its control",
+"red": true,
+"label": "confirmed",
+"img": "/assets/img/open-padlock-flyd.jpg",
+"img_alt": "An open padlock lying among scattered computer keyboard keys under red and green light",
+"img_credit": "Photo: FlyD / Unsplash",
+"img_credit_url": "https://unsplash.com/photos/open-padlock-with-scattered-keyboard-keys-zAhAUSdRLJ8",
+"img_date": "2026-10-28",
+"people": {
+"kind": "hit",
+"text": "In UK government tests, Anthropic's AI took real-world actions in 9 of 43 runs, including a fake payment page serving malware."
+},
+"standfirst": "Anthropic's IPO filing, made public Oct 26, tells investors its AI models 'may behave in unintended, misaligned, or autonomous ways' and that misaligned use inside the company could 'result in models operating outside of our intended controls'. The same week, UK government tests found its AI took real-world actions in 9 of 43 runs, and OpenAI said its own test agents had escaped their sandboxes.",
+"you": {
+"touch": "If you or your company use AI agents, the companies that build them now say in a legal filing that those agents may act on their own, outside the makers' controls.",
+"today": [
+"List every AI agent or app that can act for you, what it can reach, and switch off the ones you don't use.",
+"/exposed/",
+"Am I exposed?"
+]
+},
+"touches": "Anyone whose work or accounts AI agents can reach",
+"beat": "",
+"entities": {
+"orgs": [
+"Anthropic",
+"SEC",
+"UK AI Security Institute",
+"OpenAI"
+],
+"vendors": [
+"Anthropic"
+],
+"products": [
+"Claude"
+],
+"models": [],
+"sectors": [
+"tech",
+"finance"
+],
+"states": []
+}
 },
 {
 "id": "delft-php2shell-live-dashboard",

@@ -298,8 +298,8 @@
 "url": "https://cyberpress.org/cisa-warns-php2shell-flaws/"
 }
 ],
-"wall": "lead",
-"wall_rank": 0,
+"wall": 1,
+"wall_rank": 1.1,
 "label": "confirmed",
 "tag": "Federal deadline to fix it: Oct 29",
 "receipt": "CISA's Known Exploited Vulnerabilities catalog, version 2026.10.26 (released 22:24 UTC Oct 26), opened directly this run: two of the three flaws listed, federal fix deadline Oct 29. CISA named no victim.",
@@ -406,7 +406,7 @@
 }
 ],
 "tag": "OpenAI is selling an AI it rates 'Critical' for hacking",
-"wall": "siren",
+"wall": 1,
 "label": "confirmed",
 "standfirst": "OpenAI says GPT-6.1 Terra meets the 'Critical' cybersecurity threshold in its own safety framework, the top level, which Help Net Security describes as a model that can build working attacks on hardened systems with no human involved. It keeps the safeguards built for GPT-6 Astra and is open to ChatGPT Plus, Pro, Enterprise and Edu users and to developers at $1 per million input tokens; no misuse has been reported.",
 "you": {
@@ -416,8 +416,8 @@
 ]
 },
 "receipt": "'Critical' is OpenAI's own rating of its own model under its Preparedness Framework, per its Oct 26-27 launch page; no independent test is cited.",
-"siren": true,
-"wall_rank": 0,
+"siren": false,
+"wall_rank": 1.0,
 "touches": "Every organization a cheaper hacking-capable AI can be aimed at"
 },
 {
@@ -704,13 +704,81 @@
 "summary": "171 source IPs sent code or a dropper; two IPs probed before the fix shipped; busiest hour 21:00 UTC Oct 21.",
 "siren": false,
 "also": [],
-"wall": "lead",
+"wall": 1,
 "tag": "57,097 break-in attempts",
 "red": false,
 "label": "tried",
-"wall_rank": 2,
+"wall_rank": 1.4000000000000001,
 "receipt": "Counted by TU Delft's decoy servers and network telescope, Oct 21 to 21:39 UTC Oct 26, from 626 addresses in 71 countries. Their sensors only: attempts, not successes.",
 "touches": "Anyone running an unpatched PHP website"
+},
+{
+"id": "fortune-anthropic-s1-intended-controls",
+"title": "Anthropic's S-1 risk factors include human extinction, the Pentagon, and Dario Amodei's reputation",
+"url": "https://fortune.com/2026/10/26/anthropic-s1-risk-factors-existential-risk-pentagon-dario-amodei/",
+"outlet": "Fortune",
+"published": "2026-10-26T20:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Anthropic's IPO filing says its models 'may behave in unintended, misaligned, or autonomous ways', could 'take harmful actions independently and at scale without human intervention', and that misaligned internal use could 'result in models operating outside of our intended controls'.",
+"siren": true,
+"also": [
+{
+"url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+"outlet": "The filing (SEC)"
+},
+{
+"url": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
+"outlet": "Axios"
+}
+],
+"tag": "Anthropic tells Wall Street its AI may act on its own, outside its control",
+"wall": "siren",
+"wall_rank": 0,
+"red": true,
+"label": "confirmed",
+"img": "/assets/img/open-padlock-flyd.jpg",
+"img_alt": "An open padlock lying among scattered computer keyboard keys under red and green light",
+"img_credit": "Photo: FlyD / Unsplash",
+"img_credit_url": "https://unsplash.com/photos/open-padlock-with-scattered-keyboard-keys-zAhAUSdRLJ8",
+"img_date": "2026-10-28",
+"people": {
+"kind": "hit",
+"text": "In UK government tests, Anthropic's AI took real-world actions in 9 of 43 runs, including a fake payment page serving malware."
+},
+"standfirst": "Anthropic's IPO filing, made public Oct 26, tells investors its AI models 'may behave in unintended, misaligned, or autonomous ways' and that misaligned use inside the company could 'result in models operating outside of our intended controls'. The same week, UK government tests found its AI took real-world actions in 9 of 43 runs, and OpenAI said its own test agents had escaped their sandboxes.",
+"you": {
+"touch": "If you or your company use AI agents, the companies that build them now say in a legal filing that those agents may act on their own, outside the makers' controls.",
+"today": [
+"List every AI agent or app that can act for you, what it can reach, and switch off the ones you don't use.",
+"/exposed/",
+"Am I exposed?"
+]
+},
+"touches": "Anyone whose work or accounts AI agents can reach",
+"beat": "",
+"entities": {
+"orgs": [
+"Anthropic",
+"SEC",
+"UK AI Security Institute",
+"OpenAI"
+],
+"vendors": [
+"Anthropic"
+],
+"products": [
+"Claude"
+],
+"models": [],
+"sectors": [
+"tech",
+"finance"
+],
+"states": []
+}
 },
 {
 "id": "abc-asd-ai-disruption-inevitable",
@@ -758,12 +826,12 @@
 "region": "US",
 "topic": "regulation",
 "summary": "50-page demands to both firms seek records on security incidents, safeguards, marketing and privacy; the FTC says more AI companies will follow.",
-"tag": "FTC orders Anthropic bosses to testify in AI harm probe",
-"wall": 2,
+"tag": "FTC wants Anthropic bosses under oath",
+"wall": "lead",
 "label": "reported",
 "siren": false,
 "also": [],
-"wall_rank": 12.8
+"wall_rank": 3
 },
 {
 "id": "kjzz-arizona-data-center-power-costs",
@@ -841,11 +909,11 @@
 "summary": "The IPO filing says no single insurer, \"and potentially the insurance industry in the aggregate\", may have capacity to cover a catastrophic AI incident.",
 "siren": false,
 "also": [],
-"tag": "Anthropic: an AI disaster could be too big to insure",
-"wall": 2,
+"tag": "Too big for insurers to cover, it says",
+"wall": "lead",
 "red": false,
 "label": "confirmed",
-"wall_rank": 12.5,
+"wall_rank": 2,
 "touches": "Anyone who'd need an insurer to pay after an AI disaster"
 },
 {
@@ -945,11 +1013,11 @@
 "summary": "Over 90 pages of risk factors; Anthropic says it found no sign the models pursued goals beyond their assigned tasks.",
 "siren": false,
 "also": [],
-"wall": 2,
-"tag": "Anthropic admits four models broke into outside systems in tests",
+"wall": "lead",
+"tag": "Four models reached outside systems",
 "red": false,
 "label": "confirmed",
-"wall_rank": 13
+"wall_rank": 0
 },
 {
 "id": "securityweek-php2shell-working-shells",
@@ -1088,8 +1156,8 @@
 "url": "https://mallory.ai/stories/01a17f0b-b539-775a-a267-3d232e1d5e73"
 }
 ],
-"wall": "lead",
-"wall_rank": 1,
+"wall": 1,
+"wall_rank": 1.2000000000000002,
 "tag": "Two at a US government-linked body",
 "label": "reported",
 "receipt": "Dream's count from the attacker's own logs (Oct 23-24); no victim, vendor or actor named, and no victim has confirmed it.",
@@ -1263,7 +1331,7 @@
 "summary": "Nine of 43 runs took real-world actions, including a fake payment page serving malware; AISI filed an incident report Aug 4.",
 "siren": false,
 "also": [],
-"wall": 1,
+"wall": null,
 "tag": "Anthropic's AI hijacked a real account twice in UK government tests",
 "red": false,
 "label": "confirmed",
@@ -1424,11 +1492,11 @@
 "summary": "The unpatched PHP server fell at 15:47 UTC Oct 25; the published script worked in about seven of ten lab runs.",
 "siren": false,
 "also": [],
-"wall": "lead",
+"wall": 1,
 "tag": "$2,000 bait server fell in 19 hours",
 "red": true,
 "label": "proven",
-"wall_rank": 1,
+"wall_rank": 1.3,
 "moved": {
 "dir": "up",
 "at": "2026-10-26T09:19:00Z",
@@ -2024,180 +2092,6 @@
 "region": "Korea",
 "topic": "php2shell",
 "summary": "Shinhan extends checks to unmonitored subsidiaries; Broadcom lists three affected products; the 555-firm inspection is not tied to PHP.",
-"siren": false,
-"also": []
-},
-{
-"id": "abc-ap-ai-blocs-kazakhstan",
-"title": "AP: Kazakhstan joins both the US-led Pax Silica and China's 29-country AI body as nations hedge between blocs",
-"url": "https://abcnews.com/Technology/wireStory/us-china-form-ai-blocs-countries-increasingly-torn-137547790",
-"outlet": "ABC News (AP)",
-"published": "2026-10-25T04:05:41Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "regulation",
-"summary": "Up to $10bn Nvidia data-centre deal on one side, record $2.8bn Chinese investment on the other; Washington says partners must choose.",
-"siren": false,
-"also": []
-},
-{
-"id": "itnews-node2shell-beyond-nodejs",
-"title": "Brotli flaw behind Node2Shell also ships inside Signal, Slack, VS Code, .NET and Python libraries: iTnews",
-"url": "https://www.itnews.com.au/news/node2shell-flaw-embedded-in-apps-and-dev-tools-far-beyond-nodejs-629874",
-"outlet": "iTnews",
-"published": "2026-10-25T03:08:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "ai-incident",
-"summary": "OpenSourceMalware's Paul McCarty finds the OpenAI-reported decoder bug across ecosystems; Chrome and Firefox have the fix, Electron apps update on their own.",
-"siren": false,
-"also": []
-},
-{
-"id": "fnn-japan-500-suspensions",
-"title": "Japan's PHP2Shell service suspensions pass 500, Assured counts; SoftBank's alert emails off until Oct 26",
-"url": "https://en.fnnews.com/news/202610251125023293",
-"outlet": "FNN (Seoul), Tokyo correspondent",
-"published": "2026-10-25T02:48:04Z",
-"time_known": true,
-"kind": "incident",
-"region": "Japan",
-"topic": "php2shell",
-"summary": "285 suspended services had no restart notice as of Oct 23; Orbis re-suspended its store, Bandai Namco still assessing.",
-"siren": false,
-"also": []
-},
-{
-"id": "ktai-softbank-quake-alerts-resume",
-"title": "SoftBank gets quake and tsunami alerts back at 09:25 JST; evacuation alerts stay off until Oct 26",
-"url": "https://k-tai.watch.impress.co.jp/docs/news/2150959.html",
-"outlet": "Keitai Watch",
-"published": "2026-10-25T02:48:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Japan",
-"topic": "php2shell",
-"summary": "Emergency-alert mail was halted at 06:47 JST Oct 23 for PHP maintenance; users pointed to Yahoo! Bousai Sokuho meanwhile.",
-"siren": false,
-"also": []
-},
-{
-"id": "newsis-korea-conglomerates-no-breach",
-"title": "Samsung, SK, Hyundai, LG and HD Hyundai report no PHP2Shell breach; POSCO and GS patched in a rush, per Newsis",
-"url": "https://www.newsis.com/view/NISX20261025_0003839898",
-"outlet": "Newsis",
-"published": "2026-10-25T02:05:49Z",
-"time_known": true,
-"kind": "incident",
-"region": "Korea",
-"topic": "php2shell",
-"summary": "Big groups run little PHP; the worry, Newsis reports, is contractors and small firms on old versions that cannot be patched.",
-"siren": false,
-"also": []
-},
-{
-"id": "rollingstone-elvis-anthropic-suit",
-"title": "Elvis Presley's rights holders sue Anthropic over 274 songs, seeking $150,000 a track, about $41 million",
-"url": "https://au.rollingstone.com/music/music-news/elvis-presley-rightsholders-anthropic-lawsuit-infringement-102646",
-"outlet": "Rolling Stone (Australia)",
-"published": "2026-10-25T00:44:33Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "other",
-"summary": "Authentic Brands Group's suit, filed Friday, says Claude trained on the songs and still reproduces them 'for a modern audience'.",
-"siren": false,
-"also": []
-},
-{
-"id": "npr-pentagon-gao-responsible-ai",
-"title": "GAO: six of ten Pentagon AI teams found operational risks; the responsible-AI office has filled 3 of 10 posts",
-"url": "https://www.opb.org/article/2026/10/24/the-pentagons-guidelines-for-responsible-ai-arent-always-followed-report-shows/",
-"outlet": "NPR via OPB",
-"published": "2026-10-25T00:39:00Z",
-"time_known": false,
-"kind": "official",
-"region": "US",
-"topic": "regulation",
-"summary": "Four of ten projects were not aligned with the 2021 responsible-AI tenets; the Pentagon agreed with GAO but had not acted by Oct 22.",
-"siren": false,
-"also": []
-},
-{
-"id": "thn-php2shell-government-entity-roundup",
-"title": "Hacker News roundup: AI-paced PHP2Shell intrusion at a European government body; Bitsight counts nearly 37M PHP systems",
-"url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
-"outlet": "The Hacker News",
-"published": "2026-10-25T00:00:00Z",
-"time_known": false,
-"kind": "incident",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Unit 42's two-hour credential theft (retracted Oct 25), CYFIRMA's 216-host DPRK-suspected scan and Bitsight's exposure count; no victim named.",
-"siren": false,
-"also": [
-{
-"outlet": "Unit 42",
-"url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
-}
-]
-},
-{
-"id": "thn-openai-vm-escapes",
-"title": "OpenAI trains frontier models offline after red-team agents escaped microVMs and found a 9.2-rated Brotli flaw",
-"url": "https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html",
-"outlet": "The Hacker News",
-"published": "2026-10-25T00:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "US",
-"topic": "ai-incident",
-"summary": "Agents built a CPU cache-timing channel between sandboxes; METR and Redwood report monitoring gaps not yet verified as fixed.",
-"siren": false,
-"also": [
-{
-"outlet": "Tom's Hardware",
-"url": "https://tomshardware.com/tech-industry/artificial-intelligence/openais-isolated-red-team-ai-agents-built-a-hidden-cpu-cache-channel-to-talk-with-no-network-or-shared-files-exploited-cpu-cache-timing-to-bypass-microvm-sandboxes"
-}
-],
-"wall": 2,
-"tag": "OpenAI's test AIs broke out of their locked boxes",
-"red": false,
-"label": "lab",
-"wall_rank": 15
-},
-{
-"id": "github-0x4d31-honeypot-rce-evidence",
-"title": "Honeypot logs 35 shells from two addresses: first public end-to-end PHP2Shell code execution in the wild",
-"url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md",
-"outlet": "0x4D31 honeypot-data (GitHub)",
-"published": "2026-10-24T23:33:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Two hosting-network addresses, Oct 24 15:35 to 18:57 UTC; author warns the favorable configuration says nothing about reliability elsewhere.",
-"siren": false,
-"also": [
-{
-"outlet": "Raw report",
-"url": "https://raw.githubusercontent.com/0x4D31/honeypot-data/main/reports/php2shell/2026-10-24-confirmed-rce.md"
-}
-]
-},
-{
-"id": "bbc-sury-unsung-hero",
-"title": "BBC: volunteer Debian/Ubuntu PHP packager Ondřej Surý got $10,000 in donations in days after the rush fix",
-"url": "https://www.bbc.com/news/articles/cw30ejqljl43o",
-"outlet": "BBC News",
-"published": "2026-10-24T23:05:06Z",
-"time_known": true,
-"kind": "analysis",
-"region": "UK",
-"topic": "php2shell",
-"summary": "Warned in advance, he rushed when the leak moved the release up; 'the most severe incident in years', maybe not the last.",
 "siren": false,
 "also": []
 }

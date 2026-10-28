@@ -582,7 +582,7 @@ function drawWall() {
   const sv = el('div', 'dl-siren');
   if (hero.img) sv.append(pic(hero, 'dl-hero'));
   const lvTop = (document.querySelector('#level .lvl-l b') || {}).textContent || '';
-  const kick = el('div', 'dl-kick'); kick.append(el('span', 'dot'), txt([lvTop, takeover ? srl.name + ', day ' + (Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1) : 'Developing', fmtET(hero.published)].filter(Boolean).join(' · ')));
+  const kick = el('div', 'dl-kick'); kick.append(el('span', 'dot'), txt([lvTop, takeover ? srl.name + ', day ' + (Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1) : 'Developing', hero.time_known === false ? fmtDate(new Date(hero.published)) : fmtET(hero.published)].filter(Boolean).join(' · ')));
   const body = el('div', 'dl-body'); body.append(kick, ext(el('a', 'dl-head' + (hero.red ? ' red' : ''), hero.tag), hero));
   sv.append(body);
   // The standfirst is not shown under the lead for now (Colin, Oct 27): headline only. It is still written: share cards and search snippets use it.

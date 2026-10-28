@@ -32,6 +32,18 @@ except (OSError, ValueError):
 _lead = (meta.get('serial') or {}).get('lead') or {}
 if _lead.get('tag') and (meta.get('serial') or {}).get('state') != 'closed':   # the running story has taken the lead slot: the share title follows it
     _sir = {'tag': _lead['tag'], 'summary': _lead.get('standfirst', '')}
+# the lead photo must change at least once a day (REFRESH 2, the wall): log it by date and warn when a day reuses the previous day's photo
+try:
+    _li = json.load(open('research/lead_images.json', encoding='utf-8'))
+except (OSError, ValueError):
+    _li = {}
+_limg = (_lead.get('img') if _lead.get('tag') else None) or ((_sir or {}).get('img'))
+if _limg:
+    _d = meta['as_of'][:10]; _li[_d] = _limg
+    _prev = sorted(k for k in _li if k < _d)
+    if _prev and _li[_prev[-1]] == _limg:
+        print(f'WARNING: the lead photo {_limg} is the same as on {_prev[-1]}; pick a new free image (REFRESH: one new lead photo a day)')
+    json.dump(dict(sorted(_li.items())[-60:]), open('research/lead_images.json', 'w', encoding='utf-8'), indent=1)
 og_title = (_sir['tag'] + ' | ' + title) if _sir else f"AI has started breaking in on its own — {title}: see what’s coming, know what it means"
 og_desc = ((_sir.get("summary", "") + " ") if _sir else "") + f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of this year's real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
 build = time.strftime('%Y%m%d%H%M', time.gmtime())
