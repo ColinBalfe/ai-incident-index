@@ -491,7 +491,7 @@ function hideTip() { tipBox.hidden = true; }
 document.addEventListener('mouseover', (e) => { const n = e.target.closest && e.target.closest('[data-tip]'); if (n) showTip(n); });
 document.addEventListener('mouseout', (e) => { const n = e.target.closest && e.target.closest('[data-tip]'); if (n) hideTip(); });
 document.addEventListener('click', (e) => { const n = e.target.closest && e.target.closest('[data-tip]'); if (n && n.tagName !== 'A') { e.preventDefault(); if (!tipBox.hidden && tipBox.textContent === n.getAttribute('data-tip') && Date.now() - tipAt > 500) hideTip(); else showTip(n); } else if (!tipBox.hidden && !(e.target.closest && e.target.closest('.tipbox'))) hideTip(); });
-const WALL_COLS = { 1: 'Broke out & broke in', 2: 'Got smarter, took over', 3: 'Fakes, scams & you' };
+const WALL_COLS = { 1: 'Broke out & in', 2: 'Got smarter, took over', 3: 'Fakes, scams & you' };
 const WALL_LABEL = { lab: 'Lab only', retracted: 'Retracted', reported: 'Reported', denied: 'Denied', tried: 'Tried', proven: 'Proven', hit: 'Hit' };
 function drawLevel() {
   const box = document.getElementById('level'); if (!box || !C.scored) return;
