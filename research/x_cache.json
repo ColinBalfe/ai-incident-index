@@ -117,5 +117,39 @@
    "ms": 0,
    "gif": true
   }
+ },
+ "willdepue-anthropic-slack-admin-claim": {
+  "name": "will depue",
+  "handle": "willdepue",
+  "avatar": "https://pbs.twimg.com/profile_images/1933036715343839232/NtsZBjee_bigger.jpg",
+  "verified": true,
+  "created_at": "2026-10-28T00:18:55.000Z",
+  "text": "anthropic is massively underplaying the recent security breach. i'm hearing cathedral achieved full administrator access of the slack workspace (see every message, log in as arbitrary users) where literally every single research secret is contained\n\nto those unfamiliar: Ant & OAI",
+  "id": "2115236836092313988",
+  "photos": [],
+  "truncated": true
+ },
+ "chriscroy-chatgpt-seizure-nyt": {
+  "name": "Chris Croy",
+  "handle": "ChrisCroy",
+  "avatar": "https://pbs.twimg.com/profile_images/1222589421201043457/kzUUF4aI_bigger.jpg",
+  "verified": true,
+  "created_at": "2026-10-27T20:30:56.000Z",
+  "text": "The NY Times has a long read about a woman who suffered a fatal seizure after asking ChatGPT for advice on tapering off of her epilepsy meds.\n\n\"There’s no need to worry too much about your health\", said the bot.\n\nI instantly clocked exactly which model she was talking to.",
+  "id": "2115179460035228126",
+  "photos": [
+   "https://pbs.twimg.com/media/HVqggm8a0AAHU2i.jpg"
+  ]
+ },
+ "zachlloyd-warp-vendor-breach": {
+  "name": "Zach Lloyd",
+  "handle": "zachlloydtweets",
+  "avatar": "https://pbs.twimg.com/profile_images/1937620050254454785/flAAHtFa_bigger.jpg",
+  "verified": true,
+  "created_at": "2026-10-26T19:26:13.000Z",
+  "text": "On Friday, we became aware of what we believe to be an active and narrow-banded exploitation of a vendor in Warp's infrastructure. We detected the operation within hours and were able to remediate and mitigate the impact. We have been in touch with the vendor about the",
+  "id": "2114800787716972873",
+  "photos": [],
+  "truncated": true
  }
 }
