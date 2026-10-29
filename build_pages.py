@@ -79,6 +79,10 @@ try:
     DEEP_IDS = {d['incident_id'] for d in json.load(open('data/deepdives.json', encoding='utf-8'))}
 except (OSError, ValueError):
     DEEP_IDS = set()
+try:
+    NOTES = {k: v for k, v in json.load(open('research/incident_notes.json', encoding='utf-8')).items() if not k.startswith('_')}
+except (OSError, ValueError):
+    NOTES = {}
 def stamp(d):
     return f'<p class="k lastchanged">Last changed {esc(dt.date.fromisoformat(d).strftime("%b %-d, %Y"))}</p>'
 
@@ -191,6 +195,13 @@ def incident_page(r, prev, nxt):
     body.append(f'<p class="lede">{esc(r["summary"])}</p>')
     body.append(f'<section><h2>Damage</h2><p>{esc(r["harm"])}</p></section>')
     dd = dd_by_inc.get(r['id'])
+    nt = NOTES.get(r['id']) if not dd else None   # the upgraded record for incidents without a deep dive (research/incident_notes.json)
+    if nt:
+        paras = [(nt.get('how'), 'How it happened'), (nt.get('ai_role'), 'The AI’s role'), (nt.get('why'), 'Why it matters')]
+        body.append('<section><h2>Inside the incident</h2>' + ''.join(f'<h3 style="margin-top:14px">{esc(h)}</h3><p>{esc(t)}</p>' for t, h in paras if t) + '</section>')
+        nx = sorted(nt.get('next') or [], key=lambda x: x['date'], reverse=True)
+        if nx:
+            body.append('<section><h2>What happened next</h2><ol class="tl">' + ''.join(f'<li><span class="d">{esc(fdate(x["date"]))}</span><span>{esc(x["text"])}{(" " + link(x["url"], x.get("label") or "source")) if x.get("url") else ""}</span></li>' for x in nx) + '</ol></section>')
     if dd:
         paras = [(dd.get('how'), 'How it happened'), (dd.get('ai_role'), 'The AI’s role'), (dd.get('damage'), 'Damage so far'), (dd.get('why'), 'Why it matters')]
         body.append('<section><h2>Inside the incident</h2>' + ''.join(f'<h3 style="margin-top:14px">{esc(h)}</h3><p>{esc(t)}</p>' for t, h in paras if t) + f'<p class="k" style="margin-top:12px"><a href="/index/#d={esc(r["id"])}">Every organization named, the map and the full timeline on the index →</a></p></section>')
@@ -242,7 +253,7 @@ def incident_page(r, prev, nxt):
     desc = f'{first_sentence(r["summary"])} {r["tier"]}, {r["severity"]}/100. {"Real-world incident" if r["setting"] == "wild" else "Lab or test finding"}, {fdate(r["date"], r.get("date_precision"))}. Scored and sourced by Warning Shots.'
     _first = max((r.get('disclosed') or r['date'])[:10], r['date'][:10]) if len(r['date']) >= 10 else (r.get('disclosed') or r['date'] + '-01')[:10]
     if r['id'] in DEEP_IDS or (dt.date.fromisoformat(AS_OF_DATE) - dt.date.fromisoformat(_first)).days <= 14: _first = AS_OF_DATE   # live dossiers and recent cases have been edited recently; baseline them at the first tracked build
-    _lmd = lastmod(url, '\n'.join(body), _first, r); body.insert(1, stamp(_lmd))
+    _lmd = lastmod(url, '\n'.join(body), _first, [r, NOTES[r['id']]] if r['id'] in NOTES else r); body.insert(1, stamp(_lmd))
     write(f'i/{r["id"]}/index.html', shell(title=r['title'], desc=desc[:300], url=url, img=img, body='\n'.join(body), jsonld=article_ld(r['title'], desc[:300], url, img, (r.get('disclosed') or r['date'])[:10], 'Incidents', _lmd), kind='incident'))
     return url
 
@@ -370,8 +381,14 @@ open('sitemap.xml', 'w', encoding='utf-8').write('\n'.join(sm))
 # ---------- Google News sitemap: pages for incidents disclosed in the last 48 hours, plus the live tracker
 _now = dt.datetime.fromisoformat(AS_OF)
 _news = []  # (url, title, publication date): each page's own date, never the refresh time
-if os.path.exists('php2shell/index.html'):
+_fresh = lambda d: len(d) >= 10 and 0 <= (_now.date() - dt.date.fromisoformat(d[:10])).days <= 2   # Google News: last two days only
+if os.path.exists('php2shell/index.html') and _fresh('2026-10-26'):
     _news.append((site + 'php2shell/', 'PHP2Shell live tracker: exploitation, victims, CISA KEV status', '2026-10-26'))  # the tracker page was first published Oct 26
+try:   # our own investigations (build_analysis.py), while fresh
+    for _p in json.load(open('research/analysis.json', encoding='utf-8'))['pieces']:
+        if _fresh(_p['date']) and os.path.exists(f'analysis/{_p["slug"]}/index.html'): _news.append((f'{site}analysis/{_p["slug"]}/', _p['title'], _p['date']))
+except (OSError, ValueError, KeyError):
+    pass
 for r in scored:
     d = r.get('disclosed') or r['date']
     try:

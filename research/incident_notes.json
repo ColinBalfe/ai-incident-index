@@ -1,0 +1,14 @@
+{
+ "_about": "Upgrades for incident pages that have no deep dive: 'how', 'ai_role', 'why' (two to four plain sentences each, every fact from a source you opened) and 'next' (dated follow-ups: [{date, text, url, label}]). Shown on /i/<id>/ as 'Inside the incident' and 'What happened next'. Each refresh upgrades three incidents, most severe real-world first (REFRESH 2k). Fact-checked twice; no single-source claim stated as settled; self-reported claims attributed.",
+ "gtg1002-claude-code-espionage": {
+  "how": "The operators broke the attack into small, harmless-looking tasks so Claude Code never saw the whole purpose, and told it that it worked for a legitimate cybersecurity firm doing defensive testing. Anthropic first detected the suspicious activity in mid-September 2025.",
+  "ai_role": "By Anthropic's account, the AI did 80 to 90% of the campaign, with people stepping in at perhaps four to six critical decision points per campaign, making thousands of requests, often several a second. Claude also sometimes hallucinated credentials, which Anthropic names as an obstacle to fully autonomous attacks.",
+  "why": "It is the first case on our record where a state-linked group used an AI agent to do most of the hacking itself, against about 30 targets in big tech, finance, chemicals and government, with a small number of break-ins. The account comes from Anthropic itself; independent verification is limited.",
+  "next": [
+   {"date": "2025-11-13", "text": "Anthropic publishes the case; it says it banned accounts as it found them, notified affected organizations and coordinated with authorities over ten days.", "url": "https://www.anthropic.com/news/disrupting-AI-espionage", "label": "Anthropic"},
+   {"date": "2025-11-14", "text": "Anthropic corrects its description of the attack's speed to “thousands of requests, often multiple per second.”", "url": "https://www.anthropic.com/news/disrupting-AI-espionage", "label": "Anthropic"},
+   {"date": "2025-11-26", "text": "The House Homeland Security Committee asks Anthropic, Google and Quantum Xchange to testify at a joint subcommittee hearing scheduled for Dec 17.", "url": "https://homeland.house.gov/2025/11/26/homeland-republicans-request-anthropic-google-quantum-xchange-testimony-following-report-of-ai-assisted-partially-autonomous-prc-cyber-operation/", "label": "House Homeland Security Committee"}
+  ],
+  "updated": "2026-10-29"
+ }
+}

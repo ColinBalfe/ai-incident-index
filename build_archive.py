@@ -131,6 +131,7 @@ n_co = sum(1 for x in led if x['who'].startswith('Company'))
 body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/jobs/">Can AI do your job?</a> · The ledger</nav>
 <h1>Layoffs tied to AI: the ledger</h1>
 <p class="aka">Every job cut on our record where AI is part of the story, newest first, labelled by who says AI was the reason.</p>
+<p><b>Our investigation:</b> <a href="/analysis/ai-layoffs-october-2026/">October's “AI layoffs”, checked: in none of the five is AI clearly doing the work →</a></p>
 <section class="box"><b class="k">How to read it</b><p><b>Company says AI</b>: the employer itself tied the cuts to AI. <b>Reported as AI</b>: reporters or analysts made the link; the company didn't. A cut that names no AI link isn't evidence that AI took the jobs, and we label it that way.</p></section>
 <div class="stats"><div><b>{len(led)}</b><span>entries on the ledger</span></div><div><b>{n_co}</b><span>where the company itself tied the cuts to AI</span></div></div>
 <div class="tw"><table><thead><tr><th>Date</th><th>What happened</th><th>Who says AI</th><th>Source</th></tr></thead><tbody>{trs}</tbody></table></div>

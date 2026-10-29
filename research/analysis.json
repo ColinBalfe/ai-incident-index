@@ -1,0 +1,36 @@
+{
+ "_about": "Warning Shots' own investigations: one original, checkable piece a week, each a permanent page at /analysis/<slug>/. Every fact carries a source; verdicts are labelled as our read. Fact-checked twice (REFRESH 4) before publishing; corrections go in 'corrections' with a date, never silently.",
+ "pieces": [
+  {
+   "slug": "ai-layoffs-october-2026",
+   "date": "2026-10-29",
+   "updated": "2026-10-29",
+   "kicker": "Investigation · AI and jobs",
+   "title": "October's “AI layoffs”, checked: in none of the five is AI clearly doing the work",
+   "short": "0 of 5 “AI layoffs” were clearly AI taking the jobs",
+   "dek": "Five big job cuts this month were reported as AI job losses. We read what each employer actually said. AI gets named as a plan for later, or as one reason among several, but in none of them is AI clearly doing the work of the people being cut.",
+   "img": "/cards/analysis-ai-layoffs-october-2026.jpg",
+   "finding": "Headlines tied all five cuts to AI. The employers' own words support that for one of them, partly: Barclays. For the rest, AI is a future plan (American Express, the Dutch government), unconfirmed (HSBC) or denied by the company (Microsoft).",
+   "rows": [
+    {"name": "Barclays", "size": "About 5,000 jobs, 5% of staff, this year", "headline": ["Barclays to cut 5,000 jobs this year as AI makes work more efficient", "ITV News", "https://www.itv.com/news/2026-10-22/barclays-to-cut-5000-jobs-this-year-as-ai-makes-work-more-efficient"],
+     "verdict": "Partly", "said": "Barclays tied the cuts to “greater use of technology” as part of “structural cost actions”, and Reuters reports it is cutting the jobs “as it uses technology such as AI”. Its chief executive called AI the “icing on the cake” of its technology spending and said it “may have a more important role to play in the future”. The cuts came in a quarter where profit undershot analysts' forecasts; the chief executive said: “I am disappointed.”",
+     "sources": [["Reuters, via KFGO", "https://kfgo.com/2026/10/22/barclays-to-slash-5000-jobs-in-ai-powered-cost-cutting-drive/"], ["TechRadar", "https://techradar.com/pro/barclays-to-cut-5-000-jobs-while-handing-work-over-to-ai-chief-executive-says-ai-is-icing-on-the-cake"]]},
+    {"name": "American Express", "size": "About 5% of staff", "headline": ["American Express to make job cuts as AI revolution ramps up", "InvestmentNews", "https://www.investmentnews.com/fintech/american-express-to-make-job-cuts-as-ai-revolution-ramps-up/268723"],
+     "verdict": "Not yet", "said": "The chief financial officer said the goal is to make the company “leaner, more agile, and also to prepare for AI”. Chief executive Stephen Squeri's quoted comments were about innovation and efficiency, not AI. Reports put it at about 3,500 to 3,800 jobs; the company gave a percentage.",
+     "sources": [["24/7 Wall St.", "https://247wallst.com/investing/2026/10/24/amex-raised-its-profit-forecast-and-announced-layoffs-on-the-same-day/"]]},
+    {"name": "The Dutch government", "size": "About 25,000 civil-service jobs, over several years", "headline": ["Dutch Government Plans to Cut 25,000 Jobs in AI-Led Overhaul", "Bloomberg", "https://www.bloomberg.com/news/articles/2026-10-26/dutch-government-plans-to-cut-25-000-jobs-in-ai-led-overhaul"],
+     "verdict": "Mostly budget", "said": "The cuts serve a savings target: €900 million a year by 2027, rising to €3.5 billion. State Secretary Eric van den Burg called for a government that is “simpler, smarter, and smaller” and wants to “apply AI even more broadly”, but the cabinet's plan for using AI comes early next year.",
+     "sources": [["Bloomberg, via The Star", "https://www.thestar.com.my/tech/tech-news/2026/10/27/dutch-government-plans-to-cut-25000-jobs-in-ai-led-overhaul"]]},
+    {"name": "HSBC", "size": "UK wealth business; HSBC gave no figures", "headline": ["HSBC plans job cuts across UK wealth business in AI push, FT reports", "Reuters", "https://www.thestar.com.my/business/business-news/2026/10/07/hsbc-plans-job-cuts-across-uk-wealth-business-in-ai-push-ft-reports"],
+     "verdict": "Unconfirmed", "said": "HSBC confirmed only that it is “in a consultation period” and gave no figures. The sizes (about half of management and specialist roles, and about 70% of financial advisers) come from the Financial Times, citing unnamed people familiar with the plans; the FT, not HSBC, called it a push to use AI. Chief executive Georges Elhedery has said AI “will change how work is done across industries”, a general remark, not about these cuts.",
+     "sources": [["AFP, via Malay Mail", "https://www.malaymail.com/news/money/2026/10/27/hsbc-third-quarter-profit-jumps-455pc-but-misses-forecasts-amid-job-cuts-and-ai-push/240816"], ["ITV News", "https://www.itv.com/news/2026-10-07/hsbc-reportedly-planning-brutal-job-cuts-in-uk-wealth-management-arm"]]},
+    {"name": "Microsoft", "size": "About 60,000 offered voluntary buyouts", "headline": ["Microsoft offers voluntary buyouts to 60,000 employees as AI leads to efficiency push", "CNBC", "https://www.cnbc.com/2026/10/26/microsoft-msft-voluntary-buyouts.html"],
+     "verdict": "No", "said": "These are voluntary buyouts, not layoffs. The memo from chief people officer Amy Coleman, as quoted, talks about giving employees “a new choice”, and a Microsoft spokesperson said artificial intelligence is not driving the buyout programs. The AI link comes from the coverage, which notes Microsoft's AI spending.",
+     "sources": [["KUOW", "https://www.kuow.org/technology/2026-10-26/microsoft-offers-voluntary-buyouts-to-a-quarter-of-its-workforce"], ["RTÉ", "https://www.rte.ie/news/business/2026/1027/1596907-microsoft-offers-buyouts-to-around-60-000-employees/"]]}
+   ],
+   "method": "We took the five October job cuts on our layoffs ledger that news coverage tied to AI, found a headline for each that made the link, then read what the employer itself said: results statements, executives' quoted remarks, memos and spokespeople. A verdict is our reading of the employer's own words, not of the coverage. “Clearly doing the work” means the employer says AI is already doing the jobs being cut.",
+   "links": [["/jobs/layoffs/", "Every AI-linked job cut on our ledger"], ["/jobs/", "Can AI do your job? The evidence, job by job"], ["/who/microsoft/", "Everything on Microsoft"]],
+   "corrections": []
+  }
+ ]
+}

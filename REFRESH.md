@@ -170,6 +170,16 @@ The site covers AI's breakthroughs as seriously as its dangers. `research/breakt
 
 **This week, per name (every refresh, the most active names):** in `research/who_notes.json`, add a dated note for each name that moved since the last note (at least the three or four most active names each day): two or three plain sentences on what happened to them, every fact from the Wire stories listed in `sources`. Newest first; old notes stay as the page's running log. The page shows the newest under "This week", with its sources, above a strip of the name's incidents over time and a "new since you last looked" marker (kept in the reader's browser only).
 
+## 2k. The Wire feeds our own pages; our own work gets pages (Colin, Oct 29)
+
+Wire stories stay outbound links (Drudge model): they never get pages of their own, because a rewrite of someone else's story is not ours. What compounds is our original work, so every refresh does three things:
+
+1. **Fold the Wire into the record.** When a Wire story moves an incident, a name or a forecast, write it there, not just on the board: a dated line in `research/incident_notes.json` (`next`), a "This week" note in `research/who_notes.json`, an odds move on the forecast, a ledger row. The story's `rec`/`who` links then point readers at our page.
+2. **Upgrade three incident pages per refresh** (`research/incident_notes.json`): for incidents without a deep dive, most severe real-world first, write `how`, `ai_role` and `why` (two to four plain sentences each) and `next` (dated follow-ups with links). Every fact from a page you opened this run; self-reported claims attributed ("by Anthropic's account"); single-source events left out until a second source confirms them. Both fact-check passes apply. The page's "Last changed" date moves only when its record or notes change.
+3. **One investigation a week** (`research/analysis.json`, built by `build_analysis.py` to `/analysis/<slug>/`): an original, checkable piece in the style of "October's AI layoffs, checked": a question people are arguing about, the primary sources read, a verdict per item labelled as our read, the method, and every source linked. Propose the week's topic to Colin in the Monday morning notification; publish only after both fact-check passes; corrections go in the piece's `corrections` list with a date. The X card for it is made from the same data.
+
+`check_site.py` now fails the build when a headline line carries a figure its own story text doesn't (a stale or rounded number), or when the 12-month "AI did the acting" share is called "this year's" or differs anywhere from the data. Fix the data, never the check.
+
 ## 2i. Up & Down (every refresh)
 
 TMZ meets Harvard Business Review: who gained power in AI this week and who lost it, in `research/updown.json`. Each row: `id`, `date`, `dir` (`up` or `down`), `name` (a company, person, government or country), `news_id` (the Wire item it comes from; add that first, with its source), `line` (one blunt sentence on what happened, every fact from the reporting, allegations attributed), `why` (one or two sentences of business logic: incentives, who pays, what it changes; labelled "Why it matters" as our read).
@@ -262,6 +272,7 @@ python3 build_help.py                                   # 'What to do' pages (he
 python3 build_learn.py                                  # Know What It Means (learn/<slug>/) from research/learn.json; same draft/approval rule as the help pages
 python3 build_families.py                               # checks/, jobs/, can-ai/, exposed/ (from data/victims.json, quality-gated), midterms-2026/; each family stays noindex until approved in research/approvals.json. New victims rows and incidents flow into exposed/ automatically
 python3 build_archive.py                                # the Wire archive (wire/<date>/, wire/archive/, never pruned), the beats (wire/near-you/, school/, decided/) and the layoffs ledger (jobs/layoffs/)
+python3 build_analysis.py                               # our investigations: analysis/<slug>/ and the /analysis/ hub (research/analysis.json)
 python3 build_who.py                                    # who/<slug>/ pages and data/links.json (entities.py): every name the site follows, and the connections between stories, incidents, forecasts and rows
 python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml
 cd build && python3 build_posts.py && cp data/posts.json ../data/ && cd ..   # the post queue (posts/<date>.md)

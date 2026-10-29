@@ -93,6 +93,23 @@ if superseded:
                 fails.append(f'superseded claim "{s["id"]}" ({s["why"]}) still stated in {where}')
 
 for w in warns: print('warn:', w)
+# ---- The numbers agree with themselves (Oct 29). A headline line's figures must appear in its own story (title, summary,
+# receipt or people line): this catches a tag updated to a new figure while the story text still says the old one, or the reverse.
+_num = lambda t: {re.sub(r'[,\s]', '', m) for m in re.findall(r'(?<![\w.])\d[\d,]*(?:\.\d+)?(?![\w])', t or '') if len(re.sub(r'\D', '', m)) >= 2}
+try:
+    for n in json.load(open('data/news.json', encoding='utf-8')):
+        if not n.get('tag'): continue
+        body = ' '.join([n.get('title') or '', n.get('summary') or '', n.get('receipt') or '', ((n.get('people') or {}).get('text') or '')])
+        miss = _num(n['tag']) - _num(body)
+        if miss: fails.append(f'news "{n["id"]}": headline line has {", ".join(sorted(miss))} but its story text does not (stale or mistyped figure): {n["tag"]}')
+except (OSError, ValueError):
+    pass
+# The share where the AI did the acting is a last-12-months figure; it must be the same everywhere and never called "this year's".
+for page in pages:
+    t = open(page, encoding='utf-8', errors='ignore').read()
+    if re.search(r"this year[’']s real-world", t): fails.append(f"{page}: says \"this year's real-world\"; the figure covers the last 12 months")
+    for m in re.finditer(r'(\d{1,3})%\s*(?:</b>)?\s*of (?:the last 12 months[’\'] |real-world)[^<]{0,80}?(?:did the acting|acted)', t):
+        if int(m.group(1)) != build['agentic_share']: fails.append(f'{page}: "{m.group(0)[:80]}" but the data says {build["agentic_share"]}%')
 for f in fails: print('FAIL:', f)
 print(f'check_site: {len(fails)} failures, {len(warns)} warnings, {len(pages)} pages checked')
 sys.exit(1 if fails else 0)
