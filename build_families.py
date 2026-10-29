@@ -335,6 +335,33 @@ def _fc_links(c):
     if ws: bits.append('<b>Who is involved:</b> ' + ' · '.join(f'<a href="/who/{w}/">{esc(_E.NAME[w])}</a>' for w in ws))
     return ('<p class="meta">' + ' · '.join(bits) + '</p>') if bits else ''
 # ======================================================== forecast/<id>/: one permanent page per call and question
+# Proof that a call was made before the fact (audit v5): the fingerprint of the exact wording, the first time the odds
+# ledger recorded it, the commit that added it, and the odds history, all generated from data that already exists.
+import hashlib, subprocess
+_LOG = {}
+for _l in open('research/forecast_log.jsonl', encoding='utf-8'):
+    try: _r = json.loads(_l)
+    except ValueError: continue
+    _LOG.setdefault(_r['id'], []).append(_r)
+def _first_commit(cid):
+    try:
+        out = subprocess.run(['git', 'log', '--reverse', '--format=%H %cI', '-S', f'"id": "{cid}"', '--', 'research/calls.json'], capture_output=True, text=True, timeout=20).stdout.split('\n')[0].split()
+        return (out[0], out[1]) if len(out) == 2 else None
+    except Exception:
+        return None
+def _proof(c):
+    h = hashlib.sha256(c['question'].encode('utf-8')).hexdigest()
+    log = sorted(_LOG.get(c['id'], []), key=lambda r: r['as_of'])
+    hist = []
+    for r in log:
+        if not hist or abs(hist[-1]['p'] - r['p']) > 1e-9: hist.append(r)
+    fc = _first_commit(c['id'])
+    rows = ''.join(f'<tr><td>{esc(fdate(r["as_of"]))}, {esc(r["as_of"][11:16])} ET</td><td>{round(r["p"] * 100)}%</td></tr>' for r in hist)
+    return ('<h2>Proof it was called in advance</h2><ul class="rec">'
+            + f'<li><b>Published</b> {esc(fdate(c["opened"]))}' + (f'; first recorded in the odds ledger {esc(fdate(log[0]["as_of"]))}, {esc(log[0]["as_of"][11:16])} ET' if log else '') + '.</li>'
+            + (f'<li><b>The commit that added it</b>: <a href="{esc(REPO)}/commit/{fc[0]}">{fc[0][:10]}</a>, {esc(fdate(fc[1]))} (public, timestamped history).</li>' if fc else '')
+            + f'<li><b>Fingerprint of the exact wording</b> (SHA-256): <code style="word-break:break-all">{h}</code>. Anyone can hash the question below and get the same string; any edit would change it.</li></ul>'
+            + (f'<h3>How the odds moved</h3><div class="tw"><table><thead><tr><th>When</th><th>The index\'s odds</th></tr></thead><tbody>{rows}</tbody></table></div><p class="meta">Why each move happened is in <a href="/corrections/">the changelog</a>.</p>' if len(hist) else ''))
 CALLS = L('data/calls.json'); fu = []
 def likely(o):
     o = float(o)
@@ -357,6 +384,7 @@ for c in CALLS:
 {_fc_links(c)}<h2>Why the index thinks so</h2><p>{esc(c.get('basis') or '')}</p>
 {('<h2>What would move it</h2><p>' + esc(c['signposts']) + '</p>') if c.get('signposts') else ''}
 <p class="meta">The exact question: {esc(c['question'])}</p>
+{_proof(c)}
 <p><a href="/forecast/">Every forecast and the track record →</a></p>
 {capture('Email me when this is graded', 'forecast-' + c['id'])}
 </article>"""
@@ -387,7 +415,7 @@ calls_open = [c for c in openc if c.get('kind') == 'call']; qs_open = [c for c i
 hu = SITE + 'forecast/'
 fbody = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>The forecasts: what happens next, and whether we were right</h1>
 <p>Every call is a dated yes-or-no question with the index's odds, published before the answer is known and graded in public on the day it resolves. Misses stay on the board. The wording never changes after a question goes up.</p>
-<section class="box"><b class="k">Track record</b><p><b>{G['hit']} right, {G['miss']} wrong</b>{f", {G['toss']} called a toss-up (not counted)" if G['toss'] else ''}. {len(openc)} still open; the next resolves {fdate(openc[0]['resolve_by']) if openc else 'soon'}.</p></section>
+<section class="box"><b class="k">Track record</b><p><b>{G['hit']} right, {G['miss']} wrong</b>{f", {G['toss']} called a toss-up (not counted)" if G['toss'] else ''}. {len(openc)} still open; the next resolves {fdate(openc[0]['resolve_by']) if openc else 'soon'}.</p>{(f'<p><a href="/forecast/resolution-day/{openc[0]["resolve_by"]}/"><b>Resolution Day, {dt.date.fromisoformat(openc[0]["resolve_by"]).strftime("%A, %b %-d")}: every call graded that day, live →</b></a></p>') if openc and sum(1 for c in CALLS if c.get('kind') == 'call' and c['resolve_by'] == openc[0]['resolve_by']) >= 2 else ''}</section>
 <h2>Calls: resolving in days and weeks</h2><ul class="list">{''.join(_row(c) for c in calls_open)}</ul>
 <h2>Questions: months to years</h2><ul class="list">{''.join(_row(c) for c in qs_open)}</ul>
 <h2>Graded</h2><ul class="list">{''.join(_row(c) for c in sorted([c for c in CALLS if c.get('resolution')], key=lambda c: c['resolution']['date'], reverse=True)) or '<li>None yet.</li>'}</ul>
@@ -396,6 +424,41 @@ fbody = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>The for
 </article>"""
 write('forecast/index.html', url=hu, title='AI forecasts: what happens next, graded in public', desc=f"Warning Shots' dated AI forecasts: {len(openc)} open, {G['hit']} right, {G['miss']} wrong. Every call is graded in public on the day it resolves.", body=fbody, draft=False,
       crumbs=[('Forecasts', '')], graph=[webpage(hu, 'AI forecasts', 'Dated AI forecasts, graded in public', TODAY, False, '')])
+# ---------- forecast/resolution-day/<date>/: every date on which two or more calls resolve becomes a named event page
+_byday = collections.defaultdict(list)
+for c in CALLS:
+    if c.get('kind') == 'call': _byday[c['resolve_by']].append(c)
+_rd = []
+for day, cs in sorted(_byday.items()):
+    if len(cs) < 2: continue
+    d0 = dt.date.fromisoformat(day); label = d0.strftime('%A, %b %-d')
+    done = [c for c in cs if c.get('resolution')]
+    g = collections.Counter(_grade(c) for c in done if c['resolution'].get('outcome') in ('yes', 'no'))
+    def _rdrow(c):
+        q = c.get('plain') or c['question']; r = c.get('resolution')
+        if r:
+            g1 = _grade(c) if r.get('outcome') in ('yes', 'no') else 'void'
+            stamp = {'hit': 'RIGHT', 'miss': 'WRONG', 'toss': 'TOSS-UP, NOT COUNTED', 'void': 'VOID'}[g1]
+            st = f'<p><span class="verdict">{stamp}</span> Answer: <b>{esc(r["outcome"])}</b>, graded {esc(fdate(r["date"]))}. The index had said {esc(likely(c["odds"]))} ({esc(c["odds_label"])}).</p><p class="meta">{esc(r.get("note", ""))} ' + (a(r.get('url') or '', 'The evidence') if r.get('url') else '') + '</p>'
+        else:
+            st = f'<p><span class="st">Open</span> The index says <b>{esc(likely(c["odds"]))}</b> ({esc(c["odds_label"])}). Graded when the evidence lands, right or wrong.</p>' + (f'<p class="meta">What would settle it: {esc(c["signposts"])}</p>' if c.get('signposts') else '')
+        return f'<section class="an-row" style="border-top:1px solid var(--line);padding:8px 0"><h3 style="font-family:var(--serif);font-size:1.25rem;margin:12px 0 6px"><a href="/forecast/{esc(c["id"])}/">{esc(q)}</a></h3>{st}</section>'
+    url = SITE + f'forecast/resolution-day/{day}/'; _rd.append(url)
+    score = (f'<b>{len(done)} of {len(cs)} graded</b>: {g["hit"]} right, {g["miss"]} wrong' + (f', {g["toss"]} toss-up (not counted)' if g['toss'] else '') + '.') if done else f'<b>{len(cs)} calls</b> resolve on this date. None graded yet.'
+    title = f'Resolution Day, {label}: {len(cs)} AI forecasts graded in public'
+    share_t = f'Resolution Day, {label}: ' + (f'{len(done)} of {len(cs)} Warning Shots forecasts graded, {g["hit"]} right, {g["miss"]} wrong.' if done else f'Warning Shots grades {len(cs)} AI forecasts in public, right or wrong.')
+    body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/forecast/">Forecasts</a> · Resolution Day</nav>
+<h1>{esc(title)}</h1>
+<p class="aka">Each of these was published days or weeks ago as a dated yes-or-no question with the index's odds. On {esc(label)} each is graded in public, and the misses get the same space as the hits. This page updates at every refresh (5:17 AM, 12:17 PM and 6:17 PM ET).</p>
+<section class="box"><b class="k">The score so far</b><p>{score}</p></section>
+<div class="share"><a class="button" href="https://x.com/intent/post?{esc(urllib.parse.urlencode({'text': share_t, 'url': url}))}" target="_blank" rel="noopener">Post on X</a><button type="button" class="alt" data-copy="{esc(url)}">Copy link</button></div>
+{''.join(_rdrow(c) for c in sorted(cs, key=lambda c: c['odds'], reverse=True))}
+<p class="meta">How a call is graded: the question's exact wording, fixed when it was published, decides it; a call at exactly 50% is graded but not counted. Every call page shows the fingerprint of its wording and the commit that added it. <a href="/methodology/">The method</a> · <a href="/forecast/">every forecast and the track record</a>.</p>
+</article>"""
+    write(f'forecast/resolution-day/{day}/index.html', url=url, title=title, desc=f'{len(cs)} Warning Shots AI forecasts resolve on {label} and are graded in public, right or wrong.', body=body, draft=False,
+          crumbs=[('Forecasts', '/forecast/'), ('Resolution Day', '')], graph=[{"@type": "Event", "name": title, "startDate": day, "url": url, "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode", "location": {"@type": "VirtualLocation", "url": url}, "organizer": {"@type": "NewsMediaOrganization", "name": "Warning Shots", "url": SITE}}])
+json.dump([{'date': d, 'n': len(cs), 'graded': sum(1 for c in cs if c.get('resolution'))} for d, cs in sorted(_byday.items()) if len(cs) >= 2], open('data/resolution_days.json', 'w'))
+fu += _rd
 register('forecast/', [hu] + fu)
 
 # ---------- fixes/: did they fix it? one line per major case, with where the fix stands

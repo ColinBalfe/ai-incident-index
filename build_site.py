@@ -104,6 +104,12 @@ wre = wre.replace(f'<meta property="og:url" content="{site_url}">', f'<meta prop
 wre = wre.replace('<a class="skip" href="#wall">Skip to the headlines</a>', '<a class="skip" href="#wire">Skip to the Wire</a>', 1)
 wire_desc = f"The Wire: every report on AI's dangers and breakthroughs from the last three days, newest first, each linking to the outlet. Plus what changed since the last refresh and the live incident. Updated {et}."
 wre = wre.replace(og_desc.replace('"', '&quot;'), wire_desc.replace('"', '&quot;'))
+# Server-rendered board so the Wire is readable without JavaScript (crawlers, AI answer engines); app.js replaces it on load
+import html as _h
+_nw = sorted(json.load(open('data/news.json', encoding='utf-8')), key=lambda n: n.get('published', ''), reverse=True)
+_lis = ''.join(f'<li><a href="{_h.escape(n["url"])}" rel="noopener">{_h.escape(n["title"])}</a> <small>{_h.escape(n.get("outlet") or "")} · {_h.escape((n.get("published") or "")[:10])}</small>' + (f'<br><small>{_h.escape(n["summary"])}</small>' if n.get('summary') else '') + '</li>' for n in _nw)
+wre = wre.replace('<div class="wire-board" id="wire-board"></div>', f'<div class="wire-board" id="wire-board"><ol class="wire-static">{_lis}</ol></div>', 1)
+wre = wre.replace('<span class="k" id="wire-count">Loading the latest reports</span>', f'<span class="k" id="wire-count">{len(_nw)} reports from the last three days, newest first</span>', 1)
 os.makedirs('wire', exist_ok=True)
 open('wire/index.html', 'w', encoding='utf-8').write(wre)
 # ---- data/incidents.csv: the same rows as data/incidents.json, for spreadsheets

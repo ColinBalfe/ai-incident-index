@@ -9,7 +9,7 @@ Last refresh: Oct 29, 2026, 12:40 PM ET. 165 incidents scored. Corrections and r
 - [The Record](https://warningshots.ai/index/): every incident scored, charts, forecasts and their track record, and whether fixes held
 - [The Wire](https://warningshots.ai/wire/): every report from the last three days, newest first
 - [All incidents](https://warningshots.ai/i/): one page per incident, newest first
-- [Did they fix it?](https://warningshots.ai/c/): report, response, claimed fix, independent check, current status
+- [Did they fix it?](https://warningshots.ai/fixes/): report, response, claimed fix, independent check, current status
 - [What AI can now do](https://warningshots.ai/m/): capability milestones graded from demonstration to real consequences
 - [Live tracker: PHP2Shell: AI-found PHP flaws leak, trigger global shutdowns](https://warningshots.ai/php2shell/)
 - [What to do: AI voice clone scam call: what to do right now](https://warningshots.ai/help/voice-clone-scam-call/): A crying voice that sounds like your child or parent, a crisis, a demand for money: it may be an AI voice clone. What to do in the next five minutes, how to check, how to report it, with real cases.

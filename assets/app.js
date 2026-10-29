@@ -515,7 +515,7 @@ function drawLevel() {
     if (lastState && lastState.serial === nowState.serial && lastState.rung && lastState.rung !== nowState.rung) bits.push('the running story moved up to ' + nowState.rung.charAt(0).toUpperCase() + nowState.rung.slice(1));
     if (k || bits.length) { a2.append(el('i', 'newdot')); if (k) a2.append(el('b', null, String(k)), txt(' new' + (bits.length ? ', ' : ''))); if (bits.length) a2.append(txt(bits.join(', '))); a2.append(txt(' since you last looked')); }
     else a2.append(txt('Nothing new since you last looked: level unchanged, no new rung')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
-  else { a2.append(el('b', null, String(wall.length)), txt(' stories today, from ' + newsItems().length + ' reports in 3 days')); }
+  else { a2.append(el('b', null, String(wall.length)), txt(' headlines on today\'s front page · ' + newsItems().length + ' reports in 3 days')); }
   try { localStorage.setItem('ws-last-state', JSON.stringify(nowState)); } catch (e) {}
   const a3 = el('a', 'lvl-s'); a3.href = '#record'; a3.append(txt('Severe incidents, last 12 months: '), el('b', null, String(h.severe_last12 ?? '')), txt(' (was ' + (h.severe_prior12 ?? '') + ')'));
   const det = el('div', 'lvl-det'); det.hidden = true;
@@ -610,7 +610,14 @@ function drawWall() {
   // The dateline: the edition's date, said like the top of a broadcast
   const dl = el('div', 'dateline'); { const f = (d, o) => new Intl.DateTimeFormat('en-US', Object.assign({ timeZone: 'America/New_York' }, o)).format(d); const ed = new Date(D.meta.as_of);
     const same = f(ed, { year: 'numeric', month: 'numeric', day: 'numeric' }) === f(new Date(), { year: 'numeric', month: 'numeric', day: 'numeric' });
-    dl.append(el('span', 'dl-today', (same ? 'Today is ' : '') + f(ed, { weekday: 'long', month: 'long', day: 'numeric' })), ...(same ? [] : [el('span', 'dl-ed', 'Latest edition')])); }
+    dl.append(el('span', 'dl-today', (same ? 'Today is ' : '') + f(ed, { weekday: 'long', month: 'long', day: 'numeric' })), ...(same ? [] : [el('span', 'dl-ed', 'Latest edition')]));
+    // Resolution Day: from three days before a date on which two or more calls resolve, until the day after
+    { const byDay = {}; (D.calls || []).filter((c) => c.kind === 'call' && !c.resolution).forEach((c) => { byDay[c.resolve_by] = (byDay[c.resolve_by] || 0) + 1; });
+      const today = D.meta.as_of.slice(0, 10), dd = (a2, b2) => Math.round((Date.parse(a2 + 'T12:00:00Z') - Date.parse(b2 + 'T12:00:00Z')) / 864e5);
+      const rd = Object.keys(byDay).filter((d) => byDay[d] >= 2 && dd(d, today) <= 3 && dd(d, today) >= -1).sort()[0];
+      if (rd) { const n = dd(rd, today); const a2 = el('a', 'dl-rd'); a2.href = '/forecast/resolution-day/' + rd + '/';
+        a2.append(el('b', null, 'Resolution Day'), txt(' · ' + new Date(rd + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }) + ': ' + byDay[rd] + ' forecasts graded in public' + (n > 0 ? ', in ' + n + (n === 1 ? ' day' : ' days') : n === 0 ? ', today' : '') + ' →'));
+        dl.append(a2); } } }
   // What it means for you: does it touch the reader, and one thing to do today. A lens picker rewrites both; the choice stays in this browser.
   const youBox = hero.you && hero.you.touch ? (() => {
     const Y = hero.you; const box = el('section', 'you'); box.setAttribute('aria-label', 'What it means for you');

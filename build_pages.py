@@ -326,7 +326,8 @@ def index_page(kind, title, lede, rows_html, desc):
 inc_rows = [f'<li><span class="n" style="color:{TIER_TEXT[x["tier"]]}">{x["severity"]}</span><span class="t"><a href="/i/{esc(x["id"])}/">{esc(x["title"])}</a><small>{x["ws"]} · {esc(fdate(x["date"], x.get("date_precision")))} · {x["level"]} {x["tier"]} · {"real-world" if x["setting"] == "wild" else "lab or test"}</small></span></li>' for x in sorted(scored, key=lambda x: (x['date'], x['id']), reverse=True)]
 urls.append(index_page('i', 'All incidents', f'Every incident on the index, newest first: {len(scored)} since 2023, each scored 0–100 by a <a href="/index/#about">published formula</a> and linked to its sources. <a href="/index/#all">Sort, filter and search them on the front page</a>.', inc_rows, f'{len(scored)} AI incidents since 2023, scored 0–100 and sourced, newest first. Warning Shots.'))
 case_rows = [f'<li><span class="t"><a href="/c/{esc(f["incident_id"])}/">{esc(f["name"])}</a><small><span class="stt {esc(cur_status(f))}">{esc(cur_status(f).replace("_", " "))}</span> {esc(clip(f.get("one_liner") or "", 160))}</small></span></li>' for f in fixes]
-urls.append(index_page('c', 'Did they fix it?', 'What happened after the headline, for each major incident: the report, the response, the claimed fix, whether anyone independent checked, and where it stands. Re-checked every refresh.', case_rows, 'For each major AI incident: the report, the response, the claimed fix, whether anyone independent checked, and where it stands today. Warning Shots.'))
+# /c/ hub merged into /fixes/ (audit v5): one canonical hub; the per-case pages stay at /c/<id>/
+write('c/index.html', f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Did they fix it? | Warning Shots</title><meta name="description" content="Every AI incident case and whether it was fixed: moved to /fixes/."><link rel="canonical" href="{site}fixes/"><meta name="robots" content="noindex, follow"><meta property="og:image" content="{site}assets/og.png"><meta http-equiv="refresh" content="0; url=/fixes/"></head><body><p><a href="/fixes/">Did they fix it? →</a></p></body></html>')
 cap_rows = [f'<li><span class="t"><a href="/m/{esc(c["id"])}/">{esc(c["title"])}</a><small>{esc(fdate(c["date"], c.get("date_precision")))} · {esc(c.get("org") or "")} · {esc((c.get("domain") or "").capitalize())} · reliable: {esc(((c.get("stages") or {}).get("reliable") or {}).get("status") or "unknown")}</small></span></li>' for c in sorted(caps, key=lambda c: c['date'], reverse=True)]
 urls.append(index_page('m', 'What AI can now do', 'Dated, sourced results that moved what AI can do, each graded from demonstration to real consequences. The breakthroughs and the incidents come from the same capabilities.', cap_rows, f'{len(caps)} AI capability milestones since 2023, graded from demonstration to real consequences. Warning Shots.'))
 
@@ -378,6 +379,18 @@ for u in urls:
     sm.append(f'<url><loc>{esc(u)}</loc><lastmod>{lm}</lastmod>{_img(u)}</url>')
 sm.append('</urlset>')
 open('sitemap.xml', 'w', encoding='utf-8').write('\n'.join(sm))
+# The data file carries what a citation needs (audit v5): the dispatch number, the score, the tier, the page and its last real change
+try:
+    _sc = {x['id']: x for x in scored}
+    _inc = json.load(open('data/incidents.json', encoding='utf-8'))
+    for r in _inc:
+        x = _sc.get(r['id'])
+        if not x: continue
+        u = f'{site}i/{r["id"]}/'
+        r.update(ws_id=x['ws'], score=x['severity'], tier=x['tier'], url=u, last_changed=(LM.get(u) or [None, None])[1] or _lm.get(u))
+    json.dump(_inc, open('data/incidents.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
+except (OSError, ValueError, KeyError) as e:
+    print('incidents.json enrichment skipped:', e)
 # ---------- Google News sitemap: pages for incidents disclosed in the last 48 hours, plus the live tracker
 _now = dt.datetime.fromisoformat(AS_OF)
 _news = []  # (url, title, publication date): each page's own date, never the refresh time
@@ -426,7 +439,7 @@ Last refresh: {as_of_label}. {len(scored)} incidents scored. Corrections and ret
 - [The Record]({site}index/): every incident scored, charts, forecasts and their track record, and whether fixes held
 - [The Wire]({site}wire/): every report from the last three days, newest first
 - [All incidents]({site}i/): one page per incident, newest first
-- [Did they fix it?]({site}c/): report, response, claimed fix, independent check, current status
+- [Did they fix it?]({site}fixes/): report, response, claimed fix, independent check, current status
 - [What AI can now do]({site}m/): capability milestones graded from demonstration to real consequences
 {f"- [Live tracker: {_live['title']}]({site}php2shell/)" if _live and os.path.exists('php2shell/index.html') else ''}
 {''.join(f'- [What to do: {h["title"]}]({site}help/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _help_live)}{''.join(f'- [Know What It Means: {h["title"]}]({site}learn/{h["slug"]}/): {h["desc"]}' + chr(10) for h in _learn_live)}{''.join(f'- [{t}]({site}{u}): {d}' + chr(10) for u, t, d in [('midterms-2026/', 'AI fakes in the 2026 midterms: tracker', 'every AI-made election fake and AI ad on the record, labelled and sourced'), ('exposed/', 'Am I exposed?', 'search organisations named in AI incidents, with status, sources and what to do'), ('checks/', 'Is this a scam?', 'yes-or-no checks for scams AI makes more convincing'), ('jobs/', 'Can AI do your job?', 'graded, dated evidence by occupation'), ('can-ai/', 'What AI can now do', 'graded answers on what AI can do, with an evidence ladder')] if os.path.exists(u + 'index.html') and (_appr.get(u.strip('/').replace('midterms-2026', 'midterms')) or {}).get('approved'))}

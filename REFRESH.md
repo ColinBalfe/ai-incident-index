@@ -170,6 +170,12 @@ The site covers AI's breakthroughs as seriously as its dangers. `research/breakt
 
 **This week, per name (every refresh, the most active names):** in `research/who_notes.json`, add a dated note for each name that moved since the last note (at least the three or four most active names each day): two or three plain sentences on what happened to them, every fact from the Wire stories listed in `sources`. Newest first; old notes stay as the page's running log. The page shows the newest under "This week", with its sources, above a strip of the name's incidents over time and a "new since you last looked" marker (kept in the reader's browser only).
 
+## 2l. Resolution Day and forecast proof (automatic)
+
+Every date on which two or more calls resolve gets an event page at `/forecast/resolution-day/<date>/` (build_families.py) and, from three days before until the day after, a "Resolution Day" link in the homepage dateline. On the day: grade each call the moment its evidence lands (research/calls.json `resolution` with outcome, date, note, url), so the page flips Open to RIGHT / WRONG / TOSS-UP at each refresh; push-notify Colin when the last call of the day is graded, with the score. Forecast pages show the SHA-256 of the exact question, the commit that added it and the odds history from research/forecast_log.jsonl; never edit a published question's wording.
+
+**Evergreen pages, in priority order:** when adding family pages (one or two per run), scam checks and "what to do" help pages first (the FTC and FBI scam types not yet covered), then jobs (occupations already in the news or the layoffs ledger), then "What AI can do" questions from the milestone data. Each must meet the floor: a short answer first, evidence from our own data, a FAQ, three or more labelled sources, links to two related pages, no empty sections.
+
 ## 2k. The Wire feeds our own pages; our own work gets pages (Colin, Oct 29)
 
 Wire stories stay outbound links (Drudge model): they never get pages of their own, because a rewrite of someone else's story is not ours. What compounds is our original work, so every refresh does three things:
@@ -272,6 +278,7 @@ python3 build_help.py                                   # 'What to do' pages (he
 python3 build_learn.py                                  # Know What It Means (learn/<slug>/) from research/learn.json; same draft/approval rule as the help pages
 python3 build_families.py                               # checks/, jobs/, can-ai/, exposed/ (from data/victims.json, quality-gated), midterms-2026/; each family stays noindex until approved in research/approvals.json. New victims rows and incidents flow into exposed/ automatically
 python3 build_archive.py                                # the Wire archive (wire/<date>/, wire/archive/, never pruned), the beats (wire/near-you/, school/, decided/) and the layoffs ledger (jobs/layoffs/)
+python3 build_trust.py                                  # /about/, /methodology/, /corrections/ (corrections drawn from the CHANGELOG: start a correction entry with 'Correction:')
 python3 build_analysis.py                               # our investigations: analysis/<slug>/ and the /analysis/ hub (research/analysis.json)
 python3 build_who.py                                    # who/<slug>/ pages and data/links.json (entities.py): every name the site follows, and the connections between stories, incidents, forecasts and rows
 python3 build_pages.py                                  # full pages for every incident, case and milestone (i/, c/, m/) with their own cards, plus sitemap.xml

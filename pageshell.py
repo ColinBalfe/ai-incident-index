@@ -32,7 +32,7 @@ def _fix_open():
 FIX_OPEN = _fix_open()
 # the sections after the live slot, shared by the homepage (index.template.html {{MID_NAV}}) and every other page
 MID_NAV = ('<a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can do</a><a href="/who/">Who\'s who</a><a href="/forecast/">Forecasts</a>'
-           + f'<a href="/fixes/">Did they fix it?{f" <span class=nb>{FIX_OPEN} open</span>" if FIX_OPEN else ""}</a><a href="/i/">Incidents</a><a href="/index/#about">About</a>')
+           + f'<a href="/fixes/">Did they fix it?{f" <span class=nb>{FIX_OPEN} open</span>" if FIX_OPEN else ""}</a><a href="/i/">Incidents</a><a href="/about/">About</a>')
 # the desks: the standing pages people come back to, Drudge's reference shelf (homepage under the masthead; every page's footer)
 DESKS = [('/analysis/', 'Analysis'), ('/breakthroughs/', 'Breakthroughs'), ('/up-and-down/', 'Up & Down'), ('/chart/', 'The Charts'), ('/checks/', 'Is this a scam?'), ('/jobs/', 'Can AI do your job?'), ('/jobs/layoffs/', 'Layoffs tied to AI'), ('/help/', 'What to do'),
          ('/midterms-2026/', 'Midterm fakes')]
@@ -42,7 +42,7 @@ MS_BAND = ('<aside class="ms-band" aria-label="The Morning Shot newsletter"><div
            '<span>What AI did overnight, today\'s level, and what resolves next. Free, every morning at 7 AM ET, about 3 minutes.</span></div>'
            f'<a class="ms-btn" href="{MS_URL}" target="_blank" rel="noopener">Get it free</a></div></aside>')
 DESK_ROW = '<nav class="desks" aria-label="Desks">' + ''.join(f'<a href="{u}">{esc(t)}</a>' for u, t in DESKS) + '</nav>'
-FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Scores are the index’s own, by a <a href="/index/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}. ' + ' · '.join(f'<a href="{u}">{esc(t)}</a>' for u, t in DESKS + [('/who/', "Who's who"), ('/learn/', 'Know what it means'), ('/shield/', 'Family safe word'), ('/exposed/', 'Am I exposed?'), ('/can-ai/', 'What AI can do'), ('/forecast/', 'Forecasts'), ('/fixes/', 'Did they fix it?'), ('/wire/archive/', 'Earlier days'), ('/index/', 'The Record'), ('/press/', 'Press'), ('/badge/', 'Embed the level')]) + '</span></div></footer>'
+FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Scores are the index’s own, by a <a href="/index/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}. ' + ' · '.join(f'<a href="{u}">{esc(t)}</a>' for u, t in DESKS + [('/who/', "Who's who"), ('/learn/', 'Know what it means'), ('/shield/', 'Family safe word'), ('/exposed/', 'Am I exposed?'), ('/can-ai/', 'What AI can do'), ('/forecast/', 'Forecasts'), ('/fixes/', 'Did they fix it?'), ('/wire/archive/', 'Earlier days'), ('/index/', 'The Record'), ('/press/', 'Press'), ('/badge/', 'Embed the level'), ('/about/', 'About'), ('/methodology/', 'How it works'), ('/corrections/', 'Corrections')]) + '</span></div></footer>'
 SCRIPT = """<script>
 document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { var t = b.getAttribute('data-copy'); var done = function () { var x = document.getElementById('toast'); x.textContent = 'Copied'; x.classList.add('on'); setTimeout(function () { x.classList.remove('on'); }, 1500); };
   if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function () { window.prompt('Copy this link', t); }); else window.prompt('Copy this link', t); }); });
