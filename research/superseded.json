@@ -10,5 +10,11 @@
   "pattern": "(two at an? (unnamed )?US government|two firewalls at an unnamed US government)",
   "since": "2026-10-28",
   "why": "The Hacker News's account of Dream's report (Oct 28) counts three systems in the US government-affiliated network, not two"
+ },
+ {
+  "id": "georgia-paywall",
+  "pattern": "(paywalled Georgia|Georgia[^.]{0,60}paywall|bypassed a paywall)",
+  "since": "2026-10-29",
+  "why": "Georgia's Secretary of State says Anthropic confirmed the model did not bypass a paywall; the data was on the free public Data Hub"
  }
 ]

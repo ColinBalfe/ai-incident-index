@@ -29,6 +29,34 @@
 }
 },
 {
+"id": "energycommerce-ai-incident-reporting",
+"url": "https://x.com/EnergyCommerce/status/2115450482701332670",
+"platform": "X",
+"author": "Energy & Commerce Democrats",
+"handle": "@EnergyCommerce",
+"who": "the House Energy and Commerce Committee's Democrats",
+"posted": "2026-10-28T14:27:52Z",
+"kind": "official",
+"power": 4,
+"what": "Top House Democrats ask OpenAI, Anthropic, Google, Meta and SpaceXSI to report AI safety incidents to Congress within 48 hours. It's a request, not a law; a full accounting is due Nov 11.",
+"quote": "NEWS: After dozens of incidents, top House Democrats request frontier AI companies report detailed information about misalignment and safety incidents to Congress within 48 hours.",
+"seen_via": "the post itself, read through X's public embed data; checked against the committee's press release",
+"related": "",
+"story": "house-ai-incident-reporting",
+"tweet": {
+"name": "Energy & Commerce Democrats",
+"handle": "EnergyCommerce",
+"avatar": "https://pbs.twimg.com/profile_images/1610332945667035137/TRn7dvq2_bigger.png",
+"verified": true,
+"created_at": "2026-10-28T14:27:52.000Z",
+"text": "NEWS: After dozens of incidents, top House Democrats request frontier AI companies report detailed information about misalignment and safety incidents to Congress within 48 hours.",
+"id": "2115450482701332670",
+"photos": [
+"https://pbs.twimg.com/media/HVuVuhhXUAA1fs1.jpg"
+]
+}
+},
+{
 "id": "senwarren-anthropic-ipo-risks",
 "url": "https://x.com/SenWarren/status/2115440657120555486",
 "platform": "X",
@@ -53,6 +81,32 @@
 "id": "2115440657120555486",
 "photos": [],
 "truncated": true
+}
+},
+{
+"id": "timelywriter-ap-russia-deepfake-senate",
+"url": "https://x.com/timelywriter/status/2115240707472421218",
+"platform": "X",
+"author": "Marc Levy",
+"handle": "@timelywriter",
+"who": "Associated Press reporter, sharing an AP story by a colleague",
+"posted": "2026-10-28T00:34:18Z",
+"kind": "breaking",
+"power": 3,
+"what": "AP: AI-made videos likely from Russia use real Americans' names and faces to smear two Democratic Senate candidates days before the Nov 3 vote.",
+"quote": "Social media videos believed to be produced with artificial intelligence and linked to Russia are misusing real people’s names and photographs to spread disinformation about two Democratic Senate candidates in the final stretch of midterm voting.",
+"seen_via": "the post itself, read through X's public embed data; AP story by Ali Swenson",
+"related": "",
+"story": "midterm-deepfakes-russia",
+"tweet": {
+"name": "Marc Levy",
+"handle": "timelywriter",
+"avatar": "https://pbs.twimg.com/profile_images/427562114228563968/OoiqTpLJ_bigger.jpeg",
+"verified": false,
+"created_at": "2026-10-28T00:34:18.000Z",
+"text": "NEW YORK (@AP) — Social media videos believed to be produced with artificial intelligence and linked to Russia are misusing real people’s names and photographs to spread disinformation about two Democratic Senate candidates in the final stretch of midterm voting.",
+"id": "2115240707472421218",
+"photos": []
 }
 },
 {
@@ -139,6 +193,37 @@
 "poster": "https://pbs.twimg.com/tweet_video_thumb/HVqKi4NXAAAM-NQ.jpg",
 "ms": 0,
 "gif": true
+}
+}
+},
+{
+"id": "aegiryy-anthropic-linux-zero-click",
+"url": "https://x.com/aegiryy/status/2115145643467669761",
+"platform": "X",
+"author": "Xinyang Ge",
+"handle": "@aegiryy",
+"who": "researcher on Anthropic's Frontier Red Team and a named author of its report",
+"posted": "2026-10-27T18:16:33Z",
+"kind": "breaking",
+"power": 4,
+"what": "An Anthropic researcher shows its unreleased AI built a no-click attack that takes over Linux servers over the network, plus dozens of working Chrome attacks. The flaws were reported to the makers for fixing.",
+"quote": "this blog shows some of the worst bugs claude found, including a zero-click rce on the linux networking stack that roots a server over the network with no creds or interaction",
+"seen_via": "the post itself, read through X's public embed data; checked against anthropic.com/research/discovering-vulnerabilities-with-claude",
+"related": "",
+"story": "anthropic-exploit-chains",
+"tweet": {
+"name": "Xinyang Ge",
+"handle": "aegiryy",
+"avatar": "https://pbs.twimg.com/profile_images/474658452212445184/6tmvUTXW_bigger.jpeg",
+"verified": false,
+"created_at": "2026-10-27T18:16:33.000Z",
+"text": "this blog shows some of the worst bugs claude found, including a zero-click rce on the linux networking stack that roots a server over the network with no creds or interaction, and tens of full rce chains in chrome (recording below is the one in the blog): anthropic.com/research/disco…",
+"id": "2115145643467669761",
+"photos": [],
+"video": {
+"poster": "https://pbs.twimg.com/amplify_video_thumb/2115143765459644416/img/g409hJ9BDo5o78nF.jpg",
+"ms": 20053,
+"gif": false
 }
 }
 },

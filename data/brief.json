@@ -1,25 +1,25 @@
 {
- "label": "Oct 29, 06:00 ET",
+ "label": "Oct 29, 11:15 ET",
  "items": [
   {
-   "text": "Palo Alto Networks says attackers are exploiting the flaw under most websites against its firewalls' internet-exposed management pages. No victim named; some fixes due Oct 29-30.",
-   "url": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html",
-   "source_label": "The Hacker News, Oct 29"
+   "text": "Moldova says attackers pulled data on about 750,000 people from state systems over Oct 19-23, and suspects AI helped them. The president has called the security council.",
+   "url": "https://moldova1.md/p/88865/maia-sandu-convenes-national-security-council-after-major-cyberattack-on-moldova",
+   "source_label": "Moldova 1, Oct 28"
   },
   {
-   "text": "UK web host 123 Reg says an 'AI-driven cyberattack' on Sept 18 read customers' names, phone numbers and account details. It suspects a China link.",
-   "url": "https://news.lavx.hu/article/123-reg-discloses-ai-cyberattack-on-customer-data-suspects-china-nexus",
-   "source_label": "The Register via LavX, Oct 28-29"
+   "text": "Top House Democrats ask OpenAI, Anthropic, Google, Meta and SpaceXSI to report AI safety incidents to Congress within 48 hours. A request, not a law; full accounting due Nov 11.",
+   "url": "https://democrats-energycommerce.house.gov/media/press-releases/house-democratic-committee-leaders-request-frontier-ai-companies-report",
+   "source_label": "House Energy and Commerce Democrats, Oct 28"
   },
   {
-   "text": "Florida's attorney general sued AI image app A2E, saying it lets users 'nudify' non-consenting Floridians, including children.",
-   "url": "https://www.yahoo.com/news/us/articles/uthmeier-ai-company-allows-people-210354335.html",
-   "source_label": "Florida Phoenix, Oct 28"
+   "text": "Canada's five biggest banks are blocking or limiting customers' personal AI agents from online banking.",
+   "url": "https://globalnews.ca/news/12124433/ai-agents-canadian-banks/",
+   "source_label": "Global News, Oct 28"
   },
   {
-   "text": "Mayo Clinic's AI caught 73% of pancreatic cancers on CT scans radiologists had read as clear, against their 39%, an average of 475 days before diagnosis.",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
-   "source_label": "Gut, via ScienceDaily, Oct 26"
+   "text": "Correction: Georgia says Anthropic confirmed its AI did not bypass a paywall; the vote-count data was on the state's free public Data Hub.",
+   "url": "https://www.outlookindia.com/international/anthropic-claude-georgia-voter-data-us-midterms-2026",
+   "source_label": "Outlook India, Oct 26"
   }
  ]
 }

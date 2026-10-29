@@ -5,9 +5,38 @@
   "ai_role": "By Anthropic's account, the AI did 80 to 90% of the campaign, with people stepping in at perhaps four to six critical decision points per campaign, making thousands of requests, often several a second. Claude also sometimes hallucinated credentials, which Anthropic names as an obstacle to fully autonomous attacks.",
   "why": "It is the first case on our record where a state-linked group used an AI agent to do most of the hacking itself, against about 30 targets in big tech, finance, chemicals and government, with a small number of break-ins. The account comes from Anthropic itself; independent verification is limited.",
   "next": [
-   {"date": "2025-11-13", "text": "Anthropic publishes the case; it says it banned accounts as it found them, notified affected organizations and coordinated with authorities over ten days.", "url": "https://www.anthropic.com/news/disrupting-AI-espionage", "label": "Anthropic"},
-   {"date": "2025-11-14", "text": "Anthropic corrects its description of the attack's speed to “thousands of requests, often multiple per second.”", "url": "https://www.anthropic.com/news/disrupting-AI-espionage", "label": "Anthropic"},
-   {"date": "2025-11-26", "text": "The House Homeland Security Committee asks Anthropic, Google and Quantum Xchange to testify at a joint subcommittee hearing scheduled for Dec 17.", "url": "https://homeland.house.gov/2025/11/26/homeland-republicans-request-anthropic-google-quantum-xchange-testimony-following-report-of-ai-assisted-partially-autonomous-prc-cyber-operation/", "label": "House Homeland Security Committee"}
+   {
+    "date": "2025-11-13",
+    "text": "Anthropic publishes the case; it says it banned accounts as it found them, notified affected organizations and coordinated with authorities over ten days.",
+    "url": "https://www.anthropic.com/news/disrupting-AI-espionage",
+    "label": "Anthropic"
+   },
+   {
+    "date": "2025-11-14",
+    "text": "Anthropic corrects its description of the attack's speed to “thousands of requests, often multiple per second.”",
+    "url": "https://www.anthropic.com/news/disrupting-AI-espionage",
+    "label": "Anthropic"
+   },
+   {
+    "date": "2025-11-26",
+    "text": "The House Homeland Security Committee asks Anthropic, Google and Quantum Xchange to testify at a joint subcommittee hearing scheduled for Dec 17.",
+    "url": "https://homeland.house.gov/2025/11/26/homeland-republicans-request-anthropic-google-quantum-xchange-testimony-following-report-of-ai-assisted-partially-autonomous-prc-cyber-operation/",
+    "label": "House Homeland Security Committee"
+   }
+  ],
+  "updated": "2026-10-29"
+ },
+ "anthropic-vibe-hacking-gtg2002": {
+  "how": "Instead of locking files with ransomware, the attacker stole data and threatened to publish it. Anthropic says Claude Code was used “to automate reconnaissance, harvesting victims' credentials, and penetrating networks” against at least 17 organizations in healthcare, emergency services, government and religious institutions.",
+  "ai_role": "By Anthropic's account, Claude was allowed to make “both tactical and strategic decisions”: which data to take, how to pitch each extortion demand, and what to ask for after analyzing victims' stolen financial records. It also generated the ransom notes shown on victims' machines. Some demands exceeded $500,000.",
+  "why": "The AI was making the attacker's decisions, not just writing code: choosing what to steal and how much to demand. Anthropic called it “vibe hacking”. Whether any victim paid is not known, and the account is Anthropic's own.",
+  "next": [
+   {
+    "date": "2025-08-27",
+    "text": "Anthropic publishes the case in its August 2025 threat report; it says it banned the accounts, built a new classifier and detection method, and shared technical indicators with authorities.",
+    "url": "https://www.anthropic.com/news/detecting-countering-misuse-aug-2025",
+    "label": "Anthropic"
+   }
   ],
   "updated": "2026-10-29"
  }

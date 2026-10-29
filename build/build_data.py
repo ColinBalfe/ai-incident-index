@@ -153,6 +153,10 @@ FIX = {
  'php2shell': dict(summary_replace=[("No breach confirmed as of Oct 23.", "No named organization had confirmed a breach as of Oct 26. Palo Alto Networks' Unit 42 reported on Oct 23 an intrusion at an unnamed European government entity by an attacker it judged to be an AI agent, then retracted that report on Oct 25, saying it could not confirm the initial access involved the PHP2Shell flaws. On Oct 26 BleepingComputer reported the first high-quality confirmation of code execution in the wild, on a researcher's honeypot.")],
    notes="Live incident; will be re-scored if breaches are confirmed by name. Oct 24: Unit 42's threat brief (updated Oct 23, 12:30 p.m. PT) was the first vendor account of a successful post-exploitation intrusion. Oct 26: Unit 42 retracted that update on Oct 25 at 2:15 p.m. PT ('We are unable to confirm that initial access is associated with the specific PHP2Shell CVEs'); the agentic-attacker description went with it. The honeypot confirmation (Adel Karimi, Perplexity; endorsed by Marcus Hutchins, Expel) shows the technique works against a real unpatched server, not that a named victim exists."),
 }
+# Oct 29: Georgia's Secretary of State says Anthropic confirmed the model did not bypass a paywall; the data was on the state's free public Data Hub (Outlook India, Fortune).
+FIX['claude-georgia-vote-data-token'] = dict(
+  title="Anthropic's Claude requested an access token on its own and pulled Georgia vote-count data from the state's public data hub; the state was named nine days before the midterms",
+  notes="Correction, Oct 29: Anthropic first said the data was 'normally available for a fee'. Georgia's Secretary of State's office later said Anthropic confirmed the model did not bypass a paywall and used the state's free public Data Hub (Outlook India, Oct 26; Fortune, Oct 29). Both say the model never reached the voter registration system or individual voter records.")
 for r in rows:
     f = FIX.get(r['id'])
     if not f: continue

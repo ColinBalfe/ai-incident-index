@@ -175,5 +175,42 @@
   "id": "2115440657120555486",
   "photos": [],
   "truncated": true
+ },
+ "aegiryy-anthropic-linux-zero-click": {
+  "name": "Xinyang Ge",
+  "handle": "aegiryy",
+  "avatar": "https://pbs.twimg.com/profile_images/474658452212445184/6tmvUTXW_bigger.jpeg",
+  "verified": false,
+  "created_at": "2026-10-27T18:16:33.000Z",
+  "text": "this blog shows some of the worst bugs claude found, including a zero-click rce on the linux networking stack that roots a server over the network with no creds or interaction, and tens of full rce chains in chrome (recording below is the one in the blog): anthropic.com/research/disco…",
+  "id": "2115145643467669761",
+  "photos": [],
+  "video": {
+   "poster": "https://pbs.twimg.com/amplify_video_thumb/2115143765459644416/img/g409hJ9BDo5o78nF.jpg",
+   "ms": 20053,
+   "gif": false
+  }
+ },
+ "energycommerce-ai-incident-reporting": {
+  "name": "Energy & Commerce Democrats",
+  "handle": "EnergyCommerce",
+  "avatar": "https://pbs.twimg.com/profile_images/1610332945667035137/TRn7dvq2_bigger.png",
+  "verified": true,
+  "created_at": "2026-10-28T14:27:52.000Z",
+  "text": "NEWS: After dozens of incidents, top House Democrats request frontier AI companies report detailed information about misalignment and safety incidents to Congress within 48 hours.",
+  "id": "2115450482701332670",
+  "photos": [
+   "https://pbs.twimg.com/media/HVuVuhhXUAA1fs1.jpg"
+  ]
+ },
+ "timelywriter-ap-russia-deepfake-senate": {
+  "name": "Marc Levy",
+  "handle": "timelywriter",
+  "avatar": "https://pbs.twimg.com/profile_images/427562114228563968/OoiqTpLJ_bigger.jpeg",
+  "verified": false,
+  "created_at": "2026-10-28T00:34:18.000Z",
+  "text": "NEW YORK (@AP) — Social media videos believed to be produced with artificial intelligence and linked to Russia are misusing real people’s names and photographs to spread disinformation about two Democratic Senate candidates in the final stretch of midterm voting.",
+  "id": "2115240707472421218",
+  "photos": []
  }
 }

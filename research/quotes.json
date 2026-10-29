@@ -1689,7 +1689,7 @@
   "channel": "statement to press",
   "url": "https://www.foxbusiness.com/fox-news-tech/claude-ai-accessed-publicly-available-georgia-voter-data-anthropic-confirms",
   "via": "Fox Business",
-  "context": "Explaining how a Claude model used for an internal statistics project reached Georgia's paywalled vote-count data; Anthropic says it has since added mitigations.",
+  "context": "Explaining how a Claude model used for an internal statistics project reached Georgia's vote-count data; Anthropic says it has since added mitigations. Georgia later said Anthropic confirmed no paywall was bypassed and the data was on its free public Data Hub.",
   "verified": true,
   "verify_note": "Copied from the Fox Business page as fetched, Oct 26, 07:12 ET.",
   "weight": 7

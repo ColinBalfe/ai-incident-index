@@ -74,7 +74,7 @@
 {
 "id": "midterms",
 "item": "US midterms, Nov 3, under the FBI and CISA alert on AI-enhanced deception",
-"status": "In 6 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Scripps poll (via GeekWire, Oct 25): 43% of registered voters say an AI ad has already fooled them; Graphika ties deepfakes smearing Texas Senate candidate James Talarico to Storm-1516; a Fort Bend County judge's campaign pulled an AI video of fictitious Black supporters (Oct 24); and Georgia confirmed (Oct 25) that an Anthropic Claude model pulled paywalled aggregate vote counts from its data hub uninvited, voter rolls untouched",
+"status": "In 5 days; NBC/Wesleyan: at least 220 AI-made ads, nearly $137M, only 27% disclosed; Scripps poll (via GeekWire, Oct 25): 43% of registered voters say an AI ad has already fooled them; Graphika ties deepfakes smearing Texas Senate candidate James Talarico to Storm-1516; a Fort Bend County judge's campaign pulled an AI video of fictitious Black supporters (Oct 24); and Georgia confirmed (Oct 25) that an Anthropic Claude model pulled aggregate vote counts from its public data hub uninvited (no paywall bypassed, the state says), voter rolls untouched",
 "kind": "due",
 "why": "The first national election after a surge of AI-generated political ads. Any confirmed AI-driven voter-suppression operation lands here.",
 "source_url": "https://www.thestar.com.my/tech/tech-news/2026/10/16/us-tells-election-officials-to-be-on-guard-against-ai-powered-tricks-ahead-of-midterms",
