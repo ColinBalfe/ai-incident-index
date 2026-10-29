@@ -1,6 +1,6 @@
 {
- "as_of": "2026-10-29T11:15:00-04:00",
- "as_of_label": "Oct 29, 2026, 11:15 ET",
+ "as_of": "2026-10-29T11:50:00-04:00",
+ "as_of_label": "Oct 29, 2026, 11:50 ET",
  "next_check": "2026-10-29T12:17:00-04:00",
  "next_check_label": "Thursday, 12:17 ET",
  "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-29",
+   "text": "11:50 ET: New lead (Colin's call): the containment story moves to Congress, as top House Democrats ask Anthropic, Google, Meta, OpenAI and SpaceXSI to report AI safety incidents within 48 hours (a request, not a law; full accounting due Nov 11; House Energy and Commerce Democrats' release). Anthropic's SEC filing becomes a tag-along. New free lead photo (US Capitol, Louis Velazquez / Unsplash). From now on the lead headline changes at least once a day (REFRESH). Checked twice."
+  },
   {
    "date": "2026-10-29",
    "text": "11:15 ET: Lead unchanged (the labs' containment admission in Anthropic's SEC filing); new tag-along: top House Democrats ask five AI companies to report safety incidents within 48 hours (a request; accounting due Nov 11). 11 stories added (Moldova's state-data theft with AI suspected, India's small lenders' estimated ₹300 crore losses, Canada's banks blocking AI agents, GLM-5.3's attack tests, CISA's Fragnesia listing, the UK's £40m rogue-agent unit, Eclypsium's tampered-server demo, 39 states against Character.AI's sale, the FTC's pricing orders, OpenAI's election center); 3 X posts added. Correction: Georgia says Anthropic confirmed no paywall was bypassed (Outlook India; Fortune); the incident title, Wire line and quote context now say so. Dutch cuts now 'over several years' (the source does not say 'by 2035'). PHP2Shell rechecked: no named victim, no emergency directive, KEV unchanged (v2026.10.28), no PHP release since Oct 21; still Proven. Checked twice."
@@ -166,6 +170,6 @@
   ]
  },
  "quiet": false,
- "edition": 19,
- "edition_path": "archive/2026-10-29-1115/"
+ "edition": 20,
+ "edition_path": "archive/2026-10-29-1150/"
 }

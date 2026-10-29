@@ -3251,8 +3251,8 @@
 "outlet": "Axios"
 }
 ],
-"tag": "Anthropic tells Wall Street its AI may act on its own, outside its control",
-"red": true,
+"tag": "Anthropic filing: AI may act on its own",
+"red": false,
 "label": "confirmed",
 "img": "/assets/img/code-screen-malinowski.jpg",
 "img_alt": "A close-up of a computer screen filled with code",
@@ -4328,11 +4328,43 @@
 "topic": "regulation",
 "summary": "Pallone, Lofgren and Raskin want a full accounting by Nov 11 and 24-hour notice when critical infrastructure is involved.",
 "also": [],
-"tag": "House Democrats ask labs to report AI incidents within 48 hours",
+"tag": "Top House Democrats ask AI labs to report safety incidents to Congress within 48 hours",
 "red": false,
 "label": "confirmed",
 "receipt": "A request in letters from the ranking Democrats on three House committees, not a law: a full accounting of incidents by Nov 11, then notice within 48 hours of detection, 24 hours if critical infrastructure is involved.",
-"touches": "Anyone affected when a frontier AI system misbehaves"
+"touches": "Anyone affected when a frontier AI system misbehaves",
+"img": "/assets/img/us-capitol-velazquez.jpg",
+"img_alt": "The US Capitol building under a blue sky",
+"img_credit": "Photo: Louis Velazquez / Unsplash",
+"img_credit_url": "https://unsplash.com/photos/united-states-capitol-building-in-washington-XWW746i6WoM",
+"img_date": "2026-10-29",
+"standfirst": "The ranking Democrats on three House committees, Frank Pallone, Zoe Lofgren and Jamie Raskin, have asked Anthropic, Google, Meta, OpenAI and SpaceXSI for a full accounting of AI misalignment and safety incidents by Nov 11, then notice within 48 hours of detecting any new one, and within 24 hours if critical infrastructure is involved. It is a request, not a law. It comes days after Anthropic's SEC filing said its models could end up operating outside its intended controls.",
+"you": {
+"touch": "Nothing changes for you yet: this is a request from the committees' top Democrats, not a law. But it would mean the companies whose AI may act for you tell Congress about failures within two days.",
+"today": [
+"List every AI agent or app that can act for you, what it can reach, and switch off the ones you don't use.",
+"/exposed/",
+"Am I exposed?"
+]
+},
+"entities": {
+"orgs": [
+"House Energy and Commerce Committee",
+"Anthropic",
+"Google",
+"Meta",
+"OpenAI",
+"SpaceXSI"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"tech",
+"government"
+],
+"states": []
+}
 },
 {
 "id": "kprc-uh-texas-data-center-poll",

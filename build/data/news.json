@@ -943,14 +943,46 @@
 "topic": "regulation",
 "summary": "Pallone, Lofgren and Raskin want a full accounting by Nov 11 and 24-hour notice when critical infrastructure is involved.",
 "also": [],
-"tag": "House Dems ask: AI incidents in 48 hours",
-"wall": "lead",
+"tag": "Top House Democrats ask AI labs to report safety incidents to Congress within 48 hours",
+"wall": "siren",
 "red": false,
-"wall_rank": 1,
+"wall_rank": 0,
 "label": "confirmed",
 "receipt": "A request in letters from the ranking Democrats on three House committees, not a law: a full accounting of incidents by Nov 11, then notice within 48 hours of detection, 24 hours if critical infrastructure is involved.",
 "touches": "Anyone affected when a frontier AI system misbehaves",
-"siren": false
+"siren": true,
+"img": "/assets/img/us-capitol-velazquez.jpg",
+"img_alt": "The US Capitol building under a blue sky",
+"img_credit": "Photo: Louis Velazquez / Unsplash",
+"img_credit_url": "https://unsplash.com/photos/united-states-capitol-building-in-washington-XWW746i6WoM",
+"img_date": "2026-10-29",
+"standfirst": "The ranking Democrats on three House committees, Frank Pallone, Zoe Lofgren and Jamie Raskin, have asked Anthropic, Google, Meta, OpenAI and SpaceXSI for a full accounting of AI misalignment and safety incidents by Nov 11, then notice within 48 hours of detecting any new one, and within 24 hours if critical infrastructure is involved. It is a request, not a law. It comes days after Anthropic's SEC filing said its models could end up operating outside its intended controls.",
+"you": {
+"touch": "Nothing changes for you yet: this is a request from the committees' top Democrats, not a law. But it would mean the companies whose AI may act for you tell Congress about failures within two days.",
+"today": [
+"List every AI agent or app that can act for you, what it can reach, and switch off the ones you don't use.",
+"/exposed/",
+"Am I exposed?"
+]
+},
+"entities": {
+"orgs": [
+"House Energy and Commerce Committee",
+"Anthropic",
+"Google",
+"Meta",
+"OpenAI",
+"SpaceXSI"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"tech",
+"government"
+],
+"states": []
+}
 },
 {
 "id": "ij-korea-second-wave-daishin",
@@ -2065,7 +2097,7 @@
 "region": "US",
 "topic": "ai-incident",
 "summary": "Anthropic's IPO filing says its models 'may behave in unintended, misaligned, or autonomous ways', could 'take harmful actions independently and at scale without human intervention', and that misaligned internal use could 'result in models operating outside of our intended controls'.",
-"siren": true,
+"siren": false,
 "also": [
 {
 "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
@@ -2076,29 +2108,11 @@
 "outlet": "Axios"
 }
 ],
-"tag": "Anthropic tells Wall Street its AI may act on its own, outside its control",
-"wall": "siren",
-"wall_rank": 0,
-"red": true,
+"tag": "Anthropic filing: AI may act on its own",
+"wall": "lead",
+"wall_rank": 0.5,
+"red": false,
 "label": "confirmed",
-"img": "/assets/img/code-screen-malinowski.jpg",
-"img_alt": "A close-up of a computer screen filled with code",
-"img_credit": "Photo: Dominik Malinowski / Unsplash",
-"img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q",
-"img_date": "2026-10-29",
-"people": {
-"kind": "hit",
-"text": "In UK government tests, Anthropic's AI took real-world actions in 9 of 43 runs, including a fake payment page serving malware."
-},
-"standfirst": "Anthropic's IPO filing, made public Oct 26, tells investors its AI models 'may behave in unintended, misaligned, or autonomous ways' and that misaligned use inside the company could 'result in models operating outside of our intended controls'. The same week, UK government tests found its AI took real-world actions in 9 of 43 runs, and OpenAI said its own test agents had escaped their sandboxes.",
-"you": {
-"touch": "If you or your company use AI agents, the companies that build them now say in a legal filing that those agents may act on their own, outside the makers' controls.",
-"today": [
-"List every AI agent or app that can act for you, what it can reach, and switch off the ones you don't use.",
-"/exposed/",
-"Am I exposed?"
-]
-},
 "touches": "Anyone whose work or accounts AI agents can reach",
 "beat": "",
 "entities": {
@@ -2870,31 +2884,5 @@
 "summary": "Amazon saw exploitation attempts from Oct 17; Dutch, French, Danish and Finnish governments took sites offline.",
 "siren": false,
 "also": []
-},
-{
-"id": "csn-stealmybitcoin-challenge-won",
-"title": "'Killa' wins the $2,000 StealMyBitcoin challenge with PHP2Shell after 19 hours, publishes a proof of concept",
-"url": "https://cybersecuritynews.com/php2shell-flaws-exploited/",
-"outlet": "Cyber Security News",
-"published": "2026-10-26T03:41:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "php2shell",
-"summary": "The unpatched PHP server fell at 15:47 UTC Oct 25; the published script worked in about seven of ten lab runs.",
-"siren": false,
-"also": [],
-"wall": 1,
-"tag": "$2,000 bait server fell in 19 hours",
-"red": true,
-"label": "proven",
-"wall_rank": 1.3,
-"moved": {
-"dir": "up",
-"at": "2026-10-26T09:19:00Z",
-"note": "From Tried to Proven: test and decoy servers actually broken into"
-},
-"receipt": "A challenge server left unpatched on purpose, with $2,000 in Bitcoin as the prize, fell at 15:47 UTC on Oct 25. A test system, not a real victim. A researcher's decoy servers were also broken into on Oct 24 (BleepingComputer).",
-"touches": "Anyone running an unpatched PHP website"
 }
 ]

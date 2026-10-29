@@ -2,7 +2,7 @@
 
 > A live index of AI's dangers and breakthroughs as they land on real lives: every significant AI incident since 2023, scored 0-100 by a published formula and linked to its sources, with a headline page refreshed three times a day (5:17, 12:17 and 18:17 US Eastern).
 
-Last refresh: Oct 29, 2026, 11:15 AM ET. 165 incidents scored. Corrections and retractions are logged publicly; retracted claims are labelled as such on every page.
+Last refresh: Oct 29, 2026, 11:50 AM ET. 165 incidents scored. Corrections and retractions are logged publicly; retracted claims are labelled as such on every page.
 
 ## Start here
 - [Front page: today's headlines](https://warningshots.ai/): the level of the day, the running story, three columns of headlines each linking to the original reporting

@@ -1,12 +1,12 @@
 {
- "as_of": "2026-10-29T11:15:00-04:00",
+ "as_of": "2026-10-29T11:50:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "Anthropic's S-1 risk factors include human extinction, the Pentagon, and Dario Amodei's reputation. Anthropic's IPO filing says its models 'may behave in unintended, misaligned, or autonomous ways', could 'take harmful actions independently and at scale…",
-   "link": "https://fortune.com/2026/10/26/anthropic-s1-risk-factors-existential-risk-pentagon-dario-amodei/",
-   "image": "cards/n-fortune-anthropic-s1-intended-controls.jpg",
-   "chars": 278,
+   "text": "Top House Democrats ask OpenAI, Anthropic, Google, Meta and SpaceXSI to report AI safety incidents within 48 hours. Pallone, Lofgren and Raskin want a full accounting by Nov 11 and 24-hour notice when critical infrastructure is involved.",
+   "link": "https://democrats-energycommerce.house.gov/media/press-releases/house-democratic-committee-leaders-request-frontier-ai-companies-report",
+   "image": "cards/n-house-dems-ai-incident-reporting-48h.jpg",
+   "chars": 261,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
