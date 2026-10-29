@@ -248,6 +248,422 @@
 "source_url": "https://www.theregister.com/cyber-crime/2026/10/22/hackers-pile-on-php2shell-as-aws-reveals-attacks-began-before-disclosure/5304749"
 },
 {
+"id": "php-t46",
+"incident_id": "php2shell",
+"date": "2026-10-21T18:00",
+"date_label": "Oct 21",
+"event": "CISA KEV: neither CVE-2026-109618 nor CVE-2026-109619 is in the KEV catalog as of version 2026.10.21 (verified directly from the CISA feed at ~23:30 ET Oct 22). No CISA emergency directive found.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "php-t47",
+"incident_id": "php2shell",
+"date": "2026-10-22T18:00",
+"date_label": "Oct 22",
+"event": "Hunt.io maps attacker open directories holding PHP2Shell tooling: one operator ran ten attack rounds against a list that grew from 23 to 123 servers; about 57 ran PHP; zero shells. Hunt.io: 'no confirmed compromises, and no vendors have reported any.'",
+"source_url": "https://hunt.io/blog/php2shell-cve-2026-109618-109619-open-directories"
+},
+{
+"id": "php-t48",
+"incident_id": "php2shell",
+"date": "2026-10-23T18:00",
+"date_label": "Oct 23",
+"event": "VulnCheck says it has built an exploit for CVE-2026-109618 that reaches code execution on x86-64 with ASLR on and error display off (the recommended production setup); kept to its paying customers; says it is not aware of any other public or commercial exploit that does this across multiple PHP versions.",
+"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/"
+},
+{
+"id": "php-t49",
+"incident_id": "php2shell",
+"date": "2026-10-23T18:00",
+"date_label": "Oct 23",
+"event": "Qualys (anonymized data from about 12,000 customers): only about 199,000 PHP instances were patched within 12 hours of disclosure; about 110 million instances (71%) run end-of-life PHP 5.4 to 8.1 and most will never get a patch; another 44 million run supported branches without the fix applied.",
+"source_url": "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/"
+},
+{
+"id": "php-t50",
+"incident_id": "php2shell",
+"date": "2026-10-23T18:00",
+"date_label": "Oct 23",
+"event": "PHP publishes an informational advisory for a third issue, CVE-2026-115560, an 'unlikely RCE vector' that needs an unusual session configuration; it recommends session.upload_progress.enabled=0 until the next regular bugfix release and will publish a full advisory then. No exploitation reported.",
+"source_url": "https://www.php.net/archive/2026.php#2026-10-23-1"
+},
+{
+"id": "php-t51",
+"incident_id": "php2shell",
+"date": "2026-10-23T12:40",
+"date_label": "Oct 23 12:40 UTC",
+"event": "CISA KEV re-checked from the feed: catalog still at version 2026.10.21; neither PHP CVE listed. No emergency directive found.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "php-t52",
+"incident_id": "php2shell",
+"date": "2026-10-23T18:00",
+"date_label": "Oct 23",
+"event": "The Record: dozens of experts tell the outlet no PHP2Shell attempt is known to have succeeded and most public proof-of-concept exploits work only in lab conditions; Google's John Hultquist says it has not validated in-the-wild exploitation but calls the threat 'viable and very serious'; Censys counts more than 41 million internet-facing PHP services on affected versions and about 1 million on a fixed release as of Oct 22.",
+"source_url": "https://therecord.media/php-php2shell-exploitation-attempts-pocs"
+},
+{
+"id": "php-t53",
+"incident_id": "php2shell",
+"date": "2026-10-23T18:45",
+"date_label": "Oct 23 18:45 UTC",
+"event": "CISA KEV re-checked from the feed: catalog moved to version 2026.10.23 (released 19:30 UTC) with two new entries (Arista VeloCloud, Collabora Online); neither PHP CVE is listed and no emergency directive has been issued.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "php-t54",
+"incident_id": "php2shell",
+"date": "2026-10-23T18:00",
+"date_label": "Oct 23",
+"event": "The PHP Foundation's executive director, Elizabeth Barron, tells The Register the foundation has no evidence of successful exploitation of the two flaws before disclosure and none on patched versions; Mandiant CTO Charles Carmakal says it has validated some public exploits that achieve code execution against default mod_php deployments but not PHP-FPM, calls many others 'vibe-coded', and says exploitation 'may have already begun in a limited fashion'.",
+"source_url": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208"
+},
+{
+"id": "php-t55",
+"incident_id": "php2shell",
+"date": "2026-10-23T17:30",
+"date_label": "Oct 23 17:30 UTC",
+"event": "VulnCheck's status update: its private exploit now covers PHP 8.4.10 to 8.4.26 and 8.5.10 to 8.5.11 on default mod_php settings, including default WordPress Docker installs; the one real exploitation attempt it logged (Oct 21) tried and failed to plant a web shell, and all ten follow-up reads returned 404. Its exposure count: PHP on 2,608,039 internet-facing hosts, 99.998% of them on vulnerable or likely vulnerable versions.",
+"source_url": "https://www.vulncheck.com/blog/php2shell-vulnerabilities"
+},
+{
+"id": "php-t56",
+"incident_id": "php2shell",
+"date": "2026-10-23T17:58",
+"date_label": "Oct 23 17:58 UTC",
+"event": "Reuters: the PHP Foundation has one full-time employee (Barron) and 14 mostly part-time contractors; Barron says the foundation has no evidence the flaws were exploited before disclosure or on patched sites and has received 'no further indication from OpenAI, Wiz or Calif' of problems on patched systems. PHP now receives nearly twice as many proposed code changes as a year ago without a matching rise in contributors.",
+"source_url": "https://whtc.com/2026/10/23/php-foundation-under-funded-with-one-full-time-staff-member-director-says/"
+},
+{
+"id": "php-t57",
+"incident_id": "php2shell",
+"date": "2026-10-24T18:00",
+"date_label": "Oct 24",
+"event": "Korea's KISA (KrCERT/CC) publishes security notice #2581 recommending the temporary mitigation for the third PHP bug, CVE-2026-115560 (disable session upload progress and restart PHP workers); no exploitation of the third bug is reported.",
+"source_url": "https://www.boho.or.kr/kr/bbs/list.do?menuNo=205020&bbsId=B0000133"
+},
+{
+"id": "php-t58",
+"incident_id": "php2shell",
+"date": "2026-10-24T08:00",
+"date_label": "Oct 24 08:00 UTC",
+"event": "Fourth morning after the patches: no named organization has confirmed a PHP2Shell compromise; no PHP release after Oct 21 (php.net's newest entry is the Oct 23 advisory). CISA's KEV feed could not be opened by this run; the latest readable notices show CISA's Oct 23 additions were Collabora Online and Arista VeloCloud only, with no PHP entry and no emergency directive.",
+"source_url": "https://vulners.com/cisa/CISA:64286C09B02566675A407045C00A9BFC"
+},
+{
+"id": "php-t59",
+"incident_id": "php2shell",
+"date": "2026-10-23T12:18",
+"date_label": "Oct 23 12:18 UTC",
+"event": "American Banker: MSU Federal Credit Union ($8.9 billion, East Lansing, Michigan) took its website and digital banking offline on Oct 21 after federal warnings, patched the PHP systems it builds and maintains itself and restored online and mobile banking on Oct 22, about 24 hours later; 'There is no impact to member information at this time' (chief of staff Allison Horn). New York's Department of Financial Services told regulated firms in an Oct 22 industry letter to patch immediately, take unpatchable systems offline and not treat web application firewalls as a substitute for patching or isolation. The Japanese Bankers Association said the interbank settlement network was not affected. No US bank or credit union has reported a compromise.",
+"source_url": "https://www.americanbanker.com/news/banks-dodge-early-damage-from-php2shell-flaws"
+},
+{
+"id": "php-t60",
+"incident_id": "php2shell",
+"date": "2026-10-23T15:30",
+"date_label": "Oct 23 15:30 UTC",
+"event": "Palo Alto Networks' Unit 42 updates its PHP2Shell threat brief with the first vendor account of a successful intrusion: 'In one case, the attackers targeted a government entity in Europe' and within two hours of initial exploitation 'had successfully accessed password hashes and multi-factor authentication secrets', set up a relay into Active Directory and attempted domain-admin escalation. Unit 42 judges the command style 'strong indicators of an agentic attacker' (output wrapped in machine-readable delimiters for a model to parse). The entity is not named, the data source is not stated, and the outcome of the escalation attempt is not given. Cortex Xpanse counts more than 22.6 million exposed instances potentially vulnerable. [Retracted by Unit 42 on Oct 25: it could not confirm the initial access involved the PHP2Shell flaws.]",
+"source_url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+},
+{
+"id": "php-t61",
+"incident_id": "php2shell",
+"date": "2026-10-23T06:21",
+"date_label": "Oct 23 06:21 UTC",
+"event": "French prefecture websites (Nord, Rhône, Bouches-du-Rhône, Gironde) come back online at 10:21 UTC after going dark at 17:05 UTC on Oct 21, per the volunteer phpocalypse tracker, which stopped automated checks on Oct 23 with every site it had listed as dark recovered (DigiD and NCSC-NL on Oct 21; Valtori, Overheid.nl, CNIL, Belgian Foreign Affairs, NotuBiz and the Dutch data-protection authority on Oct 22). Observational, not an official restoration notice.",
+"source_url": "https://allixsenos.github.io/phpocalypse-tracker/sites.csv"
+},
+{
+"id": "php-t62",
+"incident_id": "php2shell",
+"date": "2026-10-23T18:00",
+"date_label": "Oct 23",
+"event": "CYFIRMA (Singapore) publishes a report, relayed by Korea JoongAng Daily on Oct 24, that Korean-speaking actors on the I2P anonymity network are preparing PHP2Shell attacks, dubbed 'June 2026 Minjun', against government and financial institutions in South Korea, the United States, Japan and Australia, with manufacturing, logistics, aviation and trading firms also listed. CYFIRMA rates its confidence in the preparations high and a Lazarus link moderate; no victim, malware or infrastructure tied to North Korea is identified, and Korean security sources say the language and target choice alone prove nothing. Korea's science ministry and KISA had issued a 'caution' alert on Oct 22.",
+"source_url": "https://www.koreajoongangdaily.com/business/hackers-used-korean-to-coordinate-potential-php-attack-targeting-banks-government-logistics-report/12936296"
+},
+{
+"id": "php-t63",
+"incident_id": "php2shell",
+"date": "2026-10-24T12:40",
+"date_label": "Oct 24 12:40 UTC",
+"event": "The CISA KEV feed, opened directly by this run: catalog version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of the three PHP CVEs; no additions dated Oct 24. php.net's newest entry remains the Oct 23 informational advisory; no PHP release since Oct 21 (PHP 8.6.0 RC5 is planned for Nov 5). TechCrunch's Oct 24 reconstruction says Palo Alto Networks and Trail of Bits 'later reported confirmed compromises as of late Friday'; the Unit 42 case is the only such account this run could read, and no Trail of Bits post claiming a compromise was found.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "php-t64",
+"incident_id": "php2shell",
+"date": "2026-10-24T18:40",
+"date_label": "Oct 24 18:40 UTC",
+"event": "Evening check, day four: nothing new. The CISA KEV feed, opened directly: still catalog version 2026.10.23 (released Oct 23, 19:30 UTC), 1,756 entries, no PHP2Shell CVE; the latest additions remain Arista VeloCloud and Collabora Online. php.net's archive, opened directly: newest entry still the Oct 23 informational advisory; no PHP release since Oct 21. No vendor research, agency advisory or named compromise dated after midday Oct 24 was found in a sweep of the security press and of Unit 42, CrowdStrike, Sophos, Censys, Cloudflare, Rapid7, Fortinet, Huntress, F5, watchTowr and the NCSC-NL repository. TechCrunch's line that Trail of Bits has 'confirmed compromises' links to an X post by its CEO Dan Guido (x.com/dguido/status/2113825891021144306), which this run could not open; no Trail of Bits publication making that claim was found.",
+"source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+},
+{
+"id": "php-t65",
+"incident_id": "php2shell",
+"date": "2026-10-24T18:00",
+"date_label": "Oct 24",
+"event": "Reuters (Raphael Satter and AJ Vicens): seven security professionals say AI-driven bug finding will keep producing weeks like this one. VulnCheck research due in the coming days finds AI helped drive a doubling of disclosed vulnerabilities year on year; Cloudflare CEO Matthew Prince says he knows of 'a bunch of additional severe vulnerabilities that are present in other pieces of critical software'. curl's Daniel Stenberg and ArmorCode's Ramy Rahman push back: AI-found bugs tend to be obscure and 'more disclosed vulnerabilities do not automatically mean more successful attacks'.",
+"source_url": "https://www.staradvertiser.com/2026/10/24/breaking-news/ai-discovered-bugs-may-soon-trigger-fresh-disruptions-experts-say/"
+},
+{
+"id": "php-t66",
+"incident_id": "php2shell",
+"date": "2026-10-25T06:40",
+"date_label": "Oct 25 06:40 UTC",
+"event": "Morning check, day five: still nothing on the scoreboard. The CISA KEV feed, opened directly: catalog version 2026.10.23 (released Oct 23, 19:30 UTC), 1,756 entries, no PHP2Shell CVE; the latest additions remain Arista VeloCloud Orchestrator and Collabora Online. php.net's archive, opened directly: newest entry still the Oct 23 informational advisory; no PHP release since Oct 21. The Oct 25 reporting is all Asian: Korean groups saying they found no breach, a Japanese count of service suspensions, Nepal's government platform still offline. No vendor or agency published new research overnight.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "php-t67",
+"incident_id": "php2shell",
+"date": "2026-10-24T02:52",
+"date_label": "Oct 24 02:52 UTC",
+"event": "The X post by Trail of Bits CEO Dan Guido that TechCrunch's Oct 24 reconstruction links for 'confirmed compromises', opened by this run: it announces that the firm's own exploit is 'now production-grade' (stock php.ini-production, ASLR, under load; ARM64 and x86-64; MediaWiki, WordPress, phpBB and Laravel; Apache/mod_php and nginx/php-fpm to root). It is an exploit-capability update, not a report that any organization was compromised. Unit 42's unnamed European government entity remains the only account of a successful intrusion.",
+"source_url": "https://x.com/dguido/status/2113825891021144306"
+},
+{
+"id": "php-t68",
+"incident_id": "php2shell",
+"date": "2026-10-25T18:00",
+"date_label": "Oct 25",
+"event": "Japan: the cumulative count of service suspensions has passed 500, per an analysis of X posts by the security firm Assured relayed by FNN's Tokyo correspondent; as of 14:00 JST on Oct 23, 285 of them (about 60% of organizations that announced a suspension) had posted no resumption notice. SoftBank's emergency-alert emails (SoftBank, Y!mobile, LINEMO) have been suspended since Oct 23 with inspections due to finish Oct 26, so users cannot receive earthquake, tsunami, disaster or evacuation information through them; NTT Docomo suspended some transmissions including J-Alert and local evacuation information but kept earthquake early warnings and tsunami alerts. Orbis resumed its online store at midday Oct 22 and re-suspended it the same day after the third bug surfaced; Bandai Namco: 'We have not yet identified the full scope of the impact.'",
+"source_url": "https://en.fnnews.com/news/202610251125023293"
+},
+{
+"id": "php-t69",
+"incident_id": "php2shell",
+"date": "2026-10-25T18:00",
+"date_label": "Oct 25",
+"event": "South Korea: Samsung Electronics, SK, Hyundai Motor, LG and HD Hyundai say they have found no breach exploiting the flaws (most of their web services run on Java rather than PHP); POSCO set up an emergency response team and patched its PHP systems, GS issued an emergency notice and updated some PHP sites, per Newsis. The reported worry is contractors and small firms on PHP 8.1 or older, which cannot take the Oct 21 patch; PHP 8.2 support ends Dec 31. Science Minister Bae Kyung-hoon told the Oct 23 National Assembly audit a cross-ministry plan would follow. KISA on Oct 24 recommended a temporary mitigation for the third bug, CVE-2026-115560, which the Oct 21 updates do not cover, and advised checking for signs of intrusion as well as patch status.",
+"source_url": "https://www.newsis.com/view/NISX20261025_0003839898"
+},
+{
+"id": "php-t70",
+"incident_id": "php2shell",
+"date": "2026-10-25T18:00",
+"date_label": "Oct 25",
+"event": "Nepal: thousands of government websites, which run on the shared GIWIMS platform, and Nepal Rastra Bank's website and web services remain offline as a precaution, along with the Department of Revenue Investigation's freight-tracking system (VCTS); private banks shut digital services too, and Nabil Bank, Sanima Bank and Nepal Investment Mega Bank have since restored theirs, per the Kathmandu Post. The government's Software Development and Operation Centre expects to patch the platform centrally and bring the sites back between Sunday evening and Tuesday, after the Dashain holiday; systems not using PHP came back from Oct 22. The National Cyber Security Centre's director says there have been no cases of unauthorised access linked to the flaws in Nepal.",
+"source_url": "https://kathmandupost.com/science-technology/2026/10/25/php2shell-security-flaw-forces-thousands-of-nepali-websites-offline"
+},
+{
+"id": "php-t71",
+"incident_id": "php2shell",
+"date": "2026-10-24T18:00",
+"date_label": "Oct 24",
+"event": "BBC profiles Ondřej Surý, the volunteer who packages PHP for Debian and Ubuntu in his spare time: warned in advance by the PHP project, he had to rush the packages when the leak brought the release forward, and received more than $10,000 (£7,470) in donations in a few days. 'I think this is was the most severe incident in years,' he said, adding that with AI capabilities improving in cyber security 'this might not be an isolated incident.'",
+"source_url": "https://www.bbc.com/news/articles/cw30ejqljl43o"
+},
+{
+"id": "php-t72",
+"incident_id": "php2shell",
+"date": "2026-10-24T15:35",
+"date_label": "Oct 24 15:35 UTC",
+"event": "First public packet-to-process evidence of the full PHP2Shell chain reaching code execution in the wild, on honeypots: a researcher publishing as 0x4D31 reports that on three disposable PHP 8.4.26 honeypots, packet captures and kernel process events correlate 35 complete execution-stage requests with 35 shell starts parented by Apache workers, from two hosting-network source addresses (OVH US, 3 shells from 15:35 UTC; Interserver, 32 shells from 16:46 to 18:57 UTC), using the published leak-guided technique; two further addresses only crashed workers. The author stresses the targets ran an 'intentionally favorable single-worker mod_php profile', that this 'is not a measurement of exploit reliability on other worker counts, PHP builds, or applications', and that no second-stage file was downloaded. A companion report covering Oct 22 to early Oct 24 found no confirmed code execution, so the first confirmed shells date from Friday afternoon UTC. Honeypots, not real victims.",
+"source_url": "https://github.com/0x4D31/honeypot-data/blob/main/reports/php2shell/2026-10-24-confirmed-rce.md"
+},
+{
+"id": "php-t73",
+"incident_id": "php2shell",
+"date": "2026-10-24T18:00",
+"date_label": "Oct 24",
+"event": "CYFIRMA issues version 3 of its advisory on a suspected North Korean campaign staging PHP2Shell attacks: it says Korean-speaking operators have filtered a 216-host target set of unpatched or partly mitigated servers, lists 15 staging addresses and 21 compromised scan nodes (38 addresses in all), rates a North Korean state nexus 'HIGH' confidence and a Lazarus link 'MODERATE', identifies no organization and confirms no compromise. A single vendor's claim; no other firm has corroborated the attribution.",
+"source_url": "https://cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure"
+},
+{
+"id": "php-t74",
+"incident_id": "php2shell",
+"date": "2026-10-25T09:25",
+"date_label": "Oct 25 09:25 UTC",
+"event": "SoftBank resumes Japan Meteorological Agency earthquake early warnings and tsunami warnings over its emergency-alert mail for SoftBank, Y!mobile and LINEMO subscribers, halted since 06:47 JST Oct 23 for PHP maintenance; national and municipal disaster and evacuation alerts stay off until the work finishes on Oct 26, per Keitai Watch.",
+"source_url": "https://k-tai.watch.impress.co.jp/docs/news/2150959.html"
+},
+{
+"id": "php-t75",
+"incident_id": "php2shell",
+"date": "2026-10-25T20:01",
+"date_label": "Oct 25 20:01 UTC",
+"event": "NTT Docomo restores its Area Mail emergency alerts in full at 20:01 JST, ahead of the early-Oct 26 restart it had announced; J-Alert, river flood forecasts and municipal disaster and evacuation information had been suspended since about 19:30 JST Oct 23 as a precaution over the PHP flaws (earthquake and tsunami warnings never stopped), per Keitai Watch.",
+"source_url": "https://k-tai.watch.impress.co.jp/docs/news/2150985.html"
+},
+{
+"id": "php-t76",
+"incident_id": "php2shell",
+"date": "2026-10-25T13:15",
+"date_label": "Oct 25 13:15 UTC",
+"event": "Midday check, day five: the CISA KEV JSON feed, opened directly: still catalog version 2026.10.23 (released Oct 23, 19:30 UTC), 1,756 entries, none of the three PHP CVEs; no emergency directive found. php.net archive: no release after Oct 21 (newest item the Oct 23 informational advisory on CVE-2026-115560; PHP 8.6.0 RC5 is planned for Nov 5). NCSC-NL's alert was last updated Oct 23, 15:45, with 'one report of possible misuse abroad' that 'has not been confirmed to have actually succeeded'. No organization has confirmed a compromise by name.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "php-t77",
+"incident_id": "php2shell",
+"date": "2026-10-25T18:40",
+"date_label": "Oct 25 18:40 UTC",
+"event": "Evening check, day five: nothing has moved. php.net's archive, opened directly: newest entry still the Oct 23 informational advisory on CVE-2026-115560, no release after Oct 21 (8.6.0 RC5 planned Nov 5). The CISA KEV JSON could not be opened by this run; Tenable's FAQ (updated Oct 23, 18:00 ET) says the CVEs were not in the catalog as of Oct 23, and Senserva's tracker (updated Oct 25) lists the week's KEV additions as Collabora, Arista, EG Secure Solutions, Siemens and four Plex CVEs, none PHP. Unit 42's brief carries 'Updated October 25' in its title, but its own change log ends Oct 23, 12:30 PT. The Hacker News' Oct 25 roundup adds Bitsight's count of nearly 37 million internet-facing systems running PHP or PHP-related software and names no victim. No organization has confirmed a compromise by name.",
+"source_url": "https://www.php.net/archive/2026"
+},
+{
+"id": "php-t78",
+"incident_id": "php2shell",
+"date": "2026-10-25T18:00",
+"date_label": "Oct 25",
+"event": "Korea: Shinhan Financial extends its emergency PHP checks to subsidiaries outside its FIRST security-monitoring system, with a checklist covering PHP use, system impact, mitigation status and schedules; Broadcom lists three affected security products (Symantec Endpoint Protection Manager, Carbon Black App Control Server, Cloud SOC SpanVA); KB Kookmin and Woori have applied emergency patches, per eToday. The same report says financial authorities found security-management gaps at 130 of 555 firms checked, mainly unapplied patches and end-of-support systems, without tying that inspection to PHP2Shell. Financial News (Oct 25 and 26 KST) reports small web-shop operators who cannot tell whether they are affected and are waiting on hosting providers; KISA has no exploitation report.",
+"source_url": "https://www.etoday.co.kr/news/view/2639738"
+},
+{
+"id": "php-t79",
+"incident_id": "php2shell",
+"date": "2026-10-25T18:00",
+"date_label": "Oct 25",
+"event": "Unit 42 retracts its Oct 23 update, the only vendor account of a successful PHP2Shell intrusion. Its brief now says the attack on a European government agency 'executed in the context of a vulnerable PHP application' led researchers to believe the flaws were exploited, but 'We are unable to confirm that initial access is associated with the specific PHP2Shell CVEs' (change log: 'Updated October 25, 2026, at 2:15 p.m. PT to retract our October 23 update'). The agentic-AI post-exploitation description and the hunting queries' PHP2Shell link go with it; Xpanse's 22.6 million exposed-instance figure stays.",
+"source_url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+},
+{
+"id": "php-t80",
+"incident_id": "php2shell",
+"date": "2026-10-25T18:00",
+"date_label": "Oct 25",
+"event": "A researcher known as 'killa' wins the stealmybitcoin.com challenge, an unpatched PHP server holding a wallet key behind the flaws, at 15:47 UTC after 19.28 hours, for 0.02511679 BTC (about $2,021 at the time), and publishes a proof of concept on GitHub; the write-up notes the script was tested on a lab copy and worked in about seven of ten runs, per Cyber Security News.",
+"source_url": "https://cybersecuritynews.com/php2shell-flaws-exploited/"
+},
+{
+"id": "php-t81",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "BleepingComputer (05:19 ET) reports the flaws 'successfully exploited in the wild' on the strength of the honeypot capture by Adel Karimi, detection and response lead at Perplexity (confirmed code execution against Apache mod_php on PHP 8.4.26), which Expel threat researcher Marcus Hutchins calls 'by far the highest quality confirmation of in-the-wild php2shell exploitation I've seen so far'. The targets are honeypots; Dataminr's TRACE team is quoted that activity before this was 'limited to scanning, fingerprinting, and use of non-working exploits, with no known compromises'. VirusTotal estimates more than 5.1 million PHP hosts exposed, about 3.8 million with at least one attackable port open.",
+"source_url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/"
+},
+{
+"id": "php-t82",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "TU Delft's Threat Intelligence Lab publishes a live dashboard of exploitation seen by its honeypots and network telescope since Oct 20: 41,907 exploitation requests from 586 source IPs in 274 autonomous systems and 68 countries between 08:37 UTC Oct 21 and 11:04 UTC Oct 26; 171 source IPs sent code or a dropper; two IPs sent 49 requests before the fixed releases; the busiest hour was 21:00 UTC Oct 21 with 2,116 requests.",
+"source_url": "https://php2shell.delftintellab.com/"
+},
+{
+"id": "php-t83",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "Nepal: most government websites on the shared GIWMS platform are back after central patching, the Software Development and Operation Centre says; the Medical Education Commission's site and the Nagarik app remain down and some vendor-managed sites are still offline (Kathmandu Post). Korea: KB Kookmin Bank resumes its KB Tablet Branch service, suspended from the evening of Oct 21 on the Financial Supervisory Service's recommendation (SBS Biz, 16:07 KST). Korean security press (Dailysecu, 10:54 KST) carries the Unit 42 retraction.",
+"source_url": "https://kathmandupost.com/science-technology/2026/10/26/most-nepal-government-websites-back-online-after-php2shell-flaw"
+},
+{
+"id": "php-t84",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "CISA's catalog, opened directly at 07:08 ET: version 2026.10.23, released Oct 23 at 19:30 UTC, 1,756 entries, none of CVE-2026-109618, -109619 or -115560; the newest additions are still dated Oct 23. php.net's archive, read the same morning: no entry after the Oct 23 informational advisory. Day six without a listing, a release or an organization confirmed breached by name.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "php-t85",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "SecurityWeek (09:30 ET) recaps the honeypot evidence: 35 shells on Oct 24 from two IP addresses across three decoys run by Perplexity's Adel Karimi, on a deliberately favorable single-worker mod_php setup, no second-stage download; it names no affected organization and says the flaws were still not on CISA's exploited list as of the morning of Oct 26.",
+"source_url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/"
+},
+{
+"id": "php-t86",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "php.net posts updated Windows builds (8.5.12-1, 8.4.27-1, 8.3.36-1, 8.2.35-1) bundling Brotli 1.2.1 for CVE-2026-111497, the Node2Shell library flaw. This is not a fix for the PHP2Shell CVEs or for CVE-2026-115560; no PHP release for those since Oct 21.",
+"source_url": "https://www.php.net/archive/2026.php"
+},
+{
+"id": "php-t87",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "CISA adds CVE-2026-109618 and CVE-2026-109619 to its Known Exploited Vulnerabilities catalog (catalog version 2026.10.26, released 22:24 UTC / 18:24 ET), with a remediation due date of Oct 29 for federal civilian agencies, forensic triage required, ransomware use 'Unknown'. The third flaw, CVE-2026-115560, is not listed. CISA has not described the attacks or named any victim. Feed opened directly Oct 27 ~10:00 ET: 1,758 entries.",
+"source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+},
+{
+"id": "php-t88",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "TU Delft's live dashboard, last updated 21:39 UTC Oct 26: 57,097 exploitation requests from 626 source IPs in 293 autonomous systems and 71 countries since 08:37 UTC Oct 21 (up from 41,907 from 586 IPs at 11:04 UTC); 171 IPs sent code or a dropper. Step counts are the furthest step attempted, not verified success; samples include Mirai-derived DDoS bots whose command server sent no attack command in the sandbox.",
+"source_url": "https://php2shell.delftintellab.com/"
+},
+{
+"id": "php-t89",
+"incident_id": "php2shell",
+"date": "2026-10-27T18:00",
+"date_label": "Oct 27",
+"event": "Japan: 1,090 sites and services have been suspended over the PHP flaws in total, and about 40% had no confirmed restart as of Oct 26, per the security-rating firm Assured's count of company social-media posts, reported by ANN/ABEMA (14:34 JST). No unauthorized access reported.",
+"source_url": "https://times.abema.tv/articles/-/10284297"
+},
+{
+"id": "php-t90",
+"incident_id": "php2shell",
+"date": "2026-10-27T18:00",
+"date_label": "Oct 27",
+"event": "Wiz's follow-up: the daily count of vulnerable internet-exposed machines in its data is down about 67%, and under 53% of initially affected organizations remain vulnerable a week after disclosure; it has seen only a 'limited number' of exploit attempts and 'not yet observed successful end-to-end PHP2Shell exploitation' in its own telemetry.",
+"source_url": "https://www.wiz.io/blog/php2shell-exploitation-so-far"
+},
+{
+"id": "php-t91",
+"incident_id": "php2shell",
+"date": "2026-10-27T18:00",
+"date_label": "Oct 27",
+"event": "php.net archive, opened directly: no PHP release after Oct 21 and no fix yet for CVE-2026-115560 (its full advisory is promised 'with the next release'); the newest item remains the Oct 26 Windows rebuild for the separate Brotli flaw.",
+"source_url": "https://www.php.net/archive/2026.php"
+},
+{
+"id": "php-t92",
+"incident_id": "php2shell",
+"date": "2026-10-26T18:00",
+"date_label": "Oct 26",
+"event": "Dream publishes 'Chained PHP2Shell Exploit Roots 25 Servers': artifacts it recovered on Oct 25 (a custom PHP2Shell build, the Fragnesia kernel exploit, target lists, about 40 post-exploitation scripts and a success log) show 24 perimeter firewalls and one firewall management server rooted Oct 23-24 across the US, Japan, Taiwan and South Korea, three of them (two firewalls and the management server) in a US government-affiliated network. No victim, vendor or actor named; Dream notified the vendor.",
+"source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
+},
+{
+"id": "php-t93",
+"incident_id": "php2shell",
+"date": "2026-10-27T18:00",
+"date_label": "Oct 27",
+"event": "The Register (14:45 UTC) recaps the KEV listing: CISA has not said which organizations were compromised, and the listing 'does not confirm how many production systems have been successfully breached'; AWS saw exploit attempts as early as Oct 17.",
+"source_url": "https://www.theregister.com/cyber-crime/2026/10/27/cisa-confirms-php2shell-under-attack-as-researchers-clock-successful-exploits/5305681"
+},
+{
+"id": "php-t94",
+"incident_id": "php2shell",
+"date": "2026-10-27T18:00",
+"date_label": "Oct 27",
+"event": "Security Boulevard (22:50 UTC) carries Dream's 25-server report alongside Wiz's 'limited number of exploitation attempts' in its own telemetry; still no organization named.",
+"source_url": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/"
+},
+{
+"id": "php-t95",
+"incident_id": "php2shell",
+"date": "2026-10-28T18:00",
+"date_label": "Oct 28",
+"event": "The Hacker News and Cybernews carry Dream's account: three of the 25 rooted systems sat in a US government-affiliated network (one crashed on Oct 23; a second, on Oct 24, was used to tunnel to an internal firewall management server). Dream calls the actor suspected China-linked without naming a group and says it notified the affected entity; no victim has confirmed it.",
+"source_url": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html"
+},
+{
+"id": "php-t96",
+"incident_id": "php2shell",
+"date": "2026-10-28T18:00",
+"date_label": "Oct 28",
+"event": "CISA adds the Linux kernel flaw Fragnesia (CVE-2026-46300) to its exploited list, saying it 'can be chained with' the two PHP2Shell flaws to plant webshells and run commands as root; federal deadline Oct 31. No victim named.",
+"source_url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-fragnesia-linux-flaw-chained-in-php2shell-attacks/"
+},
+{
+"id": "php-t97",
+"incident_id": "php2shell",
+"date": "2026-10-29T18:00",
+"date_label": "Oct 29",
+"event": "Palo Alto Networks says 'Active exploitation has been observed' against its firewalls' internet-exposed management pages; it names no victim, and some fixes are due Oct 29-30.",
+"source_url": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html"
+},
+{
 "id": "php-t-uk32",
 "incident_id": "php2shell",
 "date": "2026-10-22T20:00",

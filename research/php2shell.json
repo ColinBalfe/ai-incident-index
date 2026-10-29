@@ -1428,6 +1428,16 @@
    "date": "2026-10-28",
    "event": "The Hacker News and Cybernews carry Dream's account: three of the 25 rooted systems sat in a US government-affiliated network (one crashed on Oct 23; a second, on Oct 24, was used to tunnel to an internal firewall management server). Dream calls the actor suspected China-linked without naming a group and says it notified the affected entity; no victim has confirmed it.",
    "source": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html"
+  },
+  {
+   "date": "2026-10-28",
+   "event": "CISA adds the Linux kernel flaw Fragnesia (CVE-2026-46300) to its exploited list, saying it 'can be chained with' the two PHP2Shell flaws to plant webshells and run commands as root; federal deadline Oct 31. No victim named.",
+   "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-fragnesia-linux-flaw-chained-in-php2shell-attacks/"
+  },
+  {
+   "date": "2026-10-29",
+   "event": "Palo Alto Networks says 'Active exploitation has been observed' against its firewalls' internet-exposed management pages; it names no victim, and some fixes are due Oct 29-30.",
+   "source": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html"
   }
  ],
  "statements": [

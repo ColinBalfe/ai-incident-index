@@ -55,7 +55,7 @@ for i, v in enumerate(php['victims']):
 # ---------------- timeline
 timeline = []
 for i, t in enumerate(php['timeline']):
-    if i not in PHP_TIMELINE_KEEP: continue
+    if i not in PHP_TIMELINE_KEEP and i <= max(PHP_TIMELINE_KEEP): continue   # entries added after the curated list (Oct 25 on) show as written; older unlisted ones stay out
     d = t['date']
     m = re.match(r'(\d{4}-\d{2}-\d{2})(?:\s+(\d{2}:\d{2}))?', d)
     if m:
@@ -65,7 +65,7 @@ for i, t in enumerate(php['timeline']):
         sort, lab = d + '-01T00:00', __import__('datetime').date.fromisoformat(d + '-01').strftime('%b %Y')
     else:
         sort, lab = d[:4] + '-01-01T00:00', d[:4]
-    timeline.append(dict(id=f'php-t{i:02d}', incident_id='php2shell', date=sort, date_label=lab, event=PHP_TIMELINE_KEEP[i] or t['event'], source_url=t['source']))
+    timeline.append(dict(id=f'php-t{i:02d}', incident_id='php2shell', date=sort, date_label=lab, event=PHP_TIMELINE_KEEP.get(i) or t['event'], source_url=t['source']))
 timeline += EXTRA_TIMELINE
 
 # ---------------- implications
