@@ -16,5 +16,11 @@
   "pattern": "(paywalled Georgia|Georgia[^.]{0,60}paywall|bypassed a paywall)",
   "since": "2026-10-29",
   "why": "Georgia's Secretary of State says Anthropic confirmed the model did not bypass a paywall; the data was on the free public Data Hub"
+ },
+ {
+  "id": "greynoise-two-successes",
+  "pattern": "(first 2 successful exploitations|GreyNoise'?s? (first )?(2|two) succe)",
+  "since": "2026-10-29",
+  "why": "GreyNoise's count reached 6 successful exploitations (all on its decoy sensors) by Oct 29 17:44 UTC"
  }
 ]

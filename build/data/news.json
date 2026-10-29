@@ -1,5 +1,158 @@
 [
 {
+"id": "wesa-pennsylvania-ai-shapiro-ad-no-law",
+"title": "Pennsylvania has no law on AI-faked candidates; Garrity's AI Shapiro talks 45 seconds before saying he isn't real",
+"url": "https://www.wesanews.org/politics-government/2026-10-29/pennsylvania-ai-election-ads-regulation-law-midterms",
+"outlet": "WESA / WPSU",
+"published": "2026-10-29T18:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "deepfakes",
+"summary": "No watermark or on-screen label; Shapiro's spokesperson called it 'cheap' and 'dishonest'. Garrity stands by the ad. A ban bill isn't introduced.",
+"siren": false,
+"also": [],
+"tag": "AI Shapiro talks 45 seconds before saying he's not real",
+"wall": 3,
+"wall_rank": 20.32,
+"red": false,
+"label": "confirmed",
+"receipt": "WESA/WPSU, Oct 29: the AI Shapiro discloses he isn't the real Shapiro about 45 seconds in; no watermark or on-screen AI label.",
+"touches": "Pennsylvania voters in the Nov 3 governor's race",
+"independent": {
+"n": 1,
+"who": [
+"WPSU"
+],
+"carried_by": [
+"WESA"
+]
+},
+"entities": {
+"orgs": [],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"government",
+"media"
+],
+"states": [
+"PA"
+]
+}
+},
+{
+"id": "greynoise-php2shell-two-successes",
+"title": "GreyNoise logs 211,061 PHP2Shell exploitation attempts and 6 successful exploitations, all on its own decoy sensors",
+"url": "https://php.events.greynoise.io/",
+"outlet": "GreyNoise",
+"published": "2026-10-29T17:44:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "php2shell",
+"summary": "241,472 sessions since Oct 21: 211,061 exploitation attempts. Six worked on its vulnerable sensors, all from one IP, Oct 28-29.",
+"siren": false,
+"also": [
+{
+"outlet": "The Record",
+"url": "https://therecord.media/php2shell-successful-exploitation-reports-emerge"
+}
+],
+"wall": "1",
+"wall_rank": 1.45,
+"tag": "211,061 break-in attempts; six got in on decoy servers",
+"label": "proven",
+"red": false,
+"receipt": "GreyNoise's own sensors only, Oct 21 to Oct 29 17:44 UTC. The six successes (Oct 28 to Oct 29, one attacker IP) were on its own vulnerable decoy sensors; no real victim.",
+"touches": "Anyone running an unpatched PHP website",
+"independent": {
+"n": 1,
+"who": [
+"GreyNoise"
+],
+"carried_by": []
+},
+"entities": {
+"orgs": [
+"GreyNoise"
+],
+"vendors": [
+"PHP"
+],
+"products": [
+"PHP"
+],
+"models": [],
+"sectors": [
+"tech"
+],
+"states": []
+}
+},
+{
+"id": "doj-ghost-students-ai-coursework",
+"title": "Justice Department charges five in 'ghost student' aid fraud; officials say AI did the coursework",
+"url": "https://justice.gov/opa/pr/justice-department-unveils-indictments-nationwide-ghost-student-fraud-scam-linked-kenyan",
+"outlet": "US Justice Department",
+"published": "2026-10-29T15:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"beat": "school",
+"summary": "FBI-identified losses top $32 million; 830,840 suspect student-aid IDs flagged in Sept-Oct. Officials say AI completed fake students' coursework.",
+"siren": false,
+"also": [
+{
+"outlet": "CBS Austin",
+"url": "https://cbsaustin.com/news/nation-world/doj-busts-massive-ghost-student-fraud-scheme-involving-830k-suspicious-accounts-operation-ghostbusters-cryptocurrency-artificial-intelligence-identity-theft-alexandria-virginia-richmond"
+},
+{
+"outlet": "iHeart",
+"url": "https://www.iheart.com/content/2026-10-29-dojs-operation-ghostbusters-takes-aim-at-massive-student-aid-scam/"
+}
+],
+"tag": "Fake 'ghost students' cost $32 million in aid; feds say AI helped",
+"wall": 3,
+"wall_rank": 0.4,
+"red": false,
+"label": "reported",
+"receipt": "More than $32 million in FBI-identified losses (DOJ release, Oct 29); the AI claim is officials' at the news conference (CBS Austin, iHeart), not in the DOJ release itself.",
+"touches": "Americans whose stolen identities were used for fake financial-aid applications, and the colleges that enrolled 'ghost students'",
+"independent": {
+"n": 1,
+"who": [
+"US Justice Department"
+],
+"carried_by": [
+"CBS Austin",
+"iHeart"
+]
+},
+"entities": {
+"orgs": [
+"US Justice Department",
+"FBI"
+],
+"vendors": [],
+"products": [
+"FAFSA"
+],
+"models": [],
+"sectors": [
+"education",
+"government"
+],
+"states": [
+"NJ",
+"VA",
+"NE"
+]
+}
+},
+{
 "id": "bleeping-cisa-fragnesia-php2shell-chain",
 "title": "CISA lists Linux flaw 'Fragnesia' as exploited; it can be chained with PHP2Shell to run commands as root",
 "url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-fragnesia-linux-flaw-chained-in-php2shell-attacks/",
@@ -113,6 +266,59 @@
 "states": []
 },
 "siren": false
+},
+{
+"id": "reuters-data-center-ballot-measures",
+"title": "Voters in 10 states decide at least 41 local measures to delay, ban or limit data centers on Tuesday",
+"url": "https://www.investing.com/news/stock-market-news/ai-data-center-boom-faces-backlash-at-us-ballot-box-4982297",
+"outlet": "Reuters via Investing.com",
+"published": "2026-10-29T10:01:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "41 measures in 38 local jurisdictions; Ohio has 21. A Sunbury, Ohio cap could derail Amazon's $2 billion project.",
+"siren": false,
+"also": [
+{
+"outlet": "US News",
+"url": "https://www.usnews.com/news/politics/articles/2026-10-29/ai-data-center-boom-faces-backlash-at-us-ballot-box"
+}
+],
+"tag": "41 data-center measures on Tuesday's ballots in 10 states",
+"wall": 3,
+"wall_rank": 3.8,
+"red": false,
+"label": "confirmed",
+"receipt": "Reuters' count, Oct 29: at least 41 measures in 38 local jurisdictions in 10 states on Nov 3 ballots (Ohio's 21 proposals per Ballotpedia).",
+"touches": "Voters in 38 local jurisdictions in 10 states, including Sunbury, Ohio, where Amazon plans a $2 billion data center",
+"independent": {
+"n": 1,
+"who": [
+"Reuters"
+],
+"carried_by": [
+"Investing.com",
+"US News"
+]
+},
+"entities": {
+"orgs": [
+"Amazon",
+"Ballotpedia"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy",
+"tech"
+],
+"states": [
+"OH"
+]
+}
 },
 {
 "id": "techtimes-australia-chatbot-dependence-bill",
@@ -750,50 +956,6 @@
 "receipt": "Moldova 1: data on 'approximately 750,000 individuals' extracted Oct 19-23 through about 11 million requests; 'Authorities suspect that the attack may have been facilitated by artificial intelligence.' The Record's report does not mention AI.",
 "touches": "About 750,000 people in Moldova: pension, benefit, family and licence records",
 "siren": false
-},
-{
-"id": "greynoise-php2shell-two-successes",
-"title": "GreyNoise logs 209,256 PHP2Shell exploitation attempts and its first 2 successful exploitations, both on its own decoy s",
-"url": "https://php.events.greynoise.io/",
-"outlet": "GreyNoise",
-"published": "2026-10-28T17:44:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "php2shell",
-"summary": "239,413 sessions from 414 IPs since Oct 21: 209,256 exploitation attempts. Two worked on its vulnerable sensors, both from one IP on Oct 28.",
-"siren": false,
-"also": [],
-"wall": "1",
-"wall_rank": 1.45,
-"tag": "209,256 break-in attempts; two got in on decoy servers",
-"label": "proven",
-"red": false,
-"receipt": "GreyNoise's own sensors only, Oct 21 to Oct 28 17:44 UTC, 414 attacker IPs. The two successes (Oct 28, 05:14 and 06:42 UTC, one IP) were on its own vulnerable decoy sensors; no real victim.",
-"touches": "Anyone running an unpatched PHP website",
-"independent": {
-"n": 1,
-"who": [
-"GreyNoise"
-],
-"carried_by": []
-},
-"entities": {
-"orgs": [
-"GreyNoise"
-],
-"vendors": [
-"PHP"
-],
-"products": [
-"PHP"
-],
-"models": [],
-"sectors": [
-"tech"
-],
-"states": []
-}
 },
 {
 "id": "9to5google-gemini-4-carbon",
@@ -2628,7 +2790,8 @@
 "Mallory",
 "The Hacker News",
 "Tom's Guide",
-"Cybernews"
+"Cybernews",
+"The Record"
 ]
 },
 "touches": "Organizations running firewalls from one unnamed large vendor in the US, Japan, Taiwan and South Korea",
@@ -2647,257 +2810,5 @@
 "states": []
 },
 "correction": "Oct 28, 18:17 ET: this line said two systems at the government-linked body; The Hacker News's account of Dream's report counts three (two firewalls and an internal management server). Corrected."
-},
-{
-"id": "sbs-agibot-110-humanoids-record",
-"title": "110 mass-produced humanoids dance in unison for a Guinness record; China built 40,000-plus units in H1",
-"url": "https://news.sbs.co.kr/english/article.do?news_id=N1008815760",
-"outlet": "SBS News",
-"published": "2026-10-26T10:18:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "China",
-"topic": "breakthrough",
-"summary": "AgiBot's Expedition A3 units set the Oct 24 record in Jinan; MIIT counts 400-plus models and expects 100,000 units a year.",
-"siren": false,
-"also": [
-{
-"outlet": "Global Times",
-"url": "https://www.globaltimes.cn/page/202610/1372888.shtml"
-}
-],
-"wall": 2,
-"tag": "China built 40,000-plus humanoid robots in six months",
-"red": false,
-"label": "confirmed",
-"wall_rank": 17
-},
-{
-"id": "vamercury-sentara-ai-discharge",
-"title": "Sentara runs an AI monitoring and discharge tool across all 12 of its Virginia hospitals",
-"url": "https://virginiamercury.com/2026/10/26/sentara-hospitals-are-using-ai-to-help-monitor-patients-determine-discharge-timelines",
-"outlet": "Virginia Mercury",
-"published": "2026-10-26T09:26:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "everyday",
-"summary": "Its health-IT chief says nobody loses a job and concedes the 90,000-hours-saved figure is an unconfirmed pilot forecast.",
-"siren": false,
-"also": [],
-"wall": 2,
-"tag": "AI now helps send patients home at 12 Virginia hospitals",
-"red": false,
-"label": "confirmed",
-"wall_rank": 19,
-"touches": "Patients leaving 12 Virginia hospitals"
-},
-{
-"id": "thequint-doval-deepfake-cjp",
-"title": "Deepfake of India's NSA threatening activists with intimate images draws 380,000 views; PIB labels it fake",
-"url": "https://www.thequint.com/news/webqoof/nsa-ajit-doval-deepfake-saurav-das-ashutosh-ranka-cjp-fact-check",
-"outlet": "The Quint",
-"published": "2026-10-26T09:25:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "India",
-"topic": "deepfakes",
-"summary": "Cloned voice over 2019 footage; Hive rates the audio 99.4% AI; the clip targets 'Cockroach Janta Party' leaders.",
-"siren": false,
-"also": [],
-"wall": 3,
-"tag": "Deepfake security chief threatens activists; 380,000 views",
-"red": false,
-"label": "confirmed",
-"wall_rank": 24,
-"touches": "Activists targeted by a faked official's voice"
-},
-{
-"id": "statesman-indian-army-kalia-deepfake",
-"title": "Indian Army flags a deepfake of a serving general 'admitting' China took three areas of Arunachal Pradesh",
-"url": "https://www.thestatesman.com/india/indian-army-flags-deepfake-video-falsely-claiming-china-occupied-3-areas-in-arunachal-1503655213.html",
-"outlet": "The Statesman",
-"published": "2026-10-26T09:22:00Z",
-"time_known": true,
-"kind": "official",
-"region": "India",
-"topic": "deepfakes",
-"summary": "Footage came from a 2023 Kashmir briefing; the Army calls it an attempt to spread military disinformation and create panic.",
-"siren": false,
-"also": [],
-"wall": 3,
-"tag": "Deepfake general 'admits' China took Indian land",
-"red": false,
-"label": "confirmed",
-"wall_rank": 25,
-"touches": "Indians sharing army news online"
-},
-{
-"id": "bleeping-php2shell-exploited-in-wild-honeypot",
-"title": "PHP2Shell confirmed working in the wild: a Perplexity researcher's honeypot logs full code execution",
-"url": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
-"outlet": "BleepingComputer",
-"published": "2026-10-26T09:19:00Z",
-"time_known": true,
-"kind": "breaking",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Marcus Hutchins calls it the best in-the-wild confirmation yet; Dataminr saw 'no known compromises' before it; VirusTotal: 5.1M exposed hosts.",
-"siren": false,
-"also": [],
-"red": true,
-"label": "proven",
-"moved": {
-"dir": "up",
-"at": "2026-10-26T09:19:00Z",
-"note": "From Tried to Proven: decoy servers actually broken into"
-}
-},
-{
-"id": "npr-deepmind-hurricane-isaias",
-"title": "Google DeepMind's model called Hurricane Isaias's Florida landfall when standard models pointed elsewhere",
-"url": "https://www.kuow.org/npr-news/2026-10-26/how-ai-is-transforming-hurricane-forecasts",
-"outlet": "NPR (via KUOW)",
-"published": "2026-10-26T09:00:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "breakthrough",
-"summary": "AI beat physics-based models on the track but trailed the Hurricane Center's blend on intensity.",
-"siren": false,
-"also": [],
-"wall": 2,
-"tag": "Google's AI beat hurricane models on Isaias landfall",
-"red": false,
-"label": "confirmed",
-"wall_rank": 18,
-"touches": "People in hurricane paths who rely on track forecasts"
-},
-{
-"id": "tnw-aisi-mythos5-run-details",
-"title": "AISI details: Mythos 5 kept going in 98% of replays once an attack began, hijacked a GitHub account twice",
-"url": "https://thenextweb.com/news/mythos-5-fake-accounts-github-malware-aisi-anthropic",
-"outlet": "The Next Web",
-"published": "2026-10-26T08:56:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "UK",
-"topic": "ai-incident",
-"summary": "Nine of 43 runs took real-world actions, including a fake payment page serving malware; AISI filed an incident report Aug 4.",
-"siren": false,
-"also": [],
-"wall": null,
-"tag": "Anthropic's AI hijacked a real account twice in UK government tests",
-"red": false,
-"label": "confirmed",
-"wall_rank": 8
-},
-{
-"id": "techtimesuk-grok-csam-prospect-park",
-"title": "Pennsylvania police: mall worker used Grok to turn a teenage girl's photo into abuse material; hearing Oct 30",
-"url": "https://www.techtimes.co.uk/pennsylvania-man-grok-ai-abuse-material-charges-1809389",
-"outlet": "Tech Times UK",
-"published": "2026-10-26T08:18:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "deepfakes",
-"summary": "Hundreds of AI-generated images and 150-plus covert recordings found on seized devices, per NBC10; arrested Oct 21, out on bail.",
-"siren": false,
-"also": [],
-"wall": 3,
-"tag": "Man charged: used Grok to fake abuse images of teen",
-"red": false,
-"label": "confirmed",
-"wall_rank": 21,
-"touches": "Teenagers whose photos are online"
-},
-{
-"id": "sedaily-korea-ai-datacenter-power-forecast",
-"title": "Korea cuts its AI data-centre power forecast: only 10 of 522 projects have secured supply",
-"url": "https://en.sedaily.com/finance/2026/10/26/korea-to-trim-ai-data-center-power-demand-forecast",
-"outlet": "Seoul Economic Daily",
-"published": "2026-10-26T07:47:00Z",
-"time_known": true,
-"kind": "official",
-"region": "Korea",
-"topic": "regulation",
-"summary": "Minister Kim Sung-hwan says only confirmed demand goes in the 12th electricity plan; SK's 4 GW plan lacks investment details.",
-"siren": false,
-"also": []
-},
-{
-"id": "pulse-bon-jovi-ai-romance-scam",
-"title": "A Louisiana woman lost $10,000 to AI videos of 'Jon Bon Jovi'; the account traced to a house in Lagos",
-"url": "https://www.pulse.ng/story/ai-jon-bon-jovi-romance-scam-lagos-2026102607473732432",
-"outlet": "Pulse Nigeria",
-"published": "2026-10-26T07:47:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Nigeria",
-"topic": "everyday",
-"summary": "A National Geographic team followed the IP address; no arrest reported; the scam ran ten months.",
-"siren": false,
-"also": [],
-"wall": 3,
-"tag": "Fake AI 'Bon Jovi' took $10,000 from Louisiana woman",
-"red": false,
-"label": "reported",
-"wall_rank": 28,
-"touches": "Fans targeted by fake celebrity accounts"
-},
-{
-"id": "kjd-seoul-police-genai-hacking-ring",
-"title": "Seoul police arrest seven who used generative AI to hack about 90 organizations and take 8.2M records",
-"url": "https://www.koreajoongangdaily.com/korea/seven-arrested-for-using-generative-ai-to-hack-90-organizations/12938493",
-"outlet": "Korea JoongAng Daily",
-"published": "2026-10-26T07:38:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Korea",
-"topic": "ai-attack",
-"summary": "A self-taught coder led the group; 38 organizations were told to pay 360 million won; police say personal data was recovered.",
-"siren": false,
-"also": [],
-"wall": 1,
-"tag": "Seven arrested for using AI to hack 90 organizations",
-"red": false,
-"label": "confirmed",
-"wall_rank": 7,
-"touches": "People whose data sat with 90 Korean organizations"
-},
-{
-"id": "sbsbiz-kb-tablet-branch-resumes",
-"title": "KB Kookmin Bank resumes its tablet-branch service after a five-day PHP shutdown on the regulator's advice",
-"url": "https://biz.sbs.co.kr/article/20000342170",
-"outlet": "SBS Biz",
-"published": "2026-10-26T07:07:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Korea",
-"topic": "php2shell",
-"summary": "The service went off at about 18:00 on Oct 21 on the Financial Supervisory Service's recommendation and came back Oct 26.",
-"siren": false,
-"also": [],
-"wall": 1,
-"tag": "Korean bank's tablet branch back after five-day shutdown",
-"red": false,
-"label": "confirmed",
-"wall_rank": 12,
-"touches": "KB Kookmin Bank customers who bank by tablet"
-},
-{
-"id": "helpnet-arrakis-dormant-agents",
-"title": "Survey: 76% of company AI agents idle for 60 days, many still holding live credentials",
-"url": "https://www.helpnetsecurity.com/2026/10/26/arrakis-dormant-ai-agent-risks-report/",
-"outlet": "Help Net Security",
-"published": "2026-10-26T05:30:27Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "ai-attack",
-"summary": "Arrakis: 19% use keys that never expire; 82% had at least one exposure.",
-"siren": false,
-"also": []
 }
 ]

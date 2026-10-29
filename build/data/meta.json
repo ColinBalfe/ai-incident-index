@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-29T12:40:00-04:00",
- "as_of_label": "Oct 29, 2026, 12:40 ET",
- "next_check": "2026-10-29T18:17:00-04:00",
- "next_check_label": "Thursday, 18:17 ET",
+ "as_of": "2026-10-29T18:50:00-04:00",
+ "as_of_label": "Oct 29, 2026, 18:50 ET",
+ "next_check": "2026-10-30T05:17:00-04:00",
+ "next_check_label": "Friday, 05:17 ET",
  "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Day nine, Thursday morning: it moved, but no rung. Palo Alto Networks updated its advisory on Oct 28 to say 'Active exploitation has been observed' against its firewalls' management pages exposed to the internet (The Hacker News, Oct 29); it names no victim, some of its fixes are due Oct 29-30, and it does not confirm the security firm Dream's Oct 26 report of 25 real servers rooted (three in an unnamed US government-affiliated network). The Hacker News guesses Dream's unnamed firewall vendor is Palo Alto; that is its inference, not a confirmed link. GreyNoise logged its first 2 successful exploitations, both on its own decoy sensors (Oct 28). Still no organization named or confirmed as breached, so the running story stays PROVEN. America's cyber agency added a Linux flaw, Fragnesia, which it says can be chained with the two PHP flaws, to its exploited list on Oct 28 (federal deadline Oct 31); today, Oct 29, is the federal deadline for the two PHP flaws. The third flaw, CVE-2026-115560, still has no fix (no PHP release since Oct 21). Odds that a named organization confirms a breach by Nov 7 raised from 65% to 70% on Palo Alto's confirmation.",
+ "live_note": "Day nine, Thursday evening: it moved, but no rung. Palo Alto Networks updated its advisory on Oct 28 to say 'Active exploitation has been observed' against its firewalls' management pages exposed to the internet (The Hacker News, Oct 29); it names no victim, some of its fixes are due Oct 29-30, and it does not confirm the security firm Dream's Oct 26 report of 25 real servers rooted (three in an unnamed US government-affiliated network). The Hacker News guesses Dream's unnamed firewall vendor is Palo Alto; that is its inference, not a confirmed link. GreyNoise has now logged 6 successful exploitations, all on its own decoy sensors and all from one attacker address (Oct 28-29; its page, updated Oct 29 17:44 UTC). The Record (Oct 29) reports that Dream ties the firewall campaign to a suspected Chinese-linked actor, citing Chinese-language use and traces of AI tools; CISA declined to comment on Dream's report. Still no organization named or confirmed as breached, so the running story stays PROVEN. America's cyber agency added a Linux flaw, Fragnesia, which it says can be chained with the two PHP flaws, to its exploited list on Oct 28 (federal deadline Oct 31); Oct 29 was the federal deadline for the two PHP flaws. The third flaw, CVE-2026-115560, still has no fix (no PHP release since Oct 21). Odds that a named organization confirms a breach by Nov 7 raised from 65% to 70% on Palo Alto's confirmation.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-29",
+   "text": "18:50 ET: Lead unchanged (top House Democrats' 48-hour incident-reporting request; no company answer found; it went up at 11:50 today). PHP2Shell, day 9: moved, no rung change. GreyNoise's count of successful exploitations rose from 2 to 6, all on its own decoy sensors and all from one attacker address (page updated Oct 29 17:44 UTC; attempts 209,256 to 211,061); The Record (Oct 29) reports Dream ties its firewall campaign to a suspected Chinese-linked actor, with traces of AI tools, and CISA declined to comment. Still no organization named or confirmed breached, so it stays Proven. 0 incidents added or corrected. The Wire: 3 stories added (the Justice Department's 'ghost student' aid-fraud charges, more than $32 million in losses, AI use per officials; Reuters: at least 41 data-center measures on Tuesday's ballots in 10 states; WESA/WPSU: Pennsylvania has no law on AI-faked candidates, as Garrity's AI Shapiro ad runs), 1 story updated (GreyNoise), 2 'also' links (The Record). 1 watch date (the Nov 3 data-center ballot measures). Calls: none due, no odds moved; Character.AI's sale-rules hearing is Oct 30, 10 a.m. ET, and its Oct 27 reply keeps Disney's $700,000 fee unchanged (PPC Land). Not opened this run: the Washington Post's Oct 29 story on AI firms' slowdown pledge (would not load; left out), OpenAI's misalignment log, php.net and CISA's directives page (permission requests timed out; no change assumed or stated). No X posts met the bar. Checked twice: the second pass re-opened the DOJ release, CBS Austin, iHeart, Reuters, WESA and GreyNoise pages; it changed the ghost-student line to attribute the AI claim to officials (the DOJ release itself does not mention AI) and took figures from the DOJ release where CBS Austin's differ (40-plus open cases, not 45), dropped exact minutes from the GreyNoise receipt (its page gives two different start times) and credited the 41-measure count to Reuters, not Ballotpedia. 0 corrections to published material."
+  },
   {
    "date": "2026-10-29",
    "text": "12:40 ET: Lead unchanged (top House Democrats' 48-hour incident-reporting request; no company answer found). PHP2Shell: rechecked, nothing moved (The Hacker News' Oct 29 coverage adds nothing past Palo Alto; SOCRadar's Oct 27 report on a Japanese real-estate extortion wave finds no link to the flaws; still no victim named); running story stays Proven, day 9. 0 incidents added or corrected. The Wire: 1 story added (Check Point: fake ChatGPT and Claude desktop apps on GitHub planted crypto miners, via The Hacker News). The Fragnesia column line rewritten in plain words (no acronym or codename carrying it). Calls: none due, no odds moved; OpenAI's misalignment log still at 20. Not opened this run: the CISA KEV feed (permission request timed out); The Hill and Cybernews would not load. Checked twice: the second pass re-opened The Hacker News page and trimmed the Fragnesia line to 11 words."
@@ -149,11 +153,11 @@
   },
   "source_url": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html",
   "source_label": "The Hacker News, Oct 29",
-  "last_fact": "2026-10-28",
+  "last_fact": "2026-10-29",
   "closed": "",
   "verdict": "",
-  "recheck": "Palo Alto confirms attacks on its firewalls but names no victim; third flaw still unfixed",
-  "recheck_at": "2026-10-29T06:00:00-04:00",
+  "recheck": "GreyNoise's six break-ins were all on its own decoys; still no victim named",
+  "recheck_at": "2026-10-29T18:40:00-04:00",
   "next_test": {
    "date": "2026-11-07",
    "text": "Will a real organization confirm it was broken into through the flaw under most websites?",
@@ -174,6 +178,6 @@
   ]
  },
  "quiet": false,
- "edition": 21,
- "edition_path": "archive/2026-10-29-1240/"
+ "edition": 22,
+ "edition_path": "archive/2026-10-29-1850/"
 }

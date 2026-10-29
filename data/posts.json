@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-29T12:40:00-04:00",
+ "as_of": "2026-10-29T18:50:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -11,34 +11,34 @@
   },
   {
    "kind": "brief",
-   "text": "Moldova says attackers pulled data on about 750,000 people from state systems over Oct 19-23, and suspects AI helped them. The president has called the security council.",
-   "link": "https://moldova1.md/p/88865/maia-sandu-convenes-national-security-council-after-major-cyberattack-on-moldova",
+   "text": "GreyNoise has now seen 6 break-ins through the flaw under most websites, all on its own decoy servers, from one attacker. Still no real victim named.",
+   "link": "https://php.events.greynoise.io/",
    "image": null,
-   "chars": 193,
+   "chars": 173,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Top House Democrats ask OpenAI, Anthropic, Google, Meta and SpaceXSI to report AI safety incidents to Congress within 48 hours. A request, not a law; full accounting due Nov 11.",
-   "link": "https://democrats-energycommerce.house.gov/media/press-releases/house-democratic-committee-leaders-request-frontier-ai-companies-report",
+   "text": "The Justice Department charged five people over 'ghost student' financial-aid fraud with more than $32 million in losses; officials say fraudsters used AI to do the coursework.",
+   "link": "https://justice.gov/opa/pr/justice-department-unveils-indictments-nationwide-ghost-student-fraud-scam-linked-kenyan",
    "image": null,
-   "chars": 201,
+   "chars": 200,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Canada's five biggest banks are blocking or limiting customers' personal AI agents from online banking.",
-   "link": "https://globalnews.ca/news/12124433/ai-agents-canadian-banks/",
+   "text": "On Tuesday, voters in 38 local jurisdictions in 10 states decide at least 41 measures to delay, ban or limit data centers.",
+   "link": "https://www.investing.com/news/stock-market-news/ai-data-center-boom-faces-backlash-at-us-ballot-box-4982297",
    "image": null,
-   "chars": 127,
+   "chars": 146,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Correction: Georgia says Anthropic confirmed its AI did not bypass a paywall; the vote-count data was on the state's free public Data Hub.",
-   "link": "https://www.outlookindia.com/international/anthropic-claude-georgia-voter-data-us-midterms-2026",
+   "text": "Pennsylvania has no law against AI-faked candidates in ads; an AI Shapiro in his rival's ad talks for about 45 seconds before saying he isn't real.",
+   "link": "https://www.wesanews.org/politics-government/2026-10-29/pennsylvania-ai-election-ads-regulation-law-midterms",
    "image": null,
-   "chars": 162,
+   "chars": 171,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {

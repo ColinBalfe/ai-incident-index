@@ -2889,6 +2889,10 @@
 {
 "outlet": "Cybernews",
 "url": "https://cybernews.com/security/china-linked-hackers-exploit-php2shell-breach-us-government/"
+},
+{
+"outlet": "The Record",
+"url": "https://therecord.media/php2shell-successful-exploitation-reports-emerge"
 }
 ],
 "tag": "Three at a US government-linked body",
@@ -2905,7 +2909,8 @@
 "Mallory",
 "The Hacker News",
 "Tom's Guide",
-"Cybernews"
+"Cybernews",
+"The Record"
 ]
 },
 "touches": "Organizations running firewalls from one unnamed large vendor in the US, Japan, Taiwan and South Korea",
@@ -4542,47 +4547,6 @@
 }
 },
 {
-"id": "greynoise-php2shell-two-successes",
-"title": "GreyNoise logs 209,256 PHP2Shell exploitation attempts and its first 2 successful exploitations, both on its own decoy sensors",
-"url": "https://php.events.greynoise.io/",
-"outlet": "GreyNoise",
-"published": "2026-10-28T17:44:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "php2shell",
-"summary": "239,413 sessions from 414 IPs since Oct 21: 209,256 exploitation attempts. Two worked on its vulnerable sensors, both from one IP on Oct 28.",
-"also": [],
-"tag": "209,256 break-in attempts; two got in on decoy servers",
-"label": "proven",
-"red": false,
-"receipt": "GreyNoise's own sensors only, Oct 21 to Oct 28 17:44 UTC, 414 attacker IPs. The two successes (Oct 28, 05:14 and 06:42 UTC, one IP) were on its own vulnerable decoy sensors; no real victim.",
-"touches": "Anyone running an unpatched PHP website",
-"independent": {
-"n": 1,
-"who": [
-"GreyNoise"
-],
-"carried_by": []
-},
-"entities": {
-"orgs": [
-"GreyNoise"
-],
-"vendors": [
-"PHP"
-],
-"products": [
-"PHP"
-],
-"models": [],
-"sectors": [
-"tech"
-],
-"states": []
-}
-},
-{
 "id": "moldova1-cyberattack-ai-suspected",
 "title": "Moldova says attackers pulled data on about 750,000 people from state systems and suspects AI helped them",
 "url": "https://moldova1.md/p/88865/maia-sandu-convenes-national-security-council-after-major-cyberattack-on-moldova",
@@ -5177,6 +5141,56 @@
 }
 },
 {
+"id": "reuters-data-center-ballot-measures",
+"title": "Voters in 10 states decide at least 41 local measures to delay, ban or limit data centers on Tuesday",
+"url": "https://www.investing.com/news/stock-market-news/ai-data-center-boom-faces-backlash-at-us-ballot-box-4982297",
+"outlet": "Reuters via Investing.com",
+"published": "2026-10-29T10:01:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "41 measures in 38 local jurisdictions; Ohio has 21. A Sunbury, Ohio cap could derail Amazon's $2 billion project.",
+"also": [
+{
+"outlet": "US News",
+"url": "https://www.usnews.com/news/politics/articles/2026-10-29/ai-data-center-boom-faces-backlash-at-us-ballot-box"
+}
+],
+"tag": "41 data-center measures on Tuesday's ballots in 10 states",
+"red": false,
+"label": "confirmed",
+"receipt": "Reuters' count, Oct 29: at least 41 measures in 38 local jurisdictions in 10 states on Nov 3 ballots (Ohio's 21 proposals per Ballotpedia).",
+"touches": "Voters in 38 local jurisdictions in 10 states, including Sunbury, Ohio, where Amazon plans a $2 billion data center",
+"independent": {
+"n": 1,
+"who": [
+"Reuters"
+],
+"carried_by": [
+"Investing.com",
+"US News"
+]
+},
+"entities": {
+"orgs": [
+"Amazon",
+"Ballotpedia"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy",
+"tech"
+],
+"states": [
+"OH"
+]
+}
+},
+{
 "id": "keyt-cnn-eclypsium-tampered-ai-hardware",
 "title": "Researchers tampered with AI servers so a chatbot told a chest-pain patient to stay home instead of going to hospital",
 "url": "https://keyt.com/news/2026/10/29/ai-hardware-can-be-hacked-so-chatbots-provide-dangerous-answers-research-shows/",
@@ -5280,5 +5294,149 @@
 "red": false,
 "label": "confirmed",
 "touches": "Linux web servers running PHP, including federal agencies'"
+},
+{
+"id": "doj-ghost-students-ai-coursework",
+"title": "Justice Department charges five in 'ghost student' aid fraud; officials say AI did the coursework",
+"url": "https://justice.gov/opa/pr/justice-department-unveils-indictments-nationwide-ghost-student-fraud-scam-linked-kenyan",
+"outlet": "US Justice Department",
+"published": "2026-10-29T15:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"beat": "school",
+"summary": "FBI-identified losses top $32 million; 830,840 suspect student-aid IDs flagged in Sept-Oct. Officials say AI completed fake students' coursework.",
+"also": [
+{
+"outlet": "CBS Austin",
+"url": "https://cbsaustin.com/news/nation-world/doj-busts-massive-ghost-student-fraud-scheme-involving-830k-suspicious-accounts-operation-ghostbusters-cryptocurrency-artificial-intelligence-identity-theft-alexandria-virginia-richmond"
+},
+{
+"outlet": "iHeart",
+"url": "https://www.iheart.com/content/2026-10-29-dojs-operation-ghostbusters-takes-aim-at-massive-student-aid-scam/"
+}
+],
+"tag": "Fake 'ghost students' cost $32 million in aid; feds say AI helped",
+"red": false,
+"label": "reported",
+"receipt": "More than $32 million in FBI-identified losses (DOJ release, Oct 29); the AI claim is officials' at the news conference (CBS Austin, iHeart), not in the DOJ release itself.",
+"touches": "Americans whose stolen identities were used for fake financial-aid applications, and the colleges that enrolled 'ghost students'",
+"independent": {
+"n": 1,
+"who": [
+"US Justice Department"
+],
+"carried_by": [
+"CBS Austin",
+"iHeart"
+]
+},
+"entities": {
+"orgs": [
+"US Justice Department",
+"FBI"
+],
+"vendors": [],
+"products": [
+"FAFSA"
+],
+"models": [],
+"sectors": [
+"education",
+"government"
+],
+"states": [
+"NJ",
+"VA",
+"NE"
+]
+}
+},
+{
+"id": "greynoise-php2shell-two-successes",
+"title": "GreyNoise logs 211,061 PHP2Shell exploitation attempts and 6 successful exploitations, all on its own decoy sensors",
+"url": "https://php.events.greynoise.io/",
+"outlet": "GreyNoise",
+"published": "2026-10-29T17:44:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "php2shell",
+"summary": "241,472 sessions since Oct 21: 211,061 exploitation attempts. Six worked on its vulnerable sensors, all from one IP, Oct 28-29.",
+"also": [
+{
+"outlet": "The Record",
+"url": "https://therecord.media/php2shell-successful-exploitation-reports-emerge"
+}
+],
+"tag": "211,061 break-in attempts; six got in on decoy servers",
+"label": "proven",
+"red": false,
+"receipt": "GreyNoise's own sensors only, Oct 21 to Oct 29 17:44 UTC. The six successes (Oct 28 to Oct 29, one attacker IP) were on its own vulnerable decoy sensors; no real victim.",
+"touches": "Anyone running an unpatched PHP website",
+"independent": {
+"n": 1,
+"who": [
+"GreyNoise"
+],
+"carried_by": []
+},
+"entities": {
+"orgs": [
+"GreyNoise"
+],
+"vendors": [
+"PHP"
+],
+"products": [
+"PHP"
+],
+"models": [],
+"sectors": [
+"tech"
+],
+"states": []
+}
+},
+{
+"id": "wesa-pennsylvania-ai-shapiro-ad-no-law",
+"title": "Pennsylvania has no law on AI-faked candidates; Garrity's AI Shapiro talks 45 seconds before saying he isn't real",
+"url": "https://www.wesanews.org/politics-government/2026-10-29/pennsylvania-ai-election-ads-regulation-law-midterms",
+"outlet": "WESA / WPSU",
+"published": "2026-10-29T18:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "deepfakes",
+"summary": "No watermark or on-screen label; Shapiro's spokesperson called it 'cheap' and 'dishonest'. Garrity stands by the ad. A ban bill isn't introduced.",
+"also": [],
+"tag": "AI Shapiro talks 45 seconds before saying he's not real",
+"red": false,
+"label": "confirmed",
+"receipt": "WESA/WPSU, Oct 29: the AI Shapiro discloses he isn't the real Shapiro about 45 seconds in; no watermark or on-screen AI label.",
+"touches": "Pennsylvania voters in the Nov 3 governor's race",
+"independent": {
+"n": 1,
+"who": [
+"WPSU"
+],
+"carried_by": [
+"WESA"
+]
+},
+"entities": {
+"orgs": [],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"government",
+"media"
+],
+"states": [
+"PA"
+]
+}
 }
 ]

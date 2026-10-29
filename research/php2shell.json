@@ -1438,6 +1438,16 @@
    "date": "2026-10-29",
    "event": "Palo Alto Networks says 'Active exploitation has been observed' against its firewalls' internet-exposed management pages; it names no victim, and some fixes are due Oct 29-30.",
    "source": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html"
+  },
+  {
+   "date": "2026-10-29",
+   "event": "GreyNoise's count reaches 6 successful exploitations, all on its own vulnerable decoy sensors and all from one attacker IP (Oct 28 to Oct 29), against 211,061 exploitation attempts since Oct 21. No real victim.",
+   "source": "https://php.events.greynoise.io/"
+  },
+  {
+   "date": "2026-10-29",
+   "event": "The Record reports Dream ties its firewall campaign to a suspected Chinese-linked actor, citing Chinese-language use, known Chinese tools and traces of AI tools (Claude Code, DeepSeek, Kimi); Dream names no victim and CISA declined to comment.",
+   "source": "https://therecord.media/php2shell-successful-exploitation-reports-emerge"
   }
  ],
  "statements": [
