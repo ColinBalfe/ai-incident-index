@@ -337,7 +337,66 @@ def layoff_months(spec):
                 aria=f'AI-linked job-cut announcements per month over 12 months; {last3} in the last three months, {prior9} in the nine before; {co} of {tot} company-stated.',
                 table=(['Date', 'Who says AI', 'What happened'], [(x['date'], {'co': 'Company says AI', 'rep': 'Reported as AI'}.get(x['who'], 'See source'), x['emp'] + ': ' + x['what'], x['url']) for x in sorted(inwin, key=lambda x: x['date'], reverse=True)]))
 
-KINDS = {'incident_field': incident_field, 'autonomy_shift': autonomy_shift, 'fix_chain': fix_chain, 'layoff_months': layoff_months}
+# ---------------------------------------------------------------- kind: the call sheet, as dots on a probability line
+def forecast_board(spec):
+    C = L('data/calls.json')
+    end = dt.date.fromisoformat(AS_OF); horizon = end + dt.timedelta(days=int(spec.get('days', 35)))
+    op = [c for c in C if not c.get('resolution') and not c.get('resolved') and c.get('resolve_by') and end <= dt.date.fromisoformat(c['resolve_by']) <= horizon]
+    op.sort(key=lambda c: (c['resolve_by'], -c['odds']))
+    prev = {}
+    try:
+        snaps = [json.loads(l) for l in open('research/forecast_log.jsonl', encoding='utf-8') if l.strip()]
+        ats = sorted({s['as_of'] for s in snaps})
+        if len(ats) >= 2:
+            prev = {s['id']: s['p'] for s in snaps if s['as_of'] == ats[-2]}
+    except (OSError, ValueError):
+        pass
+    moved = {c['id'] for c in op if c['id'] in prev and abs(prev[c['id']] - c['odds']) > 1e-9}
+    yes = sum(c['odds'] > .5 for c in op); MN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    md = lambda d: MN[int(d[5:7]) - 1] + ' ' + str(int(d[8:10]))
+    last = max(c['resolve_by'] for c in op) if op else AS_OF
+    words = lambda p: 'very likely' if p >= .85 else 'likely' if p > .55 else 'either way' if p >= .45 else 'unlikely' if p > .15 else 'very unlikely'
+    def lab(c, n):
+        q = (c.get('plain') or c['question']).strip()
+        return q if len(q) <= n else q[:n - 1].rsplit(' ', 1)[0] + '…'
+    def plot(box, tall):
+        left, top, right, bot = box
+        fs = 17 if tall else 12.5
+        labw = (right - left) * (.0 if tall else .52)
+        x0 = left + labw + (0 if tall else 20); x1 = right - 10
+        X = lambda p: x0 + (x1 - x0) * p
+        rh = (bot - top - 34) / max(1, len(op))
+        out = []
+        for p, t in ((0, 'No'), (.5, 'Coin flip'), (1, 'Yes')):
+            out.append(f'<line x1="{X(p):.1f}" x2="{X(p):.1f}" y1="{top + 22}" y2="{bot}" stroke="{GRID}" stroke-dasharray="{"0" if p != .5 else "4 4"}"/>')
+            out.append(T(X(p), top + 12, t, fs, INK2, anchor='middle' if 0 < p < 1 else ('start' if p == 0 else 'end'), weight=700))
+        for i, c in enumerate(op):
+            yc = top + 34 + i * rh + rh / 2
+            if tall:
+                out.append(T(x0, yc - fs * .55, md(c['resolve_by']) + ' · ' + lab(c, 62), fs - 1, PAPER))
+                yd = yc + fs * .55
+            else:
+                out.append(T(left, yc + fs * .35, md(c['resolve_by']) + '  ' + lab(c, 70), fs, PAPER))
+                yd = yc
+            out.append(f'<line x1="{x0:.1f}" x2="{x1:.1f}" y1="{yd:.1f}" y2="{yd:.1f}" stroke="{GRID}"/>')
+            mv = c['id'] in moved; col = RED if mv else (PAPER if c['odds'] > .5 else MUTED)
+            if mv and c['id'] in prev:
+                out.append(f'<line x1="{X(prev[c["id"]]):.1f}" x2="{X(c["odds"]):.1f}" y1="{yd:.1f}" y2="{yd:.1f}" stroke="{RED}" stroke-width="2"/>')
+                out.append(f'<circle cx="{X(prev[c["id"]]):.1f}" cy="{yd:.1f}" r="4" fill="none" stroke="{RED}" stroke-width="1.5"/>')
+            r = 8 if tall else 6.5
+            out.append(f'<a href="/forecast/{esc(c["id"])}/"><circle cx="{X(c["odds"]):.1f}" cy="{yd:.1f}" r="{r}" fill="{col}"><title>{esc(lab(c, 200) + ": " + words(c["odds"]) + (" (moved this refresh)" if mv else ""))}</title></circle></a>')
+            out.append(T(X(c['odds']) + (r + 6 if c['odds'] < .8 else -(r + 6)), yd + fs * .35, words(c['odds']) + (' · moved' if mv else ''), fs - 1, RED if mv else INK2, anchor='start' if c['odds'] < .8 else 'end', weight=700 if mv else 400))
+        return ''.join(out)
+    legend = [(PAPER, 6.5, 'We expect yes'), (MUTED, 6.5, 'We expect no or a coin flip')] + ([(RED, 6.5, 'Moved this refresh')] if moved else [])
+    return dict(title=f'We expect yes on {yes} of the {len(op)} calls due by {md(last)}',
+                dek='Every open call due in the next five weeks, placed by how likely we think it is. A coin flip sits in the middle. Each one gets graded on its date, hits and misses alike.',
+                takeaway=f'{yes} of our {len(op)} calls due by {md(last)} lean yes. ' + (f'{len(moved)} moved this refresh on new evidence.' if moved else 'None moved this refresh.'),
+                why='Forecasts are only worth something if they are written down before the answer is known and graded after. This is the board as it stands, so readers can hold us to it.',
+                legend=legend, source=f'Source: Warning Shots call sheet (forecast/), odds set before each date; misses stay on the record. As of {fdate(AS_OF)}.', plot=plot,
+                aria=f'{len(op)} open calls due by {md(last)} placed on a no-to-yes line; {yes} lean yes.',
+                table=(['Due', 'Question', 'Our odds', 'Moved this refresh'], [(c['resolve_by'], lab(c, 300), f"{round(c['odds'] * 100)}%", (f"{round(prev[c['id']] * 100)}% to {round(c['odds'] * 100)}%" if c['id'] in moved else ''), f'/forecast/{c["id"]}/') for c in op]))
+
+KINDS = {'incident_field': incident_field, 'autonomy_shift': autonomy_shift, 'fix_chain': fix_chain, 'layoff_months': layoff_months, 'forecast_board': forecast_board}
 
 # ---------------------------------------------------------------- build
 try:

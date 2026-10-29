@@ -19,7 +19,12 @@
  {
   "id": "2026-10-28-ai-job-cuts",
   "date": "2026-10-28",
-  "kind": "layoff_months",
+  "kind": "layoff_months"
+ },
+ {
+  "id": "2026-10-29-what-we-expect",
+  "date": "2026-10-29",
+  "kind": "forecast_board",
   "home": true
  }
 ]
