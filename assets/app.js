@@ -3,7 +3,7 @@
 'use strict';
 const SITE = (window.AII_SITE && window.AII_SITE.startsWith('http')) ? window.AII_SITE : location.href.split('#')[0];
 const FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta'];
-const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'updown', 'whonames'];
+const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'updown', 'whonames', 'level_history', 'line_of_day'];
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
@@ -493,6 +493,7 @@ document.addEventListener('mouseout', (e) => { const n = e.target.closest && e.t
 document.addEventListener('click', (e) => { const n = e.target.closest && e.target.closest('[data-tip]'); if (n && n.tagName !== 'A') { e.preventDefault(); if (!tipBox.hidden && tipBox.textContent === n.getAttribute('data-tip') && Date.now() - tipAt > 500) hideTip(); else showTip(n); } else if (!tipBox.hidden && !(e.target.closest && e.target.closest('.tipbox'))) hideTip(); });
 const WALL_COLS = { 1: 'Broke out & in', 2: 'Got smarter, took over', 3: 'Fakes, scams & you' };
 const WALL_LABEL = { lab: 'Lab only', retracted: 'Retracted', reported: 'Reported', denied: 'Denied', tried: 'Tried', proven: 'Proven', hit: 'Hit' };
+let LEVEL_STREAK = null;
 function drawLevel() {
   const box = document.getElementById('level'); if (!box || !C.scored) return;
   const asOf = Date.parse(D.meta.as_of);
@@ -528,14 +529,22 @@ function drawLevel() {
   det.append(ul, how, lsh);
   why.addEventListener('click', () => { det.hidden = !det.hidden; why.setAttribute('aria-expanded', String(!det.hidden)); });
   const brand = el('a', 'lvl-brand'); brand.href = '#top'; brand.setAttribute('aria-label', 'Warning Shots: the masthead'); const mk = document.querySelector('.masthead .logo .mark'); if (mk) { const c = mk.cloneNode(true); c.setAttribute('class', 'lvl-mark'); c.setAttribute('aria-hidden', 'true'); brand.append(c); } brand.append(el('b', null, 'Warning Shots'), el('span', 'lvl-desc', '· AI’s dangers and breakthroughs'));
-  box.replaceChildren(brand, a1, why, a2, a3, det);
+  // The level with a memory: one block per archived day (data/level_history.json) plus today; a streak only when it is real
+  const mem = (() => { const today = D.meta.as_of.slice(0, 10); const H = (D.level_history || []).filter((x) => x.date < today).concat([{ date: today, level: n, tier: top.tier }]);
+    if (H.length < 2) return null; let k = 1; for (let i = H.length - 2; i >= 0 && H[i].level === n; i--) k++;
+    const m = el('a', 'lvl-mem'); m.href = '/level/'; m.setAttribute('aria-label', 'The level, day by day');
+    const bl = el('span', 'lvl-blocks'); H.slice(-14).forEach((x) => { const i = el('i', 'lv' + x.level); i.title = new Date(x.date + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }) + ': WS-' + x.level + ' ' + x.tier; bl.append(i); });
+    const d0 = new Date(H[0].date + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+    m.append(bl, txt(k >= H.length ? ' ' + String(top.tier).toUpperCase() + ' every day since ' + d0 : k >= 2 ? ' Day ' + k + ' at ' + String(top.tier).toUpperCase() : ' Since ' + d0));
+    LEVEL_STREAK = { k, n, tier: top.tier, prev: H.length > 1 ? H[H.length - 2].level : null, all: k >= H.length, d0 }; return m; })();
+  box.replaceChildren(brand, a1, ...(mem ? [mem] : []), why, a2, a3, det);
 }
 let edOpen = /^#(why|seis|chart|xon|graded|next-up|ed-more)/.test(location.hash || '');
 function setEdOpen(v) { edOpen = v; document.body.classList.toggle('ed-open', v); const m = document.getElementById('ed-more'); if (!m) return; m.classList.toggle('open', v); const t = m.querySelector('.ed-tog'); if (t) { t.setAttribute('aria-expanded', String(v)); t.querySelector('.ed-tl').textContent = v ? 'Show less ▴' : 'More in today’s edition ▾'; } }
 function drawWall() {
   document.body.classList.toggle('ed-open', edOpen);
   const lead = document.getElementById('wall-lead'), box = document.getElementById('wall'); if (!box || !lead) return;
-  drawLevel(); drawStory();
+  drawLevel(); drawStory(); drawRail();
   const items = newsItems().filter((n) => n.tag && n.wall).sort((a, b) => (a.wall_rank ?? 999) - (b.wall_rank ?? 999));
   const siren = items.find((n) => n.wall === 'siren');
   if (!siren) { box.hidden = true; lead.hidden = true; return; }
@@ -872,6 +881,29 @@ function drawStory() {
   box.onmouseenter = () => { if (storyState.timer) { clearTimeout(storyState.timer); storyState.timer = null; box.classList.add('paused'); storyState.hold = true; } };
   box.onmouseleave = () => { if (storyState.hold) { storyState.hold = false; run(); } };
   if (reduced || storyState.done) show(beats.length - 1); else { show(storyState.i || 0); run(); }
+}
+
+/* ---------- The scoreboard rail and the Line of the Day: four numbers that change daily, generated from the data, and one verbatim line */
+function drawRail() {
+  const box = document.getElementById('rail'); if (!box || EMBED) return;
+  const tile = (href, k, big, sub) => { const t = el('a', 'rl-t'); t.href = href; t.append(el('span', 'rl-k', k), el('b', 'rl-b', big), el('span', 'rl-s', sub)); return t; };
+  const tiles = el('div', 'rl-tiles');
+  if (LEVEL_STREAK) { const L = LEVEL_STREAK; tiles.append(tile('/level/', 'The level', 'WS-' + L.n + ' ' + L.tier, L.prev == null ? 'the first day on record' : L.prev === L.n ? (L.all ? 'every day since ' + L.d0 + ', when the record starts' : L.k >= 2 ? 'day ' + L.k + ' in a row' : 'same as yesterday') : (L.n > L.prev ? 'up from WS-' + L.prev + ' yesterday' : 'down from WS-' + L.prev + ' yesterday'))); }
+  const hr = houseRecord(); const nxt = callRows().filter(callOpen).sort((x, y) => x.resolve_by.localeCompare(y.resolve_by))[0];
+  const nDay = nxt ? callRows().filter((c) => callOpen(c) && c.kind === 'call' && c.resolve_by === nxt.resolve_by).length : 0;
+  const nLabel = nxt ? new Date(nxt.resolve_by + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }) : '';
+  tiles.append(tile(nxt && nDay >= 2 ? '/forecast/resolution-day/' + nxt.resolve_by + '/' : '/forecast/', 'Forecast record', hr.w + ' right · ' + hr.l + ' wrong', (hr.tossups ? hr.tossups + ' toss-up not counted · ' : '') + (nxt ? 'next graded ' + nLabel + (nDay >= 2 ? ' (' + nDay + ' calls)' : '') : 'none open')));
+  const fx = fixRows(); const cur = (f) => (f.chain.find((c) => c.stage === 'current') || f.chain[f.chain.length - 1]).status || '';
+  const fixed = fx.filter((f) => /^(fixed|verified)/.test(cur(f))).length, reop = fx.filter((f) => cur(f) === 'reopened').length;
+  if (fx.length) tiles.append(tile('/fixes/', 'Did they fix it?', fixed + ' of ' + fx.length + ' confirmed fixed', reop ? reop + ' reopened after a claimed fix' : 'every case re-checked'));
+  const sr = D.meta.serial || {};
+  if (sr.name && sr.state !== 'closed') { const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1; tiles.append(tile(sr.url || '/php2shell/', 'The live case', sr.name, 'day ' + day + (sr.rung ? ' · ' + sr.rung.charAt(0).toUpperCase() + sr.rung.slice(1) : ''))); }
+  const lines = (D.line_of_day || []).filter((x) => x.date <= D.meta.as_of.slice(0, 10)).sort((a, b) => b.date.localeCompare(a.date));
+  const ln = lines[0] && (Date.parse(D.meta.as_of) - Date.parse(lines[0].date + 'T12:00:00Z')) < 3 * 864e5 ? lines[0] : null;
+  const lod = ln ? (() => { const q = el('figure', 'rl-line'); q.append(el('span', 'rl-k', 'Line of the day'), el('blockquote', null, '“' + ln.quote + '”'));
+    const cap = el('figcaption'); cap.append(el('b', null, ln.speaker), txt((ln.role ? ', ' + ln.role : '') + (ln.context ? ', ' + ln.context : '') + '. '));
+    const a = el('a', null, ln.source_label || 'Source'); a.href = ln.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; cap.append(a); q.append(cap); return q; })() : null;
+  box.replaceChildren(tiles, ...(lod ? [lod] : [])); box.hidden = false;
 }
 /* ---------- The Seismograph: every incident on the record as a spike (height = severity; red = the AI acted on its own).
    It replays 2023 to today once when it comes into view, then answers to hover, tap and the arrow keys. The replay is the real record

@@ -34,7 +34,7 @@ FIX_OPEN = _fix_open()
 MID_NAV = ('<a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can do</a><a href="/who/">Who\'s who</a><a href="/forecast/">Forecasts</a>'
            + f'<a href="/fixes/">Did they fix it?{f" <span class=nb>{FIX_OPEN} open</span>" if FIX_OPEN else ""}</a><a href="/i/">Incidents</a><a href="/about/">About</a>')
 # the desks: the standing pages people come back to, Drudge's reference shelf (homepage under the masthead; every page's footer)
-DESKS = [('/analysis/', 'Analysis'), ('/breakthroughs/', 'Breakthroughs'), ('/up-and-down/', 'Up & Down'), ('/chart/', 'The Charts'), ('/checks/', 'Is this a scam?'), ('/jobs/', 'Can AI do your job?'), ('/jobs/layoffs/', 'Layoffs tied to AI'), ('/help/', 'What to do'),
+DESKS = [('/analysis/', 'Analysis'), ('/breakthroughs/', 'Breakthroughs'), ('/up-and-down/', 'Up & Down'), ('/chart/', 'The Charts'), ('/checks/', 'Is this a scam?'), ('/jobs/', 'Can AI do your job?'), ('/jobs/layoffs/', 'Layoffs tied to AI'), ('/protect/', 'Protect your family'), ('/help/', 'What to do'),
          ('/midterms-2026/', 'Midterm fakes')]
 NAV = '<nav aria-label="Sections"><a href="/wire/">The Wire</a>' + LIVE_NAV + MID_NAV + '</nav>'
 MS_URL = 'https://morningshot.beehiiv.com/subscribe'   # The Morning Shot on Beehiiv (Muse runs the newsletter; swap for the embed form when its code arrives)

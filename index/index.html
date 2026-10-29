@@ -12,13 +12,13 @@
 <meta property="og:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta property="og:description" content="The Record: all 165 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 13 in a year; in 41% of the last 12 months' real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
 <meta property="og:url" content="https://warningshots.ai/index/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610291715">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610291811">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@WarningShotsAI">
 <meta name="twitter:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta name="twitter:description" content="The Record: all 165 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 13 in a year; in 41% of the last 12 months' real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610291715">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610291811">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -30,11 +30,11 @@
 <link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/data/bundle.json?v=202610291715" as="fetch" crossorigin>
-<script>window.AII_BUILD = "202610291715"; window.AII_SITE = "https://warningshots.ai/";</script>
+<link rel="preload" href="/data/bundle.json?v=202610291811" as="fetch" crossorigin>
+<script>window.AII_BUILD = "202610291811"; window.AII_SITE = "https://warningshots.ai/";</script>
 <script src="/assets/vendor/d3-lite.min.js" defer></script>
 <script src="/assets/vendor/topojson-client.min.js" defer></script>
-<script src="/assets/app.js?v=202610291715" defer></script>
+<script src="/assets/app.js?v=202610291811" defer></script>
 <style>
 @font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 400 900; font-stretch: 78% 100%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
@@ -1020,6 +1020,21 @@ body[data-lead="a"] .dl-kick, body[data-lead="a"] .dl-kick .dot { color: var(--l
 @media (prefers-reduced-motion: reduce) { .st-dot.on::after { animation: none; transform: scaleX(1); } .st-t { transition: none; } .st-strip .st-ring { animation: none; } }
 body[data-page="record"] #story, body[data-page="wire"] #story { display: none; }
 .st-pm { display: none; }
+.lvl-mem { display: inline-flex; align-items: center; gap: 6px; font: 700 12.5px/1 var(--sans); color: var(--ink) !important; text-decoration: none; white-space: nowrap; }
+.lvl-blocks { display: inline-flex; gap: 2px; } .lvl-blocks i { width: 9px; height: 14px; border-radius: 2px; background: var(--line); }
+.lvl-blocks i.lv1 { background: #8A9AAE; } .lvl-blocks i.lv2 { background: #C9A227; } .lvl-blocks i.lv3 { background: #E07A1F; } .lvl-blocks i.lv4 { background: #D92D00; } .lvl-blocks i.lv5 { background: #7A0E00; }
+.rail { max-width: 1240px; margin: 26px auto 0; padding: 0 !important; }
+.rl-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 900px) { .rl-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.rl-t { display: block; background: #0A111E; color: #F4F3EF !important; text-decoration: none; padding: 12px 14px; border-top: 3px solid #FF3300; }
+.rl-t:hover { background: #111B2E; }
+.rl-k { display: block; font: 800 10.5px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: #FF6A4D; }
+.rl-b { display: block; font-family: var(--serif); font-weight: 900; font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.15; margin-top: 5px; }
+.rl-s { display: block; font: 500 12.5px/1.35 var(--sans); color: #A8B3C2; margin-top: 4px; }
+.rl-line { margin: 10px 0 0; padding: 14px 16px; border-left: 4px solid var(--alarm); background: var(--panel, #fff); }
+.rl-line .rl-k { color: var(--alarm); }
+.rl-line blockquote { margin: 6px 0 6px; font-family: var(--serif); font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.3; font-weight: 700; }
+.rl-line figcaption { font: 500 13.5px/1.45 var(--sans); color: var(--ink-2); } .rl-line figcaption a { color: inherit; }
 .dl-rd { margin-left: auto; font: 600 13.5px/1.3 var(--sans); color: var(--alarm) !important; text-decoration: none; border: 1.5px solid var(--alarm); padding: 5px 9px; } .dl-rd b { letter-spacing: .08em; text-transform: uppercase; font-size: 12px; } .dl-rd:hover { background: var(--alarm); color: #fff !important; }
 @media (max-width: 760px) { .dl-rd { margin-left: 0; } }
 .ms-lead { margin-top: 14px; padding: 10px 14px; border-left: 4px solid var(--alarm); background: var(--panel, #fff); font-family: var(--sans); font-size: 15px; line-height: 1.45; text-align: left; }
@@ -1342,6 +1357,7 @@ section#why.pending { min-height: 0; }
 <div class="lvl" id="level" hidden></div>
 <section class="story" id="story" aria-label="The story so far: AI incidents since 2023, in four steps" aria-live="polite"></section>
 <section class="dl-lead" id="wall-lead" aria-label="Top story" hidden></section>
+  <section class="wrap rail" id="rail" aria-label="The scoreboard" hidden></section>
 <header class="masthead dark-scope" id="top">
   <div class="wrap mh-grid">
     <div>
@@ -1350,7 +1366,7 @@ section#why.pending { min-height: 0; }
         <h1 class="wordmark">Warning Shots</h1>
       </a>
       <p class="mh-tag"><span class="mh-t1">See what’s coming.</span><span class="mh-dot" aria-hidden="true"></span><span class="mh-t2">Know what it means.</span></p>
-      <nav class="mh-desks" aria-label="Desks"><a href="/analysis/">Analysis</a><a href="/breakthroughs/">Breakthroughs</a><a href="/up-and-down/">Up &amp; Down</a><a href="/chart/">The Charts</a><a href="/checks/">Is this a scam?</a><a href="/jobs/">Can AI do your job?</a><a href="/jobs/layoffs/">Layoffs tied to AI</a><a href="/help/">What to do</a><a href="/midterms-2026/">Midterm fakes</a></nav>
+      <nav class="mh-desks" aria-label="Desks"><a href="/analysis/">Analysis</a><a href="/breakthroughs/">Breakthroughs</a><a href="/up-and-down/">Up &amp; Down</a><a href="/chart/">The Charts</a><a href="/checks/">Is this a scam?</a><a href="/jobs/">Can AI do your job?</a><a href="/jobs/layoffs/">Layoffs tied to AI</a><a href="/protect/">Protect your family</a><a href="/help/">What to do</a><a href="/midterms-2026/">Midterm fakes</a></nav>
     </div>
     <div class="mh-right">
       <div class="edition" id="edition"></div>

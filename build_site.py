@@ -174,6 +174,8 @@ json.dump(sorted(_xp, key=lambda x: x['posted'], reverse=True), open('data/xpost
 FILES = ['incidents', 'forecasts', 'pipeline', 'drivers', 'context', 'catalysts', 'horizon', 'deepdives', 'victims', 'timeline', 'implications', 'signals', 'live', 'watch', 'meta',
          'quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'calls', 'xposts', 'desks', 'breakthroughs', 'chart', 'lenses', 'updown']
 json.dump({k: v for k, v in (_jl('research/lenses.json', {}) or {}).items() if not k.startswith('_')}, open('data/lenses.json', 'w', encoding='utf-8'), ensure_ascii=False)
+json.dump([l for l in (_jl('research/line_of_day.json', {}) or {}).get('lines', [])], open('data/line_of_day.json', 'w', encoding='utf-8'), ensure_ascii=False)
+FILES = FILES + ['level_history', 'line_of_day']
 bundle = {}
 for f in FILES:
     try:

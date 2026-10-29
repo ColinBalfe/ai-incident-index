@@ -170,6 +170,10 @@ The site covers AI's breakthroughs as seriously as its dangers. `research/breakt
 
 **This week, per name (every refresh, the most active names):** in `research/who_notes.json`, add a dated note for each name that moved since the last note (at least the three or four most active names each day): two or three plain sentences on what happened to them, every fact from the Wire stories listed in `sources`. Newest first; old notes stay as the page's running log. The page shows the newest under "This week", with its sources, above a strip of the name's incidents over time and a "new since you last looked" marker (kept in the reader's browser only).
 
+## 2m. The scoreboard rail and the Line of the Day (every refresh)
+
+Under the lead, four tiles generated from the data (the level with its streak, the forecast record and next Resolution Day, the fix rate, the live case's day) need nothing from you. The **Line of the Day** does: add one entry a day to `research/line_of_day.json` (newest first): the single most telling verbatim line on the record that day, from a filing, letter, hearing, ruling or incident report, copied exactly from a page opened this run (mark cuts with …), with the speaker, their role, one line of context and the source. Both fact-check passes apply; never paraphrase inside the quote marks. It hides after three days without a new line. The level strip in the level bar comes from the frozen editions (build_level.py) and shows a streak only when it is real.
+
 ## 2l. Resolution Day and forecast proof (automatic)
 
 Every date on which two or more calls resolve gets an event page at `/forecast/resolution-day/<date>/` (build_families.py) and, from three days before until the day after, a "Resolution Day" link in the homepage dateline. On the day: grade each call the moment its evidence lands (research/calls.json `resolution` with outcome, date, note, url), so the page flips Open to RIGHT / WRONG / TOSS-UP at each refresh; push-notify Colin when the last call of the day is graded, with the score. Forecast pages show the SHA-256 of the exact question, the commit that added it and the odds history from research/forecast_log.jsonl; never edit a published question's wording.
@@ -278,6 +282,8 @@ python3 build_help.py                                   # 'What to do' pages (he
 python3 build_learn.py                                  # Know What It Means (learn/<slug>/) from research/learn.json; same draft/approval rule as the help pages
 python3 build_families.py                               # checks/, jobs/, can-ai/, exposed/ (from data/victims.json, quality-gated), midterms-2026/; each family stays noindex until approved in research/approvals.json. New victims rows and incidents flow into exposed/ automatically
 python3 build_archive.py                                # the Wire archive (wire/<date>/, wire/archive/, never pruned), the beats (wire/near-you/, school/, decided/) and the layoffs ledger (jobs/layoffs/)
+python3 build_level.py                                  # the level's memory: data/level_history.json and /level/ (from the frozen editions in archive/)
+python3 build_protect.py                                # /protect/: the Academy's Protect track (help, learn and check pages in order)
 python3 build_trust.py                                  # /about/, /methodology/, /corrections/ (corrections drawn from the CHANGELOG: start a correction entry with 'Correction:')
 python3 build_analysis.py                               # our investigations: analysis/<slug>/ and the /analysis/ hub (research/analysis.json)
 python3 build_who.py                                    # who/<slug>/ pages and data/links.json (entities.py): every name the site follows, and the connections between stories, incidents, forecasts and rows
