@@ -37,6 +37,10 @@ MID_NAV = ('<a href="/exposed/">Am I exposed?</a><a href="/can-ai/">What AI can 
 DESKS = [('/breakthroughs/', 'Breakthroughs'), ('/up-and-down/', 'Up & Down'), ('/chart/', 'The Charts'), ('/checks/', 'Is this a scam?'), ('/jobs/', 'Can AI do your job?'), ('/jobs/layoffs/', 'Layoffs tied to AI'), ('/help/', 'What to do'),
          ('/midterms-2026/', 'Midterm fakes')]
 NAV = '<nav aria-label="Sections"><a href="/wire/">The Wire</a>' + LIVE_NAV + MID_NAV + '</nav>'
+MS_URL = 'https://morningshot.beehiiv.com/subscribe'   # The Morning Shot on Beehiiv (Muse runs the newsletter; swap for the embed form when its code arrives)
+MS_BAND = ('<aside class="ms-band" aria-label="The Morning Shot newsletter"><div class="wrap"><div><b>The Morning Shot</b> '
+           '<span>What AI did overnight, today\'s level, and what resolves next. Free, every morning at 7 AM ET, about 3 minutes.</span></div>'
+           f'<a class="ms-btn" href="{MS_URL}" target="_blank" rel="noopener">Get it free</a></div></aside>')
 DESK_ROW = '<nav class="desks" aria-label="Desks">' + ''.join(f'<a href="{u}">{esc(t)}</a>' for u, t in DESKS) + '</nav>'
 FOOT = f'<footer><div class="wrap"><span><b>Warning Shots</b>. See what’s coming. Know what it means.</span><span>Scores are the index’s own, by a <a href="/index/#about">published formula</a>; facts link to their sources. Last refresh {esc(as_of_label)}. ' + ' · '.join(f'<a href="{u}">{esc(t)}</a>' for u, t in DESKS + [('/who/', "Who's who"), ('/learn/', 'Know what it means'), ('/shield/', 'Family safe word'), ('/exposed/', 'Am I exposed?'), ('/can-ai/', 'What AI can do'), ('/forecast/', 'Forecasts'), ('/fixes/', 'Did they fix it?'), ('/wire/archive/', 'Earlier days'), ('/index/', 'The Record'), ('/press/', 'Press'), ('/badge/', 'Embed the level')]) + '</span></div></footer>'
 SCRIPT = """<script>
@@ -77,6 +81,7 @@ def shell(*, title, desc, url, img, body, jsonld, kind):
 <main id="main"><div class="wrap">
 {body}
 </div></main>
+{MS_BAND}
 {FOOT}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 {SCRIPT}

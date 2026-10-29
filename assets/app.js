@@ -593,6 +593,7 @@ function drawWall() {
   if (frags.childNodes.length) body.append(frags);
   if (hero.action && hero.action.text && hero.action.url) { const ac = el('a', 'dl-act', hero.action.text + ' →'); ac.href = hero.action.url; if (/^https?:/.test(hero.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } body.append(ac); }
   const so = el('div', 'dl-src'); if (takeover) { const t = el('a', null, (srl.tech_name ? srl.tech_name + ' ' : '') + 'live tracker →'); t.href = srl.url; so.append(t); } else { so.append(txt(hero.outlet + ' · ' + ageShort(hero) + ' · '), ext(el('a', null, 'Read the original reporting →'), hero)); } if (hero.rec) { const r = el('a', null, 'On the record →'); r.href = '/i/' + hero.rec + '/'; so.append(txt(' · '), r); } if (hero.who && hero.who[0]) { const w = el('a', null, 'Everything on ' + ((D.whonames || {})[hero.who[0]] || hero.who[0]) + ' →'); w.href = '/who/' + hero.who[0] + '/'; so.append(txt(' · '), w); } body.append(so);
+  { const ms = el('div', 'ms-lead'); ms.append(el('b', null, 'Get this in your inbox:'), txt(' The Morning Shot, free every morning at 7 AM ET. ')); const a = el('a', 'ms-lbtn', 'Subscribe free →'); a.href = 'https://morningshot.beehiiv.com/subscribe'; a.target = '_blank'; a.rel = 'noopener'; ms.append(a); body.append(ms); }
   let strip = null;
   if (srl && srl.name) {
     const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1;

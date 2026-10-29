@@ -3066,7 +3066,7 @@
  },
  {
   "id": "delft-php2shell-live-dashboard",
-  "title": "TU Delft's live PHP2Shell dashboard: 41,900 exploitation requests from 586 IPs in 68 countries since Oct 21",
+  "title": "TU Delft's live PHP2Shell dashboard: 57,097 exploitation requests from 626 IPs in 71 countries, Oct 21 to Oct 26",
   "url": "https://php2shell.delftintellab.com/",
   "outlet": "Delft Threat Intelligence Lab",
   "published": "2026-10-26T21:39:00Z",
@@ -3078,7 +3078,7 @@
   "siren": false,
   "also": [],
   "wall": 1,
-  "tag": "57,097 break-in attempts",
+  "tag": "TU Delft sensors logged 57,097 PHP break-in attempts",
   "red": false,
   "label": "tried",
   "wall_rank": 1.4000000000000001,

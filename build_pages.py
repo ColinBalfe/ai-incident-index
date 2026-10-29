@@ -62,8 +62,14 @@ try:   # per-page last real change: a hash of the page body, so the stamp moves 
     LM = json.load(open('research/page_lastmod.json', encoding='utf-8'))
 except (OSError, ValueError):
     LM = {}
-def lastmod(url, body, first):
-    h = hashlib.sha1(re.sub(r'\s+', ' ', body).encode()).hexdigest()[:16]
+# The stamp follows the record, not the page: template, navigation and related-link changes never move it (Oct 29: the old
+# body hash stamped 2023 incidents as changed today whenever the template changed, which teaches crawlers to ignore lastmod).
+# Version 2 re-baselines every page once at its record's own date.
+_LMV = 2
+if LM.get('_v') != _LMV: LM = {'_v': _LMV}
+def lastmod(url, body, first, rec=None):
+    src = json.dumps(rec, sort_keys=True, default=str) if rec is not None else re.sub(r'\s+', ' ', body)
+    h = hashlib.sha1(src.encode()).hexdigest()[:16]
     old = LM.get(url)
     if old and old[0] == h: return old[1]
     d = (first or AS_OF_DATE)[:10] if not old else AS_OF_DATE
@@ -236,7 +242,7 @@ def incident_page(r, prev, nxt):
     desc = f'{first_sentence(r["summary"])} {r["tier"]}, {r["severity"]}/100. {"Real-world incident" if r["setting"] == "wild" else "Lab or test finding"}, {fdate(r["date"], r.get("date_precision"))}. Scored and sourced by Warning Shots.'
     _first = max((r.get('disclosed') or r['date'])[:10], r['date'][:10]) if len(r['date']) >= 10 else (r.get('disclosed') or r['date'] + '-01')[:10]
     if r['id'] in DEEP_IDS or (dt.date.fromisoformat(AS_OF_DATE) - dt.date.fromisoformat(_first)).days <= 14: _first = AS_OF_DATE   # live dossiers and recent cases have been edited recently; baseline them at the first tracked build
-    _lmd = lastmod(url, '\n'.join(body), _first); body.insert(1, stamp(_lmd))
+    _lmd = lastmod(url, '\n'.join(body), _first, r); body.insert(1, stamp(_lmd))
     write(f'i/{r["id"]}/index.html', shell(title=r['title'], desc=desc[:300], url=url, img=img, body='\n'.join(body), jsonld=article_ld(r['title'], desc[:300], url, img, (r.get('disclosed') or r['date'])[:10], 'Incidents', _lmd), kind='incident'))
     return url
 
@@ -259,7 +265,7 @@ def case_page(f, prev, nxt):
     body.append(prevnext(prev, nxt, 'c', lambda x: x['name'], lambda x: 'Status: ' + cur_status(x).replace('_', ' ')) if (prev or nxt) else '')
     desc = ('Did they fix it? ' + (f.get('one_liner') or cur.get('note') or ''))[:300]
     rid = r['date'] if r else AS_OF_DATE
-    _lmd = lastmod(url, '\n'.join(body), max([c.get('date', '')[:10] for c in f['chain'] if c.get('date')] or [AS_OF_DATE])); body.insert(1, stamp(_lmd))
+    _lmd = lastmod(url, '\n'.join(body), max([c.get('date', '')[:10] for c in f['chain'] if c.get('date')] or [AS_OF_DATE]), f); body.insert(1, stamp(_lmd))
     write(f'c/{f["incident_id"]}/index.html', shell(title=f['name'], desc=desc, url=url, img=img, body='\n'.join(body), jsonld=article_ld(f['name'], desc, url, img, rid[:10], 'Did they fix it?', _lmd), kind='case'))
     return url
 
@@ -291,7 +297,7 @@ def milestone_page(c, prev, nxt):
     body.append(share_html(url, share_text, f'/cards/m-{c["id"]}.jpg' if os.path.exists(f'cards/m-{c["id"]}.jpg') else '', f'/index/#m={c["id"]}', 'Open on the index'))
     body.append(prevnext(prev, nxt, 'm', lambda x: x['title'], lambda x: fdate(x['date'], x.get('date_precision')) + ' · ' + (x.get('org') or '')))
     desc = ((c.get('what') or '') + ' Graded from demonstration to real consequences by Warning Shots.')[:300]
-    _lmd = lastmod(url, '\n'.join(body), c['date'][:10]); body.insert(1, stamp(_lmd))
+    _lmd = lastmod(url, '\n'.join(body), c['date'][:10], c); body.insert(1, stamp(_lmd))
     write(f'm/{c["id"]}/index.html', shell(title=c['title'], desc=desc, url=url, img=img, body='\n'.join(body), jsonld=article_ld(c['title'], desc, url, img, c['date'][:10], 'What AI can now do', _lmd), kind='milestone'))
     return url
 
@@ -348,8 +354,15 @@ def _img(u):
         if mm and os.path.exists(f'cards/{k}-{mm.group(1)}.jpg'):
             return f'<image:image><image:loc>{esc(site)}cards/{k}-{esc(mm.group(1))}.jpg</image:loc></image:image>'
     return ''
+def _page_mod(u):   # other families: the page's own JSON-LD dateModified, set by its builder from its data
+    fp = u[len(site):] + 'index.html' if u.startswith(site) else ''
+    try:
+        mm = re.search(r'"dateModified":\s*"(\d{4}-\d{2}-\d{2})', open(fp, encoding='utf-8').read())
+        return mm.group(1) if mm else None
+    except OSError:
+        return None
 for u in urls:
-    lm = (LM.get(u) or [None, None])[1] or _lm.get(u) or lastmod
+    lm = (LM.get(u) or [None, None])[1] or _lm.get(u) or _page_mod(u) or lastmod
     if len(lm) < 10 or lm > lastmod: lm = lastmod
     sm.append(f'<url><loc>{esc(u)}</loc><lastmod>{lm}</lastmod>{_img(u)}</url>')
 sm.append('</urlset>')

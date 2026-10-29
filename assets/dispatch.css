@@ -183,3 +183,10 @@ footer a { color: var(--ink-2); }
 
 .live-nav .live-dot{color:var(--alarm);font-size:.8em;vertical-align:1px;animation:livepulse 2s ease-in-out infinite}@keyframes livepulse{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.live-nav .live-dot{animation:none}}
 @media (min-width: 761px) { .mast nav { flex-wrap: wrap; justify-content: flex-end; overflow: visible; row-gap: 2px; column-gap: 14px; } }
+
+/* The Morning Shot: one subscribe band at the end of every page */
+.ms-band { border-top: 4px solid var(--alarm, #D92D00); background: var(--panel); padding: 22px 0; }
+.ms-band .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.ms-band b { font-family: var(--serif); font-size: 1.3rem; display: block; } .ms-band span { color: var(--ink-2); font-size: 15px; }
+.ms-btn { display: inline-block; background: var(--alarm, #D92D00); color: #fff !important; font-weight: 800; padding: 11px 20px; text-decoration: none; letter-spacing: .02em; white-space: nowrap; }
+.ms-btn:hover { filter: brightness(1.08); }
