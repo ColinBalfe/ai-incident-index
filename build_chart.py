@@ -420,7 +420,7 @@ for spec in SPECS:
 
 def share_links(c):
     url = SITE + f"chart/{c['id']}/"
-    x = 'https://x.com/intent/post?' + urllib.parse.urlencode({'text': c['title'], 'url': url})
+    x = 'https://x.com/intent/post?' + urllib.parse.urlencode({'text': c['title'], 'url': url, 'via': 'WarningShotsAI'})
     li = 'https://www.linkedin.com/sharing/share-offsite/?' + urllib.parse.urlencode({'url': url})
     rd = 'https://www.reddit.com/submit?' + urllib.parse.urlencode({'url': url, 'title': c['title']})
     return url, x, li, rd

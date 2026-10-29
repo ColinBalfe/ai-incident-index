@@ -81,7 +81,7 @@ function shareRow(node, o) {
   const mk = (icon, label, fn) => { const b = el('button'); b.type = 'button'; b.innerHTML = ICON[icon]; b.append(txt(' ' + label)); b.addEventListener('click', (e) => { e.stopPropagation(); fn(); }); return b; };
   node.append(mk('link', 'Copy link', () => copy(link)));
   if (o.text) node.append(mk('text', 'Copy text', () => copy(o.text + ' ' + link)));
-  if (o.text) { const a = el('a'); a.innerHTML = ICON.x; a.append(txt(' Post on X')); a.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(o.text) + '&url=' + encodeURIComponent(link); a.target = '_blank'; a.rel = 'noopener noreferrer'; node.append(a); }
+  if (o.text) { const a = el('a'); a.innerHTML = ICON.x; a.append(txt(' Post on X')); a.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(o.text) + '&url=' + encodeURIComponent(link) + '&via=WarningShotsAI'; a.target = '_blank'; a.rel = 'noopener noreferrer'; node.append(a); }
   if (o.svgBox) node.append(mk('img', 'Save image', () => svgToPng(o.svgBox, o.name || 'chart', o.title || '')));
   if (o.embed) node.append(mk('embed', 'Embed', () => copy(`<iframe src="${SITE}?embed=${o.embed}" width="100%" height="${o.embedH || 560}" style="border:0;max-width:100%" loading="lazy" title="${(o.title || 'Warning Shots').replace(/"/g, '')}"></iframe>`)));
   if (o.card) node.append(mk('card', 'Briefing card', () => briefingCard(o.card)));
@@ -778,7 +778,7 @@ function drawWall() {
       const body = el('div', 'ud-b'); const top = el('p', 'ud-l'); const nm = el('a', 'ud-n', b.name); if (b.who) { nm.href = '/who/' + b.who + '/'; nm.title = 'Everything on ' + b.name; } else { nm.href = b.url; nm.target = '_blank'; nm.rel = 'noopener noreferrer'; } top.append(nm, txt(' ' + b.line + ' '));
       const so = el('a', 'ud-s', b.outlet || 'source'); so.href = b.url; so.target = '_blank'; so.rel = 'noopener noreferrer'; top.append(so); if (b.rec) { const rc = el('a', 'ud-s', ' · on the record'); rc.href = '/i/' + b.rec + '/'; top.append(rc); }
       const w = el('p', 'ud-w'); w.append(el('b', null, 'Why it matters: '), txt(b.why + ' '));
-      const x = el('a', 'ud-x', 'Post'); x.href = 'https://x.com/intent/post?text=' + encodeURIComponent((b.dir === 'up' ? '▲ ' : '▼ ') + b.name + ': ' + b.line + ' Why it matters: ' + b.why) + '&url=' + encodeURIComponent(SITE + 'up-and-down/'); x.target = '_blank'; x.rel = 'noopener noreferrer'; w.append(x);
+      const x = el('a', 'ud-x', 'Post'); x.href = 'https://x.com/intent/post?text=' + encodeURIComponent((b.dir === 'up' ? '▲ ' : '▼ ') + b.name + ': ' + b.line + ' Why it matters: ' + b.why) + '&url=' + encodeURIComponent(SITE + 'up-and-down/') + '&via=WarningShotsAI'; x.target = '_blank'; x.rel = 'noopener noreferrer'; w.append(x);
       body.append(top, w); r.append(body); return r; };
     const cols = el('div', 'ud-cols');
     [['up', 'Up'], ['down', 'Down']].forEach(([k, l]) => { const c = el('div', 'ud-c ' + k); c.append(el('div', 'ud-ch', (k === 'up' ? '▲ ' : '▼ ') + l)); UD.filter((b) => b.dir === k).slice(0, 3).forEach((b) => c.append(row(b))); cols.append(c); });

@@ -9,6 +9,8 @@ Last refresh: Oct 29, 2026, 12:40 PM ET. 165 incidents scored. Corrections and r
 - [The Record](https://warningshots.ai/index/): every incident scored, charts, forecasts and their track record, and whether fixes held
 - [The Wire](https://warningshots.ai/wire/): every report from the last three days, newest first
 - [All incidents](https://warningshots.ai/i/): one page per incident, newest first
+- [About](https://warningshots.ai/about/), [Methodology](https://warningshots.ai/methodology/), [Corrections](https://warningshots.ai/corrections/); on X: https://x.com/WarningShotsAI
+- [Resolution Day and the forecast ledger](https://warningshots.ai/forecast/): dated AI forecasts graded in public
 - [Did they fix it?](https://warningshots.ai/fixes/): report, response, claimed fix, independent check, current status
 - [What AI can now do](https://warningshots.ai/m/): capability milestones graded from demonstration to real consequences
 - [Live tracker: PHP2Shell: AI-found PHP flaws leak, trigger global shutdowns](https://warningshots.ai/php2shell/)

@@ -98,7 +98,7 @@ def article_ld(title, desc, url, img, published, section, modified=None):
     return json.dumps(d, ensure_ascii=False).replace('</', '<\\/')
 
 def share_html(url, text, card, deep, deep_label):
-    x = 'https://twitter.com/intent/tweet?text=' + html.escape(__import__('urllib.parse').parse.quote(text)) + '&url=' + __import__('urllib.parse').parse.quote(url)
+    x = 'https://twitter.com/intent/tweet?text=' + html.escape(__import__('urllib.parse').parse.quote(text)) + '&url=' + __import__('urllib.parse').parse.quote(url) + '&via=WarningShotsAI'
     parts = [f'<button type="button" data-copy="{esc(url)}">Copy link</button>', f'<a href="{x}" target="_blank" rel="noopener noreferrer">Post on X</a>']
     if card: parts.append(f'<a href="{esc(card)}" download>Card image</a>')
     parts.append(f'<a class="cta" href="{esc(deep)}">{esc(deep_label)}</a>')
@@ -439,6 +439,8 @@ Last refresh: {as_of_label}. {len(scored)} incidents scored. Corrections and ret
 - [The Record]({site}index/): every incident scored, charts, forecasts and their track record, and whether fixes held
 - [The Wire]({site}wire/): every report from the last three days, newest first
 - [All incidents]({site}i/): one page per incident, newest first
+- [About]({site}about/), [Methodology]({site}methodology/), [Corrections]({site}corrections/); on X: https://x.com/WarningShotsAI
+- [Resolution Day and the forecast ledger]({site}forecast/): dated AI forecasts graded in public
 - [Did they fix it?]({site}fixes/): report, response, claimed fix, independent check, current status
 - [What AI can now do]({site}m/): capability milestones graded from demonstration to real consequences
 {f"- [Live tracker: {_live['title']}]({site}php2shell/)" if _live and os.path.exists('php2shell/index.html') else ''}

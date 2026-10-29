@@ -27,7 +27,7 @@ for p in pieces:
     corr = ''.join(f'<li><time>{fdate(c["date"])}</time> {esc(c["text"])}</li>' for c in p.get('corrections') or [])
     links = ''.join(f'<li><a href="{esc(u)}">{esc(t)} →</a></li>' for u, t in p.get('links') or [])
     share = (f'<div class="share"><button type="button" data-copy="{esc(url)}">Copy link</button>'
-             f'<a class="alt" href="https://twitter.com/intent/tweet?text={esc(p["short"])}&amp;url={esc(url)}" target="_blank" rel="noopener noreferrer">Post on X</a>'
+             f'<a class="alt" href="https://twitter.com/intent/tweet?text={esc(p["short"])}&amp;url={esc(url)}&amp;via=WarningShotsAI" target="_blank" rel="noopener noreferrer">Post on X</a>'
              + (f'<a class="alt" href="{esc(p["img"])}" download>Card image</a>' if p.get('img') else '') + '</div>')
     body = (f'<article class="pk an">{top}<p class="kick">{esc(p["kicker"])}</p><h1>{esc(p["title"])}</h1>'
             f'<p class="meta">By Warning Shots · Published {fdate(p["date"])} · {by}</p>'

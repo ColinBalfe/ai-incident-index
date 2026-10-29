@@ -162,6 +162,7 @@ pbody = f"""{STYLE}<article class="pr">
 <p>The full index is downloadable: <a href="/data/incidents.csv">CSV</a> · <a href="/data/incidents.json">JSON</a>. New reports arrive by <a href="/feed.xml">RSS</a>.</p>
 <h2>Contact</h2>
 {contact}
+<p>On X: <a href="https://x.com/WarningShotsAI">@WarningShotsAI</a>.</p>
 </article>"""
 pdesc = f"Press resources for Warning Shots: key figures ({build['n']} AI incidents since 2023, scored and sourced), ready-to-paste citations, screenshots, logos and the open dataset."
 ld = json.dumps({"@context": "https://schema.org", "@type": "AboutPage", "name": "Warning Shots press", "url": site + 'press/', "description": pdesc,

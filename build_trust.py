@@ -35,7 +35,7 @@ body = f"""<article class="pk tp">{STYLE}<nav class="kick" aria-label="Breadcrum
 <h2>The name</h2>
 <p>It is OpenAI's own phrase for the Hugging Face breach: “a warning shot for the company and the world.”</p>
 <h2>Contact and reuse</h2>
-<p>Corrections and tips: <a href="{esc(REPO)}/issues">open an issue</a>. Press: <a href="/press/">the press page</a>. Cite as “Warning Shots (The AI Incident Index)” with a link; the data is downloadable from <a href="/index/#about">the Record</a>.</p>
+<p>Corrections and tips: <a href="{esc(REPO)}/issues">open an issue</a>. Press: <a href="/press/">the press page</a>. On X: <a href="https://x.com/WarningShotsAI">@WarningShotsAI</a>. Cite as “Warning Shots (The AI Incident Index)” with a link; the data is downloadable from <a href="/index/#about">the Record</a>.</p>
 {footer_note(False)}</article>"""
 write('about/index.html', url=u, title='About Warning Shots', desc="What Warning Shots is, who publishes it, how it is made and checked, and how to reach it.", body=body, draft=False,
       crumbs=[('About', '')], graph=[webpage(u, 'About Warning Shots', 'What Warning Shots is and how it is made', TODAY, False, ''), {"@type": "NewsMediaOrganization", "name": "Warning Shots", "url": SITE, "founder": {"@type": "Person", "name": "Colin Balfe"}, "correctionsPolicy": SITE + 'corrections/', "ethicsPolicy": SITE + 'methodology/'}])
