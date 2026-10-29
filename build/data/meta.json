@@ -1,8 +1,8 @@
 {
- "as_of": "2026-10-29T11:50:00-04:00",
- "as_of_label": "Oct 29, 2026, 11:50 ET",
- "next_check": "2026-10-29T12:17:00-04:00",
- "next_check_label": "Thursday, 12:17 ET",
+ "as_of": "2026-10-29T12:40:00-04:00",
+ "as_of_label": "Oct 29, 2026, 12:40 ET",
+ "next_check": "2026-10-29T18:17:00-04:00",
+ "next_check_label": "Thursday, 18:17 ET",
  "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
  "live_incident": "php2shell",
  "live_note": "Day nine, Thursday morning: it moved, but no rung. Palo Alto Networks updated its advisory on Oct 28 to say 'Active exploitation has been observed' against its firewalls' management pages exposed to the internet (The Hacker News, Oct 29); it names no victim, some of its fixes are due Oct 29-30, and it does not confirm the security firm Dream's Oct 26 report of 25 real servers rooted (three in an unnamed US government-affiliated network). The Hacker News guesses Dream's unnamed firewall vendor is Palo Alto; that is its inference, not a confirmed link. GreyNoise logged its first 2 successful exploitations, both on its own decoy sensors (Oct 28). Still no organization named or confirmed as breached, so the running story stays PROVEN. America's cyber agency added a Linux flaw, Fragnesia, which it says can be chained with the two PHP flaws, to its exploited list on Oct 28 (federal deadline Oct 31); today, Oct 29, is the federal deadline for the two PHP flaws. The third flaw, CVE-2026-115560, still has no fix (no PHP release since Oct 21). Odds that a named organization confirms a breach by Nov 7 raised from 65% to 70% on Palo Alto's confirmation.",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-29",
+   "text": "12:40 ET: Lead unchanged (top House Democrats' 48-hour incident-reporting request; no company answer found). PHP2Shell: rechecked, nothing moved (The Hacker News' Oct 29 coverage adds nothing past Palo Alto; SOCRadar's Oct 27 report on a Japanese real-estate extortion wave finds no link to the flaws; still no victim named); running story stays Proven, day 9. 0 incidents added or corrected. The Wire: 1 story added (Check Point: fake ChatGPT and Claude desktop apps on GitHub planted crypto miners, via The Hacker News). The Fragnesia column line rewritten in plain words (no acronym or codename carrying it). Calls: none due, no odds moved; OpenAI's misalignment log still at 20. Not opened this run: the CISA KEV feed (permission request timed out); The Hill and Cybernews would not load. Checked twice: the second pass re-opened The Hacker News page and trimmed the Fragnesia line to 11 words."
+  },
   {
    "date": "2026-10-29",
    "text": "11:50 ET: New lead (Colin's call): the containment story moves to Congress, as top House Democrats ask Anthropic, Google, Meta, OpenAI and SpaceXSI to report AI safety incidents within 48 hours (a request, not a law; full accounting due Nov 11; House Energy and Commerce Democrats' release). Anthropic's SEC filing becomes a tag-along. New free lead photo (US Capitol, Louis Velazquez / Unsplash). From now on the lead headline changes at least once a day (REFRESH). Checked twice."
@@ -170,6 +174,6 @@
   ]
  },
  "quiet": false,
- "edition": 20,
- "edition_path": "archive/2026-10-29-1150/"
+ "edition": 21,
+ "edition_path": "archive/2026-10-29-1240/"
 }

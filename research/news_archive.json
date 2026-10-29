@@ -5199,6 +5199,52 @@
 "touches": "Anyone who asks a chatbot for medical advice"
 },
 {
+"id": "thn-checkpoint-yoba-fake-chatgpt-claude-apps",
+"title": "Fake ChatGPT and Claude desktop apps on GitHub planted crypto miners on Windows PCs, Check Point says",
+"url": "https://thehackernews.com/2026/10/fake-chatgpt-and-claude-apps-abuse.html",
+"outlet": "The Hacker News",
+"published": "2026-10-29T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "everyday",
+"summary": "Fake 'GPT-6 Astra' and 'Claude Opus' downloads hid a miner behind signed OpenAI and Anthropic files; signs of Google search poisoning.",
+"also": [],
+"tag": "Fake ChatGPT and Claude apps planted crypto miners, Check Point says",
+"red": false,
+"label": "reported",
+"receipt": "Check Point Research's analysis, via The Hacker News, Oct 29; no victim count published.",
+"touches": "Windows users who search for and download ChatGPT or Claude desktop apps outside the official stores",
+"independent": {
+"n": 1,
+"who": "Check Point Research",
+"carried_by": [
+"The Hacker News"
+]
+},
+"entities": {
+"orgs": [
+"Check Point"
+],
+"vendors": [
+"OpenAI",
+"Anthropic",
+"GitHub"
+],
+"products": [
+"ChatGPT",
+"Claude",
+"GitHub"
+],
+"models": [],
+"sectors": [
+"consumer",
+"tech"
+],
+"states": []
+}
+},
+{
 "id": "record-ftc-surveillance-pricing-orders",
 "title": "FTC orders Uber, Delta, Walmart and six others to explain how personal data sets your price and drivers' pay",
 "url": "https://therecord.media/ftc-rideshare-airlines-data",
@@ -5230,7 +5276,7 @@
 "topic": "php2shell",
 "summary": "CVE-2026-46300 added Oct 28; Dream's campaign rooted 25 servers, three in a US government-affiliated environment. No victim named.",
 "also": [],
-"tag": "CISA: a Linux flaw turns PHP2Shell into root access",
+"tag": "US cyber agency: Linux flaw turns website break-ins into full control",
 "red": false,
 "label": "confirmed",
 "touches": "Linux web servers running PHP, including federal agencies'"

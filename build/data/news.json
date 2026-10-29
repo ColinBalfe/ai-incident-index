@@ -11,7 +11,7 @@
 "topic": "php2shell",
 "summary": "CVE-2026-46300 added Oct 28; Dream's campaign rooted 25 servers, three in a US government-affiliated environment. No victim named.",
 "also": [],
-"tag": "CISA: a Linux flaw turns PHP2Shell into root access",
+"tag": "US cyber agency: Linux flaw turns website break-ins into full control",
 "wall": 1,
 "red": false,
 "wall_rank": 0.8,
@@ -63,6 +63,55 @@
 "wall_rank": 1.5,
 "label": "lab",
 "touches": "Anyone who asks a chatbot for medical advice",
+"siren": false
+},
+{
+"id": "thn-checkpoint-yoba-fake-chatgpt-claude-apps",
+"title": "Fake ChatGPT and Claude desktop apps on GitHub planted crypto miners on Windows PCs, Check Point says",
+"url": "https://thehackernews.com/2026/10/fake-chatgpt-and-claude-apps-abuse.html",
+"outlet": "The Hacker News",
+"published": "2026-10-29T12:00:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "everyday",
+"summary": "Fake 'GPT-6 Astra' and 'Claude Opus' downloads hid a miner behind signed OpenAI and Anthropic files; signs of Google search poisoning.",
+"also": [],
+"tag": "Fake ChatGPT and Claude apps planted crypto miners, Check Point says",
+"wall": 3,
+"red": false,
+"wall_rank": 0.6,
+"label": "reported",
+"receipt": "Check Point Research's analysis, via The Hacker News, Oct 29; no victim count published.",
+"touches": "Windows users who search for and download ChatGPT or Claude desktop apps outside the official stores",
+"independent": {
+"n": 1,
+"who": "Check Point Research",
+"carried_by": [
+"The Hacker News"
+]
+},
+"entities": {
+"orgs": [
+"Check Point"
+],
+"vendors": [
+"OpenAI",
+"Anthropic",
+"GitHub"
+],
+"products": [
+"ChatGPT",
+"Claude",
+"GitHub"
+],
+"models": [],
+"sectors": [
+"consumer",
+"tech"
+],
+"states": []
+},
 "siren": false
 },
 {
@@ -2848,40 +2897,6 @@
 "region": "Global",
 "topic": "ai-attack",
 "summary": "Arrakis: 19% use keys that never expire; 82% had at least one exposure.",
-"siren": false,
-"also": []
-},
-{
-"id": "alhurra-inss-iran-profiles-israel-election",
-"title": "INSS: 157 Iran-linked X profiles posed as Israelis with stolen or AI-generated photos before Monday's vote",
-"url": "https://alhurra.com/en/48716",
-"outlet": "Alhurra",
-"published": "2026-10-26T04:29:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Israel",
-"topic": "deepfakes",
-"summary": "Golden Owl traced the accounts; Shin Bet removed several on Oct 22; INSS calls the post-poll count the riskiest period.",
-"siren": false,
-"also": [],
-"wall": 3,
-"tag": "157 fake 'Israelis' traced to Iran",
-"red": false,
-"label": "reported",
-"wall_rank": 26,
-"touches": "Israeli voters"
-},
-{
-"id": "itjungle-php2shell-ibm-i",
-"title": "PHP2Shell reaches IBM i shops: Zend backports fixes to end-of-life PHP as 'Black October' patching drags on",
-"url": "https://www.itjungle.com/2026/10/26/critical-php2shell-security-vulns-evoke-black-october/",
-"outlet": "IT Jungle",
-"published": "2026-10-26T04:05:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "php2shell",
-"summary": "Amazon saw exploitation attempts from Oct 17; Dutch, French, Danish and Finnish governments took sites offline.",
 "siren": false,
 "also": []
 }
