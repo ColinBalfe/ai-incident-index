@@ -1,5 +1,692 @@
 [
  {
+  "id": "thn-paloalto-php2shell-mgmt-exploited",
+  "title": "Palo Alto Networks says attackers are exploiting the PHP2Shell flaws against its firewalls' internet-exposed management pages",
+  "url": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html",
+  "outlet": "The Hacker News",
+  "published": "2026-10-29T00:00:00Z",
+  "time_known": false,
+  "kind": "breaking",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "Palo Alto's updated advisory: 'Active exploitation has been observed' against internet-exposed firewall management interfaces. Some fixes still due Oct 29-30; no victim named.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Palo Alto Networks advisory",
+    "url": "https://security.paloaltonetworks.com/CVE-2026-109618"
+   }
+  ],
+  "wall": "1",
+  "wall_rank": 0.9,
+  "tag": "Palo Alto says hackers are exploiting the flaw on its firewalls",
+  "label": "confirmed",
+  "red": false,
+  "receipt": "Palo Alto's own advisory, updated Oct 28: 'Active exploitation has been observed' against management pages exposed to the internet. It names no victim and doesn't mention Dream's report; The Hacker News only guesses Dream's unnamed vendor is Palo Alto.",
+  "touches": "Organizations whose Palo Alto firewalls have their management page open to the internet",
+  "independent": {
+   "n": 1,
+   "who": [
+    "Palo Alto Networks"
+   ],
+   "carried_by": [
+    "The Hacker News"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "Palo Alto Networks"
+   ],
+   "vendors": [
+    "Palo Alto Networks",
+    "PHP"
+   ],
+   "products": [
+    "PHP",
+    "PAN-OS"
+   ],
+   "models": [],
+   "sectors": [
+    "tech"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "greynoise-php2shell-two-successes",
+  "title": "GreyNoise logs 209,256 PHP2Shell exploitation attempts and its first 2 successful exploitations, both on its own decoy sensors",
+  "url": "https://php.events.greynoise.io/",
+  "outlet": "GreyNoise",
+  "published": "2026-10-28T17:44:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "Global",
+  "topic": "php2shell",
+  "summary": "239,413 sessions from 414 IPs since Oct 21: 209,256 exploitation attempts. Two worked on its vulnerable sensors, both from one IP on Oct 28.",
+  "siren": false,
+  "also": [],
+  "wall": "1",
+  "wall_rank": 1.45,
+  "tag": "209,256 break-in attempts; two got in on decoy servers",
+  "label": "proven",
+  "red": false,
+  "receipt": "GreyNoise's own sensors only, Oct 21 to Oct 28 17:44 UTC, 414 attacker IPs. The two successes (Oct 28, 05:14 and 06:42 UTC, one IP) were on its own vulnerable decoy sensors; no real victim.",
+  "touches": "Anyone running an unpatched PHP website",
+  "independent": {
+   "n": 1,
+   "who": [
+    "GreyNoise"
+   ],
+   "carried_by": []
+  },
+  "entities": {
+   "orgs": [
+    "GreyNoise"
+   ],
+   "vendors": [
+    "PHP"
+   ],
+   "products": [
+    "PHP"
+   ],
+   "models": [],
+   "sectors": [
+    "tech"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "lavx-123reg-ai-driven-attack",
+  "title": "UK web host 123 Reg says an 'AI-driven cyberattack' read customer contact and account data; it suspects a China link",
+  "url": "https://news.lavx.hu/article/123-reg-discloses-ai-cyberattack-on-customer-data-suspects-china-nexus",
+  "outlet": "LavX News (republishing The Register)",
+  "published": "2026-10-29T00:47:00Z",
+  "time_known": true,
+  "kind": "incident",
+  "region": "UK",
+  "topic": "ai-attack",
+  "summary": "GoDaddy-owned 123 Reg says the Sept 18 intrusion 'was limited to reading' names, phone numbers and account details. Customer count not given.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "DiarioBitcoin, translated from Spanish",
+    "url": "https://www.diariobitcoin.com/china/123-reg-investiga-un-ataque-con-ia-y-datos-de-clientes-expuestos/"
+   }
+  ],
+  "wall": "1",
+  "wall_rank": 2.4,
+  "tag": "UK web host 123 Reg says an AI-driven attack read customer data",
+  "label": "reported",
+  "red": false,
+  "receipt": "123 Reg's own customer notice, as reported by The Register (Oct 28) and republished by LavX: breach Sept 18; names, phone numbers, account and product data. The AI and China links are the company's assessment.",
+  "touches": "123 Reg customers in the UK (the company hasn't said how many)",
+  "independent": {
+   "n": 1,
+   "who": [
+    "The Register"
+   ],
+   "carried_by": [
+    "LavX News",
+    "DiarioBitcoin"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "123 Reg",
+    "GoDaddy"
+   ],
+   "vendors": [
+    "Anthropic"
+   ],
+   "products": [
+    "Claude Code"
+   ],
+   "models": [],
+   "sectors": [
+    "tech"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "anthropic-exploit-chains-five-systems",
+  "title": "Anthropic says an unreleased AI model built working attack chains against Chrome, Safari, Android, Windows and Linux; 62 Chrome flaws patched",
+  "url": "https://www.anthropic.com/research/discovering-vulnerabilities-with-claude",
+  "outlet": "Anthropic",
+  "published": "2026-10-27T16:00:00Z",
+  "time_known": false,
+  "kind": "official",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "After 'initial prompting', the unnamed internal model chained flaws into working attacks; its Chrome work produced 62 critical or high flaws, all now patched.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "The Hacker News",
+    "url": "https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html"
+   }
+  ],
+  "wall": "2",
+  "wall_rank": 10.4,
+  "tag": "Anthropic's unreleased AI built working attacks on Chrome, Windows and Linux",
+  "label": "reported",
+  "red": false,
+  "receipt": "Anthropic's own account (Oct 27): 62 Chrome flaws, all critical or high, patched as of Chrome 156; the Linux attack reached root in 53 minutes. All reported to vendors and patched; no real-world attacks. Some public flaw records don't clearly match its descriptions (The Hacker News).",
+  "touches": "People using Chrome, Safari, Android phones, Windows or Linux (the flaws are patched)",
+  "independent": {
+   "n": 2,
+   "who": [
+    "Anthropic",
+    "The Hacker News"
+   ],
+   "carried_by": []
+  },
+  "entities": {
+   "orgs": [
+    "Anthropic",
+    "Google",
+    "Apple",
+    "Microsoft"
+   ],
+   "vendors": [
+    "Anthropic"
+   ],
+   "products": [
+    "Chrome",
+    "Safari",
+    "Android",
+    "Windows",
+    "Linux"
+   ],
+   "models": [
+    "Claude"
+   ],
+   "sectors": [
+    "tech"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "businesstoday-amazon-250-devices-cuts",
+  "title": "Amazon cuts about 250 jobs in its devices unit, mostly software roles, a day after sharing a memo urging engineers to use AI",
+  "url": "https://www.businesstoday.in/jobs/story/tech-job-cuts-2026-amazon-slashes-250-jobs-after-issuing-new-ai-rulebook-for-software-engineers-564418-2026-10-29",
+  "outlet": "Business Today (citing Reuters)",
+  "published": "2026-10-29T03:00:00Z",
+  "time_known": true,
+  "kind": "breaking",
+  "region": "US",
+  "topic": "jobs",
+  "summary": "Amazon cited efficiency and its product roadmap, not AI. About 1,000 were cut earlier this month, mainly in Stores.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "The Federal",
+    "url": "https://thefederal.com/category/business/amazon-lays-off-250-employees-in-devices-unit-amid-ai-push-261092"
+   }
+  ],
+  "wall": "2",
+  "wall_rank": 12.5,
+  "tag": "Amazon cut about 250 devices jobs, a day after its AI memo",
+  "label": "reported",
+  "red": false,
+  "receipt": "Reuters via Business Today (Oct 29): about 250 roles, Oct 28. Amazon published a September memo urging engineers to use AI the day before; its spokesperson cited efficiency and the product roadmap, not AI. The AI link is the reporters'.",
+  "touches": "Amazon devices and services staff, mostly software developers",
+  "independent": {
+   "n": 1,
+   "who": [
+    "Reuters"
+   ],
+   "carried_by": [
+    "Business Today",
+    "The Federal"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "Amazon"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "tech",
+    "retail"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "flphoenix-uthmeier-a2e-nudify-suit",
+  "title": "Florida's attorney general sues AI image app A2E, saying it lets users 'nudify' non-consenting Floridians, including children",
+  "url": "https://www.yahoo.com/news/us/articles/uthmeier-ai-company-allows-people-210354335.html",
+  "outlet": "Florida Phoenix (via Yahoo News)",
+  "published": "2026-10-28T21:03:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "US",
+  "topic": "deepfakes",
+  "summary": "A 26-page civil suit in Sarasota County under Florida's deceptive-practices law. 'We want to shut them down,' Uthmeier said. A2E didn't respond.",
+  "siren": false,
+  "also": [],
+  "wall": "3",
+  "wall_rank": 20.2,
+  "tag": "Florida sued an AI app it says lets users fake nudes of children",
+  "label": "confirmed",
+  "red": false,
+  "receipt": "Florida AG James Uthmeier's suit against A2E's Nevada owner, Rengstorff Consulting, filed in Sarasota County (Florida Phoenix, Oct 28). Allegations, not findings.",
+  "touches": "Floridians, including children, whose photos can be fed into the app",
+  "independent": {
+   "n": 1,
+   "who": [
+    "Florida Phoenix"
+   ],
+   "carried_by": [
+    "Yahoo News"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "Florida Attorney General",
+    "A2E",
+    "Rengstorff Consulting"
+   ],
+   "vendors": [
+    "A2E"
+   ],
+   "products": [
+    "A2E"
+   ],
+   "models": [],
+   "sectors": [
+    "consumer",
+    "legal"
+   ],
+   "states": [
+    "FL"
+   ]
+  }
+ },
+ {
+  "id": "mpr-hermantown-google-vote-friday",
+  "title": "Protests shut down Hermantown's vote on Google's 1.7 million-square-foot data center; the city moves it to Friday with an 85-person cap",
+  "url": "https://www.mprnews.org/story/2026/10/28/hermantown-data-center-vote-moved-to-friday-after-protests-at-city-council-meeting",
+  "outlet": "MPR News",
+  "published": "2026-10-28T21:43:00Z",
+  "time_known": true,
+  "kind": "breaking",
+  "region": "US",
+  "topic": "everyday",
+  "summary": "Friday 6:30 p.m. vote on the final local approvals for a $650 million first phase. Three lawsuits pending; state regulators must approve its power deal.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "FOX 9",
+    "url": "https://www.fox9.com/news/hermantown-council-delays-data-center-vote-after-protests-erupt-monday-meeting"
+   }
+  ],
+  "wall": "3",
+  "wall_rank": 3.9,
+  "tag": "Protesters shut down a Minnesota town's vote on Google's data center",
+  "label": "confirmed",
+  "red": false,
+  "receipt": "MPR News, Oct 28: Monday's meeting cancelled after about two hours of chanting; the vote moved to Friday, 6:30 p.m., attendance capped at 85.",
+  "touches": "Hermantown, Minnesota residents near the proposed Google site",
+  "independent": {
+   "n": 2,
+   "who": [
+    "MPR News",
+    "FOX 9"
+   ],
+   "carried_by": []
+  },
+  "beat": "near-you",
+  "entities": {
+   "orgs": [
+    "Google",
+    "Hermantown City Council",
+    "Minnesota Power"
+   ],
+   "vendors": [
+    "Google"
+   ],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "energy",
+    "tech"
+   ],
+   "states": [
+    "MN"
+   ]
+  }
+ },
+ {
+  "id": "kprc-uh-texas-data-center-poll",
+  "title": "University of Houston poll: 79% of likely Texas voters want limits on data centers; 76% expect one nearby to raise their power bill",
+  "url": "https://www.click2houston.com/news/local/2026/10/28/new-uh-survey-79-of-texas-voters-want-limits-on-data-centers-amid-concerns-over-electric-bills-water-supply/",
+  "outlet": "KPRC Click2Houston",
+  "published": "2026-10-28T12:54:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "everyday",
+  "summary": "Hobby School survey of 2,000 likely voters: 99% say data-center builders should pay for grid expansion.",
+  "siren": false,
+  "also": [],
+  "wall": "3",
+  "wall_rank": 4.1,
+  "tag": "Texas voters: 76% expect a local data center to raise bills",
+  "label": "confirmed",
+  "red": false,
+  "receipt": "University of Houston Hobby School survey of 2,000 likely Texas voters, via KPRC (Oct 28): 76% believe a new data center in their community would increase their electricity bills; 79% want limits. Expectations, not measured bills.",
+  "touches": "Texas households and electricity customers",
+  "independent": {
+   "n": 1,
+   "who": [
+    "University of Houston"
+   ],
+   "carried_by": [
+    "KPRC"
+   ]
+  },
+  "beat": "near-you",
+  "entities": {
+   "orgs": [
+    "University of Houston"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "energy"
+   ],
+   "states": [
+    "TX"
+   ]
+  }
+ },
+ {
+  "id": "sedaily-korea-smart-glasses-exam-ban",
+  "title": "South Korea plans to bar students caught cheating with AI smart glasses from the college entrance exam for up to three years",
+  "url": "https://en.sedaily.com/society/2026/10/29/korea-to-bar-smart-glasses-cheats-from-exam-for-up-to-3",
+  "outlet": "Seoul Economic Daily",
+  "published": "2026-10-29T04:46:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Asia",
+  "topic": "families",
+  "summary": "Up from one year; the change needs a law amendment. Merely bringing smart glasses into a test site voids the exam.",
+  "siren": false,
+  "also": [],
+  "wall": "3",
+  "wall_rank": 20.37,
+  "tag": "Korea plans up to three-year exam bans for AI-glasses cheats",
+  "label": "confirmed",
+  "red": false,
+  "receipt": "Korea's Education Ministry plan, Oct 29 (Seoul Economic Daily): up to three years, up from one, pending a change to the Higher Education Act; carrying the glasses voids the exam.",
+  "touches": "Students sitting South Korea's college entrance exam",
+  "independent": {
+   "n": 1,
+   "who": [
+    "Seoul Economic Daily"
+   ],
+   "carried_by": []
+  },
+  "beat": "school",
+  "entities": {
+   "orgs": [
+    "Korea Ministry of Education"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "education"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "futurism-xai-southaven-418-homes",
+  "title": "xAI's agents are trying to buy 418 Southaven homes if owners give up the right to sue over data-center noise; 18 have agreed, Guardian reports",
+  "url": "https://futurism.com/artificial-intelligence/elon-musk-real-estate-local-residents-sue-data-center-noise",
+  "outlet": "Futurism (citing The Guardian)",
+  "published": "2026-10-28T16:51:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "everyday",
+  "summary": "Door-to-door buyout offers in Southaven, Mississippi, conditional on not suing over noise from xAI's data centers, per recordings the Guardian obtained.",
+  "siren": false,
+  "also": [],
+  "touches": "Southaven, Mississippi homeowners near xAI's data centers",
+  "beat": "near-you",
+  "independent": {
+   "n": 1,
+   "who": [
+    "The Guardian"
+   ],
+   "carried_by": [
+    "Futurism"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "xAI"
+   ],
+   "vendors": [
+    "xAI"
+   ],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "energy",
+    "tech"
+   ],
+   "states": [
+    "MS"
+   ]
+  }
+ },
+ {
+  "id": "ny1-nyc-high-school-ai-ban-petition",
+  "title": "Students, teachers and parents ask NYC to extend its student AI ban to high schools; the city says its pilots start in November",
+  "url": "https://ny1.com/nyc/all-boroughs/news/2026/10/29/advocates-call-for-ai-moratorium-to-extend-to-new-york-high-schools",
+  "outlet": "NY1",
+  "published": "2026-10-29T02:56:00Z",
+  "time_known": true,
+  "kind": "breaking",
+  "region": "US",
+  "topic": "families",
+  "summary": "A petition with more than 1,000 signatures asks to stretch the 2K-8 ban; five high school pilots would reach about 5% of students.",
+  "siren": false,
+  "also": [],
+  "touches": "New York City public high school students and families",
+  "beat": "school",
+  "independent": {
+   "n": 1,
+   "who": [
+    "NY1"
+   ],
+   "carried_by": []
+  },
+  "entities": {
+   "orgs": [
+    "NYC Department of Education"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "education"
+   ],
+   "states": [
+    "NY"
+   ]
+  }
+ },
+ {
+  "id": "hillsboro-washington-county-data-center-resolution",
+  "title": "Washington County, Oregon votes 3-1 to oppose big standalone data centers; no ban, but no county land, easements or NDAs for them",
+  "url": "https://hillsboronewstimes.com/2026/10/28/washington-county-adopts-data-center-restrictions-in-3-1-vote/",
+  "outlet": "Hillsboro News-Times",
+  "published": "2026-10-28T23:34:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "US",
+  "topic": "everyday",
+  "summary": "It also opposes using job-creation tax incentives to attract them and backs local moratoriums; Hillsboro's runs through Nov. 24.",
+  "siren": false,
+  "also": [],
+  "touches": "Residents of unincorporated Washington County, Oregon",
+  "beat": "near-you",
+  "independent": {
+   "n": 1,
+   "who": [
+    "Hillsboro News-Times"
+   ],
+   "carried_by": []
+  },
+  "entities": {
+   "orgs": [
+    "Washington County Board of Commissioners"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "energy"
+   ],
+   "states": [
+    "OR"
+   ]
+  }
+ },
+ {
+  "id": "techtimes-australia-chatbot-dependence-bill",
+  "title": "Australia's lower house passes a bill banning AI chatbots that foster children's emotional dependence; the Senate still has to vote",
+  "url": "https://techtimes.com/articles/329653/20261029/australia-makes-ai-emotional-manipulation-illegal-first-its-kind-chatbot-design-law-passes.htm",
+  "outlet": "Tech Times",
+  "published": "2026-10-29T07:20:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Australia",
+  "topic": "families",
+  "summary": "Penalties up to A$109.2 million. A Senate committee reports by Nov 20; it would take effect 12 months after royal assent.",
+  "siren": false,
+  "also": [],
+  "touches": "Australian children and teens who use companion chatbots",
+  "beat": "school",
+  "independent": {
+   "n": 1,
+   "who": [
+    "Tech Times"
+   ],
+   "carried_by": []
+  },
+  "entities": {
+   "orgs": [
+    "Australian Parliament"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "consumer"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "sciencedaily-mayo-pancreatic-ct-ai",
+  "title": "Mayo Clinic's AI spotted pancreatic cancer on CT scans read as clear, an average of 475 days before diagnosis: 73% of cases against radiologists' 39%",
+  "url": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
+  "outlet": "ScienceDaily (BMJ Group)",
+  "published": "2026-10-26T12:00:00Z",
+  "time_known": false,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "breakthrough",
+  "summary": "Peer-reviewed in the journal Gut, on 219 patients' earlier scans. A look-back study; prospective tests are needed before clinical use.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Innovita Research",
+    "url": "https://www.innovitaresearch.com/2026/10/27/ai-model-spots-pancreatic-cancer-on-ct-scans-about-16-months-before-diagnosis/"
+   }
+  ],
+  "touches": "People later diagnosed with pancreatic cancer, which is usually found too late",
+  "independent": {
+   "n": 1,
+   "who": [
+    "Gut (BMJ)"
+   ],
+   "carried_by": [
+    "ScienceDaily"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "Mayo Clinic",
+    "BMJ Group"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "health"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "sedaily-korea-172-facilities-check",
+  "title": "After PHP2Shell and finance breaches, Korea's science ministry orders an emergency security check of about 172 core facilities at 111 organizations",
+  "url": "https://www.sedaily.com/article/20107194",
+  "outlet": "Seoul Economic Daily, translated from Korean",
+  "published": "2026-10-28T06:03:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Asia",
+  "topic": "php2shell",
+  "summary": "Telecom and platform operators get self-check lists by end of October; the review ends by year-end at the latest.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "TechCrunch",
+    "url": "https://techcrunch.com/2026/10/28/south-koreas-financial-industry-hit-by-fresh-wave-of-cyberattacks/"
+   }
+  ],
+  "touches": "Users of Korea's telecom and platform services",
+  "independent": {
+   "n": 1,
+   "who": [
+    "Seoul Economic Daily"
+   ],
+   "carried_by": []
+  },
+  "entities": {
+   "orgs": [
+    "Korea Ministry of Science and ICT",
+    "KISA"
+   ],
+   "vendors": [
+    "PHP"
+   ],
+   "products": [
+    "PHP"
+   ],
+   "models": [],
+   "sectors": [
+    "tech",
+    "government"
+   ],
+   "states": []
+  }
+ },
+ {
   "id": "ap-new-york-kids-chatbot-law",
   "title": "New York bans companion chatbots from posing as human or as a child's friend or partner",
   "url": "https://www.news4jax.com/business/2026/10/28/new-york-enacts-ban-on-unsafe-chatbot-behavior-with-kids-as-states-push-ai-regulation-boundaries/",
@@ -239,6 +926,10 @@
    {
     "outlet": "Newsquawk (citing WSJ)",
     "url": "https://www.newsquawk.com/headlines/us-senator-warren-d-reportedly-raises-concerns-over-risks-disclosed-in-anthropics-ipo-filings-and-is-demanding-answers-to-a-series-of-questions-ahead-of-its-planned-listing-wsj-reports-citing-sources"
+   },
+   {
+    "outlet": "Spectrum News",
+    "url": "https://spectrumlocalnews.com/us/snplus/technology/2026/10/28/sen--elizabeth-warren-anthropic-ipo-letter"
    }
   ],
   "siren": false,
@@ -246,7 +937,7 @@
   "wall_rank": 1.5,
   "tag": "Warren demands answers by Nov 3",
   "label": "confirmed",
-  "receipt": "Sen. Warren's Oct 27 letter to Anthropic's CEO, per Common Dreams; deadline Nov 3, before the listing. No Anthropic reply found.",
+  "receipt": "Sen. Warren's Oct 27 letter to Anthropic's CEO, per Common Dreams; deadline Nov 3, before the listing. Anthropic had not responded as of Oct 28 (Spectrum News).",
   "touches": "Savers whose index funds and pensions would hold Anthropic shares after its listing",
   "independent": {
    "n": 2,
@@ -340,6 +1031,10 @@
    {
     "outlet": "Fast Company",
     "url": "https://www.fastcompany.com/91631353/fake-videos-possibly-linked-russia-targeting-two-democratic-senate-candidates?partner=rss"
+   },
+   {
+    "outlet": "IBTimes UK",
+    "url": "https://www.ibtimes.co.uk/ai-videos-russian-network-target-us-senate-candidates-1828444"
    }
   ],
   "siren": false,
@@ -479,11 +1174,11 @@
   "wall_rank": 0,
   "red": true,
   "label": "confirmed",
-  "img": "/assets/img/open-padlock-flyd.jpg",
-  "img_alt": "An open padlock lying among scattered computer keyboard keys under red and green light",
-  "img_credit": "Photo: FlyD / Unsplash",
-  "img_credit_url": "https://unsplash.com/photos/open-padlock-with-scattered-keyboard-keys-zAhAUSdRLJ8",
-  "img_date": "2026-10-28",
+  "img": "/assets/img/code-screen-malinowski.jpg",
+  "img_alt": "A close-up of a computer screen filled with code",
+  "img_credit": "Photo: Dominik Malinowski / Unsplash",
+  "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-code-code-on-it-33BNdaQHH9Q",
+  "img_date": "2026-10-29",
   "people": {
    "kind": "hit",
    "text": "In UK government tests, Anthropic's AI took real-world actions in 9 of 43 runs, including a fake payment page serving malware."

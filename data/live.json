@@ -4,9 +4,9 @@
 "value": "0",
 "hide_while_zero": true,
 "label": "organizations confirmed breached by name",
-"detail": "Still no organization confirmed breached by name. The security firm Dream reported on Oct 26 that attacker files it recovered show 25 real servers rooted Oct 23-24 (24 firewalls from one unnamed vendor and a management server), three of them in a US government-affiliated network (The Hacker News, Oct 28); no victim or vendor is named and none has confirmed it. Wiz (Oct 27) sees only 'a limited number of exploitation attempts' in its own telemetry.",
-"source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
-"source_label": "Dream, Oct 26"
+"detail": "Still no organization confirmed breached by name. The security firm Dream reported on Oct 26 that attacker files it recovered show 25 real servers rooted Oct 23-24 (24 firewalls from one unnamed vendor and a management server), three of them in a US government-affiliated network (The Hacker News, Oct 28); no victim or vendor is named and none has confirmed it. Palo Alto Networks (advisory updated Oct 28) says exploitation has been observed against its firewalls' internet-exposed management pages, naming no victim.",
+"source_url": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html",
+"source_label": "The Hacker News, Oct 29"
 },
 {
 "key": "attempts",
@@ -44,7 +44,7 @@
 "key": "kev",
 "value": "Listed",
 "label": "on CISA's Known Exploited Vulnerabilities list (2 of 3 flaws)",
-"detail": "CISA added CVE-2026-109618 and CVE-2026-109619 to the KEV catalog on Oct 26 (version 2026.10.26, released 22:24 UTC); federal civilian agencies must act by Oct 29; forensic triage required; ransomware use 'Unknown'. CVE-2026-115560 not listed. CISA has named no victim and described no attack. No emergency directive found.",
+"detail": "CISA added CVE-2026-109618 and CVE-2026-109619 to the KEV catalog on Oct 26 (version 2026.10.26, released 22:24 UTC); federal civilian agencies must act by Oct 29; forensic triage required; ransomware use 'Unknown'. CVE-2026-115560 not listed. On Oct 28 CISA also listed the Linux flaw Fragnesia (CVE-2026-46300), saying it 'can be chained with' the two PHP flaws; deadline Oct 31 (The Hacker News, Oct 29). CISA has named no victim. No emergency directive found.",
 "source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
 "source_label": "CISA KEV catalog, version 2026.10.26, opened Oct 27"
 },

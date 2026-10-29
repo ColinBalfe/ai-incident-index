@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-28T18:30:00-04:00",
- "as_of_label": "Oct 28, 2026, 18:30 ET",
- "next_check": "2026-10-29T05:17:00-04:00",
- "next_check_label": "Thursday, 05:17 ET",
+ "as_of": "2026-10-29T06:00:00-04:00",
+ "as_of_label": "Oct 29, 2026, 06:00 ET",
+ "next_check": "2026-10-29T12:17:00-04:00",
+ "next_check_label": "Thursday, 12:17 ET",
  "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Day eight, Wednesday evening: rechecked, nothing moved. Still no organization named or confirmed as breached. The security firm Dream's Oct 26 report (25 real servers rooted Oct 23-24 from the attacker's own files; three of them, two firewalls and an internal management server, in an unnamed US government-affiliated network, per The Hacker News on Oct 28) remains unconfirmed by any victim or second independent source (The Hacker News, Tom's Guide and Cybernews all work from Dream's report; Dream calls the actor suspected China-linked without naming a group, and says it notified the affected entity), so the running story stays PROVEN; it moves to HIT when a victim or a second independent source confirms. Correction: earlier editions said two of the 25 systems were at the government-linked body; it is three. America's cyber agency listed CVE-2026-109618 and CVE-2026-109619 as exploited on Oct 26; the federal deadline to fix them is tomorrow, Oct 29. The third flaw, CVE-2026-115560, still has no fix. Odds that a named organization confirms a breach by Nov 7 hold at 65%.",
+ "live_note": "Day nine, Thursday morning: it moved, but no rung. Palo Alto Networks updated its advisory on Oct 28 to say 'Active exploitation has been observed' against its firewalls' management pages exposed to the internet (The Hacker News, Oct 29); it names no victim, some of its fixes are due Oct 29-30, and it does not confirm the security firm Dream's Oct 26 report of 25 real servers rooted (three in an unnamed US government-affiliated network). The Hacker News guesses Dream's unnamed firewall vendor is Palo Alto; that is its inference, not a confirmed link. GreyNoise logged its first 2 successful exploitations, both on its own decoy sensors (Oct 28). Still no organization named or confirmed as breached, so the running story stays PROVEN. America's cyber agency added a Linux flaw, Fragnesia, which it says can be chained with the two PHP flaws, to its exploited list on Oct 28 (federal deadline Oct 31); today, Oct 29, is the federal deadline for the two PHP flaws. The third flaw, CVE-2026-115560, still has no fix (no PHP release since Oct 21). Odds that a named organization confirms a breach by Nov 7 raised from 65% to 70% on Palo Alto's confirmation.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-29",
+   "text": "06:00 ET: Lead unchanged (the labs' containment admission in Anthropic's SEC filing); Anthropic had still not answered Sen. Warren as of Oct 28 (Spectrum News), answers due Nov 3. PHP2Shell, day 9: moved, no rung change. Palo Alto Networks now confirms exploitation against its firewalls' internet-exposed management pages (advisory updated Oct 28; The Hacker News, Oct 29), naming no victim; GreyNoise logged its first 2 successful exploitations, both on its own decoy sensors; America's cyber agency listed the chained Linux flaw Fragnesia (deadline Oct 31). Still no organization named or confirmed breached, so it stays Proven. Calls: none due; 'named victim by Nov 7' odds 65% to 70% on Palo Alto's confirmation. 0 incidents added or corrected. The Wire: 15 stories added (Palo Alto; GreyNoise; 123 Reg's 'AI-driven' breach disclosure; Anthropic's AI-built attack chains and 62 Chrome flaws; Amazon's ~250 devices cuts, AI link the reporters'; Florida's suit against the A2E nudify app; Hermantown's data-center vote moved after protests; a Texas poll on data centers and power bills; Korea's three-year exam ban for AI-glasses cheats; xAI's Southaven buyouts; NYC's high-school AI ban petition; Washington County, Oregon's data-center resolution; Australia's chatbot bill in the lower house; Mayo Clinic's pancreatic-cancer AI; Korea's emergency check of 172 facilities), 3 'also' links. 2 breakthroughs (Mayo, published; Anthropic's Chrome flaws, the company's claim), 2 Up & Down rows (xAI down, Mayo Clinic up), 3 'This week' notes (Anthropic, Amazon, CISA), 3 watch dates (Hermantown Oct 30, Fragnesia Oct 31, Australia's Senate report Nov 20), 1 X post (Sen. Warren). New lead photo not sourced: this run's web-search budget ran out and a direct image search was blocked, so the lead reuses an earlier free photo (Dominik Malinowski / Unsplash, first downloaded Oct 26), not yesterday's. Checked twice: the second pass re-opened every new headline's source; it changed the Korea exam line ('plans', 'up to three years', the law still has to change), the Texas poll line (a local data center, as the survey asked), the GreyNoise receipt (dropped 'which don't run PHP', which the page says of the payloads, not the sensors), the Washington County summary (job-creation incentives only), the Warren X-post line (the 'largest IPO' is her phrase) and the odds basis (dropped an unsupported 'first'). Not opened this run: The Register's 123 Reg story and the Guardian's xAI story (permission requests timed out; LavX's republication and Futurism used, and labelled), the CISA catalog page (Fragnesia from The Hacker News). 0 corrections to published material."
+  },
   {
    "date": "2026-10-28",
    "text": "18:30 ET: Lead unchanged (the labs' containment admission in Anthropic's SEC filing; Warren's Nov 3 deadline). PHP2Shell: rechecked, nothing moved (still no victim named or confirming; Cybernews joins The Hacker News and Tom's Guide in carrying Dream's report, all from Dream's own account); running story stays Proven, day 8. Correction: the Dream line and the live note said two of the 25 rooted systems were at the US government-linked body; The Hacker News's account of Dream's report counts three (two firewalls and an internal management server), and the Wire title said '25 real firewalls' where it is 24 firewalls and a management server; both fixed in the line, the live note, the watchlist and the PHP2Shell timeline. 0 incidents added or corrected. The Wire: 4 stories added (New York's law banning companion chatbots from posing as children's friends or partners, AP and Fortune; Purdue's database of 482 political deepfake posts, Trump in 279, Sinclair; Anthropic's study of 50 analysts following their agent's random lean 86% of the time, a lab test; Anthropic's 40% government discount, about 500 government organizations on Claude, Fox News), 1 'also' link added. 1 Up & Down row, 1 'This week' note (Anthropic), 1 watch date (New York's chatbot rules take effect Jan 1, per AP). Calls: none due, no odds moved. Checked twice: the second pass re-opened every new line's source; it changed the New York line (dropped the signing day, since Fortune says Tuesday and AP says Wednesday) and found the 'two at a US government-linked body' error above. Not opened this run: Dream's own page and Anthropic's GSA announcement (permission request timed out; the Fox News live blog used instead); no X posts met the bar. 1 correction."
@@ -112,7 +116,7 @@
   "day1": "2026-10-21",
   "state": "live",
   "url": "/php2shell/",
-  "standing": "America's cyber agency lists two of the flaws as used in real attacks, and a security firm says 25 real servers were broken into. No victim has been named or has confirmed it. A third flaw is still unfixed.",
+  "standing": "America's cyber agency lists two of the flaws as used in real attacks, Palo Alto says attackers are exploiting them on its firewalls, and a security firm says 25 real servers were broken into. No victim has been named or has confirmed it. A third flaw is still unfixed.",
   "rung": "proven",
   "rungs": {
    "tried": {
@@ -131,19 +135,19 @@
     "source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers"
    }
   },
-  "source_url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
-  "source_label": "Dream, Oct 26",
-  "last_fact": "2026-10-27",
+  "source_url": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html",
+  "source_label": "The Hacker News, Oct 29",
+  "last_fact": "2026-10-28",
   "closed": "",
   "verdict": "",
-  "recheck": "still no victim confirms Dream's report; third flaw still unfixed",
-  "recheck_at": "2026-10-28T18:30:00-04:00",
+  "recheck": "Palo Alto confirms attacks on its firewalls but names no victim; third flaw still unfixed",
+  "recheck_at": "2026-10-29T06:00:00-04:00",
   "next_test": {
    "date": "2026-11-07",
    "text": "Will a real organization confirm it was broken into through the flaw under most websites?",
    "call_id": "php-confirmed-breach-by-nov7"
   },
-  "strip": "Firm reports 25 real servers hit. No victim named yet.",
+  "strip": "Palo Alto confirms attacks on its firewalls. No victim named.",
   "day1_note": "the flaw went public",
   "lead": null,
   "exposure": {
@@ -157,7 +161,7 @@
    "7 days with no new fact"
   ]
  },
- "quiet": true,
- "edition": 17,
- "edition_path": "archive/2026-10-28-1830/"
+ "quiet": false,
+ "edition": 18,
+ "edition_path": "archive/2026-10-29-0600/"
 }

@@ -97,5 +97,23 @@
   "news_id": "fox-anthropic-gsa-discount",
   "line": "Gave US federal, state, local and tribal governments 40% off many of its services and says about 500 government organizations already use Claude.",
   "why": "Government seats are sticky: once a state's workflows run on one model, switching costs land on taxpayers, not the vendor. Locking them in while senators question its safety disclosures makes Anthropic harder to regulate against."
+ },
+ {
+  "id": "xai-southaven-down",
+  "date": "2026-10-29",
+  "dir": "down",
+  "name": "xAI",
+  "news_id": "futurism-xai-southaven-418-homes",
+  "line": "Its agents are going door to door offering to buy 418 Southaven, Mississippi homes if owners sign away the right to sue over data-center noise; 18 have agreed, per recordings the Guardian obtained.",
+  "why": "Buying out the neighbours is cheaper than quieting the turbines, and each signed release shrinks the class in the noise suit. It also tells every town weighing an AI data center what the exit offer looks like once the noise starts."
+ },
+ {
+  "id": "mayo-redmod-up",
+  "date": "2026-10-29",
+  "dir": "up",
+  "name": "Mayo Clinic",
+  "news_id": "sciencedaily-mayo-pancreatic-ct-ai",
+  "line": "Its AI caught 73% of pancreatic cancers on CT scans radiologists had read as clear, against their 39%, an average of 475 days before diagnosis, in a peer-reviewed study in Gut.",
+  "why": "Whoever owns a validated early-warning model sets the screening standard insurers end up paying for. A published result puts Mayo ahead of tech companies selling unreviewed imaging AI to the same hospitals."
  }
 ]

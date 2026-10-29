@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-28T18:30:00-04:00",
+ "as_of": "2026-10-29T06:00:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -11,34 +11,34 @@
   },
   {
    "kind": "brief",
-   "text": "New York banned companion chatbots from posing as human or claiming a friendship or romance with children. The attorney general can sue for up to $25,000 per violation.",
-   "link": "https://fortune.com/2026/10/28/new-york-state-kathy-hochul-bans-ai-chatbots-romantic-baby-monitors/",
+   "text": "Palo Alto Networks says attackers are exploiting the flaw under most websites against its firewalls' internet-exposed management pages. No victim named; some fixes due Oct 29-30.",
+   "link": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html",
    "image": null,
-   "chars": 192,
+   "chars": 202,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Anthropic study: 50 analysts went with their AI agent's randomly assigned lean 86% of the time. 77% reused its arguments; 15% credited it.",
-   "link": "https://www.anthropic.com/research/agents-judgment-calls",
+   "text": "UK web host 123 Reg says an 'AI-driven cyberattack' on Sept 18 read customers' names, phone numbers and account details. It suspects a China link.",
+   "link": "https://news.lavx.hu/article/123-reg-discloses-ai-cyberattack-on-customer-data-suspects-china-nexus",
    "image": null,
-   "chars": 162,
+   "chars": 170,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Purdue's political deepfakes database has logged 482 posts this midterm cycle; Donald Trump appears in 279 of them.",
-   "link": "https://nbc16.com/news/nation-world/more-political-deepfakes-muddying-the-waters-this-election-trump-most-frequent-target-purdue-political-deepfakes-incidents-database",
+   "text": "Florida's attorney general sued AI image app A2E, saying it lets users 'nudify' non-consenting Floridians, including children.",
+   "link": "https://www.yahoo.com/news/us/articles/uthmeier-ai-company-allows-people-210354335.html",
    "image": null,
-   "chars": 139,
+   "chars": 150,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "The flaw under most websites, day 8: still no victim named. Three of the 25 systems Dream says were rooted sat in a US government-affiliated network. The federal fix deadline is tomorrow, Oct 29.",
-   "link": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html",
+   "text": "Mayo Clinic's AI caught 73% of pancreatic cancers on CT scans radiologists had read as clear, against their 39%, an average of 475 days before diagnosis.",
+   "link": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
    "image": null,
-   "chars": 219,
+   "chars": 177,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {

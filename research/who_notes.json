@@ -2,6 +2,14 @@
  "_about": "This week, per name: two or three plain sentences on what moved for the name, written by the refresh from the Wire stories listed in 'sources' (ids in research/news.json or the archive). Newest first; older notes stay as the page's running log. Facts only from the sources; allegations attributed.",
  "anthropic": [
   {
+   "date": "2026-10-29",
+   "text": "Said an unreleased internal model, after initial prompting, built working attack chains against Chrome, Safari, Android, Windows and Linux, and that its Chrome work produced 62 critical or high flaws, all patched. It had not answered Senator Warren's letter as of Oct 28, per Spectrum News; her questions are due Nov 3.",
+   "sources": [
+    "anthropic-exploit-chains-five-systems",
+    "commondreams-warren-anthropic-ipo"
+   ]
+  },
+  {
    "date": "2026-10-28",
    "text": "Published a study in which 50 analysts went with its AI agent's randomly assigned lean 86% of the time, and only 15% credited the agent for arguments they reused. It also cut prices 40% for US governments, saying about 500 government organizations use Claude, while Senator Warren's questions on its safety disclosures are due Nov 3.",
    "sources": [
@@ -45,10 +53,26 @@
  ],
  "cisa": [
   {
+   "date": "2026-10-29",
+   "text": "Added the Linux flaw Fragnesia to its exploited list on Oct 28, saying it 'can be chained with' the two PHP2Shell flaws to plant web shells; federal agencies must fix it by Oct 31. The deadline for the two PHP flaws is Oct 29.",
+   "sources": [
+    "thn-paloalto-php2shell-mgmt-exploited"
+   ]
+  },
+  {
    "date": "2026-10-28",
    "text": "Listed two of the PHP2Shell flaws as exploited in real attacks on Oct 26 and gave federal agencies until Oct 29 to fix them. It has named no victim.",
    "sources": [
     "bleeping-cisa-kev-php2shell"
+   ]
+  }
+ ],
+ "amazon": [
+  {
+   "date": "2026-10-29",
+   "text": "Cut about 250 jobs in its devices and services unit on Oct 28, mostly software roles, Reuters reported. Amazon cited efficiency and its product roadmap, not AI; the cuts came a day after it shared a memo urging engineers to use AI.",
+   "sources": [
+    "businesstoday-amazon-250-devices-cuts"
    ]
   }
  ]

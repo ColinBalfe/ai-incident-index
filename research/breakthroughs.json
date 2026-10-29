@@ -91,5 +91,56 @@
    ],
    "states": []
   }
+ },
+ {
+  "id": "bt-mayo-redmod-pancreatic",
+  "news_id": "sciencedaily-mayo-pancreatic-ct-ai",
+  "date": "2026-10-26",
+  "area": "Medicine",
+  "proof": "published",
+  "payoff": "An AI found pancreatic cancer on scans doctors had read as clear, about 475 days before diagnosis",
+  "means": "On earlier CT scans of 219 people later diagnosed with pancreatic cancer, the model caught 73% of cases; experienced radiologists caught 39%. The study is peer-reviewed, in the journal Gut. The catch: it looked back at old scans, its patients lacked ethnic diversity, and it needs forward-looking trials before doctors can use it.",
+  "people": "People with pancreatic cancer, which is usually found too late to cure",
+  "entities": {
+   "orgs": [
+    "Mayo Clinic"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "health"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "bt-anthropic-62-chrome-flaws",
+  "news_id": "anthropic-exploit-chains-five-systems",
+  "date": "2026-10-27",
+  "area": "Safer software",
+  "proof": "claimed",
+  "payoff": "Anthropic says its AI found 62 serious Chrome flaws, now fixed before attackers used them",
+  "means": "Anthropic says an unreleased model, after initial prompting, found flaws and chained them into working attacks on Chrome, Safari, Android, Windows and Linux; it reported them and all are patched, with no real-world attacks. That is the company's account: The Hacker News found some public flaw records don't clearly match its descriptions. The same skill in the wrong hands is the warning.",
+  "people": "Everyone using Chrome, whose browser got 62 critical or high fixes",
+  "entities": {
+   "orgs": [
+    "Anthropic",
+    "Google"
+   ],
+   "vendors": [
+    "Anthropic"
+   ],
+   "products": [
+    "Chrome"
+   ],
+   "models": [
+    "Claude"
+   ],
+   "sectors": [
+    "tech"
+   ],
+   "states": []
+  }
  }
 ]

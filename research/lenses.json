@@ -37,6 +37,11 @@
     "url": "https://theoutpost.ai/news-story/google-faces-bipartisan-senate-inquiry-over-ai-in-schools-and-student-mental-health-concerns-32482/"
    },
    {
+    "date": "2026-11-20",
+    "text": "Australia's Senate committee reports on the bill banning chatbots that foster children's dependence (passed the lower house Oct 28)",
+    "url": "https://techtimes.com/articles/329653/20261029/australia-makes-ai-emotional-manipulation-illegal-first-its-kind-chatbot-design-law-passes.htm"
+   },
+   {
     "date": "2027-01-01",
     "text": "New York's limits on companion chatbots for under-18s take effect, per AP",
     "url": "https://www.news4jax.com/business/2026/10/28/new-york-enacts-ban-on-unsafe-chatbot-behavior-with-kids-as-states-push-ai-regulation-boundaries/"
@@ -173,14 +178,19 @@
   ],
   "watch": [
    {
-    "date": "",
-    "text": "Arizona: the attorney general wants an audit of whether homes paid data-centre-driven fuel costs; APS asks for a 14% to 16% residential rise",
-    "url": "https://kjzz.org/business/2026-10-26/arizona-utilities-scramble-to-keep-up-as-data-center-boom-drives-rapid-expansion-of-the-power-grid"
+    "date": "2026-10-30",
+    "text": "Hermantown, Minnesota council votes on the final local approvals for Google's data center (6:30 p.m., moved after protests)",
+    "url": "https://www.mprnews.org/story/2026/10/28/hermantown-data-center-vote-moved-to-friday-after-protests-at-city-council-meeting"
    },
    {
     "date": "2026-11-03",
     "text": "Oregon, Ohio votes on Issue 25, a ban on data centers of 25 megawatts or more",
     "url": "https://www.13abc.com/2026/10/27/oregon-residents-debate-issue-25-during-council-meeting-one-week-before-vote-data-center/"
+   },
+   {
+    "date": "",
+    "text": "Arizona: the attorney general wants an audit of whether homes paid data-centre-driven fuel costs; APS asks for a 14% to 16% residential rise",
+    "url": "https://kjzz.org/business/2026-10-26/arizona-utilities-scramble-to-keep-up-as-data-center-boom-drives-rapid-expansion-of-the-power-grid"
    }
   ],
   "calls": []
@@ -216,6 +226,11 @@
     "date": "2026-10-29",
     "text": "Federal deadline for US agencies to fix the two PHP flaws CISA lists as used in attacks",
     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+   },
+   {
+    "date": "2026-10-31",
+    "text": "Federal deadline to fix Fragnesia, the Linux flaw America's cyber agency says can be chained with the two PHP flaws",
+    "url": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html"
    }
   ],
   "calls": [

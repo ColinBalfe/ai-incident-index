@@ -175,5 +175,21 @@
   "quote": "introducing Gemini 4 Carbon, our next frontier model.",
   "seen_via": "Colin",
   "related": "9to5google-gemini-4-carbon"
+ },
+ {
+  "id": "senwarren-anthropic-ipo-risks",
+  "url": "https://x.com/SenWarren/status/2115440657120555486",
+  "platform": "X",
+  "author": "Elizabeth Warren",
+  "handle": "@SenWarren",
+  "who": "US senator who sent Anthropic's CEO the letter on its safety disclosures, answers due Nov 3",
+  "posted": "2026-10-28T13:48:50Z",
+  "kind": "official",
+  "power": 4,
+  "story": "anthropic-s1-containment",
+  "what": "The senator pressing Anthropic before its listing: she notes its own warnings of catastrophic risk while it plans what she calls the largest IPO in history. Anthropic had not answered her as of Oct 28.",
+  "quote": "Anthropic is saying that AI models could pose catastrophic or existential risks to humanity.",
+  "seen_via": "web search",
+  "related": "commondreams-warren-anthropic-ipo"
  }
 ]
