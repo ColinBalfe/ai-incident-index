@@ -102,6 +102,12 @@ try:
         body = ' '.join([n.get('title') or '', n.get('summary') or '', n.get('receipt') or '', ((n.get('people') or {}).get('text') or '')])
         miss = _num(n['tag']) - _num(body)
         if miss: fails.append(f'news "{n["id"]}": headline line has {", ".join(sorted(miss))} but its story text does not (stale or mistyped figure): {n["tag"]}')
+        # the lead's summary and its "What happens next" line follow the same rule (Oct 30 front page)
+        body2 = body + ' ' + (n.get('standfirst') or '')
+        nx = n.get('next'); nx = (nx.get('text') if isinstance(nx, dict) else nx) or ''
+        for fld, val in (('lead_summary', n.get('lead_summary') or ''), ('next', nx)):
+            miss = _num(val) - _num(body2)
+            if miss: fails.append(f'news "{n["id"]}": {fld} has {", ".join(sorted(miss))} but its story text does not: {val[:120]}')
 except (OSError, ValueError):
     pass
 # The share where the AI did the acting is a last-12-months figure; it must be the same everywhere and never called "this year's".

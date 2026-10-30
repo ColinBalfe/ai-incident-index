@@ -41,7 +41,7 @@ await page.evaluate(() => {
   const img = document.querySelector('#wall-lead .dl-hero img');
   const up = document.getElementById('tb-updated').title.split('.')[0].replace(/^Last refresh /, '');
   const c = document.createElement('div'); c.id = 'og-siren';
-  const lv = (document.querySelector('#level .lvl-l b') || {}).textContent || '';
+  const lv = (document.querySelector('#itl-level .lvi-b') || {}).textContent || '';
   const day = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', month: 'short', day: 'numeric' }).format(new Date());
   c.innerHTML = '<div class="bg"></div><div class="shade"></div><div class="tx"><div class="k"><i></i>' + [lv ? "Today's level " + lv : '', day].filter(Boolean).join(' · ') + '</div><div class="h"></div></div><div class="ft"><b>WARNING SHOTS</b><span>See what’s coming. Know what it means · Updated ' + up + '</span></div>';
   if (img) c.querySelector('.bg').style.backgroundImage = 'url(' + img.src + ')';

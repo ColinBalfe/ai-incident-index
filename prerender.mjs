@@ -1,12 +1,12 @@
 // Prerender the first screen into index.html: node prerender.mjs [url] [file]
-// The page draws the ribbon, ticker, siren, brief, Wire board and live rail from data/*.json in the browser. Baking that
+// The page draws the lead, the incident timeline and the level, Latest stories and the scoreboard from data/*.json in the browser. Baking that
 // markup into index.html at build time means the headline is in the first paint instead of waiting for d3, app.js and the
 // data bundle; the script then redraws the same markup and nothing moves. Run after build_site.py, before make_og.mjs.
 import { chromium } from 'playwright';
 import fs from 'fs';
 const url = process.argv[2] || 'http://127.0.0.1:8765/index.html';
 const file = process.argv[3] || new URL('./index.html', import.meta.url).pathname;
-const IDS = ['level', 'wall-lead', 'wall', 'edition', 'tb-updated']; // #story (the top band) is drawn by the script; the empty section keeps its height
+const IDS = ['wall-lead', 'itl-fig', 'itl-level', 'itl-live', 'latest-body', 'rail', 'wall', 'edition', 'tb-updated']; // the lead, the timeline (its chart as a same-size placeholder) with the level, Latest stories, the scoreboard and the deeper sections
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
 // A phone-width context: the Wire board shows its short form (12 stories) below 760px, so the phone's first paint is final; wider screens extend the board when the script runs.
 const page = await (await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, reducedMotion: 'reduce', colorScheme: 'light' })).newPage();
@@ -27,7 +27,7 @@ const out = await page.evaluate(([src, ids]) => {
     done.push(id);
   }
   // the Seismograph is drawn (and replayed) by the script; bake only a same-size placeholder so nothing jumps
-  doc.querySelectorAll('.seis').forEach((n) => { const ph = doc.createElement('div'); ph.className = 'seis-ph'; ph.setAttribute('aria-hidden', 'true'); n.replaceWith(ph); });
+  doc.querySelectorAll('.seis').forEach((n) => { const ph = doc.createElement('div'); ph.className = 'seis-ph'; ph.innerHTML = '<a href="/index/#all">Every AI incident on the record, scored and sourced →</a>'; n.replaceWith(ph); }); // without the script, a way to the same records
   // the ticker's measured animation is reapplied by the script; keep it still until then
   const run = doc.getElementById('ticker-run'); if (run) { run.classList.remove('go'); run.removeAttribute('style'); }
   doc.documentElement.setAttribute('data-prerendered', '1');
