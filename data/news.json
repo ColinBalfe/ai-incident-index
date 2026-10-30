@@ -453,7 +453,7 @@
 "img_credit": "Photo: Jack Niles / Unsplash",
 "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-globe-with-a-black-background-x8M6PUfikfg",
 "img_date": "2026-10-30",
-"standfirst": "CrowdStrike says a China-linked group it calls VAPOR PANDA used ARTEX, an open-source AI agent framework running mainly on China's DeepSeek model, against more than 200 organizations in at least 14 countries over 11 days from Oct 17, and confirmed the attackers got inside nine. A human operator steered the agents only at decision points. Targets included foreign ministries and 19 US pharmaceutical, chip, defense, nuclear and finance organizations; CrowdStrike names no victim, and no response from DeepSeek or China has been reported.",
+"standfirst": "CrowdStrike says a China-linked group ran AI agents, mostly on China's DeepSeek model, against more than 200 organizations in at least 14 countries over 11 days, and got inside nine. A human steered the agents only at decision points, so one operation could run many break-in attempts at once. CrowdStrike names no victim, and targets included foreign ministries and US chip, defense and nuclear organizations.",
 "people": {
 "kind": "hit",
 "text": "At least nine organizations had the attackers inside their networks; the 200-plus targets included foreign ministries and US chip, defense and nuclear organizations."
@@ -507,7 +507,9 @@
 "energy"
 ],
 "states": []
-}
+},
+"next": "CrowdStrike expects China-linked hacking groups to keep adopting AI agent tools like this one over the next 12 months.",
+"confidence_note": "From CrowdStrike's own published investigation. No victim has been named or has confirmed it."
 },
 {
 "id": "keyt-cnn-eclypsium-tampered-ai-hardware",
