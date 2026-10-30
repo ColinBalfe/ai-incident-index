@@ -7,7 +7,7 @@ const OPTIONAL = ['quotes', 'brief', 'news', 'capabilities', 'fixes', 'tns', 'ca
 const EMBED = new URLSearchParams(location.search).get('embed');
 const LEAD_PREVIEW = new URLSearchParams(location.search).get('lead'); if (LEAD_PREVIEW && document.body) document.body.dataset.lead = LEAD_PREVIEW === 'now' ? '' : LEAD_PREVIEW;
 const PAGE = (document.body && document.body.dataset.page) || 'front'; // 'front' = the headline page (/), 'record' = the full index (/index/)
-const FRONT_IDS = new Set(['wall', 'wall-lead', 'level', 'why', 'front', 'recfoot']);
+const FRONT_IDS = new Set(['wall', 'wall-lead', 'promise', 'incident-timeline', 'latest', 'morning-shot', 'rail', 'why', 'front', 'recfoot']);
 const WIRE_IDS = new Set(['wire', 'now', 'brief', 'since', 'siren', 'ribbon', 'ticker']);
 const RECORD_IDS = new Set(['record', 'capabilities', 'words', 'pattern', 'charts', 'next', 'dives', 'fixes', 'signals', 'all', 'about']);
 const D = {};
@@ -494,154 +494,177 @@ document.addEventListener('click', (e) => { const n = e.target.closest && e.targ
 const WALL_COLS = { 1: 'Broke out & in', 2: 'Got smarter, took over', 3: 'Fakes, scams & you' };
 const WALL_LABEL = { lab: 'Lab only', retracted: 'Retracted', reported: 'Reported', denied: 'Denied', tried: 'Tried', proven: 'Proven', hit: 'Hit' };
 let LEVEL_STREAK = null;
+/* ---------- The level, as reference material beside the incident timeline (never a banner): what it measures, when it was
+   updated, what changed since yesterday and which incident sets it, with the methodology. The score is the formula's; nothing here moves it. */
 function drawLevel() {
-  const box = document.getElementById('level'); if (!box || !C.scored) return;
+  const box = document.getElementById('itl-level'); if (!box || !C.scored) return;
   const asOf = Date.parse(D.meta.as_of);
   const recent = C.scored.filter((r) => { const d = Date.parse(r.disclosed || r.date); return d && asOf - d <= 864e5 && d <= asOf + 864e5; });
   const live = C.scored.find((r) => r.id === D.meta.live_incident);
   const pool = recent.concat(live ? [live] : []); if (!pool.length) { box.hidden = true; return; }
-  const top = pool.slice().sort((a, b) => b.severity - a.severity)[0];
+  const ranked = pool.slice().sort((a, b) => b.severity - a.severity).filter((r, i, arr) => arr.findIndex((x) => x.id === r.id) === i);
+  const top = ranked[0];
   const n = +String(top.level).replace('WS-', '');
-  const h = C.headline || {};
-  box.hidden = false; box.className = 'lvl lv' + n;
+  box.hidden = false; box.className = 'lvi lv' + n;
   document.body.dataset.level = String(n);
-  const a1 = el('span', 'lvl-l'); a1.append(el('span', 'k', 'Today’s level'), el('b', null, top.level + ' ' + String(top.tier).toUpperCase()));
-  const why = el('button', 'lvl-why', 'Why ' + top.level + ' today?'); why.type = 'button'; why.setAttribute('aria-expanded', 'false');
-  const wall = newsItems().filter((x) => x.tag && x.wall);
-  const a2 = el('span', 'lvl-n');
-  const lastState = PREV_STATE;
-  const srN = D.meta.serial || {}; const nowState = { level: top.level, rung: srN.rung || '', serial: srN.incident_id || '' }; NOW_LEVEL = top.level;
-  if (PREV_VISIT) { const k = wall.filter(isNewToReader).length; const bits = [];
-    if (lastState && lastState.level && lastState.level !== nowState.level) bits.push('level moved ' + lastState.level + ' → ' + nowState.level);
-    if (lastState && lastState.serial === nowState.serial && lastState.rung && lastState.rung !== nowState.rung) bits.push('the running story moved up to ' + nowState.rung.charAt(0).toUpperCase() + nowState.rung.slice(1));
-    if (k || bits.length) { a2.append(el('i', 'newdot')); if (k) a2.append(el('b', null, String(k)), txt(' new' + (bits.length ? ', ' : ''))); if (bits.length) a2.append(txt(bits.join(', '))); a2.append(txt(' since you last looked')); }
-    else a2.append(txt('Nothing new since you last looked: level unchanged, no new rung')); a2.title = 'Headlines added since ' + fmtET(new Date(PREV_VISIT).toISOString()) + ' (your last visit, saved in this browser only).'; }
-  else { a2.append(el('b', null, String(wall.length)), txt(' headlines on today\'s front page · ' + newsItems().length + ' reports in 3 days')); }
-  try { localStorage.setItem('ws-last-state', JSON.stringify(nowState)); } catch (e) {}
-  const a3 = el('a', 'lvl-s'); a3.href = '#record'; a3.append(txt('Severe incidents, last 12 months: '), el('b', null, String(h.severe_last12 ?? '')), txt(' (was ' + (h.severe_prior12 ?? '') + ')'));
-  const det = el('div', 'lvl-det'); det.hidden = true;
-  det.append(el('p', null, 'The level is the highest score among incidents disclosed in the last 24 hours and the live incident, by the index’s published formula. Today it is set by:'));
-  const ul = el('ul'); pool.slice().sort((a, b) => b.severity - a.severity).filter((r, i, arr) => arr.findIndex((x) => x.id === r.id) === i).slice(0, 4).forEach((r) => { const li = el('li'); const a = el('a', null, r.title); a.href = '#i=' + r.id; li.append(el('b', null, r.level + ' · ' + r.severity + '/100'), txt(' '), a); ul.append(li); });
-  const how = el('a', null, 'How the scores work →'); how.href = '/index/#about';
+  const srN = D.meta.serial || {}; NOW_LEVEL = top.level;
+  try { localStorage.setItem('ws-last-state', JSON.stringify({ level: top.level, rung: srN.rung || '', serial: srN.incident_id || '' })); } catch (e) {}
+  // the level's memory: one block per archived day (data/level_history.json) plus today; a streak only when it is real
+  const today = D.meta.as_of.slice(0, 10);
+  const H = (D.level_history || []).filter((x) => x.date < today).concat([{ date: today, level: n, tier: top.tier }]);
+  let k = 1; for (let i = H.length - 2; i >= 0 && H[i].level === n; i--) k++;
+  const prev = H.length > 1 ? H[H.length - 2].level : null;
+  const fmtD = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const d0 = fmtD(H[0].date);
+  LEVEL_STREAK = { k, n, tier: top.tier, prev, all: k >= H.length, d0 };
+  const row = el('div', 'lvi-top'); row.append(el('span', 'lvi-k', 'Today’s level'), el('b', 'lvi-b', top.level + ' ' + String(top.tier).toUpperCase())); // upper case in the markup: build_level.py reads it from the frozen editions
+  if (H.length >= 2) { const m = el('a', 'lvl-mem'); m.href = '/level/'; m.setAttribute('aria-label', 'The level, day by day');
+    const bl = el('span', 'lvl-blocks'); bl.setAttribute('aria-hidden', 'true'); H.slice(-14).forEach((x) => { const i = el('i', 'lv' + x.level); i.title = fmtD(x.date) + ': WS-' + x.level + ' ' + x.tier; bl.append(i); });
+    m.append(bl, txt(k >= H.length ? ' ' + top.tier + ' every day since ' + d0 : k >= 2 ? ' Day ' + k + ' at ' + top.tier : ' Since ' + d0)); row.append(m); }
+  const what = el('p', 'lvi-what'); what.append(el('b', null, 'What it measures: '), txt('the most severe incident disclosed in the last 24 hours, or still live, scored 0 to 100 by our published formula, from WS-1 Minor to WS-5 Critical.'));
+  const changed = prev == null ? 'This is the first day on record.' : prev === n ? (k >= H.length ? 'No change: ' + top.level + ' every day since ' + d0 + ', when the daily record starts.' : 'No change from yesterday.') : n > prev ? 'Up from WS-' + prev + ' yesterday.' : 'Down from WS-' + prev + ' yesterday.';
+  const set = el('a', null, top.title); set.href = '/i/' + top.id + '/';
+  const when = el('p', 'lvi-when'); when.append(el('b', null, 'Updated '), txt(fmtET(D.meta.as_of) + '. '), el('b', null, 'What changed: '), txt(changed + ' Set by '), set, txt(' (' + top.severity + '/100).'));
+  const why = el('button', 'lvi-why', 'Why ' + top.level + ' today? ▾'); why.type = 'button'; why.setAttribute('aria-expanded', 'false'); why.setAttribute('aria-controls', 'lvi-det');
+  const det = el('div', 'lvi-det'); det.id = 'lvi-det'; det.hidden = true;
+  det.append(el('p', null, 'The highest scores among incidents disclosed in the last 24 hours and the live incident:'));
+  const ul = el('ul'); ranked.slice(0, 4).forEach((r) => { const li = el('li'); const a = el('a', null, r.title); a.href = '/i/' + r.id + '/'; li.append(el('b', null, r.level + ' · ' + r.severity + '/100'), txt(' '), a); ul.append(li); });
   const lsh = el('div', 'share lvl-share');
-  shareRow(lsh, { anchor: '', text: `Today's AI danger level: ${top.level} ${String(top.tier).toUpperCase()}, set by "${top.title}" (${top.severity}/100). Warning Shots:`,
+  shareRow(lsh, { anchor: 'incident-timeline', text: `Today's AI danger level: ${top.level} ${String(top.tier).toUpperCase()}, set by "${top.title}" (${top.severity}/100). Warning Shots:`,
     card: { name: 'level-' + D.meta.as_of.slice(0, 10), kicker: 'TODAY’S LEVEL  ·  ' + fmtDate(new Date(D.meta.as_of)), headline: top.level + ' ' + String(top.tier).toUpperCase() + ': ' + top.title, finding: (top.summary || '').split('. ').slice(0, 2).join('. ').replace(/\.?$/, '.'), impact: top.severity + '/100 · the highest score among incidents disclosed in the last 24 hours and the live incident', evidence: 'Scored by the index’s published formula; every incident links to its source.', stamp: 'Level as of ' + fmtET(D.meta.as_of) } });
-  det.append(ul, how, lsh);
-  why.addEventListener('click', () => { det.hidden = !det.hidden; why.setAttribute('aria-expanded', String(!det.hidden)); });
-  const brand = el('a', 'lvl-brand'); brand.href = '#top'; brand.setAttribute('aria-label', 'Warning Shots: the masthead'); const mk = document.querySelector('.masthead .logo .mark'); if (mk) { const c = mk.cloneNode(true); c.setAttribute('class', 'lvl-mark'); c.setAttribute('aria-hidden', 'true'); brand.append(c); } brand.append(el('b', null, 'Warning Shots'), el('span', 'lvl-sep', '·'), el('span', 'lvl-desc', 'AI’s dangers and breakthroughs'));
-  // The level with a memory: one block per archived day (data/level_history.json) plus today; a streak only when it is real
-  const mem = (() => { const today = D.meta.as_of.slice(0, 10); const H = (D.level_history || []).filter((x) => x.date < today).concat([{ date: today, level: n, tier: top.tier }]);
-    if (H.length < 2) return null; let k = 1; for (let i = H.length - 2; i >= 0 && H[i].level === n; i--) k++;
-    const m = el('a', 'lvl-mem'); m.href = '/level/'; m.setAttribute('aria-label', 'The level, day by day');
-    const bl = el('span', 'lvl-blocks'); H.slice(-14).forEach((x) => { const i = el('i', 'lv' + x.level); i.title = new Date(x.date + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }) + ': WS-' + x.level + ' ' + x.tier; bl.append(i); });
-    const d0 = new Date(H[0].date + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-    m.append(bl, txt(k >= H.length ? ' ' + String(top.tier).toUpperCase() + ' every day since ' + d0 : k >= 2 ? ' Day ' + k + ' at ' + String(top.tier).toUpperCase() : ' Since ' + d0));
-    LEVEL_STREAK = { k, n, tier: top.tier, prev: H.length > 1 ? H[H.length - 2].level : null, all: k >= H.length, d0 }; return m; })();
-  box.replaceChildren(brand, a1, ...(mem ? [mem] : []), why, a2, a3, det);
+  det.append(ul, lsh);
+  why.addEventListener('click', () => { det.hidden = !det.hidden; why.setAttribute('aria-expanded', String(!det.hidden)); why.textContent = 'Why ' + top.level + ' today? ' + (det.hidden ? '▾' : '▴'); });
+  const links = el('div', 'lvi-links'); const how = el('a', null, 'How the level is set →'); how.href = '/methodology/'; const hist = el('a', null, 'The level, day by day →'); hist.href = '/level/';
+  links.append(why, how, hist);
+  box.replaceChildren(row, what, when, links, det);
 }
-let edOpen = /^#(why|seis|chart|xon|graded|next-up|ed-more)/.test(location.hash || '');
+let edOpen = /^#(why|chart|xon|graded|next-up|ed-more)/.test(location.hash || '');
 function setEdOpen(v) { edOpen = v; document.body.classList.toggle('ed-open', v); const m = document.getElementById('ed-more'); if (!m) return; m.classList.toggle('open', v); const t = m.querySelector('.ed-tog'); if (t) { t.setAttribute('aria-expanded', String(v)); t.querySelector('.ed-tl').textContent = v ? 'Show less ▴' : 'More in today’s edition ▾'; } }
+// A story's category, in plain words (the live case goes by its plain name, never its codename)
+const storyCat = (n) => n.topic === 'php2shell' ? (((D.meta || {}).serial || {}).name || 'Website flaw') : (n.topic && n.topic !== 'other' && TOPIC[n.topic]) || 'AI news';
+// How sure we are, in one plain line under the lead (a confirmed story is stated flat and needs no line)
+const LEAD_CONF = { reported: 'one source so far, not independently confirmed.', lab: 'this happened in a test, not in real use.', tried: 'attacks were attempted and logged; nothing is confirmed broken into.', proven: 'a test system was actually broken into; no real victim confirmed yet.', hit: 'a real victim is confirmed by name.', retracted: 'the source has withdrawn this claim.', denied: 'the party named says it did not happen.' };
+/* ---------- The front page, top to bottom (the Oct 30 brief): the lead story; the incident timeline with the level beside it;
+   six latest stories; The Morning Shot (static, in the template); then the deeper sections: the scoreboard, Breakthroughs, the
+   desks, Up & Down, the names, the "More in today's edition" break, the end of the edition and the archive. */
 function drawWall() {
   document.body.classList.toggle('ed-open', edOpen);
   const lead = document.getElementById('wall-lead'), box = document.getElementById('wall'); if (!box || !lead) return;
-  drawLevel(); drawStory(); drawRail();
+  drawLevel(); drawRail();
+  const pf = document.getElementById('itl-fig'); if (pf) { const pulse = buildPulse(); pf.replaceChildren(...(pulse ? [pulse] : [])); }
   const items = newsItems().filter((n) => n.tag && n.wall).sort((a, b) => (a.wall_rank ?? 999) - (b.wall_rank ?? 999));
   const siren = items.find((n) => n.wall === 'siren');
-  if (!siren) { box.hidden = true; lead.hidden = true; return; }
-  box.hidden = false; lead.hidden = false;
+  box.hidden = false; lead.hidden = !siren;
   const ext = (a, n) => { a.href = n.url; if (/^https?:/.test(n.url || '')) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } a.title = (n.outlet || '') + ': ' + n.title; return a; };
-  const dots = (t) => t; // complete lines, never teaser-style ellipses
-  const chip = (n) => { if (!WALL_LABEL[n.label]) return null; const c = el('span', 'wl-lab ' + n.label, WALL_LABEL[n.label]); if (TIP[n.label]) { c.setAttribute('data-tip', TIP[n.label]); c.tabIndex = 0; } return c; };
-  const movedMark = (n) => { const m = n.moved; if (!m || !m.at) return null; const t = Date.parse(m.at); const recent = PREV_VISIT ? t > PREV_VISIT : (Date.parse(D.meta.as_of) - t) < 36 * 3.6e6; if (!recent) return null; const up = m.dir === 'up'; const k = el('span', 'mv ' + (up ? 'up' : 'down'), up ? '▲' : '▼'); k.setAttribute('data-tip', (up ? 'Moved up' : 'Moved down') + (PREV_VISIT ? ' since you last looked' : ' in the last day') + ': ' + (m.note || '') + ' (' + fmtET(m.at) + ').'); k.tabIndex = 0; k.setAttribute('aria-label', up ? 'Moved up' : 'Moved down'); return k; };
+  const chip = (n) => { if (!WALL_LABEL[n.label]) return null; const c = el('span', 'wl-lab ' + n.label, WALL_LABEL[n.label]); if (TIP[n.label]) { c.setAttribute('data-tip', TIP[n.label]); c.setAttribute('aria-label', TIP[n.label]); c.tabIndex = 0; } return c; };
+  const newDot = () => { const d = el('i', 'newdot'); d.setAttribute('data-tip', 'New since you last looked (' + fmtET(new Date(PREV_VISIT).toISOString()) + ').'); d.setAttribute('aria-label', 'New since your last visit'); return d; };
   const line = (n, withOutlet) => {
-    const w = el('div', 'wl'); if (isNewToReader(n)) { const d = el('i', 'newdot'); d.setAttribute('data-tip', 'New since you last looked (' + fmtET(new Date(PREV_VISIT).toISOString()) + ').'); w.append(d); } const mv = movedMark(n); if (mv) w.append(mv); const c = chip(n); if (c) w.append(c);
-    w.append(ext(el('a', 'dl' + (n.red ? ' red' : ''), dots(n.tag)), n));
+    const w = el('div', 'wl'); if (isNewToReader(n)) w.append(newDot()); const c = chip(n); if (c) w.append(c);
+    w.append(ext(el('a', 'dl' + (n.red ? ' red' : ''), n.tag), n));
     if (n.receipt) { const rc0 = el('sup', 'rcpt', 'ⓘ'); rc0.setAttribute('data-tip', n.receipt); rc0.tabIndex = 0; rc0.setAttribute('aria-label', 'Where this number comes from'); w.append(rc0); }
     if (withOutlet) w.append(el('span', 'wl-o', (n.outlet || '') + (ageShort(n).endsWith('h ago') || ageShort(n) === 'just now' ? ' · ' + ageShort(n).replace(' ago', '') : '')));
     return w;
   };
-  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); const im = el('img'); im.src = n.img; { const m = /^(\/assets\/img\/[^?]+)\.(jpe?g|png)$/i.exec(n.img || ''); if (m) { im.srcset = [480, 960, 1440].map((w) => `${m[1]}-${w}.webp ${w}w`).join(', '); im.sizes = cls === 'dl-hero' ? '(max-width: 760px) 100vw, 50vw' : '320px'; } } if (cls === 'dl-hero') im.setAttribute('fetchpriority', 'high'); im.alt = n.img_alt || ''; im.loading = cls === 'dl-hero' ? 'eager' : 'lazy'; im.decoding = 'async'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a); if (n.img_credit) { const fc = el('figcaption'); if (n.img_credit_url) { const c = el('a', null, n.img_credit); c.href = n.img_credit_url; c.target = '_blank'; c.rel = 'noopener noreferrer'; fc.append(c); } else fc.textContent = n.img_credit; f.append(fc); } return f; };
-  // 1. the lead cluster: a picture, then four lines
-  const cl = items.filter((n) => n.wall === 'lead').slice(0, 4);
+  // the lead photo always illustrates: free-licensed, credited, never the real people or event (REFRESH), and the caption says so
+  const pic = (n, cls) => { const f = el('figure', cls); const a = ext(el('a'), n); a.setAttribute('aria-hidden', 'true'); a.tabIndex = -1; const im = el('img'); im.src = n.img; { const m = /^(\/assets\/img\/[^?]+)\.(jpe?g|png)$/i.exec(n.img || ''); if (m) { im.srcset = [480, 960, 1440].map((w) => `${m[1]}-${w}.webp ${w}w`).join(', '); im.sizes = '(max-width: 899px) 100vw, 640px'; } } im.setAttribute('fetchpriority', 'high'); im.alt = n.img_alt || ''; im.loading = 'eager'; im.decoding = 'async'; im.addEventListener('error', () => f.remove()); a.append(im); f.append(a);
+    const fc = el('figcaption'); fc.append(txt(n.img_illustrative === false ? 'Photo: ' : 'Illustrative photo: ')); const cr = String(n.img_credit || '').replace(/^Photo:\s*/i, '');
+    if (cr) { if (n.img_credit_url) { const c = el('a', null, cr); c.href = n.img_credit_url; c.target = '_blank'; c.rel = 'noopener noreferrer'; fc.append(c); } else fc.append(txt(cr)); } f.append(fc); return f; };
+  const cl = items.filter((n) => n.wall === 'lead').slice(0, 4); // the follow-on lines under the lead
+  const srl = D.meta && D.meta.serial;
+  const dayN = srl && srl.day1 ? Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1 : null;
   const buildSerial = (sr, leadLines) => {
-      const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1;
+      const day = dayN;
       const box2 = el('div', 'serial' + (sr.state === 'closed' ? ' closed' : ''));
       const hd = el('div', 'serial-h'); hd.append(el('span', 'serial-n', sr.name), el('span', 'serial-d', sr.state === 'closed' ? 'Closed ' + fmtDate(new Date(sr.closed + 'T12:00:00Z')) : 'Day ' + day));
       const inc0 = C.scored.find((r) => r.id === sr.incident_id); const caseNo = inc0 ? el('a', 'serial-c', 'Case ' + inc0.ws) : null; if (caseNo) { caseNo.href = '/i/' + inc0.id + '/'; caseNo.setAttribute('data-tip', 'Case ' + inc0.ws + ' in the index: scored ' + inc0.severity + '/100 (' + inc0.tier + ') by the published formula. Opens the case file.'); }
       const a = leadLines && leadLines.childNodes.length && sr.state !== 'closed' ? leadLines : el('a', 'serial-s', sr.state === 'closed' ? (sr.verdict || '') : sr.standing); if (a.tagName === 'A') a.href = sr.url || '#';
       const ft = el('div', 'serial-f'); const tr = el('a', null, (sr.tech_name ? sr.tech_name + ' ' : '') + 'live tracker →'); tr.href = sr.url || '#'; ft.append(tr);
-      if (sr.state !== 'closed') { const shr = el('div', 'share serial-share'); shareRow(shr, { anchor: 'wall-lead', text: sr.name + ', day ' + day + ' since ' + (sr.day1_note || 'it went public') + ': ' + (sr.standing || '') + ' Via Warning Shots:', card: { name: 'ladder-' + (sr.incident_id || 'story') + '-day' + day, kicker: 'THE RUNNING STORY  ·  DAY ' + day + '  ·  ' + fmtDate(new Date(D.meta.as_of)), headline: sr.name + ': ' + ({ tried: 'TRIED', proven: 'PROVEN', hit: 'HIT' }[sr.rung] || '') + (sr.rung === 'hit' ? ', a real victim confirmed' : sr.rung === 'proven' ? ', a test system broken into; no real victim confirmed' : sr.rung === 'tried' ? ', attempts logged; nothing broken into yet' : ''), finding: sr.standing || '', impact: 'Tried → Proven → Hit: the proof ladder. A rung is climbed only on a named, linked source.', evidence: 'Source: ' + (sr.source_label || 'linked on the tracker') + '.', stamp: 'As of ' + fmtET(D.meta.as_of) } }); box2.shareRow = shr; }
+      if (sr.state !== 'closed') { const shr = el('div', 'share serial-share'); shareRow(shr, { anchor: 'incident-timeline', text: sr.name + ', day ' + day + ' since ' + (sr.day1_note || 'it went public') + ': ' + (sr.standing || '') + ' Via Warning Shots:', card: { name: 'ladder-' + (sr.incident_id || 'story') + '-day' + day, kicker: 'THE RUNNING STORY  ·  DAY ' + day + '  ·  ' + fmtDate(new Date(D.meta.as_of)), headline: sr.name + ': ' + ({ tried: 'TRIED', proven: 'PROVEN', hit: 'HIT' }[sr.rung] || '') + (sr.rung === 'hit' ? ', a real victim confirmed' : sr.rung === 'proven' ? ', a test system broken into; no real victim confirmed' : sr.rung === 'tried' ? ', attempts logged; nothing broken into yet' : ''), finding: sr.standing || '', impact: 'Tried → Proven → Hit: the proof ladder. A rung is climbed only on a named, linked source.', evidence: 'Source: ' + (sr.source_label || 'linked on the tracker') + '.', stamp: 'As of ' + fmtET(D.meta.as_of) } }); box2.shareRow = shr; }
       if (sr.source_url) { const so = el('a', null, sr.source_label || 'source'); so.href = sr.source_url; so.target = '_blank'; so.rel = 'noopener noreferrer'; ft.append(so); }
       const RUNGS = [['tried', 'Tried', 'attempts logged'], ['proven', 'Proven', 'a test system broken into'], ['hit', 'Hit', 'a real victim confirmed']];
       const at = RUNGS.findIndex(([k]) => k === sr.rung);
       const lad = el('div', 'rungs'); lad.setAttribute('aria-label', 'Proof so far: ' + (at >= 0 ? RUNGS[at][1] : 'none'));
-      RUNGS.forEach(([k, lbl, def], i) => { const r = (sr.rungs || {})[k] || {}; const st = el('span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); st.tabIndex = 0; st.setAttribute('data-tip', (TIP[k] || lbl) + (r.note ? ' ' + r.note + '.' : '') + (i > at ? ' Not reached yet.' : '')); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
+      RUNGS.forEach(([k, lbl], i) => { const r = (sr.rungs || {})[k] || {}; const st = el('span', 'rung' + (i <= at ? ' on' : '') + (i === at ? ' cur' : '')); st.tabIndex = 0; st.setAttribute('data-tip', (TIP[k] || lbl) + (r.note ? ' ' + r.note + '.' : '') + (i > at ? ' Not reached yet.' : '')); st.append(el('i'), el('b', null, lbl), el('small', null, i <= at ? (r.date ? fmtDate(new Date(r.date + 'T12:00:00Z')) : 'yes') : 'not yet')); lad.append(st); });
       const rc = sr.state !== 'closed' && sr.recheck ? el('div', 'serial-r') : null;
       if (rc) { rc.append(el('b', null, 'Rechecked ' + fmtET(sr.recheck_at || D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + ': '), txt(leadLines && leadLines.childNodes.length ? 'every line here still true.' : sr.recheck + '.')); rc.setAttribute('data-tip', 'Checked against the sources then: ' + sr.recheck + '. A "no" is only news if someone just looked.'); }
       const nt = sr.state !== 'closed' && sr.next_test && sr.next_test.date ? el('div', 'serial-t') : null;
       if (nt) { nt.append(el('b', null, 'Next test ' + fmtDate(new Date(sr.next_test.date + 'T12:00:00Z')) + ': '), txt(sr.next_test.text)); nt.setAttribute('data-tip', 'A dated question the index committed to in advance; it is graded on that date, right or wrong, on the Record.'); }
       box2.append(hd, ...(caseNo ? [caseNo] : []), lad, a, ...(rc ? [rc] : []), ...(nt ? [nt] : []), ft, ...(box2.shareRow ? [box2.shareRow] : [])); return box2;
   };
-  // The lead is the day's strongest story: one photo, one big headline, one plain sentence. The running story sits under it as a
-  // one-line strip that opens to the proof ladder and the lines; it takes the lead itself only when meta.serial.lead is set
-  // (a real victim, a formal government warning: an escalation, not a quiet day).
+  // ---- 1. The lead: one story, the biggest headline on the page, its category, when it was published, what happened and why it
+  // matters in two or three sentences (lead_summary), "What happens next" only when the reporting says it, and a clear way to the story.
   const ll = el('div', 'dl-lines');
-  const frags = el('div', 'dl-frags'); cl.slice(0, 4).forEach((n) => frags.append(line(n, false)));
-  const srl = D.meta && D.meta.serial;
   if (srl && srl.name && srl.exposure && srl.state !== 'closed') { const vc0 = (C.victimCounts || {})[srl.incident_id] || {}; const nOrg = vc0.rows || 0; if (nOrg) { const w = el('div', 'wl'); const a = el('a', 'dl', srl.exposure.text.replace('{n}', nOrg)); a.href = srl.exposure.url; if (srl.exposure.tip) { const rc1 = el('sup', 'rcpt', 'ⓘ'); rc1.setAttribute('data-tip', srl.exposure.tip); rc1.tabIndex = 0; w.append(a, rc1); } else w.append(a); ll.append(w); } }
   const takeover = !!(srl && srl.name && srl.state !== 'closed' && srl.lead && srl.lead.tag);
-  const hero = takeover ? Object.assign({ url: srl.url, outlet: 'Warning Shots', published: D.meta.as_of }, srl.lead) : siren;
-  const sv = el('div', 'dl-siren');
-  if (hero.img) sv.append(pic(hero, 'dl-hero'));
-  const lvTop = (document.querySelector('#level .lvl-l b') || {}).textContent || '';
-  const kick = el('div', 'dl-kick'); kick.append(el('span', 'dot'), txt([lvTop, takeover ? srl.name + ', day ' + (Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1) : 'Developing', hero.time_known === false ? fmtDate(new Date(hero.published)) : fmtET(hero.published)].filter(Boolean).join(' · ')));
-  const body = el('div', 'dl-body'); body.append(kick, ext(el('a', 'dl-head' + (hero.red ? ' red' : ''), hero.tag), hero));
-  sv.append(body);
-  // The standfirst is not shown under the lead for now (Colin, Oct 27): headline only. It is still written: share cards and search snippets use it.
-  if (hero.people && hero.people.text) { const pp = el('p', 'dl-people'); pp.append(el('b', null, (hero.people.kind === 'helped' ? 'Who it helped: ' : 'Who it hit: ')), txt(hero.people.text)); body.append(pp); }
-  if (frags.childNodes.length) body.append(frags);
-  if (hero.action && hero.action.text && hero.action.url) { const ac = el('a', 'dl-act', hero.action.text + ' →'); ac.href = hero.action.url; if (/^https?:/.test(hero.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } body.append(ac); }
-  const so = el('div', 'dl-src'); if (takeover) { const t = el('a', null, (srl.tech_name ? srl.tech_name + ' ' : '') + 'live tracker →'); t.href = srl.url; so.append(t); } else { so.append(txt(hero.outlet + ' · ' + ageShort(hero) + ' · '), ext(el('a', null, 'Read the original reporting →'), hero)); } if (hero.rec) { const r = el('a', null, 'On the record →'); r.href = '/i/' + hero.rec + '/'; so.append(txt(' · '), r); } if (hero.who && hero.who[0]) { const w = el('a', null, 'Everything on ' + ((D.whonames || {})[hero.who[0]] || hero.who[0]) + ' →'); w.href = '/who/' + hero.who[0] + '/'; so.append(txt(' · '), w); } body.append(so);
-  { const ms = el('div', 'ms-lead'); ms.append(el('b', null, 'Get this in your inbox:'), txt(' The Morning Shot, free every morning at 7 AM ET. ')); const a = el('a', 'ms-lbtn', 'Subscribe free →'); a.href = 'https://morningshot.beehiiv.com/subscribe'; a.target = '_blank'; a.rel = 'noopener'; ms.append(a); body.append(ms); }
+  const hero = !siren ? null : takeover ? Object.assign({ url: srl.url, outlet: 'Warning Shots', published: D.meta.as_of }, srl.lead) : siren;
+  let youBox = null;
+  if (hero) {
+    const art = el('article', 'ld'); const tx = el('div', 'ld-txt');
+    const kick = el('div', 'ld-kick'); kick.append(el('span', 'ld-cat', takeover ? 'Live case · day ' + dayN : storyCat(hero)));
+    const tm = el('time', 'ld-time'); tm.dateTime = takeover ? D.meta.as_of : hero.published;
+    tm.textContent = takeover ? 'Updated ' + fmtET(D.meta.as_of) : 'Published ' + (hero.time_known === false ? fmtDate(new Date(hero.published)) : fmtET(hero.published)) + (hero.updated ? ' · Updated ' + fmtET(hero.updated) : '');
+    kick.append(tm);
+    const h = el('h2', 'ld-h'); h.append(ext(el('a', 'dl-head' + (hero.red ? ' red' : ''), hero.tag), hero));
+    const sents = (t) => (String(t || '').match(/[^.!?]+[.!?]+["”’)]*(?:\s+|$)/g) || []);
+    const sumTxt = hero.lead_summary || (hero.standfirst ? sents(hero.standfirst).slice(0, 2).join('').trim() : '') || hero.summary || '';
+    const sum = sumTxt ? el('p', 'ld-sum', sumTxt) : null;
+    const ppl = !hero.lead_summary && hero.people && hero.people.text ? (() => { const p = el('p', 'ld-sum ld-ppl'); p.append(el('b', null, hero.people.kind === 'helped' ? 'Who it helped: ' : 'Who it hit: '), txt(hero.people.text)); return p; })() : null;
+    const nxt = hero.next && (hero.next.text || typeof hero.next === 'string') ? (() => { const p = el('p', 'ld-next'); p.append(el('b', null, 'What happens next'), txt(' ' + (hero.next.text || hero.next))); if (hero.next.url) { const a = el('a', null, ' ' + (hero.next.label || 'Source') + ' →'); a.href = hero.next.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; p.append(a); } return p; })() : null;
+    const act = hero.action && hero.action.text && hero.action.url ? (() => { const ac = el('a', 'dl-act', hero.action.text + ' →'); ac.href = hero.action.url; if (/^https?:/.test(hero.action.url)) { ac.target = '_blank'; ac.rel = 'noopener noreferrer'; } return ac; })() : null;
+    const rd = ext(el('a', 'ld-read', takeover ? 'Read the story →' : 'Read the story at ' + hero.outlet + ' →'), hero);
+    const src = el('p', 'ld-src'); const bits = [];
+    if (takeover) { const t = el('a', null, (srl.tech_name ? srl.tech_name + ' ' : '') + 'live tracker →'); t.href = srl.url; bits.push([t]); }
+    else { const s0 = [txt('Source: ' + hero.outlet)]; const al = (hero.also || []).filter((a) => a.outlet && a.url); if (al.length) { s0.push(txt(', also reported by ')); al.forEach((a, i) => { const x = el('a', null, a.outlet); x.href = a.url; x.target = '_blank'; x.rel = 'noopener noreferrer'; s0.push(...(i ? [txt(i === al.length - 1 ? ' and ' : ', ')] : []), x); }); } bits.push(s0); }
+    if (LEAD_CONF[hero.label]) { const c = chip(hero); bits.push([...(c ? [c, txt(' ')] : []), txt(LEAD_CONF[hero.label].charAt(0).toUpperCase() + LEAD_CONF[hero.label].slice(1))]); }
+    if (hero.rec) { const r = el('a', null, 'On the record →'); r.href = '/i/' + hero.rec + '/'; bits.push([r]); }
+    if (hero.who && hero.who[0]) { const w = el('a', null, 'Everything on ' + ((D.whonames || {})[hero.who[0]] || hero.who[0]) + ' →'); w.href = '/who/' + hero.who[0] + '/'; bits.push([w]); }
+    bits.forEach((b, i) => src.append(...(i ? [txt(' · ')] : []), ...b));
+    const rel = cl.length ? (() => { const d = el('div', 'ld-rel'); d.append(el('span', 'ld-rel-k', 'More on this story')); cl.forEach((n) => d.append(line(n, true))); return d; })() : null;
+    tx.append(kick, h, ...(sum ? [sum] : []), ...(ppl ? [ppl] : []), ...(nxt ? [nxt] : []), ...(act ? [act] : []), rd, src, ...(rel ? [rel] : []));
+    const fig = hero.img ? pic(hero, 'dl-hero') : null;
+    art.append(tx, ...(fig ? [fig] : [])); if (!fig) art.classList.add('no-pic');
+    // What it means for you: does it touch the reader, and one thing to do today. A lens picker rewrites both; the choice stays in this browser.
+    youBox = hero.you && hero.you.touch ? (() => {
+      const Y = hero.you; const yb = el('section', 'you'); yb.setAttribute('aria-label', 'What it means for you');
+      const head = el('div', 'you-h'); head.append(el('span', 'you-k', 'What it means for you'));
+      const tabs = el('div', 'you-tabs'); tabs.setAttribute('role', 'tablist');
+      const opts = [['all', 'Everyone']].concat(LENSES.filter((l) => Y.lens && Y.lens[l.id]).map((l) => [l.id, l.label]));
+      let cur = (() => { try { const v = localStorage.getItem('ws-lens'); return opts.some((o) => o[0] === v) ? v : 'all'; } catch (e) { return 'all'; } })();
+      const t1 = el('p', 'you-t'), t2 = el('p', 'you-do'), t3 = el('p', 'you-hub');
+      const paint = () => { const L = cur !== 'all' && Y.lens && Y.lens[cur] ? Y.lens[cur] : Y; t1.textContent = L.touch; const td = L.today || Y.today || []; t2.replaceChildren(el('b', null, 'Do this today: '), txt(td[0] || '')); if (td[1]) { const a = el('a', null, ' ' + (td[2] || 'How') + ' →'); a.href = td[1]; t2.append(a); }
+        { const LL = LENSES.find((l) => l.id === cur); const hb = LL && LL.hub ? LL.hub[0] : ['/exposed/', 'Am I exposed? Find your situation']; const a = el('a', null, hb[1] + ' →'); a.href = hb[0]; t3.replaceChildren(a); }
+        tabs.querySelectorAll('button').forEach((b) => { const on = b.dataset.k === cur; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); }); };
+      opts.forEach(([k, lbl]) => { const b = el('button', 'you-tab', lbl); b.type = 'button'; b.dataset.k = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => { cur = k; try { if (k !== 'all') localStorage.setItem('ws-lens', k); } catch (e) {} paint(); }); tabs.append(b); });
+      const tog = el('button', 'you-tog', 'More ▸'); tog.type = 'button'; tog.setAttribute('aria-expanded', 'false');
+      tog.addEventListener('click', () => { const open = yb.classList.toggle('open'); tog.setAttribute('aria-expanded', String(open)); tog.textContent = open ? 'Less ▴' : 'More ▸'; });
+      head.append(tabs, tog); yb.append(head, t1, t2, t3); paint(); return yb; })() : null;
+    if (youBox) art.append(youBox); // under the photo on wide screens, after the story on phones
+    lead.replaceChildren(art);
+  } else lead.replaceChildren();
+  // ---- 2. Beside the timeline: the running story, one line that opens to the proof ladder and the lines
   let strip = null;
   if (srl && srl.name) {
-    const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1;
     strip = el('div', 'sstrip');
     const row = el('button', 'sstrip-row'); row.type = 'button'; row.setAttribute('aria-expanded', 'false');
     row.append(el('span', 'ss-day', srl.state === 'closed' ? 'Closed' : 'We’re following'), el('span', 'ss-name', srl.name));
-    if (srl.state !== 'closed') row.append(el('span', 'ss-since', 'day ' + day + ' since ' + (srl.day1_note || 'it went public')));
+    if (srl.state !== 'closed') row.append(el('span', 'ss-since', 'day ' + dayN + ' since ' + (srl.day1_note || 'it went public')));
     const rc = WALL_LABEL[srl.rung] ? el('span', 'wl-lab ' + srl.rung, WALL_LABEL[srl.rung]) : null; if (rc) row.append(rc);
     row.append(el('span', 'ss-st', srl.state === 'closed' ? (srl.verdict || '') : (srl.strip || srl.standing || '')), el('span', 'ss-more', 'Follow it ▾'));
     const panel = buildSerial(srl, ll); panel.hidden = true;
     row.addEventListener('click', () => { panel.hidden = !panel.hidden; row.setAttribute('aria-expanded', String(!panel.hidden)); row.lastChild.textContent = panel.hidden ? 'Follow it ▾' : 'Close ▴'; });
     strip.append(row, panel);
   }
-  // The dateline: the edition's date, said like the top of a broadcast
-  const dl = el('div', 'dateline'); { const f = (d, o) => new Intl.DateTimeFormat('en-US', Object.assign({ timeZone: 'America/New_York' }, o)).format(d); const ed = new Date(D.meta.as_of);
-    const same = f(ed, { year: 'numeric', month: 'numeric', day: 'numeric' }) === f(new Date(), { year: 'numeric', month: 'numeric', day: 'numeric' });
-    dl.append(el('span', 'dl-today', (same ? 'Today is ' : '') + f(ed, { weekday: 'long', month: 'long', day: 'numeric' })), ...(same ? [] : [el('span', 'dl-ed', 'Latest edition')]));
-    // Resolution Day: from three days before a date on which two or more calls resolve, until the day after
-    { const byDay = {}; (D.calls || []).filter((c) => c.kind === 'call' && !c.resolution).forEach((c) => { byDay[c.resolve_by] = (byDay[c.resolve_by] || 0) + 1; });
-      const today = D.meta.as_of.slice(0, 10), dd = (a2, b2) => Math.round((Date.parse(a2 + 'T12:00:00Z') - Date.parse(b2 + 'T12:00:00Z')) / 864e5);
-      const rd = Object.keys(byDay).filter((d) => byDay[d] >= 2 && dd(d, today) <= 3 && dd(d, today) >= -1).sort()[0];
-      if (rd) { const n = dd(rd, today); const a2 = el('a', 'dl-rd'); a2.href = '/forecast/resolution-day/' + rd + '/';
-        a2.append(el('b', null, 'Resolution Day'), txt(' · ' + new Date(rd + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }) + ': ' + byDay[rd] + ' forecasts graded in public' + (n > 0 ? ', in ' + n + (n === 1 ? ' day' : ' days') : n === 0 ? ', today' : '') + ' →'));
-        dl.append(a2); } } }
-  // What it means for you: does it touch the reader, and one thing to do today. A lens picker rewrites both; the choice stays in this browser.
-  const youBox = hero.you && hero.you.touch ? (() => {
-    const Y = hero.you; const box = el('section', 'you'); box.setAttribute('aria-label', 'What it means for you');
-    const head = el('div', 'you-h'); head.append(el('span', 'you-k', 'What it means for you'));
-    const tabs = el('div', 'you-tabs'); tabs.setAttribute('role', 'tablist');
-    const opts = [['all', 'Everyone']].concat(LENSES.filter((l) => Y.lens && Y.lens[l.id]).map((l) => [l.id, l.label]));
-    let cur = (() => { try { const v = localStorage.getItem('ws-lens'); return opts.some((o) => o[0] === v) ? v : 'all'; } catch (e) { return 'all'; } })();
-    const t1 = el('p', 'you-t'), t2 = el('p', 'you-do'), t3 = el('p', 'you-hub');
-    const paint = () => { const L = cur !== 'all' && Y.lens && Y.lens[cur] ? Y.lens[cur] : Y; t1.textContent = L.touch; const td = L.today || Y.today || []; t2.replaceChildren(el('b', null, 'Do this today: '), txt(td[0] || '')); if (td[1]) { const a = el('a', null, ' ' + (td[2] || 'How') + ' →'); a.href = td[1]; t2.append(a); }
-      { const LL = LENSES.find((l) => l.id === cur); const hb = LL && LL.hub ? LL.hub[0] : ['/exposed/', 'Am I exposed? Find your situation']; const a = el('a', null, hb[1] + ' →'); a.href = hb[0]; t3.replaceChildren(a); }
-      tabs.querySelectorAll('button').forEach((b) => { const on = b.dataset.k === cur; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); }); };
-    opts.forEach(([k, lbl]) => { const b = el('button', 'you-tab', lbl); b.type = 'button'; b.dataset.k = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => { cur = k; try { if (k !== 'all') localStorage.setItem('ws-lens', k); } catch (e) {} paint(); }); tabs.append(b); });
-    const tog = el('button', 'you-tog', 'More ▸'); tog.type = 'button'; tog.setAttribute('aria-expanded', 'false');
-    tog.addEventListener('click', () => { const open = box.classList.toggle('open'); tog.setAttribute('aria-expanded', String(open)); tog.textContent = open ? 'Less ▴' : 'More ▸'; });
-    head.append(tabs, tog); box.append(head, t1, t2, t3); paint(); return box; })() : null;
+  { const lv = document.getElementById('itl-live'); if (lv) { lv.replaceChildren(...(strip ? [strip] : [])); lv.hidden = !strip; } }
+  // ---- 3. Latest stories: the six newest headlines on today's front page, the lead and its follow-on lines left out (no repeats)
+  const shown = new Set([...(siren && !takeover ? [siren.id] : []), ...cl.map((n) => n.id)]);
+  const six = items.filter((n) => n.wall !== 'lead' && !shown.has(n.id)).sort((a, b) => String(b.published || '').localeCompare(String(a.published || '')) || (a.wall_rank ?? 999) - (b.wall_rank ?? 999)).slice(0, 6);
+  const card = (n) => {
+    const c = el('article', 'lt-c');
+    const k = el('div', 'lt-k'); if (isNewToReader(n)) k.append(newDot()); k.append(el('span', 'lt-cat', storyCat(n))); const ch = chip(n); if (ch) k.append(ch);
+    const h = el('h3', 'lt-h'); h.append(ext(el('a', null, n.tag), n));
+    if (n.receipt) { const rc0 = el('sup', 'rcpt', 'ⓘ'); rc0.setAttribute('data-tip', n.receipt); rc0.tabIndex = 0; rc0.setAttribute('aria-label', 'Where this number comes from'); h.append(rc0); }
+    const m = el('p', 'lt-m'); m.append(txt((n.outlet || '') + ' · ')); const t = el('time', null, ageShort(n)); t.dateTime = n.published; t.title = n.time_known === false ? fmtDate(new Date(n.published)) : fmtET(n.published); m.append(t);
+    c.append(k, h, ...(n.summary ? [el('p', 'lt-s', n.summary)] : []), m); return c; };
   // Breaking from X: only first-hand, material posts under 12 hours old earn the bar (REFRESH.md rules); everything else is in "On X" below
   const XK = { breaking: 'Breaking', official: 'Official', claim: 'Unverified claim', opinion: 'Opinion' };
   const xposts = (D.xposts || []).filter((x) => x && x.url);
@@ -651,70 +674,63 @@ function drawWall() {
   const sinceBar = (() => {
     if (!PREV_VISIT) return null;
     const after = (iso) => iso && Date.parse(iso) > PREV_VISIT;
-    const wallItems = items.filter((n) => n.wall && n.wall !== 'siren' || n.siren);
-    const fresh = wallItems.filter((n) => after(n.published));
-    const moved = wallItems.filter((n) => n.moved && after(n.moved.at));
+    const fresh = (hero && !takeover ? [hero] : []).concat(six).filter((n) => after(n.published));
     const graded = (D.calls || []).filter((c) => c.resolution && c.resolution.date && Date.parse(c.resolution.date + 'T23:59:59Z') > PREV_VISIT);
     const bts = (D.breakthroughs || []).filter((b) => b.date && Date.parse(b.date + 'T12:00:00Z') > PREV_VISIT);
     const bar = el('div', 'since-you');
     const when = fmtET(new Date(PREV_VISIT).toISOString()).replace(/, \d{4}/, '');
     bar.append(el('b', null, 'Since you were here'), el('span', 'sy-when', ' (' + when + ')'));
     const parts = [];
-    if (fresh.length) { const a = el('a', 'sy-new', fresh.length + (fresh.length === 1 ? ' new headline' : ' new headlines')); a.href = '#wall'; a.addEventListener('click', (e) => { const d = document.querySelector('#wall .newdot'); if (d) { e.preventDefault(); d.closest('.wl').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } }); parts.push(a); }
-    if (moved.length) parts.push(txt(moved.length + (moved.length === 1 ? ' story moved' : ' stories moved')));
+    if (fresh.length) { const a = el('a', 'sy-new', fresh.length + (fresh.length === 1 ? ' new story' : ' new stories')); a.href = '#latest'; a.addEventListener('click', (e) => { const d = document.querySelector('#latest .newdot'); if (d) { e.preventDefault(); d.closest('.lt-c').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); } }); parts.push(a); }
     if (bts.length) parts.push(txt(bts.length + (bts.length === 1 ? ' new breakthrough' : ' new breakthroughs')));
     if (graded.length) { const g = el('a', 'sy-gr'); g.href = '/forecast/'; const w = graded.filter((c) => c.resolution.outcome !== 'void' && Math.abs(+c.odds - 0.5) > 1e-9 && houseHit(c)).length, l = graded.filter((c) => c.resolution.outcome !== 'void' && Math.abs(+c.odds - 0.5) > 1e-9 && !houseHit(c)).length, t = graded.length - w - l;
       g.append(txt(graded.length + (graded.length === 1 ? ' forecast graded' : ' forecasts graded') + ' (' + [w ? w + ' right' : '', l ? l + ' wrong' : '', t ? t + ' toss-up' : ''].filter(Boolean).join(', ') + ')')); parts.push(g); }
     const srv = D.meta.serial || {}; if (srv.state === 'live' && after(srv.recheck_at || (srv.last_fact ? srv.last_fact + 'T12:00:00Z' : ''))) { const a = el('a', null, srv.name + ' checked again'); a.href = srv.url || '/php2shell/'; a.title = srv.recheck ? 'Latest check: ' + srv.recheck : ''; parts.push(a); }
-    if (PREV_STATE && PREV_STATE.level) { const lv = el('span', 'sy-lv'); parts.unshift(lv); setTimeout(() => { if (!NOW_LEVEL) { lv.remove(); return; } lv.textContent = NOW_LEVEL === PREV_STATE.level ? 'level held at ' + NOW_LEVEL : 'level moved ' + PREV_STATE.level + ' → ' + NOW_LEVEL; if (NOW_LEVEL !== PREV_STATE.level) lv.classList.add('moved'); }, 0); }
+    if (PREV_STATE && PREV_STATE.level && NOW_LEVEL) { const lv = el('span', 'sy-lv', NOW_LEVEL === PREV_STATE.level ? 'level held at ' + NOW_LEVEL : 'level moved ' + PREV_STATE.level + ' → ' + NOW_LEVEL); if (NOW_LEVEL !== PREV_STATE.level) lv.classList.add('moved'); parts.unshift(lv); }
     if (!parts.some((p) => p.className !== 'sy-lv')) { bar.append(txt(': '), ...parts, txt((parts.length ? '; ' : '') + 'nothing new yet.' + (D.meta.next_check ? ' Next edition ' + fmtET(D.meta.next_check).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.' : ''))); bar.classList.add('quiet'); return bar; }
     bar.append(txt(': ')); parts.forEach((p, i) => bar.append(...(i ? [txt(' · ')] : []), p)); return bar; })();
-  lead.replaceChildren(...(sinceBar ? [sinceBar] : []), ...(bbar ? [bbar] : []), dl, sv, ...(youBox ? [youBox] : []), ...(strip ? [strip] : []));
-  // 3. the columns, below the masthead
-  const cols = el('div', 'wall-cols');
-  [1, 2, 3].forEach((c) => {
-    const col = el('div', 'wall-col'); col.append(el('h2', 'wall-ch', WALL_COLS[c]));
-    (c === 1 && takeover ? [siren] : []).concat(items.filter((n) => +n.wall === c).slice(0, 15)).forEach((n) => col.append(line(n, true)));
-    // Standing desks at the foot of each column (Drudge's directory geometry): our own pages, labelled, never styled as headlines
-    const DK = D.desks || {};
-    const TAILS = {
-      1: ['Follow the damage', [
-        srl && srl.name && srl.state !== 'closed' ? [srl.url, (srl.tech_name || srl.name) + ': live tracker, day ' + (Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(srl.day1 + 'T12:00:00Z')) / 864e5) + 1)] : null,
-        ['/fixes/', 'Did they fix it?' + (DK.fix_open ? ' ' + DK.fix_open + ' of ' + DK.fix_total + ' still open' : '')],
-        DK.next_call ? ['/forecast/' + DK.next_call.id + '/', 'The odds: ' + DK.next_call.q + ' ' + DK.next_call.odds_word.toUpperCase() + ', resolves ' + DK.next_call.when] : ['/forecast/', 'The forecasts'],
-        ['/exposed/', 'Am I exposed? Find your situation'],
-        ['/index/', 'The Record: every incident, scored']]],
-      2: ['What AI can now do', [
-        ['/can-ai/', 'What AI can do now' + (DK.can_ai ? ': ' + DK.can_ai + ' questions answered' : '')],
-        ['/jobs/', 'Can AI do your job?' + (DK.jobs ? ' ' + DK.jobs + ' jobs graded' : '')],
-        ['/jobs/layoffs/', 'Layoffs tied to AI' + (DK.layoffs ? ': ' + DK.layoffs + ' so far' : '')],
-        ['/learn/', 'Know what it means: plain explainers']]],
-      3: ['Protect yourself', [
-        ['/checks/', 'Is this a scam?' + (DK.checks ? ' ' + DK.checks + ' quick checks' : '')],
-        ['/help/', 'What to do when AI is used against you'],
-        ['/shield/', 'Set a family safe word (2 minutes)'],
-        ['/help/ai-fake-nude-image-what-to-do/', 'A fake nude of you or your child: what to do now'],
-        ['https://haveibeenpwned.com/', 'Check if your email was in a breach'],
-        ['/midterms-2026/', 'Every AI fake in the midterms' + (DK.midterms ? ' (' + DK.midterms + ')' : '')],
-        ['/scraped/', 'Keep your site out of AI training sets']]],
-    };
-    const [th, links] = TAILS[c]; const tl = el('div', 'ctail'); tl.append(el('div', 'ctail-h', th));
-    links.filter(Boolean).forEach(([u, t]) => { const a = el('a', null, t); a.href = u; if (/^https?:/.test(u)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } tl.append(a); });
-    col.append(tl);
-    cols.append(col);
-  });
-  const more = el('button', 'wall-more', 'More headlines'); more.type = 'button'; more.addEventListener('click', () => box.classList.add('open'));
+  { const lt = document.getElementById('latest-body'); if (lt) { const g = el('div', 'lt-grid'); six.forEach((n) => g.append(card(n)));
+    const all = el('a', 'lt-all', 'See all stories →'); all.href = '/wire/'; const nAll = newsItems().length;
+    const allP = el('p', 'lt-foot'); allP.append(all, el('span', null, nAll + ' reports from the last three days, newest first, each linking to its outlet.'));
+    lt.replaceChildren(...(sinceBar ? [sinceBar] : []), ...(bbar ? [bbar] : []), g, allP); } }
+  // ---- 4. The deeper sections (under The Morning Shot)
+  const DK = D.desks || {};
+  const TAILS = {
+    1: ['Follow the damage', [
+      srl && srl.name && srl.state !== 'closed' ? [srl.url, (srl.tech_name || srl.name) + ': live tracker, day ' + dayN] : null,
+      ['/fixes/', 'Did they fix it?' + (DK.fix_open ? ' ' + DK.fix_open + ' of ' + DK.fix_total + ' still open' : '')],
+      DK.next_call ? ['/forecast/' + DK.next_call.id + '/', 'The odds: ' + DK.next_call.q + ' ' + DK.next_call.odds_word.toUpperCase() + ', resolves ' + DK.next_call.when] : ['/forecast/', 'The forecasts'],
+      ['/exposed/', 'Am I exposed? Find your situation'],
+      ['/index/', 'The Record: every incident, scored']]],
+    2: ['What AI can now do', [
+      ['/can-ai/', 'What AI can do now' + (DK.can_ai ? ': ' + DK.can_ai + ' questions answered' : '')],
+      ['/jobs/', 'Can AI do your job?' + (DK.jobs ? ' ' + DK.jobs + ' jobs graded' : '')],
+      ['/jobs/layoffs/', 'Layoffs tied to AI' + (DK.layoffs ? ': ' + DK.layoffs + ' so far' : '')],
+      ['/learn/', 'Know what it means: plain explainers']]],
+    3: ['Protect yourself', [
+      ['/checks/', 'Is this a scam?' + (DK.checks ? ' ' + DK.checks + ' quick checks' : '')],
+      ['/help/', 'What to do when AI is used against you'],
+      ['/shield/', 'Set a family safe word (2 minutes)'],
+      ['/help/ai-fake-nude-image-what-to-do/', 'A fake nude of you or your child: what to do now'],
+      ['https://haveibeenpwned.com/', 'Check if your email was in a breach'],
+      ['/midterms-2026/', 'Every AI fake in the midterms' + (DK.midterms ? ' (' + DK.midterms + ')' : '')],
+      ['/scraped/', 'Keep your site out of AI training sets']]],
+  };
+  // The desks: our own standing pages, labelled, never styled as headlines
+  const desks = el('nav', 'desks3'); desks.setAttribute('aria-label', 'Desks');
+  [1, 2, 3].forEach((c) => { const [th, links] = TAILS[c]; const tl = el('div', 'ctail'); tl.append(el('h2', 'ctail-h', th));
+    links.filter(Boolean).forEach(([u, t]) => { const a = el('a', null, t); a.href = u; if (/^https?:/.test(u)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } tl.append(a); }); desks.append(tl); });
   const ed = el('p', 'wall-ed');
   if (D.meta.quiet) ed.append(el('b', 'quiet', 'Rechecked ' + fmtET(D.meta.as_of) + ': nothing moved. '));
   const slotH = [5.2833, 12.2833, 18.2833]; const etH = (() => { const p = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date(D.meta.as_of)); const g = (t) => +p.find((x) => x.type === t).value; return g('hour') + g('minute') / 60; })();
-  const extra = !slotH.some((h) => etH >= h - 0.25 && etH <= h + 1.5);
-  if (D.meta.edition) { const ea = el('a', null, (extra ? 'Extra edition, No. ' : 'Edition No. ') + D.meta.edition); ea.href = '/' + (D.meta.edition_path || 'archive/'); ea.setAttribute('data-tip', 'Edition No. ' + D.meta.edition + ', published ' + fmtET(D.meta.as_of) + '. Opens a frozen copy of this page exactly as published.'); const cl = el('a', null, 'what changed'); cl.href = '/index/#changelog'; const all = el('a', null, 'every edition'); all.href = '/archive/'; ed.append(ea, txt(' · ' + fmtET(D.meta.as_of) + ' · '), cl, txt(' · '), all); if (extra) ea.setAttribute('data-tip', 'An extra edition outside the 5:17 AM, 12:17 PM and 6:17 PM schedule, published because something worth adding came in. Opens a frozen copy.'); }
+  const extra = !slotH.some((hh) => etH >= hh - 0.25 && etH <= hh + 1.5);
+  if (D.meta.edition) { const ea = el('a', null, (extra ? 'Extra edition, No. ' : 'Edition No. ') + D.meta.edition); ea.href = '/' + (D.meta.edition_path || 'archive/'); ea.setAttribute('data-tip', 'Edition No. ' + D.meta.edition + ', published ' + fmtET(D.meta.as_of) + '. Opens a frozen copy of this page exactly as published.'); const clg = el('a', null, 'what changed'); clg.href = '/index/#changelog'; const all = el('a', null, 'every edition'); all.href = '/archive/'; ed.append(ea, txt(' · ' + fmtET(D.meta.as_of) + ' · '), clg, txt(' · '), all); if (extra) ea.setAttribute('data-tip', 'An extra edition outside the 5:17 AM, 12:17 PM and 6:17 PM schedule, published because something worth adding came in. Opens a frozen copy.'); }
   const cu = el('p', 'wall-cu'); cu.append(el('b', null, 'That’s your Warning Shots for ' + new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric' }).format(new Date(D.meta.as_of)) + ', as of ' + fmtET(D.meta.as_of).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.'), txt(' You’re caught up.' + (D.meta.next_check ? ' Next edition ' + fmtET(D.meta.next_check).replace(/^[A-Z][a-z]{2} \d+, /, '') + '.' : '') + ' See what’s coming. Know what it means.'));
   const xbox = xposts.length ? (() => {
     const XLOGO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
     const TICK = '<svg viewBox="0 0 22 22" aria-label="Verified account"><circle cx="11" cy="11" r="10" fill="#1d9bf0"/><path d="M6.5 11.3l3 3 6-6.3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     const when = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET · ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' }); };
-    const who = (t, x, small) => { const h = el('div', 'tw-h'); const av = el('span', 'tw-av'); av.textContent = (t.name || x.author || '?').trim()[0]; if (t.avatar) { const im = el('img'); im.src = t.avatar; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); av.append(im); } const nm = el('span', 'tw-nm'); const b = el('b', null, t.name || x.author); nm.append(b); if (t.verified) { const v = el('span', 'tw-v'); v.innerHTML = TICK; nm.append(v); } nm.append(el('span', 'tw-hd', '@' + (t.handle || (x.handle || '').replace(/^@/, '')))); h.append(av, nm); if (!small) { const lg = el('span', 'tw-x'); lg.innerHTML = XLOGO; h.append(lg); } return h; };
+    const who = (t, x, small) => { const hh = el('div', 'tw-h'); const av = el('span', 'tw-av'); av.textContent = (t.name || x.author || '?').trim()[0]; if (t.avatar) { const im = el('img'); im.src = t.avatar; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); av.append(im); } const nm = el('span', 'tw-nm'); const b = el('b', null, t.name || x.author); nm.append(b); if (t.verified) { const v = el('span', 'tw-v'); v.innerHTML = TICK; nm.append(v); } nm.append(el('span', 'tw-hd', '@' + (t.handle || (x.handle || '').replace(/^@/, '')))); hh.append(av, nm); if (!small) { const lg = el('span', 'tw-x'); lg.innerHTML = XLOGO; hh.append(lg); } return hh; };
     const bx = el('section', 'xon'); bx.append(el('h2', 'wall-ch', 'On X: three posts worth your time'));
     const grid = el('div', 'xon-g');
     // three posts, each on a different story: highest power first (a post older than 72 hours counts one point less), and among equals a kind not yet shown (the news, the claim, the take), then the newest
@@ -731,30 +747,29 @@ function drawWall() {
       const t = x.tweet || { name: x.author, handle: (x.handle || '').replace(/^@/, ''), text: x.quote, created_at: x.posted };
       const item = el('div', 'xon-i');
       item.append(el('span', 'wl-lab ' + (x.kind === 'opinion' ? 'opinion' : x.kind === 'claim' ? 'reported' : 'proven'), x.kind === 'breaking' && age(x) >= 12 * 3.6e6 ? 'First-hand' : (XK[x.kind] || x.kind)));
-      const card = el('a', 'tw'); card.href = x.url; card.target = '_blank'; card.rel = 'noopener noreferrer'; card.setAttribute('aria-label', 'Post by ' + (t.name || x.author) + ' on X');
-      card.append(who(t, x), el('p', 'tw-t', (t.text || x.quote) + (t.truncated ? '…' : '')));
-      if (t.truncated) card.append(el('span', 'tw-more', 'Show more on X'));
-      if (t.photos && t.photos[0]) { const im = el('img', 'tw-ph'); im.src = t.photos[0]; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); card.append(im); }
-      if (t.video && t.video.poster && t.id) card.append(xClip(t, x, card, item));
-      if (t.quoted) { const q = el('div', 'tw-q'); q.append(who(t.quoted, {}, true), el('p', 'tw-t', t.quoted.text)); card.append(q); }
-      const f = el('div', 'tw-f'); f.append(el('span', null, when(t.created_at || x.posted)), el('span', 'tw-go', 'View on X →')); card.append(f);
-      item.append(card, el('p', 'xon-w', x.what), el('small', 'xon-by', (x.author || t.name) + ': ' + x.who));
+      const tcard = el('a', 'tw'); tcard.href = x.url; tcard.target = '_blank'; tcard.rel = 'noopener noreferrer'; tcard.setAttribute('aria-label', 'Post by ' + (t.name || x.author) + ' on X');
+      tcard.append(who(t, x), el('p', 'tw-t', (t.text || x.quote) + (t.truncated ? '…' : '')));
+      if (t.truncated) tcard.append(el('span', 'tw-more', 'Show more on X'));
+      if (t.photos && t.photos[0]) { const im = el('img', 'tw-ph'); im.src = t.photos[0]; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); tcard.append(im); }
+      if (t.video && t.video.poster && t.id) tcard.append(xClip(t, x, tcard, item));
+      if (t.quoted) { const q = el('div', 'tw-q'); q.append(who(t.quoted, {}, true), el('p', 'tw-t', t.quoted.text)); tcard.append(q); }
+      const f = el('div', 'tw-f'); f.append(el('span', null, when(t.created_at || x.posted)), el('span', 'tw-go', 'View on X →')); tcard.append(f);
+      item.append(tcard, el('p', 'xon-w', x.what), el('small', 'xon-by', (x.author || t.name) + ': ' + x.who));
       grid.append(item);
     });
     bx.append(grid, el('p', 'xon-note', 'The three posts that matter most right now, each on a different story. Breaking means a first-hand source posting a new fact you can check, in the last 12 hours; after that it shows as First-hand. An unverified claim is new but nobody independent has checked it yet. Opinion is commentary. The post text is shown exactly as it appears on X; the line under each is ours.'));
     return bx; })() : null;
-  const foot = el('p', 'wall-foot'); foot.append(txt('Every line is written by Warning Shots from the original reporting and links straight to it. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })(), txt(' · '), (() => { const a = el('a', null, 'Earlier days'); a.href = '/wire/archive/'; return a; })(), txt(' · Beats: '), (() => { const a = el('a', null, 'AI near you'); a.href = '/wire/near-you/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'AI at school'); a.href = '/wire/school/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'Layoffs tied to AI'); a.href = '/jobs/layoffs/'; return a; })());
+  const foot = el('p', 'wall-foot'); foot.append(txt('Every headline is written by Warning Shots from the original reporting and links straight to it. '), (() => { const a = el('a', null, 'Every report from the last three days, ' + newsItems().length + ' in all →'); a.href = '/wire/'; return a; })(), txt(' · '), (() => { const a = el('a', null, 'Earlier days'); a.href = '/wire/archive/'; return a; })(), txt(' · Beats: '), (() => { const a = el('a', null, 'AI near you'); a.href = '/wire/near-you/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'AI at school'); a.href = '/wire/school/'; return a; })(), txt(', '), (() => { const a = el('a', null, 'Layoffs tied to AI'); a.href = '/jobs/layoffs/'; return a; })());
   // Coming up: the next dated tests, so the reader knows when the loops close (no odds on the front page)
   const up = el('div', 'comingup'); const asOfD = D.meta.as_of.slice(0, 10);
   const open = (D.calls || []).filter((c) => c && !c.resolution && c.resolve_by >= asOfD).sort((a, b) => a.resolve_by.localeCompare(b.resolve_by));
   const firstDay = open.length ? open[0].resolve_by : null; const nDay = open.filter((c) => c.resolve_by === firstDay).length;
-  const graded = (D.calls || []).some((c) => c && c.resolution);
   if (firstDay) { // Resolution Day: the next date the index's calls are graded, with a countdown and each call's odds in words
-    const rd = el('div', 'resday'); const dLeft = Math.max(0, Math.ceil((Date.parse(firstDay + 'T00:00:00-04:00') - Date.now()) / 864e5));
-    const h = el('div', 'rd-h'); h.append(el('b', null, 'Resolution Day'), txt(' · ' + d3.utcFormat('%A, %b %-d')(new Date(firstDay + 'T12:00:00Z')) + ' · '), el('span', 'rd-n', dLeft === 0 ? 'today' : dLeft === 1 ? 'tomorrow' : 'in ' + dLeft + ' days'));
+    const rdb = el('div', 'resday'); const dLeft = Math.max(0, Math.ceil((Date.parse(firstDay + 'T00:00:00-04:00') - Date.now()) / 864e5));
+    const hh = el('div', 'rd-h'); hh.append(el('b', null, 'Resolution Day'), txt(' · ' + d3.utcFormat('%A, %b %-d')(new Date(firstDay + 'T12:00:00Z')) + ' · '), el('span', 'rd-n', dLeft === 0 ? 'today' : dLeft === 1 ? 'tomorrow' : 'in ' + dLeft + ' days'));
     const ul = el('ul', 'rd-l'); open.filter((c) => c.resolve_by === firstDay).forEach((c) => { const li = el('li'); const a = el('a', null, c.plain || c.question); a.href = '/forecast/' + c.id + '/'; li.append(a, el('span', 'rd-o', ' Our odds: ' + likelyWord(c.odds).toLowerCase())); ul.append(li); });
     const hr1 = houseRecord(); const ft = el('p', 'rd-f'); ft.append(txt(nDay + (nDay === 1 ? ' call is' : ' calls are') + ' graded that day, right or wrong, in public. ' + (hr1.n ? 'Record so far: ' + hr1.w + ' right, ' + hr1.l + ' wrong. ' : 'Misses stay on the page. ')), (() => { const a = el('a', null, 'Every forecast →'); a.href = '/forecast/'; return a; })());
-    rd.append(h, ul, ft); up.append(rd); }
+    rdb.append(hh, ul, ft); up.append(rdb); }
   (D.catalysts || []).filter((c) => c.date > asOfD && c.date !== firstDay).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 2).forEach((c) => { const r = el('a', 'cu-i'); r.href = '/index/#next'; r.append(el('b', null, c.date_label + ':'), txt(' ' + c.event)); up.append(r); });
   // The payoff: forecasts graded in the last day lead the strip, misses as prominent as hits, with the running record
   const asOfT = Date.parse(D.meta.as_of);
@@ -770,7 +785,7 @@ function drawWall() {
   const BTL = { 'in-use': 'In use now', published: 'Peer-reviewed', reproduced: 'Reproduced', claimed: 'Claimed, not yet checked' };
   const btBand = BT.length ? (() => {
     const s = el('section', 'bt'); s.setAttribute('aria-label', 'Breakthroughs');
-    const h = el('div', 'bt-h'); h.append(el('h2', 'bt-t', 'Breakthroughs'), el('span', 'bt-sub', 'What AI just made possible, and what it means for you')); const all = el('a', 'bt-all', 'All breakthroughs →'); all.href = '/breakthroughs/'; h.append(all); s.append(h);
+    const hh = el('div', 'bt-h'); hh.append(el('h2', 'bt-t', 'Breakthroughs'), el('span', 'bt-sub', 'What AI just made possible, and what it means for you')); const all = el('a', 'bt-all', 'All breakthroughs →'); all.href = '/breakthroughs/'; hh.append(all); s.append(hh);
     const g = el('div', 'bt-g');
     BT.slice(0, 3).forEach((b) => { const c = el('article', 'bt-c'); const top = el('div', 'bt-k'); top.append(el('span', 'bt-area', b.area || ''), ...(b.proof === 'claimed' ? [] : [el('span', 'bt-p ' + b.proof, BTL[b.proof] || b.proof)])); c.append(top);
       const a = el('a', 'bt-pay', b.payoff); a.href = b.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; c.append(a, el('p', 'bt-m', b.means));
@@ -782,7 +797,7 @@ function drawWall() {
   const UD = (D.updown || []).filter((x) => x && x.url && (Date.parse(D.meta.as_of) - Date.parse(x.date + 'T12:00:00Z')) < 8 * 864e5);
   const incBand = UD.length >= 3 ? (() => {
     const s = el('section', 'ud'); s.setAttribute('aria-label', 'Up and Down: who gained or lost power in AI this week');
-    const h = el('div', 'ud-h'); h.append(el('h2', 'ud-t', 'Up & Down'), el('span', 'ud-sub', 'Who gained power in AI this week, who lost it, and why it matters.')); const all = el('a', 'ud-all', 'The full board →'); all.href = '/up-and-down/'; h.append(all); s.append(h);
+    const hh = el('div', 'ud-h'); hh.append(el('h2', 'ud-t', 'Up & Down'), el('span', 'ud-sub', 'Who gained power in AI this week, who lost it, and why it matters.')); const all = el('a', 'ud-all', 'The full board →'); all.href = '/up-and-down/'; hh.append(all); s.append(hh);
     const row = (b) => { const r = el('div', 'ud-r ' + b.dir); r.append(el('span', 'ud-ar', b.dir === 'up' ? '▲' : '▼'));
       const body = el('div', 'ud-b'); const top = el('p', 'ud-l'); const nm = el('a', 'ud-n', b.name); if (b.who) { nm.href = '/who/' + b.who + '/'; nm.title = 'Everything on ' + b.name; } else { nm.href = b.url; nm.target = '_blank'; nm.rel = 'noopener noreferrer'; } top.append(nm, txt(' ' + b.line + ' '));
       const so = el('a', 'ud-s', b.outlet || 'source'); so.href = b.url; so.target = '_blank'; so.rel = 'noopener noreferrer'; top.append(so); if (b.rec) { const rc = el('a', 'ud-s', ' · on the record'); rc.href = '/i/' + b.rec + '/'; top.append(rc); }
@@ -791,24 +806,23 @@ function drawWall() {
       body.append(top, w); r.append(body); return r; };
     const cols = el('div', 'ud-cols');
     [['up', 'Up'], ['down', 'Down']].forEach(([k, l]) => { const c = el('div', 'ud-c ' + k); c.append(el('div', 'ud-ch', (k === 'up' ? '▲ ' : '▼ ') + l)); UD.filter((b) => b.dir === k).slice(0, 3).forEach((b) => c.append(row(b))); cols.append(c); });
-    s.append(cols, el('p', 'ud-f', 'Each name links to the reporting. The arrow and “Why it matters” are our read. A story already in the headlines above never appears here twice.')); return s; })() : null;
+    s.append(cols, el('p', 'ud-f', 'Each name links to the reporting. The arrow and “Why it matters” are our read. A story already in today’s headlines never appears here twice.')); return s; })() : null;
   // The Chart: one original chart a day, from the index's own data (build_chart.py); the image carries its own title and citation
   const CH = D.chart && D.chart.svg ? D.chart : null;
   const chartBand = CH ? (() => {
     const s = el('section', 'tchart'); s.setAttribute('aria-label', 'The Chart');
-    const h = el('div', 'tc-h'); h.append(el('span', 'tc-k', 'The Chart'), el('span', 'tc-d', fmtDate(new Date(CH.date + 'T12:00:00Z'))));
+    const hh = el('div', 'tc-h'); hh.append(el('span', 'tc-k', 'The Chart'), el('span', 'tc-d', fmtDate(new Date(CH.date + 'T12:00:00Z'))));
     const fig = el('div', 'tc-fig'); fig.innerHTML = window.innerWidth < 700 && CH.svg_tall ? CH.svg_tall : CH.svg;
     const ft = el('p', 'tc-f'); ft.append(txt(CH.takeaway + ' '));
     const a1 = el('a', null, 'The data and the download →'); a1.href = CH.url; const a2 = el('a', null, 'Every chart'); a2.href = '/chart/'; ft.append(a1, txt(' · '), a2);
-    s.append(h, fig, ft); return s; })() : null;
-  const pulse = buildPulse();
-  // The edited front page: the lead, Breakthroughs, the columns and Up & Down; everything else waits behind one 'more' break
+    s.append(hh, fig, ft); return s; })() : null;
+  // Everything else waits behind one 'more' break
   const edMore = el('section', 'ed-more' + (edOpen ? ' open' : '')); edMore.id = 'ed-more';
   const rdN = open.filter((c) => c.resolve_by === firstDay).length;
   const tg = el('button', 'ed-tog'); tg.type = 'button'; tg.setAttribute('aria-expanded', String(edOpen)); tg.setAttribute('aria-controls', 'ed-more-in');
   const tgL = el('span', 'ed-tl', edOpen ? 'Show less ▴' : 'More in today’s edition ▾');
-  tg.append(tgL, el('span', 'ed-ts', ['The Seismograph', 'Today’s chart', ...(rdN ? [rdN + ' forecasts graded ' + d3.utcFormat('%a')(new Date(firstDay + 'T12:00:00Z'))] : []), ...(xbox ? ['On X'] : []), 'What it means for you'].join(' · ')));
-  const inner = el('div', 'ed-in'); inner.id = 'ed-more-in'; inner.append(...(pulse ? [pulse] : []), ...(chartBand ? [chartBand] : []), ...(up.childNodes.length ? [up] : []), ...(xbox ? [xbox] : []));
+  tg.append(tgL, el('span', 'ed-ts', ['Today’s chart', ...(rdN ? [rdN + ' forecasts graded ' + d3.utcFormat('%a')(new Date(firstDay + 'T12:00:00Z'))] : []), ...(xbox ? ['On X'] : []), 'What it means for you'].join(' · ')));
+  const inner = el('div', 'ed-in'); inner.id = 'ed-more-in'; inner.append(...(chartBand ? [chartBand] : []), ...(up.childNodes.length ? [up] : []), ...(xbox ? [xbox] : []));
   tg.addEventListener('click', () => { setEdOpen(!edOpen); if (!edOpen) edMore.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); });
   edMore.append(tg, inner);
   // Names in today's news: the names with their own page, counted across today's headlines (links to /who/)
@@ -816,79 +830,22 @@ function drawWall() {
   const namesRow = wc.size >= 2 ? (() => { const r = el('nav', 'names-row'); r.setAttribute('aria-label', 'Names in today’s news'); r.append(el('span', 'nr-k', 'Names in today’s news'));
     [...wc.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8).forEach(([w, c]) => { const a = el('a', 'nr-a', (D.whonames || {})[w] || w); a.href = '/who/' + w + '/'; a.append(el('small', null, ' ' + c)); r.append(a); });
     const all = el('a', 'nr-all', 'Who’s who →'); all.href = '/who/'; r.append(all); return r; })() : null;
-  box.replaceChildren(...(btBand ? [btBand] : []), cols, more, ...(namesRow ? [namesRow] : []), ...(incBand ? [incBand] : []), edMore, cu, ed, foot);
-}
-/* ---------- The story so far: a 20-second film at the top of the homepage, told by the record itself.
-   Four beats, each lighting its stretch of the incident strip: when a person was always behind it, the first severe case where the AI
-   acted on its own, the last twelve months, and today's live case. Every number is computed from the data; nothing is staged. */
-const storyState = { i: 0, timer: null, paused: false, done: false };
-function drawStory() {
-  const box = document.getElementById('story'); if (!box || !C.scored || !C.scored.length || EMBED) { if (box) box.hidden = true; return; }
-  clearTimeout(storyState.timer); storyState.timer = null;
-  const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const asOf = new Date(D.meta.as_of), h = C.headline || {}, own = (r) => +r.A >= 3;
-  const all = C.scored.filter((r) => r.date && !isNaN(Date.parse(r.date))).map((r) => ({ ...r, t: new Date(r.date + 'T12:00:00Z') })).sort((a, b) => a.t - b.t);
-  const t0 = new Date('2023-01-01T00:00:00Z'), fmtMY = d3.utcFormat('%b %Y'), yrAgo = new Date(+asOf - 365.25 * 864e5);
-  const early = all.filter((r) => r.t < new Date('2025-01-01T00:00:00Z')), earlyWild = early.filter((r) => r.setting === 'wild');
-  const firstSev = all.find((r) => r.setting === 'wild' && own(r) && r.severity >= 60);
-  const sr = D.meta.serial || {}, live = all.find((r) => r.id === D.meta.live_incident);
-  const day = sr.day1 ? Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1 : null;
-  const pct = Math.round(100 * (h.agentic_recent || 0));
-  const B = (k, from, to, html, hot) => ({ k, from, to, html, hot: hot || [] });
-  const beats = [
-    B('2023–2024', t0, new Date('2024-12-31T23:59:00Z'), earlyWild.length && !earlyWild.some(own)
-      ? `In 2023 and 2024, in <b>none</b> of the real-world AI incidents on our record did the AI act on its own.`
-      : `In 2023 and 2024, our record logged <b>${early.length}</b> AI incidents, most of them with a person at the controls.`),
-    ...(firstSev ? [B(fmtMY(firstSev.t), new Date(+firstSev.t - 40 * 864e5), new Date(+firstSev.t + 40 * 864e5), `${fmtMY(firstSev.t)}, the first severe case where the AI acted on its own: ${esc(firstSev.title)}. <b>${firstSev.severity}/100.</b>`, [firstSev.id])] : []),
-    B('The last 12 months', yrAgo, asOf, `In the last 12 months: <b>${h.severe_last12 ?? '?'}</b> severe incidents, up from ${h.severe_prior12 ?? '?'}. In <b>${pct}%</b> of real-world cases, the AI did the acting.`),
-    B('Now' + (day ? ' · day ' + day : ''), new Date(+asOf - 10 * 864e5), asOf, live && sr.name
-      ? `Right now: <b>${esc(sr.name)}</b>${sr.strip ? '. ' + esc(sr.strip) : ''} Today's level: <b>${esc(live.level || '')}</b>.`
-      : `Today's level: <b>${esc((C.scored.slice().sort((a, b) => b.severity - a.severity)[0] || {}).level || '')}</b>.`, live ? [live.id] : []),
-  ];
-  const inner = el('div', 'st-in');
-  const left = el('div', 'st-l'); const kick = el('div', 'st-k'); const ttl = el('p', 'st-t');
-  const ctl = el('div', 'st-c'); const dots = el('div', 'st-dots'); dots.setAttribute('role', 'tablist'); dots.setAttribute('aria-label', 'Steps');
-  const dotEls = beats.map((b, i) => { const d = el('button', 'st-dot'); d.type = 'button'; d.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + b.k); d.addEventListener('click', () => { stop(); show(i); }); dots.append(d); return d; });
-  const rp = el('button', 'st-a', '↻ Replay'); rp.type = 'button'; rp.addEventListener('click', () => { storyState.done = false; show(0); run(); });
-  const ex = el('button', 'st-a', 'Explore every incident ↓'); ex.type = 'button'; ex.addEventListener('click', () => { setEdOpen(true); const t = document.querySelector('.seis'); if (t) setTimeout(() => t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }), 60); });
-  ctl.append(dots, rp, ex);
-  // On phones the band is one line (the current beat); a tap opens the chart and the controls
-  const pm = el('button', 'st-pm', 'See the chart ▾'); pm.type = 'button'; pm.setAttribute('aria-expanded', 'false');
-  pm.addEventListener('click', () => { const o = box.classList.toggle('open'); pm.setAttribute('aria-expanded', String(o)); pm.textContent = o ? 'Hide the chart ▴' : 'See the chart ▾'; });
-  left.append(kick, ttl, pm, ctl);
-  // the strip: every incident as a hairline spike
-  const strip = el('div', 'st-strip'); const W = 640, H = 120, ml = 4, mr = 34, base = H - 16;
-  const x = d3.scaleUtc().domain([t0, new Date(+asOf + 20 * 864e5)]).range([ml, W - mr]), y = d3.scaleLinear().domain([0, 100]).range([base, 6]);
-  const NS = 'http://www.w3.org/2000/svg', mk = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
-  const svg = mk('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `${all.length} AI incidents since 2023 as spikes; red where the AI acted on its own in the real world.` });
-  const band = mk('rect', { x: ml, y: 0, width: 0, height: base, class: 'st-band' }); svg.append(band);
-  svg.append(mk('line', { x1: ml, x2: W - mr, y1: base, y2: base, class: 'st-base' }));
-  for (let yr = 2023; yr <= asOf.getUTCFullYear(); yr++) { const t = mk('text', { x: x(new Date(yr + '-01-01T00:00:00Z')) + 2, y: H - 3, class: 'st-yr' }); t.textContent = String(yr); svg.append(t); }
-  const sp = all.map((r) => { const l = mk('line', { x1: x(r.t), x2: x(r.t), y1: base, y2: base, class: 'sp ' + (own(r) && r.setting === 'wild' ? 'own' : 'ctx') }); svg.append(l); return { r, l, top: y(r.severity) }; });
-  const nx = x(asOf); if (live) { svg.append(mk('circle', { cx: x(live.t), cy: y(live.severity), r: 3, class: 'st-now' }), mk('circle', { cx: x(live.t), cy: y(live.severity), r: 6, class: 'st-ring' })); }
-  const nl = mk('text', { x: nx + 4, y: 12, class: 'st-lab' }); nl.textContent = 'NOW'; svg.append(nl);
-  strip.append(svg); strip.title = 'Explore every incident'; strip.addEventListener('click', () => ex.click());
-  inner.append(left, strip); box.replaceChildren(inner); box.hidden = false;
-  const MS = 5200; box.style.setProperty('--st-ms', MS + 'ms');
-  function show(i) { storyState.i = i; const b = beats[i];
-    kick.replaceChildren(txt(b.k), el('span', 'st-step', (i + 1) + ' of ' + beats.length));
-    ttl.classList.add('fade'); setTimeout(() => { ttl.innerHTML = b.html; ttl.classList.remove('fade'); }, reduced ? 0 : 180);
-    dotEls.forEach((d, j) => { d.classList.toggle('on', j === i); d.classList.toggle('done', j < i); d.setAttribute('aria-selected', String(j === i)); if (j === i) { d.style.animation = 'none'; void d.offsetWidth; d.style.animation = ''; } });
-    const a = Math.max(ml, x(b.from)), z = Math.min(W - mr + 6, x(b.to) + 3); band.setAttribute('x', a); band.setAttribute('width', Math.max(4, z - a));
-    sp.forEach(({ r, l, top }) => { const inR = r.t >= b.from && r.t <= b.to; l.setAttribute('y2', r.t <= b.to || i === beats.length - 1 ? top : base); l.classList.toggle('dim', !inR && i !== beats.length - 1); l.classList.toggle('hot', b.hot.includes(r.id)); }); }
-  function stop() { clearTimeout(storyState.timer); storyState.timer = null; box.classList.add('paused'); }
-  function run() { box.classList.remove('paused'); clearTimeout(storyState.timer); if (reduced) return; storyState.timer = setTimeout(function tick() { if (storyState.i < beats.length - 1) { show(storyState.i + 1); storyState.timer = setTimeout(tick, MS); } else { storyState.done = true; dotEls.forEach((d) => d.classList.remove('on')); dotEls.forEach((d) => d.classList.add('done')); } }, MS); }
-  box.onmouseenter = () => { if (storyState.timer) { clearTimeout(storyState.timer); storyState.timer = null; box.classList.add('paused'); storyState.hold = true; } };
-  box.onmouseleave = () => { if (storyState.hold) { storyState.hold = false; run(); } };
-  if (reduced || storyState.done) show(beats.length - 1); else { show(storyState.i || 0); run(); }
+  box.replaceChildren(...(btBand ? [btBand] : []), desks, ...(incBand ? [incBand] : []), ...(namesRow ? [namesRow] : []), edMore, cu, ed, foot);
 }
 
-/* ---------- The scoreboard rail and the Line of the Day: four numbers that change daily, generated from the data, and one verbatim line */
+/* ---------- The scoreboard (under The Morning Shot): the forecast record with the next Resolution Day, the fix tracker, and the Line of the Day */
 function drawRail() {
-  const box = document.getElementById('rail'); if (!box || EMBED) return;
+  const box = document.getElementById('rail'); if (!box || EMBED || PAGE !== 'front') return;
   const tile = (href, k, big, sub) => { const t = el('a', 'rl-t'); t.href = href; t.append(el('span', 'rl-k', k), el('b', 'rl-b', big), el('span', 'rl-s', sub)); return t; };
+  const head = el('div', 'rl-head'); const h2 = el('h2', null, 'The scoreboard'); h2.id = 'rail-h'; head.append(h2);
+  // Resolution Day: from three days before a date on which two or more calls resolve, until the day after
+  { const byDay = {}; (D.calls || []).filter((c) => c.kind === 'call' && !c.resolution).forEach((c) => { byDay[c.resolve_by] = (byDay[c.resolve_by] || 0) + 1; });
+    const today = D.meta.as_of.slice(0, 10), dd = (a2, b2) => Math.round((Date.parse(a2 + 'T12:00:00Z') - Date.parse(b2 + 'T12:00:00Z')) / 864e5);
+    const rd = Object.keys(byDay).filter((d) => byDay[d] >= 2 && dd(d, today) <= 3 && dd(d, today) >= -1).sort()[0];
+    if (rd) { const n = dd(rd, today); const a2 = el('a', 'dl-rd'); a2.href = '/forecast/resolution-day/' + rd + '/';
+      a2.append(el('b', null, 'Resolution Day'), txt(' · ' + new Date(rd + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }) + ': ' + byDay[rd] + ' forecasts graded in public' + (n > 0 ? ', in ' + n + (n === 1 ? ' day' : ' days') : n === 0 ? ', today' : '') + ' →'));
+      head.append(a2); } }
   const tiles = el('div', 'rl-tiles');
-  if (LEVEL_STREAK) { const L = LEVEL_STREAK; tiles.append(tile('/level/', 'The level', 'WS-' + L.n + ' ' + L.tier, L.prev == null ? 'the first day on record' : L.prev === L.n ? (L.all ? 'every day since ' + L.d0 + ', when the record starts' : L.k >= 2 ? 'day ' + L.k + ' in a row' : 'same as yesterday') : (L.n > L.prev ? 'up from WS-' + L.prev + ' yesterday' : 'down from WS-' + L.prev + ' yesterday'))); }
   const hr = houseRecord(); const nxt = callRows().filter(callOpen).sort((x, y) => x.resolve_by.localeCompare(y.resolve_by))[0];
   const nDay = nxt ? callRows().filter((c) => callOpen(c) && c.kind === 'call' && c.resolve_by === nxt.resolve_by).length : 0;
   const nLabel = nxt ? new Date(nxt.resolve_by + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }) : '';
@@ -896,19 +853,17 @@ function drawRail() {
   const fx = fixRows(); const cur = (f) => (f.chain.find((c) => c.stage === 'current') || f.chain[f.chain.length - 1]).status || '';
   const fixed = fx.filter((f) => /^(fixed|verified)/.test(cur(f))).length, reop = fx.filter((f) => cur(f) === 'reopened').length;
   if (fx.length) tiles.append(tile('/fixes/', 'Did they fix it?', fixed + ' of ' + fx.length + ' confirmed fixed', reop ? reop + ' reopened after a claimed fix' : 'every case re-checked'));
-  const sr = D.meta.serial || {};
-  if (sr.name && sr.state !== 'closed') { const day = Math.floor((Date.parse(D.meta.as_of.slice(0, 10) + 'T12:00:00Z') - Date.parse(sr.day1 + 'T12:00:00Z')) / 864e5) + 1; tiles.append(tile(sr.url || '/php2shell/', 'The live case', sr.name, 'day ' + day + (sr.rung ? ' · ' + sr.rung.charAt(0).toUpperCase() + sr.rung.slice(1) : ''))); }
   const lines = (D.line_of_day || []).filter((x) => x.date <= D.meta.as_of.slice(0, 10)).sort((a, b) => b.date.localeCompare(a.date));
   const ln = lines[0] && (Date.parse(D.meta.as_of) - Date.parse(lines[0].date + 'T12:00:00Z')) < 3 * 864e5 ? lines[0] : null;
   const lod = ln ? (() => { const q = el('figure', 'rl-line'); q.append(el('span', 'rl-k', 'Line of the day'), el('blockquote', null, '“' + ln.quote + '”'));
     const cap = el('figcaption'); cap.append(el('b', null, ln.speaker), txt((ln.role ? ', ' + ln.role : '') + (ln.context ? ', ' + ln.context : '') + '. '));
     const a = el('a', null, ln.source_label || 'Source'); a.href = ln.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; cap.append(a); q.append(cap); return q; })() : null;
-  box.replaceChildren(tiles, ...(lod ? [lod] : [])); box.hidden = false;
+  box.replaceChildren(head, tiles, ...(lod ? [lod] : [])); box.hidden = false;
 }
-/* ---------- The Seismograph: every incident on the record as a spike (height = severity; red = the AI acted on its own).
-   It replays 2023 to today once when it comes into view, then answers to hover, tap and the arrow keys. The replay is the real record
-   in date order; nothing in it is simulated. */
-const pulseState = { f: 'all', played: false, zoom: false };
+/* ---------- The incident timeline (the Seismograph): every incident on the record as a spike (height = severity; red = the AI
+   acted on its own), under the lead. It is drawn complete and still; Play replays 2023 to today (instantly under reduced motion).
+   It answers to hover, tap and the arrow keys, and a spike opens its case. The replay is the real record in date order; nothing is simulated. */
+const pulseState = { f: 'all', played: true, zoom: false, kbd: false }; // drawn complete; it replays only when the reader presses Play
 function buildPulse() {
   if (!C.scored || !C.scored.length) return null;
   const asOf = new Date(D.meta.as_of), asOfY = D.meta.as_of.slice(0, 4);
@@ -917,20 +872,22 @@ function buildPulse() {
   const all = C.scored.filter((r) => r.date && !isNaN(Date.parse(r.date))).map((r) => ({ ...r, t: new Date(r.date + 'T12:00:00Z') })).sort((a, b) => a.t - b.t);
   const full = all.slice(); all.splice(0, all.length, ...full.filter((r) => r.t >= t0d));
   const live = all.find((r) => r.id === D.meta.live_incident);
-  const sec = el('section', 'seis dark-scope'); sec.setAttribute('aria-label', 'The Seismograph: every AI incident since 2023');
+  const sec = el('div', 'seis dark-scope'); sec.setAttribute('role', 'group'); sec.setAttribute('aria-label', 'Incident timeline chart' + (pulseState.zoom ? ', last 90 days' : ', since 2023'));
   const head = el('div', 'pl-h');
-  const ttl = el('div', 'pl-tt'); ttl.append(el('span', 'pl-k', 'The Seismograph'), el('span', 'pl-sub', (pulseState.zoom ? 'Every AI incident on the record in the last 90 days. ' : 'Every AI incident on the record since 2023. ') + 'Taller is worse. '), (() => { const b = el('b', 'pl-red', 'Red'); return b; })(), el('span', 'pl-sub', ': the AI acted on its own.'));
+  // the counter says what is on screen (and, during a replay, how far it has got)
   const ctr = el('div', 'pl-ctr'); ctr.setAttribute('aria-live', 'polite');
-  head.append(ttl, ctr);
+  head.append(ctr);
   const ctl = el('div', 'pl-ctl'); ctl.setAttribute('role', 'group'); ctl.setAttribute('aria-label', 'Show');
   const F = [['all', 'All ' + all.length], ['own', 'AI acted on its own ' + all.filter(own).length], ['severe', 'Severe and worse ' + all.filter((r) => r.severity >= 60).length]];
   const btns = F.map(([k, l]) => { const b = el('button', 'pl-f' + (pulseState.f === k ? ' on' : ''), l); b.type = 'button'; b.setAttribute('aria-pressed', String(pulseState.f === k)); b.addEventListener('click', () => { pulseState.f = k; btns.forEach((x, i) => { const on = F[i][0] === k; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); }); paint(false); }); return b; });
-  const rp = el('button', 'pl-f pl-rp', '↻ Replay'); rp.type = 'button'; rp.addEventListener('click', () => play());
+  const pb = el('button', 'pl-f pl-play'); pb.type = 'button'; let playing = false, stopAt = null;
+  const pbLabel = (st) => { pb.textContent = st === 'playing' ? '■ Stop' : st === 'done' ? '↻ Play again' : '▶ Play ' + (pulseState.zoom ? 'the last 90 days' : '2023 to today'); pb.setAttribute('aria-label', st === 'playing' ? 'Stop the replay' : 'Replay the timeline' + (pulseState.zoom ? ' for the last 90 days' : ' from 2023 to today')); };
+  pbLabel('idle'); pb.addEventListener('click', () => { if (playing && stopAt) { stopAt(); return; } play(); });
   const zm = el('button', 'pl-f pl-zm', pulseState.zoom ? '← Since 2023' : 'Zoom: last 90 days'); zm.type = 'button'; zm.setAttribute('aria-pressed', String(pulseState.zoom));
   zm.addEventListener('click', () => { pulseState.zoom = !pulseState.zoom; const n = buildPulse(); if (n) { sec.replaceWith(n); n.querySelector('.pl-zm').focus(); } });
-  ctl.append(...btns, zm, rp);
+  ctl.append(pb, ...btns, zm);
   const fig = el('div', 'pl-fig'); const tip = el('div', 'pl-tip'); tip.hidden = true; fig.append(tip);
-  const W = Math.max(300, Math.min(1180, (document.getElementById('wall') || document.body).clientWidth || window.innerWidth - 32)), phone = W < 640;
+  const W = Math.max(300, Math.min(1180, (document.getElementById('itl-fig') || document.getElementById('wall') || document.body).clientWidth || window.innerWidth - 32)), phone = W < 640;
   const H = phone ? 220 : 300, m = { l: phone ? 26 : 34, r: phone ? 46 : 64, t: 18, b: 22 };
   const x = d3.scaleUtc().domain([t0d, new Date(+asOf + (pulseState.zoom ? 3 : 25) * 864e5)]).range([m.l, W - m.r]);
   const y = d3.scaleLinear().domain([0, 100]).range([H - m.b, m.t]);
@@ -944,7 +901,8 @@ function buildPulse() {
   ticks.forEach((d) => { const xx = x(d); svg.append(mk('line', { x1: xx, x2: xx, y1: y(0), y2: y(0) + 5, class: 'pl-base' })); const t = mk('text', { x: xx + 3, y: H - 5, class: 'pl-ax' }); t.textContent = pulseState.zoom ? d3.utcFormat('%b')(d) : String(d.getUTCFullYear()); svg.append(t); });
   const gS = mk('g', {}); svg.append(gS);
   const spikes = all.map((r) => { const g = mk('g', { class: 'pl-s ' + (own(r) ? 'own' : 'ctx') + (r.setting === 'wild' ? '' : ' lab') }); const xx = x(r.t);
-    const ln = mk('line', { x1: xx, x2: xx, y1: y(0), y2: y(0) }); const c = mk('circle', { cx: xx, cy: y(0), r: r.severity >= 60 ? (phone ? 3 : 3.5) : 2.4 }); g.append(ln, c); gS.append(g); return { r, g, ln, c, xx, top: y(r.severity) }; });
+    const y1 = pulseState.played ? y(r.severity) : y(0);
+    const ln = mk('line', { x1: xx, x2: xx, y1: y(0), y2: y1 }); const c = mk('circle', { cx: xx, cy: y1, r: r.severity >= 60 ? (phone ? 3 : 3.5) : 2.4 }); g.append(ln, c); gS.append(g); return { r, g, ln, c, xx, top: y(r.severity) }; });
   // landmarks: the two worst real-world incidents in view, labelled directly (wide screens only)
   if (!phone) { const lm = all.filter((r) => r.setting === 'wild' && r.id !== (live && live.id)).sort((a, b) => b.severity - a.severity).slice(0, pulseState.zoom ? 1 : 2).sort((a, b) => a.t - b.t);
     lm.forEach((r, i) => { const lx = x(r.t), ly = y(r.severity); const short = r.title.length > 60 ? r.title.slice(0, r.title.lastIndexOf(' ', 58)) + '…' : r.title;
@@ -966,29 +924,33 @@ function buildPulse() {
   const paint = (instant) => { spikes.forEach((s) => { const on = vis(s.r); s.g.classList.toggle('off', !on); if (pulseState.played || instant) { s.ln.setAttribute('y2', s.top); s.c.setAttribute('cy', s.top); } }); summary(); };
   const fmtM = d3.utcFormat('%b %Y');
   const summary = (upto) => { const rows = all.filter((r) => vis(r) && (!upto || r.t <= upto)); const yrRows = rows.filter((r) => r.date.startsWith(asOfY));
-    ctr.replaceChildren(el('b', null, String(rows.length)), txt(upto ? ' incidents through ' + fmtM(upto) : (pulseState.f === 'own' ? ' where the AI acted on its own' : pulseState.f === 'severe' ? ' severe or critical' : ' incidents') + ' · ' + yrRows.length + ' of them in ' + asOfY)); };
-  const play = () => { const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; pulseState.played = false;
+    ctr.replaceChildren(el('b', null, String(rows.length)), txt(upto ? (rows.length === 1 ? ' incident' : ' incidents') + ' through ' + fmtM(upto) : (pulseState.f === 'own' ? ' where the AI acted on its own' : pulseState.f === 'severe' ? ' severe or critical' : ' incidents') + ' · ' + yrRows.length + ' of them in ' + asOfY)); };
+  const play = () => { const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    pulseState.played = false; playing = true; pbLabel('playing'); let stopped = false, i = 0;
     spikes.forEach((s) => { s.ln.setAttribute('y2', y(0)); s.c.setAttribute('cy', y(0)); s.g.classList.remove('lit'); });
-    if (reduce) { pulseState.played = true; paint(true); return; }
-    const T = 3200, t0 = performance.now(), d0 = +x.domain()[0], d1 = +asOf; let i = 0; needle.style.opacity = 1;
-    const step = (now) => { const k = Math.min(1, (now - t0) / T), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, dt = new Date(d0 + (d1 - d0) * e), nxp = x(dt);
-      needle.setAttribute('x1', nxp); needle.setAttribute('x2', nxp);
-      while (i < spikes.length && spikes[i].r.t <= dt) { const s = spikes[i++]; s.ln.setAttribute('y2', s.top); s.c.setAttribute('cy', s.top); s.g.classList.add('lit'); setTimeout(() => s.g.classList.remove('lit'), 600); }
-      summary(dt);
-      if (k < 1) requestAnimationFrame(step); else { while (i < spikes.length) { const s = spikes[i++]; s.ln.setAttribute('y2', s.top); s.c.setAttribute('cy', s.top); } needle.style.opacity = 0; pulseState.played = true; summary(); } };
+    const reveal = (dt, lit) => { while (i < spikes.length && spikes[i].r.t <= dt) { const s = spikes[i++]; s.ln.setAttribute('y2', s.top); s.c.setAttribute('cy', s.top); if (lit) { s.g.classList.add('lit'); setTimeout(() => s.g.classList.remove('lit'), 600); } } summary(dt); };
+    const finish = () => { if (!playing) return; reveal(new Date(8.64e15), false); needle.style.opacity = 0; pulseState.played = true; playing = false; stopAt = null; summary(); pbLabel('done'); };
+    stopAt = () => { stopped = true; finish(); };
+    const d0 = +x.domain()[0], d1 = +asOf;
+    if (reduce) { // reduced motion: no sweep, no easing, no growing dots; the record appears in eight still steps
+      let k = 0; const tick = () => { if (stopped) return; k++; reveal(new Date(d0 + (d1 - d0) * k / 8), false); if (k < 8) setTimeout(tick, 650); else finish(); }; setTimeout(tick, 150); return; }
+    const T = 3200, t0 = performance.now(); needle.style.opacity = 1;
+    const step = (now) => { if (stopped) return; const k = Math.min(1, (now - t0) / T), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, dt = new Date(d0 + (d1 - d0) * e), nxp = x(dt);
+      needle.setAttribute('x1', nxp); needle.setAttribute('x2', nxp); reveal(dt, true);
+      if (k < 1) requestAnimationFrame(step); else finish(); };
     requestAnimationFrame(step); };
   // hover, tap and keys: the nearest visible spike answers
   let cur = -1;
   const show = (idx) => { const s = spikes[idx]; if (!s) return; cur = idx; spikes.forEach((z, j) => z.g.classList.toggle('hov', j === idx)); hl.setAttribute('x1', s.xx); hl.setAttribute('x2', s.xx); hl.style.opacity = 1;
-    const r = s.r; tip.replaceChildren(el('div', 'pt-v', r.severity + '/100 · ' + r.tier), el('div', 'pt-t', r.title), el('div', 'pt-m', showDate(r) + ' · ' + (own(r) ? 'the AI acted on its own' : +r.A === 2 ? 'the AI took a single action' : 'a person used or misused it') + ' · ' + (r.setting === 'wild' ? 'in the real world' : 'in a lab or test')), el('div', 'pt-go', matchMedia('(hover: hover)').matches ? 'Click to open the case →' : 'Tap again to open the case →'));
+    const r = s.r; tip.replaceChildren(el('div', 'pt-v', r.severity + '/100 · ' + r.tier), el('div', 'pt-t', r.title), el('div', 'pt-m', showDate(r) + ' · ' + (own(r) ? 'the AI acted on its own' : +r.A === 2 ? 'the AI took a single action' : 'a person used or misused it') + ' · ' + (r.setting === 'wild' ? 'in the real world' : 'in a lab or test')), el('div', 'pt-go', pulseState.kbd ? 'Press Enter to open the case →' : matchMedia('(hover: hover)').matches ? 'Click to open the case →' : 'Tap again to open the case →'));
     tip.hidden = false; const k = svg.getBoundingClientRect().width / W, fw = fig.clientWidth, tw = tip.offsetWidth, left = Math.max(0, Math.min(fw - tw, s.xx * k - tw / 2)); tip.style.left = left + 'px'; tip.style.top = Math.max(0, s.top * k - tip.offsetHeight - 12) + 'px'; };
   const hide = () => { tip.hidden = true; hl.style.opacity = 0; spikes.forEach((z) => z.g.classList.remove('hov')); };
   const nearest = (px, py) => { let b = -1, bd = 1e9; spikes.forEach((s, j) => { if (!vis(s.r)) return; const d = Math.abs(s.xx - px) * 1.6 + Math.abs(s.top - py) * 0.35; if (d < bd) { bd = d; b = j; } }); return bd < 70 ? b : -1; };
   const pt = (e) => { const bb = svg.getBoundingClientRect(); return [(e.clientX - bb.left) * W / bb.width, (e.clientY - bb.top) * H / bb.height]; };
-  hit.addEventListener('pointermove', (e) => { const [px, py] = pt(e); const j = nearest(px, py); if (j >= 0) show(j); else hide(); });
+  hit.addEventListener('pointermove', (e) => { pulseState.kbd = false; const [px, py] = pt(e); const j = nearest(px, py); if (j >= 0) show(j); else hide(); });
   hit.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') hide(); });
   hit.addEventListener('click', (e) => { const [px, py] = pt(e); const j = nearest(px, py); if (j < 0) return; if (e.pointerType !== 'mouse' && cur !== j) { show(j); return; } location.href = '/i/' + spikes[j].r.id + '/'; });
-  hit.addEventListener('keydown', (e) => { const visIdx = spikes.map((s, j) => vis(s.r) ? j : -1).filter((j) => j >= 0); if (!visIdx.length) return; let p = visIdx.indexOf(cur);
+  hit.addEventListener('keydown', (e) => { pulseState.kbd = true; const visIdx = spikes.map((s, j) => vis(s.r) ? j : -1).filter((j) => j >= 0); if (!visIdx.length) return; let p = visIdx.indexOf(cur);
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); p = p < 0 ? visIdx.length - 1 : Math.max(0, Math.min(visIdx.length - 1, p + (e.key === 'ArrowRight' ? 1 : -1))); show(visIdx[p]); }
     else if (e.key === 'Enter' && cur >= 0) location.href = '/i/' + spikes[cur].r.id + '/'; else if (e.key === 'Escape') hide(); });
   // what it shows, computed from the record
@@ -1002,10 +964,9 @@ function buildPulse() {
   ins.append(tile(yrs.map(sevYr).join(' → '), 'severe or critical incidents a year, ' + yrs[0] + ' to ' + asOfY, asOfY + ' so far'),
     tile(Math.round(100 * (C.headline ? C.headline.agentic_early : 0)) + '% → ' + Math.round(100 * (C.headline ? C.headline.agentic_recent : 0)) + '%', 'of real-world incidents where the AI acted on its own', 'before 2025 vs the last 12 months'),
     ...(top ? [tile(top.severity + '/100', 'the worst so far this year', top.title.length > 70 ? top.title.slice(0, 68) + '…' : top.title, '/i/' + top.id + '/')] : []));
-  const ft = el('p', 'pl-ft'); ft.append(txt('Each spike is one incident on the index, scored 0–100 by a published formula and linked to its source; dashed spikes happened in labs or tests. The record is the major incidents we can source, not every one. '), (() => { const a = el('a', null, 'Every incident as a table →'); a.href = '/index/#all'; return a; })());
+  const ft = el('p', 'pl-ft'); ft.append(txt('Each spike is one incident on the index, scored 0–100 by a published formula and linked to its source; dashed spikes happened in labs or tests. Point at a spike, or tap it, for its date and score; tap again or click to open the case. On a keyboard, tab to the chart, step with the arrow keys and press Enter. The record is the major incidents we can source, not every one. '), (() => { const a = el('a', null, 'Every incident as a table →'); a.href = '/index/#all'; return a; })());
   sec.append(head, ctl, fig, ins, ft);
   paint(pulseState.played);
-  if (!pulseState.played) { const io = new IntersectionObserver((en) => { if (en.some((e) => e.isIntersecting)) { io.disconnect(); play(); } }, { threshold: 0.35 }); io.observe(sec); }
   return sec;
 }
 function drawWire() {
@@ -2065,7 +2026,7 @@ function showChart(id) {
   if (C.scored) CHART_DRAW[id]();
 }
 document.getElementById('chart-tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) showChart(b.dataset.pane); });
-const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', method: 'about', context: 'about' };
+const ALIAS = { escalation: 'charts', danger: 'charts', pipeline: 'charts', method: 'about', context: 'about', seis: 'incident-timeline', level: 'incident-timeline' };
 
 /* ---------- routing */
 function go(hash) { location.hash = hash; route(); }
@@ -2116,6 +2077,7 @@ const MF_PREF = () => { try { return localStorage.getItem('ws-mf'); } catch (e) 
 const MF = () => PAGE === 'front' && !EMBED && window.innerWidth < 760 && MF_PREF() !== 'off';
 const MF_SECTIONS = [['wire', 'The Wire'], ['why', 'What it means for you'], ['record', 'The record'], ['capabilities', 'What AI can now do'], ['words', 'In their words'], ['pattern', 'The pattern of 2026'], ['charts', 'The escalation, five ways'], ['next', 'Where this goes next'], ['dives', 'Inside the incidents'], ['fixes', 'Did they fix it?'], ['signals', 'Official signals'], ['all', 'All incidents'], ['about', 'About the data']];
 let mfCur = null; // null = not in phone mode; 'front' or a section id
+const FRONT_SHOW = new Set(['promise', 'wall-lead', 'incident-timeline', 'latest', 'morning-shot', 'rail', 'wall', 'wire', 'front', 'why']); // what the phone front page keeps
 function mfTarget(h) {
   if (!h || h === 'front' || h === 'top') return 'front';
   if (h === 'wire' || h === 'now' || h === 'brief' || h === 'since') return 'wire';
@@ -2137,7 +2099,7 @@ function mfApply(target) {
   [...main.children].forEach((c) => {
     if (keep.has(c.id)) { c.removeAttribute('data-mf'); return; }
     const sec = c.matches('section') ? c : c.querySelector('section'); const id = sec ? sec.id : c.id;
-    const show = target === 'front' ? (id === 'wall' || id === 'wire' || id === 'front' || id === 'why') : id === target;
+    const show = target === 'front' ? FRONT_SHOW.has(id) : id === target;
     if (show) c.removeAttribute('data-mf'); else c.setAttribute('data-mf', 'off');
   });
   front.hidden = target !== 'front';

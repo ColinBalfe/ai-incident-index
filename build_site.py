@@ -81,27 +81,30 @@ except (OSError, ValueError):
 _svm = ''.join(f'<meta name="{k}" content="{"".join(c for c in str(_sv.get(v, "")) if c.isalnum() or c in "-_")}">' for v, k in (('google', 'google-site-verification'), ('bing', 'msvalidate.01')) if _sv.get(v))
 if _svm:
     out = out.replace('</head>', _svm + '\n</head>', 1)
-from pageshell import LIVE_NAV as _LIVE_NAV, MID_NAV as _MID_NAV, DESKS as _DESKS
-out = out.replace('{{LIVE_NAV}}', _LIVE_NAV).replace('{{MID_NAV}}', _MID_NAV)
+from pageshell import LIVE_NAV as _LIVE_NAV, MID_NAV as _MID_NAV, DESKS as _DESKS, MS_URL as _MS_URL
+out = out.replace('{{LIVE_NAV}}', _LIVE_NAV).replace('{{MID_NAV}}', _MID_NAV).replace('{{MS_URL}}', _MS_URL)
+# the masthead tagline: the front page says what the site covers (its promise sits right under it); the Record and the Wire keep the slogan
+_TAG_FRONT = '<p class="mh-tag"><span class="mh-one">AI’s dangers and breakthroughs</span></p>'
+_TAG_SLOGAN = '<p class="mh-tag"><span class="mh-t1">See what’s coming.</span><span class="mh-dot" aria-hidden="true"></span><span class="mh-t2">Know what it means.</span></p>'
 out = out.replace('{{DESKS}}', '<nav class="mh-desks" aria-label="Desks">' + ''.join(f'<a href="{u}">{_h.escape(t)}</a>' for u, t in _DESKS) + '</nav>')
-open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front').replace('/data/bundle.json?v=', '/data/bundle-front.json?v=', 1))
+open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front').replace('{{MH_TAG}}', _TAG_FRONT, 1).replace('/data/bundle.json?v=', '/data/bundle-front.json?v=', 1))
 # ---- the Record (/index/): the same template with the headline page hidden and the full index shown
-rec = out.replace('{{PAGE}}', 'record')
+rec = out.replace('{{PAGE}}', 'record').replace('{{MH_TAG}}', _TAG_SLOGAN, 1)
 rec = rec.replace('<title>Warning Shots: AI threats, breakthroughs and impacts</title>', f'<title>The Record: every AI incident since 2023, scored and sourced | {title}</title>', 1)
 rec = rec.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}index/">', 1)
 rec = rec.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}index/">', 1)
 rec = rec.replace(og_title.replace('"', '&quot;'), (f"AI has started breaking in on its own — the Record, {title}").replace('"', '&quot;'))
-rec = rec.replace('<a class="skip" href="#wall">Skip to the headlines</a>', '<a class="skip" href="#record">Skip to the Record</a>', 1)
+rec = rec.replace('<a class="skip" href="#wall-lead">Skip to the top story</a>', '<a class="skip" href="#record">Skip to the Record</a>', 1)
 rec_desc = f"The Record: all {n} AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from {p12} to {s12} in a year; in {share}% of the last 12 months' real-world cases the AI did the acting. Charts, forecasts and whether the fixes held."
 rec = rec.replace(og_desc.replace('"', '&quot;'), rec_desc.replace('"', '&quot;'))
 os.makedirs('index', exist_ok=True)
 open('index/index.html', 'w', encoding='utf-8').write(rec)
 # ---- the Wire (/wire/): every report from the last three days, the refresh box and the live panel
-wre = out.replace('{{PAGE}}', 'wire')
+wre = out.replace('{{PAGE}}', 'wire').replace('{{MH_TAG}}', _TAG_SLOGAN, 1)
 wre = wre.replace('<title>Warning Shots: AI threats, breakthroughs and impacts</title>', f'<title>The Wire: every AI threat and breakthrough reported in the last three days | {title}</title>', 1)
 wre = wre.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}wire/">', 1)
 wre = wre.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}wire/">', 1)
-wre = wre.replace('<a class="skip" href="#wall">Skip to the headlines</a>', '<a class="skip" href="#wire">Skip to the Wire</a>', 1)
+wre = wre.replace('<a class="skip" href="#wall-lead">Skip to the top story</a>', '<a class="skip" href="#wire">Skip to the Wire</a>', 1)
 wire_desc = f"The Wire: every report on AI's dangers and breakthroughs from the last three days, newest first, each linking to the outlet. Plus what changed since the last refresh and the live incident. Updated {et}."
 wre = wre.replace(og_desc.replace('"', '&quot;'), wire_desc.replace('"', '&quot;'))
 # Server-rendered board so the Wire is readable without JavaScript (crawlers, AI answer engines); app.js replaces it on load
