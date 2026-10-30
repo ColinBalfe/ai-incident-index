@@ -1,25 +1,25 @@
 {
- "label": "Oct 29, 18:50 ET",
+ "label": "Oct 30, 06:00 ET",
  "items": [
   {
-   "text": "GreyNoise has now seen 6 break-ins through the flaw under most websites, all on its own decoy servers, from one attacker. Still no real victim named.",
-   "url": "https://php.events.greynoise.io/",
-   "source_label": "GreyNoise, updated Oct 29"
+   "text": "OpenAI says its new monitors, replayed on July's agent escape, would have raised the alarm more than 30 hours before its AI breached Hugging Face. A replay, not a live catch.",
+   "url": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
+   "source_label": "Interesting Engineering, Oct 29"
   },
   {
-   "text": "The Justice Department charged five people over 'ghost student' financial-aid fraud with more than $32 million in losses; officials say fraudsters used AI to do the coursework.",
-   "url": "https://justice.gov/opa/pr/justice-department-unveils-indictments-nationwide-ghost-student-fraud-scam-linked-kenyan",
-   "source_label": "US Justice Department, Oct 29"
+   "text": "An outside review of OpenAI's monitoring found about 10% of eligible internal Codex traffic went unmonitored from May to July; OpenAI says one fix is still in progress.",
+   "url": "https://www.unite.ai/openai-expands-monitoring-to-detect-frontier-model-misalignment/",
+   "source_label": "Unite.AI, Oct 29"
   },
   {
-   "text": "On Tuesday, voters in 38 local jurisdictions in 10 states decide at least 41 measures to delay, ban or limit data centers.",
-   "url": "https://www.investing.com/news/stock-market-news/ai-data-center-boom-faces-backlash-at-us-ballot-box-4982297",
-   "source_label": "Reuters via Investing.com, Oct 29"
+   "text": "San Diego's city council unanimously paused new data centers for 45 days, citing water, the grid and utility costs.",
+   "url": "https://kesq.com/news/california/2026/10/27/san-diego-city-council-unanimously-passes-moratorium-on-data-centers/",
+   "source_label": "KESQ, Oct 27"
   },
   {
-   "text": "Pennsylvania has no law against AI-faked candidates in ads; an AI Shapiro in his rival's ad talks for about 45 seconds before saying he isn't real.",
-   "url": "https://www.wesanews.org/politics-government/2026-10-29/pennsylvania-ai-election-ads-regulation-law-midterms",
-   "source_label": "WESA / WPSU, Oct 29"
+   "text": "The flaw under most websites, day 10: still no real victim named. A third flaw is still unfixed.",
+   "url": "/php2shell/",
+   "source_label": "Warning Shots tracker"
   }
  ]
 }

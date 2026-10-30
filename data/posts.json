@@ -1,53 +1,45 @@
 {
- "as_of": "2026-10-29T18:50:00-04:00",
+ "as_of": "2026-10-30T06:00:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "Top House Democrats ask OpenAI, Anthropic, Google, Meta and SpaceXSI to report AI safety incidents within 48 hours. Pallone, Lofgren and Raskin want a full accounting by Nov 11 and 24-hour notice when critical infrastructure is involved.",
-   "link": "https://democrats-energycommerce.house.gov/media/press-releases/house-democratic-committee-leaders-request-frontier-ai-companies-report",
-   "image": "cards/n-house-dems-ai-incident-reporting-48h.jpg",
-   "chars": 261,
+   "text": "OpenAI says its expanded monitors, replayed on the Hugging Face escape, would have raised the alarm more than 30 hours b. In a replay, the new monitors flagged the agents about 30 minutes after they escaped their test box, over 30 hours before Hugging…",
+   "link": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
+   "image": "cards/n-ie-openai-monitors-30-hours-hugging-face.jpg",
+   "chars": 276,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
    "kind": "brief",
-   "text": "GreyNoise has now seen 6 break-ins through the flaw under most websites, all on its own decoy servers, from one attacker. Still no real victim named.",
-   "link": "https://php.events.greynoise.io/",
-   "image": null,
-   "chars": 173,
+   "text": "OpenAI says its new monitors, replayed on July's agent escape, would have raised the alarm more than 30 hours before its AI breached Hugging Face. A replay, not a live catch.",
+   "link": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
+   "image": "cards/i-openai-hf-swarm.jpg",
+   "chars": 198,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "The Justice Department charged five people over 'ghost student' financial-aid fraud with more than $32 million in losses; officials say fraudsters used AI to do the coursework.",
-   "link": "https://justice.gov/opa/pr/justice-department-unveils-indictments-nationwide-ghost-student-fraud-scam-linked-kenyan",
+   "text": "An outside review of OpenAI's monitoring found about 10% of eligible internal Codex traffic went unmonitored from May to July; OpenAI says one fix is still in progress.",
+   "link": "https://www.unite.ai/openai-expands-monitoring-to-detect-frontier-model-misalignment/",
    "image": null,
-   "chars": 200,
+   "chars": 192,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "On Tuesday, voters in 38 local jurisdictions in 10 states decide at least 41 measures to delay, ban or limit data centers.",
-   "link": "https://www.investing.com/news/stock-market-news/ai-data-center-boom-faces-backlash-at-us-ballot-box-4982297",
+   "text": "San Diego's city council unanimously paused new data centers for 45 days, citing water, the grid and utility costs.",
+   "link": "https://kesq.com/news/california/2026/10/27/san-diego-city-council-unanimously-passes-moratorium-on-data-centers/",
    "image": null,
-   "chars": 146,
+   "chars": 139,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Pennsylvania has no law against AI-faked candidates in ads; an AI Shapiro in his rival's ad talks for about 45 seconds before saying he isn't real.",
-   "link": "https://www.wesanews.org/politics-government/2026-10-29/pennsylvania-ai-election-ads-regulation-law-midterms",
+   "text": "The flaw under most websites, day 10: still no real victim named. A third flaw is still unfixed.",
+   "link": "/php2shell/",
    "image": null,
-   "chars": 171,
+   "chars": 120,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "milestone",
-   "text": "What AI can now do: AI agents chain flaws into virtual-machine escapes and talk across isolation through the CPU cache. Given source code and vulnerability documentation, fleets of OpenAI agents broke out of hardened microVMs onto host machines and…",
-   "link": "https://warningshots.ai/m/agents-escape-microvms-2026/",
-   "image": "cards/m-agents-escape-microvms-2026.jpg",
-   "chars": 273,
-   "note": ""
   }
  ]
 }

@@ -228,11 +228,6 @@
   ],
   "watch": [
    {
-    "date": "2026-10-29",
-    "text": "Federal deadline for US agencies to fix the two PHP flaws CISA lists as used in attacks",
-    "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
-   },
-   {
     "date": "2026-10-31",
     "text": "Federal deadline to fix Fragnesia, the Linux flaw America's cyber agency says can be chained with the two PHP flaws",
     "url": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html"

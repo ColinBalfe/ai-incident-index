@@ -1,5 +1,14 @@
 [
  {
+  "id": "leading-the-future-general-election",
+  "date": "2026-10-29",
+  "dir": "down",
+  "name": "Leading the Future",
+  "news_id": "intercept-ai-super-pacs-midterms",
+  "line": "The pro-industry AI super PAC network spent $7.4 million on general-election races by Oct 26, only 31% of it in competitive ones (FiftyPlusOne, via The Intercept); a Data for Progress poll for a rival PAC finds about three in four voters in Iowa, Michigan and Ohio less likely to back a candidate known to have AI super PAC support.",
+  "why": "Our read: when a donor's backing costs votes, the money moves to primaries, where a few million dollars can swing a small electorate, and away from November, where it shows. Watch for AI money arriving earlier and quieter in the next cycle."
+ },
+ {
   "id": "anthropic-elvis-suit",
   "date": "2026-10-25",
   "dir": "down",

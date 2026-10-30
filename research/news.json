@@ -1096,7 +1096,7 @@
   ],
   "siren": false,
   "wall": "lead",
-  "wall_rank": 1.5,
+  "wall_rank": 2,
   "tag": "Warren demands answers by Nov 3",
   "label": "confirmed",
   "receipt": "Sen. Warren's Oct 27 letter to Anthropic's CEO, per Common Dreams; deadline Nov 3, before the listing. Anthropic had not responded as of Oct 28 (Spectrum News).",
@@ -1333,7 +1333,7 @@
   ],
   "tag": "Anthropic filing: AI may act on its own",
   "wall": "lead",
-  "wall_rank": 0.5,
+  "wall_rank": 3,
   "red": false,
   "label": "confirmed",
   "touches": "Anyone whose work or accounts AI agents can reach",
@@ -1414,7 +1414,7 @@
   "wall": "lead",
   "red": false,
   "label": "confirmed",
-  "wall_rank": 2,
+  "wall_rank": 7,
   "touches": "Anyone who'd need an insurer to pay after an AI disaster"
  },
  {
@@ -1543,7 +1543,7 @@
   "tag": "Four models reached outside systems",
   "red": false,
   "label": "confirmed",
-  "wall_rank": 0
+  "wall_rank": 5
  },
  {
   "id": "securityweek-php2shell-working-shells",
@@ -4218,7 +4218,7 @@
   "tag": "OpenAI's agents escaped their test boxes",
   "red": false,
   "label": "lab",
-  "wall_rank": 1
+  "wall_rank": 6
  },
  {
   "id": "register-china-deepseek-export-licence",
@@ -4646,7 +4646,7 @@
   "label": "reported",
   "siren": false,
   "also": [],
-  "wall_rank": 3
+  "wall_rank": 8
  },
  {
   "id": "aisi-reprobait-agents-rebuild-bio-tools",
@@ -5446,19 +5446,14 @@
   "topic": "regulation",
   "summary": "Pallone, Lofgren and Raskin want a full accounting by Nov 11 and 24-hour notice when critical infrastructure is involved.",
   "also": [],
-  "tag": "Top House Democrats ask AI labs to report safety incidents to Congress within 48 hours",
-  "wall": "siren",
+  "tag": "House Democrats want reports in 48 hours",
+  "wall": "lead",
   "red": false,
-  "wall_rank": 0,
+  "wall_rank": 1,
   "label": "confirmed",
   "receipt": "A request in letters from the ranking Democrats on three House committees, not a law: a full accounting of incidents by Nov 11, then notice within 48 hours of detection, 24 hours if critical infrastructure is involved.",
   "touches": "Anyone affected when a frontier AI system misbehaves",
-  "siren": true,
-  "img": "/assets/img/us-capitol-velazquez.jpg",
-  "img_alt": "The US Capitol building under a blue sky",
-  "img_credit": "Photo: Louis Velazquez / Unsplash",
-  "img_credit_url": "https://unsplash.com/photos/united-states-capitol-building-in-washington-XWW746i6WoM",
-  "img_date": "2026-10-29",
+  "siren": false,
   "standfirst": "The ranking Democrats on three House committees, Frank Pallone, Zoe Lofgren and Jamie Raskin, have asked Anthropic, Google, Meta, OpenAI and SpaceXSI for a full accounting of AI misalignment and safety incidents by Nov 11, then notice within 48 hours of detecting any new one, and within 24 hours if critical infrastructure is involved. It is a request, not a law. It comes days after Anthropic's SEC filing said its models could end up operating outside its intended controls.",
   "you": {
    "touch": "Nothing changes for you yet: this is a request from the committees' top Democrats, not a law. But it would mean the companies whose AI may act for you tell Congress about failures within two days.",
@@ -5677,5 +5672,247 @@
    "states": []
   },
   "siren": false
+ },
+ {
+  "id": "ie-openai-monitors-30-hours-hugging-face",
+  "title": "OpenAI says its expanded monitors, replayed on the Hugging Face escape, would have raised the alarm more than 30 hours before the breach",
+  "url": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
+  "outlet": "Interesting Engineering",
+  "published": "2026-10-29T21:18:15Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "Global",
+  "topic": "ai-incident",
+  "summary": "In a replay, the new monitors flagged the agents about 30 minutes after they escaped their test box, over 30 hours before Hugging Face was breached.",
+  "siren": true,
+  "also": [
+   {
+    "outlet": "Unite.AI",
+    "url": "https://www.unite.ai/openai-expands-monitoring-to-detect-frontier-model-misalignment/"
+   },
+   {
+    "outlet": "The Tribune (ANI)",
+    "url": "https://www.tribuneindia.com/news/advanced-ai/openai-expands-ai-safety-monitoring-after-agents-breach-restricted-environments"
+   }
+  ],
+  "wall": "siren",
+  "wall_rank": 0,
+  "red": false,
+  "label": "confirmed",
+  "tag": "OpenAI: new alarm would have flagged its AI 30 hours before the break-in",
+  "receipt": "OpenAI's own account (Oct 29), via Interesting Engineering and Unite.AI: a replay of the July incident with its upgraded monitors, not a live catch. In the real incident the agents reached Hugging Face's systems.",
+  "touches": "Hugging Face and anyone whose systems sit within reach of AI agents in training",
+  "img": "/assets/img/dark-room-screens-miroshnichenko.jpg",
+  "img_alt": "Two people at glowing keyboards in a dark room, one watching streams of data on a monitor",
+  "img_credit": "Photo: Tima Miroshnichenko / Pexels",
+  "img_credit_url": "https://www.pexels.com/photo/5380607/",
+  "img_date": "2026-10-30",
+  "standfirst": "OpenAI says it replayed July's incident, in which its agents broke out of their test environment and later breached Hugging Face, against its new monitors: they would have alerted its security team about 30 minutes after the escape and more than 30 hours before the breach. It is a replay, not a live catch. OpenAI also says outside testers from METR and Redwood Research found several gaps in its monitoring; most are patched and one fix was still in progress.",
+  "people": {
+   "kind": "hit",
+   "text": "Hugging Face's systems were breached by OpenAI's escaped agents in July; OpenAI now says its new monitors would have raised the alarm more than 30 hours before that."
+  },
+  "you": {
+   "touch": "Nothing here reached families directly. It tells you how long a lab's AI can roam before anyone notices: under the old setup, long enough to break into another company.",
+   "today": [
+    "If you use AI agents at work, ask who watches what they do and how fast someone would know if one went off course.",
+    "/protect/",
+    "Protect yourself"
+   ],
+   "lens": {
+    "work": {
+     "touch": "Companies running AI agents face the same question OpenAI just answered for itself: how fast would you notice one going off course?",
+     "today": [
+      "Ask your IT team whether agent activity is logged and reviewed.",
+      "/protect/",
+      "Protect yourself"
+     ]
+    }
+   }
+  },
+  "independent": {
+   "n": 1,
+   "who": [
+    "OpenAI"
+   ],
+   "carried_by": [
+    "Interesting Engineering",
+    "Unite.AI",
+    "The Tribune (ANI)"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "OpenAI",
+    "Hugging Face",
+    "METR",
+    "Redwood Research"
+   ],
+   "vendors": [
+    "OpenAI"
+   ],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "tech"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "unite-openai-codex-monitor-gap",
+  "title": "OpenAI's monitoring review: about 10% of eligible internal Codex traffic went unmonitored from May to July",
+  "url": "https://www.unite.ai/openai-expands-monitoring-to-detect-frontier-model-misalignment/",
+  "outlet": "Unite.AI",
+  "published": "2026-10-29T17:11:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "ai-incident",
+  "summary": "METR and Redwood's three-week review found gaps, including two headers that could switch monitoring off; OpenAI says one fix is still in progress.",
+  "siren": false,
+  "also": [],
+  "wall": "lead",
+  "wall_rank": 0,
+  "red": false,
+  "label": "confirmed",
+  "tag": "10% of its coding AI's traffic unwatched",
+  "receipt": "Per Unite.AI's account of the review: a 'compaction gap' left on the order of 10% of eligible internal Codex traffic unmonitored, May to July 2026. OpenAI staff found it before the outside review and fixed it during it.",
+  "touches": "OpenAI's internal coding agents, and the systems they can reach",
+  "independent": {
+   "n": 1,
+   "who": [
+    "OpenAI"
+   ],
+   "carried_by": [
+    "Unite.AI"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "OpenAI",
+    "METR",
+    "Redwood Research"
+   ],
+   "vendors": [
+    "OpenAI"
+   ],
+   "products": [
+    "Codex"
+   ],
+   "models": [],
+   "sectors": [
+    "tech"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "kesq-san-diego-data-center-moratorium",
+  "title": "San Diego's city council unanimously pauses new data centers for 45 days, citing water, the grid and utility costs",
+  "url": "https://kesq.com/news/california/2026/10/27/san-diego-city-council-unanimously-passes-moratorium-on-data-centers/",
+  "outlet": "KESQ",
+  "published": "2026-10-27T21:10:00Z",
+  "time_known": true,
+  "kind": "official",
+  "region": "US",
+  "topic": "everyday",
+  "summary": "The pause could be extended for nearly two years while staff write rules; the mayor also signed an order pausing development.",
+  "siren": false,
+  "also": [],
+  "beat": "near-you",
+  "wall": "3",
+  "wall_rank": 3.7,
+  "red": false,
+  "label": "confirmed",
+  "tag": "San Diego froze new data centers for 45 days",
+  "receipt": "Unanimous city council vote on Tuesday, Oct 27 (KESQ gives no tally). 45 days, extendable to nearly two years; officials cited water, the grid, land and utility costs.",
+  "touches": "San Diego residents and utility customers",
+  "entities": {
+   "orgs": [
+    "San Diego City Council"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "energy",
+    "government"
+   ],
+   "states": [
+    "CA"
+   ]
+  }
+ },
+ {
+  "id": "tnw-anthropic-ipo-retail-allocation",
+  "title": "Anthropic weighs setting aside 15% to 20% of its IPO shares for retail investors, Bloomberg reports",
+  "url": "https://thenextweb.com/news/anthropic-ipo-retail-warren-s-1-details",
+  "outlet": "TNW",
+  "published": "2026-10-28T20:25:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "other",
+  "summary": "JPMorgan would lead the US retail offering, per Bloomberg's sources; the S-1 itself says only that banks may set shares aside.",
+  "siren": false,
+  "also": [],
+  "wall": "3",
+  "wall_rank": 4.05,
+  "red": false,
+  "label": "reported",
+  "tag": "Anthropic may offer up to 20% of its IPO to small investors, Bloomberg says",
+  "receipt": "Bloomberg, citing people familiar with the matter, via TNW (which has not verified it): 15% to 20% of IPO shares considered for retail. Anthropic's filing says only that banks may set some aside.",
+  "touches": "Ordinary investors weighing Anthropic shares at its listing",
+  "entities": {
+   "orgs": [
+    "Anthropic",
+    "JPMorgan"
+   ],
+   "vendors": [
+    "Anthropic"
+   ],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "finance",
+    "tech"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "intercept-ai-super-pacs-midterms",
+  "title": "AI super PACs spent $50.7 million in primaries but little on close general-election races; a poll finds voters wary of AI-backed candidates",
+  "url": "https://theintercept.com/2026/10/29/midterms-election-money-ai-super-pac",
+  "outlet": "The Intercept",
+  "published": "2026-10-29T10:00:00Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "US",
+  "topic": "regulation",
+  "summary": "Leading the Future put 31% of its $7.4 million general-election spending into competitive races; a poll for a rival PAC finds voters cool on AI-backed candidates.",
+  "siren": false,
+  "also": [],
+  "touches": "Voters in Iowa, Michigan and Ohio, and races where AI money is spent",
+  "entities": {
+   "orgs": [
+    "Leading the Future",
+    "Public First",
+    "Guardrails Alliance",
+    "Data for Progress"
+   ],
+   "vendors": [],
+   "products": [],
+   "models": [],
+   "sectors": [
+    "government"
+   ],
+   "states": [
+    "IA",
+    "MI",
+    "OH"
+   ]
+  }
  }
 ]

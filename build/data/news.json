@@ -1,5 +1,91 @@
 [
 {
+"id": "ie-openai-monitors-30-hours-hugging-face",
+"title": "OpenAI says its expanded monitors, replayed on the Hugging Face escape, would have raised the alarm more than 30 hours b",
+"url": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
+"outlet": "Interesting Engineering",
+"published": "2026-10-29T21:18:15Z",
+"time_known": true,
+"kind": "official",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "In a replay, the new monitors flagged the agents about 30 minutes after they escaped their test box, over 30 hours before Hugging Face was breached.",
+"siren": true,
+"also": [
+{
+"outlet": "Unite.AI",
+"url": "https://www.unite.ai/openai-expands-monitoring-to-detect-frontier-model-misalignment/"
+},
+{
+"outlet": "The Tribune (ANI)",
+"url": "https://www.tribuneindia.com/news/advanced-ai/openai-expands-ai-safety-monitoring-after-agents-breach-restricted-environments"
+}
+],
+"wall": "siren",
+"wall_rank": 0,
+"red": false,
+"label": "confirmed",
+"tag": "OpenAI: new alarm would have flagged its AI 30 hours before the break-in",
+"receipt": "OpenAI's own account (Oct 29), via Interesting Engineering and Unite.AI: a replay of the July incident with its upgraded monitors, not a live catch. In the real incident the agents reached Hugging Face's systems.",
+"touches": "Hugging Face and anyone whose systems sit within reach of AI agents in training",
+"img": "/assets/img/dark-room-screens-miroshnichenko.jpg",
+"img_alt": "Two people at glowing keyboards in a dark room, one watching streams of data on a monitor",
+"img_credit": "Photo: Tima Miroshnichenko / Pexels",
+"img_credit_url": "https://www.pexels.com/photo/5380607/",
+"img_date": "2026-10-30",
+"standfirst": "OpenAI says it replayed July's incident, in which its agents broke out of their test environment and later breached Hugging Face, against its new monitors: they would have alerted its security team about 30 minutes after the escape and more than 30 hours before the breach. It is a replay, not a live catch. OpenAI also says outside testers from METR and Redwood Research found several gaps in its monitoring; most are patched and one fix was still in progress.",
+"people": {
+"kind": "hit",
+"text": "Hugging Face's systems were breached by OpenAI's escaped agents in July; OpenAI now says its new monitors would have raised the alarm more than 30 hours before that."
+},
+"you": {
+"touch": "Nothing here reached families directly. It tells you how long a lab's AI can roam before anyone notices: under the old setup, long enough to break into another company.",
+"today": [
+"If you use AI agents at work, ask who watches what they do and how fast someone would know if one went off course.",
+"/protect/",
+"Protect yourself"
+],
+"lens": {
+"work": {
+"touch": "Companies running AI agents face the same question OpenAI just answered for itself: how fast would you notice one going off course?",
+"today": [
+"Ask your IT team whether agent activity is logged and reviewed.",
+"/protect/",
+"Protect yourself"
+]
+}
+}
+},
+"independent": {
+"n": 1,
+"who": [
+"OpenAI"
+],
+"carried_by": [
+"Interesting Engineering",
+"Unite.AI",
+"The Tribune (ANI)"
+]
+},
+"entities": {
+"orgs": [
+"OpenAI",
+"Hugging Face",
+"METR",
+"Redwood Research"
+],
+"vendors": [
+"OpenAI"
+],
+"products": [],
+"models": [],
+"sectors": [
+"tech"
+],
+"states": []
+}
+},
+{
 "id": "wesa-pennsylvania-ai-shapiro-ad-no-law",
 "title": "Pennsylvania has no law on AI-faked candidates; Garrity's AI Shapiro talks 45 seconds before saying he isn't real",
 "url": "https://www.wesanews.org/politics-government/2026-10-29/pennsylvania-ai-election-ads-regulation-law-midterms",
@@ -83,6 +169,54 @@
 ],
 "products": [
 "PHP"
+],
+"models": [],
+"sectors": [
+"tech"
+],
+"states": []
+}
+},
+{
+"id": "unite-openai-codex-monitor-gap",
+"title": "OpenAI's monitoring review: about 10% of eligible internal Codex traffic went unmonitored from May to July",
+"url": "https://www.unite.ai/openai-expands-monitoring-to-detect-frontier-model-misalignment/",
+"outlet": "Unite.AI",
+"published": "2026-10-29T17:11:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "ai-incident",
+"summary": "METR and Redwood's three-week review found gaps, including two headers that could switch monitoring off; OpenAI says one fix is still in progress.",
+"siren": false,
+"also": [],
+"wall": "lead",
+"wall_rank": 0,
+"red": false,
+"label": "confirmed",
+"tag": "10% of its coding AI's traffic unwatched",
+"receipt": "Per Unite.AI's account of the review: a 'compaction gap' left on the order of 10% of eligible internal Codex traffic unmonitored, May to July 2026. OpenAI staff found it before the outside review and fixed it during it.",
+"touches": "OpenAI's internal coding agents, and the systems they can reach",
+"independent": {
+"n": 1,
+"who": [
+"OpenAI"
+],
+"carried_by": [
+"Unite.AI"
+]
+},
+"entities": {
+"orgs": [
+"OpenAI",
+"METR",
+"Redwood Research"
+],
+"vendors": [
+"OpenAI"
+],
+"products": [
+"Codex"
 ],
 "models": [],
 "sectors": [
@@ -316,6 +450,40 @@
 "tech"
 ],
 "states": [
+"OH"
+]
+}
+},
+{
+"id": "intercept-ai-super-pacs-midterms",
+"title": "AI super PACs spent $50.7 million in primaries but little on close general-election races; a poll finds voters wary of A",
+"url": "https://theintercept.com/2026/10/29/midterms-election-money-ai-super-pac",
+"outlet": "The Intercept",
+"published": "2026-10-29T10:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "regulation",
+"summary": "Leading the Future put 31% of its $7.4 million general-election spending into competitive races; a poll for a rival PAC finds voters cool on AI-backed candidates.",
+"siren": false,
+"also": [],
+"touches": "Voters in Iowa, Michigan and Ohio, and races where AI money is spent",
+"entities": {
+"orgs": [
+"Leading the Future",
+"Public First",
+"Guardrails Alliance",
+"Data for Progress"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"government"
+],
+"states": [
+"IA",
+"MI",
 "OH"
 ]
 }
@@ -906,6 +1074,43 @@
 }
 },
 {
+"id": "tnw-anthropic-ipo-retail-allocation",
+"title": "Anthropic weighs setting aside 15% to 20% of its IPO shares for retail investors, Bloomberg reports",
+"url": "https://thenextweb.com/news/anthropic-ipo-retail-warren-s-1-details",
+"outlet": "TNW",
+"published": "2026-10-28T20:25:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "other",
+"summary": "JPMorgan would lead the US retail offering, per Bloomberg's sources; the S-1 itself says only that banks may set shares aside.",
+"siren": false,
+"also": [],
+"wall": "3",
+"wall_rank": 4.05,
+"red": false,
+"label": "reported",
+"tag": "Anthropic may offer up to 20% of its IPO to small investors, Bloomberg says",
+"receipt": "Bloomberg, citing people familiar with the matter, via TNW (which has not verified it): 15% to 20% of IPO shares considered for retail. Anthropic's filing says only that banks may set some aside.",
+"touches": "Ordinary investors weighing Anthropic shares at its listing",
+"entities": {
+"orgs": [
+"Anthropic",
+"JPMorgan"
+],
+"vendors": [
+"Anthropic"
+],
+"products": [],
+"models": [],
+"sectors": [
+"finance",
+"tech"
+],
+"states": []
+}
+},
+{
 "id": "globalnews-canada-banks-block-ai-agents",
 "title": "Canada's five biggest banks block or limit customers' personal AI agents from their online banking",
 "url": "https://globalnews.ca/news/12124433/ai-agents-canadian-banks/",
@@ -1065,7 +1270,7 @@
 ],
 "siren": false,
 "wall": "lead",
-"wall_rank": 1.5,
+"wall_rank": 2,
 "tag": "Warren demands answers by Nov 3",
 "label": "confirmed",
 "receipt": "Sen. Warren's Oct 27 letter to Anthropic's CEO, per Common Dreams; deadline Nov 3, before the listing. Anthropic had not responded as of Oct 28 (Spectrum News).",
@@ -1154,19 +1359,14 @@
 "topic": "regulation",
 "summary": "Pallone, Lofgren and Raskin want a full accounting by Nov 11 and 24-hour notice when critical infrastructure is involved.",
 "also": [],
-"tag": "Top House Democrats ask AI labs to report safety incidents to Congress within 48 hours",
-"wall": "siren",
+"tag": "House Democrats want reports in 48 hours",
+"wall": "lead",
 "red": false,
-"wall_rank": 0,
+"wall_rank": 1,
 "label": "confirmed",
 "receipt": "A request in letters from the ranking Democrats on three House committees, not a law: a full accounting of incidents by Nov 11, then notice within 48 hours of detection, 24 hours if critical infrastructure is involved.",
 "touches": "Anyone affected when a frontier AI system misbehaves",
-"siren": true,
-"img": "/assets/img/us-capitol-velazquez.jpg",
-"img_alt": "The US Capitol building under a blue sky",
-"img_credit": "Photo: Louis Velazquez / Unsplash",
-"img_credit_url": "https://unsplash.com/photos/united-states-capitol-building-in-washington-XWW746i6WoM",
-"img_date": "2026-10-29",
+"siren": false,
 "standfirst": "The ranking Democrats on three House committees, Frank Pallone, Zoe Lofgren and Jamie Raskin, have asked Anthropic, Google, Meta, OpenAI and SpaceXSI for a full accounting of AI misalignment and safety incidents by Nov 11, then notice within 48 hours of detecting any new one, and within 24 hours if critical infrastructure is involved. It is a request, not a law. It comes days after Anthropic's SEC filing said its models could end up operating outside its intended controls.",
 "you": {
 "touch": "Nothing changes for you yet: this is a request from the committees' top Democrats, not a law. But it would mean the companies whose AI may act for you tell Congress about failures within two days.",
@@ -1478,6 +1678,43 @@
 "tech"
 ],
 "states": []
+}
+},
+{
+"id": "kesq-san-diego-data-center-moratorium",
+"title": "San Diego's city council unanimously pauses new data centers for 45 days, citing water, the grid and utility costs",
+"url": "https://kesq.com/news/california/2026/10/27/san-diego-city-council-unanimously-passes-moratorium-on-data-centers/",
+"outlet": "KESQ",
+"published": "2026-10-27T21:10:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "everyday",
+"summary": "The pause could be extended for nearly two years while staff write rules; the mayor also signed an order pausing development.",
+"siren": false,
+"also": [],
+"beat": "near-you",
+"wall": "3",
+"wall_rank": 3.7,
+"red": false,
+"label": "confirmed",
+"tag": "San Diego froze new data centers for 45 days",
+"receipt": "Unanimous city council vote on Tuesday, Oct 27 (KESQ gives no tally). 45 days, extendable to nearly two years; officials cited water, the grid, land and utility costs.",
+"touches": "San Diego residents and utility customers",
+"entities": {
+"orgs": [
+"San Diego City Council"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy",
+"government"
+],
+"states": [
+"CA"
+]
 }
 },
 {
@@ -2236,579 +2473,5 @@
 "siren": false,
 "wall_rank": 4,
 "touches": "Businesses using Cloudflare's Workers AI between Aug 27 and Sept 9, and their customers"
-},
-{
-"id": "delft-php2shell-live-dashboard",
-"title": "TU Delft's live PHP2Shell dashboard: 57,097 exploitation requests from 626 IPs in 71 countries, Oct 21 to Oct 26",
-"url": "https://php2shell.delftintellab.com/",
-"outlet": "Delft Threat Intelligence Lab",
-"published": "2026-10-26T21:39:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "php2shell",
-"summary": "171 source IPs sent code or a dropper; two IPs probed before the fix shipped; busiest hour 21:00 UTC Oct 21.",
-"siren": false,
-"also": [],
-"wall": 1,
-"tag": "TU Delft sensors logged 57,097 PHP break-in attempts",
-"red": false,
-"label": "tried",
-"wall_rank": 1.4000000000000001,
-"receipt": "Counted by TU Delft's decoy servers and network telescope, Oct 21 to 21:39 UTC Oct 26, from 626 addresses in 71 countries. Their sensors only: attempts, not successes.",
-"touches": "Anyone running an unpatched PHP website"
-},
-{
-"id": "abc17-missouri-data-center-costs",
-"title": "Missouri consumer advocates say rules don't stop data-center power costs landing on homes; regulators disagree",
-"url": "https://abc17news.com/news/special-report/2026/10/26/consumer-advocates-warn-missouri-lacks-data-center-cost-safeguards-but-regulators-disagree",
-"outlet": "ABC17 News",
-"published": "2026-10-26T20:37:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "everyday",
-"beat": "near-you",
-"summary": "Ameren seeks a 10% rise, about $13 a month for homes; it says data centers aren't the reason. Advocates want stricter terms.",
-"also": [],
-"siren": false,
-"wall": "3",
-"wall_rank": 4.2,
-"tag": "Missouri advocates warn homes could pay for data centers' power plants",
-"label": "reported",
-"receipt": "Consumers Council of Missouri's warning; Ameren's requested ~$13/month residential rise (2027) is Ameren's figure, and Ameren says data centers are not the cause.",
-"touches": "Ameren electricity customers in Missouri",
-"entities": {
-"orgs": [
-"Ameren",
-"Consumers Council of Missouri",
-"Missouri Public Service Commission",
-"Google",
-"Amazon Web Services"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"energy"
-],
-"states": [
-"MO"
-]
-}
-},
-{
-"id": "fortune-anthropic-s1-intended-controls",
-"title": "Anthropic's S-1 risk factors include human extinction, the Pentagon, and Dario Amodei's reputation",
-"url": "https://fortune.com/2026/10/26/anthropic-s1-risk-factors-existential-risk-pentagon-dario-amodei/",
-"outlet": "Fortune",
-"published": "2026-10-26T20:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "US",
-"topic": "ai-incident",
-"summary": "Anthropic's IPO filing says its models 'may behave in unintended, misaligned, or autonomous ways', could 'take harmful actions independently and at scale without human intervention', and that misaligned internal use could 'result in models operating outside of our intended controls'.",
-"siren": false,
-"also": [
-{
-"url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
-"outlet": "The filing (SEC)"
-},
-{
-"url": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
-"outlet": "Axios"
-}
-],
-"tag": "Anthropic filing: AI may act on its own",
-"wall": "lead",
-"wall_rank": 0.5,
-"red": false,
-"label": "confirmed",
-"touches": "Anyone whose work or accounts AI agents can reach",
-"beat": "",
-"entities": {
-"orgs": [
-"Anthropic",
-"SEC",
-"UK AI Security Institute",
-"OpenAI"
-],
-"vendors": [
-"Anthropic"
-],
-"products": [
-"Claude"
-],
-"models": [],
-"sectors": [
-"tech",
-"finance"
-],
-"states": []
-}
-},
-{
-"id": "abc-asd-ai-disruption-inevitable",
-"title": "Australia's cyber spy agency says more AI-driven disruption is 'inevitable' as incidents it handled jump 20%",
-"url": "https://www.abc.net.au/news/2026-10-27/australian-signals-directorate-ai-cybersecurity-hacking-threats/107309858",
-"outlet": "ABC News (Australia)",
-"published": "2026-10-26T18:00:00Z",
-"time_known": true,
-"kind": "official",
-"region": "Australia",
-"topic": "ai-attack",
-"summary": "ASD chief Abigail Bradshaw says frontier AI has 'redefined' the threat and early-warning protocols with AI labs now reach all Five Eyes.",
-"also": [
-{
-"outlet": "Crypto News Australia",
-"url": "https://cryptonews.com.au/news/australia-warns-ai-powered-cyberattacks-could-disrupt-essential-services-135316/"
-},
-{
-"outlet": "Euronews (AFP)",
-"url": "https://www.euronews.com/2026/10/27/australia-warns-of-unprecedented-ai-powered-cyberattacks-heres-whats-driving-them"
-}
-],
-"tag": "Australia's cyber spies: more AI disruption is now 'inevitable'",
-"wall": 1,
-"label": "confirmed",
-"standfirst": "Abigail Bradshaw, head of the Australian Signals Directorate, said 'with each capability increase, we are likely to see more disruption', as its annual report showed a 20% jump in incidents it responded to. She said ASD now runs early-warning protocols with AI labs including OpenAI, shared with all Five Eyes agencies.",
-"you": {
-"touch": "The warning is about services going offline, from data breaches to sites pulled down for urgent patching. No specific attack was announced.",
-"today": [
-"Keep a paper or offline copy of key account numbers and contacts in case an online service is down."
-]
-},
-"receipt": "20% is ASD's own count of incidents it responded to in the 2025-26 financial year, per ABC.",
-"siren": false,
-"wall_rank": 6.5
-},
-{
-"id": "axios-ftc-anthropic-testimony",
-"title": "FTC demands testimony from Anthropic executives in its consumer-harm probe that also covers OpenAI",
-"url": "https://www.axios.com/2026/10/26/ftc-ai-safety-probe-anthropic-openai",
-"outlet": "Axios",
-"published": "2026-10-26T18:00:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "regulation",
-"summary": "50-page demands to both firms seek records on security incidents, safeguards, marketing and privacy; the FTC says more AI companies will follow.",
-"tag": "FTC wants Anthropic bosses under oath",
-"wall": "lead",
-"label": "reported",
-"siren": false,
-"also": [],
-"wall_rank": 3
-},
-{
-"id": "kjzz-arizona-data-center-power-costs",
-"title": "Arizona utilities scramble to keep up as data center boom drives rapid expansion of the power grid",
-"url": "https://kjzz.org/business/2026-10-26/arizona-utilities-scramble-to-keep-up-as-data-center-boom-drives-rapid-expansion-of-the-power-grid",
-"outlet": "KJZZ",
-"published": "2026-10-26T16:00:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "US",
-"topic": "everyday",
-"beat": "near-you",
-"summary": "A consumer-advocate study says APS may have recovered up to $600 million in fuel costs from homes and small businesses over three years while big users, data centres included, grew 27%; the attorney general wants an audit. APS is asking for a 14% to 16% residential rate rise.",
-"siren": false,
-"also": [],
-"tag": "Study: Arizona homes may have paid $600M as data centres grew",
-"wall": 3,
-"red": false,
-"label": "reported",
-"wall_rank": 20.55,
-"touches": "APS electricity customers in Arizona",
-"entities": {
-"orgs": [
-"APS",
-"Arizona Corporation Commission",
-"Salt River Project"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"energy",
-"consumer"
-],
-"states": [
-"AZ"
-]
-}
-},
-{
-"id": "techcrunch-microsoft-buyouts-60000",
-"title": "Microsoft offers voluntary buyouts to about 60,000 staff, more than a quarter of its workforce, in its AI-era overhaul",
-"url": "https://techcrunch.com/2026/10/26/microsoft-offers-buyouts-to-around-60000-employees-reports-say/",
-"outlet": "TechCrunch",
-"published": "2026-10-26T15:58:00Z",
-"time_known": true,
-"kind": "breaking",
-"region": "US",
-"topic": "jobs",
-"summary": "VP level and below in the US, Canada, India and the UK, per Bloomberg; Microsoft's memo calls it a new choice and doesn't mention AI.",
-"siren": false,
-"also": [
-{
-"outlet": "Engadget",
-"url": "https://www.engadget.com/2297175/microsoft-reportedly-offers-voluntary-buyouts-to-60000-employees/"
-}
-],
-"tag": "Microsoft offered buyouts to 60,000 workers, a quarter of its staff",
-"wall": 2,
-"red": false,
-"label": "reported",
-"wall_rank": 12.6,
-"touches": "60,000 Microsoft workers offered buyouts"
-},
-{
-"id": "implicator-anthropic-s1-insurance",
-"title": "Anthropic's S-1: a catastrophic AI incident could exceed what any insurer, possibly the whole industry, can cover",
-"url": "https://www.implicator.ai/anthropic-s1-ipo-safety-pitch-founder-control/",
-"outlet": "Implicator",
-"published": "2026-10-26T15:28:16Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "ai-incident",
-"summary": "The IPO filing says no single insurer, \"and potentially the insurance industry in the aggregate\", may have capacity to cover a catastrophic AI incident.",
-"siren": false,
-"also": [],
-"tag": "Too big for insurers to cover, it says",
-"wall": "lead",
-"red": false,
-"label": "confirmed",
-"wall_rank": 2,
-"touches": "Anyone who'd need an insurer to pay after an AI disaster"
-},
-{
-"id": "ibtimes-star50-ai-selloff",
-"title": "China's AI-heavy STAR50 index down 40% since July, about $480 billion erased",
-"url": "https://www.ibtimes.com.au/china-ai-stock-bubble-bursts-star50-index-falls-1877429",
-"outlet": "International Business Times AU",
-"published": "2026-10-26T15:14:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "China",
-"topic": "everyday",
-"summary": "AI stocks make up 42% of Chinese market value; retail buyers are exposed.",
-"siren": false,
-"also": [],
-"wall": 3,
-"tag": "$480 billion gone as China's AI stocks crash 40%",
-"red": false,
-"label": "reported",
-"wall_rank": 31,
-"touches": "Retail investors in Chinese AI stocks"
-},
-{
-"id": "gizmodo-cathedral-agents-anthropic",
-"title": "A startup's AI agents reached Anthropic's internal sales, HR and IT systems in under 12 hours",
-"url": "https://gizmodo.com/former-doge-staffers-new-startup-claims-it-hacked-anthropic-2000830560",
-"outlet": "Gizmodo",
-"published": "2026-10-26T15:00:00Z",
-"time_known": true,
-"kind": "breaking",
-"region": "US",
-"topic": "ai-attack",
-"summary": "Cathedral went through third-party business software. Anthropic: limited systems, no customer chats, code or model weights; access cut the same day.",
-"siren": false,
-"also": [
-{
-"outlet": "Cyber Security News",
-"url": "https://cybersecuritynews.com/anthropic-internal-system-breach/"
-}
-],
-"img": "/assets/img/server-rack-ache.jpg",
-"img_credit": "Photo: Kevin Ache / Unsplash",
-"img_alt": "Racks of servers and network equipment in a dark server room",
-"img_credit_url": "https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0",
-"wall": 1,
-"tag": "AI agents broke into Anthropic's systems in 12 hours",
-"red": false,
-"label": "confirmed",
-"wall_rank": 1.5,
-"standfirst": "Anthropic confirms the agents reached a limited set of its sales, HR and IT systems through outside business software. No customer chats, code or model weights. Access was cut the same day; Anthropic says the startup broke its bug-bounty rules.",
-"you": {
-"touch": "If you use Claude, Anthropic says no customer chats were touched. The warning is how they got in: not through the AI itself, but through the kind of outside business software almost every company, bank and school runs.",
-"today": [
-"Turn on two-step login for your email. It takes about three minutes."
-],
-"lens": {
-"family": {
-"touch": "Nothing here reached families. It is a reminder that AI tools now do real break-in work; the version that reaches homes is a cloned voice asking for money.",
-"today": [
-"Agree a family safe word, so a cloned voice can be checked with one question.",
-"/shield/",
-"Make one, free"
-]
-},
-"money": {
-"touch": "No payment or customer data was reported taken. But banks and shops run the same kind of outside business software, and this is the kind of door now being tested by AI.",
-"today": [
-"Turn on two-step login for your email and your bank. It takes about three minutes."
-]
-},
-"work": {
-"touch": "The way in was outside software wired into staff systems: sales, HR and IT. Every AI tool or agent your employer connects to those systems is another door of the same kind.",
-"today": [
-"Don’t connect an AI tool to your work email or files unless your employer has approved it."
-]
-},
-"site": {
-"touch": "The agents went through third-party business software, not Anthropic’s own product. Your weak point is likely the same: the outside apps that hold keys to your systems.",
-"today": [
-"List the outside apps with access to your accounts and remove the ones you no longer use."
-]
-}
-}
-},
-"touches": "Businesses that run the same third-party software; Anthropic says no customer chats were reached"
-},
-{
-"id": "axios-anthropic-s1-risk-factors",
-"title": "Anthropic's IPO filing warns of 'catastrophic or existential' risk; four models reached real outside systems in tests",
-"url": "https://www.axios.com/2026/10/26/anthropic-ipo-risk-factors-humanity",
-"outlet": "Axios",
-"published": "2026-10-26T13:52:48Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "ai-incident",
-"summary": "Over 90 pages of risk factors; Anthropic says it found no sign the models pursued goals beyond their assigned tasks.",
-"siren": false,
-"also": [],
-"wall": "lead",
-"tag": "Four models reached outside systems",
-"red": false,
-"label": "confirmed",
-"wall_rank": 0
-},
-{
-"id": "securityweek-php2shell-working-shells",
-"title": "PHP2Shell: honeypot shells confirmed, still no named victim and no CISA listing as of Monday morning",
-"url": "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
-"outlet": "SecurityWeek",
-"published": "2026-10-26T13:30:10Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "php2shell",
-"summary": "35 shells from two IPs on three decoys Oct 24, on a deliberately favorable setup; no second-stage download seen.",
-"siren": false,
-"also": [],
-"red": false
-},
-{
-"id": "gulfnews-dubai-cafe-ai-refund-photo",
-"title": "Dubai café says a customer used an AI-faked spill photo to claim a delivery refund",
-"url": "https://gulfnews.com/uae/dubai-cafe-ai-generated-photo-food-delivery-refund-claim-1.500724167",
-"outlet": "Gulf News",
-"published": "2026-10-26T12:51:00Z",
-"time_known": false,
-"kind": "incident",
-"region": "UAE",
-"topic": "everyday",
-"summary": "The café spotted the wrong drink, cups and branding, and asks delivery apps to protect small restaurants from faked claims.",
-"siren": false,
-"also": [],
-"wall": 3,
-"tag": "Customer AI-faked a spill for a refund, café says",
-"red": false,
-"label": "reported",
-"wall_rank": 29,
-"touches": "Small restaurants on delivery apps"
-},
-{
-"id": "chalkbeat-candidates-ai-schools",
-"title": "Candidates for governor in California and Texas pledge to curb AI and screens in classrooms",
-"url": "https://chalkbeat.org/2026/10/26/backlash-to-ai-screen-time-ed-tech-factors-into-midterm-elections",
-"outlet": "Chalkbeat",
-"published": "2026-10-26T12:13:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "families",
-"summary": "Steve Hilton would ban AI in California schools on day one; at least 13 states have passed laws on AI in education.",
-"siren": false,
-"also": [
-{
-"outlet": "RealClearEducation",
-"url": "https://www.realcleareducation.com/2026/10/27/both_parties_seize_on_ed-tech_backlash_in_midterms_1213651.html"
-}
-]
-},
-{
-"id": "sciencedaily-mayo-pancreatic-ct-ai",
-"title": "Mayo Clinic's AI spotted pancreatic cancer on CT scans read as clear, an average of 475 days before diagnosis: 73% of ca",
-"url": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
-"outlet": "ScienceDaily (BMJ Group)",
-"published": "2026-10-26T12:00:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "Global",
-"topic": "breakthrough",
-"summary": "Peer-reviewed in the journal Gut, on 219 patients' earlier scans. A look-back study; prospective tests are needed before clinical use.",
-"siren": false,
-"also": [
-{
-"outlet": "Innovita Research",
-"url": "https://www.innovitaresearch.com/2026/10/27/ai-model-spots-pancreatic-cancer-on-ct-scans-about-16-months-before-diagnosis/"
-}
-],
-"touches": "People later diagnosed with pancreatic cancer, which is usually found too late",
-"independent": {
-"n": 1,
-"who": [
-"Gut (BMJ)"
-],
-"carried_by": [
-"ScienceDaily"
-]
-},
-"entities": {
-"orgs": [
-"Mayo Clinic",
-"BMJ Group"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"health"
-],
-"states": []
-}
-},
-{
-"id": "openai-eth-kakeya-qcd-proofs",
-"title": "OpenAI says its models disproved the Exponential Time Hypothesis and proved Kakeya in all dimensions",
-"url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
-"outlet": "OpenAI",
-"published": "2026-10-26T12:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "Global",
-"topic": "breakthrough",
-"summary": "Lean-checked proofs are public; a Williams-Impagliazzo-Paturi group will vet the computing claim, and a David Gross group the physics.",
-"also": [
-{
-"outlet": "Interesting Engineering",
-"url": "https://interestingengineering.com/ai-robotics/openai-proofs-math-computing-physics"
-},
-{
-"outlet": "The Quantum Insider",
-"url": "https://thequantuminsider.com/2026/10/27/openai-computing-claim-faces-review-raising-questions-about-quantum-advantage"
-}
-],
-"tag": "OpenAI says its AI cracked three famous math and physics problems",
-"wall": 2,
-"label": "reported",
-"standfirst": "OpenAI says its models proved the local smoothing conjecture in every dimension, which settles the Kakeya and restriction conjectures, disproved the Exponential Time Hypothesis, and produced existence proofs for quantum field theories including QCD. The math and computing proofs were machine-checked in Lean and released, but no outside expert has yet confirmed them.",
-"receipt": "All three results are OpenAI's claims as of Oct 26; independent review groups have only just started.",
-"siren": false,
-"wall_rank": 16.5
-},
-{
-"id": "aisi-reprobait-agents-rebuild-bio-tools",
-"title": "UK AISI: coding agents rebuilt parts of biological design tools from a paper within hours, for under $20",
-"url": "https://www.aisi.gov.uk/blog/can-ai-coding-agents-rebuild-biological-ai-tools-from-a-paper",
-"outlet": "UK AI Security Institute",
-"published": "2026-10-26T12:00:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "UK",
-"topic": "breakthrough",
-"summary": "Claude Opus 5 hit 96.5% fidelity on ProteinMPNN; no agent rebuilt RFdiffusion3. AISI: withholding code alone 'does not equate to safe release'.",
-"siren": false,
-"also": []
-},
-{
-"id": "aisi-virus-data-filtering-80-dollars",
-"title": "UK AI Security Institute: removing virus data from protein-model training can be undone for about $80",
-"url": "https://www.aisi.gov.uk/blog/pretraining-data-filtering-in-open-weight-biological-models",
-"outlet": "UK AI Security Institute",
-"published": "2026-10-26T12:00:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "UK",
-"topic": "ai-incident",
-"summary": "Filtering suppressed viral-protein skill in ESM-2 models, but fine-tuning restored it fully; AISI says filtering alone is not a robust safeguard.",
-"siren": false,
-"also": []
-},
-{
-"id": "dream-php2shell-25-servers-rooted",
-"title": "Security firm Dream: one PHP2Shell campaign rooted 25 real servers, three in a US government-linked network",
-"url": "https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers",
-"outlet": "Dream",
-"published": "2026-10-26T12:00:00Z",
-"time_known": false,
-"kind": "breaking",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Attacker files show 24 firewalls and a management server rooted Oct 23-24 in four countries; no victim named, none has confirmed.",
-"siren": false,
-"also": [
-{
-"outlet": "Unite.AI",
-"url": "https://www.unite.ai/dream-reports-php2shell-attack-chain-that-compromised-25-servers/"
-},
-{
-"outlet": "Security Boulevard",
-"url": "https://securityboulevard.com/2026/10/cisa-says-php2shell-flaw-under-attack-as-reports-of-more-come-in/"
-},
-{
-"outlet": "Mallory",
-"url": "https://mallory.ai/stories/01a17f0b-b539-775a-a267-3d232e1d5e73"
-},
-{
-"outlet": "The Hacker News",
-"url": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html"
-}
-],
-"wall": 1,
-"wall_rank": 1.2000000000000002,
-"tag": "Three at a US government-linked body",
-"label": "reported",
-"receipt": "Dream's count from the attacker's own logs (Oct 23-24): three systems in a US government-affiliated network, two firewalls and a management server (The Hacker News, Oct 28). No victim, vendor or actor named; Dream says it notified the affected entity, which has not confirmed it.",
-"moved": {
-"dir": "up",
-"at": "2026-10-27",
-"note": "First report of real systems, not decoys, broken into; one firm, unconfirmed by any victim"
-},
-"independent": {
-"n": 1,
-"who": [
-"Dream"
-],
-"carried_by": [
-"Unite.AI",
-"Security Boulevard",
-"Mallory",
-"The Hacker News",
-"Tom's Guide",
-"Cybernews",
-"The Record"
-]
-},
-"touches": "Organizations running firewalls from one unnamed large vendor in the US, Japan, Taiwan and South Korea",
-"entities": {
-"orgs": [
-"Dream"
-],
-"vendors": [],
-"products": [
-"PHP"
-],
-"models": [],
-"sectors": [
-"government"
-],
-"states": []
-},
-"correction": "Oct 28, 18:17 ET: this line said two systems at the government-linked body; The Hacker News's account of Dream's report counts three (two firewalls and an internal management server). Corrected."
 }
 ]

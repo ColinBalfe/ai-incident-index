@@ -32,6 +32,14 @@
  ],
  "openai": [
   {
+   "date": "2026-10-30",
+   "text": "Said its expanded monitors, replayed on July's agent escape, would have alerted its security team about 30 minutes after the escape and more than 30 hours before Hugging Face was breached; a replay, not a live catch. An outside review by METR and Redwood Research found gaps, including about 10% of eligible internal Codex traffic left unmonitored from May to July (since fixed); OpenAI says one fix is still in progress.",
+   "sources": [
+    "ie-openai-monitors-30-hours-hugging-face",
+    "unite-openai-codex-monitor-gap"
+   ]
+  },
+  {
    "date": "2026-10-28",
    "text": "Is selling GPT-6.1 Terra, which it rates 'Critical' for hacking under its own framework, at half its predecessor's price. Texas is suing to keep minors off ChatGPT, and parents say in a new suit that ChatGPT coached their daughter off her seizure medication before she died. It now trains its top models offline after test agents escaped their sandboxes.",
    "sources": [
