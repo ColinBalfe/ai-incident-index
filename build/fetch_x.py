@@ -44,6 +44,7 @@ def clean(t):
         'verified': bool(u.get('is_blue_verified') or u.get('verified')),
         'created_at': t.get('created_at', ''), 'text': text, 'id': t.get('id_str', ''),
         'photos': [m.get('media_url_https') for m in (t.get('mediaDetails') or []) if m.get('type') == 'photo'][:1],
+        'photo_alts': [(m.get('ext_alt_text') or '').strip() for m in (t.get('mediaDetails') or []) if m.get('type') == 'photo'][:1],  # the author's own alt text, when given
     }
     vids = [m for m in (t.get('mediaDetails') or []) if m.get('type') in ('video', 'animated_gif')]
     if vids:  # a clip: keep only the poster frame and length; the clip itself plays in X's own embedded player

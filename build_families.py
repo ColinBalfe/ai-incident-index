@@ -413,16 +413,20 @@ def _row(c):
     return f'<li><a href="/forecast/{c["id"]}/">{esc(q)}</a><span class="meta">{side}</span></li>'
 calls_open = [c for c in openc if c.get('kind') == 'call']; qs_open = [c for c in openc if c.get('kind') != 'call']
 hu = SITE + 'forecast/'
+# No "0" stats (Colin): before the first right or wrong call the record says so in words; after it, a zero side reads "none"
+_nz = lambda k, w: f"{k} {w}" if k else f"none {w}"
+_rec = f"{_nz(G['hit'], 'right')}, {_nz(G['miss'], 'wrong')}" if G['hit'] + G['miss'] else 'None graded right or wrong yet'
+_rec_desc = (f"{G['hit'] + G['miss']} graded ({_rec})" if G['hit'] + G['miss'] else (f"the first are graded {fdate(openc[0]['resolve_by'])}" if openc else 'none graded yet'))
 fbody = f"""<article class="pk"><div class="kick">Warning Shots</div><h1>The forecasts: what happens next, and whether we were right</h1>
 <p>Every call is a dated yes-or-no question with the index's odds, published before the answer is known and graded in public on the day it resolves. Misses stay on the board. The wording never changes after a question goes up.</p>
-<section class="box"><b class="k">Track record</b><p><b>{G['hit']} right, {G['miss']} wrong</b>{f", {G['toss']} called a toss-up (not counted)" if G['toss'] else ''}. {len(openc)} still open; the next resolves {fdate(openc[0]['resolve_by']) if openc else 'soon'}.</p>{(f'<p><a href="/forecast/resolution-day/{openc[0]["resolve_by"]}/"><b>Resolution Day, {dt.date.fromisoformat(openc[0]["resolve_by"]).strftime("%A, %b %-d")}: every call graded that day, live →</b></a></p>') if openc and sum(1 for c in CALLS if c.get('kind') == 'call' and c['resolve_by'] == openc[0]['resolve_by']) >= 2 else ''}</section>
+<section class="box"><b class="k">Track record</b><p><b>{_rec}</b>{f", {G['toss']} called a toss-up (not counted)" if G['toss'] else ''}. {len(openc)} still open; the next resolves {fdate(openc[0]['resolve_by']) if openc else 'soon'}.</p>{(f'<p><a href="/forecast/resolution-day/{openc[0]["resolve_by"]}/"><b>Resolution Day, {dt.date.fromisoformat(openc[0]["resolve_by"]).strftime("%A, %b %-d")}: every call graded that day, live →</b></a></p>') if openc and sum(1 for c in CALLS if c.get('kind') == 'call' and c['resolve_by'] == openc[0]['resolve_by']) >= 2 else ''}</section>
 <h2>Calls: resolving in days and weeks</h2><ul class="list">{''.join(_row(c) for c in calls_open)}</ul>
 <h2>Questions: months to years</h2><ul class="list">{''.join(_row(c) for c in qs_open)}</ul>
 <h2>Graded</h2><ul class="list">{''.join(_row(c) for c in sorted([c for c in CALLS if c.get('resolution')], key=lambda c: c['resolution']['date'], reverse=True)) or '<li>None yet.</li>'}</ul>
 <p class="meta">How the odds move and why: <a href="/index/#changelog">the changelog</a>. The full method: <a href="/index/#about">how the index works</a>.</p>
 {capture('Email me when a forecast is graded', 'forecast')}
 </article>"""
-write('forecast/index.html', url=hu, title='AI forecasts: what happens next, graded in public', desc=f"Warning Shots' dated AI forecasts: {len(openc)} open, {G['hit']} right, {G['miss']} wrong. Every call is graded in public on the day it resolves.", body=fbody, draft=False,
+write('forecast/index.html', url=hu, title='AI forecasts: what happens next, graded in public', desc=f"Warning Shots' dated AI forecasts: {len(openc)} open; {_rec_desc}. Every call is graded in public on the day it resolves.", body=fbody, draft=False,
       crumbs=[('Forecasts', '')], graph=[webpage(hu, 'AI forecasts', 'Dated AI forecasts, graded in public', TODAY, False, '')])
 # ---------- forecast/resolution-day/<date>/: every date on which two or more calls resolve becomes a named event page
 _byday = collections.defaultdict(list)
@@ -444,9 +448,10 @@ for day, cs in sorted(_byday.items()):
             st = f'<p><span class="st">Open</span> The index says <b>{esc(likely(c["odds"]))}</b> ({esc(c["odds_label"])}). Graded when the evidence lands, right or wrong.</p>' + (f'<p class="meta">What would settle it: {esc(c["signposts"])}</p>' if c.get('signposts') else '')
         return f'<section class="an-row" style="border-top:1px solid var(--line);padding:8px 0"><h3 style="font-family:var(--serif);font-size:1.25rem;margin:12px 0 6px"><a href="/forecast/{esc(c["id"])}/">{esc(q)}</a></h3>{st}</section>'
     url = SITE + f'forecast/resolution-day/{day}/'; _rd.append(url)
-    score = (f'<b>{len(done)} of {len(cs)} graded</b>: {g["hit"]} right, {g["miss"]} wrong' + (f', {g["toss"]} toss-up (not counted)' if g['toss'] else '') + '.') if done else f'<b>{len(cs)} calls</b> resolve on this date. None graded yet.'
+    _rw = (f'{_nz(g["hit"], "right")}, {_nz(g["miss"], "wrong")}' if g['hit'] + g['miss'] else 'none right or wrong yet')   # no "0" stats
+    score = (f'<b>{len(done)} of {len(cs)} graded</b>: {_rw}' + (f', {g["toss"]} toss-up (not counted)' if g['toss'] else '') + '.') if done else f'<b>{len(cs)} calls</b> resolve on this date. None graded yet.'
     title = f'Resolution Day, {label}: {len(cs)} AI forecasts graded in public'
-    share_t = f'Resolution Day, {label}: ' + (f'{len(done)} of {len(cs)} Warning Shots forecasts graded, {g["hit"]} right, {g["miss"]} wrong.' if done else f'Warning Shots grades {len(cs)} AI forecasts in public, right or wrong.')
+    share_t = f'Resolution Day, {label}: ' + (f'{len(done)} of {len(cs)} Warning Shots forecasts graded, {_rw}.' if done else f'Warning Shots grades {len(cs)} AI forecasts in public, right or wrong.')
     body = f"""<article class="pk"><nav class="kick" aria-label="Breadcrumb"><a href="/forecast/">Forecasts</a> · Resolution Day</nav>
 <h1>{esc(title)}</h1>
 <p class="aka">Each of these was published days or weeks ago as a dated yes-or-no question with the index's odds. On {esc(label)} each is graded in public, and the misses get the same space as the hits. This page updates at every refresh (5:17 AM, 12:17 PM and 6:17 PM ET).</p>

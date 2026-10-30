@@ -122,7 +122,7 @@
   "dir": "up",
   "name": "Mayo Clinic",
   "news_id": "sciencedaily-mayo-pancreatic-ct-ai",
-  "line": "Its AI caught 73% of pancreatic cancers on CT scans radiologists had read as clear, against their 39%, an average of 475 days before diagnosis, in a peer-reviewed study in Gut.",
+  "line": "Its AI caught 73% of pancreatic cancers on CT scans that had been read as clear, against 38.9% for specialist radiologists, a median of 475 days before diagnosis, in a peer-reviewed study in Gut.",
   "why": "Whoever owns a validated early-warning model sets the screening standard insurers end up paying for. A published result puts Mayo ahead of tech companies selling unreviewed imaging AI to the same hospitals."
  }
 ]

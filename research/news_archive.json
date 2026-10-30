@@ -2932,7 +2932,7 @@
 },
 {
 "id": "sciencedaily-mayo-pancreatic-ct-ai",
-"title": "Mayo Clinic's AI spotted pancreatic cancer on CT scans read as clear, an average of 475 days before diagnosis: 73% of cases against radiologists' 39%",
+"title": "Mayo Clinic's AI caught 73% of pancreatic cancers on CT scans read as clear, a median of 475 days before diagnosis",
 "url": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
 "outlet": "ScienceDaily (BMJ Group)",
 "published": "2026-10-26T12:00:00Z",
@@ -2940,7 +2940,7 @@
 "kind": "analysis",
 "region": "Global",
 "topic": "breakthrough",
-"summary": "Peer-reviewed in the journal Gut, on 219 patients' earlier scans. A look-back study; prospective tests are needed before clinical use.",
+"summary": "Two specialist radiologists caught 38.9%. Peer-reviewed in Gut, on 219 patients' earlier scans; prospective tests are needed before clinical use.",
 "also": [
 {
 "outlet": "Innovita Research",

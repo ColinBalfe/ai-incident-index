@@ -411,7 +411,7 @@ for r in scored:
         pass
 ns = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">']
 for u, t, pd in _news:
-    ns.append(f'<url><loc>{esc(u)}</loc><news:news><news:publication><news:name>Warning Shots</news:name><news:language>en</news:language></news:publication><news:publication_date>{pd}</news:publication_date><news:title>{esc(t[:110])}</news:title></news:news></url>')
+    ns.append(f'<url><loc>{esc(u)}</loc><news:news><news:publication><news:name>Warning Shots</news:name><news:language>en</news:language></news:publication><news:publication_date>{pd}</news:publication_date><news:title>{esc(t)}</news:title></news:news></url>')
 ns.append('</urlset>')
 open('news-sitemap.xml', 'w', encoding='utf-8').write('\n'.join(ns))
 json.dump([u for u, _, _ in _news], open('data/fresh_urls.json', 'w'))

@@ -98,8 +98,8 @@
   "date": "2026-10-26",
   "area": "Medicine",
   "proof": "published",
-  "payoff": "An AI found pancreatic cancer on scans doctors had read as clear, about 475 days before diagnosis",
-  "means": "On earlier CT scans of 219 people later diagnosed with pancreatic cancer, the model caught 73% of cases; experienced radiologists caught 39%. The study is peer-reviewed, in the journal Gut. The catch: it looked back at old scans, its patients lacked ethnic diversity, and it needs forward-looking trials before doctors can use it.",
+  "payoff": "An AI found pancreatic cancer on scans doctors had read as clear, a median of 475 days before diagnosis",
+  "means": "The study used earlier CT scans of 219 people later diagnosed with pancreatic cancer. On the scans held back for testing, the model caught 73% of the cancers; specialist radiologists caught 38.9%. The study is peer-reviewed, in the journal Gut. The catch: it looked back at old scans, its patients lacked ethnic diversity, and it needs forward-looking trials before doctors can use it.",
   "people": "People with pancreatic cancer, which is usually found too late to cure",
   "entities": {
    "orgs": [

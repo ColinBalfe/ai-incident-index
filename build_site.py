@@ -45,13 +45,23 @@ if _limg:
         print(f'WARNING: the lead photo {_limg} is the same as on {_prev[-1]}; pick a new free image (REFRESH: one new lead photo a day)')
     json.dump(dict(sorted(_li.items())[-60:]), open('research/lead_images.json', 'w', encoding='utf-8'), indent=1)
 og_title = (_sir['tag'] + ' | ' + title) if _sir else f"AI has started breaking in on its own — {title}: see what’s coming, know what it means"
-og_desc = ((_sir.get("summary", "") + " ") if _sir else "") + f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of the last 12 months' real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
+# Share previews lead with the human fact (the lead summary's first sentence), not the Wire summary, which can open on a codename
+import re as _re
+_lead_line = (_re.split(r'(?<=[.!?])\s+(?=[A-Z])', ((_sir or {}).get('lead_summary') or '').strip())[0] if (_sir or {}).get('lead_summary') else '') or (_sir or {}).get('summary', '')
+og_desc = ((_lead_line + " ") if _sir else "") + f"Severe AI incidents went from {p12} to {s12} in a year. In {share}% of the last 12 months' real-world cases the AI itself did the acting. {n} incidents since 2023, scored 0–100 and sourced. Live tracking of {meta.get('live_name', 'the incident unfolding now')}, 20 dated forecasts, and what officials have said. Updated {et}."
+# Search snippets: one short description per page (search results cut at about 155 characters; the share text above stays long)
+def _meta(t, cap=158):
+    t = ' '.join(t.split())
+    return t if len(t) <= cap else t[:cap].rsplit(' ', 1)[0].rstrip(' ,;:') + '…'
+front_meta = _meta(f"What AI can now do, what it means for you and what happens next: today's AI dangers and breakthroughs, and {n} incidents since 2023, scored and sourced.")
+rec_meta = _meta(f"All {n} AI incidents since 2023, each scored 0–100 by a published formula and sourced, with the charts, the forecasts and whether the fixes held.")
+wire_meta = _meta(f"Every report on AI's dangers and breakthroughs from the last three days, newest first, each linking to the outlet. Updated {et}.")
 build = time.strftime('%Y%m%d%H%M', time.gmtime())
 site_url = meta['site_url']
 jsonld = json.dumps({"@context": "https://schema.org", "@graph": [
     {"@type": "NewsMediaOrganization", "@id": site_url + "#org", "name": title, "url": site_url, "slogan": "See what’s coming. Know what it means.",
      "logo": {"@type": "ImageObject", "url": site_url + "assets/icon-512.png", "width": 512, "height": 512}},
-    {"@type": "WebSite", "@id": site_url + "#site", "url": site_url, "name": title, "description": og_desc, "inLanguage": "en", "publisher": {"@id": site_url + "#org"}, "dateModified": meta['as_of']},
+    {"@type": "WebSite", "@id": site_url + "#site", "url": site_url, "name": title, "description": front_meta, "inLanguage": "en", "publisher": {"@id": site_url + "#org"}, "dateModified": meta['as_of']},
     {"@type": "Dataset", "name": "The AI Incident Index", "url": site_url + "index/#all", "description": f"{n} AI incidents since 2023, each scored 0–100 on harm, reach, irreversibility, autonomy and novelty, with sources. Open data from {title}.",
      "creator": {"@id": site_url + "#org"}, "dateModified": meta['as_of'], "isAccessibleForFree": True, "temporalCoverage": "2023-01-01/..", "keywords": ["AI incidents", "AI safety", "AI security", "AI risk", "incident database", "agentic AI", "deepfakes", "cybersecurity"], "variableMeasured": ["harm", "reach", "autonomy", "novelty", "irreversibility", "severity 0-100"], "measurementTechnique": "Each incident rated on five factors by a published rubric; severity = 0.55 x harm score + 0.45 x signal score.",
      "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": site_url + "data/incidents.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": site_url + "data/incidents.csv"}]},
@@ -82,14 +92,15 @@ _svm = ''.join(f'<meta name="{k}" content="{"".join(c for c in str(_sv.get(v, ""
 if _svm:
     out = out.replace('</head>', _svm + '\n</head>', 1)
 from pageshell import LIVE_NAV as _LIVE_NAV, MID_NAV as _MID_NAV, DESKS as _DESKS, MS_URL as _MS_URL
-out = out.replace('{{LIVE_NAV}}', _LIVE_NAV).replace('{{MID_NAV}}', _MID_NAV).replace('{{MS_URL}}', _MS_URL)
+out = out.replace('{{LIVE_NAV}}', _LIVE_NAV).replace('{{MID_NAV}}', _MID_NAV).replace('{{MS_URL}}', _h.escape(_MS_URL))
 # the masthead tagline: the front page says what the site covers (its promise sits right under it); the Record and the Wire keep the slogan
 _TAG_FRONT = '<p class="mh-tag"><span class="mh-one">AI’s dangers and breakthroughs</span></p>'
 _TAG_SLOGAN = '<p class="mh-tag"><span class="mh-t1">See what’s coming.</span><span class="mh-dot" aria-hidden="true"></span><span class="mh-t2">Know what it means.</span></p>'
 out = out.replace('{{DESKS}}', '<nav class="mh-desks" aria-label="Desks">' + ''.join(f'<a href="{u}">{_h.escape(t)}</a>' for u, t in _DESKS) + '</nav>')
-open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front').replace('{{MH_TAG}}', _TAG_FRONT, 1).replace('/data/bundle.json?v=', '/data/bundle-front.json?v=', 1))
+_md = lambda t: _h.escape(t, quote=True)
+open('index.html', 'w', encoding='utf-8').write(out.replace('{{PAGE}}', 'front').replace('{{MH_TAG}}', _TAG_FRONT, 1).replace('{{META_DESC}}', _md(front_meta), 1).replace('/data/bundle.json?v=', '/data/bundle-front.json?v=', 1))
 # ---- the Record (/index/): the same template with the headline page hidden and the full index shown
-rec = out.replace('{{PAGE}}', 'record').replace('{{MH_TAG}}', _TAG_SLOGAN, 1)
+rec = out.replace('{{PAGE}}', 'record').replace('{{MH_TAG}}', _TAG_SLOGAN, 1).replace('{{META_DESC}}', _md(rec_meta), 1)
 rec = rec.replace('<title>Warning Shots: AI threats, breakthroughs and impacts</title>', f'<title>The Record: every AI incident since 2023, scored and sourced | {title}</title>', 1)
 rec = rec.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}index/">', 1)
 rec = rec.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}index/">', 1)
@@ -100,7 +111,7 @@ rec = rec.replace(og_desc.replace('"', '&quot;'), rec_desc.replace('"', '&quot;'
 os.makedirs('index', exist_ok=True)
 open('index/index.html', 'w', encoding='utf-8').write(rec)
 # ---- the Wire (/wire/): every report from the last three days, the refresh box and the live panel
-wre = out.replace('{{PAGE}}', 'wire').replace('{{MH_TAG}}', _TAG_SLOGAN, 1)
+wre = out.replace('{{PAGE}}', 'wire').replace('{{MH_TAG}}', _TAG_SLOGAN, 1).replace('{{META_DESC}}', _md(wire_meta), 1)
 wre = wre.replace('<title>Warning Shots: AI threats, breakthroughs and impacts</title>', f'<title>The Wire: every AI threat and breakthrough reported in the last three days | {title}</title>', 1)
 wre = wre.replace(f'<link rel="canonical" href="{site_url}">', f'<link rel="canonical" href="{site_url}wire/">', 1)
 wre = wre.replace(f'<meta property="og:url" content="{site_url}">', f'<meta property="og:url" content="{site_url}wire/">', 1)

@@ -751,7 +751,7 @@ function drawWall() {
       const tcard = el('a', 'tw'); tcard.href = x.url; tcard.target = '_blank'; tcard.rel = 'noopener noreferrer'; tcard.setAttribute('aria-label', 'Post by ' + (t.name || x.author) + ' on X');
       tcard.append(who(t, x), el('p', 'tw-t', (t.text || x.quote) + (t.truncated ? '…' : '')));
       if (t.truncated) tcard.append(el('span', 'tw-more', 'Show more on X'));
-      if (t.photos && t.photos[0]) { const im = el('img', 'tw-ph'); im.src = t.photos[0]; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); tcard.append(im); }
+      if (t.photos && t.photos[0]) { const im = el('img', 'tw-ph'); im.src = t.photos[0]; im.alt = (t.photo_alts && t.photo_alts[0]) || ('Photo from ' + (t.name || x.author || 'the') + '’s post on X'); im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; im.onerror = () => im.remove(); tcard.append(im); }
       if (t.video && t.video.poster && t.id) tcard.append(xClip(t, x, tcard, item));
       if (t.quoted) { const q = el('div', 'tw-q'); q.append(who(t.quoted, {}, true), el('p', 'tw-t', t.quoted.text)); tcard.append(q); }
       const f = el('div', 'tw-f'); f.append(el('span', null, when(t.created_at || x.posted)), el('span', 'tw-go', 'View on X →')); tcard.append(f);
@@ -850,10 +850,15 @@ function drawRail() {
   const hr = houseRecord(); const nxt = callRows().filter(callOpen).sort((x, y) => x.resolve_by.localeCompare(y.resolve_by))[0];
   const nDay = nxt ? callRows().filter((c) => callOpen(c) && c.kind === 'call' && c.resolve_by === nxt.resolve_by).length : 0;
   const nLabel = nxt ? new Date(nxt.resolve_by + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }) : '';
-  tiles.append(tile(nxt && nDay >= 2 ? '/forecast/resolution-day/' + nxt.resolve_by + '/' : '/forecast/', 'Forecast record', hr.w + ' right · ' + hr.l + ' wrong', (hr.tossups ? hr.tossups + ' toss-up not counted · ' : '') + (nxt ? 'next graded ' + nLabel + (nDay >= 2 ? ' (' + nDay + ' calls)' : '') : 'none open')));
+  // No "0" stats (Colin): before the first right or wrong call the tile says when grading starts; after it, a zero side reads "none"
+  const nz = (k, word) => (k ? k + ' ' + word : 'none ' + word);
+  const recBig = hr.w + hr.l ? nz(hr.w, 'right') + ' · ' + nz(hr.l, 'wrong') : (nxt ? 'First grades ' + nLabel : 'Grading soon');
+  const recSub = (hr.w + hr.l ? (nxt ? 'next graded ' + nLabel + (nDay >= 2 ? ' (' + nDay + ' calls)' : '') : 'none open') : (nxt ? (nDay >= 2 ? nDay + ' calls graded in public' : 'graded in public') : ''))
+    + (hr.tossups ? ' · ' + hr.tossups + (hr.tossups === 1 ? ' toss-up' : ' toss-ups') + ' not counted' : '');
+  tiles.append(tile(nxt && nDay >= 2 ? '/forecast/resolution-day/' + nxt.resolve_by + '/' : '/forecast/', 'Forecast record', recBig, recSub));
   const fx = fixRows(); const cur = (f) => (f.chain.find((c) => c.stage === 'current') || f.chain[f.chain.length - 1]).status || '';
   const fixed = fx.filter((f) => /^(fixed|verified)/.test(cur(f))).length, reop = fx.filter((f) => cur(f) === 'reopened').length;
-  if (fx.length) tiles.append(tile('/fixes/', 'Did they fix it?', fixed + ' of ' + fx.length + ' confirmed fixed', reop ? reop + ' reopened after a claimed fix' : 'every case re-checked'));
+  if (fx.length) tiles.append(tile('/fixes/', 'Did they fix it?', (fixed ? fixed : 'None') + ' of ' + fx.length + ' confirmed fixed', reop ? reop + ' reopened after a claimed fix' : 'every case re-checked'));
   const lines = (D.line_of_day || []).filter((x) => x.date <= D.meta.as_of.slice(0, 10)).sort((a, b) => b.date.localeCompare(a.date));
   const ln = lines[0] && (Date.parse(D.meta.as_of) - Date.parse(lines[0].date + 'T12:00:00Z')) < 3 * 864e5 ? lines[0] : null;
   const lod = ln ? (() => { const q = el('figure', 'rl-line'); q.append(el('span', 'rl-k', 'Line of the day'), el('blockquote', null, '“' + ln.quote + '”'));
@@ -1998,17 +2003,7 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === '1') go('#wire'); else if (e.key === '2') go('#record'); else if (e.key === '3') go('#now');
 });
 
-/* ---------- masthead: signup + sticky nav */
-function drawSignup() {
-  const f = document.getElementById('signup'); if (!f) return;
-  const nl = D.meta.newsletter || {};
-  if (!nl.action) { f.hidden = true; return; }
-  f.action = nl.action; f.hidden = false; if (nl.email_field) f.querySelector('input[type=email]').name = nl.email_field;
-  f.querySelectorAll('input[type=hidden]').forEach((h) => h.remove());
-  Object.entries(nl.fields || {}).forEach(([k, v]) => { const h = el('input'); h.type = 'hidden'; h.name = k; h.value = v; f.append(h); });
-  if (nl.note) f.querySelector('small').textContent = nl.note;
-  if (!f._wired) { f._wired = true; f.addEventListener('submit', () => { setTimeout(() => { const ok = el('div', 'ok', 'Check your inbox to confirm.'); f.querySelector('.ok')?.remove(); f.append(ok); f.querySelector('input[type=email]').value = ''; }, 300); }); }
-}
+/* ---------- masthead: sticky nav (the old in-page signup form is gone: The Morning Shot signs up on Beehiiv) */
 const navbar = document.getElementById('navbar'), masthead = document.querySelector('.masthead');
 if (navbar && masthead && 'IntersectionObserver' in window) new IntersectionObserver((es) => { es.forEach((e) => navbar.classList.toggle('scrolled', !e.isIntersecting && e.boundingClientRect.top < 0)); }, { threshold: 0 }).observe(masthead);
 const navLinks = [...document.querySelectorAll('#nav-scroll a')];
@@ -2186,7 +2181,7 @@ function preDraw() {
 }
 function drawAll(first) {
   if (MF() && !mfCur) mfApply('front');
-  drawSignup(); drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawWall(); drawWire(); drawNow(); drawBrief();
+  drawFieldnote(); drawHeadline(); drawRibbon(); drawSinceVisit(); drawTicker(); drawWall(); drawWire(); drawNow(); drawBrief();
   if (MF()) { drawFront(); if (mfCur && mfCur !== 'front') drawSection(mfCur); }
   if (EMBED || !lazyIO) { drawEverything(); return; }
   if (first) {
