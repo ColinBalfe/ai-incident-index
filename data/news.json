@@ -1,5 +1,137 @@
 [
 {
+"id": "fox-alphabet-499b-one-day-ai-spending",
+"title": "Alphabet shares fell 12.64% in a day, erasing about $499.8 billion, as investors doubted its AI spending",
+"url": "https://www.foxnews.com/live-news/ai-boom-google-stock-loss-wall-street-10-30-26",
+"outlet": "Fox News",
+"published": "2026-10-30T14:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "US",
+"topic": "everyday",
+"summary": "Quarterly capital spending was about $51.4 billion, much of it data centers; Fox calls it the second-largest one-day value loss on record.",
+"siren": false,
+"also": [],
+"tag": "Google lost $499.8 billion in a day over AI spending doubts",
+"wall": 3,
+"wall_rank": 0.35,
+"red": false,
+"label": "confirmed",
+"receipt": "Fox News live coverage (Oct 30): Alphabet Class A shares closed at $283.82, down 12.64%, a loss of approximately $499.8 billion in market value, after third-quarter results; capital spending about $51.4 billion in the quarter, much of it for data centers and computing.",
+"touches": "Alphabet shareholders, including index-fund and retirement savers",
+"independent": {
+"n": 1,
+"who": [
+"Fox News"
+],
+"carried_by": []
+},
+"entities": {
+"orgs": [
+"Google",
+"Alphabet"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"tech",
+"finance"
+],
+"states": []
+}
+},
+{
+"id": "fortune-goldman-ai-displaced-month-longer",
+"title": "Goldman: workers laid off from AI-exposed jobs took about a month longer to find new work",
+"url": "https://fortune.com/2026/10/30/goldman-sachs-ai-layoffs-displaced-workers-older-workers-past-tech-disruptions/",
+"outlet": "Fortune",
+"published": "2026-10-30T13:09:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "jobs",
+"summary": "Goldman's score-based study: AI-displaced workers about 10 points likelier to be jobless a year on; workers 35 and older hit hardest.",
+"siren": false,
+"also": [],
+"tag": "Goldman: AI-displaced workers took a month longer to find work",
+"wall": 2,
+"wall_rank": 0.2,
+"red": false,
+"label": "reported",
+"receipt": "Goldman Sachs economist Pierfrancesco Mei's note, via Fortune (Oct 30): workers displaced from AI-exposed jobs since 2025 took about a month longer to find a new job and were about 10 points likelier to be unemployed a year later. No survey asks if AI caused a layoff; Goldman built a score from AI exposure, AI adoption and job elimination and treated the top 30% as likely AI-displaced.",
+"touches": "US workers laid off from AI-exposed jobs, especially those 35 and older",
+"independent": {
+"n": 1,
+"who": [
+"Goldman Sachs"
+],
+"carried_by": [
+"Fortune"
+]
+},
+"entities": {
+"orgs": [
+"Goldman Sachs"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"finance"
+],
+"states": []
+}
+},
+{
+"id": "newsobserver-nc-data-centers-50b-2050",
+"title": "Gov. Stein's task force: big data centers could add $50 billion in North Carolina energy costs by 2050",
+"url": "https://yahoo.com/news/us/articles/data-centers-could-cost-nc-110000943.html",
+"outlet": "The News & Observer via Yahoo",
+"published": "2026-10-30T11:00:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "US",
+"topic": "everyday",
+"beat": "near-you",
+"summary": "Without policy changes, customers' bills could rise 70%, the report says; the utilities commission decides Duke's data-center tariff in weeks.",
+"siren": false,
+"also": [],
+"tag": "Stein's office: data centers could cost NC $50 billion by 2050",
+"wall": 3,
+"wall_rank": 3.65,
+"red": false,
+"label": "reported",
+"receipt": "Gov. Josh Stein's Energy Policy Task Force with Energy Futures Group consultants, via The News & Observer (Oct 30): large data centers could lead to $50 billion in energy costs by 2050; a model built on other utilities' data, not a bill.",
+"touches": "North Carolina electricity customers, including Duke Energy's",
+"independent": {
+"n": 1,
+"who": [
+"Gov. Stein's Energy Policy Task Force"
+],
+"carried_by": [
+"The News & Observer",
+"Yahoo"
+]
+},
+"entities": {
+"orgs": [
+"Duke Energy",
+"Amazon",
+"Google"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"NC"
+]
+}
+},
+{
 "id": "shiftdelete-vapor-panda-first-ai-use",
 "title": "VAPOR PANDA's campaign is separate from the ARTEX activity Microsoft tied to China-aligned Storm-0940, suggesting the AI",
 "url": "https://en.shiftdelete.net/vapor-panda-artex-ai/",
@@ -2352,103 +2484,5 @@
 "CO"
 ]
 }
-},
-{
-"id": "openai-gpt61-terra-critical-cyber",
-"title": "OpenAI's new budget model meets its own top 'Critical' hacking-risk level, and it's on sale to subscribers",
-"url": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
-"outlet": "Help Net Security",
-"published": "2026-10-27T04:33:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "breakthrough",
-"summary": "OpenAI says GPT-6.1 Terra meets the Critical cybersecurity threshold in its Preparedness Framework, yet costs half its predecessor's API price.",
-"also": [
-{
-"outlet": "OpenAI",
-"url": "https://openai.com/index/introducing-gpt-6-1-terra/"
-}
-],
-"tag": "OpenAI is selling an AI it rates 'Critical' for hacking",
-"wall": 1,
-"label": "confirmed",
-"standfirst": "OpenAI says GPT-6.1 Terra meets the 'Critical' cybersecurity threshold in its own safety framework, the top level, which Help Net Security describes as a model that can build working attacks on hardened systems with no human involved. It keeps the safeguards built for GPT-6 Astra and is open to ChatGPT Plus, Pro, Enterprise and Edu users and to developers at $1 per million input tokens; no misuse has been reported.",
-"you": {
-"touch": "Nothing has gone wrong yet and no attack using it has been reported. But a hacking ability OpenAI rates at its highest risk level is now in a cheap, widely sold model, so old, unpatched software everywhere becomes an easier target.",
-"today": [
-"Switch on automatic updates for your phone, computer and home router."
-]
-},
-"receipt": "'Critical' is OpenAI's own rating of its own model under its Preparedness Framework, per its Oct 26-27 launch page; no independent test is cited.",
-"siren": false,
-"wall_rank": 1.0,
-"touches": "Every organization a cheaper hacking-capable AI can be aimed at"
-},
-{
-"id": "13abc-oregon-ohio-issue-25",
-"title": "Oregon, Ohio votes next week on Issue 25, a ban on data centers of 25 megawatts or more; schools stand to lose $100M+",
-"url": "https://www.13abc.com/2026/10/27/oregon-residents-debate-issue-25-during-council-meeting-one-week-before-vote-data-center/",
-"outlet": "13 ABC (WTVG)",
-"published": "2026-10-27T03:40:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "everyday",
-"beat": "near-you",
-"summary": "A possible $1 billion data center would bring Oregon City Schools more than $100 million over 15 years; opponents cite resources and surveillance.",
-"siren": false,
-"also": [],
-"tag": "Ohio town votes on banning big data centers; schools' $100M at stake",
-"wall": "3",
-"wall_rank": 4.6,
-"label": "confirmed",
-"receipt": "'More than $100 million to Oregon City Schools over 15 years' is the district's estimate as reported by 13 ABC (Oct 26).",
-"touches": "Voters and Oregon City Schools families in Oregon, Ohio",
-"entities": {
-"orgs": [
-"Oregon City Schools"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"energy",
-"education"
-],
-"states": [
-"OH"
-]
-}
-},
-{
-"id": "wlos-ager-ai-drag-ad",
-"title": "A Republican ad put a North Carolina Democrat at an AI-made drag barn dance; he calls it '100% fake'",
-"url": "https://wlos.com/news/local/jamie-ager-responds-artificial-intelligence-ai-generated-political-attack-ad-100-fake-bullcrap-advertisement-democrat-gop-republican-jennifer-balkcom-congress-north-carolina",
-"outlet": "WLOS",
-"published": "2026-10-27T02:42:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "deepfakes",
-"summary": "NC-11 ad approved by Jennifer Balkcom, paid for by the NRCC; fact-checkers found no AI disclaimer; a drag performer sent a cease-and-desist.",
-"siren": false,
-"also": [
-{
-"outlet": "Raleigh News & Observer (via Yahoo)",
-"url": "https://www.yahoo.com/news/politics/articles/fact-check-gop-candidate-runs-090000635.html"
-},
-{
-"outlet": "Spectrum News 1",
-"url": "https://spectrumlocalnews.com/nc/charlotte/news/2026/10/27/ai-political-ads-increasing--no-n-c--laws-require-disclosure-"
-}
-],
-"tag": "GOP ad faked a Democrat dancing with drag queens, fact-check finds",
-"wall": 3,
-"red": false,
-"label": "reported",
-"receipt": "The AI finding is the News & Observer fact-check's (Oct 24): footage appears manipulated from Ager's own ad, with no AI disclaimer. The NRCC stands by the ad and has not said whether AI was used. North Carolina has no law requiring disclosure.",
-"wall_rank": 20.6,
-"touches": "Voters in North Carolina's 11th district"
 }
 ]
