@@ -1263,5 +1263,27 @@
   "source2_url": "https://news.bloomberglaw.com/litigation/openai-sued-alleging-chatgpt-gave-fatal-epilepsy-medical-advice",
   "confidence": "medium",
   "notes": "Dated by the last message (Feb 11, 2026); the court is not named in TechCrunch's report; Bloomberg Law page not opened by this run."
+ },
+ {
+  "id": "vapor-panda-artex-200-orgs",
+  "date": "2026-10-17",
+  "date_precision": "day",
+  "disclosed": "2026-10-29",
+  "title": "CrowdStrike: China-nexus VAPOR PANDA ran ARTEX AI agents, mainly on DeepSeek, against 200-plus organizations in 14 countries in 11 days and got inside nine",
+  "actors": "VAPOR PANDA (China-nexus adversary, per CrowdStrike); ARTEX (open-source multi-agent framework); DeepSeek's LLM plus an unidentified subscription commercial LLM; CrowdStrike Intelligence; foreign ministries, government offices and US pharmaceutical, semiconductor, defense, nuclear and financial organizations",
+  "category": "cyber_offense",
+  "setting": "wild",
+  "summary": "CrowdStrike reported on Oct 29 that VAPOR PANDA, a China-nexus adversary, used ARTEX, an open-source agent framework in which a main agent coordinates planner and worker agents, against more than 200 distinct organizations in at least 14 countries over an 11-day window beginning Oct 17, 2026. It ran primarily on the Chinese-origin DeepSeek LLM, supplemented by a second subscription-based commercial LLM CrowdStrike could not confirm. CrowdStrike confirmed post-exploitation activity at nine organizations, where the adversary gained access and deployed the BLOODALCHEMY backdoor, and password-spraying and credential scanning against at least 12 more. Targets included foreign ministries in Latin America, Europe, Asia and the Middle East, a European country's foreign ministry, presidency and prime minister's office, and 19 US organizations in pharmaceuticals, semiconductors, defense, nuclear and finance; against a Greek government entity the agent forged an administrator token and read mailboxes. A human operator issued instructions in Chinese and intervened mainly to steer the agents at decision points; one intrusion's planning agents consumed on the order of 1.4 billion input tokens. CrowdStrike names no victim and does not state that data was exfiltrated.",
+  "harm": "Attacker access and a backdoor at nine organizations, including government entities; mailboxes read at a Greek government entity; exfiltration not stated",
+  "H": 3,
+  "R": 3,
+  "A": 3,
+  "N": 2,
+  "I": 3,
+  "source_url": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+  "source_label": "CrowdStrike, Oct 29",
+  "source2_url": "https://en.shiftdelete.net/vapor-panda-artex-ai/",
+  "confidence": "high",
+  "notes": "Dated from the campaign's start (Oct 17, per CrowdStrike); disclosed Oct 29. NBC News reportedly first carried the findings (per ShiftDelete) but its page could not be opened. ShiftDelete says this is the group's first observed use of AI tooling and that it is separate from the ARTEX activity Microsoft tied to Storm-0940 (storm-0940-artex-connectwise). Novelty 2: the same framework was already on the index (korea-banks-artex, storm-0940-artex-connectwise); new is the scale across 14 countries and foreign ministries. Victims are unnamed, so no victims rows. Added Oct 30, 10:40 ET."
  }
 ]

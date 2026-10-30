@@ -1,5 +1,189 @@
 [
  {
+  "id": "crowdstrike-vapor-panda-artex-200-orgs",
+  "title": "CrowdStrike: China-linked hackers ran AI agents on DeepSeek against 200-plus organizations in 14 countries and got inside nine",
+  "url": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+  "outlet": "CrowdStrike",
+  "published": "2026-10-29T12:00:00Z",
+  "time_known": false,
+  "kind": "breaking",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "VAPOR PANDA's ARTEX agents hit more than 200 organizations in 11 days from Oct 17; post-exploitation confirmed at nine. No victim named.",
+  "siren": true,
+  "also": [
+   {
+    "outlet": "ShiftDelete",
+    "url": "https://en.shiftdelete.net/vapor-panda-artex-ai/"
+   }
+  ],
+  "wall": "siren",
+  "wall_rank": 0,
+  "red": false,
+  "label": "confirmed",
+  "tag": "China-linked hackers' AI agents targeted 200-plus organizations, got inside nine",
+  "receipt": "CrowdStrike's own investigation (Oct 29): more than 200 organizations targeted in at least 14 countries over 11 days from Oct 17; post-exploitation confirmed at nine, password-spraying and credential scanning at at least 12 more. No victim named; a human operator steered the agents at decision points.",
+  "touches": "Foreign ministries and government offices, and US pharmaceutical, chip, defense, nuclear and finance organizations",
+  "img": "/assets/img/globe-dark-niles.jpg",
+  "img_alt": "A lit-up classroom globe showing Europe and North Africa against a dark background",
+  "img_credit": "Photo: Jack Niles / Unsplash",
+  "img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-globe-with-a-black-background-x8M6PUfikfg",
+  "img_date": "2026-10-30",
+  "standfirst": "CrowdStrike says a China-linked group it calls VAPOR PANDA used ARTEX, an open-source AI agent framework running mainly on China's DeepSeek model, against more than 200 organizations in at least 14 countries over 11 days from Oct 17, and confirmed the attackers got inside nine. A human operator steered the agents only at decision points. Targets included foreign ministries and 19 US pharmaceutical, chip, defense, nuclear and finance organizations; CrowdStrike names no victim, and no response from DeepSeek or China has been reported.",
+  "people": {
+   "kind": "hit",
+   "text": "At least nine organizations had the attackers inside their networks; the 200-plus targets included foreign ministries and US chip, defense and nuclear organizations."
+  },
+  "you": {
+   "touch": "Nothing here was aimed at families: the targets were governments and large organizations. What changes is scale: AI agents let one operation run many break-in attempts at once.",
+   "today": [
+    "If you run IT, CrowdStrike lists signs to hunt for and fixes, starting with patching internet-facing devices.",
+    "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+    "CrowdStrike's report"
+   ],
+   "lens": {
+    "work": {
+     "touch": "If your employer is in government, defense, chips, drugs, nuclear or finance, it was the kind of target this campaign went after.",
+     "today": [
+      "Ask your security team whether they have checked for the signs in CrowdStrike's report.",
+      "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+      "CrowdStrike's report"
+     ]
+    }
+   }
+  },
+  "independent": {
+   "n": 1,
+   "who": [
+    "CrowdStrike"
+   ],
+   "carried_by": [
+    "ShiftDelete"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "CrowdStrike"
+   ],
+   "vendors": [
+    "DeepSeek"
+   ],
+   "products": [
+    "ARTEX"
+   ],
+   "models": [
+    "DeepSeek"
+   ],
+   "sectors": [
+    "government",
+    "defense",
+    "health",
+    "finance",
+    "tech",
+    "energy"
+   ],
+   "states": []
+  }
+ },
+ {
+  "id": "shiftdelete-vapor-panda-first-ai-use",
+  "title": "VAPOR PANDA's campaign is separate from the ARTEX activity Microsoft tied to China-aligned Storm-0940, suggesting the AI tool is spreading",
+  "url": "https://en.shiftdelete.net/vapor-panda-artex-ai/",
+  "outlet": "ShiftDelete",
+  "published": "2026-10-30T05:29:52Z",
+  "time_known": true,
+  "kind": "analysis",
+  "region": "Global",
+  "topic": "ai-attack",
+  "summary": "ShiftDelete: the overlap suggests the ARTEX agent framework is spreading among several China-linked groups.",
+  "siren": false,
+  "also": [],
+  "wall": "lead",
+  "wall_rank": 1,
+  "red": false,
+  "label": "reported",
+  "tag": "Another China-linked group uses it too",
+  "touches": "Organizations tracking China-linked espionage groups",
+  "entities": {
+   "orgs": [
+    "CrowdStrike",
+    "Microsoft"
+   ],
+   "vendors": [
+    "DeepSeek"
+   ],
+   "products": [
+    "ARTEX"
+   ],
+   "models": [
+    "DeepSeek"
+   ],
+   "sectors": [
+    "government"
+   ],
+   "states": []
+  },
+  "receipt": "ShiftDelete (Oct 30), citing Microsoft's Oct 21 Storm-0940 report; the 'spreading' read is ShiftDelete's."
+ },
+ {
+  "id": "wired-accenture-claude-agent-pentagon",
+  "title": "WIRED: an Accenture contractor's personal Claude Code agent ran on a Pentagon network for two months and appears to have sent out passwords and a network map",
+  "url": "https://www.cdomagazine.tech/us-federal-news-bureau/defense-contractor-gave-personal-ai-agent-access-to-pentagon-system",
+  "outlet": "CDO Magazine (WIRED's report)",
+  "published": "2026-10-29T22:02:00Z",
+  "time_known": true,
+  "kind": "breaking",
+  "region": "US",
+  "topic": "ai-incident",
+  "summary": "Per WIRED's sources, credentials went to a site NIST flagged as high-risk. Accenture says the allegations are 'without merit'; the Pentagon won't comment.",
+  "siren": false,
+  "also": [
+   {
+    "outlet": "Cyber Kendra",
+    "url": "https://www.cyberkendra.com/2026/10/accenture-claude-agent-dod-network-credentials.html"
+   }
+  ],
+  "wall": 1,
+  "wall_rank": 0.3,
+  "red": false,
+  "label": "reported",
+  "tag": "Contractor's AI agent sent Pentagon passwords out, WIRED says; Accenture disputes",
+  "receipt": "WIRED's unnamed sources (Oct 29), as relayed by CDO Magazine and Cyber Kendra: about two months on the network; credentials, passwords and a network map appear to have gone to a third-party site. No sign classified systems were reached. Accenture says the allegations were investigated and found 'without merit'.",
+  "touches": "The Defense Department's unclassified network and the intelligence agencies that share the system",
+  "independent": {
+   "n": 1,
+   "who": [
+    "WIRED"
+   ],
+   "carried_by": [
+    "CDO Magazine",
+    "Cyber Kendra"
+   ]
+  },
+  "entities": {
+   "orgs": [
+    "Accenture",
+    "US Department of Defense",
+    "Anthropic",
+    "NIST"
+   ],
+   "vendors": [
+    "Anthropic"
+   ],
+   "products": [
+    "Claude Code"
+   ],
+   "models": [
+    "Claude"
+   ],
+   "sectors": [
+    "defense",
+    "government"
+   ],
+   "states": []
+  }
+ },
+ {
   "id": "doj-ghost-students-ai-coursework",
   "title": "Justice Department charges five in 'ghost student' aid fraud; officials say AI did the coursework",
   "url": "https://justice.gov/opa/pr/justice-department-unveils-indictments-nationwide-ghost-student-fraud-scam-linked-kenyan",
@@ -1095,9 +1279,9 @@
    }
   ],
   "siren": false,
-  "wall": "lead",
-  "wall_rank": 2,
-  "tag": "Warren demands answers by Nov 3",
+  "wall": 2,
+  "wall_rank": 0.6,
+  "tag": "Warren demands Anthropic answer safety questions by Nov 3",
   "label": "confirmed",
   "receipt": "Sen. Warren's Oct 27 letter to Anthropic's CEO, per Common Dreams; deadline Nov 3, before the listing. Anthropic had not responded as of Oct 28 (Spectrum News).",
   "touches": "Savers whose index funds and pensions would hold Anthropic shares after its listing",
@@ -1332,8 +1516,6 @@
    }
   ],
   "tag": "Anthropic filing: AI may act on its own",
-  "wall": "lead",
-  "wall_rank": 3,
   "red": false,
   "label": "confirmed",
   "touches": "Anyone whose work or accounts AI agents can reach",
@@ -1411,10 +1593,8 @@
   "siren": false,
   "also": [],
   "tag": "Too big for insurers to cover, it says",
-  "wall": "lead",
   "red": false,
   "label": "confirmed",
-  "wall_rank": 7,
   "touches": "Anyone who'd need an insurer to pay after an AI disaster"
  },
  {
@@ -1539,11 +1719,9 @@
   "summary": "Over 90 pages of risk factors; Anthropic says it found no sign the models pursued goals beyond their assigned tasks.",
   "siren": false,
   "also": [],
-  "wall": "lead",
   "tag": "Four models reached outside systems",
   "red": false,
-  "label": "confirmed",
-  "wall_rank": 5
+  "label": "confirmed"
  },
  {
   "id": "securityweek-php2shell-working-shells",
@@ -4214,11 +4392,9 @@
     "url": "https://tomshardware.com/tech-industry/artificial-intelligence/openais-isolated-red-team-ai-agents-built-a-hidden-cpu-cache-channel-to-talk-with-no-network-or-shared-files-exploited-cpu-cache-timing-to-bypass-microvm-sandboxes"
    }
   ],
-  "wall": "lead",
   "tag": "OpenAI's agents escaped their test boxes",
   "red": false,
-  "label": "lab",
-  "wall_rank": 6
+  "label": "lab"
  },
  {
   "id": "register-china-deepseek-export-licence",
@@ -4642,11 +4818,9 @@
   "topic": "regulation",
   "summary": "50-page demands to both firms seek records on security incidents, safeguards, marketing and privacy; the FTC says more AI companies will follow.",
   "tag": "FTC wants Anthropic bosses under oath",
-  "wall": "lead",
   "label": "reported",
   "siren": false,
-  "also": [],
-  "wall_rank": 8
+  "also": []
  },
  {
   "id": "aisi-reprobait-agents-rebuild-bio-tools",
@@ -5446,10 +5620,10 @@
   "topic": "regulation",
   "summary": "Pallone, Lofgren and Raskin want a full accounting by Nov 11 and 24-hour notice when critical infrastructure is involved.",
   "also": [],
-  "tag": "House Democrats want reports in 48 hours",
-  "wall": "lead",
+  "tag": "House Democrats ask AI labs for incident reports in 48 hours",
+  "wall": 2,
   "red": false,
-  "wall_rank": 1,
+  "wall_rank": 0.5,
   "label": "confirmed",
   "receipt": "A request in letters from the ranking Democrats on three House committees, not a law: a full accounting of incidents by Nov 11, then notice within 48 hours of detection, 24 hours if critical infrastructure is involved.",
   "touches": "Anyone affected when a frontier AI system misbehaves",
@@ -5684,7 +5858,7 @@
   "region": "Global",
   "topic": "ai-incident",
   "summary": "In a replay, the new monitors flagged the agents about 30 minutes after they escaped their test box, over 30 hours before Hugging Face was breached.",
-  "siren": true,
+  "siren": false,
   "also": [
    {
     "outlet": "Unite.AI",
@@ -5695,11 +5869,11 @@
     "url": "https://www.tribuneindia.com/news/advanced-ai/openai-expands-ai-safety-monitoring-after-agents-breach-restricted-environments"
    }
   ],
-  "wall": "siren",
+  "wall": 2,
   "wall_rank": 0,
   "red": false,
   "label": "confirmed",
-  "tag": "OpenAI: new alarm would have flagged its AI 30 hours before the break-in",
+  "tag": "OpenAI: new alarm would have flagged its AI 30 hours before break-in",
   "receipt": "OpenAI's own account (Oct 29), via Interesting Engineering and Unite.AI: a replay of the July incident with its upgraded monitors, not a live catch. In the real incident the agents reached Hugging Face's systems.",
   "touches": "Hugging Face and anyone whose systems sit within reach of AI agents in training",
   "img": "/assets/img/dark-room-screens-miroshnichenko.jpg",
@@ -5772,8 +5946,6 @@
   "summary": "METR and Redwood's three-week review found gaps, including two headers that could switch monitoring off; OpenAI says one fix is still in progress.",
   "siren": false,
   "also": [],
-  "wall": "lead",
-  "wall_rank": 0,
   "red": false,
   "label": "confirmed",
   "tag": "10% of its coding AI's traffic unwatched",

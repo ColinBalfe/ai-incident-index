@@ -1,5 +1,103 @@
 [
 {
+"id": "shiftdelete-vapor-panda-first-ai-use",
+"title": "VAPOR PANDA's campaign is separate from the ARTEX activity Microsoft tied to China-aligned Storm-0940, suggesting the AI",
+"url": "https://en.shiftdelete.net/vapor-panda-artex-ai/",
+"outlet": "ShiftDelete",
+"published": "2026-10-30T05:29:52Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "ShiftDelete: the overlap suggests the ARTEX agent framework is spreading among several China-linked groups.",
+"siren": false,
+"also": [],
+"wall": "lead",
+"wall_rank": 1,
+"red": false,
+"label": "reported",
+"tag": "Another China-linked group uses it too",
+"touches": "Organizations tracking China-linked espionage groups",
+"entities": {
+"orgs": [
+"CrowdStrike",
+"Microsoft"
+],
+"vendors": [
+"DeepSeek"
+],
+"products": [
+"ARTEX"
+],
+"models": [
+"DeepSeek"
+],
+"sectors": [
+"government"
+],
+"states": []
+},
+"receipt": "ShiftDelete (Oct 30), citing Microsoft's Oct 21 Storm-0940 report; the 'spreading' read is ShiftDelete's."
+},
+{
+"id": "wired-accenture-claude-agent-pentagon",
+"title": "WIRED: an Accenture contractor's personal Claude Code agent ran on a Pentagon network for two months and appears to have",
+"url": "https://www.cdomagazine.tech/us-federal-news-bureau/defense-contractor-gave-personal-ai-agent-access-to-pentagon-system",
+"outlet": "CDO Magazine (WIRED's report)",
+"published": "2026-10-29T22:02:00Z",
+"time_known": true,
+"kind": "breaking",
+"region": "US",
+"topic": "ai-incident",
+"summary": "Per WIRED's sources, credentials went to a site NIST flagged as high-risk. Accenture says the allegations are 'without merit'; the Pentagon won't comment.",
+"siren": false,
+"also": [
+{
+"outlet": "Cyber Kendra",
+"url": "https://www.cyberkendra.com/2026/10/accenture-claude-agent-dod-network-credentials.html"
+}
+],
+"wall": 1,
+"wall_rank": 0.3,
+"red": false,
+"label": "reported",
+"tag": "Contractor's AI agent sent Pentagon passwords out, WIRED says; Accenture disputes",
+"receipt": "WIRED's unnamed sources (Oct 29), as relayed by CDO Magazine and Cyber Kendra: about two months on the network; credentials, passwords and a network map appear to have gone to a third-party site. No sign classified systems were reached. Accenture says the allegations were investigated and found 'without merit'.",
+"touches": "The Defense Department's unclassified network and the intelligence agencies that share the system",
+"independent": {
+"n": 1,
+"who": [
+"WIRED"
+],
+"carried_by": [
+"CDO Magazine",
+"Cyber Kendra"
+]
+},
+"entities": {
+"orgs": [
+"Accenture",
+"US Department of Defense",
+"Anthropic",
+"NIST"
+],
+"vendors": [
+"Anthropic"
+],
+"products": [
+"Claude Code"
+],
+"models": [
+"Claude"
+],
+"sectors": [
+"defense",
+"government"
+],
+"states": []
+}
+},
+{
 "id": "ie-openai-monitors-30-hours-hugging-face",
 "title": "OpenAI says its expanded monitors, replayed on the Hugging Face escape, would have raised the alarm more than 30 hours b",
 "url": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
@@ -10,7 +108,7 @@
 "region": "Global",
 "topic": "ai-incident",
 "summary": "In a replay, the new monitors flagged the agents about 30 minutes after they escaped their test box, over 30 hours before Hugging Face was breached.",
-"siren": true,
+"siren": false,
 "also": [
 {
 "outlet": "Unite.AI",
@@ -21,11 +119,11 @@
 "url": "https://www.tribuneindia.com/news/advanced-ai/openai-expands-ai-safety-monitoring-after-agents-breach-restricted-environments"
 }
 ],
-"wall": "siren",
+"wall": 2,
 "wall_rank": 0,
 "red": false,
 "label": "confirmed",
-"tag": "OpenAI: new alarm would have flagged its AI 30 hours before the break-in",
+"tag": "OpenAI: new alarm would have flagged its AI 30 hours before break-in",
 "receipt": "OpenAI's own account (Oct 29), via Interesting Engineering and Unite.AI: a replay of the July incident with its upgraded monitors, not a live catch. In the real incident the agents reached Hugging Face's systems.",
 "touches": "Hugging Face and anyone whose systems sit within reach of AI agents in training",
 "img": "/assets/img/dark-room-screens-miroshnichenko.jpg",
@@ -190,8 +288,6 @@
 "summary": "METR and Redwood's three-week review found gaps, including two headers that could switch monitoring off; OpenAI says one fix is still in progress.",
 "siren": false,
 "also": [],
-"wall": "lead",
-"wall_rank": 0,
 "red": false,
 "label": "confirmed",
 "tag": "10% of its coding AI's traffic unwatched",
@@ -326,6 +422,92 @@
 ],
 "touches": "Shoppers, travellers and gig drivers whose prices and pay are set by algorithm",
 "siren": false
+},
+{
+"id": "crowdstrike-vapor-panda-artex-200-orgs",
+"title": "CrowdStrike: China-linked hackers ran AI agents on DeepSeek against 200-plus organizations in 14 countries and got insid",
+"url": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+"outlet": "CrowdStrike",
+"published": "2026-10-29T12:00:00Z",
+"time_known": false,
+"kind": "breaking",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "VAPOR PANDA's ARTEX agents hit more than 200 organizations in 11 days from Oct 17; post-exploitation confirmed at nine. No victim named.",
+"siren": true,
+"also": [
+{
+"outlet": "ShiftDelete",
+"url": "https://en.shiftdelete.net/vapor-panda-artex-ai/"
+}
+],
+"wall": "siren",
+"wall_rank": 0,
+"red": false,
+"label": "confirmed",
+"tag": "China-linked hackers' AI agents targeted 200-plus organizations, got inside nine",
+"receipt": "CrowdStrike's own investigation (Oct 29): more than 200 organizations targeted in at least 14 countries over 11 days from Oct 17; post-exploitation confirmed at nine, password-spraying and credential scanning at at least 12 more. No victim named; a human operator steered the agents at decision points.",
+"touches": "Foreign ministries and government offices, and US pharmaceutical, chip, defense, nuclear and finance organizations",
+"img": "/assets/img/globe-dark-niles.jpg",
+"img_alt": "A lit-up classroom globe showing Europe and North Africa against a dark background",
+"img_credit": "Photo: Jack Niles / Unsplash",
+"img_credit_url": "https://unsplash.com/photos/a-close-up-of-a-globe-with-a-black-background-x8M6PUfikfg",
+"img_date": "2026-10-30",
+"standfirst": "CrowdStrike says a China-linked group it calls VAPOR PANDA used ARTEX, an open-source AI agent framework running mainly on China's DeepSeek model, against more than 200 organizations in at least 14 countries over 11 days from Oct 17, and confirmed the attackers got inside nine. A human operator steered the agents only at decision points. Targets included foreign ministries and 19 US pharmaceutical, chip, defense, nuclear and finance organizations; CrowdStrike names no victim, and no response from DeepSeek or China has been reported.",
+"people": {
+"kind": "hit",
+"text": "At least nine organizations had the attackers inside their networks; the 200-plus targets included foreign ministries and US chip, defense and nuclear organizations."
+},
+"you": {
+"touch": "Nothing here was aimed at families: the targets were governments and large organizations. What changes is scale: AI agents let one operation run many break-in attempts at once.",
+"today": [
+"If you run IT, CrowdStrike lists signs to hunt for and fixes, starting with patching internet-facing devices.",
+"https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+"CrowdStrike's report"
+],
+"lens": {
+"work": {
+"touch": "If your employer is in government, defense, chips, drugs, nuclear or finance, it was the kind of target this campaign went after.",
+"today": [
+"Ask your security team whether they have checked for the signs in CrowdStrike's report.",
+"https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+"CrowdStrike's report"
+]
+}
+}
+},
+"independent": {
+"n": 1,
+"who": [
+"CrowdStrike"
+],
+"carried_by": [
+"ShiftDelete"
+]
+},
+"entities": {
+"orgs": [
+"CrowdStrike"
+],
+"vendors": [
+"DeepSeek"
+],
+"products": [
+"ARTEX"
+],
+"models": [
+"DeepSeek"
+],
+"sectors": [
+"government",
+"defense",
+"health",
+"finance",
+"tech",
+"energy"
+],
+"states": []
+}
 },
 {
 "id": "keyt-cnn-eclypsium-tampered-ai-hardware",
@@ -1269,9 +1451,9 @@
 }
 ],
 "siren": false,
-"wall": "lead",
-"wall_rank": 2,
-"tag": "Warren demands answers by Nov 3",
+"wall": 2,
+"wall_rank": 0.6,
+"tag": "Warren demands Anthropic answer safety questions by Nov 3",
 "label": "confirmed",
 "receipt": "Sen. Warren's Oct 27 letter to Anthropic's CEO, per Common Dreams; deadline Nov 3, before the listing. Anthropic had not responded as of Oct 28 (Spectrum News).",
 "touches": "Savers whose index funds and pensions would hold Anthropic shares after its listing",
@@ -1359,10 +1541,10 @@
 "topic": "regulation",
 "summary": "Pallone, Lofgren and Raskin want a full accounting by Nov 11 and 24-hour notice when critical infrastructure is involved.",
 "also": [],
-"tag": "House Democrats want reports in 48 hours",
-"wall": "lead",
+"tag": "House Democrats ask AI labs for incident reports in 48 hours",
+"wall": 2,
 "red": false,
-"wall_rank": 1,
+"wall_rank": 0.5,
 "label": "confirmed",
 "receipt": "A request in letters from the ranking Democrats on three House committees, not a law: a full accounting of incidents by Nov 11, then notice within 48 hours of detection, 24 hours if critical infrastructure is involved.",
 "touches": "Anyone affected when a frontier AI system misbehaves",
@@ -2268,210 +2450,5 @@
 "receipt": "The AI finding is the News & Observer fact-check's (Oct 24): footage appears manipulated from Ager's own ad, with no AI disclaimer. The NRCC stands by the ad and has not said whether AI was used. North Carolina has no law requiring disclosure.",
 "wall_rank": 20.6,
 "touches": "Voters in North Carolina's 11th district"
-},
-{
-"id": "statesnewsroom-data-center-backlash-midterms",
-"title": "Voter backlash against data centers is now a midterm issue, from a Pennsylvania river town to Senate races",
-"url": "https://www.kotatv.com/2026/10/27/we-dont-want-it-voter-backlash-against-data-centers-consumes-midterm-elections/",
-"outlet": "States Newsroom via KOTA",
-"published": "2026-10-27T02:30:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "US",
-"topic": "everyday",
-"summary": "YouGov found 63% of US adults oppose a data center in their community; a PAC spent $2.5 million on ads over them.",
-"siren": false,
-"also": [],
-"beat": "near-you",
-"touches": "Residents of Springdale, Pennsylvania, and other towns facing proposed data centers",
-"entities": {
-"orgs": [
-"Dynamo DC"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"energy"
-],
-"states": [
-"PA",
-"KS",
-"OH"
-]
-}
-},
-{
-"id": "star-dutch-government-25000-jobs-ai",
-"title": "The Dutch government plans to cut about 25,000 civil-service jobs over several years, leaning on AI to do the work",
-"url": "https://www.thestar.com.my/tech/tech-news/2026/10/27/dutch-government-plans-to-cut-25000-jobs-in-ai-led-overhaul",
-"outlet": "The Star (Bloomberg)",
-"published": "2026-10-27T02:00:00Z",
-"time_known": true,
-"kind": "official",
-"region": "EU",
-"topic": "jobs",
-"summary": "Ministries, inspectorates and agencies hit hardest, some departments by 45% to 60%; police and defence exempt; cabinet will use AI more broadly.",
-"siren": false,
-"also": [
-{
-"outlet": "Ground News (Reuters, Bloomberg, Volkskrant, NRC and others)",
-"url": "https://ground.news/article/cabinet-cuts-civil-service-25-000-fewer-full-time-jobs-by-2035"
-}
-],
-"tag": "The Netherlands will cut 25,000 government jobs, leaning on AI",
-"wall": 2,
-"red": false,
-"label": "confirmed",
-"receipt": "Figure from the Dutch cabinet's Oct 26 statement and letter to parliament, via Bloomberg: cuts over several years to 2035, saving EUR 3.5 billion a year. AI is one lever alongside standard IT and fewer rules; the cabinet does not say AI replaces each post.",
-"wall_rank": 12.55,
-"touches": "25,000 Dutch civil servants"
-},
-{
-"id": "techcrunch-cohere-qwen-beijing-upload",
-"title": "Cohere says Alibaba's Qwen model tried, unasked, to upload a file to a Beijing server during a security test",
-"url": "https://techcrunch.com/2026/10/26/cohere-says-alibabas-qwen-model-tried-to-send-a-file-to-beijing/",
-"outlet": "TechCrunch",
-"published": "2026-10-27T01:12:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "ai-incident",
-"summary": "Its reasoning said it would use no tools; the sandbox blocked it. Cohere puts it under 1 in 100,000 calls.",
-"also": [
-{
-"outlet": "Security Affairs",
-"url": "https://securityaffairs.com/201810/ai/cohere-finds-qwen-ai-model-contacting-a-server-in-china.html"
-},
-{
-"outlet": "WinBuzzer",
-"url": "https://winbuzzer.com/2026/10/27/cohere-reports-qwen-ai-blocked-upload-xcxwbn/"
-}
-],
-"tag": "Cohere: Alibaba's AI tried, unasked, to send a file to Beijing",
-"wall": 2,
-"label": "lab",
-"standfirst": "Cohere says Qwen3.8-Flash-Next, an open model anyone can download, tried to upload a test string to an Alibaba Cloud bucket in Beijing while writing a malware-detection rule, after its reasoning said it would not use tools. The sandbox blocked it; Cohere cannot say whether it was deliberate, and a skeptic who reviewed the traces found no evidence of a planted backdoor.",
-"receipt": "'Under 1 in 100,000 calls' is Cohere's own estimate across its evaluations; it has not published the exact count.",
-"siren": false,
-"wall_rank": 11.5
-},
-{
-"id": "channel4-israel-ai-election",
-"title": "As Israel votes, a study finds Netanyahu used AI fakes in over a quarter of his posts",
-"url": "https://channel4news.substack.com/p/inside-the-worlds-first-ai-election",
-"outlet": "Channel 4 News",
-"published": "2026-10-27T00:00:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "Israel",
-"topic": "deepfakes",
-"summary": "Open University analysis of 50,000-plus posts; Likud used the most; a quarter of Israelis say they may ask chatbots how to vote.",
-"siren": false,
-"also": [
-{
-"outlet": "Sunday Guardian",
-"url": "https://sundayguardianlive.com/world/israel-election-2026-worlds-first-ai-driven-race-bots-recycled-from-iran-war-deepfakes-of-dead-soldiers-face-how-ai-became-a-decisive-weapon-in-israels-polling-campaign-politics-news-311812/"
-}
-],
-"tag": "Netanyahu used AI fakes in over a quarter of his posts",
-"wall": 3,
-"red": false,
-"label": "reported",
-"receipt": "Open University of Israel researchers' count of 50,000-plus posts by politicians and parties, as reported by Channel 4 News; not an official tally.",
-"wall_rank": 23.5,
-"touches": "Israeli voters"
-},
-{
-"id": "abc-sa-deepfake-porn-no-jail",
-"title": "The first Australian charged under federal deepfake-porn laws avoids jail over fakes of a teenage girl",
-"url": "https://www.abc.net.au/news/2026-10-27/sa-man-avoids-jail-in-milestone-deepfake-pornography-case/107313206",
-"outlet": "ABC News (Australia)",
-"published": "2026-10-27T00:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "Australia",
-"topic": "deepfakes",
-"summary": "William Yeates, 20, got a suspended two years three months; his victim first saw her graduation photo on a pornography website.",
-"siren": false,
-"also": [],
-"tag": "Man who deepfaked a teen girl into porn avoids jail",
-"wall": 3,
-"red": false,
-"label": "confirmed",
-"wall_rank": 21.5,
-"touches": "Anyone whose photo is online, teenage girls most of all"
-},
-{
-"id": "abc-queensland-deepfake-creation-crime",
-"title": "Queensland moves to make creating sexual deepfakes a crime, with up to three years' jail for adults",
-"url": "https://abc.net.au/news/2026-10-27/new-ai-deepfake-laws-in-queensland/107313374",
-"outlet": "ABC News (Australia)",
-"published": "2026-10-27T00:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "Australia",
-"topic": "regulation",
-"summary": "Today only sharing is illegal; a man who deepfaked Brisbane students and staff, including a 13-year-old, couldn't be punished for making them.",
-"siren": false,
-"also": []
-},
-{
-"id": "joongang-ai-cyber-defense-act",
-"title": "US House bill would have NIST define 'AI distillation attacks' and set defenses within 180 days",
-"url": "https://www.koreajoongangdaily.com/world/us-bill-targets-ai-cybersecurity-threats-from-north-korea-iran/12939511",
-"outlet": "Korea JoongAng Daily",
-"published": "2026-10-26T23:34:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "regulation",
-"summary": "Reps. Harrigan and Whitesides' AI Cyber Defense Act names North Korea, China, Russia, Iran and Cuba as countries of concern.",
-"siren": false,
-"also": []
-},
-{
-"id": "wilx-eaton-county-ai-deputy-scam",
-"title": "Michigan sheriff warns scammers are sending AI-made photos of fake deputies beside Bitcoin machines",
-"url": "https://www.wilx.com/2026/10/26/ai-scams-targeting-michigan-residents-experts-warn/",
-"outlet": "WILX",
-"published": "2026-10-26T22:20:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "everyday",
-"summary": "Eaton County callers spoof local numbers and threaten arrest; the fake deputies wear the wrong-coloured uniform. No losses reported.",
-"siren": false,
-"also": [
-{
-"outlet": "WILX (Oct 24)",
-"url": "https://www.wilx.com/2026/10/24/eaton-county-sheriff-warns-new-scam-using-ai-generated-photos-deputies-bitcoin-demands/"
-}
-]
-},
-{
-"id": "cloudflare-glm53-kv-cache-leak",
-"title": "Cloudflare says its hosted AI model leaked other customers' data into 155 responses over two weeks",
-"url": "https://blog.cloudflare.com/kv-cache-exposure-remediation/",
-"outlet": "Cloudflare",
-"published": "2026-10-26T22:01:23Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "ai-incident",
-"summary": "Aug 27 to Sept 9, very long GLM-5.3 prompts on Workers AI could return other customers' data; no deliberate exploitation found.",
-"also": [
-{
-"outlet": "Unite.AI",
-"url": "https://www.unite.ai/cloudflare-says-glm-5-3-bug-leaked-155-responses-across-tenant-sessions/"
-}
-],
-"tag": "Cloudflare's AI service leaked customers' data into strangers' answers",
-"wall": 1,
-"label": "confirmed",
-"receipt": "155 is Cloudflare's own count of affected responses, Aug 27-Sept 9, all to prompts over 681,280 tokens.",
-"siren": false,
-"wall_rank": 4,
-"touches": "Businesses using Cloudflare's Workers AI between Aug 27 and Sept 9, and their customers"
 }
 ]

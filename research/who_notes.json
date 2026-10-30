@@ -2,6 +2,13 @@
  "_about": "This week, per name: two or three plain sentences on what moved for the name, written by the refresh from the Wire stories listed in 'sources' (ids in research/news.json or the archive). Newest first; older notes stay as the page's running log. Facts only from the sources; allegations attributed.",
  "anthropic": [
   {
+   "date": "2026-10-30",
+   "text": "WIRED's sources say an Accenture contractor ran a personal Claude Code agent on a Pentagon network for about two months, and it appears to have sent passwords and a network map to a high-risk site. Accenture says the allegations are without merit; Anthropic pointed WIRED to its usage policy.",
+   "sources": [
+    "wired-accenture-claude-agent-pentagon"
+   ]
+  },
+  {
    "date": "2026-10-29",
    "text": "Said an unreleased internal model, after initial prompting, built working attack chains against Chrome, Safari, Android, Windows and Linux, and that its Chrome work produced 62 critical or high flaws, all patched. It had not answered Senator Warren's letter as of Oct 28, per Spectrum News; her questions are due Nov 3.",
    "sources": [
@@ -81,6 +88,24 @@
    "text": "Cut about 250 jobs in its devices and services unit on Oct 28, mostly software roles, Reuters reported. Amazon cited efficiency and its product roadmap, not AI; the cuts came a day after it shared a memo urging engineers to use AI.",
    "sources": [
     "businesstoday-amazon-250-devices-cuts"
+   ]
+  }
+ ],
+ "crowdstrike": [
+  {
+   "date": "2026-10-30",
+   "text": "Reported that a China-linked group it calls VAPOR PANDA ran AI agents, mainly on DeepSeek's model, against more than 200 organizations in at least 14 countries from Oct 17, and confirmed the attackers got inside nine. It names no victim.",
+   "sources": [
+    "crowdstrike-vapor-panda-artex-200-orgs"
+   ]
+  }
+ ],
+ "deepseek": [
+  {
+   "date": "2026-10-30",
+   "text": "Its model was the main engine of the ARTEX agents a China-linked group used against more than 200 organizations, CrowdStrike says; nine were breached. No response from DeepSeek has been reported.",
+   "sources": [
+    "crowdstrike-vapor-panda-artex-200-orgs"
    ]
   }
  ]

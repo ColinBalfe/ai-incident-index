@@ -1,44 +1,28 @@
 {
- "as_of": "2026-10-30T06:00:00-04:00",
+ "as_of": "2026-10-30T10:40:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "OpenAI says its expanded monitors, replayed on the Hugging Face escape, would have raised the alarm more than 30 hours b. In a replay, the new monitors flagged the agents about 30 minutes after they escaped their test box, over 30 hours before Hugging…",
-   "link": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
-   "image": "cards/n-ie-openai-monitors-30-hours-hugging-face.jpg",
-   "chars": 276,
+   "text": "CrowdStrike: China-linked hackers ran AI agents on DeepSeek against 200-plus organizations in 14 countries and got insid. VAPOR PANDA's ARTEX agents hit more than 200 organizations in 11 days from Oct 17; post-exploitation confirmed at nine.",
+   "link": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+   "image": "cards/n-crowdstrike-vapor-panda-artex-200-orgs.jpg",
+   "chars": 265,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
    "kind": "brief",
-   "text": "OpenAI says its new monitors, replayed on July's agent escape, would have raised the alarm more than 30 hours before its AI breached Hugging Face. A replay, not a live catch.",
-   "link": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
-   "image": "cards/i-openai-hf-swarm.jpg",
-   "chars": 198,
+   "text": "CrowdStrike says China-linked hackers ran AI agents, mainly on DeepSeek's model, against more than 200 organizations in 14 countries in 11 days, and got inside nine. No victim named.",
+   "link": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+   "image": null,
+   "chars": 206,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "An outside review of OpenAI's monitoring found about 10% of eligible internal Codex traffic went unmonitored from May to July; OpenAI says one fix is still in progress.",
-   "link": "https://www.unite.ai/openai-expands-monitoring-to-detect-frontier-model-misalignment/",
+   "text": "WIRED's sources say an Accenture contractor's personal Claude Code agent ran on a Pentagon network for two months and appears to have sent out passwords and a network map. Accenture says the allegations are without merit.",
+   "link": "https://www.cdomagazine.tech/us-federal-news-bureau/defense-contractor-gave-personal-ai-agent-access-to-pentagon-system",
    "image": null,
-   "chars": 192,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "San Diego's city council unanimously paused new data centers for 45 days, citing water, the grid and utility costs.",
-   "link": "https://kesq.com/news/california/2026/10/27/san-diego-city-council-unanimously-passes-moratorium-on-data-centers/",
-   "image": null,
-   "chars": 139,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "The flaw under most websites, day 10: still no real victim named. A third flaw is still unfixed.",
-   "link": "/php2shell/",
-   "image": null,
-   "chars": 120,
+   "chars": 245,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   }
  ]

@@ -1,25 +1,15 @@
 {
- "label": "Oct 30, 06:00 ET",
+ "label": "Oct 30, 10:40 ET",
  "items": [
   {
-   "text": "OpenAI says its new monitors, replayed on July's agent escape, would have raised the alarm more than 30 hours before its AI breached Hugging Face. A replay, not a live catch.",
-   "url": "https://interestingengineering.com/ai-robotics/openai-four-layer-defense-frontier-models",
-   "source_label": "Interesting Engineering, Oct 29"
+   "text": "CrowdStrike says China-linked hackers ran AI agents, mainly on DeepSeek's model, against more than 200 organizations in 14 countries in 11 days, and got inside nine. No victim named.",
+   "url": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
+   "source_label": "CrowdStrike, Oct 29"
   },
   {
-   "text": "An outside review of OpenAI's monitoring found about 10% of eligible internal Codex traffic went unmonitored from May to July; OpenAI says one fix is still in progress.",
-   "url": "https://www.unite.ai/openai-expands-monitoring-to-detect-frontier-model-misalignment/",
-   "source_label": "Unite.AI, Oct 29"
-  },
-  {
-   "text": "San Diego's city council unanimously paused new data centers for 45 days, citing water, the grid and utility costs.",
-   "url": "https://kesq.com/news/california/2026/10/27/san-diego-city-council-unanimously-passes-moratorium-on-data-centers/",
-   "source_label": "KESQ, Oct 27"
-  },
-  {
-   "text": "The flaw under most websites, day 10: still no real victim named. A third flaw is still unfixed.",
-   "url": "/php2shell/",
-   "source_label": "Warning Shots tracker"
+   "text": "WIRED's sources say an Accenture contractor's personal Claude Code agent ran on a Pentagon network for two months and appears to have sent out passwords and a network map. Accenture says the allegations are without merit.",
+   "url": "https://www.cdomagazine.tech/us-federal-news-bureau/defense-contractor-gave-personal-ai-agent-access-to-pentagon-system",
+   "source_label": "WIRED via CDO Magazine, Oct 29"
   }
  ]
 }
