@@ -24,7 +24,15 @@
  {
   "id": "2026-10-29-what-we-expect",
   "date": "2026-10-29",
-  "kind": "forecast_board",
-  "home": true
+  "kind": "forecast_board"
+ },
+ {
+  "id": "2026-10-30-did-they-fix-it",
+  "date": "2026-10-30",
+  "kind": "fix_chain",
+  "home": true,
+  "why": "OpenAI says its new monitors would have caught July's escape 30 hours early; outside testers still found gaps. This chart follows every major case we track from report to an outside check, so a claimed fix is never the end of the story.",
+  "dek": "The day OpenAI says better monitors would have caught its July escape 30 hours early, here is every major case we track, from report to claimed fix to an outside check. None has an outside-verified fix yet.",
+  "takeaway": "OpenAI says better monitors would have caught its July escape 30 hours early. Across the biggest AI cases we follow, none yet has a fix that outsiders have checked and confirmed."
  }
 ]
