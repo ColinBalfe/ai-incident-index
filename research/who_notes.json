@@ -115,5 +115,14 @@
     "crowdstrike-vapor-panda-artex-200-orgs"
    ]
   }
+ ],
+ "character-ai": [
+  {
+   "date": "2026-10-30",
+   "text": "A Delaware bankruptcy judge, Brendan Shannon, approved the rules for selling Character.AI, with Disney's $20 million bid as the opening offer, despite objections from attorneys general in 41 states. He said he would likely appoint a privacy ombudsman over children's chat records; the company expects to seek approval of the sales on Nov 30.",
+   "sources": [
+    "rallies-characterai-sale-rules-approved"
+   ]
+  }
  ]
 }

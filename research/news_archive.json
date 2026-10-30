@@ -5893,6 +5893,48 @@
 }
 },
 {
+"id": "govtech-howard-county-ai-free-assignments",
+"title": "Howard County schools make every assignment AI-free unless a teacher allows it; staff barred from AI grading",
+"url": "https://www.govtech.com/education/k-12/howard-county-md-students-need-teacher-permission-to-use-ai",
+"outlet": "Government Technology (Baltimore Sun)",
+"published": "2026-10-30T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "families",
+"beat": "school",
+"summary": "Maryland district of over 50,000 students adopts AI rules required by state law; staff may not use AI for grading or counseling.",
+"also": [],
+"tag": "Maryland district bans AI on assignments unless teachers allow it",
+"red": false,
+"label": "confirmed",
+"receipt": "Baltimore Sun via Government Technology, Oct 30: the Howard County Board of Education approved the policy on Thursday, a week after the state's Oct 22 deadline; it takes effect immediately.",
+"touches": "Howard County, Maryland public-school students, families and staff",
+"independent": {
+"n": 1,
+"who": [
+"Baltimore Sun"
+],
+"carried_by": [
+"Government Technology"
+]
+},
+"entities": {
+"orgs": [
+"Howard County Public School System"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"education"
+],
+"states": [
+"MD"
+]
+}
+},
+{
 "id": "fortune-goldman-ai-displaced-month-longer",
 "title": "Goldman: workers laid off from AI-exposed jobs took about a month longer to find new work",
 "url": "https://fortune.com/2026/10/30/goldman-sachs-ai-layoffs-displaced-workers-older-workers-past-tech-disruptions/",
@@ -5968,6 +6010,60 @@
 "finance"
 ],
 "states": []
+}
+},
+{
+"id": "rallies-characterai-sale-rules-approved",
+"title": "Judge approves the rules for selling Character.AI despite objections from attorneys general in 41 states",
+"url": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
+"outlet": "Rallies",
+"published": "2026-10-30T21:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "families",
+"summary": "Judge Brendan Shannon says he will likely appoint a privacy ombudsman for children's chat records. Sale approval sought Nov 30.",
+"also": [
+{
+"outlet": "Law360",
+"url": "https://www.law360.com/bankruptcy-authority/mid-cap/articles/2544743"
+}
+],
+"tag": "Judge lets Character.AI's sale go ahead over 41 states' objections",
+"red": false,
+"label": "confirmed",
+"receipt": "Rallies and Law360, Oct 30: Delaware bankruptcy judge Brendan Shannon approved the bidding procedures, with Disney's $20 million bid as the opening offer; attorneys general for 41 states objected. Protections for Disney and former staff were not approved at the hearing.",
+"touches": "Character.AI's users, including children whose chat records are part of the sale, and families suing the company",
+"independent": {
+"n": 2,
+"who": [
+"Rallies",
+"Law360"
+],
+"carried_by": [
+"Rallies",
+"Law360"
+]
+},
+"entities": {
+"orgs": [
+"Character.AI",
+"Disney"
+],
+"vendors": [
+"Character.AI"
+],
+"products": [
+"Character.AI"
+],
+"models": [],
+"sectors": [
+"legal",
+"consumer"
+],
+"states": [
+"DE"
+]
 }
 }
 ]

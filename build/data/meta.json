@@ -1,11 +1,11 @@
 {
- "as_of": "2026-10-30T12:50:00-04:00",
- "as_of_label": "Oct 30, 2026, 12:50 ET",
- "next_check": "2026-10-30T18:17:00-04:00",
- "next_check_label": "Friday, 18:17 ET",
+ "as_of": "2026-10-30T18:45:00-04:00",
+ "as_of_label": "Oct 30, 2026, 18:45 ET",
+ "next_check": "2026-10-31T05:17:00-04:00",
+ "next_check_label": "Saturday, 05:17 ET",
  "schedule": "Refreshed three times a day (5:17 AM, 12:17 PM and 6:17 PM ET) by a scheduled research run.",
  "live_incident": "php2shell",
- "live_note": "Day ten, Friday midday: rechecked, nothing moved. Still no organization named or confirmed as breached through the flaws, so the running story stays PROVEN. Palo Alto Networks' advisory (updated Oct 28) says 'Active exploitation has been observed' against its firewalls' management pages exposed to the internet, naming no victim; the security firm Dream's Oct 26 report of 25 real servers rooted (three in an unnamed US government-affiliated network) is still unconfirmed by any victim or vendor. GreyNoise's 6 successful exploitations (Oct 28-29) were all on its own decoy sensors, from one attacker address. Brandefense's tracker (updated Oct 29) also lists no named victim. America's cyber agency's federal deadline for the Linux flaw Fragnesia, which it says can be chained with the two PHP flaws, is Oct 31. The third flaw, CVE-2026-115560, still has no fix (no new PHP release found). Odds that a named organization confirms a breach by Nov 7 stay at 70%.",
+ "live_note": "Day ten, Friday evening: rechecked, nothing moved. PwnDefend's Oct 30 update says about 20-25 Palo Alto firewalls may have been compromised and at least one has been confirmed, naming no organization and not saying who confirmed it. Still no organization named or confirmed as breached through the flaws, so the running story stays PROVEN. Palo Alto Networks' advisory (updated Oct 28) says 'Active exploitation has been observed' against its firewalls' management pages exposed to the internet, naming no victim; the security firm Dream's Oct 26 report of 25 real servers rooted (three in an unnamed US government-affiliated network) is still unconfirmed by any victim or vendor. GreyNoise's 6 successful exploitations (Oct 28-29) were all on its own decoy sensors, from one attacker address. Brandefense's tracker (updated Oct 29) also lists no named victim. America's cyber agency's federal deadline for the Linux flaw Fragnesia, which it says can be chained with the two PHP flaws, is Oct 31. The third flaw, CVE-2026-115560, still has no fix (no new PHP release found). Odds that a named organization confirms a breach by Nov 7 stay at 70%.",
  "live_since": "2026-10-21T14:00:00Z",
  "live_since_label": "hours since the PHP fix shipped (Oct 21, about 14:00 UTC)",
  "site_url": "https://warningshots.ai/",
@@ -20,6 +20,10 @@
  },
  "fieldnote_url": "",
  "changelog": [
+  {
+   "date": "2026-10-30",
+   "text": "18:45 ET: Lead unchanged (CrowdStrike's VAPOR PANDA report; it went up at 10:40 today). PHP2Shell, day 10: rechecked, nothing moved, stays Proven: PwnDefend's Oct 30 update says about 20-25 Palo Alto firewalls may have been compromised and at least one confirmed, but names no organization and does not say who confirmed it; no PHP release fixing the third flaw found. 0 incidents added or corrected. The Wire: 2 stories added (a Delaware bankruptcy judge approved the rules for selling Character.AI over objections from attorneys general in 41 states and says he will likely appoint a privacy ombudsman for children's chat records, Rallies and Law360; Howard County, Maryland makes assignments AI-free unless a teacher allows it, Baltimore Sun via Government Technology, school beat). 1 'This week' note (Character.AI). 1 watch date (Character.AI's sale approval, Nov 30). Calls: none due today; Character.AI's sale-rules call (due Oct 31) stays open: the rules were approved on Oct 30, but no source opened this run says whether Disney's $700,000 break-up fee was kept as proposed; to be graded on the order's text. No odds moved. Hermantown's Google data-center vote is tonight at 6:30 p.m. CT; outcome next run. Left out: South Korea's arrest of seven over AI-assisted hacking of about 90 organizations (already on the record since Oct 26; police did not tie it to the bank intrusions in the open call). Not opened this run: OpenAI's misalignment-reports page, BleepingComputer, SecurityWeek, CNBC, TechSpot and the Baltimore Sun's own page (fetch failed or permission requests timed out; left out, no change assumed). Checked twice: the second pass re-opened Rallies, PwnDefend and Government Technology; it changed 'homework' to 'assignments' in the Howard County line, as the policy says, cut the Character.AI summary to 20 words and kept the break-up-fee call open rather than grading it on a source that doesn't mention the fee."
+  },
   {
    "date": "2026-10-30",
    "text": "Correction (3:30 PM ET, between refreshes): the Mayo Clinic pancreatic-cancer study's 475 days is a median, not an average, and the radiologists caught 38.9%, not 39%. We had followed the BMJ press release, which says 'an average of 475 days' and '39%'; the paper in Gut, the American Gastroenterological Association's summary and Mayo Clinic's release say median, and the paper gives 38.9%. The 73% was measured on the scans held back for testing, not on all 219 patients' scans. Fixed on the Wire (and its Oct 26 archive page), Up & Down and Breakthroughs. Also corrected: the Wire headline on CrowdStrike's VAPOR PANDA report says 'targeted', not 'hit', and 'mainly on DeepSeek', and the incident record says 'at least 14 countries', as CrowdStrike's post does. Checked twice."
@@ -173,7 +177,7 @@
   "closed": "",
   "verdict": "",
   "recheck": "No victim named or confirmed; no fix yet for the third flaw",
-  "recheck_at": "2026-10-30T12:35:00-04:00",
+  "recheck_at": "2026-10-30T18:30:00-04:00",
   "next_test": {
    "date": "2026-11-07",
    "text": "Will a real organization confirm it was broken into through the flaw under most websites?",
@@ -194,6 +198,6 @@
   ]
  },
  "quiet": true,
- "edition": 25,
- "edition_path": "archive/2026-10-30-1250/"
+ "edition": 26,
+ "edition_path": "archive/2026-10-30-1845/"
 }

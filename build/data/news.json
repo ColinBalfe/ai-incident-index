@@ -1,5 +1,62 @@
 [
 {
+"id": "rallies-characterai-sale-rules-approved",
+"title": "Judge approves the rules for selling Character.AI despite objections from attorneys general in 41 states",
+"url": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
+"outlet": "Rallies",
+"published": "2026-10-30T21:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "families",
+"summary": "Judge Brendan Shannon says he will likely appoint a privacy ombudsman for children's chat records. Sale approval sought Nov 30.",
+"siren": false,
+"also": [
+{
+"outlet": "Law360",
+"url": "https://www.law360.com/bankruptcy-authority/mid-cap/articles/2544743"
+}
+],
+"tag": "Judge lets Character.AI's sale go ahead over 41 states' objections",
+"wall": 2,
+"wall_rank": 2.4,
+"red": false,
+"label": "confirmed",
+"receipt": "Rallies and Law360, Oct 30: Delaware bankruptcy judge Brendan Shannon approved the bidding procedures, with Disney's $20 million bid as the opening offer; attorneys general for 41 states objected. Protections for Disney and former staff were not approved at the hearing.",
+"touches": "Character.AI's users, including children whose chat records are part of the sale, and families suing the company",
+"independent": {
+"n": 2,
+"who": [
+"Rallies",
+"Law360"
+],
+"carried_by": [
+"Rallies",
+"Law360"
+]
+},
+"entities": {
+"orgs": [
+"Character.AI",
+"Disney"
+],
+"vendors": [
+"Character.AI"
+],
+"products": [
+"Character.AI"
+],
+"models": [],
+"sectors": [
+"legal",
+"consumer"
+],
+"states": [
+"DE"
+]
+}
+},
+{
 "id": "fox-alphabet-499b-one-day-ai-spending",
 "title": "Alphabet shares fell 12.64% in a day, erasing about $499.8 billion, as investors doubted its AI spending",
 "url": "https://www.foxnews.com/live-news/ai-boom-google-stock-loss-wall-street-10-30-26",
@@ -81,6 +138,51 @@
 "finance"
 ],
 "states": []
+}
+},
+{
+"id": "govtech-howard-county-ai-free-assignments",
+"title": "Howard County schools make every assignment AI-free unless a teacher allows it; staff barred from AI grading",
+"url": "https://www.govtech.com/education/k-12/howard-county-md-students-need-teacher-permission-to-use-ai",
+"outlet": "Government Technology (Baltimore Sun)",
+"published": "2026-10-30T12:00:00Z",
+"time_known": false,
+"kind": "official",
+"region": "US",
+"topic": "families",
+"beat": "school",
+"summary": "Maryland district of over 50,000 students adopts AI rules required by state law; staff may not use AI for grading or counseling.",
+"siren": false,
+"also": [],
+"tag": "Maryland district bans AI on assignments unless teachers allow it",
+"wall": 3,
+"wall_rank": 3.3,
+"red": false,
+"label": "confirmed",
+"receipt": "Baltimore Sun via Government Technology, Oct 30: the Howard County Board of Education approved the policy on Thursday, a week after the state's Oct 22 deadline; it takes effect immediately.",
+"touches": "Howard County, Maryland public-school students, families and staff",
+"independent": {
+"n": 1,
+"who": [
+"Baltimore Sun"
+],
+"carried_by": [
+"Government Technology"
+]
+},
+"entities": {
+"orgs": [
+"Howard County Public School System"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"education"
+],
+"states": [
+"MD"
+]
 }
 },
 {
@@ -2342,151 +2444,5 @@
 "receipt": "39% is Fangcun AI's figure across its own shutdown test runs, Oct 4-25, on DeepSeek's public API; Reuters gives 2% with an explicit allow-shutdown instruction, TNW 'under 3%'.",
 "siren": false,
 "wall_rank": 11
-},
-{
-"id": "malaymail-hsbc-uk-wealth-cuts-ai",
-"title": "HSBC confirms job talks as the FT reports half its UK wealth roles will go in an AI push",
-"url": "https://www.malaymail.com/news/money/2026/10/27/hsbc-third-quarter-profit-jumps-455pc-but-misses-forecasts-amid-job-cuts-and-ai-push/240816",
-"outlet": "Malay Mail (AFP)",
-"published": "2026-10-27T09:28:00Z",
-"time_known": true,
-"kind": "breaking",
-"region": "UK",
-"topic": "jobs",
-"summary": "CEO Georges Elhedery says AI will change how work is done, 'impacting some jobs'; HSBC gave no figures itself.",
-"siren": false,
-"also": [
-{
-"outlet": "Euronext (Reuters, citing FT)",
-"url": "https://live.euronext.com/en/financial-news/hsbc-plans-job-cuts-across-uk-wealth-business-ai-push-ft-reports-0"
-}
-],
-"tag": "HSBC to cut about 70% of UK wealth advisers, FT says",
-"wall": 2,
-"red": false,
-"label": "reported",
-"receipt": "The half-of-roles and roughly 70%-of-advisers figures are the Financial Times's, from unnamed people, as relayed by AFP. HSBC confirms only a consultation period.",
-"wall_rank": 12.65,
-"touches": "HSBC's UK wealth advisers and their clients"
-},
-{
-"id": "bleeping-cisa-kev-php2shell",
-"title": "America's cyber agency formally lists two PHP flaws as exploited; federal fix deadline Oct 29",
-"url": "https://www.bleepingcomputer.com/news/security/cisa-confirms-php2shell-vulnerabilities-now-exploited-in-attacks/",
-"outlet": "BleepingComputer",
-"published": "2026-10-27T08:20:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "php2shell",
-"summary": "CISA added both flaws to its exploited list on Oct 26 but shared no details of the attacks or victims.",
-"siren": false,
-"also": [
-{
-"outlet": "The Hacker News",
-"url": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html"
-},
-{
-"outlet": "Security Affairs",
-"url": "https://securityaffairs.com/201840/security/u-s-cisa-adds-php-flaws-php2shell-to-its-known-exploited-vulnerabilities-catalog.html"
-},
-{
-"outlet": "SecurityOnline",
-"url": "https://securityonline.info/php2shell-cisa-kev-confirmed-rce-dprk/"
-},
-{
-"outlet": "Cyber Press",
-"url": "https://cyberpress.org/cisa-warns-php2shell-flaws/"
-}
-],
-"wall": 1,
-"wall_rank": 1.1,
-"label": "confirmed",
-"tag": "Federal deadline to fix it: Oct 29",
-"receipt": "CISA's Known Exploited Vulnerabilities catalog, version 2026.10.26 (released 22:24 UTC Oct 26), opened directly this run: two of the three flaws listed, federal fix deadline Oct 29. CISA named no victim.",
-"touches": "US federal agencies, and anyone whose website runs PHP"
-},
-{
-"id": "zdnetkr-php2shell-no-verified-breach",
-"title": "Korean expert: attempts continue, but no company or agency breach verified yet",
-"url": "https://zdnet.co.kr/view/?no=20261027104307",
-"outlet": "ZDNet Korea",
-"published": "2026-10-27T06:47:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "South Korea",
-"topic": "php2shell",
-"summary": "Tiori's CEO separates attack attempts from actual breaches; Sophos and Palo Alto claims were withdrawn.",
-"siren": false,
-"also": []
-},
-{
-"id": "abema-japan-1090-php-suspensions",
-"title": "Japan: 1,090 sites and services paused over PHP flaws, about 40% still not back",
-"url": "https://times-abema-tv.translate.goog/articles/-/10284297?_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en",
-"outlet": "ABEMA Times (ANN), translated from Japanese",
-"published": "2026-10-27T05:34:00Z",
-"time_known": true,
-"kind": "breaking",
-"region": "Japan",
-"topic": "php2shell",
-"summary": "Assured's count of company posts, as of Oct 26; precautionary outages, no unauthorized access reported.",
-"siren": false,
-"also": [],
-"wall": 1,
-"wall_rank": 2,
-"label": "confirmed",
-"tag": "Japan paused 1,090 sites; ~40% still off",
-"receipt": "Counted by the firm Assured from company posts, per ANN/ABEMA, Oct 27. Precautionary outages; no unauthorized access reported.",
-"touches": "Customers of 1,090 Japanese company websites that went dark"
-},
-{
-"id": "helpnet-rapid7-ai-8pct-threats",
-"title": "Rapid7: AI is operational in only 8% of tracked threat reports; flaws exploited three days after disclosure",
-"url": "https://www.helpnetsecurity.com/2026/10/27/rapid7-vulnerability-exploitation-trends-q3-2026-report/",
-"outlet": "Help Net Security",
-"published": "2026-10-27T05:30:33Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "ai-attack",
-"summary": "Humans still pick targets while AI helps execute; 71% of tracked exploitation came within a week of a flaw's disclosure.",
-"siren": false,
-"also": []
-},
-{
-"id": "coloradopolitics-aurora-moratorium-fails",
-"title": "Aurora, Colorado's council votes 6-5 against an indefinite freeze on new data centers",
-"url": "https://www.coloradopolitics.com/2026/10/26/aurora-city-council-votes-down-indefinite-data-center-moratorium/",
-"outlet": "Colorado Politics",
-"published": "2026-10-27T05:12:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "power",
-"beat": "near-you",
-"summary": "Two-thirds were needed; residents near a 1.5 million sq ft Vantage project cite power, water and property values. The mayor will try again.",
-"siren": false,
-"also": [],
-"tag": "Aurora's data-center freeze fails by one vote",
-"wall": "3",
-"wall_rank": 4.5,
-"label": "confirmed",
-"touches": "Aurora, Colorado residents, including Green Valley Ranch neighbors of the proposed Vantage site",
-"entities": {
-"orgs": [
-"Aurora City Council",
-"Vantage Data Centers"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"energy"
-],
-"states": [
-"CO"
-]
-}
 }
 ]

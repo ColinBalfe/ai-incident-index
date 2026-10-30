@@ -1,36 +1,28 @@
 {
- "as_of": "2026-10-30T12:50:00-04:00",
+ "as_of": "2026-10-30T18:45:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "CrowdStrike: China-linked hackers ran AI agents on DeepSeek against 200-plus organizations in 14 countries and got insid. VAPOR PANDA's ARTEX agents hit more than 200 organizations in 11 days from Oct 17; post-exploitation confirmed at nine.",
+   "text": "CrowdStrike: China-linked hackers' AI agents, mainly on DeepSeek, targeted 200-plus organizations, got inside nine. VAPOR PANDA's ARTEX agents targeted more than 200 organizations in 11 days from Oct 17; post-exploitation confirmed at nine.",
    "link": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
    "image": "cards/n-crowdstrike-vapor-panda-artex-200-orgs.jpg",
-   "chars": 265,
+   "chars": 264,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
    "kind": "brief",
-   "text": "Goldman Sachs finds workers laid off from AI-exposed jobs since 2025 took about a month longer to find new work, and were about 10 points likelier to still be jobless a year later.",
-   "link": "https://fortune.com/2026/10/30/goldman-sachs-ai-layoffs-displaced-workers-older-workers-past-tech-disruptions/",
+   "text": "A Delaware bankruptcy judge approved the rules for selling Character.AI, with Disney's $20 million bid as the opening offer, over objections from attorneys general in 41 states.",
+   "link": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
    "image": null,
-   "chars": 204,
+   "chars": 201,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Alphabet's shares closed down 12.64% after its results, a loss of approximately $499.8 billion, as investors doubted its AI spending (about $51.4 billion in the quarter).",
-   "link": "https://www.foxnews.com/live-news/ai-boom-google-stock-loss-wall-street-10-30-26",
+   "text": "Howard County, Maryland, made student assignments AI-free unless a teacher allows it, and barred staff from using AI for grading or counseling.",
+   "link": "https://www.govtech.com/education/k-12/howard-county-md-students-need-teacher-permission-to-use-ai",
    "image": null,
-   "chars": 194,
-   "note": "From \"Since the last refresh\"; written to be posted as-is."
-  },
-  {
-   "kind": "brief",
-   "text": "North Carolina's governor's task force says big data centers could add $50 billion in energy costs by 2050 without policy changes.",
-   "link": "https://yahoo.com/news/us/articles/data-centers-could-cost-nc-110000943.html",
-   "image": null,
-   "chars": 154,
+   "chars": 167,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   }
  ]
