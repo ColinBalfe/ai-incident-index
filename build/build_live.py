@@ -220,7 +220,7 @@ def build_news():
         if (as_of - pub).total_seconds() > NEWS_MAX_AGE_H * 3600:
             continue
         r = dict(r)
-        r['title'] = r['title'].strip()[:120]
+        r['title'] = r['title'].strip()  # never cut a headline mid-word (it printed 'got insid' on the Wire, Oct 30); the 110-character limit is the writer's job, and check_site.py warns
         r['summary'] = (r.get('summary') or '').strip()
         r['kind'] = r.get('kind') if r.get('kind') in ('breaking', 'incident', 'official', 'analysis') else 'incident'
         r['topic'] = r.get('topic') or 'other'

@@ -95,7 +95,8 @@ function wrapText(ctx, text, maxW, maxLines) {
   const words = String(text || '').split(/\s+/).filter(Boolean), lines = []; let line = '';
   for (const w of words) { const t = line ? line + ' ' + w : w; if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t; if (lines.length === maxLines) break; }
   if (lines.length < maxLines && line) lines.push(line);
-  if (lines.length === maxLines && words.join(' ') !== lines.join(' ')) { let last = lines[maxLines - 1]; while (ctx.measureText(last + '…').width > maxW && last.length) last = last.slice(0, -1).trimEnd(); lines[maxLines - 1] = last + '…'; }
+  // Cut at a word boundary, never inside a word: a cut inside "Oct 17" printed "Oct 1…", a different date (Oct 30).
+  if (lines.length === maxLines && words.join(' ') !== lines.join(' ')) { let last = lines[maxLines - 1]; while (ctx.measureText(last + '…').width > maxW && last.includes(' ')) last = last.slice(0, last.lastIndexOf(' ')); while (ctx.measureText(last + '…').width > maxW && last.length > 1) last = last.slice(0, -1); lines[maxLines - 1] = last.replace(/[\s,;:.–—-]+$/, '') + '…'; }
   return lines;
 }
 async function drawCard(c, W, H) {
@@ -461,7 +462,7 @@ function drawTicker() {
 }
 
 /* ---------- the wire */
-const TOPIC = { php2shell: 'PHP2Shell', 'ai-attack': 'AI-driven attacks', 'ai-incident': 'AI incidents', breakthrough: 'Breakthroughs', jobs: 'Jobs & work', families: 'Families & kids', everyday: 'Everyday life', regulation: 'Governments & regulators', deepfakes: 'Deepfakes', 'chatbot-harm': 'Chatbot harm', other: 'Other' };
+const TOPIC = { php2shell: 'PHP2Shell', 'ai-attack': 'AI-driven attacks', 'ai-incident': 'AI incidents', breakthrough: 'Breakthroughs', jobs: 'Jobs & work', families: 'Families & kids', everyday: 'Everyday life', power: 'Power & data centers', markets: 'Money & markets', regulation: 'Government & politics', deepfakes: 'Deepfakes', 'chatbot-harm': 'Chatbot harm', other: 'Other' };
 const KIND = { breaking: 'Breaking', official: 'Official', analysis: 'Analysis' };
 const wire = { topic: 'all', open: false };
 const ageShort = (n) => { if (!n.published) return ''; const d = new Date(n.published); if (isNaN(d)) return ''; if (n.time_known === false) return ETd.format(d); const ms = Date.now() - d; const h = ms / 3.6e6; if (h < 1) return 'just now'; if (h < 24) return Math.floor(h) + 'h ago'; if (h < 72) return Math.floor(h / 24) + 'd ago'; return ETd.format(d); };
@@ -717,7 +718,7 @@ function drawWall() {
       ['/scraped/', 'Keep your site out of AI training sets']]],
   };
   // The desks: our own standing pages, labelled, never styled as headlines
-  const desks = el('nav', 'desks3'); desks.setAttribute('aria-label', 'Desks');
+  const desks = el('nav', 'desks3'); desks.setAttribute('aria-label', 'Standing pages: follow the damage, what AI can do, protect yourself');
   [1, 2, 3].forEach((c) => { const [th, links] = TAILS[c]; const tl = el('div', 'ctail'); tl.append(el('h2', 'ctail-h', th));
     links.filter(Boolean).forEach(([u, t]) => { const a = el('a', null, t); a.href = u; if (/^https?:/.test(u)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } tl.append(a); }); desks.append(tl); });
   const ed = el('p', 'wall-ed');
@@ -892,7 +893,7 @@ function buildPulse() {
   const x = d3.scaleUtc().domain([t0d, new Date(+asOf + (pulseState.zoom ? 3 : 25) * 864e5)]).range([m.l, W - m.r]);
   const y = d3.scaleLinear().domain([0, 100]).range([H - m.b, m.t]);
   const NS = 'http://www.w3.org/2000/svg', mk = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
-  const svg = mk('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img', 'aria-label': `${all.length} AI incidents since 2023 plotted by date and severity; ${all.filter(own).length} where the AI acted on its own.` });
+  const svg = mk('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'group', 'aria-label': `${all.length} AI incidents since 2023 plotted by date and severity; ${all.filter(own).length} where the AI acted on its own.` }); // a group, not an image: it holds the keyboard slider
   // recessive frame: severity guides and years
   [[60, 'Severe'], [80, 'Critical']].forEach(([v, l]) => { svg.append(mk('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), class: 'pl-g' })); const t = mk('text', { x: m.l + 4, y: y(v) - 4, class: 'pl-gl' }); t.textContent = l; svg.append(t); });
   svg.append(mk('line', { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), class: 'pl-base' }));
@@ -918,7 +919,7 @@ function buildPulse() {
   let ring = null; if (live) { const lx = x(live.t), ly = y(live.severity); ring = mk('circle', { cx: lx, cy: ly, r: 6, class: 'pl-ring' }); svg.append(ring); const lt = mk('text', { x: lx + 10, y: ly + 4, class: 'pl-nl sm' }); lt.textContent = (live.level || '') + ' live'; if (!phone) svg.append(lt); }
   const needle = mk('line', { x1: m.l, x2: m.l, y1: m.t - 6, y2: y(0), class: 'pl-needle' }); needle.style.opacity = 0; svg.append(needle);
   const hl = mk('line', { x1: 0, x2: 0, y1: m.t, y2: y(0), class: 'pl-hl' }); hl.style.opacity = 0; svg.append(hl);
-  const hit = mk('rect', { x: m.l, y: 0, width: W - m.l - m.r + 30, height: H, fill: 'transparent', tabindex: '0', 'aria-label': 'Explore the incidents: use the left and right arrow keys; Enter opens one.' }); svg.append(hit);
+  const hit = mk('rect', { x: m.l, y: 0, width: W - m.l - m.r + 30, height: H, fill: 'transparent', tabindex: '0', role: 'slider', 'aria-orientation': 'horizontal', 'aria-valuemin': '1', 'aria-valuemax': String(all.length), 'aria-valuenow': String(all.length), 'aria-valuetext': 'Use the left and right arrow keys to step through the incidents; Enter opens one.', 'aria-label': 'Incidents on the timeline' }); svg.append(hit); // a slider for screen readers: each step announces the incident
   fig.append(svg);
   const vis = (r) => pulseState.f === 'all' || (pulseState.f === 'own' ? own(r) : r.severity >= 60);
   const paint = (instant) => { spikes.forEach((s) => { const on = vis(s.r); s.g.classList.toggle('off', !on); if (pulseState.played || instant) { s.ln.setAttribute('y2', s.top); s.c.setAttribute('cy', s.top); } }); summary(); };
@@ -942,7 +943,8 @@ function buildPulse() {
   // hover, tap and keys: the nearest visible spike answers
   let cur = -1;
   const show = (idx) => { const s = spikes[idx]; if (!s) return; cur = idx; spikes.forEach((z, j) => z.g.classList.toggle('hov', j === idx)); hl.setAttribute('x1', s.xx); hl.setAttribute('x2', s.xx); hl.style.opacity = 1;
-    const r = s.r; tip.replaceChildren(el('div', 'pt-v', r.severity + '/100 · ' + r.tier), el('div', 'pt-t', r.title), el('div', 'pt-m', showDate(r) + ' · ' + (own(r) ? 'the AI acted on its own' : +r.A === 2 ? 'the AI took a single action' : 'a person used or misused it') + ' · ' + (r.setting === 'wild' ? 'in the real world' : 'in a lab or test')), el('div', 'pt-go', pulseState.kbd ? 'Press Enter to open the case →' : matchMedia('(hover: hover)').matches ? 'Click to open the case →' : 'Tap again to open the case →'));
+    const r = s.r; hit.setAttribute('aria-valuenow', String(idx + 1)); hit.setAttribute('aria-valuetext', r.title + '. ' + r.severity + ' out of 100, ' + r.tier + ', ' + showDate(r) + '.');
+    tip.replaceChildren(el('div', 'pt-v', r.severity + '/100 · ' + r.tier), el('div', 'pt-t', r.title), el('div', 'pt-m', showDate(r) + ' · ' + (own(r) ? 'the AI acted on its own' : +r.A === 2 ? 'the AI took a single action' : 'a person used or misused it') + ' · ' + (r.setting === 'wild' ? 'in the real world' : 'in a lab or test')), el('div', 'pt-go', pulseState.kbd ? 'Press Enter to open the case →' : matchMedia('(hover: hover)').matches ? 'Click to open the case →' : 'Tap again to open the case →'));
     tip.hidden = false; const k = svg.getBoundingClientRect().width / W, fw = fig.clientWidth, tw = tip.offsetWidth, left = Math.max(0, Math.min(fw - tw, s.xx * k - tw / 2)); tip.style.left = left + 'px'; tip.style.top = Math.max(0, s.top * k - tip.offsetHeight - 12) + 'px'; };
   const hide = () => { tip.hidden = true; hl.style.opacity = 0; spikes.forEach((z) => z.g.classList.remove('hov')); };
   const nearest = (px, py) => { let b = -1, bd = 1e9; spikes.forEach((s, j) => { if (!vis(s.r)) return; const d = Math.abs(s.xx - px) * 1.6 + Math.abs(s.top - py) * 0.35; if (d < bd) { bd = d; b = j; } }); return bd < 70 ? b : -1; };
@@ -1721,19 +1723,22 @@ function drawRibbon() {
   const box = document.getElementById('ribbon-in'); if (!box) return;
   const asOf = Date.parse(D.meta.as_of), day = 864e5, within = (iso, h) => iso && (asOf - Date.parse(iso)) <= h * 3.6e6 && Date.parse(iso) <= asOf + day;
   const stamp = fmtET(D.meta.as_of);
-  const newInc = C.scored.filter((r) => within(r.disclosed || r.date, 24 * 7)).length;
-  const newIncDay = C.scored.filter((r) => within(r.disclosed || r.date, 24)).length;
   const fx = fixRows(); const openCases = fx.filter((f) => fixCur(f).status !== 'fixed').length;
-  const fxUpd = fx.filter((f) => f.chain.some((c) => within(c.date, 24 * 7))).length;
-  const caps = capRows().filter((c) => within(c.date, 24 * 7)).length;
   const wire = newsItems().filter((n) => n.published && (asOf + 3 * 3.6e6 - Date.parse(n.published)) <= 24 * 3.6e6).length;
+  // No "0" stats (Colin): each count uses the shortest window that has something in it (24 hours, 7 days, 30 days);
+  // a count that is still zero at 30 days is left out rather than printed as a 0.
+  const WINS = [[24, '24h', '24 hours'], [24 * 7, '7d', '7 days'], [24 * 30, '30d', '30 days']];
+  const firstWin = (count, from) => { for (const w of WINS.slice(from)) { const n = count(w[0]); if (n > 0) return { n, short: w[1], long: w[2], first: w === WINS[from] }; } return null; };
+  const inc = firstWin((h) => C.scored.filter((r) => within(r.disclosed || r.date, h)).length, 0);
+  const caps = firstWin((h) => capRows().filter((c) => within(c.date, h)).length, 1);
+  const fxUpd = firstWin((h) => fx.filter((f) => f.chain.some((c) => within(c.date, h))).length, 1);
   const items = [
-    { n: newIncDay, l: (newIncDay === 1 ? 'new incident, 24h' : 'new incidents, 24h'), href: '#all', hot: newIncDay > 0, t: `Incidents added to this index with an event or disclosure date in the 24 hours before the last refresh (${stamp}). ${newInc} in the last 7 days. Deduplicated by event; this index is curated, not a census. Source: data/incidents.json.` },
-    { n: openCases, l: 'open cases of ' + fx.length, href: '#fixes', hot: false, t: `Major incidents in "Did they fix it?" with no independently verified fix as of ${stamp}. Source: data/fixes.json.` },
-    { n: caps, l: (caps === 1 ? 'new advance, 7d' : 'new advances, 7d'), href: '#capabilities', hot: caps > 0, t: `Capability milestones added with a date in the 7 days before ${stamp}. Source: data/capabilities.json.` },
-    { n: fxUpd, l: (fxUpd === 1 ? 'follow-up moved, 7d' : 'follow-ups moved, 7d'), href: '#fixes', hot: fxUpd > 0, t: `Cases with a dated change in their report → response → fix → check chain in the 7 days before ${stamp}. Source: data/fixes.json.` },
-    { n: wire, l: (wire === 1 ? 'report on the Wire, 24h' : 'reports on the Wire, 24h'), href: '#wire', hot: false, t: `Stories on the Wire published in the 24 hours up to about three hours after ${stamp}. Links to the outlets; nothing is copied. Source: data/news.json.` },
-  ];
+    inc && { n: inc.n, l: (inc.n === 1 ? 'new incident, ' : 'new incidents, ') + inc.short, href: '#all', hot: inc.first, t: `Incidents added to this index with an event or disclosure date in the ${inc.long} before the last refresh (${stamp}). Deduplicated by event; this index is curated, not a census. Source: data/incidents.json.` },
+    openCases > 0 && { n: openCases, l: 'open cases of ' + fx.length, href: '#fixes', hot: false, t: `Major incidents in "Did they fix it?" with no independently verified fix as of ${stamp}. Source: data/fixes.json.` },
+    caps && { n: caps.n, l: (caps.n === 1 ? 'new advance, ' : 'new advances, ') + caps.short, href: '#capabilities', hot: caps.first, t: `Capability milestones added with a date in the ${caps.long} before ${stamp}. Source: data/capabilities.json.` },
+    fxUpd && { n: fxUpd.n, l: (fxUpd.n === 1 ? 'follow-up moved, ' : 'follow-ups moved, ') + fxUpd.short, href: '#fixes', hot: fxUpd.first, t: `Cases with a dated change in their report → response → fix → check chain in the ${fxUpd.long} before ${stamp}. Source: data/fixes.json.` },
+    wire > 0 && { n: wire, l: (wire === 1 ? 'report on the Wire, 24h' : 'reports on the Wire, 24h'), href: '#wire', hot: false, t: `Stories on the Wire published in the 24 hours up to about three hours after ${stamp}. Links to the outlets; nothing is copied. Source: data/news.json.` },
+  ].filter(Boolean);
   const hrc = houseRecord(); if (false) items.unshift({ n: hrc.n ? hrc.w + '–' + hrc.l : hrc.open, l: hrc.n ? 'the index’s record, ' + hrc.open + ' open' : 'open calls, graded in public', href: '#calls', hot: false, t: `Dated yes/no questions with the index's odds. ${hrc.n ? hrc.w + ' right, ' + hrc.l + ' wrong so far; Brier ' + hrc.brier.toFixed(2) + '.' : 'Nothing has resolved yet.'} Source: data/calls.json.` });
   box.replaceChildren(...items.map((it) => { const a = el('a', 'rb' + (it.hot ? ' hot' : '')); a.href = it.href; a.title = it.t; a.append(el('b', null, String(it.n)), el('span', null, it.l)); a.addEventListener('click', (e) => { e.preventDefault(); if (it.href === '#all') { ls.sort = 'new'; document.getElementById('sel-sort').value = 'new'; drawList(); } go(it.href); }); return a; }));
   const u = el('span', 'rb-upd'); u.append(el('i'), txt('Updated ' + stamp + (D.meta.next_check ? ', next ' + fmtETsmart(D.meta.next_check).replace('today ', '') : ''))); u.title = D.meta.schedule || ''; box.append(u);
@@ -1771,7 +1776,7 @@ const LENSES = [
       ['Ask your hospital or clinic how AI is used on your records, and who they were shared with.'],
     ] },
   { id: 'bills', beat: 'near-you', hub: [['/wire/near-you/', 'AI near you: data centres, power and water']], label: 'Your bills & town', lede: 'Data centres for AI are driving new power plants and lines. Who pays is being decided now, in rate cases most people never see.',
-    topics: [], cats: [], kw: /data[- ]?cent(er|re)s?|power bills?|electricity (bill|price|rate)s?|\butilit(y|ies)\b|ratepayers?/i,
+    topics: ['power'], cats: [], kw: /data[- ]?cent(er|re)s?|power bills?|electricity (bill|price|rate)s?|\butilit(y|ies)\b|ratepayers?/i,
     act: [
       ['Look up your utility’s open rate cases at your state utility commission; customer comments go on the record.'],
       ['If a data centre is proposed near you, go to the zoning or utility hearing and ask who pays for the new lines and plants.'],

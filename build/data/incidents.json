@@ -3605,7 +3605,7 @@
 "date": "2026-10-17",
 "date_precision": "day",
 "disclosed": "2026-10-29",
-"title": "CrowdStrike: China-nexus VAPOR PANDA ran ARTEX AI agents, mainly on DeepSeek, against 200-plus organizations in 14 countries in 11 days and got inside nine",
+"title": "CrowdStrike: China-nexus VAPOR PANDA ran ARTEX AI agents, mainly on DeepSeek, against 200-plus organizations in at least 14 countries in 11 days and got inside nine",
 "actors": "VAPOR PANDA (China-nexus adversary, per CrowdStrike); ARTEX (open-source multi-agent framework); DeepSeek's LLM plus an unidentified subscription commercial LLM; CrowdStrike Intelligence; foreign ministries, government offices and US pharmaceutical, semiconductor, defense, nuclear and financial organizations",
 "category": "cyber_offense",
 "category_label": "AI-powered cyberattacks",

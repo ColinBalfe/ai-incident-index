@@ -92,6 +92,12 @@ if superseded:
             if re.search(s['pattern'], text or '', re.I):
                 fails.append(f'superseded claim "{s["id"]}" ({s["why"]}) still stated in {where}')
 
+# Wire headlines are written to 110 characters (REFRESH.md); the page no longer cuts them, so a long one shows in full: flag it for a rewrite
+try:
+    _long = [n['id'] for n in json.load(open('data/news.json', encoding='utf-8')) if len(n.get('title') or '') > 120]
+    if _long: warns.append(f'{len(_long)} Wire headlines run past 120 characters (the rule is 110); shorten them when you next touch them: {", ".join(_long[:6])}')
+except (OSError, ValueError):
+    pass
 for w in warns: print('warn:', w)
 # ---- The numbers agree with themselves (Oct 29). A headline line's figures must appear in its own story (title, summary,
 # receipt or people line): this catches a tag updated to a new figure while the story text still says the old one, or the reverse.

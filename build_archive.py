@@ -23,7 +23,7 @@ rows = sorted(arch.values(), key=lambda n: n.get('published') or '')
 json.dump(rows, open(A, 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 
 TOPIC = {'php2shell': 'The flaw under most websites', 'ai-attack': 'AI attacks', 'ai-incident': 'AI incidents', 'breakthrough': 'Breakthroughs', 'jobs': 'Jobs',
-         'families': 'Families and kids', 'everyday': 'Everyday life', 'regulation': 'Rules and regulators', 'deepfakes': 'Deepfakes', 'chatbot-harm': 'Chatbot harms', 'other': 'Other'}
+         'families': 'Families and kids', 'everyday': 'Everyday life', 'power': 'Power and data centers', 'markets': 'Money and markets', 'regulation': 'Government and politics', 'deepfakes': 'Deepfakes', 'chatbot-harm': 'Chatbot harms', 'other': 'Other'}
 LBL = {'retracted': 'Retracted', 'reported': 'Reported', 'lab': 'Lab only', 'denied': 'Denied', 'tried': 'Tried', 'proven': 'Proven', 'hit': 'Hit'}
 by_day = collections.defaultdict(list)
 for n in rows:

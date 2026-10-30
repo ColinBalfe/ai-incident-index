@@ -12,13 +12,13 @@
 <meta property="og:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta property="og:description" content="The Record: all 166 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 14 in a year; in 42% of the last 12 months' real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
 <meta property="og:url" content="https://warningshots.ai/index/">
-<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610301736">
+<meta property="og:image" content="https://warningshots.ai/assets/og.png?v=202610301833">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@WarningShotsAI">
 <meta name="twitter:title" content="AI has started breaking in on its own — the Record, Warning Shots">
 <meta name="twitter:description" content="The Record: all 166 AI incidents since 2023, each scored 0–100 by a published formula and sourced. Severe incidents went from 3 to 14 in a year; in 42% of the last 12 months' real-world cases the AI did the acting. Charts, forecasts and whether the fixes held.">
-<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610301736">
+<meta name="twitter:image" content="https://warningshots.ai/assets/og.png?v=202610301833">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -30,11 +30,11 @@
 <link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/data/bundle.json?v=202610301736" as="fetch" crossorigin>
-<script>window.AII_BUILD = "202610301736"; window.AII_SITE = "https://warningshots.ai/";</script>
+<link rel="preload" href="/data/bundle.json?v=202610301833" as="fetch" crossorigin>
+<script>window.AII_BUILD = "202610301833"; window.AII_SITE = "https://warningshots.ai/";</script>
 <script src="/assets/vendor/d3-lite.min.js" defer></script>
 <script src="/assets/vendor/topojson-client.min.js" defer></script>
-<script src="/assets/app.js?v=202610301736" defer></script>
+<script src="/assets/app.js?v=202610301833" defer></script>
 <style>
 @font-face { font-family: 'Archivo'; font-style: normal; font-display: swap; font-weight: 400 900; font-stretch: 78% 100%; src: url(/assets/fonts/archivo-latin-standard-normal.woff2) format('woff2-variations'); }
 @font-face { font-family: 'Playfair'; font-style: normal; font-display: swap; font-weight: 400; src: url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2'); }
@@ -50,7 +50,7 @@
 :root {
   --paper: #F4F3EF; --panel: #FFFFFF; --ink: #0A111E; --ink-2: #3F4B5C; --ink-3: #5F6B7B;
   --line: #DCD9D1; --line-2: #B8B4A9;
-  --alarm: #D92D00; --signal: #FF3300; --amber: #B5751A; --indigo: #2C2A6E; --steel: #5F7A9A; --mist: #B9C6D3;
+  --alarm: #D92D00; --signal: #FF3300; --amber: #B5751A; --indigo: #2C2A6E; --steel: #5F7A9A; --mist: #B9C6D3; --alarm-ink: #C02A00; --ok-ink: #1B7448;
   --focus: #1F5BFF; --ok: #1E7F4F;
   --tip-bg: #FFFFFF; --tip-shadow: 0 8px 28px rgba(10, 17, 30, .16);
   --r: 0px; --w: 1160px;
@@ -63,7 +63,7 @@
   :root:not([data-theme="light"]) {
     --paper: #0A111E; --panel: #111B2E; --ink: #F4F3EF; --ink-2: #A8B3C2; --ink-3: #7E8C9F;
     --line: #2A364B; --line-2: #3B4A63;
-    --alarm: #FF3300; --signal: #FF3300; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B;
+    --alarm: #FF3300; --signal: #FF3300; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B; --alarm-ink: #FF6A4D; --ok-ink: #4FBF86;
     --focus: #6E9BFF; --ok: #4FBF86;
     --tip-bg: #16223A; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
     --wild: var(--steel); --lab: #CBAE5A;
@@ -73,7 +73,7 @@
 .dark-scope, :root[data-theme="dark"] {
   --paper: #0A111E; --panel: #111B2E; --ink: #F4F3EF; --ink-2: #A8B3C2; --ink-3: #7E8C9F;
   --line: #2A364B; --line-2: #3B4A63;
-  --alarm: #FF3300; --signal: #FF3300; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B;
+  --alarm: #FF3300; --signal: #FF3300; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B; --alarm-ink: #FF6A4D; --ok-ink: #4FBF86;
   --focus: #6E9BFF; --ok: #4FBF86;
   --tip-bg: #16223A; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
   --wild: var(--steel); --lab: #CBAE5A;
@@ -1472,6 +1472,18 @@ body[data-page="front"] .mh-right { display: flex; flex-wrap: wrap; justify-cont
 @media (min-width: 860px) { .desks3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 h2.ctail-h { margin: 0 0 4px; }
 @media (max-width: 859px) { .desks3 .ctail + .ctail { margin-top: 22px; } }
+
+/* contrast (WCAG AA, Oct 30 audit): small red labels use the text-safe red; the level badge and red buttons get darker fills */
+.ld-cat, .ld-next b, .ld-ppl b, .lt-cat, #wall-lead .you-k, .you-do b, .ss-day, .dl-act, .mv.up { color: var(--alarm-ink); }
+.wl-lab.proven, .wl-lab.hit { color: var(--alarm-ink); border-color: var(--alarm-ink); }
+.dl-rd { color: var(--alarm-ink) !important; border-color: var(--alarm-ink); }
+.ctail-h, .ud-c.down .ud-ch, .ud-r.down .ud-ar { color: var(--alarm-ink); }
+.bt-area, .bt-who b, .bt-try, .ud-c.up .ud-ch, .ud-r.up .ud-ar { color: var(--ok-ink); } .bt-p.in-use, .bt-p.published, .bt-p.reproduced { color: var(--ok-ink); border-color: var(--ok-ink); } .dl-rd:hover, .dl-rd:focus-visible { background: #C02A00; color: #fff !important; }
+.nav-scroll .nb { background: #D92D00; color: #fff; }
+.pl-play { color: #fff !important; background: #C02A00 !important; border-color: #C02A00 !important; }
+.pl-play:hover { background: #D92D00 !important; }
+.lvi.lv1 .lvi-b, .lvi.lv2 .lvi-b { background: #56635A; } .lvi.lv3 .lvi-b { background: #8F5C0F; } .lvi.lv4 .lvi-b { background: #C0391B; } .lvi.lv5 .lvi-b { background: #C02A00; }
+.msb-btn { background: #C02A00; } .msb-btn:hover, .msb-btn:focus-visible { background: #D92D00; }
 </style>
 </head>
 <body data-page="record" data-lead="a">

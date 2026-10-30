@@ -50,7 +50,7 @@
 :root {
   --paper: #F4F3EF; --panel: #FFFFFF; --ink: #0A111E; --ink-2: #3F4B5C; --ink-3: #5F6B7B;
   --line: #DCD9D1; --line-2: #B8B4A9;
-  --alarm: #D92D00; --signal: #FF3300; --amber: #B5751A; --indigo: #2C2A6E; --steel: #5F7A9A; --mist: #B9C6D3;
+  --alarm: #D92D00; --signal: #FF3300; --amber: #B5751A; --indigo: #2C2A6E; --steel: #5F7A9A; --mist: #B9C6D3; --alarm-ink: #C02A00; --ok-ink: #1B7448;
   --focus: #1F5BFF; --ok: #1E7F4F;
   --tip-bg: #FFFFFF; --tip-shadow: 0 8px 28px rgba(10, 17, 30, .16);
   --r: 0px; --w: 1160px;
@@ -63,7 +63,7 @@
   :root:not([data-theme="light"]) {
     --paper: #0A111E; --panel: #111B2E; --ink: #F4F3EF; --ink-2: #A8B3C2; --ink-3: #7E8C9F;
     --line: #2A364B; --line-2: #3B4A63;
-    --alarm: #FF3300; --signal: #FF3300; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B;
+    --alarm: #FF3300; --signal: #FF3300; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B; --alarm-ink: #FF6A4D; --ok-ink: #4FBF86;
     --focus: #6E9BFF; --ok: #4FBF86;
     --tip-bg: #16223A; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
     --wild: var(--steel); --lab: #CBAE5A;
@@ -73,7 +73,7 @@
 .dark-scope, :root[data-theme="dark"] {
   --paper: #0A111E; --panel: #111B2E; --ink: #F4F3EF; --ink-2: #A8B3C2; --ink-3: #7E8C9F;
   --line: #2A364B; --line-2: #3B4A63;
-  --alarm: #FF3300; --signal: #FF3300; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B;
+  --alarm: #FF3300; --signal: #FF3300; --amber: #E2A43C; --indigo: #A3A0F5; --steel: #8AA6CB; --mist: #3A4D6B; --alarm-ink: #FF6A4D; --ok-ink: #4FBF86;
   --focus: #6E9BFF; --ok: #4FBF86;
   --tip-bg: #16223A; --tip-shadow: 0 8px 28px rgba(0,0,0,.5);
   --wild: var(--steel); --lab: #CBAE5A;
@@ -1472,6 +1472,18 @@ body[data-page="front"] .mh-right { display: flex; flex-wrap: wrap; justify-cont
 @media (min-width: 860px) { .desks3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 h2.ctail-h { margin: 0 0 4px; }
 @media (max-width: 859px) { .desks3 .ctail + .ctail { margin-top: 22px; } }
+
+/* contrast (WCAG AA, Oct 30 audit): small red labels use the text-safe red; the level badge and red buttons get darker fills */
+.ld-cat, .ld-next b, .ld-ppl b, .lt-cat, #wall-lead .you-k, .you-do b, .ss-day, .dl-act, .mv.up { color: var(--alarm-ink); }
+.wl-lab.proven, .wl-lab.hit { color: var(--alarm-ink); border-color: var(--alarm-ink); }
+.dl-rd { color: var(--alarm-ink) !important; border-color: var(--alarm-ink); }
+.ctail-h, .ud-c.down .ud-ch, .ud-r.down .ud-ar { color: var(--alarm-ink); }
+.bt-area, .bt-who b, .bt-try, .ud-c.up .ud-ch, .ud-r.up .ud-ar { color: var(--ok-ink); } .bt-p.in-use, .bt-p.published, .bt-p.reproduced { color: var(--ok-ink); border-color: var(--ok-ink); } .dl-rd:hover, .dl-rd:focus-visible { background: #C02A00; color: #fff !important; }
+.nav-scroll .nb { background: #D92D00; color: #fff; }
+.pl-play { color: #fff !important; background: #C02A00 !important; border-color: #C02A00 !important; }
+.pl-play:hover { background: #D92D00 !important; }
+.lvi.lv1 .lvi-b, .lvi.lv2 .lvi-b { background: #56635A; } .lvi.lv3 .lvi-b { background: #8F5C0F; } .lvi.lv4 .lvi-b { background: #C0391B; } .lvi.lv5 .lvi-b { background: #C02A00; }
+.msb-btn { background: #C02A00; } .msb-btn:hover, .msb-btn:focus-visible { background: #D92D00; }
 </style>
 </head>
 <body data-page="{{PAGE}}" data-lead="a">
