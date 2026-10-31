@@ -223,5 +223,20 @@
   "source_url": "https://www.wsbtv.com/news/politics/disinformation/7RREVIBYPU775GGLQO6YHSPNXQ/",
   "source_label": "AP via WSB-TV, Oct 27",
   "index_id": ""
+ },
+ {
+  "id": "gruters-kirschner-perp-walk-ad",
+  "date": "2026-10-30",
+  "state": "FL",
+  "race": "Florida 16th Congressional District (US House)",
+  "what": "A Sydney Gruters for Congress ad uses AI-generated imagery showing Democrat Kelly Kirschner in a police 'perp walk' and on a criminal investigator's evidence board; Kirschner has never been arrested.",
+  "target": "Kelly Kirschner (D), House candidate",
+  "who_made_it": "Sydney Gruters for Congress (R), per the ad's 'Paid for by' disclaimer",
+  "status": "labelled AI by poster",
+  "reach": "Not reported",
+  "how_caught": "The ad carries an AI label; Kirschner's campaign says the disclosure was intentionally minimized and wants the ad pulled under Florida's AI-disclosure law. The Bradenton Times reports no response from Gruters.",
+  "source_url": "https://thebradentontimes.com/stories/kirschner-denounces-sydney-gruters-campaign-ad-using-ai-to-falsely-depict-him-getting-arrested,218317",
+  "source_label": "The Bradenton Times, Oct 30",
+  "index_id": ""
  }
 ]

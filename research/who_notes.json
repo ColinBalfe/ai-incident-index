@@ -119,7 +119,7 @@
  "character-ai": [
   {
    "date": "2026-10-30",
-   "text": "A Delaware bankruptcy judge, Brendan Shannon, approved the rules for selling Character.AI, with Disney's $20 million bid as the opening offer, despite objections from attorneys general in 41 states. He said he would likely appoint a privacy ombudsman over children's chat records; the company expects to seek approval of the sales on Nov 30.",
+   "text": "A Delaware bankruptcy judge, Brendan Shannon, approved the rules for selling Character.AI, with Disney's $20 million bid as the opening offer, despite objections from attorneys general in 41 states. He pressed the company to bring in a privacy ombudsman to review users' data, including minors'; the company expects to seek approval of the sales on Nov 30.",
    "sources": [
     "rallies-characterai-sale-rules-approved"
    ]
@@ -128,11 +128,12 @@
  "chainalysis": [
   {
    "date": "2026-10-31",
-   "text": "Said on Oct 30 that an external actor 'using offensive agentic techniques' got into its systems and internal tools, exposing customers' user IDs, names, email addresses and role labels. It says it has no evidence so far that investigation content, passwords, MFA secrets or session tokens were reached, has notified all customers and says the Binance theft is unrelated.",
+   "text": "Said on Oct 30 that an external actor 'using offensive agentic techniques' got into its systems and internal tools, exposing customers' user IDs, names, email addresses and role labels. It says it has no evidence so far that investigation content, passwords, MFA secrets or session tokens were reached, has notified all customers and says the Binance theft is unrelated. On Oct 31 a spokesperson confirmed the breach to BleepingComputer; the company is contacting clients individually and warns them about scammers posing as Chainalysis, especially offers of fund recovery or recruiting.",
    "sources": [
     "coingape-chainalysis-agentic-ai-breach",
     "financefeeds-chainalysis-what-was-taken",
-    "tokenpost-chainalysis-binance-unrelated"
+    "tokenpost-chainalysis-binance-unrelated",
+    "bleepingcomputer-chainalysis-impersonation-warning"
    ]
   }
  ]

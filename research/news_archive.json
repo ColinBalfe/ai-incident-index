@@ -5484,6 +5484,40 @@
 "touches": "Linux web servers running PHP, including federal agencies'"
 },
 {
+"id": "wgcu-desoto-data-center-blocked-again",
+"title": "Florida's DeSoto County rejects a 554-acre, nine-building data-center rezoning, its second no in two nights",
+"url": "https://www.wgcu.org/top-story/2026-10-29/desoto-data-center-proposal-blocked-again-wednesday-night",
+"outlet": "WGCU / Suncoast Searchlight",
+"published": "2026-10-29T14:24:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "power",
+"summary": "Residents raised water, gas turbines and rural character; the developer sought more than 15 facilities across the county.",
+"also": [],
+"beat": "near-you",
+"red": false,
+"label": "confirmed",
+"tag": "Florida county says no to a 554-acre data-center campus, twice",
+"receipt": "WGCU / Suncoast Searchlight (Oct 29): DeSoto County commissioners rejected DCIP Group's rezoning of the 554-acre 3F Ranch for nine data centers (2.1 million square feet) on Oct 28, after rejecting a separate 238-acre request the night before. Vote counts not given.",
+"touches": "Residents of rural DeSoto County, Florida, and neighbours worried about the regional water supply",
+"entities": {
+"orgs": [
+"DeSoto County Commission",
+"DCIP Group"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"FL"
+]
+}
+},
+{
 "id": "doj-ghost-students-ai-coursework",
 "title": "Justice Department charges five in 'ghost student' aid fraud; officials say AI did the coursework",
 "url": "https://justice.gov/opa/pr/justice-department-unveils-indictments-nationwide-ghost-student-fraud-scam-linked-kenyan",
@@ -6156,6 +6190,37 @@
 }
 },
 {
+"id": "iphoneincanada-toronto-police-impersonation-scams",
+"title": "Toronto police: impersonation scams, made more convincing by AI, are this year's top fraud, $50M-plus lost",
+"url": "https://iphoneincanada.ca/2026/10/30/toronto-police-ai-impersonation-scams-banks-telcos",
+"outlet": "iPhone in Canada",
+"published": "2026-10-30T17:08:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Canada",
+"topic": "everyday",
+"summary": "About one in six of some 17,000 fraud reports; callers may already know your name, bank and last four card digits.",
+"also": [],
+"red": false,
+"label": "confirmed",
+"tag": "Toronto police: impersonation scammers took over $50 million this year",
+"receipt": "Det. David Coffey, Toronto Police Financial Crimes Unit, via iPhone in Canada (Oct 30): impersonation is about one in six of roughly 17,000 fraud reports this year; more than $50 million lost by mid-October. Police say AI helps scammers sound convincing; the $50 million is all impersonation fraud, not only AI-assisted calls.",
+"touches": "Toronto residents who get calls claiming to be from their bank, phone carrier or a government office",
+"entities": {
+"orgs": [
+"Toronto Police Service"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"finance",
+"consumer"
+],
+"states": []
+}
+},
+{
 "id": "rallies-characterai-sale-rules-approved",
 "title": "Judge approves the rules for selling Character.AI despite objections from attorneys general in 41 states",
 "url": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
@@ -6165,11 +6230,15 @@
 "kind": "official",
 "region": "US",
 "topic": "families",
-"summary": "Judge Brendan Shannon says he will likely appoint a privacy ombudsman for children's chat records. Sale approval sought Nov 30.",
+"summary": "Judge Brendan Shannon pressed the company to bring in a privacy ombudsman to review users' data, including minors'. Sale approval sought Nov 30.",
 "also": [
 {
 "outlet": "Law360",
 "url": "https://www.law360.com/bankruptcy-authority/mid-cap/articles/2544743"
+},
+{
+"outlet": "WDW News Today",
+"url": "https://wdwnt.com/2026/10/judge-raises-child-privacy-concerns-over-disneys-20-million-character-ai-deal/"
 }
 ],
 "tag": "Judge lets Character.AI's sale go ahead over 41 states' objections",
@@ -6206,6 +6275,37 @@
 ],
 "states": [
 "DE"
+]
+}
+},
+{
+"id": "bradentontimes-gruters-ai-perp-walk-ad",
+"title": "Florida congressional ad shows a candidate in an AI-made 'perp walk'; he says the AI label was shrunk",
+"url": "https://thebradentontimes.com/stories/kirschner-denounces-sydney-gruters-campaign-ad-using-ai-to-falsely-depict-him-getting-arrested,218317",
+"outlet": "The Bradenton Times",
+"published": "2026-10-30T22:38:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Democrat Kelly Kirschner, never arrested, wants Sydney Gruters's ad pulled under Florida's AI-disclosure law. No response from Gruters reported.",
+"also": [],
+"red": false,
+"label": "confirmed",
+"tag": "Florida congressional ad shows rival in AI perp walk; never arrested",
+"receipt": "The Bradenton Times (Oct 30): Republican Sydney Gruters's ad in Florida's 16th District uses AI imagery of Democrat Kelly Kirschner in a police perp walk; it carries an AI label that Kirschner's campaign says was deliberately minimized. The paper reports no response from Gruters.",
+"touches": "Voters in Florida's 16th Congressional District, including Manatee County",
+"entities": {
+"orgs": [],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"government",
+"media"
+],
+"states": [
+"FL"
 ]
 }
 },
@@ -6288,6 +6388,18 @@
 {
 "outlet": "TokenPost",
 "url": "https://www.tokenpost.com/news/technology/45208"
+},
+{
+"outlet": "BleepingComputer",
+"url": "https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/"
+},
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/chainalysis-confirms-intrusion-into.html"
+},
+{
+"outlet": "The Block",
+"url": "https://www.theblock.co/news/business/2026-10-31-chainalysis-says-hacker-using-offensive-agentic-techniques-accessed-its-customers-names-and-emails-432244"
 }
 ],
 "red": false,
@@ -6332,9 +6444,51 @@
 "carried_by": [
 "CoinGape",
 "FinanceFeeds",
-"TokenPost"
+"TokenPost",
+"BleepingComputer",
+"The Hacker News",
+"The Block"
 ]
 },
+"entities": {
+"orgs": [
+"Chainalysis"
+],
+"vendors": [
+"Chainalysis"
+],
+"products": [],
+"models": [],
+"sectors": [
+"finance",
+"tech"
+],
+"states": []
+},
+"updated": "2026-10-31T12:40:00-04:00"
+},
+{
+"id": "bleepingcomputer-chainalysis-impersonation-warning",
+"title": "Chainalysis tells customers to watch for scammers posing as Chainalysis, offering fund recovery or recruiting",
+"url": "https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/",
+"outlet": "BleepingComputer",
+"published": "2026-10-31T12:50:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "A spokesperson confirmed the breach; Chainalysis has not said which flaws or tools were used, or how long the attackers had access.",
+"also": [
+{
+"outlet": "The Block",
+"url": "https://www.theblock.co/news/business/2026-10-31-chainalysis-says-hacker-using-offensive-agentic-techniques-accessed-its-customers-names-and-emails-432244"
+}
+],
+"red": false,
+"label": "confirmed",
+"tag": "Warning: scammers posing as Chainalysis",
+"receipt": "BleepingComputer (Oct 31): Chainalysis advises customers to enable two-factor authentication, watch for unexpected password-reset prompts and be wary of scammers impersonating it, especially those offering fund recovery or recruiting services. The Block: it is contacting clients individually.",
+"touches": "Chainalysis's customers, whose names, work emails and roles were exposed",
 "entities": {
 "orgs": [
 "Chainalysis"

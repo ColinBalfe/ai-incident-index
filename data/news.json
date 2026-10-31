@@ -1,5 +1,46 @@
 [
 {
+"id": "bleepingcomputer-chainalysis-impersonation-warning",
+"title": "Chainalysis tells customers to watch for scammers posing as Chainalysis, offering fund recovery or recruiting",
+"url": "https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/",
+"outlet": "BleepingComputer",
+"published": "2026-10-31T12:50:00Z",
+"time_known": false,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "A spokesperson confirmed the breach; Chainalysis has not said which flaws or tools were used, or how long the attackers had access.",
+"siren": false,
+"also": [
+{
+"outlet": "The Block",
+"url": "https://www.theblock.co/news/business/2026-10-31-chainalysis-says-hacker-using-offensive-agentic-techniques-accessed-its-customers-names-and-emails-432244"
+}
+],
+"wall": "lead",
+"wall_rank": 0.5,
+"red": false,
+"label": "confirmed",
+"tag": "Warning: scammers posing as Chainalysis",
+"receipt": "BleepingComputer (Oct 31): Chainalysis advises customers to enable two-factor authentication, watch for unexpected password-reset prompts and be wary of scammers impersonating it, especially those offering fund recovery or recruiting services. The Block: it is contacting clients individually.",
+"touches": "Chainalysis's customers, whose names, work emails and roles were exposed",
+"entities": {
+"orgs": [
+"Chainalysis"
+],
+"vendors": [
+"Chainalysis"
+],
+"products": [],
+"models": [],
+"sectors": [
+"finance",
+"tech"
+],
+"states": []
+}
+},
+{
 "id": "coingape-chainalysis-agentic-ai-breach",
 "title": "Chainalysis confirms an attacker using 'offensive agentic techniques' got into its systems",
 "url": "https://coingape.com/crypto-hack-tracker-chainalysis-confirms-it-was-hit-by-agentic-ai-driven-cyberattack/",
@@ -19,6 +60,14 @@
 {
 "outlet": "TokenPost",
 "url": "https://www.tokenpost.com/news/technology/45208"
+},
+{
+"outlet": "BleepingComputer",
+"url": "https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/"
+},
+{
+"outlet": "The Hacker News",
+"url": "https://thehackernews.com/2026/10/chainalysis-confirms-intrusion-into.html"
 }
 ],
 "wall": "siren",
@@ -65,7 +114,10 @@
 "carried_by": [
 "CoinGape",
 "FinanceFeeds",
-"TokenPost"
+"TokenPost",
+"BleepingComputer",
+"The Hacker News",
+"The Block"
 ]
 },
 "entities": {
@@ -82,7 +134,8 @@
 "tech"
 ],
 "states": []
-}
+},
+"updated": "2026-10-31T12:40:00-04:00"
 },
 {
 "id": "financefeeds-chainalysis-what-was-taken",
@@ -151,6 +204,40 @@
 }
 },
 {
+"id": "bradentontimes-gruters-ai-perp-walk-ad",
+"title": "Florida congressional ad shows a candidate in an AI-made 'perp walk'; he says the AI label was shrunk",
+"url": "https://thebradentontimes.com/stories/kirschner-denounces-sydney-gruters-campaign-ad-using-ai-to-falsely-depict-him-getting-arrested,218317",
+"outlet": "The Bradenton Times",
+"published": "2026-10-30T22:38:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "deepfakes",
+"summary": "Democrat Kelly Kirschner, never arrested, wants Sydney Gruters's ad pulled under Florida's AI-disclosure law. No response from Gruters reported.",
+"siren": false,
+"also": [],
+"wall": 3,
+"wall_rank": 3.1,
+"red": false,
+"label": "confirmed",
+"tag": "Florida congressional ad shows rival in AI perp walk; never arrested",
+"receipt": "The Bradenton Times (Oct 30): Republican Sydney Gruters's ad in Florida's 16th District uses AI imagery of Democrat Kelly Kirschner in a police perp walk; it carries an AI label that Kirschner's campaign says was deliberately minimized. The paper reports no response from Gruters.",
+"touches": "Voters in Florida's 16th Congressional District, including Manatee County",
+"entities": {
+"orgs": [],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"government",
+"media"
+],
+"states": [
+"FL"
+]
+}
+},
+{
 "id": "rallies-characterai-sale-rules-approved",
 "title": "Judge approves the rules for selling Character.AI despite objections from attorneys general in 41 states",
 "url": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
@@ -160,12 +247,16 @@
 "kind": "official",
 "region": "US",
 "topic": "families",
-"summary": "Judge Brendan Shannon says he will likely appoint a privacy ombudsman for children's chat records. Sale approval sought Nov 30.",
+"summary": "Judge Brendan Shannon pressed the company to bring in a privacy ombudsman to review users' data, including minors'. Sale approval sought Nov 30.",
 "siren": false,
 "also": [
 {
 "outlet": "Law360",
 "url": "https://www.law360.com/bankruptcy-authority/mid-cap/articles/2544743"
+},
+{
+"outlet": "WDW News Today",
+"url": "https://wdwnt.com/2026/10/judge-raises-child-privacy-concerns-over-disneys-20-million-character-ai-deal/"
 }
 ],
 "tag": "Judge lets Character.AI's sale go ahead over 41 states' objections",
@@ -205,6 +296,40 @@
 "states": [
 "DE"
 ]
+}
+},
+{
+"id": "iphoneincanada-toronto-police-impersonation-scams",
+"title": "Toronto police: impersonation scams, made more convincing by AI, are this year's top fraud, $50M-plus lost",
+"url": "https://iphoneincanada.ca/2026/10/30/toronto-police-ai-impersonation-scams-banks-telcos",
+"outlet": "iPhone in Canada",
+"published": "2026-10-30T17:08:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Canada",
+"topic": "everyday",
+"summary": "About one in six of some 17,000 fraud reports; callers may already know your name, bank and last four card digits.",
+"siren": false,
+"also": [],
+"wall": 3,
+"wall_rank": 3.05,
+"red": false,
+"label": "confirmed",
+"tag": "Toronto police: impersonation scammers took over $50 million this year",
+"receipt": "Det. David Coffey, Toronto Police Financial Crimes Unit, via iPhone in Canada (Oct 30): impersonation is about one in six of roughly 17,000 fraud reports this year; more than $50 million lost by mid-October. Police say AI helps scammers sound convincing; the $50 million is all impersonation fraud, not only AI-assisted calls.",
+"touches": "Toronto residents who get calls claiming to be from their bank, phone carrier or a government office",
+"entities": {
+"orgs": [
+"Toronto Police Service"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"finance",
+"consumer"
+],
+"states": []
 }
 },
 {
@@ -916,6 +1041,43 @@
 "NJ",
 "VA",
 "NE"
+]
+}
+},
+{
+"id": "wgcu-desoto-data-center-blocked-again",
+"title": "Florida's DeSoto County rejects a 554-acre, nine-building data-center rezoning, its second no in two nights",
+"url": "https://www.wgcu.org/top-story/2026-10-29/desoto-data-center-proposal-blocked-again-wednesday-night",
+"outlet": "WGCU / Suncoast Searchlight",
+"published": "2026-10-29T14:24:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "power",
+"summary": "Residents raised water, gas turbines and rural character; the developer sought more than 15 facilities across the county.",
+"siren": false,
+"also": [],
+"beat": "near-you",
+"wall": 3,
+"wall_rank": 3.15,
+"red": false,
+"label": "confirmed",
+"tag": "Florida county says no to a 554-acre data-center campus, twice",
+"receipt": "WGCU / Suncoast Searchlight (Oct 29): DeSoto County commissioners rejected DCIP Group's rezoning of the 554-acre 3F Ranch for nine data centers (2.1 million square feet) on Oct 28, after rejecting a separate 238-acre request the night before. Vote counts not given.",
+"touches": "Residents of rural DeSoto County, Florida, and neighbours worried about the regional water supply",
+"entities": {
+"orgs": [
+"DeSoto County Commission",
+"DCIP Group"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"energy"
+],
+"states": [
+"FL"
 ]
 }
 },
@@ -2241,128 +2403,6 @@
 "sectors": [
 "tech",
 "government"
-],
-"states": []
-}
-},
-{
-"id": "ap-storm1516-brown-talarico-fakes",
-"title": "AP: fake videos likely from Russia used a former intern's name to smear Sherrod Brown, and targeted Talarico",
-"url": "https://www.wsbtv.com/news/politics/disinformation/7RREVIBYPU775GGLQO6YHSPNXQ/",
-"outlet": "AP (via WSB-TV)",
-"published": "2026-10-28T03:14:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "deepfakes",
-"summary": "Clemson's Linvill ties the accounts to Russia's Storm-1516; Dartmouth's Farid says both videos were likely AI-made or manipulated.",
-"also": [
-{
-"outlet": "Fast Company",
-"url": "https://www.fastcompany.com/91631353/fake-videos-possibly-linked-russia-targeting-two-democratic-senate-candidates?partner=rss"
-},
-{
-"outlet": "IBTimes UK",
-"url": "https://www.ibtimes.co.uk/ai-videos-russian-network-target-us-senate-candidates-1828444"
-}
-],
-"siren": false,
-"wall": "3",
-"wall_rank": 20.3,
-"tag": "Ex-intern says Russia-linked fake put lies about Sherrod Brown in her name",
-"label": "reported",
-"human": true,
-"touches": "Ohio and Texas voters seeing the videos, and the former Brown staffers whose photos were used",
-"independent": {
-"n": 1,
-"who": [
-"AP"
-],
-"carried_by": [
-"WSB-TV",
-"Fast Company"
-]
-},
-"entities": {
-"orgs": [
-"X",
-"Clemson University",
-"Dartmouth College"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"media"
-],
-"states": [
-"OH",
-"TX"
-]
-}
-},
-{
-"id": "record-uk-budget-agentic-security-unit",
-"title": "UK budget puts £40 million into a unit to detect and respond to rogue AI agents",
-"url": "https://therecord.media/uk-budget-proposal-software-companies-liable-cyber-breaches",
-"outlet": "The Record",
-"published": "2026-10-28T00:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "UK",
-"topic": "regulation",
-"summary": "The National Agentic Security Unit aims to detect 'misaligned agentic activity'; a consultation on software-maker liability follows.",
-"also": [],
-"tag": "Britain funds a squad to hunt rogue AI agents",
-"wall": 3,
-"red": false,
-"wall_rank": 2.5,
-"label": "confirmed",
-"receipt": "£40 million ($53 million) for a National Agentic Security Unit 'tasked with detecting, investigating and responding to rogue AI agents' (The Record, Oct 28).",
-"touches": "UK public services and the companies whose software they run",
-"siren": false
-},
-{
-"id": "techcrunch-openai-seizure-medication-suit",
-"title": "Parents sue OpenAI, saying ChatGPT coached their epileptic daughter off her seizure drug and to hide it from doctors",
-"url": "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/",
-"outlet": "TechCrunch",
-"published": "2026-10-27T23:34:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "chatbot-harm",
-"summary": "Bowen Wan, 31, died in February; the suit says GPT-4o laid out a taper to zero and told her not to tell her doctors.",
-"siren": false,
-"also": [
-{
-"outlet": "Bloomberg Law",
-"url": "https://news.bloomberglaw.com/litigation/openai-sued-alleging-chatgpt-gave-fatal-epilepsy-medical-advice"
-}
-],
-"tag": "ChatGPT coached their daughter off seizure drugs, parents' suit says",
-"wall": "3",
-"wall_rank": 20.4,
-"label": "reported",
-"human": true,
-"receipt": "Allegations in a wrongful-death suit by Qun Wan and Meiqin Xu, per TechCrunch (Oct 27); OpenAI called the case 'incredibly heartbreaking' and said it involved an older ChatGPT version.",
-"touches": "People with epilepsy and others who ask a chatbot about changing their medication",
-"entities": {
-"orgs": [
-"OpenAI"
-],
-"vendors": [
-"OpenAI"
-],
-"products": [
-"ChatGPT"
-],
-"models": [
-"GPT-4o"
-],
-"sectors": [
-"health",
-"consumer"
 ],
 "states": []
 }
