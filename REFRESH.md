@@ -16,7 +16,10 @@ Colin approved the site as it is on Oct 27, 2026. A refresh updates content; it 
 
 ```
 git clone https://github.com/ColinBalfe/ai-incident-index && cd ai-incident-index
+sh setup_playwright.sh    # must print "playwright: ok" or "playwright: linked"; the page-rendering scripts fail without it
 ```
+
+Run `sh setup_playwright.sh` at the start of every run, including when the clone already exists: the scripts that bake and photograph the page (`prerender.mjs`, `shot.mjs`, `make_*.mjs`) import Playwright from `./node_modules`, which is not committed. When a node script's output ends in a bare `Node.js v…` line, it crashed: read the error, never skip the step.
 
 **Missed runs.** If `as_of` is more than 8 hours old, one or more refreshes did not run. Research the whole gap since `as_of`, grade every call whose date has passed, write the changelog entry as "HH:MM ET: caught up after missed refresh(es) at <times>", and notify Colin once in one line.
 
