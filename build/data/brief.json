@@ -1,20 +1,20 @@
 {
- "label": "Oct 31, 12:50 ET",
+ "label": "Oct 31, 19:00 ET",
  "items": [
   {
-   "text": "Chainalysis confirmed its breach to BleepingComputer and told customers to beware of scammers posing as Chainalysis, especially offers of fund recovery or recruiting. It still hasn't said how the attackers got in or how long they stayed.",
-   "url": "https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/",
-   "source_label": "BleepingComputer, Oct 31"
+   "text": "Hermantown, Minnesota's city council passed all six resolutions for a Google-backed data center late Friday, after about four hours of public comment, mostly from opponents. Google still needs other agencies' permits, and three lawsuits are pending.",
+   "url": "https://www.yahoo.com/news/us/articles/hermantown-city-council-greenlights-google-143810614.html",
+   "source_label": "KARE 11, Oct 31"
   },
   {
-   "text": "Toronto police say impersonation scams, callers posing as banks, phone carriers and government offices, are their top fraud this year, with more than $50 million lost by mid-October. They say AI helps the callers sound convincing.",
-   "url": "https://iphoneincanada.ca/2026/10/30/toronto-police-ai-impersonation-scams-banks-telcos",
-   "source_label": "iPhone in Canada, Oct 30"
+   "text": "S&P Global cut Meta's credit outlook to negative, projecting negative free operating cash flow of $71 billion in 2027, mainly from leasing data-center capacity. It kept the AA- rating.",
+   "url": "https://fortune.com/2026/10/31/ai-boom-bust-openai-fundraising-target-meta-credit-warning-cash-flow-capex/",
+   "source_label": "Fortune, Oct 31"
   },
   {
-   "text": "An ad for Florida congressional candidate Sydney Gruters shows rival Kelly Kirschner in an AI-made perp walk. He has never been arrested and says the AI label was shrunk so viewers would miss it.",
-   "url": "https://thebradentontimes.com/stories/kirschner-denounces-sydney-gruters-campaign-ad-using-ai-to-falsely-depict-him-getting-arrested,218317",
-   "source_label": "The Bradenton Times, Oct 30"
+   "text": "The flaw under most websites, day 11: still no real victim named. A third flaw is still unfixed.",
+   "url": "/php2shell/",
+   "source_label": "Warning Shots tracker"
   }
  ]
 }

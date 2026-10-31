@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-31T12:50:00-04:00",
+ "as_of": "2026-10-31T19:00:00-04:00",
  "posts": [
   {
    "kind": "siren",
@@ -11,26 +11,26 @@
   },
   {
    "kind": "brief",
-   "text": "Chainalysis confirmed its breach to BleepingComputer and told customers to beware of scammers posing as Chainalysis, especially offers of fund recovery or recruiting. It still hasn't said how the attackers got in or how long they stayed.",
-   "link": "https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/",
+   "text": "Hermantown, Minnesota's city council passed all six resolutions for a Google-backed data center late Friday, after about four hours of public comment, mostly from opponents. Google still needs other agencies' permits, and three lawsuits are pending.",
+   "link": "https://www.yahoo.com/news/us/articles/hermantown-city-council-greenlights-google-143810614.html",
    "image": null,
-   "chars": 261,
+   "chars": 273,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Toronto police say impersonation scams, callers posing as banks, phone carriers and government offices, are their top fraud this year, with more than $50 million lost by mid-October. They say AI helps the callers sound convincing.",
-   "link": "https://iphoneincanada.ca/2026/10/30/toronto-police-ai-impersonation-scams-banks-telcos",
+   "text": "S&P Global cut Meta's credit outlook to negative, projecting negative free operating cash flow of $71 billion in 2027, mainly from leasing data-center capacity. It kept the AA- rating.",
+   "link": "https://fortune.com/2026/10/31/ai-boom-bust-openai-fundraising-target-meta-credit-warning-cash-flow-capex/",
    "image": null,
-   "chars": 254,
+   "chars": 208,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "An ad for Florida congressional candidate Sydney Gruters shows rival Kelly Kirschner in an AI-made perp walk. He has never been arrested and says the AI label was shrunk so viewers would miss it.",
-   "link": "https://thebradentontimes.com/stories/kirschner-denounces-sydney-gruters-campaign-ad-using-ai-to-falsely-depict-him-getting-arrested,218317",
+   "text": "The flaw under most websites, day 11: still no real victim named. A third flaw is still unfixed.",
+   "link": "/php2shell/",
    "image": null,
-   "chars": 219,
+   "chars": 120,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   }
  ]

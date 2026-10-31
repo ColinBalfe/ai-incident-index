@@ -6504,5 +6504,87 @@
 ],
 "states": []
 }
+},
+{
+"id": "kare11-hermantown-passes-google-data-center",
+"title": "Hermantown's council passes all six resolutions for Google's data center after four hours of public comment",
+"url": "https://www.yahoo.com/news/us/articles/hermantown-city-council-greenlights-google-143810614.html",
+"outlet": "KARE 11 via Yahoo News",
+"published": "2026-10-31T14:38:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "power",
+"summary": "Most comments came from opponents. Google still needs other agencies' permits, and three lawsuits against the project are pending.",
+"also": [
+{
+"outlet": "WDIO",
+"url": "https://www.wdio.com/top-stories/what-to-expect-for-tonights-hermantown-city-council-meeting/"
+}
+],
+"beat": "near-you",
+"red": false,
+"label": "confirmed",
+"tag": "Minnesota town votes yes on Google's data center despite protests",
+"receipt": "KARE 11 (Oct 31) and WDIO (Oct 30-31): Hermantown City Council passed all six resolutions late Friday (WDIO: unanimously), including a special use permit and a development agreement, after about four hours of public comment, mostly from opponents; 85 people allowed inside while dozens protested outside. Google still needs other agencies' permits; three lawsuits pending.",
+"touches": "Hermantown, Minnesota residents near the planned three-building, 200-acre Google site",
+"independent": {
+"n": 2,
+"who": [
+"KARE 11",
+"WDIO"
+],
+"carried_by": []
+},
+"entities": {
+"orgs": [
+"Google",
+"Hermantown City Council",
+"Harmony Group",
+"St. Louis County"
+],
+"vendors": [
+"Google"
+],
+"products": [],
+"models": [],
+"sectors": [
+"energy",
+"tech"
+],
+"states": [
+"MN"
+]
+}
+},
+{
+"id": "fortune-sp-meta-outlook-negative",
+"title": "S&P cuts Meta's credit outlook to negative, projecting $71 billion of negative free cash flow in 2027",
+"url": "https://fortune.com/2026/10/31/ai-boom-bust-openai-fundraising-target-meta-credit-warning-cash-flow-capex/",
+"outlet": "Fortune",
+"published": "2026-10-31T16:41:00Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "markets",
+"summary": "S&P kept Meta's AA- rating but says leverage could pass its downgrade line as soon as 2027, mainly from leased data centers.",
+"also": [],
+"label": "confirmed",
+"receipt": "Fortune (Oct 31): S&P Global moved Meta's outlook to negative from stable late Friday, kept the AA- rating, and projects free operating cash flow of -$22 billion this year, -$71 billion in 2027 and -$39 billion in 2028.",
+"touches": "Holders of Meta's bonds and shares",
+"entities": {
+"orgs": [
+"Meta",
+"S&P Global"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"tech",
+"finance"
+],
+"states": []
+}
 }
 ]

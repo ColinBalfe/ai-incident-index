@@ -1,5 +1,14 @@
 [
  {
+  "id": "meta-sp-negative-outlook-oct31",
+  "date": "2026-10-31",
+  "dir": "down",
+  "name": "Meta",
+  "news_id": "fortune-sp-meta-outlook-negative",
+  "line": "S&P Global cut Meta's outlook to negative from stable late Friday, keeping its AA- rating but projecting negative free operating cash flow of $22 billion this year and $71 billion in 2027, mainly from leasing data-center capacity (Fortune, Oct 31).",
+  "why": "Our read: S&P is treating data-center leases like debt, which puts a number on the AI buildout's bill. A negative outlook can raise what Meta pays to borrow just when it needs to borrow most; rivals that own their data centers look sturdier on the same arithmetic."
+ },
+ {
   "id": "palo-alto-customer-firewalls-oct31",
   "date": "2026-10-31",
   "dir": "down",
