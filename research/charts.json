@@ -30,9 +30,17 @@
   "id": "2026-10-30-did-they-fix-it",
   "date": "2026-10-30",
   "kind": "fix_chain",
-  "home": true,
   "why": "OpenAI says its new monitors would have caught July's escape 30 hours early; outside testers still found gaps. This chart follows every major case we track from report to an outside check, so a claimed fix is never the end of the story.",
   "dek": "The day OpenAI says better monitors would have caught its July escape 30 hours early, here is every major case we track, from report to claimed fix to an outside check. None has an outside-verified fix yet.",
   "takeaway": "OpenAI says better monitors would have caught its July escape 30 hours early. Across the biggest AI cases we follow, none yet has a fix that outsiders have checked and confirmed."
+ },
+ {
+  "id": "2026-10-31-ai-job-cuts",
+  "date": "2026-10-31",
+  "kind": "layoff_months",
+  "home": true,
+  "why": "Comcast filed notices on Oct 30 cutting 912 jobs while its executives expand AI agents for customer service. This chart counts every job cut tied to AI on our ledger, month by month, and separates the companies that said so themselves from the cases where only reporters made the link.",
+  "dek": "The day Comcast filed to cut 912 jobs while expanding AI agents, each bar counts employers announcing cuts tied to AI, by month (each employer once a month). Red: the employer itself named AI. Counts of announcements, not of jobs.",
+  "takeaway": "October is the busiest month on our AI layoffs ledger this past year. The newest entry, Comcast, is linked to AI by reporting on its executives' plans, not by its layoff notices."
  }
 ]
