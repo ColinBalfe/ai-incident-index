@@ -916,6 +916,18 @@
    "how": "",
    "source_url": "https://blog.cloudflare.com/kv-cache-exposure-remediation/",
    "status_group": "confirmed"
+  },
+  {
+   "incident_id": "chainalysis-agentic-intrusion",
+   "organization": "Chainalysis",
+   "sector": "Finance / blockchain analytics",
+   "country": "US",
+   "status": "Customer data exposed (confirmed by Chainalysis)",
+   "date": "2026-10",
+   "extent": "Customer user IDs, full names, email addresses and organization role labels; no evidence so far of access to investigation content, passwords, MFA secrets or session tokens; number of customers not disclosed.",
+   "how": "An external actor 'using offensive agentic techniques', per Chainalysis",
+   "source_url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+   "status_group": "confirmed"
   }
  ],
  "statements": [

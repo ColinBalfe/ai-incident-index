@@ -2288,6 +2288,22 @@
 "source_label": "Cloudflare"
 },
 {
+"id": "v-83",
+"incident_id": "chainalysis-agentic-intrusion",
+"organization": "Chainalysis",
+"sector": "Finance / blockchain analytics",
+"country": "US",
+"status": "Customer data exposed (confirmed by Chainalysis)",
+"status_group": "confirmed",
+"date": "2026-10-15",
+"date_label": "Oct 2026",
+"extent": "Customer user IDs, full names, email addresses and organization role labels; no evidence so far of access to investigation content, passwords, MFA secrets or session tokens; number of customers not disclosed.",
+"how": "An external actor 'using offensive agentic techniques', per Chainalysis",
+"count": 1,
+"source_url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+"source_label": "Financefeeds"
+},
+{
 "id": "oa-v79",
 "incident_id": "openai-june-four",
 "organization": "Unnamed organization (dashboard research)",

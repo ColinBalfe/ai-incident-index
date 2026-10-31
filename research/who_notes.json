@@ -124,5 +124,16 @@
     "rallies-characterai-sale-rules-approved"
    ]
   }
+ ],
+ "chainalysis": [
+  {
+   "date": "2026-10-31",
+   "text": "Said on Oct 30 that an external actor 'using offensive agentic techniques' got into its systems and internal tools, exposing customers' user IDs, names, email addresses and role labels. It says it has no evidence so far that investigation content, passwords, MFA secrets or session tokens were reached, has notified all customers and says the Binance theft is unrelated.",
+   "sources": [
+    "coingape-chainalysis-agentic-ai-breach",
+    "financefeeds-chainalysis-what-was-taken",
+    "tokenpost-chainalysis-binance-unrelated"
+   ]
+  }
  ]
 }

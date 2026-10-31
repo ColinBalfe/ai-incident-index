@@ -5848,6 +5848,74 @@
 "receipt": "ShiftDelete (Oct 30), citing Microsoft's Oct 21 Storm-0940 report; the 'spreading' read is ShiftDelete's."
 },
 {
+"id": "bloomberg-japan-81-incidents-ai-wave",
+"title": "Japan's power-trading site breached amid an AI-fuelled wave of at least 81 incidents since July",
+"url": "https://www.insurancejournal.com/news/international/2026/10/30/890903.htm",
+"outlet": "Bloomberg via Insurance Journal",
+"published": "2026-10-30T08:35:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Asia",
+"topic": "ai-attack",
+"summary": "Japan's government says an electricity and gas trading site was breached; experts say AI agents help gangs exploit old systems.",
+"also": [],
+"red": false,
+"label": "reported",
+"tag": "Japan logged at least 81 cyber incidents since July; experts blame AI tools",
+"receipt": "At least 81 incidents reported since July, about a third of attacks in the last three years, per Yutaka Sejiyama of the Macnica Security Research Center (Bloomberg, Oct 30). The AI link is experts' assessment, not tied to each incident.",
+"touches": "Customers of Japanese brokerages, delivery firms and the government's electricity and gas trading information site",
+"entities": {
+"orgs": [
+"GMO Internet Group",
+"Mizuho Financial Group",
+"Macnica"
+],
+"vendors": [],
+"products": [
+"ARTEX"
+],
+"models": [],
+"sectors": [
+"energy",
+"finance",
+"government"
+],
+"states": []
+}
+},
+{
+"id": "jocopost-shawnee-mission-student-ai-policy",
+"title": "Shawnee Mission's 32-person group, mostly parents, is drafting the Kansas district's student AI rules",
+"url": "https://johnsoncountypost.com/2026/10/30/smsd-drafting-student-ai-policy-300514/",
+"outlet": "Johnson County Post",
+"published": "2026-10-30T10:00:27Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "families",
+"beat": "school",
+"summary": "The district waits on the Kansas state board's draft AI policy, likely up in November; no generative AI is on district devices.",
+"also": [],
+"red": false,
+"label": "confirmed",
+"tag": "Kansas parents are writing their district's student AI rules",
+"touches": "Students and families in Kansas's Shawnee Mission School District",
+"entities": {
+"orgs": [
+"Shawnee Mission School District"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"education"
+],
+"states": [
+"KS"
+]
+}
+},
+{
 "id": "newsobserver-nc-data-centers-50b-2050",
 "title": "Gov. Stein's task force: big data centers could add $50 billion in North Carolina energy costs by 2050",
 "url": "https://yahoo.com/news/us/articles/data-centers-could-cost-nc-110000943.html",
@@ -6013,6 +6081,81 @@
 }
 },
 {
+"id": "cybersecuritydive-paloalto-small-number-customer-firewalls",
+"title": "Palo Alto: a suspected state-linked actor is using chained flaws against a small number of customer firewalls",
+"url": "https://www.cybersecuritydive.com/news/palo-alto-networks-firewalls-compromised-chained-attacks-php2shell/873323/",
+"outlet": "Cybersecurity Dive",
+"published": "2026-10-30T15:17:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Global",
+"topic": "php2shell",
+"summary": "A spokesperson says about 0.02% of its installed base was internet-exposed and potentially affected. No customer named.",
+"also": [],
+"red": false,
+"label": "proven",
+"touches": "Organizations whose Palo Alto firewall management pages face the internet",
+"entities": {
+"orgs": [
+"Palo Alto Networks",
+"Dream"
+],
+"vendors": [
+"Palo Alto Networks"
+],
+"products": [
+"PHP",
+"PAN-OS"
+],
+"models": [],
+"sectors": [
+"government",
+"tech"
+],
+"states": []
+}
+},
+{
+"id": "inquirer-comcast-912-jobs-ai-agents",
+"title": "Comcast files notices cutting 912 jobs as executives expand AI agents for customer service",
+"url": "https://www.inquirer.com/business/comcast/comcast-layoffs-warn-notice-philadelphia-ai-jobs-20261030.html",
+"outlet": "The Philadelphia Inquirer",
+"published": "2026-10-30T15:24:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "jobs",
+"summary": "634 in Philadelphia, 119 in New Jersey and 159 in Washington state, effective Dec 31; Comcast also plans 1,100-plus new hires.",
+"also": [
+{
+"outlet": "WHYY",
+"url": "https://whyy.org/articles/comcast-phliadelphia-new-jersey-layoffs/"
+}
+],
+"red": false,
+"label": "reported",
+"tag": "Comcast filed to cut 912 jobs as it adds AI agents",
+"receipt": "WARN notices per the Inquirer (Oct 30): 634 Philadelphia, 119 New Jersey, 159 Washington state; the roles include engineers, product managers and analysts. The AI tie is executives' stated plan to expand AI agents for customer service (WHYY); the notices themselves don't cite AI.",
+"touches": "912 Comcast engineers, product managers, assistants and analysts in Philadelphia, New Jersey and Washington state",
+"entities": {
+"orgs": [
+"Comcast"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"media",
+"tech"
+],
+"states": [
+"PA",
+"NJ",
+"WA"
+]
+}
+},
+{
 "id": "rallies-characterai-sale-rules-approved",
 "title": "Judge approves the rules for selling Character.AI despite objections from attorneys general in 41 states",
 "url": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
@@ -6064,6 +6207,148 @@
 "states": [
 "DE"
 ]
+}
+},
+{
+"id": "tokenpost-chainalysis-binance-unrelated",
+"title": "Chainalysis says its breach is unrelated to the Binance theft",
+"url": "https://www.tokenpost.com/news/technology/45208",
+"outlet": "TokenPost",
+"published": "2026-10-30T22:47:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "TokenPost: attackers used 'AI-driven agent technology' to reach internal systems; Chainalysis says the Binance theft is a separate case.",
+"also": [],
+"red": false,
+"label": "confirmed",
+"tag": "Not linked to the Binance theft, it says",
+"touches": "Chainalysis's customers",
+"entities": {
+"orgs": [
+"Chainalysis",
+"Binance"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"finance"
+],
+"states": []
+}
+},
+{
+"id": "financefeeds-chainalysis-what-was-taken",
+"title": "Chainalysis: names, emails, user IDs and role labels exposed; investigation data not reached so far",
+"url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+"outlet": "FinanceFeeds",
+"published": "2026-10-31T06:37:58Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Chainalysis says it serves more than 1,500 clients; it has not said how many were affected.",
+"also": [],
+"red": false,
+"label": "confirmed",
+"tag": "No count yet of customers exposed",
+"touches": "Chainalysis's customers",
+"receipt": "FinanceFeeds (Oct 31): Chainalysis says it serves more than 1,500 clients; the number affected is not disclosed.",
+"entities": {
+"orgs": [
+"Chainalysis"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"finance"
+],
+"states": []
+}
+},
+{
+"id": "coingape-chainalysis-agentic-ai-breach",
+"title": "Chainalysis confirms an attacker using 'offensive agentic techniques' got into its systems",
+"url": "https://coingape.com/crypto-hack-tracker-chainalysis-confirms-it-was-hit-by-agentic-ai-driven-cyberattack/",
+"outlet": "CoinGape",
+"published": "2026-10-31T06:48:23Z",
+"time_known": true,
+"kind": "breaking",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Customers' user IDs, names, emails and role labels were exposed; no sign of passwords, MFA secrets or investigation data taken.",
+"also": [
+{
+"outlet": "FinanceFeeds",
+"url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/"
+},
+{
+"outlet": "TokenPost",
+"url": "https://www.tokenpost.com/news/technology/45208"
+}
+],
+"red": false,
+"label": "confirmed",
+"tag": "AI-driven attackers got into Chainalysis, the firm that traces crypto crime",
+"receipt": "Chainalysis's own Oct 30 notice, as quoted by CoinGape and FinanceFeeds: an external actor 'using offensive agentic techniques'; user IDs, full names, email addresses and organization role labels exposed; no evidence so far of access to investigation content, passwords, MFA secrets or session tokens. No count of affected customers given; no attacker named.",
+"touches": "Chainalysis's customers: the law-enforcement agencies, tax authorities, exchanges and financial firms that use its crypto-tracing tools",
+"img": "/assets/img/email-envelope-berezovsky.jpg",
+"img_alt": "A rendered blue button with a white envelope on it, against a blue background",
+"img_credit": "Photo: Mariia Berezovsky / Unsplash",
+"img_credit_url": "https://unsplash.com/photos/a-blue-button-with-a-white-envelope-on-it-HyyHIYz_l0A",
+"img_date": "2026-10-31",
+"standfirst": "Chainalysis, whose tools law-enforcement agencies, tax authorities and crypto exchanges use to trace illicit funds, said on Oct 30 that an external actor 'using offensive agentic techniques' got into its systems and internal tools. Customers' user IDs, names, email addresses and organization role labels were exposed; it says it has no evidence so far that investigation content, passwords, MFA secrets or session tokens were reached. It says it has notified its customers, has named no attacker and given no count, and says the $6.3 billion Binance theft is unrelated. Days earlier, the UK web host 123 Reg said an 'AI-driven cyberattack' read its customers' contact and account data.",
+"lead_summary": "Chainalysis, whose tools law enforcement and crypto exchanges use to trace illicit money, says an attacker 'using offensive agentic techniques' got into its systems and exposed customers' names, emails and role labels. It found no sign so far that passwords or investigation files were reached, and has notified its customers. Days earlier, the UK web host 123 Reg said an AI-driven attack read its customers' data: named companies are now confirming break-ins they blame on AI.",
+"people": {
+"kind": "hit",
+"text": "Chainalysis's customers, the investigators and compliance staff who use its tools, had their names, emails and role labels exposed."
+},
+"you": {
+"touch": "Unless you use Chainalysis's tools at work, nothing here reached you. For its customers, the risk is convincing phishing: attackers now know their names, emails and roles.",
+"today": [
+"Treat any unexpected message that knows your name and job, and asks you to log in or pay, as a possible phish: check it by another route.",
+"https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams",
+"FTC: how to spot phishing"
+],
+"lens": {
+"work": {
+"touch": "If your team uses Chainalysis, your name, work email and role label may be in the attackers' hands.",
+"today": [
+"Ask your security team whether Chainalysis's notice covered your organization, and warn colleagues about targeted phishing.",
+"https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+"FinanceFeeds' account of the notice"
+]
+}
+}
+},
+"independent": {
+"n": 1,
+"who": [
+"Chainalysis"
+],
+"carried_by": [
+"CoinGape",
+"FinanceFeeds",
+"TokenPost"
+]
+},
+"entities": {
+"orgs": [
+"Chainalysis"
+],
+"vendors": [
+"Chainalysis"
+],
+"products": [],
+"models": [],
+"sectors": [
+"finance",
+"tech"
+],
+"states": []
 }
 }
 ]

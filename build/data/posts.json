@@ -1,28 +1,36 @@
 {
- "as_of": "2026-10-30T18:45:00-04:00",
+ "as_of": "2026-10-31T05:50:00-04:00",
  "posts": [
   {
    "kind": "siren",
-   "text": "CrowdStrike: China-linked hackers' AI agents, mainly on DeepSeek, targeted 200-plus organizations, got inside nine. VAPOR PANDA's ARTEX agents targeted more than 200 organizations in 11 days from Oct 17; post-exploitation confirmed at nine.",
-   "link": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/",
-   "image": "cards/n-crowdstrike-vapor-panda-artex-200-orgs.jpg",
-   "chars": 264,
+   "text": "Chainalysis confirms an attacker using 'offensive agentic techniques' got into its systems. Customers' user IDs, names, emails and role labels were exposed; no sign of passwords, MFA secrets or investigation data taken. (via CoinGape)",
+   "link": "https://coingape.com/crypto-hack-tracker-chainalysis-confirms-it-was-hit-by-agentic-ai-driven-cyberattack/",
+   "image": "cards/n-coingape-chainalysis-agentic-ai-breach.jpg",
+   "chars": 258,
    "note": "The outlet gets the link; the card carries our framing."
   },
   {
    "kind": "brief",
-   "text": "A Delaware bankruptcy judge approved the rules for selling Character.AI, with Disney's $20 million bid as the opening offer, over objections from attorneys general in 41 states.",
-   "link": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
+   "text": "Chainalysis, whose tools law enforcement and crypto exchanges use to trace illicit money, says an attacker 'using offensive agentic techniques' got into its systems and exposed customers' names, emails, user IDs and role labels.",
+   "link": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
    "image": null,
-   "chars": 201,
+   "chars": 252,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   },
   {
    "kind": "brief",
-   "text": "Howard County, Maryland, made student assignments AI-free unless a teacher allows it, and barred staff from using AI for grading or counseling.",
-   "link": "https://www.govtech.com/education/k-12/howard-county-md-students-need-teacher-permission-to-use-ai",
+   "text": "Comcast filed notices cutting 912 jobs in Philadelphia, New Jersey and Washington state, effective Dec 31, as executives expand AI agents for customer service.",
+   "link": "https://www.inquirer.com/business/comcast/comcast-layoffs-warn-notice-philadelphia-ai-jobs-20261030.html",
    "image": null,
-   "chars": 167,
+   "chars": 183,
+   "note": "From \"Since the last refresh\"; written to be posted as-is."
+  },
+  {
+   "kind": "brief",
+   "text": "Palo Alto Networks confirms a suspected state-linked actor is using chained flaws, including the PHP ones, against a small number of customer firewalls. No customer named.",
+   "link": "https://www.cybersecuritydive.com/news/palo-alto-networks-firewalls-compromised-chained-attacks-php2shell/873323/",
+   "image": "cards/i-php2shell.jpg",
+   "chars": 195,
    "note": "From \"Since the last refresh\"; written to be posted as-is."
   }
  ]

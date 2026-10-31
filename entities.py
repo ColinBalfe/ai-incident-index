@@ -25,6 +25,7 @@ ENTITIES = [
  ('apple', 'Apple', 'Company', r'\bApple\b', 'Maker of the iPhone and Apple Intelligence.'),
  ('hugging-face', 'Hugging Face', 'Company', r'\bHugging Face\b', 'The largest public library of AI models and data.'),
  ('crowdstrike', 'CrowdStrike', 'Company', r'\bCrowdStrike\b', 'Security firm that tracks AI-driven intrusions.'),
+ ('chainalysis', 'Chainalysis', 'Company', r'\bChainalysis\b', 'Blockchain-analysis firm whose tools police and banks use to trace crypto crime.'),
  ('cloudflare', 'Cloudflare', 'Company', r'\bCloudflare\b', 'Network company that sits in front of millions of sites.'),
  ('samsung', 'Samsung', 'Company', r'\bSamsung\b', 'Korean electronics and memory-chip giant.'),
  ('workday', 'Workday', 'Company', r'\bWorkday\b', 'HR software maker facing an AI hiring-bias case.'),

@@ -1,15 +1,20 @@
 {
- "label": "Oct 30, 18:45 ET",
+ "label": "Oct 31, 05:50 ET",
  "items": [
   {
-   "text": "A Delaware bankruptcy judge approved the rules for selling Character.AI, with Disney's $20 million bid as the opening offer, over objections from attorneys general in 41 states. He says he will likely appoint a privacy ombudsman for children's chat records.",
-   "url": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
-   "source_label": "Rallies, Oct 30"
+   "text": "Chainalysis, whose tools law enforcement and crypto exchanges use to trace illicit money, says an attacker 'using offensive agentic techniques' got into its systems and exposed customers' names, emails, user IDs and role labels. No sign so far of passwords or investigation files reached.",
+   "url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+   "source_label": "FinanceFeeds, Oct 31"
   },
   {
-   "text": "Howard County, Maryland, made student assignments AI-free unless a teacher allows it, and barred staff from using AI for grading or counseling.",
-   "url": "https://www.govtech.com/education/k-12/howard-county-md-students-need-teacher-permission-to-use-ai",
-   "source_label": "Baltimore Sun via Government Technology, Oct 30"
+   "text": "Comcast filed notices cutting 912 jobs in Philadelphia, New Jersey and Washington state, effective Dec 31, as executives expand AI agents for customer service.",
+   "url": "https://www.inquirer.com/business/comcast/comcast-layoffs-warn-notice-philadelphia-ai-jobs-20261030.html",
+   "source_label": "The Philadelphia Inquirer, Oct 30"
+  },
+  {
+   "text": "Palo Alto Networks confirms a suspected state-linked actor is using chained flaws, including the PHP ones, against a small number of customer firewalls. No customer named.",
+   "url": "https://www.cybersecuritydive.com/news/palo-alto-networks-firewalls-compromised-chained-attacks-php2shell/873323/",
+   "source_label": "Cybersecurity Dive, Oct 30"
   }
  ]
 }

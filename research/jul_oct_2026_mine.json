@@ -1285,5 +1285,27 @@
   "source2_url": "https://en.shiftdelete.net/vapor-panda-artex-ai/",
   "confidence": "high",
   "notes": "Dated from the campaign's start (Oct 17, per CrowdStrike); disclosed Oct 29. NBC News reportedly first carried the findings (per ShiftDelete) but its page could not be opened. ShiftDelete says this is the group's first observed use of AI tooling and that it is separate from the ARTEX activity Microsoft tied to Storm-0940 (storm-0940-artex-connectwise). Novelty 2: the same framework was already on the index (korea-banks-artex, storm-0940-artex-connectwise); new is the scale across 14 countries and foreign ministries. Victims are unnamed, so no victims rows. Added Oct 30, 10:40 ET."
+ },
+ {
+  "id": "chainalysis-agentic-intrusion",
+  "date": "2026-10",
+  "date_precision": "month",
+  "disclosed": "2026-10-30",
+  "title": "Attacker 'using offensive agentic techniques' gets into Chainalysis's systems, exposing customer names and emails",
+  "actors": "Unnamed external actor; Chainalysis",
+  "category": "cyber_offense",
+  "setting": "wild",
+  "summary": "Chainalysis, the blockchain-analysis firm whose tools law-enforcement agencies, tax authorities and crypto exchanges use to trace illicit funds, said in an Oct 30 notice that an external actor 'using offensive agentic techniques' gained unauthorized access to its systems and internal tools, which it described as similar to many other tech platforms in recent weeks. Customer user IDs, full names, email addresses and organization role labels were exposed; Chainalysis says it has no evidence so far of access to investigation content, clear-text passwords, MFA secrets or session tokens. It notified all customers, urged them to be 'hyper-vigilant', and said the Oct 29 Binance theft is unrelated. It has not named the attacker, given the date of the intrusion within October, said how many customers were affected or described the AI techniques used.",
+  "harm": "Customer identity data (names, emails, user IDs, role labels) exposed; phishing risk to investigators and compliance staff; no count given",
+  "H": 2,
+  "R": 2,
+  "A": 3,
+  "N": 2,
+  "I": 2,
+  "source_url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+  "source_label": "FinanceFeeds, Oct 31",
+  "source2_url": "https://coingape.com/crypto-hack-tracker-chainalysis-confirms-it-was-hit-by-agentic-ai-driven-cyberattack/",
+  "confidence": "medium",
+  "notes": "The victim's own attribution: Chainalysis's notice (https://www.chainalysis.com/blog/security-incident-october-30/) could not be opened by this run; its wording is taken from FinanceFeeds and CoinGape, which quote it, and TokenPost. The AI role is the company's description ('offensive agentic techniques'); no model, tool or attacker has been named and no independent investigator has reported. Detected 'this month' per FinanceFeeds, so dated to October (month only). Added Oct 31, 05:17 ET."
  }
 ]

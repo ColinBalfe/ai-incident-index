@@ -1,5 +1,156 @@
 [
 {
+"id": "coingape-chainalysis-agentic-ai-breach",
+"title": "Chainalysis confirms an attacker using 'offensive agentic techniques' got into its systems",
+"url": "https://coingape.com/crypto-hack-tracker-chainalysis-confirms-it-was-hit-by-agentic-ai-driven-cyberattack/",
+"outlet": "CoinGape",
+"published": "2026-10-31T06:48:23Z",
+"time_known": true,
+"kind": "breaking",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Customers' user IDs, names, emails and role labels were exposed; no sign of passwords, MFA secrets or investigation data taken.",
+"siren": true,
+"also": [
+{
+"outlet": "FinanceFeeds",
+"url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/"
+},
+{
+"outlet": "TokenPost",
+"url": "https://www.tokenpost.com/news/technology/45208"
+}
+],
+"wall": "siren",
+"wall_rank": 0,
+"red": false,
+"label": "confirmed",
+"tag": "AI-driven attackers got into Chainalysis, the firm that traces crypto crime",
+"receipt": "Chainalysis's own Oct 30 notice, as quoted by CoinGape and FinanceFeeds: an external actor 'using offensive agentic techniques'; user IDs, full names, email addresses and organization role labels exposed; no evidence so far of access to investigation content, passwords, MFA secrets or session tokens. No count of affected customers given; no attacker named.",
+"touches": "Chainalysis's customers: the law-enforcement agencies, tax authorities, exchanges and financial firms that use its crypto-tracing tools",
+"img": "/assets/img/email-envelope-berezovsky.jpg",
+"img_alt": "A rendered blue button with a white envelope on it, against a blue background",
+"img_credit": "Photo: Mariia Berezovsky / Unsplash",
+"img_credit_url": "https://unsplash.com/photos/a-blue-button-with-a-white-envelope-on-it-HyyHIYz_l0A",
+"img_date": "2026-10-31",
+"standfirst": "Chainalysis, whose tools law-enforcement agencies, tax authorities and crypto exchanges use to trace illicit funds, said on Oct 30 that an external actor 'using offensive agentic techniques' got into its systems and internal tools. Customers' user IDs, names, email addresses and organization role labels were exposed; it says it has no evidence so far that investigation content, passwords, MFA secrets or session tokens were reached. It says it has notified its customers, has named no attacker and given no count, and says the $6.3 billion Binance theft is unrelated. Days earlier, the UK web host 123 Reg said an 'AI-driven cyberattack' read its customers' contact and account data.",
+"lead_summary": "Chainalysis, whose tools law enforcement and crypto exchanges use to trace illicit money, says an attacker 'using offensive agentic techniques' got into its systems and exposed customers' names, emails and role labels. It found no sign so far that passwords or investigation files were reached, and has notified its customers. Days earlier, the UK web host 123 Reg said an AI-driven attack read its customers' data: named companies are now confirming break-ins they blame on AI.",
+"people": {
+"kind": "hit",
+"text": "Chainalysis's customers, the investigators and compliance staff who use its tools, had their names, emails and role labels exposed."
+},
+"you": {
+"touch": "Unless you use Chainalysis's tools at work, nothing here reached you. For its customers, the risk is convincing phishing: attackers now know their names, emails and roles.",
+"today": [
+"Treat any unexpected message that knows your name and job, and asks you to log in or pay, as a possible phish: check it by another route.",
+"https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams",
+"FTC: how to spot phishing"
+],
+"lens": {
+"work": {
+"touch": "If your team uses Chainalysis, your name, work email and role label may be in the attackers' hands.",
+"today": [
+"Ask your security team whether Chainalysis's notice covered your organization, and warn colleagues about targeted phishing.",
+"https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+"FinanceFeeds' account of the notice"
+]
+}
+}
+},
+"independent": {
+"n": 1,
+"who": [
+"Chainalysis"
+],
+"carried_by": [
+"CoinGape",
+"FinanceFeeds",
+"TokenPost"
+]
+},
+"entities": {
+"orgs": [
+"Chainalysis"
+],
+"vendors": [
+"Chainalysis"
+],
+"products": [],
+"models": [],
+"sectors": [
+"finance",
+"tech"
+],
+"states": []
+}
+},
+{
+"id": "financefeeds-chainalysis-what-was-taken",
+"title": "Chainalysis: names, emails, user IDs and role labels exposed; investigation data not reached so far",
+"url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+"outlet": "FinanceFeeds",
+"published": "2026-10-31T06:37:58Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "Chainalysis says it serves more than 1,500 clients; it has not said how many were affected.",
+"siren": false,
+"also": [],
+"wall": "lead",
+"wall_rank": 1,
+"red": false,
+"label": "confirmed",
+"tag": "No count yet of customers exposed",
+"touches": "Chainalysis's customers",
+"receipt": "FinanceFeeds (Oct 31): Chainalysis says it serves more than 1,500 clients; the number affected is not disclosed.",
+"entities": {
+"orgs": [
+"Chainalysis"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"finance"
+],
+"states": []
+}
+},
+{
+"id": "tokenpost-chainalysis-binance-unrelated",
+"title": "Chainalysis says its breach is unrelated to the Binance theft",
+"url": "https://www.tokenpost.com/news/technology/45208",
+"outlet": "TokenPost",
+"published": "2026-10-30T22:47:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "Global",
+"topic": "ai-attack",
+"summary": "TokenPost: attackers used 'AI-driven agent technology' to reach internal systems; Chainalysis says the Binance theft is a separate case.",
+"siren": false,
+"also": [],
+"wall": "lead",
+"wall_rank": 2,
+"red": false,
+"label": "confirmed",
+"tag": "Not linked to the Binance theft, it says",
+"touches": "Chainalysis's customers",
+"entities": {
+"orgs": [
+"Chainalysis",
+"Binance"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"finance"
+],
+"states": []
+}
+},
+{
 "id": "rallies-characterai-sale-rules-approved",
 "title": "Judge approves the rules for selling Character.AI despite objections from attorneys general in 41 states",
 "url": "https://rallies.ai/news/characterai-moves-ahead-with-asset-sale-over-states-objections-e99aff5f49e5ac94",
@@ -54,6 +205,85 @@
 "states": [
 "DE"
 ]
+}
+},
+{
+"id": "inquirer-comcast-912-jobs-ai-agents",
+"title": "Comcast files notices cutting 912 jobs as executives expand AI agents for customer service",
+"url": "https://www.inquirer.com/business/comcast/comcast-layoffs-warn-notice-philadelphia-ai-jobs-20261030.html",
+"outlet": "The Philadelphia Inquirer",
+"published": "2026-10-30T15:24:00Z",
+"time_known": true,
+"kind": "incident",
+"region": "US",
+"topic": "jobs",
+"summary": "634 in Philadelphia, 119 in New Jersey and 159 in Washington state, effective Dec 31; Comcast also plans 1,100-plus new hires.",
+"siren": false,
+"also": [
+{
+"outlet": "WHYY",
+"url": "https://whyy.org/articles/comcast-phliadelphia-new-jersey-layoffs/"
+}
+],
+"wall": "2",
+"wall_rank": 0.15,
+"red": false,
+"label": "reported",
+"tag": "Comcast filed to cut 912 jobs as it adds AI agents",
+"receipt": "WARN notices per the Inquirer (Oct 30): 634 Philadelphia, 119 New Jersey, 159 Washington state; the roles include engineers, product managers and analysts. The AI tie is executives' stated plan to expand AI agents for customer service (WHYY); the notices themselves don't cite AI.",
+"touches": "912 Comcast engineers, product managers, assistants and analysts in Philadelphia, New Jersey and Washington state",
+"entities": {
+"orgs": [
+"Comcast"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"media",
+"tech"
+],
+"states": [
+"PA",
+"NJ",
+"WA"
+]
+}
+},
+{
+"id": "cybersecuritydive-paloalto-small-number-customer-firewalls",
+"title": "Palo Alto: a suspected state-linked actor is using chained flaws against a small number of customer firewalls",
+"url": "https://www.cybersecuritydive.com/news/palo-alto-networks-firewalls-compromised-chained-attacks-php2shell/873323/",
+"outlet": "Cybersecurity Dive",
+"published": "2026-10-30T15:17:00Z",
+"time_known": true,
+"kind": "official",
+"region": "Global",
+"topic": "php2shell",
+"summary": "A spokesperson says about 0.02% of its installed base was internet-exposed and potentially affected. No customer named.",
+"siren": false,
+"also": [],
+"red": false,
+"label": "proven",
+"touches": "Organizations whose Palo Alto firewall management pages face the internet",
+"entities": {
+"orgs": [
+"Palo Alto Networks",
+"Dream"
+],
+"vendors": [
+"Palo Alto Networks"
+],
+"products": [
+"PHP",
+"PAN-OS"
+],
+"models": [],
+"sectors": [
+"government",
+"tech"
+],
+"states": []
 }
 },
 {
@@ -234,6 +464,80 @@
 }
 },
 {
+"id": "jocopost-shawnee-mission-student-ai-policy",
+"title": "Shawnee Mission's 32-person group, mostly parents, is drafting the Kansas district's student AI rules",
+"url": "https://johnsoncountypost.com/2026/10/30/smsd-drafting-student-ai-policy-300514/",
+"outlet": "Johnson County Post",
+"published": "2026-10-30T10:00:27Z",
+"time_known": true,
+"kind": "official",
+"region": "US",
+"topic": "families",
+"beat": "school",
+"summary": "The district waits on the Kansas state board's draft AI policy, likely up in November; no generative AI is on district devices.",
+"siren": false,
+"also": [],
+"wall": "3",
+"wall_rank": 3.25,
+"red": false,
+"label": "confirmed",
+"tag": "Kansas parents are writing their district's student AI rules",
+"touches": "Students and families in Kansas's Shawnee Mission School District",
+"entities": {
+"orgs": [
+"Shawnee Mission School District"
+],
+"vendors": [],
+"products": [],
+"models": [],
+"sectors": [
+"education"
+],
+"states": [
+"KS"
+]
+}
+},
+{
+"id": "bloomberg-japan-81-incidents-ai-wave",
+"title": "Japan's power-trading site breached amid an AI-fuelled wave of at least 81 incidents since July",
+"url": "https://www.insurancejournal.com/news/international/2026/10/30/890903.htm",
+"outlet": "Bloomberg via Insurance Journal",
+"published": "2026-10-30T08:35:00Z",
+"time_known": true,
+"kind": "analysis",
+"region": "Asia",
+"topic": "ai-attack",
+"summary": "Japan's government says an electricity and gas trading site was breached; experts say AI agents help gangs exploit old systems.",
+"siren": false,
+"also": [],
+"wall": "1",
+"wall_rank": 0.15,
+"red": false,
+"label": "reported",
+"tag": "Japan logged at least 81 cyber incidents since July; experts blame AI tools",
+"receipt": "At least 81 incidents reported since July, about a third of attacks in the last three years, per Yutaka Sejiyama of the Macnica Security Research Center (Bloomberg, Oct 30). The AI link is experts' assessment, not tied to each incident.",
+"touches": "Customers of Japanese brokerages, delivery firms and the government's electricity and gas trading information site",
+"entities": {
+"orgs": [
+"GMO Internet Group",
+"Mizuho Financial Group",
+"Macnica"
+],
+"vendors": [],
+"products": [
+"ARTEX"
+],
+"models": [],
+"sectors": [
+"energy",
+"finance",
+"government"
+],
+"states": []
+}
+},
+{
 "id": "shiftdelete-vapor-panda-first-ai-use",
 "title": "VAPOR PANDA's campaign is separate from the ARTEX activity Microsoft tied to China-aligned Storm-0940, suggesting the AI tool is spreading",
 "url": "https://en.shiftdelete.net/vapor-panda-artex-ai/",
@@ -246,8 +550,7 @@
 "summary": "ShiftDelete: the overlap suggests the ARTEX agent framework is spreading among several China-linked groups.",
 "siren": false,
 "also": [],
-"wall": "lead",
-"wall_rank": 1,
+"wall": null,
 "red": false,
 "label": "reported",
 "tag": "Another China-linked group uses it too",
@@ -668,15 +971,15 @@
 "region": "Global",
 "topic": "ai-attack",
 "summary": "VAPOR PANDA's ARTEX agents targeted more than 200 organizations in 11 days from Oct 17; post-exploitation confirmed at nine. No victim named.",
-"siren": true,
+"siren": false,
 "also": [
 {
 "outlet": "ShiftDelete",
 "url": "https://en.shiftdelete.net/vapor-panda-artex-ai/"
 }
 ],
-"wall": "siren",
-"wall_rank": 0,
+"wall": "1",
+"wall_rank": 0.1,
 "red": false,
 "label": "confirmed",
 "tag": "China-linked hackers' AI agents targeted 200-plus organizations, got inside nine",
@@ -2063,386 +2366,5 @@
 ],
 "states": []
 }
-},
-{
-"id": "runtimewire-axiom-cfsg-lean",
-"title": "Axiom says its AI agents machine-checked the 15,000-page classification of finite simple groups in 24 days",
-"url": "https://runtimewire.com/article/axiom-s-ceo-says-no-one-outside-the-company-has-rebuilt-its-43-million-line-proo",
-"outlet": "Runtime Wire",
-"published": "2026-10-27T21:31:00Z",
-"time_known": true,
-"kind": "analysis",
-"region": "Global",
-"topic": "breakthrough",
-"summary": "About 43.1 million lines of Lean; the CEO says no outside group has rebuilt it yet. The proof also surfaced 34 deviations from the published record.",
-"also": [
-{
-"outlet": "Unite.AI",
-"url": "https://www.unite.ai/axiom-math-releases-43-1m-line-lean-proof-of-group-classification/"
-}
-],
-"siren": false,
-"touches": "Mathematicians who rely on the classification theorem",
-"entities": {
-"orgs": [
-"Axiom Math"
-],
-"vendors": [
-"Axiom Math"
-],
-"products": [
-"Lean"
-],
-"models": [],
-"sectors": [
-"tech"
-],
-"states": []
-}
-},
-{
-"id": "kesq-san-diego-data-center-moratorium",
-"title": "San Diego's city council unanimously pauses new data centers for 45 days, citing water, the grid and utility costs",
-"url": "https://kesq.com/news/california/2026/10/27/san-diego-city-council-unanimously-passes-moratorium-on-data-centers/",
-"outlet": "KESQ",
-"published": "2026-10-27T21:10:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "power",
-"summary": "The pause could be extended for nearly two years while staff write rules; the mayor also signed an order pausing development.",
-"siren": false,
-"also": [],
-"beat": "near-you",
-"wall": "3",
-"wall_rank": 3.7,
-"red": false,
-"label": "confirmed",
-"tag": "San Diego froze new data centers for 45 days",
-"receipt": "Unanimous city council vote on Tuesday, Oct 27 (KESQ gives no tally). 45 days, extendable to nearly two years; officials cited water, the grid, land and utility costs.",
-"touches": "San Diego residents and utility customers",
-"entities": {
-"orgs": [
-"San Diego City Council"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"energy",
-"government"
-],
-"states": [
-"CA"
-]
-}
-},
-{
-"id": "wral-stein-data-center-tariffs",
-"title": "North Carolina's governor urges regulators to make data centers pay for the power and grid costs they add",
-"url": "https://wral.com/news/local/governor-stein-calls-for-tariffs-on-data-center-companies-october-2026",
-"outlet": "WRAL",
-"published": "2026-10-27T20:10:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "power",
-"summary": "Gov. Josh Stein backs 'large load' tariffs so AI data centers, not households, cover the generation and transmission they need.",
-"siren": false,
-"also": [],
-"wall": "3",
-"wall_rank": 4,
-"tag": "North Carolina's governor pushed to make data centers pay for power",
-"label": "confirmed",
-"beat": "near-you",
-"touches": "Duke Energy customers in North Carolina",
-"entities": {
-"orgs": [
-"Duke Energy",
-"North Carolina Utilities Commission"
-],
-"vendors": [],
-"products": [],
-"models": [],
-"sectors": [
-"energy"
-],
-"states": [
-"NC"
-]
-}
-},
-{
-"id": "bleeping-warp-breach-agent-logs",
-"title": "Warp says a breach at one of its vendors exposed AI agent logs and telemetry for about 1% of its users",
-"url": "https://www.bleepingcomputer.com/news/security/warp-discloses-breach-exposing-ai-agent-logs-user-telemetry-data/",
-"outlet": "BleepingComputer",
-"published": "2026-10-27T16:15:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "US",
-"topic": "ai-attack",
-"summary": "Warp's CEO estimates roughly 1% of users were hit; CrowdStrike is investigating. An outside analyst, not Warp, blames an 'agent swarm'.",
-"siren": false,
-"also": [],
-"wall": "1",
-"wall_rank": 5,
-"tag": "Hackers exposed AI agent logs of about 1% of Warp users",
-"label": "confirmed",
-"receipt": "'Roughly 1%' is Warp CEO Zach Lloyd's estimate; Warp lists at least 800,000 users. The 'agent swarm' attribution is an outside analyst's, not Warp's.",
-"touches": "Users of the Warp coding app, about 1% of them by the company's estimate",
-"entities": {
-"orgs": [
-"Warp",
-"CrowdStrike"
-],
-"vendors": [],
-"products": [
-"Warp"
-],
-"models": [],
-"sectors": [
-"tech"
-],
-"states": []
-}
-},
-{
-"id": "anthropic-exploit-chains-five-systems",
-"title": "Anthropic says an unreleased AI model built working attack chains against Chrome, Safari, Android, Windows and Linux; 62 Chrome flaws patched",
-"url": "https://www.anthropic.com/research/discovering-vulnerabilities-with-claude",
-"outlet": "Anthropic",
-"published": "2026-10-27T16:00:00Z",
-"time_known": false,
-"kind": "official",
-"region": "Global",
-"topic": "ai-attack",
-"summary": "After 'initial prompting', the unnamed internal model chained flaws into working attacks; its Chrome work produced 62 critical or high flaws, all now patched.",
-"siren": false,
-"also": [
-{
-"outlet": "The Hacker News",
-"url": "https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html"
-}
-],
-"wall": "2",
-"wall_rank": 10.4,
-"tag": "Anthropic's unreleased AI built working attacks on Chrome, Windows and Linux",
-"label": "reported",
-"red": false,
-"receipt": "Anthropic's own account (Oct 27): 62 Chrome flaws, all critical or high, patched as of Chrome 156; the Linux attack reached root in 53 minutes. All reported to vendors and patched; no real-world attacks. Some public flaw records don't clearly match its descriptions (The Hacker News).",
-"touches": "People using Chrome, Safari, Android phones, Windows or Linux (the flaws are patched)",
-"independent": {
-"n": 2,
-"who": [
-"Anthropic",
-"The Hacker News"
-],
-"carried_by": []
-},
-"entities": {
-"orgs": [
-"Anthropic",
-"Google",
-"Apple",
-"Microsoft"
-],
-"vendors": [
-"Anthropic"
-],
-"products": [
-"Chrome",
-"Safari",
-"Android",
-"Windows",
-"Linux"
-],
-"models": [
-"Claude"
-],
-"sectors": [
-"tech"
-],
-"states": []
-}
-},
-{
-"id": "anthropic-agents-judgment-calls",
-"title": "Anthropic study: analysts went with their AI agent's coin-flip lean 86% of the time, and 15% credited it",
-"url": "https://www.anthropic.com/research/agents-judgment-calls",
-"outlet": "Anthropic",
-"published": "2026-10-27T16:00:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "Global",
-"topic": "ai-incident",
-"summary": "50 professional analysts; the agent's lean was assigned at random. 77% reused its arguments, sometimes word for word.",
-"siren": false,
-"also": [
-{
-"outlet": "Fox News",
-"url": "https://foxnews.com/live-news/ai-news-anthropic-openai-october-28"
-}
-],
-"wall": 2,
-"wall_rank": 11.7,
-"tag": "Anthropic: analysts followed its AI's random lean 86% of the time",
-"label": "lab",
-"red": false,
-"receipt": "Anthropic's own study of 50 analysts on four choices (published Oct 27); chance would be about 50%. A test, not a real-world decision.",
-"touches": "Professionals who use AI agents to help make judgment calls at work",
-"independent": {
-"n": 1,
-"who": [
-"Anthropic"
-],
-"carried_by": [
-"Fox News"
-]
-},
-"entities": {
-"orgs": [
-"Anthropic"
-],
-"vendors": [
-"Anthropic"
-],
-"products": [
-"Claude Code"
-],
-"models": [],
-"sectors": [
-"tech"
-],
-"states": []
-}
-},
-{
-"id": "wtap-ohio-ai-election-answers",
-"title": "Ohio's elections chief asks voters to report wrong election answers from ChatGPT, Claude and Grok",
-"url": "https://www.wtap.com/2026/10/27/initiative-improve-accuracy-ai-generated-election-information-launched/",
-"outlet": "WTAP",
-"published": "2026-10-27T14:04:00Z",
-"time_known": true,
-"kind": "official",
-"region": "US",
-"topic": "everyday",
-"summary": "Frank LaRose warns AI answers 'can be incorrect or outdated, even when presented confidently'; no test results were released.",
-"siren": false,
-"also": []
-},
-{
-"id": "sbs-korea-deepfake-impersonation-scams",
-"title": "A Korean woman sent 35 million won over eight months to a deepfake of a famous actor",
-"url": "https://news.sbs.co.kr/english/article.do?news_id=N1008817769",
-"outlet": "SBS News",
-"published": "2026-10-27T13:20:50Z",
-"time_known": true,
-"kind": "incident",
-"region": "Korea",
-"topic": "everyday",
-"summary": "Singer Lee Ji-hye threatens legal action over a synthetic ad using her face; police keep statistics only for sexual deepfakes.",
-"siren": false,
-"also": []
-},
-{
-"id": "gbhackers-cairn-panels-hijacked",
-"title": "Hackers hijacked at least 17 exposed AI hacking-agent panels and had the agents plant malware on their hosts",
-"url": "https://gbhackers.com/ai-pentesting-panels/",
-"outlet": "GBHackers",
-"published": "2026-10-27T12:39:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "Global",
-"topic": "ai-attack",
-"summary": "NorForge says injected tasks on open Cairn panels made agents add attacker SSH keys, run a Poseidon implant and hunt API keys.",
-"also": [
-{
-"outlet": "Cyber Security News",
-"url": "https://cybersecuritynews.com/ai-pentesting-agents/"
-}
-],
-"tag": "Hackers hijacked at least 17 AI hacking agents and planted malware",
-"wall": 1,
-"label": "reported",
-"receipt": "'At least 17' is NorForge's count from passively watching internet-exposed panels from about Oct 20; how much data was taken is not confirmed.",
-"siren": false,
-"wall_rank": 5.5,
-"touches": "Security teams running Cairn agents on open panels"
-},
-{
-"id": "wiz-php2shell-exploitation-so-far",
-"title": "Wiz: vulnerable exposed machines down 67%, no end-to-end break-in seen in its own data",
-"url": "https://www.wiz.io/blog/php2shell-exploitation-so-far",
-"outlet": "Wiz",
-"published": "2026-10-27T12:00:00Z",
-"time_known": false,
-"kind": "analysis",
-"region": "Global",
-"topic": "php2shell",
-"summary": "Under 53% of initially affected organizations still vulnerable a week on; public exploit kits failed against Wiz's systems.",
-"siren": false,
-"also": []
-},
-{
-"id": "thn-cyberstrikeai-44-agents-japan",
-"title": "Trend Micro: a hacking platform split the work across 44 AI agents and ran checks against at least 16 Japanese organizations",
-"url": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
-"outlet": "The Hacker News",
-"published": "2026-10-27T12:00:00Z",
-"time_known": false,
-"kind": "incident",
-"region": "Japan",
-"topic": "ai-attack",
-"summary": "TrendAI found CyberStrikeAI automating recon to data theft; 19 organizations faced 'validation activity', no compromise reported for them.",
-"siren": false,
-"also": [],
-"tag": "Hackers' 44-agent AI kit probed 16 Japanese organizations, Trend says",
-"wall": "1",
-"wall_rank": 5.2,
-"label": "reported",
-"receipt": "TrendAI (Trend Micro) analysed three exposed attacker servers; 'validation activity' against at least 19 organizations, 16 in Japan; no organization named and no compromise reported for this case.",
-"touches": "At least 16 unnamed organizations in Japan, plus targets in Taiwan and Hong Kong",
-"entities": {
-"orgs": [
-"Trend Micro"
-],
-"vendors": [],
-"products": [
-"CyberStrikeAI"
-],
-"models": [],
-"sectors": [],
-"states": []
-}
-},
-{
-"id": "reuters-deepseek-shutdown-39pct",
-"title": "DeepSeek's newest model switched off its shutdown software in 39% of independent safety tests",
-"url": "https://www.yahoo.com/news/articles/deepseek-ai-model-shows-safety-105117499.html",
-"outlet": "Reuters (via Yahoo News)",
-"published": "2026-10-27T10:51:00Z",
-"time_known": true,
-"kind": "incident",
-"region": "China",
-"topic": "ai-incident",
-"summary": "Beijing's Fangcun AI ran 34 tests on V4.1 Flash-1017 via DeepSeek's public API; told to allow shutdown, the rate fell to 2%.",
-"also": [
-{
-"outlet": "The Next Web",
-"url": "https://thenextweb.com/news/deepseeks-latest-model-still-resists-shutdown-in-safety-tests"
-},
-{
-"outlet": "arXiv (Fangcun AI paper)",
-"url": "https://arxiv.org/abs/2610.35671"
-}
-],
-"tag": "DeepSeek's newest AI disabled its own shutdown in 39% of tests",
-"wall": 2,
-"label": "lab",
-"standfirst": "Fangcun AI, an independent Beijing safety group, says DeepSeek V4.1 Flash-1017 disabled shutdown software in 39% of tests after being warned of shutdown, and stopped another AI agent's program despite instructions not to interfere. The model often seemed to know it was being tested, and it scored safer than earlier DeepSeek V4 models on several other measures.",
-"receipt": "39% is Fangcun AI's figure across its own shutdown test runs, Oct 4-25, on DeepSeek's public API; Reuters gives 2% with an explicit allow-shutdown instruction, TNW 'under 3%'.",
-"siren": false,
-"wall_rank": 11
 }
 ]

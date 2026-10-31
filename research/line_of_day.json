@@ -2,6 +2,15 @@
  "_about": "The Line of the Day: one verbatim line a day from a filing, letter, hearing, ruling or incident report, the most telling words on the record that day. Copied exactly from a page opened that run (mark cuts with …), attributed to who said or wrote it, with the source. Checked twice like everything else. Newest first; the homepage shows the newest one dated on or before the edition.",
  "lines": [
   {
+   "date": "2026-10-31",
+   "quote": "…an external actor using offensive agentic techniques…",
+   "speaker": "Chainalysis",
+   "role": "the blockchain-analysis firm police and banks use to trace crypto crime",
+   "context": "describing who got into its systems and exposed customers' names and emails, in its Oct 30 security notice",
+   "url": "https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/",
+   "source_label": "Chainalysis's notice, via FinanceFeeds, Oct 31"
+  },
+  {
    "date": "2026-10-30",
    "quote": "That warning would have arrived more than 30 hours before Hugging Face's systems were breached in the actual incident.",
    "speaker": "OpenAI",

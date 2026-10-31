@@ -1,5 +1,14 @@
 [
  {
+  "id": "palo-alto-customer-firewalls-oct31",
+  "date": "2026-10-31",
+  "dir": "down",
+  "name": "Palo Alto Networks",
+  "news_id": "cybersecuritydive-paloalto-small-number-customer-firewalls",
+  "line": "Palo Alto confirmed a suspected state-linked actor is using chained exploits against a small number of customer firewalls; a spokesperson put the internet-exposed, potentially impacted share at about 0.02% of its global installed base (Cybersecurity Dive, Oct 30).",
+  "why": "Our read: a security vendor's own boxes becoming the way in is the worst kind of headline for it, because customers bought the firewall to be the wall. Expect buyers to ask why management pages were reachable from the internet at all, a configuration question that shifts some blame back onto customers."
+ },
+ {
   "id": "leading-the-future-general-election",
   "date": "2026-10-29",
   "dir": "down",
